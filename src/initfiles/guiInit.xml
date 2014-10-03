@@ -1,0 +1,10 @@
+<initializationDocument>
+	<drawableObject parent="parentName"
+					type="objectType"
+					name="objectName">
+		<parameter name="parameterName" value="parameterValue"></parameter>
+		<parameter name="parameterName" value="parameterValue"></parameter>
+		<parameter name="parameterName" value="parameterValue"></parameter>
+		<parameter name="parameterName" value="parameterValue"></parameter>
+	</drawableObject>
+</initializationDocument>
