@@ -47,5 +47,5 @@ public abstract class CommandParser {
 		return isCommand;
 	}
 	
-	protected abstract boolean isAppropriateCommandString(String string);
+	protected abstract boolean isAppropriateCommand(CommandParser command);
 }
