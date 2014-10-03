@@ -11,7 +11,7 @@ public class Right extends TurtleCommand {
 	double amount;
 	
 	@Override
-	public void parse(String[] commandStrings, Queue<StateUpdate> stateQueue) {
+	public void parse(String[] commandStrings, int parsePosition, Queue<StateUpdate> stateQueue) {
 	}
 
 }

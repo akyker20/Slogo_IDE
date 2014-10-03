@@ -7,13 +7,13 @@ import stateUpdate.StateUpdate;
 
 public class Forward extends TurtleCommand {
 
-	public Forward(String[] someString, Queue<StateUpdate> someQueue) {
-
-	}
-
+	float distance;
+	
 	@Override
-	public void parse(String[] commandStrings, Queue<StateUpdate> stateQueue) {
-		// TODO Auto-generated method stub
+	public void parse(String[] commandStrings, int parsePosition, Queue<StateUpdate> stateQueue) {
+		String stringOfInterest = commandStrings[parsePosition];
+		
+		
 
 	}
 
