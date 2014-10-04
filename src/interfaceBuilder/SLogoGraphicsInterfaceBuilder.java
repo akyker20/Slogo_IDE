@@ -31,7 +31,7 @@ public class SLogoGraphicsInterfaceBuilder {
      */
     private void writeClassHeaders() {
         classText.append("package "+packageName+"; \n \n");
-        classText.append("protected interface "+ className +" { \n");
+        classText.append("public interface "+ className +" { \n");
     }
 
     /**

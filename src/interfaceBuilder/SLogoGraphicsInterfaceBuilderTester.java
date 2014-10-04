@@ -1,7 +1,7 @@
 package interfaceBuilder;
 
 public class SLogoGraphicsInterfaceBuilderTester {
-    protected static void main (String[] args) {
+    public static void main (String[] args) {
         SLogoGraphicsInterfaceBuilder interfaceBuilder = new SLogoGraphicsInterfaceBuilder();
         String methodSignature = "doButtonAction", methodArgument = "";
         boolean addMethodResult = interfaceBuilder.addListenerMethod(methodSignature, methodArgument);
