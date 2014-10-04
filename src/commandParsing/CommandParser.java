@@ -14,7 +14,7 @@ public abstract class CommandParser {
 		try {
 			return (CommandParser) Class.forName(commandName).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			System.out.println("fuck");
+			
 			e.printStackTrace();
 		}
 		
