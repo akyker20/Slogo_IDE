@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -26,12 +27,19 @@ public class GUIInitializer {
         //Component initialization
         GridDrawer gridDrawer = new GridDrawer();
         ButtonHolderDrawer buttonHolder = new ButtonHolderDrawer();
+
         MenuDrawer menuDrawer = new MenuDrawer();
-        pane.setLeft(gridDrawer);
+
+        CommandLineDrawer commandLine = new CommandLineDrawer();
+        VBox leftVBox = new VBox();
+        leftVBox.getChildren().addAll(gridDrawer, commandLine);
+        pane.setLeft(leftVBox);
+
         pane.setRight(buttonHolder);
         pane.setTop(menuDrawer);
         ComponentDrawer[] drawers = new ComponentDrawer[]{
-            gridDrawer, buttonHolder, menuDrawer
+            gridDrawer, buttonHolder,commandLine, menuDrawer
+
         };
         
         //Initialize Features
