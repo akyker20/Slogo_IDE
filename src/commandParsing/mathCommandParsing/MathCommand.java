@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.Queue;
 
 import stateUpdate.StateUpdate;
-
 import commandParsing.CommandParser;
 
 public abstract class MathCommand extends CommandParser {
@@ -13,8 +12,16 @@ public abstract class MathCommand extends CommandParser {
 
 	@Override
 	protected boolean isAppropriateCommand(CommandParser command) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isCommand = false;
+		
+		try {
+			MathCommand parser = (MathCommand) command;
+			isCommand = true;
+		} catch (ClassCastException e){
+			isCommand = false;
+		}
+		
+		return isCommand;
 	}
 
 }

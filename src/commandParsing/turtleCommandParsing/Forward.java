@@ -21,6 +21,9 @@ public class Forward extends TurtleCommand {
 			if(isAppropriateCommand(createParser(stringOfInterest))){
 				MathCommand command = (MathCommand) createParser(stringOfInterest);
 				distance = command.parse(commandStrings, stateQueue);
+				if(errorOccured(stateQueue)){
+					return;
+				}
 				generateUpdate(distance, stateQueue);
 			}
 			else{

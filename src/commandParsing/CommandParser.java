@@ -2,6 +2,7 @@ package commandParsing;
 
 import java.util.Queue;
 
+import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 
 public abstract class CommandParser {
@@ -11,7 +12,7 @@ public abstract class CommandParser {
 	
 	public static CommandParser createParser(String commandName){
 		try {
-			return (CommandParser) Class.forName("commandParsing.turtleCommandParsing."+commandName).newInstance();
+			return (CommandParser) Class.forName(commandName).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			System.out.println("fuck");
 			e.printStackTrace();
@@ -46,4 +47,8 @@ public abstract class CommandParser {
 	}
 	
 	protected abstract boolean isAppropriateCommand(CommandParser command);
+	
+	protected boolean errorOccured(Queue<StateUpdate> queue){
+		return queue.contains(new ParseError());
+	}
 }

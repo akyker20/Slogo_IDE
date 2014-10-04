@@ -15,5 +15,10 @@ public class ParseError implements StateUpdate {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		return o instanceof ParseError;
+	}
 
 }
