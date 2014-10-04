@@ -9,6 +9,7 @@ public class DrawableObjectParser {
     private ObjectFactory[] myFactories;
     
     public DrawableObjectParser(ComponentDrawer[] drawers, ObjectFactory[] factories){
+        System.out.println(drawers==null);
         myDrawers = drawers;
         myFactories = factories;
     }
@@ -39,7 +40,7 @@ public class DrawableObjectParser {
     
     private ComponentDrawer parseComponentDrawer(String parent) {
         for(int i = 0; i < myDrawers.length; i++){
-            if(myDrawers[i].toString().equals(parent)){
+            if(myDrawers[i].getName().equals(parent)){
                 return myDrawers[i];
             }
         }
