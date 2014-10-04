@@ -7,9 +7,10 @@ import stateUpdate.StateUpdate;
 public class NullCommandParser extends CommandParser {
 
 	@Override
-	public void parse(String[] commandString, Queue<StateUpdate> updateQueue) {
+	protected boolean isAppropriateCommand(CommandParser command) {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
+
 
 }

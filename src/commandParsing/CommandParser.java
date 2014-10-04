@@ -7,9 +7,7 @@ import stateUpdate.StateUpdate;
 public abstract class CommandParser {
 	
 	private Queue<StateUpdate> updateQueue;
-	private String[] commandString;
-	
-	public abstract void parse(String[] commandString, int parsePosition, Queue<StateUpdate> updateQueue);
+	private String[] commandString;	
 	
 	protected CommandParser createParser(String commandName){
 		try {

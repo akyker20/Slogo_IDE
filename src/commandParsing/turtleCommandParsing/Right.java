@@ -1,8 +1,8 @@
 package commandParsing.turtleCommandParsing;
 
+import java.util.Iterator;
 import java.util.Queue;
 
-import commandParsing.CommandParser;
 import stateUpdate.StateUpdate;
 
 public class Right extends TurtleCommand {
@@ -11,7 +11,7 @@ public class Right extends TurtleCommand {
 	double amount;
 	
 	@Override
-	public void parse(String[] commandStrings, int parsePosition, Queue<StateUpdate> stateQueue) {
+	public void parse(Iterator<String> commandStrings, Queue<StateUpdate> stateQueue) {
 	}
 
 }
