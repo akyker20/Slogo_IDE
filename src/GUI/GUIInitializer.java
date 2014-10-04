@@ -27,13 +27,19 @@ public class GUIInitializer {
         //Component initialization
         GridDrawer gridDrawer = new GridDrawer();
         ButtonHolderDrawer buttonHolder = new ButtonHolderDrawer();
+
+        MenuDrawer menuDrawer = new MenuDrawer();
+
         CommandLineDrawer commandLine = new CommandLineDrawer();
         VBox leftVBox = new VBox();
         leftVBox.getChildren().addAll(gridDrawer, commandLine);
         pane.setLeft(leftVBox);
+
         pane.setRight(buttonHolder);
+        pane.setTop(menuDrawer);
         ComponentDrawer[] drawers = new ComponentDrawer[]{
-            gridDrawer, buttonHolder, commandLine
+            gridDrawer, buttonHolder,commandLine, menuDrawer
+
         };
         
         //Initialize Features
