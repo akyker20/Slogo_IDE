@@ -6,21 +6,20 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import GUI.CommandLineDrawer;
 
-public class CommandLineFeature implements Feature {
+public class CommandLineFeature extends TextField implements Feature {
 
     public CommandLineFeature(CommandLineDrawer parentDrawer){
-        TextField textField = new TextField();
-        textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
                 if (e.getCode().equals(KeyCode.ENTER)) {
-                    System.out.println(textField.getText());
-                    textField.clear();
+                    System.out.println(CommandLineFeature.this.getText());
+                    CommandLineFeature.this.clear();
                 }
             }
         });
 
-        parentDrawer.drawShape(textField);
+        parentDrawer.drawShape(this);
     }
 
     @Override
