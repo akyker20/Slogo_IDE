@@ -9,11 +9,11 @@ public abstract class CommandParser {
 	private Queue<StateUpdate> updateQueue;
 	private String[] commandString;	
 	
-	protected CommandParser createParser(String commandName){
+	public static CommandParser createParser(String commandName){
 		try {
-			return (CommandParser) Class.forName(commandName).newInstance();
+			return (CommandParser) Class.forName("commandParsing.turtleCommandParsing."+commandName).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("fuck");
 			e.printStackTrace();
 		}
 		
@@ -24,7 +24,7 @@ public abstract class CommandParser {
 		boolean isParseable = true;
 		
 		for(int i=0;i<string.length();i++){
-			if(!Character.isDigit(string.charAt(i)) | string.charAt(i) == '.'){
+			if(!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.'){
 				isParseable = false;
 			}
 		}
