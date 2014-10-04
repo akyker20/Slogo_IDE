@@ -8,10 +8,7 @@ import GUI.GridDrawer;
 
 public class SetBackgroundColorFeature implements Feature {
     
-    private ButtonHolderDrawer myParentDrawer;
-
     public SetBackgroundColorFeature(GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer){
-        myParentDrawer = parentDrawer;
         ColorPicker picker = new ColorPicker();
         picker.setOnAction(new EventHandler() {
             public void handle(Event t) {
@@ -22,7 +19,7 @@ public class SetBackgroundColorFeature implements Feature {
                 return "#" + picker.getValue().toString().substring(2);
             }
         });
-        myParentDrawer.drawShape(picker);
+        parentDrawer.drawShape(picker);
     }
 
     @Override
