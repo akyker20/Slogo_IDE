@@ -10,7 +10,9 @@ import java.util.Queue;
 
 import org.junit.Test;
 
+import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
+
 import commandParsing.CommandParser;
 import commandParsing.mathCommandParsing.MathCommand;
 import commandParsing.mathCommandParsing.Sum;
@@ -64,4 +66,17 @@ public class SumTests {
 		
 		assertTrue(f==(float) 300);
 	}
+	
+	@Test
+	public void SyntaxErrorParseTest() {
+		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.structuralCommandParsing."+"If", "50"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
+
+		float f = sum.parse(iterator, queue);
+		
+		assertEquals(queue.poll(), new ParseError());
+	}
+	
 }

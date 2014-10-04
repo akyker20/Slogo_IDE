@@ -9,62 +9,63 @@ import java.util.Queue;
 
 import org.junit.Test;
 
-import stateUpdate.Move;
 import stateUpdate.ParseError;
+import stateUpdate.Rotate;
 import stateUpdate.StateUpdate;
 
 import commandParsing.CommandParser;
-import commandParsing.structuralCommandParsing.If;
 import commandParsing.turtleCommandParsing.Forward;
+import commandParsing.turtleCommandParsing.Right;
 import commandParsing.turtleCommandParsing.TurtleCommand;
 
-public class ForwardTests {
+public class RightTests {
+	
 
 	@Test
 	public void IntegerParsingTest() {
-		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "50"};
+		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next());
 			
-		fd.parse(iterator, queue);
+		rt.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(50));
+		assertEquals(queue.poll(),new Rotate(50));
 	}
 	
 	@Test
 	public void DoubleParsingTest() {
-		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "50.0"};
+		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next());
 		
-		fd.parse(iterator, queue);
+		rt.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(50));
+		assertEquals(queue.poll(),new Rotate(50));
 	}
 	
 	@Test
 	public void SumParsingTest() {
-		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
+		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next());
 		
-		fd.parse(iterator, queue);
+		rt.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(80));
+		assertEquals(queue.poll(),new Rotate(80));
 	}
 	
 	@Test
 	public void SyntaxErrorParsingTest() {
-		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.structuralCommandParsing."+"If", "30.0", "50.0"};
+		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "commandParsing.structuralCommandParsing."+"If", "30.0", "50.0"};
 		
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next());
 		
-		fd.parse(iterator, queue);
+		rt.parse(iterator, queue);
 		
 		assertEquals(queue.poll(),new ParseError());
 	}
