@@ -6,6 +6,6 @@ public class MenuDrawer extends ComponentDrawer {
     
     public MenuDrawer(String name) {
         super(name);
-        this.setPrefHeight(GUIInitializer.SCREEN_HEIGHT*MENU_HEIGHT_RATIO);
+        this.setPrefHeight(StageInitializer.SCREEN_HEIGHT*MENU_HEIGHT_RATIO);
     }
 }
