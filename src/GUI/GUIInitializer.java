@@ -26,10 +26,12 @@ public class GUIInitializer {
         //Component initialization
         GridDrawer gridDrawer = new GridDrawer();
         ButtonHolderDrawer buttonHolder = new ButtonHolderDrawer();
+        MenuDrawer menuDrawer = new MenuDrawer();
         pane.setLeft(gridDrawer);
         pane.setRight(buttonHolder);
+        pane.setTop(menuDrawer);
         ComponentDrawer[] drawers = new ComponentDrawer[]{
-            gridDrawer, buttonHolder
+            gridDrawer, buttonHolder, menuDrawer
         };
         
         //Initialize Features
