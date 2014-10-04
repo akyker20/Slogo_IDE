@@ -25,6 +25,8 @@ public class ForwardTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
 		
+		System.out.println(fd.getClass().getPackage());
+		
 		fd.parse(iterator, queue);
 		
 		assertEquals(queue.poll(),new Move(50));
