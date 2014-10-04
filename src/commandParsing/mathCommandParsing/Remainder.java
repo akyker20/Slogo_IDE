@@ -1,14 +1,11 @@
 package commandParsing.mathCommandParsing;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 
-import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 
-public class Sum extends MathCommand {
+public class Remainder extends MathCommand {
 
 	@Override
 	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
@@ -17,7 +14,7 @@ public class Sum extends MathCommand {
 			return Float.NEGATIVE_INFINITY;
 		}
 		else {
-			return components.get(0) + components.get(1);
+			return components.get(0) % components.get(1);
 		}
 	}
 

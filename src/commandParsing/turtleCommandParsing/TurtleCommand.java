@@ -27,6 +27,7 @@ public abstract class TurtleCommand extends CommandParser {
 			else{
 				updateQueue.clear();
 				updateQueue.add(new ParseError());
+				return;
 			}
 		}
 		else{

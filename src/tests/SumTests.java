@@ -76,7 +76,7 @@ public class SumTests {
 
 		float f = sum.parse(iterator, queue);
 		
-		assertEquals(queue.poll(), new ParseError());
+		assertTrue(queue.contains(new ParseError()));
 	}
 	
 }

@@ -1,6 +1,7 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -12,7 +13,6 @@ import org.junit.Test;
 import stateUpdate.Move;
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
-
 import commandParsing.CommandParser;
 import commandParsing.turtleCommandParsing.Backward;
 import commandParsing.turtleCommandParsing.TurtleCommand;
@@ -65,7 +65,7 @@ public class BackwardTests {
 		
 		bk.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new ParseError());
+		assertTrue(queue.contains(new ParseError()));
 	}
 
 }
