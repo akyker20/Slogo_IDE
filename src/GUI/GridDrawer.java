@@ -1,15 +1,13 @@
 package GUI;
 
-import javafx.scene.Group;
 
 public class GridDrawer extends ComponentDrawer {
+    
+    public static final double GRID_WIDTH_RATIO = .667;
 
     public GridDrawer() {
         super();
-        this.setLayoutX(100);
-        this.setLayoutY(100);
-        this.setWidth(100);
-        this.setHeight(100);
-        this.setPrefSize(100, 100);
+        this.getStyleClass().add("gridPane");
+        this.setPrefWidth(GUIInitializer.SCREEN_WIDTH*GRID_WIDTH_RATIO);
     }
 }

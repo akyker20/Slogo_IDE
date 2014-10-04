@@ -1,7 +1,9 @@
 package GUI;
 
+import Feature.FeatureInitializer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -20,15 +22,17 @@ public class GUIInitializer {
         stage.setTitle("SLogo");
         stage.show();
         
+
+        //Component initialization
         GridDrawer gridDrawer = new GridDrawer();
-        gridDrawer.getStyleClass().add("Gridpane");
+        ButtonHolderDrawer buttonHolder = new ButtonHolderDrawer();
+        pane.setLeft(gridDrawer);
+        pane.setRight(buttonHolder);
+        ComponentDrawer[] drawers = new ComponentDrawer[]{
+            gridDrawer, buttonHolder
+        };
         
-        System.out.println(gridDrawer.getWidth());
-        GridDrawer gridDrawer2 = new GridDrawer();
-        gridDrawer2.setStyle("-fx-background-color: BLACK");
-        
-        pane.setCenter(gridDrawer);
-        pane.setLeft(gridDrawer2);
-        //pane.setStyle("-fx-background-color: BLACK");
+        //Initialize Features
+        FeatureInitializer.init(drawers);
     }
 }

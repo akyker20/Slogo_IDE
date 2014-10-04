@@ -1,4 +1,7 @@
-.Gridpane {
-    -fx-background-color: red;
-    -fx-margin-left: 20px;
+.gridPane {
+    	-fx-background-color: white;
+}
+
+.buttonHolder {
+	-fx-background-color: blue;
 }
