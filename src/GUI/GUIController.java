@@ -23,12 +23,12 @@ public class GUIController {
         myComponentDrawers = ComponentInitializer.init(myPane);
         myObjectFactories = FactoryInitializer.init();
         FeatureInitializer.init(myComponentDrawers, control);
-        myParser = new DrawableObjectParser(myComponentDrawer, myObjectFactories);
+        myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);
     }
 
     public void drawDrawableObjects (Queue<DrawableObject> objectQueue) {
         while(!objectQueue.isEmpty()){
-            myParser.parseDrawableObject(objectQueue.poll(), myComponentDrawers);
+            myParser.parseDrawableObject(objectQueue.poll());
         }
         
     }
