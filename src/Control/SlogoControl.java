@@ -5,14 +5,15 @@ import java.util.Queue;
 import javafx.stage.Stage;
 import drawableobject.DrawableObject;
 
+
 public class SlogoControl implements SlogoGraphics, SlogoBackend {
-    
+
     private GUIController myGUI;
-    
-    public SlogoControl(Stage stage){
-        myGUI = new GUIController(stage, (SlogoGraphics) this);
+
+    public SlogoControl (Stage stage) {
+        myGUI = new GUIController(stage, this);
     }
-    
+
     @Override
     public Queue<DrawableObject> parseCommandString (String command) {
         System.out.println(command);

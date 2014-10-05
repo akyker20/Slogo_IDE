@@ -2,12 +2,13 @@ package gui.componentdrawers;
 
 import gui.mainclasses.StageInitializer;
 
+
 public class CommandLineDrawer extends ComponentDrawer {
 
-    public CommandLineDrawer(String name) {
+    public CommandLineDrawer (String name) {
         super(name);
-        this.getStyleClass().add("commandLine");
-        this.setPrefWidth(StageInitializer.SCREEN_WIDTH*GridDrawer.GRID_WIDTH_RATIO);
+        getStyleClass().add("commandLine");
+        setPrefWidth(StageInitializer.SCREEN_WIDTH * GridDrawer.GRID_WIDTH_RATIO);
     }
 
 }

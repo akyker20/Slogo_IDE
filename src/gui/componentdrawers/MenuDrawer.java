@@ -2,12 +2,13 @@ package gui.componentdrawers;
 
 import gui.mainclasses.StageInitializer;
 
+
 public class MenuDrawer extends ComponentDrawer {
-    
+
     public static final double MENU_HEIGHT_RATIO = 0.1;
-    
-    public MenuDrawer(String name) {
+
+    public MenuDrawer (String name) {
         super(name);
-        this.setPrefHeight(StageInitializer.SCREEN_HEIGHT*MENU_HEIGHT_RATIO);
+        setPrefHeight(StageInitializer.SCREEN_HEIGHT * MENU_HEIGHT_RATIO);
     }
 }
