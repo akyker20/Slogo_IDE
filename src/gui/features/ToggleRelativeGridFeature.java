@@ -12,29 +12,24 @@ public class ToggleRelativeGridFeature extends Button implements Feature {
     
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
+    private GridPane gridPane;
 
     public ToggleRelativeGridFeature(GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer){
         this.setText("Toggle Grid");
         this.setLayoutY(50);
-        
-        GridPane gridPane = initializeGridPane();
-        
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                if(!targetDrawer.getChildren().contains(gridPane)){
-                    targetDrawer.drawShape(gridPane);
-                }
-                else {
-                    targetDrawer.getChildren().remove(gridPane);
-                }
-            }
-        });
+        gridPane = initializeGridPane();
+        this.setOnAction(event->toggleGrid(targetDrawer));
         parentDrawer.drawShape(this);
     }
     
-    
+    private void toggleGrid(GridDrawer targetDrawer) {
+        if(!targetDrawer.getChildren().contains(gridPane)){
+            targetDrawer.drawShape(gridPane);
+        }
+        else {
+            targetDrawer.getChildren().remove(gridPane);
+        }
+    }
     
     private GridPane initializeGridPane () {
         GridPane pane = new GridPane();

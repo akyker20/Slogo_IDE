@@ -12,16 +12,11 @@ public class HelpFeature extends Button implements Feature {
 
     public HelpFeature(MenuDrawer parent) {
         this.setText("Help");
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle (ActionEvent event) {
-                openHelpDocument();
-            }
-        });
+        this.setOnAction(event -> openHelpDocument());
         parent.drawShape(this);
     }
  
-    public void openHelpDocument() {
+    private void openHelpDocument() {
         System.out.println("Opened\n");
         //TODO
     }
