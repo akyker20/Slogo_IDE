@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 
-public class ToggleRelativeGridFeature extends Button implements Feature {
+public class ToggleRelativeGridFeature extends Button  {
     
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
@@ -38,14 +38,6 @@ public class ToggleRelativeGridFeature extends Button implements Feature {
         pane.setGridLinesVisible(true);
         pane.add(new Rectangle(), GRID_NUM_ROWS, GRID_NUM_COLS);
         return pane;
-    }
-
-
-
-    @Override
-    public void act () {
-        // TODO Auto-generated method stub
-        
     }
 
 }

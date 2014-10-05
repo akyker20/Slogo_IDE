@@ -7,7 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import Control.SlogoGraphics;
 
-public class CommandLineFeature extends TextField implements Feature {
+public class CommandLineFeature extends TextField {
 
     public CommandLineFeature(CommandLineDrawer parentDrawer, SlogoGraphics control){
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -23,10 +23,5 @@ public class CommandLineFeature extends TextField implements Feature {
         parentDrawer.drawShape(this);
     }
 
-    @Override
-    public void act () {
-        // TODO Auto-generated method stub
-
-    }
 
 }

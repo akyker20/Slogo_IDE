@@ -6,7 +6,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ColorPicker;
 
-public class SetBackgroundColorFeature extends ColorPicker implements Feature {
+public class SetBackgroundColorFeature extends ColorPicker {
     
     public SetBackgroundColorFeature(GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer){
         this.setOnAction(event->changeColor(targetDrawer));
@@ -20,11 +20,5 @@ public class SetBackgroundColorFeature extends ColorPicker implements Feature {
     private String getPickerColor() {
         return "#" + SetBackgroundColorFeature.this.getValue().toString().substring(2);
     } 
-    
-    @Override
-    public void act () {
-        
-        
-    }
-
+ 
 }

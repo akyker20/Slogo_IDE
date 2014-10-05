@@ -4,7 +4,6 @@ import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
-import gui.features.Feature;
 import gui.features.FeatureInitializer;
 import java.util.Queue;
 import drawableobject.DrawableObject;

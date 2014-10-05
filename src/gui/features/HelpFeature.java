@@ -8,7 +8,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
-public class HelpFeature extends Button implements Feature {
+public class HelpFeature extends Button {
 
     public HelpFeature(MenuDrawer parent) {
         this.setText("Help");
@@ -19,12 +19,6 @@ public class HelpFeature extends Button implements Feature {
     private void openHelpDocument() {
         System.out.println("Opened\n");
         //TODO
-    }
-
-    @Override
-    public void act () {
-        // TODO Auto-generated method stub
-        
     }
 
 }
