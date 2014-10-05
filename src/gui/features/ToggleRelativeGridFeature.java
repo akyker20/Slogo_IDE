@@ -2,6 +2,7 @@ package gui.features;
 
 import gui.componentdrawers.ButtonHolderDrawer;
 import gui.componentdrawers.GridDrawer;
+import gui.mainclasses.GUIController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ public class ToggleRelativeGridFeature extends Button  {
     private GridPane gridPane;
 
     public ToggleRelativeGridFeature(GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer){
-        this.setText("Toggle Grid");
+        this.setText(GUIController.GUI_TEXT.getString("toggleGrid"));
         this.setLayoutY(50);
         gridPane = initializeGridPane();
         this.setOnAction(event->toggleGrid(targetDrawer));

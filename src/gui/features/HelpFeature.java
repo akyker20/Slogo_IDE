@@ -2,6 +2,7 @@ package gui.features;
 
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.MenuDrawer;
+import gui.mainclasses.GUIController;
 import java.io.InputStream;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -11,7 +12,7 @@ import javafx.scene.control.Button;
 public class HelpFeature extends Button {
 
     public HelpFeature(MenuDrawer parent) {
-        this.setText("Help");
+        this.setText(GUIController.GUI_TEXT.getString("help"));
         this.setOnAction(event -> openHelpDocument());
         parent.drawShape(this);
     }
