@@ -1,7 +1,4 @@
-package stateUpdate;
-
-import drawableobject.DrawableObject;
-
+package api.classes;
 
 /**
  * Class processes updates to the GUI and generates DrawableObjects to be
@@ -24,6 +21,5 @@ public interface StateUpdate {
      *
      * @return
      */
-
     public DrawableObject generateDrawableObject ();
 }

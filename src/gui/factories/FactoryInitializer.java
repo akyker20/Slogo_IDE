@@ -8,13 +8,13 @@ public class FactoryInitializer {
 
     /**
      * Makes the object factories
-     * 
      * @return an array of object factories
      */
     public static ObjectFactory[] init () {
         return new ObjectFactory[] {
                                     new LineFactory(LINE_FACTORY),
                                     new TurtleFactory(TURTLE_FACTORY)
+
         };
     }
 

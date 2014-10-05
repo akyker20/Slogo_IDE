@@ -1,11 +1,10 @@
-package Control;
+package api.classes;
 
 import java.util.Queue;
 import drawableobject.DrawableObject;
 
 
 /**
- * Class defines the methods that the back-end uses to access front-end resources
  *
  * @author akyker20, steven, stanley, allankiplagat
  *
@@ -34,5 +33,4 @@ public interface SlogoBackend {
      * @param commands
      */
     void saveCommandsToFunction (String commands);
-
 }

@@ -1,8 +1,7 @@
-package gui.componentdrawers;
+package api.classes;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-
 
 
 /**
@@ -11,26 +10,18 @@ import javafx.scene.layout.Pane;
  * @author akyker20, allankiplagat
  *
  */
-
 public abstract class ComponentDrawer extends Pane {
 
-    private String myName;
-
     public ComponentDrawer (String name) {
-        myName = name;
     }
-
 
     /**
      * Draws a shape in this component
      *
      * @param node
      */
-
     public void drawShape (Node node) {
-        getChildren().add(node);
     }
-
 
     /**
      * Returns the name of the component assigned by the constructor
@@ -39,9 +30,8 @@ public abstract class ComponentDrawer extends Pane {
      *
      * @return
      */
-
     public String getName () {
-        return myName;
+        return null;
     }
 
 }

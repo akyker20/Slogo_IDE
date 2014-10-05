@@ -1,14 +1,13 @@
-package Control;
+package api.classes;
 
 import java.util.Queue;
 import drawableobject.DrawableObject;
 
 
-
 /**
  * Class defines methods accessible to the GUIController
  *
- * @author akyker20, allankiplagat
+ * @author akyker20, steven, stanley, allankiplagat
  *
  */
 public interface SlogoGraphics {
@@ -21,6 +20,5 @@ public interface SlogoGraphics {
      * @param command
      * @return
      */
-
     Queue<DrawableObject> parseCommandString (String command);
 }

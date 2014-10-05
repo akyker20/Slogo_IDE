@@ -1,34 +1,29 @@
-package stateUpdate;
+package api.tests;
 
-import drawableobject.DrawableObject;
+import api.classes.DrawableObject;
+import api.classes.State;
+import api.classes.StateUpdate;
 
 
+public class Move implements StateUpdate {
 
-/**
- * Class represents a parse error (similar to a Null class)
- *
- * @author steve, stanley
- *
- */
-
-public class ParseError implements StateUpdate {
+    public Move (double amount) {
+    }
 
     @Override
     public State processUpdate (State initialState) {
-
-
         return null;
     }
 
     @Override
     public DrawableObject generateDrawableObject () {
-
         return null;
     }
 
     @Override
     public boolean equals (Object o) {
-        return o instanceof ParseError;
+        return false;
+
     }
 
 }

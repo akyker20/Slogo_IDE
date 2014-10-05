@@ -1,4 +1,4 @@
-package drawableobject;
+package api.classes;
 
 import java.util.Map;
 
@@ -12,12 +12,6 @@ import java.util.Map;
 
 public class DrawableObject {
 
-    private String parent;
-    private String type;
-    private String name;
-    private Map<String, String> parameters;
-
-
     /**
      *
      * @param someParent The string name of the ComponentDrawer the shape is to be drawn in
@@ -25,31 +19,29 @@ public class DrawableObject {
      * @param someName The name the drawable object
      * @param rawParameters Parameters used by the ObjectFactory to generate a shape
      */
-
     public DrawableObject (String someParent,
                            String someType,
                            String someName,
                            Map<String, String> rawParameters) {
-        parent = someParent;
-        type = someType;
-        name = someName;
-        parameters = rawParameters;
+
     }
 
     public String getParent () {
-        return parent;
+        return null;
     }
 
     public String getType () {
-        return type;
+        return null;
+
     }
 
     public String getName () {
-        return name;
+        return null;
+
     }
 
     public Map<String, String> getParameters () {
-        return parameters;
+        return null;
     }
 
 }

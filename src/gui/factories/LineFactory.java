@@ -12,7 +12,9 @@ public class LineFactory extends ObjectFactory {
     }
 
     @Override
-    public Node drawObject (Map<String, String> params) {
+
+    public Node generateObject (Map<String, String> params) {
+
         Line line = new Line();
         line.setStartX(0.0f);
         line.setStartY(0.0f);

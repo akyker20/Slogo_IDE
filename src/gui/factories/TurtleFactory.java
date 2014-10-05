@@ -31,7 +31,7 @@ public class TurtleFactory extends ObjectFactory {
     }
 
     @Override
-    public Node drawObject (Map<String, String> params) {
+    public Node generateObject (Map<String, String> params) {
         Turtle turtle = new Turtle();
         // register turtle in GUIState, automatically assign turtleID as next integer
         GUIState.addTurtle(GUIState.turtleMap.size(), turtle);

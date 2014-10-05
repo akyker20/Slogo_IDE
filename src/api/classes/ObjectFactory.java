@@ -1,8 +1,7 @@
-package gui.factories;
+package api.classes;
 
 import java.util.Map;
 import javafx.scene.Node;
-
 
 
 /**
@@ -11,15 +10,10 @@ import javafx.scene.Node;
  * @author akyker20, allankiplagat
  *
  */
-
 public abstract class ObjectFactory {
 
-    private String myName;
-
     public ObjectFactory (String name) {
-        myName = name;
     }
-
 
     /**
      * Generates a Node based on the input parameters
@@ -36,9 +30,8 @@ public abstract class ObjectFactory {
      *
      * @return
      */
-
     @Override
     public String toString () {
-        return myName;
+        return null;
     }
 }

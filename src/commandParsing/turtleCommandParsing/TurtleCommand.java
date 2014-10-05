@@ -8,9 +8,25 @@ import commandParsing.CommandParser;
 import commandParsing.mathCommandParsing.MathCommand;
 
 
+
+/**
+ * Class parses String turtle commands into TurtleCommand objects
+ *
+ * @author steve, stanley
+ *
+ */
+
 public abstract class TurtleCommand extends CommandParser {
 
     private float amount;
+
+
+    /**
+     * Method parses Turtle command strings and adds StateUpdate objects to the StateUpdate queue
+     *
+     * @param commandString
+     * @param updateQueue
+     */
 
     public void parse (Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
         String stringOfInterest = commandString.next();
@@ -49,6 +65,15 @@ public abstract class TurtleCommand extends CommandParser {
 
         return isCommand;
     }
+
+
+    /**
+     * Method generates a turtle object in form of a StateUpdate object and adds it to the
+     * StateUpdate queue
+     *
+     * @param amount
+     * @param stateQueue
+     */
 
     protected abstract void generateUpdate (float amount, Queue<StateUpdate> stateQueue);
 }

@@ -1,6 +1,5 @@
-package Control;
+package api.classes;
 
-import gui.mainclasses.GUIController;
 import java.util.Queue;
 import javafx.stage.Stage;
 import drawableobject.DrawableObject;
@@ -14,12 +13,7 @@ import drawableobject.DrawableObject;
  * @author akyker20, steven, stanley, allankiplagat
  *
  */
-
 public class SlogoControl implements SlogoGraphics, SlogoBackend {
-
-    private GUIController myGUI;
-
-
     /**
      * Initializes the GUIController and BackEndController,
      * providing a SlogoGraphics instance of itself to the front-end
@@ -27,32 +21,27 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      *
      * @param stage
      */
-
     public SlogoControl (Stage stage) {
-        myGUI = new GUIController(stage, this);
-    }
-
-    @Override
-    public Queue<DrawableObject> parseCommandString (String command) {
-        System.out.println(command);
-        return null;
     }
 
     @Override
     public void drawDrawableObjects (Queue<DrawableObject> objects) {
-        myGUI.drawDrawableObjects(objects);
+
     }
 
     @Override
     public DrawableObject setVariable (String name, int value) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public void saveCommandsToFunction (String commands) {
-        // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public Queue<DrawableObject> parseCommandString (String command) {
+        return null;
     }
 
 }

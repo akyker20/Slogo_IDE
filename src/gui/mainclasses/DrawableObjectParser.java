@@ -30,8 +30,9 @@ public class DrawableObjectParser {
                 identifiedFactory = myFactorie;
             }
         }
-        if (identifiedFactory != null) { return identifiedFactory
-                .drawObject(object.getParameters()); }
+
+        if (identifiedFactory != null) { return identifiedFactory.generateObject(object
+                .getParameters()); }
 
         // raise an exception
         return null;

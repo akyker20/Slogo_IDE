@@ -1,8 +1,6 @@
-package commandParsing;
+package api.classes;
 
 import java.util.Queue;
-import stateUpdate.ParseError;
-import stateUpdate.StateUpdate;
 
 
 /**
@@ -13,29 +11,16 @@ import stateUpdate.StateUpdate;
  */
 public abstract class CommandParser {
 
-    private Queue<StateUpdate> updateQueue;
-    private String[] commandString;
-
-
     /**
      * Method creates a CommandParser object from a command string
      *
      * @param commandName
      * @return
      */
-
     public static CommandParser createParser (String commandName) {
-        try {
-            return (CommandParser) Class.forName(commandName).newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+        return null;
 
-            e.printStackTrace();
-        }
-
-        return new NullCommandParser();
     }
-
 
     /**
      * Method checks whether a string command is parsable
@@ -43,19 +28,10 @@ public abstract class CommandParser {
      * @param string
      * @return
      */
-
     protected boolean isStringParsableAsFloat (String string) {
-        boolean isParseable = true;
+        return false;
 
-        for (int i = 0; i < string.length(); i++) {
-            if (!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.') {
-                isParseable = false;
-            }
-        }
-
-        return isParseable;
     }
-
 
     /**
      * Method checks whether a string is a valid command
@@ -63,19 +39,9 @@ public abstract class CommandParser {
      * @param string
      * @return
      */
-
     protected boolean isCommandString (String string) {
-        boolean isCommand = false;
+        return false;
 
-        try {
-            Class.forName(string).newInstance();
-            isCommand = true;
-        }
-        catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-            isCommand = false;
-        }
-
-        return isCommand;
     }
 
     /**
@@ -92,8 +58,7 @@ public abstract class CommandParser {
      * @param queue
      * @return
      */
-
     protected boolean errorOccured (Queue<StateUpdate> queue) {
-        return queue.contains(new ParseError());
+        return false;
     }
 }

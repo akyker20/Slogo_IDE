@@ -1,4 +1,4 @@
-package tests;
+package api.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -7,12 +7,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import org.junit.Test;
-import stateUpdate.Move;
-import stateUpdate.ParseError;
-import stateUpdate.StateUpdate;
-import commandParsing.CommandParser;
-import commandParsing.turtleCommandParsing.Backward;
-import commandParsing.turtleCommandParsing.TurtleCommand;
+import api.classes.CommandParser;
+import api.classes.ParseError;
+import api.classes.StateUpdate;
+import api.classes.TurtleCommand;
 
 
 public class BackwardTests {
@@ -44,10 +42,8 @@ public class BackwardTests {
     @Test
     public void SumParsingTest () {
         String[] commands =
-
             { "commandParsing.turtleCommandParsing." + "Backward",
               "commandParsing.mathCommandParsing." + "Sum", "30.0", "50.0" };
-
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next());
@@ -60,10 +56,8 @@ public class BackwardTests {
     @Test
     public void SyntaxErrorParsingTest () {
         String[] commands =
-
             { "commandParsing.turtleCommandParsing." + "Backward",
               "commandParsing.structuralCommandParsing." + "If", "30.0", "50.0" };
-
 
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();

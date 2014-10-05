@@ -42,8 +42,10 @@ public class RemainderTests {
     @Test
     public void IntegerLongParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Remainder", "7",
-                 "commandParsing.mathCommandParsing." + "Remainder", "50", "9" };
+
+            { "commandParsing.mathCommandParsing." + "Remainder", "7",
+              "commandParsing.mathCommandParsing." + "Remainder", "50", "9" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());
@@ -56,11 +58,13 @@ public class RemainderTests {
     @Test
     public void IntegerLongerParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Remainder", "10",
-                 "commandParsing.mathCommandParsing." + "Remainder", "17",
-                 "commandParsing.mathCommandParsing." + "Remainder", "11",
-                 "commandParsing.mathCommandParsing." + "Remainder", "7",
-                 "commandParsing.mathCommandParsing." + "Remainder", "19", "5" };
+
+            { "commandParsing.mathCommandParsing." + "Remainder", "10",
+              "commandParsing.mathCommandParsing." + "Remainder", "17",
+              "commandParsing.mathCommandParsing." + "Remainder", "11",
+              "commandParsing.mathCommandParsing." + "Remainder", "7",
+              "commandParsing.mathCommandParsing." + "Remainder", "19", "5" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());
@@ -73,8 +77,10 @@ public class RemainderTests {
     @Test
     public void SyntaxErrorParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Remainder", "50",
-                 "commandParsing.structuralCommandParsing." + "If", "50" };
+
+            { "commandParsing.mathCommandParsing." + "Remainder", "50",
+              "commandParsing.structuralCommandParsing." + "If", "50" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());

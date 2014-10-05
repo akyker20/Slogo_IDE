@@ -42,8 +42,10 @@ public class SumTests {
     @Test
     public void IntegerLongParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Sum", "50",
-                 "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
+
+            { "commandParsing.mathCommandParsing." + "Sum", "50",
+              "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
@@ -56,11 +58,13 @@ public class SumTests {
     @Test
     public void IntegerLongerParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Sum", "50",
-                 "commandParsing.mathCommandParsing." + "Sum", "50",
-                 "commandParsing.mathCommandParsing." + "Sum", "50",
-                 "commandParsing.mathCommandParsing." + "Sum", "50",
-                 "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
+
+            { "commandParsing.mathCommandParsing." + "Sum", "50",
+              "commandParsing.mathCommandParsing." + "Sum", "50",
+              "commandParsing.mathCommandParsing." + "Sum", "50",
+              "commandParsing.mathCommandParsing." + "Sum", "50",
+              "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
@@ -73,8 +77,10 @@ public class SumTests {
     @Test
     public void SyntaxErrorParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Sum", "50",
-                 "commandParsing.structuralCommandParsing." + "If", "50" };
+
+            { "commandParsing.mathCommandParsing." + "Sum", "50",
+              "commandParsing.structuralCommandParsing." + "If", "50" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand sum = (Sum) CommandParser.createParser(iterator.next());

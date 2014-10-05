@@ -43,8 +43,10 @@ public class LeftTests {
     @Test
     public void SumParsingTest () {
         String[] commands =
-                { "commandParsing.turtleCommandParsing." + "Left",
-                 "commandParsing.mathCommandParsing." + "Sum", "30.0", "50.0" };
+
+            { "commandParsing.turtleCommandParsing." + "Left",
+              "commandParsing.mathCommandParsing." + "Sum", "30.0", "50.0" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         TurtleCommand lt = (Left) CommandParser.createParser(iterator.next());
@@ -57,8 +59,10 @@ public class LeftTests {
     @Test
     public void SyntaxErrorParsingTest () {
         String[] commands =
-                { "commandParsing.turtleCommandParsing." + "Left",
-                 "commandParsing.structuralCommandParsing." + "If", "30.0", "50.0" };
+
+            { "commandParsing.turtleCommandParsing." + "Left",
+              "commandParsing.structuralCommandParsing." + "If", "30.0", "50.0" };
+
 
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();

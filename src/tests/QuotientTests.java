@@ -42,8 +42,10 @@ public class QuotientTests {
     @Test
     public void IntegerLongParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Quotient", "150",
-                 "commandParsing.mathCommandParsing." + "Quotient", "50", "25" };
+
+            { "commandParsing.mathCommandParsing." + "Quotient", "150",
+              "commandParsing.mathCommandParsing." + "Quotient", "50", "25" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());
@@ -56,11 +58,13 @@ public class QuotientTests {
     @Test
     public void IntegerLongerParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Quotient", "150",
-                 "commandParsing.mathCommandParsing." + "Quotient", "50",
-                 "commandParsing.mathCommandParsing." + "Quotient", "25",
-                 "commandParsing.mathCommandParsing." + "Quotient", "50",
-                 "commandParsing.mathCommandParsing." + "Quotient", "50", "25" };
+
+            { "commandParsing.mathCommandParsing." + "Quotient", "150",
+              "commandParsing.mathCommandParsing." + "Quotient", "50",
+              "commandParsing.mathCommandParsing." + "Quotient", "25",
+              "commandParsing.mathCommandParsing." + "Quotient", "50",
+              "commandParsing.mathCommandParsing." + "Quotient", "50", "25" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());
@@ -73,8 +77,10 @@ public class QuotientTests {
     @Test
     public void SyntaxErrorParseTest () {
         String[] commands =
-                { "commandParsing.mathCommandParsing." + "Quotient", "50",
-                 "commandParsing.structuralCommandParsing." + "If", "50" };
+
+            { "commandParsing.mathCommandParsing." + "Quotient", "50",
+              "commandParsing.structuralCommandParsing." + "If", "50" };
+
         Iterator<String> iterator = Arrays.asList(commands).iterator();
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());
