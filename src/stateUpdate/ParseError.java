@@ -2,23 +2,28 @@ package stateUpdate;
 
 import drawableobject.DrawableObject;
 
+
+/**
+ * Class represents a parse error (similar to a Null class)
+ *
+ * @author steve, stanley
+ *
+ */
 public class ParseError implements StateUpdate {
 
-	@Override
-	public State processUpdate(State initialState) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public State processUpdate (State initialState) {
+        return null;
+    }
 
-	@Override
-	public DrawableObject generateDrawableObject() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public boolean equals(Object o){
-		return o instanceof ParseError;
-	}
+    @Override
+    public DrawableObject generateDrawableObject () {
+        return null;
+    }
+
+    @Override
+    public boolean equals (Object o) {
+        return o instanceof ParseError;
+    }
 
 }
