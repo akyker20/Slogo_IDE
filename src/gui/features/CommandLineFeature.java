@@ -1,11 +1,11 @@
-package Feature;
+package gui.features;
 
+import gui.componentdrawers.CommandLineDrawer;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import Control.SlogoGraphics;
-import GUI.CommandLineDrawer;
 
 public class CommandLineFeature extends TextField implements Feature {
 

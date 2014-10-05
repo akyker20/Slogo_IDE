@@ -1,10 +1,10 @@
 package Control;
 
+import gui.mainclasses.GUIController;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import drawableobject.DrawableObject;
-import GUI.GUIController;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;

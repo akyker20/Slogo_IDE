@@ -1,8 +1,8 @@
 package Control;
 
+import gui.mainclasses.GUIController;
 import java.util.Queue;
 import javafx.stage.Stage;
-import GUI.GUIController;
 import drawableobject.DrawableObject;
 
 public class SlogoControl implements SlogoGraphics, SlogoBackend {

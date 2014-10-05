@@ -1,4 +1,4 @@
-package GUI;
+package gui.factories;
 
 import java.util.Map;
 import javafx.scene.Node;

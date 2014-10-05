@@ -1,4 +1,4 @@
-package GUI;
+package gui.componentdrawers;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;

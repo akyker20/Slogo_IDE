@@ -1,12 +1,12 @@
-package Feature;
+package gui.features;
 
+import gui.componentdrawers.ButtonHolderDrawer;
+import gui.componentdrawers.GridDrawer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
-import GUI.ButtonHolderDrawer;
-import GUI.GridDrawer;
 
 public class ToggleRelativeGridFeature extends Button implements Feature {
     

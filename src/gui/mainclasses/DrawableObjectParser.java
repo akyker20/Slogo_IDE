@@ -1,5 +1,7 @@
-package GUI;
+package gui.mainclasses;
 
+import gui.componentdrawers.ComponentDrawer;
+import gui.factories.ObjectFactory;
 import javafx.scene.Node;
 import drawableobject.DrawableObject;
 

@@ -1,7 +1,7 @@
-package GUI;
+package gui.mainclasses;
 
+import gui.features.FeatureInitializer;
 import Control.SlogoGraphics;
-import Feature.FeatureInitializer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;

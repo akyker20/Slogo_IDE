@@ -1,10 +1,14 @@
-package GUI;
+package gui.mainclasses;
 
+import gui.componentdrawers.ComponentDrawer;
+import gui.componentdrawers.ComponentInitializer;
+import gui.factories.FactoryInitializer;
+import gui.factories.ObjectFactory;
+import gui.features.Feature;
+import gui.features.FeatureInitializer;
 import java.util.Queue;
 import drawableobject.DrawableObject;
 import Control.SlogoGraphics;
-import Feature.Feature;
-import Feature.FeatureInitializer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;

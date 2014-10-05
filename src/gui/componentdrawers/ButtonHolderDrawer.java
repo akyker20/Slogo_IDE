@@ -1,4 +1,6 @@
-package GUI;
+package gui.componentdrawers;
+
+import gui.mainclasses.StageInitializer;
 
 public class ButtonHolderDrawer extends ComponentDrawer {
     

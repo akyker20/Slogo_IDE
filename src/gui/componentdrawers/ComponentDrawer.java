@@ -1,4 +1,4 @@
-package GUI;
+package gui.componentdrawers;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

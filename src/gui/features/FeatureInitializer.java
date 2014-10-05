@@ -1,11 +1,11 @@
-package Feature;
+package gui.features;
 
+import gui.componentdrawers.ButtonHolderDrawer;
+import gui.componentdrawers.CommandLineDrawer;
+import gui.componentdrawers.ComponentDrawer;
+import gui.componentdrawers.GridDrawer;
+import gui.componentdrawers.MenuDrawer;
 import Control.SlogoGraphics;
-import GUI.ButtonHolderDrawer;
-import GUI.CommandLineDrawer;
-import GUI.ComponentDrawer;
-import GUI.GridDrawer;
-import GUI.MenuDrawer;
 
 public class FeatureInitializer {
 

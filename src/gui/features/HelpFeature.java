@@ -1,12 +1,12 @@
-package Feature;
+package gui.features;
 
+import gui.componentdrawers.ComponentDrawer;
+import gui.componentdrawers.MenuDrawer;
 import java.io.InputStream;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import GUI.ComponentDrawer;
-import GUI.MenuDrawer;
 
 public class HelpFeature extends Button implements Feature {
 

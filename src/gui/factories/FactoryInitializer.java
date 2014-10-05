@@ -1,4 +1,5 @@
-package GUI;
+package gui.factories;
+
 
 public class FactoryInitializer {
 

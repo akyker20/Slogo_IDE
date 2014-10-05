@@ -1,10 +1,10 @@
-package Feature;
+package gui.features;
 
+import gui.componentdrawers.ButtonHolderDrawer;
+import gui.componentdrawers.GridDrawer;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ColorPicker;
-import GUI.ButtonHolderDrawer;
-import GUI.GridDrawer;
 
 public class SetBackgroundColorFeature extends ColorPicker implements Feature {
     
