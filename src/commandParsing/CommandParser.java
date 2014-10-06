@@ -17,8 +17,6 @@ import stateUpdate.StateUpdate;
  */
 public abstract class CommandParser {
 
-	private Queue<StateUpdate> updateQueue;
-	private String[] commandString;	
 	protected List<Float> floatComponents = new ArrayList<Float>();
 	
 	public abstract float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
