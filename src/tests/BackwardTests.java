@@ -27,7 +27,7 @@ public class BackwardTests {
 			
 		bk.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(-50));
+		assertEquals(queue.poll(),new Move("Difference 0 50"));
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class BackwardTests {
 		
 		bk.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(-50));
+		assertEquals(queue.poll(),new Move("Difference 0 50.0"));
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class BackwardTests {
 		
 		bk.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(-80));
+		assertEquals(queue.poll(),new Move("Difference 0 80.0"));
 	}
 	
 	@Test

@@ -22,9 +22,9 @@ public class ProductTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand product = (Product) CommandParser.createParser(iterator.next());	
 
-		float f = product.parse(iterator, queue);
+		String f = product.parse(iterator, queue);
 		
-		assertTrue(f==(float) 100);
+		assertTrue(f.equals("100.0"));
 	}
 	
 	@Test
@@ -34,9 +34,9 @@ public class ProductTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand product = (Product) CommandParser.createParser(iterator.next());	
 
-		float f = product.parse(iterator, queue);
+		String f = product.parse(iterator, queue);
 		
-		assertTrue(f==(float) 100);
+		assertTrue(f.equals("100.0"));
 	}
 	
 	@Test
@@ -46,9 +46,9 @@ public class ProductTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand product = (Product) CommandParser.createParser(iterator.next());	
 
-		float f = product.parse(iterator, queue);
+		String f = product.parse(iterator, queue);
 
-		assertTrue(f==(float) 3500);
+		assertTrue(f.equals("3500.0"));
 	}
 	
 	@Test
@@ -58,9 +58,9 @@ public class ProductTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand product = (Product) CommandParser.createParser(iterator.next());	
 
-		float f = product.parse(iterator, queue);
+		String f = product.parse(iterator, queue);
 		
-		assertTrue(f==(float) 50);
+		assertTrue(f.equals("50.0"));
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class ProductTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand product = (Product) CommandParser.createParser(iterator.next());	
 
-		float f = product.parse(iterator, queue);
+		String f = product.parse(iterator, queue);
 		
 		assertTrue(queue.contains(new ParseError()));
 	}

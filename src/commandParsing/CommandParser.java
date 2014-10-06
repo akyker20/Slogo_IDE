@@ -17,25 +17,25 @@ import stateUpdate.StateUpdate;
  */
 public abstract class CommandParser {
 
-	protected List<Float> floatComponents = new ArrayList<Float>();
+	protected List<String> expressionComponents = new ArrayList<String>();
 	
-	public abstract float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
+	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
 
 	protected void accumulateFloatComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue){
-		floatComponents.clear();
-		while(floatComponents.size()<numberToAccumulate){
+		expressionComponents.clear();
+		while(expressionComponents.size()<numberToAccumulate){
 			String stringOfInterest = commandString.next();
 
 			if(isCommandString(stringOfInterest)){
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
-				floatComponents.add(commandParser.parse(commandString, updateQueue));
+				expressionComponents.add(commandParser.parse(commandString, updateQueue));
 				if(errorOccured(updateQueue)){
 					return;
 				}
 
 			}
-			else if(isStringParsableAsFloat(stringOfInterest)){
-				floatComponents.add(Float.parseFloat(stringOfInterest));
+			else if(stringRepresentsNumber(stringOfInterest)){
+				expressionComponents.add(stringOfInterest);
 			}
 			else{ // not a command, not a number, compile-time error
 				updateQueue.clear();
@@ -45,7 +45,14 @@ public abstract class CommandParser {
 		}
 
 	}
-
+	
+	protected boolean stringRepresentsNumber(String string){
+		return isStringParsableAsFloat(string) | isStringParsableAsVariable(string);
+	}
+	
+	private boolean isStringParsableAsVariable(String string) {
+		return string.charAt(0)==':';
+	}
 
 	protected boolean isStringParsableAsFloat(String string){
 		boolean isParseable = true;

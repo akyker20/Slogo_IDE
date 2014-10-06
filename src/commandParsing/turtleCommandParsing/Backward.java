@@ -8,8 +8,8 @@ import stateUpdate.StateUpdate;
 public class Backward extends TurtleCommand {
 
     @Override
-    protected void generateUpdate (float amount, Queue<StateUpdate> stateQueue) {
-        stateQueue.add(new Move(-amount));
+    protected void generateUpdate (String amount, Queue<StateUpdate> stateQueue) {
+        stateQueue.add(new Move("Difference" + " " + "0" + " " + amount));
     }
 
 }

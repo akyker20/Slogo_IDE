@@ -12,9 +12,9 @@ import drawableobject.DrawableObject;
  */
 public class Rotate implements StateUpdate {
 
-    private float amountToRotate;
+    private String amountToRotate;
 
-    public Rotate (float amount) {
+    public Rotate (String amount) {
         amountToRotate = amount;
     }
 
@@ -47,7 +47,7 @@ public class Rotate implements StateUpdate {
         }
         else {
             Rotate rotator = (Rotate) o;
-            return amountToRotate == rotator.amountToRotate;
+            return amountToRotate.equalsIgnoreCase(rotator.amountToRotate);
         }
     }
 

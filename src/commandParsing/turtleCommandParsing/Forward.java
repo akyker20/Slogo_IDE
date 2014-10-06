@@ -8,7 +8,7 @@ import stateUpdate.StateUpdate;
 public class Forward extends TurtleCommand {
 
     @Override
-    public void generateUpdate (float distance, Queue<StateUpdate> stateQueue) {
+    public void generateUpdate (String distance, Queue<StateUpdate> stateQueue) {
         stateQueue.add(new Move(distance));
     }
 

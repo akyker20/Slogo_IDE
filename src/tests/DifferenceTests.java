@@ -22,9 +22,9 @@ public class DifferenceTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand difference = (Difference) CommandParser.createParser(iterator.next());	
 
-		float f = difference.parse(iterator, queue);
+		String f = difference.parse(iterator, queue);
 		
-		assertTrue(f==(float) 0);
+		assertTrue(f.equals("0.0"));
 	}
 	
 	@Test
@@ -34,9 +34,9 @@ public class DifferenceTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand difference = (Difference) CommandParser.createParser(iterator.next());	
 
-		float f = difference.parse(iterator, queue);
+		String f = difference.parse(iterator, queue);
 		
-		assertTrue(f==(float) 0);
+		assertTrue(f.equals("0.0"));
 	}
 	
 	@Test
@@ -46,9 +46,9 @@ public class DifferenceTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand difference = (Difference) CommandParser.createParser(iterator.next());	
 
-		float f = difference.parse(iterator, queue);
+		String f = difference.parse(iterator, queue);
 		
-		assertTrue(f==(float) 50);
+		assertTrue(f.equals("50.0"));
 	}
 	
 	@Test
@@ -58,9 +58,9 @@ public class DifferenceTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand difference = (Difference) CommandParser.createParser(iterator.next());	
 
-		float f = difference.parse(iterator, queue);
+		String f = difference.parse(iterator, queue);
 		
-		assertTrue(f==(float) 0);
+		assertTrue(f.equals("0.0"));
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class DifferenceTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand difference = (Difference) CommandParser.createParser(iterator.next());	
 
-		float f = difference.parse(iterator, queue);
+		String f = difference.parse(iterator, queue);
 		
 		assertTrue(queue.contains(new ParseError()));
 	}

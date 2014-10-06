@@ -21,9 +21,9 @@ public class SumTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-		float f = sum.parse(iterator, queue);
+		String f = sum.parse(iterator, queue);
 		
-		assertTrue(f==(float) 100);
+		assertTrue(f.equals("100.0"));
 	}
 	
 	@Test
@@ -33,9 +33,9 @@ public class SumTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-		float f = sum.parse(iterator, queue);
+		String f = sum.parse(iterator, queue);
 		
-		assertTrue(f==(float) 100);
+		assertTrue(f.equals("100.0"));
 	}
 	
 	@Test
@@ -45,9 +45,9 @@ public class SumTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-		float f = sum.parse(iterator, queue);
+		String f = sum.parse(iterator, queue);
 		
-		assertTrue(f==(float) 150);
+		assertTrue(f.equals("150.0"));
 	}
 	
 	@Test
@@ -57,9 +57,9 @@ public class SumTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-		float f = sum.parse(iterator, queue);
+		String f = sum.parse(iterator, queue);
 		
-		assertTrue(f==(float) 300);
+		assertTrue(f.equals("300.0"));
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class SumTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-		float f = sum.parse(iterator, queue);
+		String f = sum.parse(iterator, queue);
 		
 		assertTrue(queue.contains(new ParseError()));
 	}

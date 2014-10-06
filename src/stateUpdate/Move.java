@@ -5,9 +5,9 @@ import drawableobject.DrawableObject;
 
 public class Move implements StateUpdate {
 
-    private double amountToMove;
+    private String amountToMove;
 
-    public Move (double amount) {
+    public Move (String amount) {
         amountToMove = amount;
     }
 
@@ -30,7 +30,7 @@ public class Move implements StateUpdate {
         }
         else {
             Move mover = (Move) o;
-            return amountToMove == mover.amountToMove;
+            return amountToMove.equalsIgnoreCase(mover.amountToMove);
         }
     }
 

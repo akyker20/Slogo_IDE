@@ -22,9 +22,9 @@ public class QuotientTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());	
 
-		float f = quotient.parse(iterator, queue);
+		String f = quotient.parse(iterator, queue);
 		
-		assertTrue(f==(float) 2);
+		assertTrue(f.equals("2.0"));
 	}
 	
 	@Test
@@ -34,9 +34,9 @@ public class QuotientTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());	
 
-		float f = quotient.parse(iterator, queue);
+		String f = quotient.parse(iterator, queue);
 		
-		assertTrue(f==(float) 2);
+		assertTrue(f.equals("2.0"));
 	}
 	
 	@Test
@@ -46,9 +46,9 @@ public class QuotientTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());	
 
-		float f = quotient.parse(iterator, queue);
+		String f = quotient.parse(iterator, queue);
 		
-		assertTrue(f==(float) 75);
+		assertTrue(f.equals("75.0"));
 	}
 	
 	@Test
@@ -58,9 +58,9 @@ public class QuotientTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());	
 
-		float f = quotient.parse(iterator, queue);
+		String f = quotient.parse(iterator, queue);
 		
-		assertTrue(f==(float) 3);
+		assertTrue(f.equals("3.0"));
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class QuotientTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());	
 
-		float f = quotient.parse(iterator, queue);
+		String f = quotient.parse(iterator, queue);
 		
 		assertTrue(queue.contains(new ParseError()));
 	}

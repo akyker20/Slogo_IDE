@@ -15,6 +15,19 @@ import commandParsing.turtleCommandParsing.TurtleCommand;
 
 
 public class ForwardTests {
+	
+	@Test
+	public void ForwardForwardTest() {
+		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.turtleCommandParsing."+"Forward", "50"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+			
+		fd.parse(iterator, queue);
+		
+		assertEquals(queue.poll(),new Move("50"));
+		assertEquals(queue.poll(),new Move("50"));
+	}
 
 	@Test
 	public void IntegerParsingTest() {
@@ -25,7 +38,7 @@ public class ForwardTests {
 			
 		fd.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(50));
+		assertEquals(queue.poll(),new Move("50"));
 	}
 	
 	@Test
@@ -37,7 +50,7 @@ public class ForwardTests {
 		
 		fd.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(50));
+		assertEquals(queue.poll(),new Move("50.0"));
 	}
 	
 	@Test
@@ -49,7 +62,7 @@ public class ForwardTests {
 		
 		fd.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Move(80));
+		assertEquals(queue.poll(),new Move("80.0"));
 	}
 	
 	@Test

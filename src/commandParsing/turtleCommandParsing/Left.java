@@ -8,8 +8,8 @@ import stateUpdate.StateUpdate;
 public class Left extends TurtleCommand {
 
     @Override
-    protected void generateUpdate (float amount, Queue<StateUpdate> stateQueue) {
-        stateQueue.add(new Rotate(-amount));
+    protected void generateUpdate (String amount, Queue<StateUpdate> stateQueue) {
+        stateQueue.add(new Rotate("Difference" + " " + "0" + " " + amount));
     }
 
 }

@@ -22,9 +22,9 @@ public class RemainderTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());	
 
-		float f = remainder.parse(iterator, queue);
+		String f = remainder.parse(iterator, queue);
 		
-		assertTrue(f==(float) 1);
+		assertTrue(f.equals("1.0"));
 	}
 	
 	@Test
@@ -34,9 +34,9 @@ public class RemainderTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());	
 
-		float f = remainder.parse(iterator, queue);
+		String f = remainder.parse(iterator, queue);
 		
-		assertTrue(f==(float) 1);
+		assertTrue(f.equals("1.0"));
 	}
 	
 	@Test
@@ -46,9 +46,9 @@ public class RemainderTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());	
 
-		float f = remainder.parse(iterator, queue);
+		String f = remainder.parse(iterator, queue);
 		
-		assertTrue(f==(float) 2);
+		assertTrue(f.equals("2.0"));
 	}
 	
 	@Test
@@ -58,9 +58,9 @@ public class RemainderTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());	
 
-		float f = remainder.parse(iterator, queue);
+		String f = remainder.parse(iterator, queue);
 		
-		assertTrue(f==(float) 0);
+		assertTrue(f.equals("0.0"));
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class RemainderTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());	
 
-		float f = remainder.parse(iterator, queue);
+		String f = remainder.parse(iterator, queue);
 		
 		assertTrue(queue.contains(new ParseError()));
 	}

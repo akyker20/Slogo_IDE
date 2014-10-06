@@ -20,14 +20,14 @@ public abstract class TurtleCommand extends CommandParser {
 
 
 	@Override
-	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue){
+	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue){
 		accumulateFloatComponents(commandString, 1, updateQueue);
 		if(errorOccured(updateQueue)){
-			return Float.NEGATIVE_INFINITY;
+			return "Compiletime error";
 		}
 		else {
-			generateUpdate(floatComponents.get(0), updateQueue);
-			return floatComponents.get(0);
+			generateUpdate(expressionComponents.get(0), updateQueue);
+			return expressionComponents.get(0);
 		}
 	}
 
@@ -46,5 +46,5 @@ public abstract class TurtleCommand extends CommandParser {
 		return isCommand;
 	}
 
-	protected abstract void generateUpdate(float amount, Queue<StateUpdate> stateQueue);
+	protected abstract void generateUpdate(String amount, Queue<StateUpdate> stateQueue);
 }

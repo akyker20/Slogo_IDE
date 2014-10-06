@@ -25,7 +25,7 @@ public class LeftTests {
 			
 		lt.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Rotate(-50));
+		assertEquals(queue.poll(),new Rotate("Difference 0 50"));
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class LeftTests {
 		
 		lt.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Rotate(-50));
+		assertEquals(queue.poll(),new Rotate("Difference 0 50.0"));
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ public class LeftTests {
 		
 		lt.parse(iterator, queue);
 		
-		assertEquals(queue.poll(),new Rotate(-80));
+		assertEquals(queue.poll(),new Rotate("Difference 0 80.0"));
 	}
 	
 	@Test
