@@ -18,6 +18,7 @@ public class StageInitializer {
         scene.getStylesheets().add(STYLESHEET_PACKAGE + "style.css");
         stage.setScene(scene);
         stage.setTitle("SLogo");
+        stage.setResizable(false);
         stage.show();
         return pane;
     }

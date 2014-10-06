@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import javafx.stage.FileChooser;
@@ -64,7 +65,7 @@ public class XMLParser extends DefaultHandler {
                               Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("drawableObject")) {
             if (rawParameters.size() > 0) {
-                objectQueue.add(new DrawableObject(parent, type, name, rawParameters));
+                objectQueue.add(new DrawableObject(parent, type,rawParameters));
             }
             parent = attributes.getValue("parent");
             type = attributes.getValue("type");

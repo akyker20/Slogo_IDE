@@ -1,5 +1,6 @@
 package drawableobject;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -14,8 +15,7 @@ public class DrawableObject {
 
     private String parent;
     private String type;
-    private String name;
-    private Map<String, String> parameters;
+    private Map<String,String> parameters;
 
 
     /**
@@ -28,11 +28,9 @@ public class DrawableObject {
 
     public DrawableObject (String someParent,
                            String someType,
-                           String someName,
                            Map<String, String> rawParameters) {
         parent = someParent;
         type = someType;
-        name = someName;
         parameters = rawParameters;
     }
 
@@ -42,10 +40,6 @@ public class DrawableObject {
 
     public String getType () {
         return type;
-    }
-
-    public String getName () {
-        return name;
     }
 
     public Map<String, String> getParameters () {

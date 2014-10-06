@@ -13,6 +13,7 @@ public class TurtleFactory extends ObjectFactory {
     // degrees from north
     public static final double DEFAULT_TURTLE_HEADING = 0.0;
     public static final Color DEFAULT_TURTLE_PENCOLOR = Color.BLACK;
+    public static final boolean DEFAULT_TURTLE_PENDOWN_STATUS = false;
     // turtle starts from center of Grid
     public static final Point2D DEFAULT_TURTLE_LOCATION = new Point2D(GridDrawer.GRID_WIDTH / 2,
                                                                       GridDrawer.GRID_HEIGHT / 2);
@@ -34,7 +35,9 @@ public class TurtleFactory extends ObjectFactory {
     public Node generateObject (Map<String, String> params) {
         Turtle turtle = new Turtle();
         // register turtle in GUIState, automatically assign turtleID as next integer
-        GUIState.addTurtle(GUIState.turtleMap.size(), turtle);
-        return turtle.getState().getImage();
+        GUIState.turtleMap.put(GUIState.turtleMap.size(), turtle);
+        // new turtle gets focus
+        GUIState.activeTurtle = GUIState.turtleMap.get(GUIState.turtleMap.size()-1);
+        return turtle.getImage();
     }
 }

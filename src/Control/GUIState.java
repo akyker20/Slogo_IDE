@@ -6,14 +6,8 @@ import java.util.Map;
 
 
 public class GUIState {
-    public static int activeTurtle;
+    public static Turtle activeTurtle;
     public static Map<Integer, Turtle> turtleMap = new HashMap<Integer, Turtle>();
 
-    public static void addTurtle (int turtleID, Turtle turtle) {
-        turtleMap.put(turtleID, turtle);
-    }
 
-    public Turtle getTurtle (int turtleID) {
-        return turtleMap.get(turtleID);
-    }
 }
