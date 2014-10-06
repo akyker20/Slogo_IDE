@@ -5,7 +5,7 @@ import java.util.Queue;
 
 import stateUpdate.StateUpdate;
 
-public class Multiply extends MathCommand {
+public class Product extends MathCommand {
 
 	@Override
 	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) {

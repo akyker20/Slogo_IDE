@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Queue;
 
 import commandParsing.mathCommandParsing.MathCommand;
-
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 
@@ -15,6 +14,8 @@ public abstract class CommandParser {
 	private Queue<StateUpdate> updateQueue;
 	private String[] commandString;	
 	protected List<Float> floatComponents = new ArrayList<Float>();
+	
+	public abstract float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
 
 	protected void accumulateFloatComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue){
 		floatComponents.clear();

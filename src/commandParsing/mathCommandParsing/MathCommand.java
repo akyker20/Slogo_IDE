@@ -11,6 +11,7 @@ import commandParsing.CommandParser;
 
 public abstract class MathCommand extends CommandParser {
 	
+	@Override
 	public abstract float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
 
 	@Override

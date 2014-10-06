@@ -14,7 +14,7 @@ import stateUpdate.StateUpdate;
 
 import commandParsing.CommandParser;
 import commandParsing.mathCommandParsing.MathCommand;
-import commandParsing.mathCommandParsing.Minus;
+import commandParsing.mathCommandParsing.Difference;
 
 public class MinusTests {
 
@@ -23,7 +23,7 @@ public class MinusTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Minus", "50", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand minus = (Minus) CommandParser.createParser(iterator.next());	
+		MathCommand minus = (Difference) CommandParser.createParser(iterator.next());	
 
 		float f = minus.parse(iterator, queue);
 		
@@ -35,7 +35,7 @@ public class MinusTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Minus", "50.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand minus = (Minus) CommandParser.createParser(iterator.next());	
+		MathCommand minus = (Difference) CommandParser.createParser(iterator.next());	
 
 		float f = minus.parse(iterator, queue);
 		
@@ -47,7 +47,7 @@ public class MinusTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Minus", "50", "commandParsing.mathCommandParsing."+"Minus", "50", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand minus = (Minus) CommandParser.createParser(iterator.next());	
+		MathCommand minus = (Difference) CommandParser.createParser(iterator.next());	
 
 		float f = minus.parse(iterator, queue);
 		
@@ -59,7 +59,7 @@ public class MinusTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Minus", "50", "commandParsing.mathCommandParsing."+"Minus", "50", "commandParsing.mathCommandParsing."+"Minus", "50", "commandParsing.mathCommandParsing."+"Minus", "50", "commandParsing.mathCommandParsing."+"Minus", "50", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand minus = (Minus) CommandParser.createParser(iterator.next());	
+		MathCommand minus = (Difference) CommandParser.createParser(iterator.next());	
 
 		float f = minus.parse(iterator, queue);
 		
@@ -71,7 +71,7 @@ public class MinusTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Minus", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand minus = (Minus) CommandParser.createParser(iterator.next());	
+		MathCommand minus = (Difference) CommandParser.createParser(iterator.next());	
 
 		float f = minus.parse(iterator, queue);
 		

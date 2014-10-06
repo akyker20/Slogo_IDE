@@ -5,7 +5,7 @@ import java.util.Queue;
 
 import stateUpdate.StateUpdate;
 
-public class Minus extends MathCommand {
+public class Difference extends MathCommand {
 
 	@Override
 	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) {

@@ -10,13 +10,15 @@ import commandParsing.mathCommandParsing.MathCommand;
 
 public abstract class TurtleCommand extends CommandParser {
 
-	public void parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue){
+	@Override
+	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue){
 		accumulateFloatComponents(commandString, 1, updateQueue);
 		if(errorOccured(updateQueue)){
-			return;
+			return Float.NEGATIVE_INFINITY;
 		}
 		else {
 			generateUpdate(floatComponents.get(0), updateQueue);
+			return floatComponents.get(0);
 		}
 	}
 

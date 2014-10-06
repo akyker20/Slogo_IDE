@@ -14,7 +14,7 @@ import stateUpdate.StateUpdate;
 
 import commandParsing.CommandParser;
 import commandParsing.mathCommandParsing.MathCommand;
-import commandParsing.mathCommandParsing.Multiply;
+import commandParsing.mathCommandParsing.Product;
 
 public class MultiplyTests {
 
@@ -23,7 +23,7 @@ public class MultiplyTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Multiply", "50", "2"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());	
+		MathCommand multiply = (Product) CommandParser.createParser(iterator.next());	
 
 		float f = multiply.parse(iterator, queue);
 		
@@ -35,7 +35,7 @@ public class MultiplyTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Multiply", "50.0", "2.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());	
+		MathCommand multiply = (Product) CommandParser.createParser(iterator.next());	
 
 		float f = multiply.parse(iterator, queue);
 		
@@ -47,7 +47,7 @@ public class MultiplyTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Multiply", "7", "commandParsing.mathCommandParsing."+"Multiply", "50", "10"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());	
+		MathCommand multiply = (Product) CommandParser.createParser(iterator.next());	
 
 		float f = multiply.parse(iterator, queue);
 
@@ -59,7 +59,7 @@ public class MultiplyTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Multiply", "0.2", "commandParsing.mathCommandParsing."+"Multiply", "0.5", "commandParsing.mathCommandParsing."+"Multiply", "2", "commandParsing.mathCommandParsing."+"Multiply", "10", "commandParsing.mathCommandParsing."+"Multiply", "5", "5"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());	
+		MathCommand multiply = (Product) CommandParser.createParser(iterator.next());	
 
 		float f = multiply.parse(iterator, queue);
 		
@@ -71,7 +71,7 @@ public class MultiplyTests {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Multiply", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());	
+		MathCommand multiply = (Product) CommandParser.createParser(iterator.next());	
 
 		float f = multiply.parse(iterator, queue);
 		

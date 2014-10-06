@@ -8,7 +8,8 @@ import commandParsing.CommandParser;
 
 public abstract class StructuralCommand extends CommandParser {
 	
-	public abstract void parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
+	@Override
+	public abstract float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
 
 	@Override
 	protected boolean isAppropriateCommand(CommandParser command) {
