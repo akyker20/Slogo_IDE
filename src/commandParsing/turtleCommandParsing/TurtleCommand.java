@@ -10,31 +10,13 @@ import commandParsing.mathCommandParsing.MathCommand;
 
 public abstract class TurtleCommand extends CommandParser {
 
-	private float amount;
-
 	public void parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue){
-		String stringOfInterest = commandString.next();
-
-		if(isCommandString(stringOfInterest)){
-			if(isAppropriateCommand(createParser(stringOfInterest))){
-				MathCommand command = (MathCommand) createParser(stringOfInterest);
-				amount = command.parse(commandString, updateQueue);
-				if(errorOccured(updateQueue)){
-					return;
-				}
-				generateUpdate(amount, updateQueue);
-			}
-			else{
-				updateQueue.clear();
-				updateQueue.add(new ParseError());
-				return;
-			}
+		accumulateFloatComponents(commandString, 1, updateQueue);
+		if(errorOccured(updateQueue)){
+			return;
 		}
-		else{
-			if(isStringParsableAsFloat(stringOfInterest)){
-				amount = Float.parseFloat(stringOfInterest);
-				generateUpdate(amount, updateQueue);
-			}
+		else {
+			generateUpdate(floatComponents.get(0), updateQueue);
 		}
 	}
 

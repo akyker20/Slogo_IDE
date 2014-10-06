@@ -9,12 +9,12 @@ public class Minus extends MathCommand {
 
 	@Override
 	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
-		generateComponents(commandString, updateQueue);
+		accumulateFloatComponents(commandString, 2, updateQueue);
 		if(errorOccured(updateQueue)){
 			return Float.NEGATIVE_INFINITY;
 		}
 		else {
-			return components.get(0) - components.get(1);
+			return floatComponents.get(0) - floatComponents.get(1);
 		}
 	}
 
