@@ -13,7 +13,7 @@ import commandParsing.mathCommandParsing.MathCommand;
 import commandParsing.mathCommandParsing.Difference;
 
 
-public class MinusTests {
+public class DifferenceTests {
 
 	@Test
 	public void IntegerParseTest() {

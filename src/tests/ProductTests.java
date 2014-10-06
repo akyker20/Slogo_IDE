@@ -13,7 +13,7 @@ import commandParsing.mathCommandParsing.MathCommand;
 import commandParsing.mathCommandParsing.Product;
 
 
-public class MultiplyTests {
+public class ProductTests {
 
 	@Test
 	public void IntegerParseTest() {
