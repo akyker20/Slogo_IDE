@@ -4,8 +4,7 @@ import java.util.Iterator;
 import java.util.Queue;
 import stateUpdate.StateUpdate;
 
-
-public class Quotient extends MathCommand {
+public class Product extends MathCommand {
 
 	@Override
 	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
@@ -14,7 +13,7 @@ public class Quotient extends MathCommand {
 			return Float.NEGATIVE_INFINITY;
 		}
 		else {
-			return (float) Math.floor(floatComponents.get(0) / floatComponents.get(1));
+			return floatComponents.get(0) * floatComponents.get(1);
 		}
 	}
 

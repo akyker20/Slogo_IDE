@@ -14,80 +14,64 @@ import commandParsing.mathCommandParsing.Sum;
 
 
 public class SumTests {
+	@Test
+	public void IntegerParseTest() {
+		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "50"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-    @Test
-    public void IntegerParseTest () {
-        String[] commands = { "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
-        Iterator<String> iterator = Arrays.asList(commands).iterator();
-        Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-        MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
+		float f = sum.parse(iterator, queue);
+		
+		assertTrue(f==(float) 100);
+	}
+	
+	@Test
+	public void FloatParseTest() {
+		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50.0", "50.0"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-        float f = sum.parse(iterator, queue);
+		float f = sum.parse(iterator, queue);
+		
+		assertTrue(f==(float) 100);
+	}
+	
+	@Test
+	public void IntegerLongParseTest() {
+		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "50"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-        assertTrue(f == 100);
-    }
+		float f = sum.parse(iterator, queue);
+		
+		assertTrue(f==(float) 150);
+	}
+	
+	@Test
+	public void IntegerLongerParseTest() {
+		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "50"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-    @Test
-    public void FloatParseTest () {
-        String[] commands = { "commandParsing.mathCommandParsing." + "Sum", "50.0", "50.0" };
-        Iterator<String> iterator = Arrays.asList(commands).iterator();
-        Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-        MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
+		float f = sum.parse(iterator, queue);
+		
+		assertTrue(f==(float) 300);
+	}
+	
+	@Test
+	public void SyntaxErrorParseTest() {
+		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
+		Iterator<String> iterator = Arrays.asList(commands).iterator();
+		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		MathCommand sum = (Sum) CommandParser.createParser(iterator.next());	
 
-        float f = sum.parse(iterator, queue);
-
-        assertTrue(f == 100);
-    }
-
-    @Test
-    public void IntegerLongParseTest () {
-        String[] commands =
-
-            { "commandParsing.mathCommandParsing." + "Sum", "50",
-              "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
-
-        Iterator<String> iterator = Arrays.asList(commands).iterator();
-        Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-        MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
-
-        float f = sum.parse(iterator, queue);
-
-        assertTrue(f == 150);
-    }
-
-    @Test
-    public void IntegerLongerParseTest () {
-        String[] commands =
-
-            { "commandParsing.mathCommandParsing." + "Sum", "50",
-              "commandParsing.mathCommandParsing." + "Sum", "50",
-              "commandParsing.mathCommandParsing." + "Sum", "50",
-              "commandParsing.mathCommandParsing." + "Sum", "50",
-              "commandParsing.mathCommandParsing." + "Sum", "50", "50" };
-
-        Iterator<String> iterator = Arrays.asList(commands).iterator();
-        Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-        MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
-
-        float f = sum.parse(iterator, queue);
-
-        assertTrue(f == 300);
-    }
-
-    @Test
-    public void SyntaxErrorParseTest () {
-        String[] commands =
-
-            { "commandParsing.mathCommandParsing." + "Sum", "50",
-              "commandParsing.structuralCommandParsing." + "If", "50" };
-
-        Iterator<String> iterator = Arrays.asList(commands).iterator();
-        Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-        MathCommand sum = (Sum) CommandParser.createParser(iterator.next());
-
-        sum.parse(iterator, queue);
-
-        assertTrue(queue.contains(new ParseError()));
-    }
-
+		float f = sum.parse(iterator, queue);
+		
+		assertTrue(queue.contains(new ParseError()));
+	}
+	
 }

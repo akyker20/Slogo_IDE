@@ -7,11 +7,11 @@ import stateUpdate.StateUpdate;
 
 public class If extends StructuralCommand {
 
-    @Override
-    public void parse (Iterator<String> commandString,
-                       Queue<StateUpdate> updateQueue) {
-        // TODO Auto-generated method stub
-
-    }
+	@Override
+	public float parse(Iterator<String> commandString,
+			Queue<StateUpdate> updateQueue) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

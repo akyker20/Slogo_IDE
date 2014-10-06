@@ -18,62 +18,33 @@ import commandParsing.mathCommandParsing.MathCommand;
 
 public abstract class TurtleCommand extends CommandParser {
 
-    private float amount;
+
+	@Override
+	public float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue){
+		accumulateFloatComponents(commandString, 1, updateQueue);
+		if(errorOccured(updateQueue)){
+			return Float.NEGATIVE_INFINITY;
+		}
+		else {
+			generateUpdate(floatComponents.get(0), updateQueue);
+			return floatComponents.get(0);
+		}
+	}
 
 
-    /**
-     * Method parses Turtle command strings and adds StateUpdate objects to the StateUpdate queue
-     *
-     * @param commandString
-     * @param updateQueue
-     */
+	@Override
+	protected boolean isAppropriateCommand(CommandParser command){
+		boolean isCommand = false;
 
-    public void parse (Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
-        String stringOfInterest = commandString.next();
+		try {
+			MathCommand parser = (MathCommand) command;
+			isCommand = true;
+		} catch (ClassCastException e){
+			isCommand = false;
+		}
 
-        if (isCommandString(stringOfInterest)) {
-            if (isAppropriateCommand(createParser(stringOfInterest))) {
-                MathCommand command = (MathCommand) createParser(stringOfInterest);
-                amount = command.parse(commandString, updateQueue);
-                if (errorOccured(updateQueue)) { return; }
-                generateUpdate(amount, updateQueue);
-            }
-            else {
-                updateQueue.clear();
-                updateQueue.add(new ParseError());
-                return;
-            }
-        }
-        else {
-            if (isStringParsableAsFloat(stringOfInterest)) {
-                amount = Float.parseFloat(stringOfInterest);
-                generateUpdate(amount, updateQueue);
-            }
-        }
-    }
+		return isCommand;
+	}
 
-    @Override
-    protected boolean isAppropriateCommand (CommandParser command) {
-        boolean isCommand = false;
-
-        try {
-            isCommand = true;
-        }
-        catch (ClassCastException e) {
-            isCommand = false;
-        }
-
-        return isCommand;
-    }
-
-
-    /**
-     * Method generates a turtle object in form of a StateUpdate object and adds it to the
-     * StateUpdate queue
-     *
-     * @param amount
-     * @param stateQueue
-     */
-
-    protected abstract void generateUpdate (float amount, Queue<StateUpdate> stateQueue);
+	protected abstract void generateUpdate(float amount, Queue<StateUpdate> stateQueue);
 }

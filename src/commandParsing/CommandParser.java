@@ -1,6 +1,10 @@
 package commandParsing;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Queue;
+
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 
@@ -13,87 +17,69 @@ import stateUpdate.StateUpdate;
  */
 public abstract class CommandParser {
 
-    private Queue<StateUpdate> updateQueue;
-    private String[] commandString;
+	private Queue<StateUpdate> updateQueue;
+	private String[] commandString;	
+	protected List<Float> floatComponents = new ArrayList<Float>();
+	
+	public abstract float parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
+
+	protected void accumulateFloatComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue){
+		floatComponents.clear();
+		while(floatComponents.size()<numberToAccumulate){
+			String stringOfInterest = commandString.next();
+
+			if(isCommandString(stringOfInterest)){
+				CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
+				floatComponents.add(commandParser.parse(commandString, updateQueue));
+				if(errorOccured(updateQueue)){
+					return;
+				}
+
+			}
+			else if(isStringParsableAsFloat(stringOfInterest)){
+				floatComponents.add(Float.parseFloat(stringOfInterest));
+			}
+			else{ // not a command, not a number, compile-time error
+				updateQueue.clear();
+				updateQueue.add(new ParseError());
+				return;
+			}
+		}
+
+	}
 
 
-    /**
-     * Method creates a CommandParser object from a command string
-     *
-     * @param commandName
-     * @return
-     */
+	protected boolean isStringParsableAsFloat(String string){
+		boolean isParseable = true;
 
-    public static CommandParser createParser (String commandName) {
-        try {
-            return (CommandParser) Class.forName(commandName).newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		for(int i=0;i<string.length();i++){
+			if(!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.'){
+				isParseable = false;
+			}
+		}
 
-            e.printStackTrace();
-        }
+		return isParseable;
+	}
 
-        return new NullCommandParser();
-    }
+	protected boolean isCommandString(String string){
+		CommandParser parser = createParser(string);
+		
+		return !(parser instanceof NullCommandParser);
+	}
 
+	public static CommandParser createParser(String commandName){
+		try {
+			return (CommandParser) Class.forName(commandName).newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			//e.printStackTrace();
+			return new NullCommandParser();
+		}
+	}
 
-    /**
-     * Method checks whether a string command is parsable
-     *
-     * @param string
-     * @return
-     */
+	protected abstract boolean isAppropriateCommand(CommandParser command);
 
-    protected boolean isStringParsableAsFloat (String string) {
-        boolean isParseable = true;
+	protected boolean errorOccured(Queue<StateUpdate> queue){
+		return queue.contains(new ParseError());
+	}
 
-        for (int i = 0; i < string.length(); i++) {
-            if (!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.') {
-                isParseable = false;
-            }
-        }
-
-        return isParseable;
-    }
-
-
-    /**
-     * Method checks whether a string is a valid command
-     *
-     * @param string
-     * @return
-     */
-
-    protected boolean isCommandString (String string) {
-        boolean isCommand = false;
-
-        try {
-            Class.forName(string).newInstance();
-            isCommand = true;
-        }
-        catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-            isCommand = false;
-        }
-
-        return isCommand;
-    }
-
-    /**
-     * Method checks whether the CommandParser object created is the correct one
-     *
-     * @param command
-     * @return
-     */
-    protected abstract boolean isAppropriateCommand (CommandParser command);
-
-    /**
-     * Method checks whether the StateUpdate queue contains errors
-     *
-     * @param queue
-     * @return
-     */
-
-    protected boolean errorOccured (Queue<StateUpdate> queue) {
-        return queue.contains(new ParseError());
-    }
 }
