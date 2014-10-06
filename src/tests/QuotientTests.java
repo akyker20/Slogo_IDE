@@ -68,7 +68,7 @@ public class QuotientTests {
 	
 	@Test
 	public void SyntaxErrorParseTest() {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.structuralCommandParsing."+"If", "50"};
+		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next());	
