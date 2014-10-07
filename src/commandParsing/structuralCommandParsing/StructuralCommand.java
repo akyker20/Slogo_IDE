@@ -30,22 +30,35 @@ public abstract class StructuralCommand extends CommandParser {
 		return lastReturn;
 	}
 	
-	protected void ignoreUntilClosingBrace(Iterator<String> commandString){
-		
+	protected void ignoreUntilClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException{
+		findBrace(commandString);
+		if(!commandString.hasNext()){
+			throw new CompileTimeParsingException("expected closing brace");
+		}
 	}
 	
 	private void findBrace(Iterator<String> commandString){
-		String stringOfInterest = commandString.next();
-		if(stringOfInterest.equals("]")){
-			return;
-		}
-		else{
-			if(stringOfInterest.equals("[")){
-				findBrace(commandString);
+		do{
+			String stringOfInterest = commandString.next();
+			if(stringOfInterest.equals("]")){
+				return;
 			}
 			else{
-				
+				if(stringOfInterest.equals("[")){
+					findBrace(commandString);
+				}
+				else{
+					
+				}
 			}
+		}
+		while (commandString.hasNext());
+	}
+	
+	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException{
+		String stringOfInterest = commandString.next();
+		if(!stringOfInterest.equals("[")){
+			throw new CompileTimeParsingException("expected opening brace");
 		}
 	}
 	

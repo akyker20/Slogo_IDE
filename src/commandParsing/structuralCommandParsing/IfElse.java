@@ -24,58 +24,24 @@ public class IfElse extends StructuralCommand {
 
 		accumulateComponents(commandString,1,objectQueue);
 		float booleanSwitch = expressionComponents.get(0);
-		Queue<DrawableObject> ifTrue = new LinkedList<DrawableObject>();
-		Queue<DrawableObject> ifFalse = new LinkedList<DrawableObject>();
-		
-		String stringOfInterest = commandString.next();
-		float firstPossibleReturnValue;
-		float secondPossibleReturnValue;
-		
-		
-		if(!stringOfInterest.equals("[")){
-			throw new CompileTimeParsingException("expected opening brace");
-		}
-		else{ 
-			saveState();
-			firstPossibleReturnValue = generateQueueBetweenBraces(commandString, ifTrue);
-			storeState();
-			restoreState();
-			secondPossibleReturnValue = generateQueueBetweenBraces(commandString, ifFalse);
-			storeState();
-			restoreState();
-		}
-		
 		Queue<DrawableObject> toDisplay = new LinkedList<DrawableObject>();
-		float returnValue = 0;
-		if(booleanSwitch==0){
-			returnValue = secondPossibleReturnValue;
-			toDisplay = ifFalse;
-			updateState(storedStates.get(1));			
-		}
-		else{
-			returnValue = firstPossibleReturnValue;
-			toDisplay = ifTrue;
-			updateState(storedStates.get(0));
+		
+		float returnValue;
+		
+		checkForOpeningBrace(commandString);
+		
+		if (booleanSwitch==1){ 
+			returnValue = generateQueueBetweenBraces(commandString, toDisplay);
+			ignoreUntilClosingBrace(commandString);
+		} 
+		else {
+			ignoreUntilClosingBrace(commandString);
+			checkForOpeningBrace(commandString);
+			returnValue = generateQueueBetweenBraces(commandString, toDisplay);
 		}
 			
 		objectQueue.addAll(toDisplay);
 		return returnValue;
-	}
-
-	private void updateState(State someState) {
-		state = someState;
-	}
-
-	private void restoreState() {
-		state = savedState.copyState();
-	}
-
-	private void storeState() {
-		storedStates.add(state);
-	}
-
-	private void saveState() {
-		savedState = state.copyState();
 	}
 
 }

@@ -30,6 +30,9 @@ public class If extends StructuralCommand {
 		else if(booleanSwitch!=0){
 			returnValue = generateQueueBetweenBraces(commandString, ifTrue);
 		}
+		else {
+			ignoreUntilClosingBrace(commandString);
+		}
 		
 		objectQueue.addAll(ifTrue);
 

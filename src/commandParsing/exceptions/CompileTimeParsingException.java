@@ -8,6 +8,10 @@ import drawableobject.DrawableObject;
 public class CompileTimeParsingException extends SLOGOException {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public CompileTimeParsingException (){
+		super();
+	}
 
 	public CompileTimeParsingException (String stringOfInterest){
 		super(stringOfInterest);
