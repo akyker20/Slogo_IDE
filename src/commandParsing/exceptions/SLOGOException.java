@@ -1,8 +1,5 @@
 package commandParsing.exceptions;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import drawableobject.DrawableObject;
 
 public abstract class SLOGOException extends Exception{

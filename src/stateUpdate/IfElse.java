@@ -3,7 +3,6 @@ package stateUpdate;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import stateUpdate.booleanexpressions.BooleanExpression;
 import drawableobject.DrawableObject;
 
 public class IfElse implements StateUpdate {

@@ -6,7 +6,9 @@ import java.util.Map;
 import drawableobject.DrawableObject;
 
 public class RunTimeDivideByZeroException extends SLOGOException {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public RunTimeDivideByZeroException(){
 		super();
 	}

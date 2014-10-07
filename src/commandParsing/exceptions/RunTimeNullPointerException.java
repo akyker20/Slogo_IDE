@@ -6,7 +6,9 @@ import java.util.Map;
 import drawableobject.DrawableObject;
 
 public class RunTimeNullPointerException extends SLOGOException {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public RunTimeNullPointerException (String stringOfInterest){
 		super(stringOfInterest);
 	}

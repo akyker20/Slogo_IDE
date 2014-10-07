@@ -1,10 +1,10 @@
 package gui.factories;
 
 import java.util.Map;
-import Control.GUIState;
-import Control.TurtleMovementInterpreter;
+
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
+import Control.TurtleMovementInterpreter;
 
 
 public class LineFactory extends ObjectFactory {

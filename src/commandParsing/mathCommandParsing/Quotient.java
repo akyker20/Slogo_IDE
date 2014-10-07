@@ -1,9 +1,5 @@
 package commandParsing.mathCommandParsing;
 
-import java.util.Iterator;
-import java.util.Queue;
-
-import stateUpdate.StateUpdate;
 
 
 public class Quotient extends MathCommand {
