@@ -2,12 +2,10 @@ package translator;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Translator {
 
@@ -42,6 +40,8 @@ public class Translator {
 		for (String key : dictionary.keySet()) {
 			System.out.println(key + ": " + dictionary.get(key));
 		}
+		
+		reader.close();
 
 	}
 
