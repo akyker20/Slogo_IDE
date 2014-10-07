@@ -3,10 +3,11 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+
+import drawableobject.DrawableObject;
 
 
 /**
@@ -17,13 +18,13 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
  */
 public abstract class StructuralCommand extends CommandParser {
 	
-	protected String generateQueueBetweenBraces(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
+	protected String generateQueueBetweenBraces(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
 		String stringOfInterest;
 		String lastReturn;
 		do{
 			stringOfInterest = commandString.next();
 			CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
-			lastReturn = commandParser.parse(commandString, updateQueue);
+			lastReturn = commandParser.parse(commandString, objectQueue);
 		} while (!stringOfInterest.equals("]"));
 		
 		return lastReturn;

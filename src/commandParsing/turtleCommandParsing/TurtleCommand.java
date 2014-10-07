@@ -3,10 +3,10 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import stateUpdate.StateUpdate;
-
 import commandParsing.FloatInputCommandParser;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+
+import drawableobject.DrawableObject;
 
 
 
@@ -21,8 +21,8 @@ public abstract class TurtleCommand extends FloatInputCommandParser {
 
 
 	@Override
-	protected String operateOnComponents(List<String> components, Queue<StateUpdate> updateQueue) throws RunTimeDivideByZeroException{
-		generateUpdate(expressionComponents.get(0), updateQueue);
+	protected float operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
+		generateUpdate(expressionComponents.get(0), objectQueue);
 		return expressionComponents.get(0);
 	}
 	
@@ -31,5 +31,5 @@ public abstract class TurtleCommand extends FloatInputCommandParser {
 		return 1;
 	}
 
-	protected abstract void generateUpdate(String amount, Queue<StateUpdate> stateQueue);
+	protected abstract void generateUpdate(float amount, Queue<DrawableObject> objectQueue);
 }

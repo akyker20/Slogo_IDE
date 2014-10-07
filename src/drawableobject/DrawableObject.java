@@ -33,7 +33,11 @@ public class DrawableObject {
         parameters = rawParameters;
     }
 
-    public String getParent () {
+    public DrawableObject() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getParent () {
         return parent;
     }
 

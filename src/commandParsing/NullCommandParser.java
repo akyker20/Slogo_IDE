@@ -3,12 +3,21 @@ package commandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import stateUpdate.StateUpdate;
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
+import drawableobject.DrawableObject;
 
 public class NullCommandParser extends CommandParser {
 
 	@Override
-	public String parse(Iterator<String> commandString,	Queue<StateUpdate> updateQueue) {
-		return "";
+	public float parse(Iterator<String> commandString,
+			Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException,
+			RunTimeNullPointerException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+
 }

@@ -4,20 +4,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import stateUpdate.StateUpdate;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
+import drawableobject.DrawableObject;
 
 public abstract class FloatInputCommandParser extends CommandParser {
 	
 	@Override
-	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException {
-		accumulateComponents(commandString, getNumberOfArguments(), updateQueue);
-		return operateOnComponents(expressionComponents, updateQueue);
+	public float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+		accumulateComponents(commandString, getNumberOfArguments(), objectQueue);
+		return operateOnComponents(expressionComponents, objectQueue);
 	}
 	
 	protected abstract int getNumberOfArguments();
 	
-	protected abstract String operateOnComponents(List<String> components, Queue<StateUpdate> updateQueue) throws RunTimeDivideByZeroException;
+	protected abstract float operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException;
 
 }

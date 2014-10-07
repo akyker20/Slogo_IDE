@@ -9,12 +9,14 @@ import stateUpdate.StateUpdate;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 
+import drawableobject.DrawableObject;
+
 public class IfElse extends StructuralCommand {
 
 	@Override
-	public String parse(Iterator<String> commandString,	Queue<StateUpdate> updateQueue) throws CompileTimeParsingException,	RunTimeDivideByZeroException {
+	public float parse(Iterator<String> commandString,	Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,	RunTimeDivideByZeroException {
 
-		accumulateComponents(commandString,1,updateQueue);
+		accumulateComponents(commandString,1,objectQueue);
 		String booleanSwitch = expressionComponents.get(0);
 		Queue<StateUpdate> ifTrue = new LinkedList<StateUpdate>();
 		Queue<StateUpdate> ifFalse = new LinkedList<StateUpdate>();
@@ -32,7 +34,7 @@ public class IfElse extends StructuralCommand {
 			secondPossibleReturnValue = generateQueueBetweenBraces(commandString, ifFalse);
 		}
 		
-		updateQueue.add(new stateUpdate.IfElse(booleanSwitch,ifTrue,ifFalse));
+		objectQueue.add(new stateUpdate.IfElse(booleanSwitch,ifTrue,ifFalse));
 		return "IfElse" + " " + booleanSwitch + " " + "[" + " " + firstPossibleReturnValue + " " + "]" + "[" + " " + secondPossibleReturnValue + " " + "]";
 	}
 

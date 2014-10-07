@@ -7,6 +7,8 @@ import java.util.Queue;
 
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
+import drawableobject.DrawableObject;
 import stateUpdate.ParseError;
 import stateUpdate.State;
 import stateUpdate.StateUpdate;
@@ -21,34 +23,42 @@ import stateUpdate.StateUpdate;
 public abstract class CommandParser {
 	
 	protected State state;
+	protected List<Float> expressionComponents = new ArrayList<Float>();
 	
 	public void setState(State someState){
 		state = someState;
 	}
-
-	protected List<String> expressionComponents = new ArrayList<String>();
 	
-	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException{
+	public abstract float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
+	
+	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<DrawableObject> objectQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
 		expressionComponents.clear();
 		while(expressionComponents.size()<numberToAccumulate){
 			String stringOfInterest = commandString.next();
 
 			if(isCommandString(stringOfInterest)){
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
-				expressionComponents.add(commandParser.parse(commandString, updateQueue));
+				expressionComponents.add(commandParser.parse(commandString, objectQueue));
 			}
 			else if(stringRepresentsNumber(stringOfInterest)){
-				expressionComponents.add(stringOfInterest);
+				expressionComponents.add(decodeStringToNumber(stringOfInterest));
 			}
 			else{ // not a command, not a number, compile-time error
-				updateQueue.clear();
+				objectQueue.clear();
 				throw new CompileTimeParsingException(stringOfInterest);
 			}
 		}
 	}
 	
-	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException;
-	
+	private Float decodeStringToNumber(String stringOfInterest) throws RunTimeNullPointerException {
+		if(isStringParsableAsFloat(stringOfInterest)){
+			return Float.parseFloat(stringOfInterest);
+		}
+		else{
+			return state.fetchVariable(stringOfInterest);
+		}
+	}
+
 	protected boolean stringRepresentsNumber(String string){
 		return isStringParsableAsFloat(string) | isStringParsableAsVariable(string);
 	}
@@ -59,13 +69,18 @@ public abstract class CommandParser {
 
 	protected boolean isStringParsableAsFloat(String string){
 		boolean isParseable = true;
-
+		int numDelimiters = 0;
 		for(int i=0;i<string.length();i++){
+			if(string.charAt(i)=='.'){
+				numDelimiters++;
+			}
 			if(!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.'){
 				isParseable = false;
 			}
 		}
-
+		if(numDelimiters>1){
+			isParseable = false;
+		}
 		return isParseable;
 	}
 

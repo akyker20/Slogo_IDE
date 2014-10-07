@@ -1,21 +1,24 @@
 package commandParsing.structuralCommandParsing;
 
-import java.util.Iterator;	
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import stateUpdate.IfElse;
 import stateUpdate.StateUpdate;
+
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+
+import drawableobject.DrawableObject;
 
 
 public class If extends StructuralCommand {
 
 	@Override
-	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException {
+	public float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException {
 
-		accumulateComponents(commandString,1,updateQueue);
+		accumulateComponents(commandString,1,objectQueue);
 		String booleanSwitch = expressionComponents.get(0);
 		Queue<StateUpdate> ifTrue = new LinkedList<StateUpdate>();
 		
@@ -29,7 +32,7 @@ public class If extends StructuralCommand {
 			returnValue = generateQueueBetweenBraces(commandString, ifTrue);
 		}
 		
-		updateQueue.add(new IfElse(booleanSwitch,ifTrue,new LinkedList<StateUpdate>()));
+		objectQueue.add(new IfElse(booleanSwitch,ifTrue,new LinkedList<StateUpdate>()));
 
 		return returnValue;
 	}
