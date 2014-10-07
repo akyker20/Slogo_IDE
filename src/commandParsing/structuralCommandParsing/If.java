@@ -6,33 +6,32 @@ import java.util.Queue;
 
 import stateUpdate.IfElse;
 import stateUpdate.StateUpdate;
-
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
-
+import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 
 public class If extends StructuralCommand {
 
 	@Override
-	public float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException {
+	public float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 
 		accumulateComponents(commandString,1,objectQueue);
-		String booleanSwitch = expressionComponents.get(0);
-		Queue<StateUpdate> ifTrue = new LinkedList<StateUpdate>();
+		float booleanSwitch = expressionComponents.get(0);
+		Queue<DrawableObject> ifTrue = new LinkedList<DrawableObject>();
 		
 		String stringOfInterest = commandString.next();
-		String returnValue;
+		float returnValue = 0;
 		
 		if(!stringOfInterest.equals("[")){
 			throw new CompileTimeParsingException("expected opening brace");
 		}
-		else{
+		else if(booleanSwitch!=0){
 			returnValue = generateQueueBetweenBraces(commandString, ifTrue);
 		}
 		
-		objectQueue.add(new IfElse(booleanSwitch,ifTrue,new LinkedList<StateUpdate>()));
+		objectQueue.addAll(ifTrue);
 
 		return returnValue;
 	}

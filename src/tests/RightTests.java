@@ -15,14 +15,15 @@ import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import stateUpdate.ParseError;
 import stateUpdate.Rotate;
 import stateUpdate.State;
-import stateUpdate.StateUpdate;
+
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Right;
 import commandParsing.turtleCommandParsing.TurtleCommand;
+
+import drawableobject.DrawableObject;
 
 
 public class RightTests {
@@ -31,14 +32,14 @@ public class RightTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		state = new State(0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
+		state = new State((float) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
 	}
 
 	@Test
 	public void IntegerParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next(), state);
 			
 		rt.parse(iterator, queue);
@@ -50,7 +51,7 @@ public class RightTests {
 	public void DoubleParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next(), state);
 		
 		rt.parse(iterator, queue);
@@ -62,7 +63,7 @@ public class RightTests {
 	public void SumParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next(), state);
 		
 		rt.parse(iterator, queue);
@@ -75,7 +76,7 @@ public class RightTests {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "commandParsing.structuralCommandParsing."+"s", "30.0", "50.0"};
 		
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand rt = (Right) CommandParser.createParser(iterator.next(), state);
 		
 		try {

@@ -1,17 +1,16 @@
 package commandParsing.booleanCommandParsing;
 
+import java.util.List;
+import java.util.Queue;
+
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+import drawableobject.DrawableObject;
 
 public class LessThan extends BooleanCommand {
 
 	@Override
-	protected float returnFloat(String a, String b)	throws RunTimeDivideByZeroException {
-		return Float.parseFloat(a) < Float.parseFloat(b) ? 1 : 0;
-	}
-
-	@Override
-	protected String returnString(String a, String b) {
-		return "LessThan" + " " + a + " " + b;
+	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+		return components.get(0) < components.get(1) ? 1 : 0;
 	}
 
 }

@@ -5,25 +5,24 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import stateUpdate.StateUpdate;
-
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
-
+import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 public class IfElse extends StructuralCommand {
 
 	@Override
-	public float parse(Iterator<String> commandString,	Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,	RunTimeDivideByZeroException {
+	public float parse(Iterator<String> commandString,	Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,	RunTimeDivideByZeroException, RunTimeNullPointerException {
 
 		accumulateComponents(commandString,1,objectQueue);
-		String booleanSwitch = expressionComponents.get(0);
-		Queue<StateUpdate> ifTrue = new LinkedList<StateUpdate>();
-		Queue<StateUpdate> ifFalse = new LinkedList<StateUpdate>();
+		float booleanSwitch = expressionComponents.get(0);
+		Queue<DrawableObject> ifTrue = new LinkedList<DrawableObject>();
+		Queue<DrawableObject> ifFalse = new LinkedList<DrawableObject>();
 		
 		String stringOfInterest = commandString.next();
-		String firstPossibleReturnValue;
-		String secondPossibleReturnValue;
+		float firstPossibleReturnValue;
+		float secondPossibleReturnValue;
 		
 		
 		if(!stringOfInterest.equals("[")){
@@ -34,8 +33,19 @@ public class IfElse extends StructuralCommand {
 			secondPossibleReturnValue = generateQueueBetweenBraces(commandString, ifFalse);
 		}
 		
-		objectQueue.add(new stateUpdate.IfElse(booleanSwitch,ifTrue,ifFalse));
-		return "IfElse" + " " + booleanSwitch + " " + "[" + " " + firstPossibleReturnValue + " " + "]" + "[" + " " + secondPossibleReturnValue + " " + "]";
+		Queue<DrawableObject> toDisplay = new LinkedList<DrawableObject>();
+		float returnValue = 0;
+		if(booleanSwitch==0){
+			returnValue = secondPossibleReturnValue;
+			toDisplay = ifFalse;
+		}
+		else{
+			returnValue = firstPossibleReturnValue;
+			toDisplay = ifTrue;
+		}
+		
+		objectQueue.addAll(toDisplay);
+		return returnValue;
 	}
 
 }

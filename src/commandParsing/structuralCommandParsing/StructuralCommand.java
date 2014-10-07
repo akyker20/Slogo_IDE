@@ -6,7 +6,7 @@ import java.util.Queue;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
-
+import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 
@@ -18,9 +18,9 @@ import drawableobject.DrawableObject;
  */
 public abstract class StructuralCommand extends CommandParser {
 	
-	protected String generateQueueBetweenBraces(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
+	protected float generateQueueBetweenBraces(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
 		String stringOfInterest;
-		String lastReturn;
+		float lastReturn;
 		do{
 			stringOfInterest = commandString.next();
 			CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
