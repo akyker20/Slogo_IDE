@@ -1,14 +1,13 @@
 package commandParsing.turtleCommandParsing;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Queue;
 
-import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
-import commandParsing.CommandParser;
+import commandParsing.FloatInputCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.mathCommandParsing.MathCommand;
 
 
 
@@ -19,19 +18,18 @@ import commandParsing.mathCommandParsing.MathCommand;
  *
  */
 
-public abstract class TurtleCommand extends CommandParser {
+public abstract class TurtleCommand extends FloatInputCommandParser {
 
 
 	@Override
-	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
-		accumulateComponents(commandString, 1, updateQueue);
-		if(errorOccured(updateQueue)){
-			return "Compiletime error";
-		}
-		else {
-			generateUpdate(expressionComponents.get(0), updateQueue);
-			return expressionComponents.get(0);
-		}
+	protected String operateOnComponents(List<String> components, Queue<StateUpdate> updateQueue) throws RunTimeDivideByZeroException{
+		generateUpdate(expressionComponents.get(0), updateQueue);
+		return expressionComponents.get(0);
+	}
+	
+	@Override
+	protected int getNumberOfArguments() {
+		return 1;
 	}
 
 	protected abstract void generateUpdate(String amount, Queue<StateUpdate> stateQueue);

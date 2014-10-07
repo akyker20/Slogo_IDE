@@ -1,10 +1,12 @@
 package commandParsing.mathCommandParsing;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Queue;
 
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
+import commandParsing.FloatInputCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 
@@ -16,27 +18,28 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
  * @author steve, stanley
  *
  */
-public abstract class MathCommand extends CommandParser {
-	
+public abstract class MathCommand extends FloatInputCommandParser {
+
+	protected static final int NUMBER_OF_ARGUMENTS = 2;
+
 	@Override
-	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException {
-		accumulateComponents(commandString, 2, updateQueue);
-		if(errorOccured(updateQueue)){
-			return "Compiletime Error";
+	protected String operateOnComponents(List<String> components, Queue<StateUpdate> upateQueue) throws RunTimeDivideByZeroException{
+		String a = expressionComponents.get(0);
+		String b = expressionComponents.get(1);
+		if (isStringParsableAsFloat(a) & isStringParsableAsFloat(b)){
+			return Float.toString(returnFloat(a,b));
 		}
 		else {
-			String a = expressionComponents.get(0);
-			String b = expressionComponents.get(1);
-			if (isStringParsableAsFloat(a) & isStringParsableAsFloat(b)){
-				return Float.toString(returnFloat(a,b));
-			}
-			else {
-				return returnString(a,b);
-			}		
+			return returnString(a,b);
 		}
 	}
-
-	protected abstract float returnFloat(String a, String b) throws RunTimeDivideByZeroException;
 	
+	@Override
+	protected int getNumberOfArguments(){
+		return 2;
+	}
+	
+	protected abstract float returnFloat(String a, String b) throws RunTimeDivideByZeroException;
+
 	protected abstract String returnString(String a, String b);
 }
