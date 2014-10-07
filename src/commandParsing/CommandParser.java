@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
+import commandParsing.exceptions.CompileTimeParsingException;
+
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 
@@ -19,9 +21,9 @@ public abstract class CommandParser {
 
 	protected List<String> expressionComponents = new ArrayList<String>();
 	
-	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
+	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException;
 
-	protected void accumulateFloatComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue){
+	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue)  throws CompileTimeParsingException{
 		expressionComponents.clear();
 		while(expressionComponents.size()<numberToAccumulate){
 			String stringOfInterest = commandString.next();
@@ -39,8 +41,7 @@ public abstract class CommandParser {
 			}
 			else{ // not a command, not a number, compile-time error
 				updateQueue.clear();
-				updateQueue.add(new ParseError());
-				return;
+				throw new CompileTimeParsingException(stringOfInterest);
 			}
 		}
 
@@ -80,9 +81,7 @@ public abstract class CommandParser {
 			return new NullCommandParser();
 		}
 	}
-
-	protected abstract boolean isAppropriateCommand(CommandParser command);
-
+	
 	protected boolean errorOccured(Queue<StateUpdate> queue){
 		return queue.contains(new ParseError());
 	}

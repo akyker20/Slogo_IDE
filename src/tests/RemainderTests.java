@@ -1,14 +1,18 @@
 package tests;
 
 import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+
 import org.junit.Test;
+
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.mathCommandParsing.MathCommand;
 import commandParsing.mathCommandParsing.Remainder;
 
@@ -16,7 +20,7 @@ import commandParsing.mathCommandParsing.Remainder;
 public class RemainderTests {
 
 	@Test
-	public void IntegerParseTest() {
+	public void IntegerParseTest() throws CompileTimeParsingException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "50", "7"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -28,7 +32,7 @@ public class RemainderTests {
 	}
 	
 	@Test
-	public void FloatParseTest() {
+	public void FloatParseTest() throws CompileTimeParsingException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "50.0", "7.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -40,7 +44,7 @@ public class RemainderTests {
 	}
 	
 	@Test
-	public void IntegerLongParseTest() {
+	public void IntegerLongParseTest() throws CompileTimeParsingException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "7", "commandParsing.mathCommandParsing."+"Remainder", "50", "9"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -52,7 +56,7 @@ public class RemainderTests {
 	}
 	
 	@Test
-	public void IntegerLongerParseTest() {
+	public void IntegerLongerParseTest() throws CompileTimeParsingException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "10", "commandParsing.mathCommandParsing."+"Remainder", "17", "commandParsing.mathCommandParsing."+"Remainder", "11", "commandParsing.mathCommandParsing."+"Remainder", "7", "commandParsing.mathCommandParsing."+"Remainder", "19", "5"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -70,9 +74,11 @@ public class RemainderTests {
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
 		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next());	
 
-		String f = remainder.parse(iterator, queue);
-		
-		assertTrue(queue.contains(new ParseError()));
+		try {
+			String f = remainder.parse(iterator, queue);
+		} catch (CompileTimeParsingException e) {
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"Isf"));
+		}
 	}
 	
 }

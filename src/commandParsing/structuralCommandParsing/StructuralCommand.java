@@ -5,6 +5,7 @@ import java.util.Queue;
 
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.CompileTimeParsingException;
 
 
 /**
@@ -15,13 +16,14 @@ import commandParsing.CommandParser;
  */
 public abstract class StructuralCommand extends CommandParser {
 	
-	@Override
-	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue);
-
-    @Override
-    protected boolean isAppropriateCommand (CommandParser command) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+	protected void generateQueueBetweenBraces(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException{
+		String stringOfInterest;
+		do{
+			stringOfInterest = commandString.next();
+			CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
+			commandParser.parse(commandString, updateQueue);
+		} while (!stringOfInterest.equals("]"));
+	}
+	
 
 }

@@ -8,18 +8,7 @@ import stateUpdate.StateUpdate;
 public class NullCommandParser extends CommandParser {
 
 	@Override
-	public String parse(Iterator<String> commandString,
-			Queue<StateUpdate> updateQueue) {
-		// TODO Auto-generated method stub
-		return null;
+	public String parse(Iterator<String> commandString,	Queue<StateUpdate> updateQueue) {
+		return "";
 	}
-
-	@Override
-	protected boolean isAppropriateCommand(CommandParser command) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
 }
