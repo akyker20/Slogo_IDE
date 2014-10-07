@@ -14,7 +14,7 @@ import stateUpdate.ParseError;
 import stateUpdate.Rotate;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
-import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Right;
 import commandParsing.turtleCommandParsing.TurtleCommand;
 
@@ -22,7 +22,7 @@ import commandParsing.turtleCommandParsing.TurtleCommand;
 public class RightTests {
 
 	@Test
-	public void IntegerParsingTest() throws CompileTimeParsingException {
+	public void IntegerParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -34,7 +34,7 @@ public class RightTests {
 	}
 	
 	@Test
-	public void DoubleParsingTest() throws CompileTimeParsingException {
+	public void DoubleParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -46,7 +46,7 @@ public class RightTests {
 	}
 	
 	@Test
-	public void SumParsingTest() throws CompileTimeParsingException {
+	public void SumParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Right", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -67,8 +67,8 @@ public class RightTests {
 		
 		try {
 			rt.parse(iterator, queue);
-		} catch (CompileTimeParsingException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"s"));
+		} catch (SLOGOException e) {
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"s" + ". Incorrect syntax."));
 		}
 	}
 

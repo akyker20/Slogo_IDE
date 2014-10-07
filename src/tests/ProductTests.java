@@ -12,7 +12,7 @@ import org.junit.Test;
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
-import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.mathCommandParsing.MathCommand;
 import commandParsing.mathCommandParsing.Product;
 
@@ -20,7 +20,7 @@ import commandParsing.mathCommandParsing.Product;
 public class ProductTests {
 
 	@Test
-	public void IntegerParseTest() throws CompileTimeParsingException {
+	public void IntegerParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "50", "2"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -32,7 +32,7 @@ public class ProductTests {
 	}
 	
 	@Test
-	public void FloatParseTest() throws CompileTimeParsingException {
+	public void FloatParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "50.0", "2.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -44,7 +44,7 @@ public class ProductTests {
 	}
 	
 	@Test
-	public void IntegerLongParseTest() throws CompileTimeParsingException {
+	public void IntegerLongParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "7", "commandParsing.mathCommandParsing."+"Product", "50", "10"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -56,7 +56,7 @@ public class ProductTests {
 	}
 	
 	@Test
-	public void IntegerLongerParseTest() throws CompileTimeParsingException {
+	public void IntegerLongerParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "0.2", "commandParsing.mathCommandParsing."+"Product", "0.5", "commandParsing.mathCommandParsing."+"Product", "2", "commandParsing.mathCommandParsing."+"Product", "10", "commandParsing.mathCommandParsing."+"Product", "5", "5"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -76,8 +76,8 @@ public class ProductTests {
 
 		try {
 			String f = product.parse(iterator, queue);
-		} catch (CompileTimeParsingException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"Isf"));
+		} catch (SLOGOException e) {
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
 		}
 	}
 	

@@ -9,18 +9,18 @@ import java.util.Queue;
 
 import org.junit.Test;
 
-import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
+
 import commandParsing.CommandParser;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.mathCommandParsing.MathCommand;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.mathCommandParsing.Difference;
+import commandParsing.mathCommandParsing.MathCommand;
 
 
 public class DifferenceTests {
 
 	@Test
-	public void IntegerParseTest() throws CompileTimeParsingException {
+	public void IntegerParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Difference", "50", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -32,7 +32,7 @@ public class DifferenceTests {
 	}
 
 	@Test
-	public void FloatParseTest() throws CompileTimeParsingException {
+	public void FloatParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Difference", "50.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -44,7 +44,7 @@ public class DifferenceTests {
 	}
 
 	@Test
-	public void IntegerLongParseTest() throws CompileTimeParsingException {
+	public void IntegerLongParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Difference", "50", "commandParsing.mathCommandParsing."+"Difference", "50", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -56,7 +56,7 @@ public class DifferenceTests {
 	}
 
 	@Test
-	public void IntegerLongerParseTest() throws CompileTimeParsingException {
+	public void IntegerLongerParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Difference", "50", "commandParsing.mathCommandParsing."+"Difference", "50", "commandParsing.mathCommandParsing."+"Difference", "50", "commandParsing.mathCommandParsing."+"Difference", "50", "commandParsing.mathCommandParsing."+"Difference", "50", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -76,8 +76,8 @@ public class DifferenceTests {
 
 		try {
 			String f = difference.parse(iterator, queue);
-		} catch (CompileTimeParsingException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"Isf"));
+		} catch (SLOGOException e) {
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
 		}
 	}
 

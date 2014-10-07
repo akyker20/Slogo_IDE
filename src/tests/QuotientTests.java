@@ -12,7 +12,7 @@ import org.junit.Test;
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
-import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.mathCommandParsing.MathCommand;
 import commandParsing.mathCommandParsing.Quotient;
 
@@ -20,7 +20,7 @@ import commandParsing.mathCommandParsing.Quotient;
 public class QuotientTests {
 
 	@Test
-	public void IntegerParseTest() throws CompileTimeParsingException {
+	public void IntegerParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50", "25"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -32,7 +32,7 @@ public class QuotientTests {
 	}
 	
 	@Test
-	public void FloatParseTest() throws CompileTimeParsingException {
+	public void FloatParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50.0", "25.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -44,7 +44,7 @@ public class QuotientTests {
 	}
 	
 	@Test
-	public void IntegerLongParseTest() throws CompileTimeParsingException {
+	public void IntegerLongParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "150", "commandParsing.mathCommandParsing."+"Quotient", "50", "25"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -56,7 +56,7 @@ public class QuotientTests {
 	}
 	
 	@Test
-	public void IntegerLongerParseTest() throws CompileTimeParsingException {
+	public void IntegerLongerParseTest() throws SLOGOException {
 		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "150", "commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.mathCommandParsing."+"Quotient", "25", "commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.mathCommandParsing."+"Quotient", "50", "25"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -76,8 +76,8 @@ public class QuotientTests {
 
 		try {
 			String f = quotient.parse(iterator, queue);
-		} catch (CompileTimeParsingException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"Isf"));
+		} catch (SLOGOException e) {
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
 		}
 	}
 }

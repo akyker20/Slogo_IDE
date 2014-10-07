@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.Queue;
 
 import stateUpdate.StateUpdate;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
 
 
 
@@ -19,7 +19,7 @@ import commandParsing.exceptions.CompileTimeParsingException;
 public abstract class MathCommand extends CommandParser {
 	
 	@Override
-	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException {
+	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException {
 		accumulateComponents(commandString, 2, updateQueue);
 		if(errorOccured(updateQueue)){
 			return "Compiletime Error";
@@ -36,7 +36,7 @@ public abstract class MathCommand extends CommandParser {
 		}
 	}
 
-	protected abstract float returnFloat(String a, String b);
+	protected abstract float returnFloat(String a, String b) throws RunTimeDivideByZeroException;
 	
 	protected abstract String returnString(String a, String b);
 }

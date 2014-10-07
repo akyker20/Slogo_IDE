@@ -11,10 +11,10 @@ import java.util.Queue;
 import org.junit.Test;
 
 import stateUpdate.Move;
-import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
+
 import commandParsing.CommandParser;
-import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Forward;
 import commandParsing.turtleCommandParsing.TurtleCommand;
 
@@ -22,7 +22,7 @@ import commandParsing.turtleCommandParsing.TurtleCommand;
 public class ForwardTests {
 	
 	@Test
-	public void ForwardForwardTest() throws CompileTimeParsingException {
+	public void ForwardForwardTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.turtleCommandParsing."+"Forward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -35,7 +35,7 @@ public class ForwardTests {
 	}
 
 	@Test
-	public void IntegerParsingTest() throws CompileTimeParsingException {
+	public void IntegerParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -47,7 +47,7 @@ public class ForwardTests {
 	}
 	
 	@Test
-	public void DoubleParsingTest() throws CompileTimeParsingException {
+	public void DoubleParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -59,7 +59,7 @@ public class ForwardTests {
 	}
 	
 	@Test
-	public void SumParsingTest() throws CompileTimeParsingException {
+	public void SumParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -80,8 +80,8 @@ public class ForwardTests {
 		
 		try {
 			fd.parse(iterator, queue);
-		} catch (CompileTimeParsingException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"Isf"));
+		} catch (SLOGOException e) {
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
 		}
 	}
 

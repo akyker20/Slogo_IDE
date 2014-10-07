@@ -11,10 +11,11 @@ import java.util.Queue;
 import org.junit.Test;
 
 import stateUpdate.Move;
-import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Backward;
 import commandParsing.turtleCommandParsing.TurtleCommand;
 
@@ -23,7 +24,7 @@ public class BackwardTests {
 
 
 	@Test
-	public void IntegerParsingTest() throws CompileTimeParsingException {
+	public void IntegerParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -35,7 +36,7 @@ public class BackwardTests {
 	}
 
 	@Test
-	public void DoubleParsingTest() throws CompileTimeParsingException {
+	public void DoubleParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -47,7 +48,7 @@ public class BackwardTests {
 	}
 
 	@Test
-	public void SumParsingTest() throws CompileTimeParsingException {
+	public void SumParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
@@ -59,7 +60,7 @@ public class BackwardTests {
 	}
 
 	@Test
-	public void SyntaxErrorParsingTest() {
+	public void SyntaxErrorParsingTest() throws RunTimeDivideByZeroException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "commandParsing.structuralCommandParsing."+"Isf", "30.0", "50.0"};
 
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
@@ -69,7 +70,7 @@ public class BackwardTests {
 		try {
 			bk.parse(iterator, queue);
 		} catch (CompileTimeParsingException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("commandParsing.structuralCommandParsing."+"Isf"));
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
 		}
 	}
 

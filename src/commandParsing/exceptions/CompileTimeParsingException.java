@@ -5,7 +5,7 @@ import java.util.Map;
 
 import drawableobject.DrawableObject;
 
-public class CompileTimeParsingException extends Exception {
+public class CompileTimeParsingException extends SLOGOException {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -24,9 +24,9 @@ public class CompileTimeParsingException extends Exception {
 	public DrawableObject generateErrorMessage(){
 		
 		Map<String,String> parameters = new HashMap<String,String>();
-		parameters.put("message",this.getMessage());
+		parameters.put("message","Error parsing following string: " + this.getMessage()+ ". Incorrect syntax.");
 		
-		return new DrawableObject("parent", "type", parameters);
+		return new DrawableObject("parent", "ErrorMessage", parameters);
 	}
 	
 }

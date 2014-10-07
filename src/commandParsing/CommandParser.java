@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 import commandParsing.exceptions.CompileTimeParsingException;
-
+import commandParsing.exceptions.RunTimeDivideByZeroException;
 import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 
@@ -21,9 +21,9 @@ public abstract class CommandParser {
 
 	protected List<String> expressionComponents = new ArrayList<String>();
 	
-	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException;
+	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException;
 
-	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue)  throws CompileTimeParsingException{
+	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException{
 		expressionComponents.clear();
 		while(expressionComponents.size()<numberToAccumulate){
 			String stringOfInterest = commandString.next();

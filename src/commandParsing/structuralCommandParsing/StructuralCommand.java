@@ -6,6 +6,7 @@ import java.util.Queue;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
 
 
 /**
@@ -16,7 +17,7 @@ import commandParsing.exceptions.CompileTimeParsingException;
  */
 public abstract class StructuralCommand extends CommandParser {
 	
-	protected void generateQueueBetweenBraces(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException{
+	protected void generateQueueBetweenBraces(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
 		String stringOfInterest;
 		do{
 			stringOfInterest = commandString.next();

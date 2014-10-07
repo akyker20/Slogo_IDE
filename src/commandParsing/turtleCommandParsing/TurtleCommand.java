@@ -7,6 +7,7 @@ import stateUpdate.ParseError;
 import stateUpdate.StateUpdate;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.mathCommandParsing.MathCommand;
 
 
@@ -22,7 +23,7 @@ public abstract class TurtleCommand extends CommandParser {
 
 
 	@Override
-	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException{
+	public String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
 		accumulateComponents(commandString, 1, updateQueue);
 		if(errorOccured(updateQueue)){
 			return "Compiletime error";
