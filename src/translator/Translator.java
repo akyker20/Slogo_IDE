@@ -1,59 +1,48 @@
 package translator;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-
 public class Translator {
 
-    private Map<String, String> dictionary = new HashMap<String, String>();
-    private String myString;
+	private Map<String, String> dictionary = new HashMap<String, String>();
 
-    protected int readChars (Scanner s) {
-        myString = s.useDelimiter("\\Z").next();
-        s.close();
-        System.out.println(s);
-        return myString.length();
-    }
+	public Translator(String language) throws IOException {
 
-    public Translator (String language, String translateText) throws FileNotFoundException {
+		BufferedReader reader = new BufferedReader(new FileReader(new File(
+				"src/resources/languages/" + language + ".properties")));
+		String inputLine = null;
+		while ((inputLine = reader.readLine()) != null) {
 
-        // translateText.
-        //
-        // translateText.indexOf(ch, fromIndex);
-        // translateText.
+			inputLine = inputLine.replace(" ", "");
 
-        // readChars(s)
-        // Scanner sc = new Scanner(System.in);
-        // int i = sc.nextInt();
+			String[] commands = inputLine.split("=");
 
-        new Scanner(new File("src/Test.txt"));
+			// Ignore empty lines and comment lines
+			if (inputLine.equals("") || inputLine.startsWith("#"))
+				continue;
 
-        Scanner sc = new Scanner(new File("src/resources/languages/English.properties"));
-        while (sc.hasNextLong()) {
-            long aLong = sc.nextLong();
-            System.out.println(aLong);
-        }
-        String input = "1 fish 2 fish red fish blue fish";
-        Scanner s = new Scanner(input).useDelimiter("\\s*fish\\s*");
-        System.out.println(s.nextInt());
-        System.out.println(s.nextInt());
-        System.out.println(s.next());
-        System.out.println(s.next());
-        s.close();
+			if (inputLine.contains(",")) {
+				String[] multipleCommandsOneAction = commands[1].split(",");
+				for (int i = 0; i < multipleCommandsOneAction.length; i++) {
+					dictionary.put(multipleCommandsOneAction[i], commands[0]);
+				}
+			} else {
+				dictionary.put(commands[1], commands[0]);
+			}
 
-    }
+		}
+		// Printing all words stored in the map.
+		for (String key : dictionary.keySet()) {
+			System.out.println(key + ": " + dictionary.get(key));
+		}
 
-    // for (int i=0; i<50; i++){
-    //
-    // }
-    // }
-
-    public Map<String, String> getDictionary (Map<String, String> dictionary) {
-        return dictionary;
-    }
+	}
 
 }
