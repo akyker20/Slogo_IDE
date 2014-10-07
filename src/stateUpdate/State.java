@@ -22,7 +22,7 @@ public class State {
     private Point2D turtleLocation;
     private Map<String, Float> variableMap;
 
-    public State (float someHeading, Color someColor, Point2D someLocation, HashMap<String,Float> variables) {
+    public State (float someHeading, Color someColor, Point2D someLocation, Map<String,Float> variables) {
         heading = someHeading;
         penColor = someColor;
         turtleLocation = someLocation;
@@ -60,5 +60,9 @@ public class State {
 	
 	public void rotateRight(float amount) {
 		
+	}
+
+	public State copyState() {
+		return new State(heading,penColor,turtleLocation,variableMap);
 	}
 }

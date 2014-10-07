@@ -30,5 +30,24 @@ public abstract class StructuralCommand extends CommandParser {
 		return lastReturn;
 	}
 	
+	protected void ignoreUntilClosingBrace(Iterator<String> commandString){
+		
+	}
+	
+	private void findBrace(Iterator<String> commandString){
+		String stringOfInterest = commandString.next();
+		if(stringOfInterest.equals("]")){
+			return;
+		}
+		else{
+			if(stringOfInterest.equals("[")){
+				findBrace(commandString);
+			}
+			else{
+				
+			}
+		}
+	}
+	
 
 }
