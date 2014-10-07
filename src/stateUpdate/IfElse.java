@@ -8,11 +8,11 @@ import drawableobject.DrawableObject;
 
 public class IfElse implements StateUpdate {
 
-	private BooleanExpression booleanSwitch;
+	private String booleanSwitch;
 	private Queue<StateUpdate> ifTrue = new LinkedList<>();
 	private Queue<StateUpdate> ifFalse = new LinkedList<>();
 
-	public IfElse (BooleanExpression switchStatement, Queue<StateUpdate> trueQueue, Queue<StateUpdate> falseQueue){
+	public IfElse (String switchStatement, Queue<StateUpdate> trueQueue, Queue<StateUpdate> falseQueue){
 		booleanSwitch = switchStatement;
 		ifTrue = trueQueue;
 		ifFalse = falseQueue;

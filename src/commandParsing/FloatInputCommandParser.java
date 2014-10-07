@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Queue;
 
 import stateUpdate.StateUpdate;
-
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 

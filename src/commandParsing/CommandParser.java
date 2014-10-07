@@ -21,8 +21,6 @@ public abstract class CommandParser {
 
 	protected List<String> expressionComponents = new ArrayList<String>();
 	
-	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException;
-
 	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<StateUpdate> updateQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException{
 		expressionComponents.clear();
 		while(expressionComponents.size()<numberToAccumulate){
@@ -31,10 +29,6 @@ public abstract class CommandParser {
 			if(isCommandString(stringOfInterest)){
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
 				expressionComponents.add(commandParser.parse(commandString, updateQueue));
-				if(errorOccured(updateQueue)){
-					return;
-				}
-
 			}
 			else if(stringRepresentsNumber(stringOfInterest)){
 				expressionComponents.add(stringOfInterest);
@@ -44,8 +38,9 @@ public abstract class CommandParser {
 				throw new CompileTimeParsingException(stringOfInterest);
 			}
 		}
-
 	}
+	
+	public abstract String parse(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException;
 	
 	protected boolean stringRepresentsNumber(String string){
 		return isStringParsableAsFloat(string) | isStringParsableAsVariable(string);

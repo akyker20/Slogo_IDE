@@ -17,13 +17,16 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
  */
 public abstract class StructuralCommand extends CommandParser {
 	
-	protected void generateQueueBetweenBraces(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
+	protected String generateQueueBetweenBraces(Iterator<String> commandString, Queue<StateUpdate> updateQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException{
 		String stringOfInterest;
+		String lastReturn;
 		do{
 			stringOfInterest = commandString.next();
 			CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
-			commandParser.parse(commandString, updateQueue);
+			lastReturn = commandParser.parse(commandString, updateQueue);
 		} while (!stringOfInterest.equals("]"));
+		
+		return lastReturn;
 	}
 	
 
