@@ -8,6 +8,7 @@ import java.util.Queue;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import stateUpdate.ParseError;
+import stateUpdate.State;
 import stateUpdate.StateUpdate;
 
 
@@ -18,6 +19,12 @@ import stateUpdate.StateUpdate;
  *
  */
 public abstract class CommandParser {
+	
+	protected State state;
+	
+	public void setState(State someState){
+		state = someState;
+	}
 
 	protected List<String> expressionComponents = new ArrayList<String>();
 	
@@ -27,7 +34,7 @@ public abstract class CommandParser {
 			String stringOfInterest = commandString.next();
 
 			if(isCommandString(stringOfInterest)){
-				CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
+				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
 				expressionComponents.add(commandParser.parse(commandString, updateQueue));
 			}
 			else if(stringRepresentsNumber(stringOfInterest)){
@@ -63,14 +70,16 @@ public abstract class CommandParser {
 	}
 
 	protected boolean isCommandString(String string){
-		CommandParser parser = createParser(string);
+		CommandParser parser = createParser(string, state);
 		
 		return !(parser instanceof NullCommandParser);
 	}
 
-	public static CommandParser createParser(String commandName){
+	public static CommandParser createParser(String commandName, State state){
 		try {
-			return (CommandParser) Class.forName(commandName).newInstance();
+			CommandParser parser = (CommandParser) Class.forName(commandName).newInstance();
+			parser.setState(state);
+			return parser;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			//e.printStackTrace();
 			return new NullCommandParser();

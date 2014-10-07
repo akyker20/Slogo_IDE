@@ -4,14 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import stateUpdate.Move;
+import stateUpdate.State;
 import stateUpdate.StateUpdate;
+
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -21,14 +28,20 @@ import commandParsing.turtleCommandParsing.TurtleCommand;
 
 
 public class BackwardTests {
-
+	
+	State state;
+	
+	@Before
+	public void setUp() throws Exception {
+		state = new State(0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
+	}
 
 	@Test
 	public void IntegerParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next());
+		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		bk.parse(iterator, queue);
 
@@ -40,7 +53,7 @@ public class BackwardTests {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next());
+		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		bk.parse(iterator, queue);
 
@@ -52,7 +65,7 @@ public class BackwardTests {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next());
+		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		bk.parse(iterator, queue);
 
@@ -65,7 +78,7 @@ public class BackwardTests {
 
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next());
+		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		try {
 			bk.parse(iterator, queue);

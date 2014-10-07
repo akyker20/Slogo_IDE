@@ -22,7 +22,7 @@ public abstract class StructuralCommand extends CommandParser {
 		String lastReturn;
 		do{
 			stringOfInterest = commandString.next();
-			CommandParser commandParser = (CommandParser) createParser(stringOfInterest);
+			CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
 			lastReturn = commandParser.parse(commandString, updateQueue);
 		} while (!stringOfInterest.equals("]"));
 		

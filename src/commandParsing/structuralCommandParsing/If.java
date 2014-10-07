@@ -1,6 +1,6 @@
 package commandParsing.structuralCommandParsing;
 
-import java.util.Iterator;
+import java.util.Iterator;	
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -30,6 +30,7 @@ public class If extends StructuralCommand {
 		}
 		
 		updateQueue.add(new IfElse(booleanSwitch,ifTrue,new LinkedList<StateUpdate>()));
+
 		return returnValue;
 	}
 

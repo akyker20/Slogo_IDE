@@ -1,5 +1,10 @@
 package stateUpdate;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import commandParsing.exceptions.RunTimeNullPointerException;
+
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
@@ -15,10 +20,23 @@ public class State {
     private double heading;
     private Color penColor;
     private Point2D turtleLocation;
+    private Map<String, Float> variableMap;
 
-    public State (double someHeading, Color someColor, Point2D someLocation) {
+    public State (double someHeading, Color someColor, Point2D someLocation, HashMap<String,Float> variables) {
         heading = someHeading;
         penColor = someColor;
         turtleLocation = someLocation;
+        variableMap = variables;
+    }
+    
+    public void storeVariable(String name, float value){
+    	variableMap.put(name, variableMap.getOrDefault(name, (float) 0) - variableMap.getOrDefault(name, (float) 0) + value);
+    }
+    
+    public float fetchVariable(String name) throws RunTimeNullPointerException{
+    	if(!variableMap.keySet().contains(name)){
+    		throw new RunTimeNullPointerException(name);
+    	}
+    	return variableMap.get(name); 
     }
 }

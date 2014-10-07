@@ -4,15 +4,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import stateUpdate.Move;
+import stateUpdate.State;
 import stateUpdate.StateUpdate;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Forward;
@@ -21,12 +26,19 @@ import commandParsing.turtleCommandParsing.TurtleCommand;
 
 public class ForwardTests {
 	
+	State state;
+	
+	@Before
+	public void setUp() throws Exception {
+		state = new State(0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
+	}
+	
 	@Test
 	public void ForwardForwardTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.turtleCommandParsing."+"Forward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next(), state);
 			
 		fd.parse(iterator, queue);
 		
@@ -39,7 +51,7 @@ public class ForwardTests {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next(), state);
 			
 		fd.parse(iterator, queue);
 		
@@ -51,7 +63,7 @@ public class ForwardTests {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next(), state);
 		
 		fd.parse(iterator, queue);
 		
@@ -63,7 +75,7 @@ public class ForwardTests {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Forward", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next(), state);
 		
 		fd.parse(iterator, queue);
 		
@@ -76,7 +88,7 @@ public class ForwardTests {
 		
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
-		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next());
+		TurtleCommand fd = (Forward) CommandParser.createParser(iterator.next(), state);
 		
 		try {
 			fd.parse(iterator, queue);
