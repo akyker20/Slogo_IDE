@@ -42,7 +42,7 @@ public class PackageUtils {
 	}
 
 	public static void main (String[] args){
-		List<String> list =  PackageUtils.getClasseNamesInPackage ("D:/Documents/2014-2015 Junior Year/CS 308/slogo_team10/SLOGO.jar", "src.commandParsing");
+		List<String> list =  PackageUtils.getClasseNamesInPackage ("C:/Users/Stanley Yuan/Dropbox/workspace/slogo_team10/SLOGOStanley.jar", "commandParsing");
 		System.out.println(list);
 	}
 }
