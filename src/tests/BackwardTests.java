@@ -17,14 +17,14 @@ import org.junit.Test;
 
 import stateUpdate.Move;
 import stateUpdate.State;
-import stateUpdate.StateUpdate;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Backward;
 import commandParsing.turtleCommandParsing.TurtleCommand;
+import drawableobject.DrawableObject;
 
 
 public class BackwardTests {
@@ -33,14 +33,14 @@ public class BackwardTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		state = new State(0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
+		state = new State((float) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
 	}
 
 	@Test
 	public void IntegerParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		bk.parse(iterator, queue);
@@ -52,7 +52,7 @@ public class BackwardTests {
 	public void DoubleParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		bk.parse(iterator, queue);
@@ -64,7 +64,7 @@ public class BackwardTests {
 	public void SumParsingTest() throws SLOGOException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "commandParsing.mathCommandParsing."+"Sum", "30.0", "50.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		bk.parse(iterator, queue);
@@ -73,11 +73,11 @@ public class BackwardTests {
 	}
 
 	@Test
-	public void SyntaxErrorParsingTest() throws RunTimeDivideByZeroException {
+	public void SyntaxErrorParsingTest() throws RunTimeDivideByZeroException, RunTimeNullPointerException {
 		String[] commands = {"commandParsing.turtleCommandParsing."+"Backward", "commandParsing.structuralCommandParsing."+"Isf", "30.0", "50.0"};
 
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
+		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
 		TurtleCommand bk = (Backward) CommandParser.createParser(iterator.next(), state);
 
 		try {
