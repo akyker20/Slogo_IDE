@@ -18,7 +18,7 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandTester {
 	
-	private State state;
+	protected State state;
 	protected Iterator<String> commands;
 	protected Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 	private Translator translator;

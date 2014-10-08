@@ -29,6 +29,14 @@ public class State {
     public float getHeading(){
     	return (float) turtle.getHeading();
     }
+    
+    public double getXLocation(){
+    	return turtle.getLocation().getX();
+    }
+    
+    public double getYLocation(){
+    	return turtle.getLocation().getY();
+    }
 
 	public void moveBackward(float amount) {
 		double heading = turtle.getHeading();
