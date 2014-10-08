@@ -1,4 +1,4 @@
-package commandParsing.mathCommandParsing;
+package commandParsing.booleanCommandParsing;
 
 import java.util.List;
 import java.util.Queue;
@@ -8,15 +8,11 @@ import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
 
 import drawableobject.DrawableObject;
 
-
-public class Remainder extends TwoInputFloatCommandParser {
-
+public class Equal extends TwoInputFloatCommandParser {
+	
 	@Override
 	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		if(components.get(0)==0 | components.get(1)==0){
-			throw new RunTimeDivideByZeroException();
-		}
-		return components.get(0) % components.get(1);
+		return components.get(0) == components.get(1) ? 1 : 0;
 	}
 
 }

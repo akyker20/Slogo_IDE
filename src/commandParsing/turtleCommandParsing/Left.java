@@ -1,17 +1,22 @@
 package commandParsing.turtleCommandParsing;
 
+import java.util.List;
 import java.util.Queue;
 
-import stateUpdate.Rotate;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
+
 import drawableobject.DrawableObject;
 
 
-public class Left extends TurtleCommand {
+public class Left extends OneInputFloatCommandParser {
 
+    
     @Override
-    protected void generateUpdate (float amount, Queue<DrawableObject> objectQueue) {
-    	state.rotateLeft(amount);
-        objectQueue.add(new DrawableObject());
-    }
+   	protected float operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
+   		state.rotateLeft(expressionComponents.get(0));
+           objectQueue.add(new DrawableObject());
+   		return expressionComponents.get(0);
+   	}
 
 }
