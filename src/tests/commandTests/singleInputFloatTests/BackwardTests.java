@@ -28,13 +28,6 @@ import drawableobject.DrawableObject;
 
 
 public class BackwardTests {
-	
-	State state;
-	
-	@Before
-	public void setUp() throws Exception {
-		state = new State((float) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
-	}
 
 	@Test
 	public void IntegerParsingTest() throws SLOGOException {

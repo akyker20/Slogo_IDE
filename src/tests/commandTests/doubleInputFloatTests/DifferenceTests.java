@@ -13,14 +13,6 @@ import commandParsing.exceptions.SLOGOException;
 
 
 public class DifferenceTests extends CommandTester{
-	
-	State state;
-	
-	@Before
-	public void setUp() throws Exception {
-		setUpStateBeforeTesting();
-		setUpTranslator("english");
-	}
 
 	@Test
 	public void IntegerParseTest() throws SLOGOException {

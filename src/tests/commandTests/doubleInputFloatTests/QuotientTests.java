@@ -2,96 +2,66 @@ package tests.commandTests.doubleInputFloatTests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
-
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-
-import org.junit.Before;
 import org.junit.Test;
 
-import stateUpdate.State;
-
+import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
-import commandParsing.mathCommandParsing.MathCommand;
-import commandParsing.mathCommandParsing.Quotient;
-
-import drawableobject.DrawableObject;
 
 
-public class QuotientTests {
-	
-	State state;
-	
-	@Before
-	public void setUp() throws Exception {
-		state = new State((float) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
-	}
+public class QuotientTests extends CommandTester{
 
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50", "25"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next(), state);	
-
-		float f = quotient.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("/ 50 2");
 		
-		assertTrue(f == 2);
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
+		assertTrue(f == 25);
 	}
 	
 	@Test
 	public void FloatParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50.0", "25.0"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next(), state);	
-
-		float f = quotient.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("/ 50.0 2.0");
 		
-		assertTrue(f == 2);
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
+		assertTrue(f == 25);
 	}
 	
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "150", "commandParsing.mathCommandParsing."+"Quotient", "50", "25"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next(), state);	
-
-		float f = quotient.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("/ 50 / 50 2");
 		
-		assertTrue(f == 75);
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
+		assertTrue(f == 2);
 	}
 	
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "150", "commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.mathCommandParsing."+"Quotient", "25", "commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.mathCommandParsing."+"Quotient", "50", "25"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next(), state);	
-
-		float f = quotient.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("/ 0.4 / 50 / 500 / 20 / 10 / 4 2");
 		
-		assertTrue(f == 3);
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
+		assertTrue(f == 1);
 	}
 	
 	@Test
-	public void SyntaxErrorParseTest() {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Quotient", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand quotient = (Quotient) CommandParser.createParser(iterator.next(), state);	
-
+	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
+		clearQueue();
+		setUpCommands("/ 50 ..2");
+		
+		CommandParser parser = createCommand();
 		try {
-			float f = quotient.parse(iterator, queue);
+			float f = parser.parse(commands, objectQueue);
 		} catch (SLOGOException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "..2" + ". Incorrect syntax."));
 		}
 	}
 }

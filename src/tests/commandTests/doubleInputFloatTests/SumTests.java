@@ -2,96 +2,66 @@ package tests.commandTests.doubleInputFloatTests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
-
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-
-import org.junit.Before;
 import org.junit.Test;
 
-import stateUpdate.State;
-
+import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
-import commandParsing.mathCommandParsing.MathCommand;
-import commandParsing.mathCommandParsing.Sum;
-
-import drawableobject.DrawableObject;
 
 
-public class SumTests {
-	
-	State state;
-	
-	@Before
-	public void setUp() throws Exception {
-		state = new State((float) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
-	}
+public class SumTests extends CommandTester{
 	
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "50"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand sum = (Sum) CommandParser.createParser(iterator.next(), state);	
-
-		float f = sum.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("+ 50 50");
 		
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
 	}
 	
 	@Test
 	public void FloatParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50.0", "50.0"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand sum = (Sum) CommandParser.createParser(iterator.next(), state);	
-
-		float f = sum.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("+ 50.0 50.0");
 		
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
 	}
 	
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "50"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand sum = (Sum) CommandParser.createParser(iterator.next(), state);	
-
-		float f = sum.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("+ 50 + 50 50");
 		
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
 		assertTrue(f == 150);
 	}
 	
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.mathCommandParsing."+"Sum", "50", "50"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand sum = (Sum) CommandParser.createParser(iterator.next(), state);	
-
-		float f = sum.parse(iterator, queue);
+		clearQueue();
+		setUpCommands("+ 50 + 50 + 50 + 50 + 50 + 50 50");
 		
-		assertTrue(f == 300);
+		CommandParser parser = createCommand();
+		float f = parser.parse(commands, objectQueue);
+		assertTrue(f == 350);
 	}
 	
 	@Test
-	public void SyntaxErrorParseTest() {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Sum", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
-		Iterator<String> iterator = Arrays.asList(commands).iterator();
-		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand sum = (Sum) CommandParser.createParser(iterator.next(), state);	
-
+	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
+		clearQueue();
+		setUpCommands("+ 50 + 5s0 + 50 + 50 + 50 + 50 50");
+		
+		CommandParser parser = createCommand();
 		try {
-			float f = sum.parse(iterator, queue);
+			float f = parser.parse(commands, objectQueue);		
 		} catch (SLOGOException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "5s0" + ". Incorrect syntax."));
 		}
 
 	}
