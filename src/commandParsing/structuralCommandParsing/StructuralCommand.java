@@ -18,7 +18,7 @@ import drawableobject.DrawableObject;
  *
  */
 public abstract class StructuralCommand extends CommandParser {
-	
+
 	protected float generateQueueBetweenBraces(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
 		String stringOfInterest;
 		float lastReturn;
@@ -27,41 +27,36 @@ public abstract class StructuralCommand extends CommandParser {
 			CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
 			lastReturn = commandParser.parse(commandString, objectQueue);
 		} while (!stringOfInterest.equals("]"));
-		
+
 		return lastReturn;
 	}
-	
+
 	protected void ignoreUntilClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException{
 		findBrace(commandString);
 		if(!commandString.hasNext()){
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 	}
-	
+
 	private void findBrace(Iterator<String> commandString){
 		do{
 			String stringOfInterest = commandString.next();
 			if(stringOfInterest.equals("]")){
 				return;
 			}
-			else{
-				if(stringOfInterest.equals("[")){
-					findBrace(commandString);
-				}
-				else{
-					
-				}
+			else if(stringOfInterest.equals("[")){
+				findBrace(commandString);
 			}
 		}
 		while (commandString.hasNext());
 	}
-	
+
 	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException{
 		String stringOfInterest = commandString.next();
 		if(!stringOfInterest.equals("[")){
 			throw new CompileTimeParsingException("expected opening brace");
 		}
 	}
-	
+
 
 }
