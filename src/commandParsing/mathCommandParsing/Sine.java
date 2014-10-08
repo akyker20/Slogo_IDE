@@ -5,18 +5,13 @@ import java.util.Queue;
 
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
-
 import drawableobject.DrawableObject;
 
-public class Random extends OneInputFloatCommandParser {
+public class Sine extends OneInputFloatCommandParser {
 
-	public static final java.util.Random rand = new java.util.Random();
-	
-	
 	@Override
 	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		float randomNum = rand.nextFloat()*(components.get(0));
-		return randomNum;
+		return (float) Math.sin(components.get(0));
 	}
 
 }
