@@ -7,26 +7,87 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
+import java.util.stream.Collectors;
 
 public class Translator {
 
-	private static Map<String, String> dictionary = new HashMap<String, String>();
-	private static Map<String, String> classDictionary = new HashMap<String, String>();
-
-	public Translator(String language) throws IOException {
+	private Map<String, String> dictionary = new HashMap<String, String>();
+	private Map<String, String> classDictionary = new HashMap<String, String>();
+	private Map<String, String> languageToClassPath = new HashMap<String, String>();
+	
+	public static void main(String[] args) throws Exception{
+		Translator test = new Translator("Chinese");
+		test.translate("jia 30 :someVar [");
+	}
+	
+	private Iterator<String> translate(String commands){
 		
-		changeLanguage(language);
-
+		String[] splitString = commands.split(" ");
+		List<String> translatedString = new ArrayList<String>();
+		
+		for(String s : splitString){
+			if(stringRepresentsNumber(s) | "[]".contains(s)){
+				translatedString.add(s);
+			}
+			else{
+				translatedString.add(languageToClassPath.get(s));
+			}
+		}
+		
+		System.out.println(translatedString);
+		
+		return translatedString.iterator();
+		
+	}
+	
+	protected boolean stringRepresentsNumber(String string){
+		return isStringParsableAsFloat(string) | isStringParsableAsVariable(string);
+	}
+	
+	private boolean isStringParsableAsVariable(String string) {
+		return string.charAt(0)==':';
 	}
 
-	protected static Map<String,String> changeLanguage(String language)
+	protected boolean isStringParsableAsFloat(String string){
+		boolean isParseable = true;
+		int numDelimiters = 0;
+		for(int i=0;i<string.length();i++){
+			if(string.charAt(i)=='.'){
+				numDelimiters++;
+			}
+			if(!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.'){
+				isParseable = false;
+			}
+		}
+		if(numDelimiters>1){
+			isParseable = false;
+		}
+		return isParseable;
+	}
+
+	public Translator(String language) throws IOException {
+		changeLanguage(language);
+		getClassNamesInPackage("SLOGOStanley.jar", "commandParsing");
+		mapLanguageToClassPath();
+	}
+	
+	private void mapLanguageToClassPath() throws FileNotFoundException, IOException{
+		dictionary.keySet().stream().forEach((k) -> {
+			languageToClassPath.put(k, classDictionary.get(dictionary.get(k)));
+		});
+		System.out.println(languageToClassPath);
+	}
+
+	private void changeLanguage(String language)
 			throws FileNotFoundException, IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(new File(
-				"src/resources/languages/" + language + ".properties")));
+		BufferedReader reader = new BufferedReader(new FileReader(new File("src/resources/languages/" + language + ".properties")));
 		String inputLine = null;
 		while ((inputLine = reader.readLine()) != null) {
 
@@ -54,11 +115,9 @@ public class Translator {
 		}
 		
 		reader.close();
-		
-		return dictionary;
 	}
 	
-	public static Map<String, String> getClassNamesInPackage(String jarName,
+	private void getClassNamesInPackage(String jarName,
 			String packageName) throws FileNotFoundException, IOException {
 		packageName = packageName.replaceAll("\\.", "/");
 			JarInputStream jarFile = new JarInputStream(new FileInputStream(
@@ -73,19 +132,26 @@ public class Translator {
 				if ((jarEntry.getName().startsWith(packageName))
 						&& (jarEntry.getName().endsWith(".class"))) {
 					String pathName = jarEntry.getName().replaceAll("/", "\\.");
-					classDictionary.put(findCommandName(pathName), pathName);
+					
+
+					classDictionary.put(findCommandName(pathName), clipPathName(pathName));
 				}
 			}
 			jarFile.close();
-
-		return classDictionary;
+			System.out.println(classDictionary);
 	}
 	
 	public static String findCommandName(String command) {
 
-		String folders[] = command.split(".");
+		String folders[] = command.split("\\.");
 
 		return folders[folders.length - 2];
+
+	}
+	
+	public static String clipPathName(String command) {
+
+		return command.substring(0, command.length()-6);
 
 	}
 
