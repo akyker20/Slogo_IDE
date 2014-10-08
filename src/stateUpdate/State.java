@@ -2,20 +2,9 @@ package stateUpdate;
 
 import gui.turtle.Turtle;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import commandParsing.exceptions.RunTimeNullPointerException;
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-
-
-/**
- * Class holds GUI state
- *
- * @author steven, stanley
- *
- */
 
 public class State {
 	private Turtle turtle; 
@@ -25,8 +14,6 @@ public class State {
         turtle = someTurtle;
         variableMap = variables;
     }
-    
-    
     
     public void storeVariable(String name, float value){
     	variableMap.put(name, variableMap.getOrDefault(name, (float) 0) - variableMap.getOrDefault(name, (float) 0) + value);
@@ -44,22 +31,20 @@ public class State {
     }
 
 	public void moveBackward(float amount) {
-				
+		double heading = turtle.getHeading();
+		turtle.setLocation(turtle.getLocation().add(-amount*Math.cos(heading/(180/Math.PI)), -amount*Math.sin(heading/(180/Math.PI))));
 	}
 	
 	public void moveForward(float amount) {
-		
+		double heading = turtle.getHeading();
+		turtle.setLocation(turtle.getLocation().add(amount*Math.cos(heading/(180/Math.PI)), amount*Math.sin(heading/(180/Math.PI))));
 	}
 	
 	public void rotateLeft(float amount) {
-		
+		turtle.setHeading(turtle.getHeading()-amount);
 	}
 	
 	public void rotateRight(float amount) {
-		
-	}
-
-	public State copyState() {
-		return new State(turtle,variableMap);
+		turtle.setHeading(turtle.getHeading()+amount);
 	}
 }

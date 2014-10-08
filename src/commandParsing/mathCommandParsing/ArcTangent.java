@@ -5,14 +5,13 @@ import java.util.Queue;
 
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
-
 import drawableobject.DrawableObject;
 
 public class ArcTangent extends OneInputFloatCommandParser {
 	
 	@Override
 	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		return (float) Math.atan(components.get(0));
+		return (float) Math.atan(components.get(0)/(180/Math.PI));
 	}
 
 }
