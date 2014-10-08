@@ -28,7 +28,7 @@ public class Translator {
 	
 	public Translator(String language) throws IOException {
 		changeLanguage(language);
-		getClassNamesInPackage("SLOGOStanley.jar", "commandParsing");
+		getClassNamesInPackage("SLOGO.jar", "commandParsing");
 		mapLanguageToClassPath();
 	}
 
@@ -52,6 +52,7 @@ public class Translator {
 		dictionary.keySet().stream().forEach((k) -> {
 			languageToClassPath.put(k, classDictionary.get(dictionary.get(k)));
 		});
+		System.out.println(languageToClassPath);
 	}
 
 	private void changeLanguage(String language) throws FileNotFoundException, IOException {
@@ -72,8 +73,8 @@ public class Translator {
 			} else {
 				dictionary.put(commands[1], commands[0]);
 			}
-
 		}
+		System.out.println("dictionary ;''" + dictionary);
 		reader.close();
 	}
 	
@@ -93,6 +94,7 @@ public class Translator {
 				}
 			}
 			jarFile.close();
+			System.out.println(classDictionary);
 	}
 	
 	private static String findCommandName(String command) {
