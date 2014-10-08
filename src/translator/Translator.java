@@ -28,7 +28,7 @@ public class Translator {
 	
 	public Translator(String language) throws IOException {
 		changeLanguage(language);
-		getClassNamesInPackage("SLOGOStanley.jar", "commandParsing");
+		getClassNamesInPackage("SLOGO.jar", "commandParsing");
 		mapLanguageToClassPath();
 	}
 
@@ -72,7 +72,6 @@ public class Translator {
 			} else {
 				dictionary.put(commands[1], commands[0]);
 			}
-
 		}
 		reader.close();
 	}
