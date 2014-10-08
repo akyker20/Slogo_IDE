@@ -1,4 +1,4 @@
-package tests;
+package tests.commandTests.doubleInputFloatTests;
 
 import static org.junit.Assert.assertTrue;
 

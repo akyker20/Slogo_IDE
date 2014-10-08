@@ -1,4 +1,4 @@
-package tests;
+package tests.commandTests.singleInputFloatTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

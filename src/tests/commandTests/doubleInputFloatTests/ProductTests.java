@@ -1,4 +1,4 @@
-package tests;
+package tests.commandTests.doubleInputFloatTests;
 
 import static org.junit.Assert.assertTrue;
 
@@ -19,12 +19,12 @@ import stateUpdate.State;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.mathCommandParsing.MathCommand;
-import commandParsing.mathCommandParsing.Remainder;
+import commandParsing.mathCommandParsing.Product;
 
 import drawableobject.DrawableObject;
 
 
-public class RemainderTests {
+public class ProductTests {
 	
 	State state;
 	
@@ -35,61 +35,61 @@ public class RemainderTests {
 
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "50", "7"};
+		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "50", "2"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next(), state);	
+		MathCommand product = (Product) CommandParser.createParser(iterator.next(), state);	
 
-		float f = remainder.parse(iterator, queue);
+		float f = product.parse(iterator, queue);
 		
-		assertTrue(f == 1);
+		assertTrue(f == 100);
 	}
 	
 	@Test
 	public void FloatParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "50.0", "7.0"};
+		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "50.0", "2.0"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next(), state);	
+		MathCommand product = (Product) CommandParser.createParser(iterator.next(), state);	
 
-		float f = remainder.parse(iterator, queue);
+		float f = product.parse(iterator, queue);
 		
-		assertTrue(f == 1);
+		assertTrue(f == 100);
 	}
 	
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "7", "commandParsing.mathCommandParsing."+"Remainder", "50", "9"};
+		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "7", "commandParsing.mathCommandParsing."+"Product", "50", "10"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next(), state);	
+		MathCommand product = (Product) CommandParser.createParser(iterator.next(), state);	
 
-		float f = remainder.parse(iterator, queue);
-		
-		assertTrue(f == 2);
+		float f = product.parse(iterator, queue);
+
+		assertTrue(f == 3500);
 	}
 	
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "10", "commandParsing.mathCommandParsing."+"Remainder", "17", "commandParsing.mathCommandParsing."+"Remainder", "11", "commandParsing.mathCommandParsing."+"Remainder", "7", "commandParsing.mathCommandParsing."+"Remainder", "19", "5"};
+		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "0.2", "commandParsing.mathCommandParsing."+"Product", "0.5", "commandParsing.mathCommandParsing."+"Product", "2", "commandParsing.mathCommandParsing."+"Product", "10", "commandParsing.mathCommandParsing."+"Product", "5", "5"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next(), state);	
+		MathCommand product = (Product) CommandParser.createParser(iterator.next(), state);	
 
-		float f = remainder.parse(iterator, queue);
+		float f = product.parse(iterator, queue);
 		
-		assertTrue(f == 0);
+		assertTrue(f == 50);
 	}
 	
 	@Test
 	public void SyntaxErrorParseTest() {
-		String[] commands = {"commandParsing.mathCommandParsing."+"Remainder", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
+		String[] commands = {"commandParsing.mathCommandParsing."+"Product", "50", "commandParsing.structuralCommandParsing."+"Isf", "50"};
 		Iterator<String> iterator = Arrays.asList(commands).iterator();
 		Queue<DrawableObject> queue = new LinkedList<DrawableObject>();
-		MathCommand remainder = (Remainder) CommandParser.createParser(iterator.next(), state);	
+		MathCommand product = (Product) CommandParser.createParser(iterator.next(), state);	
 
 		try {
-			float f = remainder.parse(iterator, queue);
+			float f = product.parse(iterator, queue);
 		} catch (SLOGOException e) {
 			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "commandParsing.structuralCommandParsing."+"Isf" + ". Incorrect syntax."));
 		}
