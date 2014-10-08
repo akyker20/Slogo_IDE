@@ -1,10 +1,11 @@
 package stateUpdate;
 
+import gui.turtle.Turtle;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 
@@ -17,15 +18,11 @@ import javafx.scene.paint.Color;
  */
 
 public class State {
-    private float heading;
-    private Color penColor;
-    private Point2D turtleLocation;
+	private Turtle turtle; 
     private Map<String, Float> variableMap;
 
-    public State (float someHeading, Color someColor, Point2D someLocation, Map<String,Float> variables) {
-        heading = someHeading;
-        penColor = someColor;
-        turtleLocation = someLocation;
+    public State (Turtle someTurtle, Map<String,Float> variables) {
+        turtle = someTurtle;
         variableMap = variables;
     }
     
@@ -43,7 +40,7 @@ public class State {
     }
     
     public float getHeading(){
-    	return heading;
+    	return (float) turtle.getHeading();
     }
 
 	public void moveBackward(float amount) {
@@ -63,6 +60,6 @@ public class State {
 	}
 
 	public State copyState() {
-		return new State(heading,penColor,turtleLocation,variableMap);
+		return new State(turtle,variableMap);
 	}
 }

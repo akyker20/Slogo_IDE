@@ -5,7 +5,7 @@ import java.util.Queue;
 
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
-import stateUpdate.Move;
+
 import drawableobject.DrawableObject;
 
 
@@ -17,8 +17,4 @@ public class Backward extends OneInputFloatCommandParser {
         objectQueue.add(new DrawableObject());
 		return expressionComponents.get(0);
 	}
-
-	
-
-
 }

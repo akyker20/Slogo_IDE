@@ -5,24 +5,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
+import stateUpdate.State;
+
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
-import stateUpdate.ParseError;
-import stateUpdate.State;
-import stateUpdate.StateUpdate;
 
-
-/**
- * Class parses String commands into CommandParser objects
- *
- * @author steven, stanley
- *
- */
 public abstract class CommandParser {
 	
-	protected State state;
+	protected static State state;
 	protected List<Float> expressionComponents = new ArrayList<Float>();
 	
 	public void setState(State someState){
@@ -86,7 +79,6 @@ public abstract class CommandParser {
 
 	protected boolean isCommandString(String string){
 		CommandParser parser = createParser(string, state);
-		
 		return !(parser instanceof NullCommandParser);
 	}
 
@@ -96,13 +88,7 @@ public abstract class CommandParser {
 			parser.setState(state);
 			return parser;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			//e.printStackTrace();
 			return new NullCommandParser();
 		}
 	}
-	
-	protected boolean errorOccured(Queue<StateUpdate> queue){
-		return queue.contains(new ParseError());
-	}
-
 }
