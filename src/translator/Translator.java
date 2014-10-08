@@ -27,7 +27,13 @@ public class Translator {
 		test.translate("jia 30 :someVar [");
 	}
 	
-	private Iterator<String> translate(String commands){
+	public Translator(String language) throws IOException {
+		changeLanguage(language);
+		getClassNamesInPackage("SLOGOStanley.jar", "commandParsing");
+		mapLanguageToClassPath();
+	}
+
+	public Iterator<String> translate(String commands){
 		
 		String[] splitString = commands.split(" ");
 		List<String> translatedString = new ArrayList<String>();
@@ -72,12 +78,6 @@ public class Translator {
 		return isParseable;
 	}
 
-	public Translator(String language) throws IOException {
-		changeLanguage(language);
-		getClassNamesInPackage("SLOGOStanley.jar", "commandParsing");
-		mapLanguageToClassPath();
-	}
-	
 	private void mapLanguageToClassPath() throws FileNotFoundException, IOException{
 		dictionary.keySet().stream().forEach((k) -> {
 			languageToClassPath.put(k, classDictionary.get(dictionary.get(k)));
@@ -85,9 +85,11 @@ public class Translator {
 		System.out.println(languageToClassPath);
 	}
 
-	private void changeLanguage(String language)
-			throws FileNotFoundException, IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(new File("src/resources/languages/" + language + ".properties")));
+	private void changeLanguage(String language) throws FileNotFoundException, IOException {
+		
+		String augmentedFileName = language.substring(0,1).toUpperCase() + language.substring(1).toLowerCase();
+		
+		BufferedReader reader = new BufferedReader(new FileReader(new File("src/resources/languages/" + augmentedFileName + ".properties")));
 		String inputLine = null;
 		while ((inputLine = reader.readLine()) != null) {
 
@@ -141,7 +143,7 @@ public class Translator {
 			System.out.println(classDictionary);
 	}
 	
-	public static String findCommandName(String command) {
+	private static String findCommandName(String command) {
 
 		String folders[] = command.split("\\.");
 
@@ -149,7 +151,7 @@ public class Translator {
 
 	}
 	
-	public static String clipPathName(String command) {
+	private static String clipPathName(String command) {
 
 		return command.substring(0, command.length()-6);
 
