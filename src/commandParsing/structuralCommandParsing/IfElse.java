@@ -14,33 +14,26 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 
 import drawableobject.DrawableObject;
 
-public class IfElse extends StructuralCommand {
-	
-	private State savedState;
-	private List<State> storedStates = new ArrayList<State>();
+public class IfElse extends StructuralCommandOnBooleanSwitch {
 	
 	@Override
 	public float parse(Iterator<String> commandString,	Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,	RunTimeDivideByZeroException, RunTimeNullPointerException {
 
 		accumulateComponents(commandString,1,objectQueue);
-		float booleanSwitch = expressionComponents.get(0);
-		Queue<DrawableObject> toDisplay = new LinkedList<DrawableObject>();
-		
-		float returnValue;
-		
+		evaluateBooleanExpression();
 		checkForOpeningBrace(commandString);
 		
-		if (booleanSwitch==1){ 
-			returnValue = generateQueueBetweenBraces(commandString, toDisplay);
+		if(booleanSwitch){
+			extractCommandsBetweenBraces(commandString);
 			ignoreUntilClosingBrace(commandString);
-		} 
+		}
 		else {
 			ignoreUntilClosingBrace(commandString);
-			checkForOpeningBrace(commandString);
-			returnValue = generateQueueBetweenBraces(commandString, toDisplay);
+			extractCommandsBetweenBraces(commandString);
 		}
-			
-		objectQueue.addAll(toDisplay);
+		
+		parseCommandsBetweenBraces(enclosedCommands, objectQueue);
+		
 		return returnValue;
 	}
 
