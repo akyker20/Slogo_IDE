@@ -1,7 +1,24 @@
 .gridPane {
     	-fx-background-color: white;
+	-fx-border-color: black;
+}
+
+.commandLine {
+	-fx-padding-top: 40px;
 }
 
 .buttonHolder {
 	-fx-background-color: blue;
 }
+
+.list-view {
+	-fx-padding: 5px;
+	-fx-right: 20px;
+
+}
+
+
+.previousCommandsFeature {
+	-javafx-background-color: blue;
+}
+

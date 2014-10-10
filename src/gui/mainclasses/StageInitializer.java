@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 
 public class StageInitializer {
 
-    public static final int SCREEN_WIDTH = 600;
-    public static final int SCREEN_HEIGHT = 400;
+    public static final int SCREEN_WIDTH = 700;
+    public static final int SCREEN_HEIGHT = 600;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
     public static BorderPane init (Stage stage) {
