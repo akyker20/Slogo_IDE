@@ -29,7 +29,8 @@ import drawableobject.DrawableObject;
 public class SlogoControl implements SlogoGraphics, SlogoBackend {
 
     private GUIController myGUI;
-
+    Translator translator;
+    State state;
 
     /**
      * Initializes the GUIController and BackEndController,
@@ -37,17 +38,20 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      * and a SlogoBackEnd instance of itself to the back-end
      *
      * @param stage
+     * @throws IOException 
      */
 
-    public SlogoControl (Stage stage) {
+    public SlogoControl (Stage stage) throws IOException {
         myGUI = new GUIController(stage, this);
+        translator = new Translator("english");
+        state = new State(new Turtle(),new HashMap<String, Double>(), translator);
     }
 
     @Override
     public Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
-        State state = new State(new Turtle(), new HashMap<String, Double>());
-        Translator translator = new Translator("english");
+        
+
         Iterator<String> translatedCommands = translator.translate(command);
 
         while(translatedCommands.hasNext()){

@@ -1,7 +1,9 @@
 package gui.nonbuttonfeatures;
 
 import gui.mainclasses.StageInitializer;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Popup;
 
 public class ErrorPopup extends Popup {
@@ -18,5 +20,13 @@ public class ErrorPopup extends Popup {
         message.getStylesheets().add("/Stylesheets/style.css");
         message.getStyleClass().add("errorPopup");
         this.getContent().add(message);
+        
+        //hide popup on user click
+        message.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                ErrorPopup.this.hide();
+            }
+        });
     }
 }

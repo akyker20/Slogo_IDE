@@ -29,6 +29,7 @@ public class GUIController {
     private ObjectFactory[] myObjectFactories;
     private BorderPane myPane;
     public static ResourceBundle GUI_TEXT;
+    public static Stage GUI_STAGE;
 
 
     /**
@@ -39,8 +40,9 @@ public class GUIController {
      */
 
     public GUIController (Stage stage, SlogoGraphics control) {
+        GUI_STAGE = stage;
         GUI_TEXT = LocaleInitializer.init();
-        myPane = StageInitializer.init(stage);
+        myPane = StageInitializer.init(GUI_STAGE);
         myComponentDrawers = ComponentInitializer.init(myPane);
         myObjectFactories = FactoryInitializer.init();
         FeatureInitializer.init(myComponentDrawers, control);
