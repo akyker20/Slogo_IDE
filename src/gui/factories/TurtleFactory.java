@@ -1,12 +1,13 @@
 package gui.factories;
 
 import gui.componentdrawers.GridDrawer;
-import gui.turtle.Turtle;
+
 import java.util.Map;
+
+import state.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import Control.GUIState;
 
 
 public class TurtleFactory extends ObjectFactory {
@@ -34,10 +35,7 @@ public class TurtleFactory extends ObjectFactory {
     @Override
     public Node generateObject (Map<String, String> params) {
         Turtle turtle = new Turtle();
-        // register turtle in GUIState, automatically assign turtleID as next integer
-        GUIState.turtleMap.put(GUIState.turtleMap.size(), turtle);
-        // new turtle gets focus
-        GUIState.activeTurtle = GUIState.turtleMap.get(GUIState.turtleMap.size()-1);
+
         return turtle.getImage();
     }
 }
