@@ -1,6 +1,7 @@
 package tests.commandTests.singleInputFloatTests;
 
 import static org.junit.Assert.assertTrue;
+import gui.factories.LineFactory;
 
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class BackwardTests extends CommandTester{
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 50);
-		assertTrue(state.getTurtleXLocation() == -50);
-		assertTrue(state.getTurtleYLocation() == 0);
+		assertTrue(objectQueue.poll().getParameters().get(LineFactory.ORIGIN).equals("0 0"));
+		assertTrue(objectQueue.poll().getParameters().get(LineFactory.DESTINATION).equals("0 50"));
 	}
 }
