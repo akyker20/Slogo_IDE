@@ -1,7 +1,5 @@
 package commandParsing.drawableObectGenerationInterfaces;
 
-import gui.componentdrawers.ComponentInitializer;
-import gui.factories.FactoryInitializer;
 import gui.factories.LineFactory;
 
 import java.util.ArrayList;

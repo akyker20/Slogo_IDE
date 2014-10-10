@@ -6,11 +6,24 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 
 public class State {
 	private Turtle turtle; 
+	private boolean penState;
     private Map<String, Double> variableMap;
 
     public State (Turtle someTurtle, Map<String,Double> variables) {
         turtle = someTurtle;
         variableMap = variables;
+    }
+    
+    public void togglePenDown(){
+    	penState = true;
+    }
+    
+    public void togglePenUp(){
+    	penState = false;
+    }
+    
+    public boolean isPenDown(){
+    	return penState;
     }
     
     public void storeVariable(String name, double value){
@@ -25,7 +38,7 @@ public class State {
     }
     
     public double getHeading(){
-    	return (double) turtle.getHeading();
+    	return turtle.getHeading();
     }
     
     public double getTurtleXLocation(){
@@ -47,10 +60,10 @@ public class State {
 	}
 	
 	public void rotateLeft(double amount) {
-		turtle.setHeading(turtle.getHeading()-amount);
+		turtle.setHeading((turtle.getHeading()+amount)%360);
 	}
 	
 	public void rotateRight(double amount) {
-		turtle.setHeading(turtle.getHeading()+amount);
+		turtle.setHeading((turtle.getHeading()-amount)%360);
 	}
 }
