@@ -76,10 +76,10 @@ public class State implements Serializable {
 	}
 	
 	public void rotateLeft(double amount) {
-		turtle.setHeading((turtle.getHeading()+amount)%360);
+		turtle.setHeading((turtle.getHeading()-amount)%360);
 	}
 	
 	public void rotateRight(double amount) {
-		turtle.setHeading((turtle.getHeading()-amount)%360);
+		turtle.setHeading((turtle.getHeading()+amount)%360);
 	}
 }
