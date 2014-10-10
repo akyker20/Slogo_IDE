@@ -5,6 +5,7 @@ import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import gui.componentdrawers.CommandLineDrawer;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -14,13 +15,15 @@ import Control.SlogoGraphics;
 
 public class CommandLineFeature extends TextField {
 
-    public CommandLineFeature (CommandLineDrawer parentDrawer, SlogoGraphics control) {
+    public CommandLineFeature (CommandLineDrawer parentDrawer, ObservableList list, SlogoGraphics control) {
         setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent e) {
                 if (e.getCode().equals(KeyCode.ENTER)) {
                     try {
-                        control.parseCommandString(CommandLineFeature.this.getText());
+                        String command = CommandLineFeature.this.getText();
+                        control.parseCommandString(command);
+                        list.add(command);
                     }
                     catch (CompileTimeParsingException | RunTimeDivideByZeroException
                             | RunTimeNullPointerException | IOException e1) {

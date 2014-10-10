@@ -1,6 +1,7 @@
 package gui.mainclasses;
 
 import java.util.Map;
+import javafx.collections.ObservableList;
 import gui.buttonfeatures.SaveCommandButtonFeature;
 import gui.buttonfeatures.ToggleGridButtonFeature;
 import gui.componentdrawers.ButtonHolderDrawer;
@@ -36,10 +37,10 @@ public class FeatureInitializer {
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
         
         new SetGridColorFeature(gridDrawer, buttonHolder);
-        new CommandLineFeature(commandLineDrawer, control);
+        PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, control);
+        new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
         new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
-        new PreviousCommandsFeature(previousCommands, control);
         new WorkspaceVariablesFeature(workspaceVariables);
         new SavedCommandsFeature(savedCommands, control);
         new GridFeature(gridDrawer);
