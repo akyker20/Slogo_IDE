@@ -1,5 +1,11 @@
 package gui.features;
 
+import java.io.IOException;
+
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
+
 import gui.componentdrawers.CommandLineDrawer;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
@@ -15,7 +21,14 @@ public class CommandLineFeature extends TextField {
             @Override
             public void handle (KeyEvent e) {
                 if (e.getCode().equals(KeyCode.ENTER)) {
-                    control.parseCommandString(CommandLineFeature.this.getText());
+                    try {
+						control.parseCommandString(CommandLineFeature.this.getText());
+					} catch (CompileTimeParsingException
+							| RunTimeDivideByZeroException
+							| RunTimeNullPointerException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                     CommandLineFeature.this.clear();
                 }
             }
