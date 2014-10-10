@@ -1,5 +1,6 @@
 package gui.componentdrawers;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -27,14 +28,12 @@ public class ComponentInitializer {
         
         pane.setTop(menuDrawer);
         
-        
         VBox leftVBox = new VBox(10);
-        leftVBox.setStyle("-fx-padding: 20px");
+        leftVBox.setStyle("-fx-padding: 10px");
         leftVBox.getChildren().addAll(gridDrawer, previousCommands, commandLine);
         pane.setLeft(leftVBox);
         
         VBox rightVBox = new VBox(10);
-        rightVBox.setStyle("-fx-padding: 20px");
         rightVBox.getChildren().addAll(workspaceVariables, buttonHolder);
         pane.setRight(rightVBox);
         

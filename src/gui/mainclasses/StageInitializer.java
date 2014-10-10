@@ -14,6 +14,7 @@ public class StageInitializer {
 
     public static BorderPane init (Stage stage) {
         BorderPane pane = new BorderPane();
+        pane.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         Scene scene = new Scene(pane, SCREEN_WIDTH, SCREEN_HEIGHT, Color.CORNSILK);
         scene.getStylesheets().add(STYLESHEET_PACKAGE + "style.css");
         stage.setScene(scene);

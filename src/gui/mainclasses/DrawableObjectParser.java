@@ -26,7 +26,7 @@ public class DrawableObjectParser {
     private Node parseNodeToDraw (DrawableObject object) {
         ObjectFactory identifiedFactory = null;
         for (ObjectFactory myFactorie : myFactories) {
-            if (myFactorie.toString().equals(object.getType())) {
+            if (myFactorie.toString().equalsIgnoreCase(object.getType())) {
                 identifiedFactory = myFactorie;
             }
         }
@@ -40,7 +40,7 @@ public class DrawableObjectParser {
 
     private ComponentDrawer parseComponentDrawer (String parent) {
         for (ComponentDrawer myDrawer : myDrawers) {
-            if (myDrawer.getName().equals(parent)) { return myDrawer; }
+            if (myDrawer.getName().equalsIgnoreCase(parent)) { return myDrawer; }
         }
         return null;
     }

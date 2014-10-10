@@ -1,7 +1,7 @@
 package gui.factories;
 
+import gui.componentdrawers.GridDrawer;
 import java.util.Map;
-
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
 import Control.TurtleMovementInterpreter;
@@ -21,10 +21,10 @@ public class LineFactory extends ObjectFactory {
         float[] origin = parseStringToPoints(params.get(TurtleMovementInterpreter.ORIGIN2D));
         float[] destination = parseStringToPoints(params.get(TurtleMovementInterpreter.DESTINATION2D));
         
-        line.setStartX(origin[0]);
-        line.setStartY(origin[1]);
-        line.setEndX(destination[0]);
-        line.setEndY(destination[1]);
+        line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
+        line.setStartY(origin[1] + GridDrawer.GRID_HEIGHT/2);
+        line.setEndX(destination[0] + GridDrawer.GRID_WIDTH/2);
+        line.setEndY(destination[1] + GridDrawer.GRID_HEIGHT/2);
         return line;
     }
     
