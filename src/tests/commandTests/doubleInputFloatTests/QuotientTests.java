@@ -18,7 +18,7 @@ public class QuotientTests extends CommandTester{
 		setUpCommands("/ 50 2");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 25);
 	}
 	
@@ -28,7 +28,7 @@ public class QuotientTests extends CommandTester{
 		setUpCommands("/ 50.0 2.0");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 25);
 	}
 	
@@ -38,7 +38,7 @@ public class QuotientTests extends CommandTester{
 		setUpCommands("/ 50 / 50 2");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 2);
 	}
 	
@@ -48,7 +48,7 @@ public class QuotientTests extends CommandTester{
 		setUpCommands("/ 0.4 / 50 / 500 / 20 / 10 / 4 2");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);
 	}
 	
@@ -59,7 +59,7 @@ public class QuotientTests extends CommandTester{
 		
 		CommandParser parser = createCommand();
 		try {
-			float f = parser.parse(commands, objectQueue);
+			double f = parser.parse(commands, objectQueue);
 		} catch (SLOGOException e) {
 			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "..2" + ". Incorrect syntax."));
 		}

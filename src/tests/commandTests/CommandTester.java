@@ -29,7 +29,7 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpStateBeforeTesting(){		
-		state = new State(new Turtle(), new HashMap<String, Float>());
+		state = new State(new Turtle(), new HashMap<String, Double>());
 	}
 	
 	public void setUpTranslator(String language) throws IOException{

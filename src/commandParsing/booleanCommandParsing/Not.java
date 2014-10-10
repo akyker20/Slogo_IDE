@@ -11,7 +11,7 @@ import drawableobject.DrawableObject;
 public class Not extends OneInputFloatCommandParser {
 	
 	@Override
-	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
 		return components.get(0)==0 ? 1 : 0;
 	}
 

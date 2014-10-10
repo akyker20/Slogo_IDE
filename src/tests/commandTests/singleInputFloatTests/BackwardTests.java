@@ -18,9 +18,9 @@ public class BackwardTests extends CommandTester{
 		setUpCommands("bk 50");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 50);
-		assertTrue(state.getXLocation() == -50);
-		assertTrue(state.getYLocation() == 0);
+		assertTrue(state.getTurtleXLocation() == -50);
+		assertTrue(state.getTurtleYLocation() == 0);
 	}
 }

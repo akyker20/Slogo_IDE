@@ -8,7 +8,7 @@ import api.classes.TurtleCommand;
 public class Left extends TurtleCommand {
 
     @Override
-    protected void generateUpdate (float amount, Queue<StateUpdate> stateQueue) {
+    protected void generateUpdate (double amount, Queue<StateUpdate> stateQueue) {
     }
 
 }

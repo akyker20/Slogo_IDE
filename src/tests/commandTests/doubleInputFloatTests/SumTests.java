@@ -18,7 +18,7 @@ public class SumTests extends CommandTester{
 		setUpCommands("+ 50 50");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
 	}
 	
@@ -28,7 +28,7 @@ public class SumTests extends CommandTester{
 		setUpCommands("+ 50.0 50.0");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
 	}
 	
@@ -38,7 +38,7 @@ public class SumTests extends CommandTester{
 		setUpCommands("+ 50 + 50 50");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 150);
 	}
 	
@@ -48,7 +48,7 @@ public class SumTests extends CommandTester{
 		setUpCommands("+ 50 + 50 + 50 + 50 + 50 + 50 50");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 350);
 	}
 	
@@ -59,7 +59,7 @@ public class SumTests extends CommandTester{
 		
 		CommandParser parser = createCommand();
 		try {
-			float f = parser.parse(commands, objectQueue);		
+			double f = parser.parse(commands, objectQueue);		
 		} catch (SLOGOException e) {
 			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "5s0" + ". Incorrect syntax."));
 		}

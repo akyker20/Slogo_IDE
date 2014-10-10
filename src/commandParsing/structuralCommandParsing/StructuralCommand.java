@@ -15,7 +15,7 @@ import drawableobject.DrawableObject;
 public abstract class StructuralCommand extends CommandParser {
 	
 	protected Iterator<String> enclosedCommands;
-	protected float returnValue;
+	protected double returnValue;
 
 	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException{
 		String stringOfInterest = commandString.next();
@@ -41,7 +41,7 @@ public abstract class StructuralCommand extends CommandParser {
 	}
 	
 	protected void parseCommandsBetweenBraces(Iterator<String> commands, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
-		float value = 0;
+		double value = 0;
 		while(commands.hasNext()){
 			String stringOfInterest = commands.next();
 			CommandParser parser = (CommandParser) createParser(stringOfInterest, state); 

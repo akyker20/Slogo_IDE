@@ -14,8 +14,8 @@ public class Random extends OneInputFloatCommandParser {
 	
 	
 	@Override
-	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		float randomNum = rand.nextFloat()*(components.get(0));
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+		double randomNum = rand.nextFloat()*(components.get(0));
 		return randomNum;
 	}
 

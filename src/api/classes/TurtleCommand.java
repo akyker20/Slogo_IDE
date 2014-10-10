@@ -34,5 +34,5 @@ public abstract class TurtleCommand extends CommandParser {
      * @param amount
      * @param stateQueue
      */
-    protected abstract void generateUpdate (float amount, Queue<StateUpdate> stateQueue);
+    protected abstract void generateUpdate (double amount, Queue<StateUpdate> stateQueue);
 }

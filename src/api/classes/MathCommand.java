@@ -31,7 +31,7 @@ public abstract class MathCommand extends CommandParser {
      * @param updateQueue
      * @return
      */
-    public abstract float parse (Iterator<String> commandString, Queue<StateUpdate> updateQueue);
+    public abstract double parse (Iterator<String> commandString, Queue<StateUpdate> updateQueue);
 
     @Override
     protected boolean isAppropriateCommand (CommandParser command) {

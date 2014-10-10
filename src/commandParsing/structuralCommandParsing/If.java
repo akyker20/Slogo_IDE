@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 public class If extends StructuralCommandOnBooleanSwitch {
 	
 	@Override
-	public float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		
 		accumulateComponents(commandString,1,objectQueue);
 		evaluateBooleanExpression();

@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 public class Quotient extends TwoInputFloatCommandParser {
 
 	@Override
-	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
 		if(components.get(0)==0 | components.get(1)==0){
 			throw new RunTimeDivideByZeroException();
 		}

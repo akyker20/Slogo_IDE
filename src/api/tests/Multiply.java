@@ -9,7 +9,7 @@ import api.classes.StateUpdate;
 public class Multiply extends MathCommand {
 
     @Override
-    public float parse (Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
+    public double parse (Iterator<String> commandString, Queue<StateUpdate> updateQueue) {
         return 0;
     }
 

@@ -10,8 +10,8 @@ import drawableobject.DrawableObject;
 public class Tangent extends OneInputFloatCommandParser {
 	
 	@Override
-	protected float operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		return (float) Math.tan(components.get(0)/(180/Math.PI));
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+		return (double) Math.tan(components.get(0)/(180/Math.PI));
 	}
 
 }

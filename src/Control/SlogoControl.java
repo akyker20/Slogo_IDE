@@ -1,8 +1,21 @@
 package Control;
 
 import gui.mainclasses.GUIController;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Queue;
+
+import commandParsing.CommandParser;
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import javafx.stage.Stage;
+import state.State;
+import state.Turtle;
+import translator.Translator;
 import drawableobject.DrawableObject;
 
 
@@ -33,9 +46,14 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     }
 
     @Override
-    public Queue<DrawableObject> parseCommandString (String command) {
-        System.out.println(command);
-        return null;
+    public Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+        Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
+        State state = new State(new Turtle(), new HashMap<String, Double>());
+        Translator translator = new Translator("english");
+        Iterator<String> translatedCommands = translator.translate(command);
+        CommandParser parser = CommandParser.createParser(translatedCommands.next(), state);
+        parser.parse(translatedCommands, objectQueue);
+        return objectQueue;
     }
 
     @Override

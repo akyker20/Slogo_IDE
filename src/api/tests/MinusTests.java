@@ -21,7 +21,7 @@ public class MinusTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand minus = (Minus) CommandParser.createParser(iterator.next());
 
-        float f = minus.parse(iterator, queue);
+        double f = minus.parse(iterator, queue);
 
         assertTrue(f == 0);
     }
@@ -33,7 +33,7 @@ public class MinusTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand minus = (Minus) CommandParser.createParser(iterator.next());
 
-        float f = minus.parse(iterator, queue);
+        double f = minus.parse(iterator, queue);
 
         assertTrue(f == 0);
     }
@@ -47,7 +47,7 @@ public class MinusTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand minus = (Minus) CommandParser.createParser(iterator.next());
 
-        float f = minus.parse(iterator, queue);
+        double f = minus.parse(iterator, queue);
 
         assertTrue(f == 50);
     }
@@ -64,7 +64,7 @@ public class MinusTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand minus = (Minus) CommandParser.createParser(iterator.next());
 
-        float f = minus.parse(iterator, queue);
+        double f = minus.parse(iterator, queue);
 
         assertTrue(f == 0);
     }

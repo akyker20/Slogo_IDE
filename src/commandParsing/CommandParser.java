@@ -14,13 +14,13 @@ import drawableobject.DrawableObject;
 public abstract class CommandParser {
 	
 	protected static State state;
-	protected List<Float> expressionComponents = new ArrayList<Float>();
+	protected List<Double> expressionComponents = new ArrayList<Double>();
 	
 	public void setState(State someState){
 		state = someState;
 	}
 	
-	public abstract float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
+	public abstract double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
 	
 	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<DrawableObject> objectQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
 		expressionComponents.clear();
@@ -41,9 +41,9 @@ public abstract class CommandParser {
 		}
 	}
 	
-	private Float decodeStringToNumber(String stringOfInterest) throws RunTimeNullPointerException {
+	private Double decodeStringToNumber(String stringOfInterest) throws RunTimeNullPointerException {
 		if(isStringParsableAsFloat(stringOfInterest)){
-			return Float.parseFloat(stringOfInterest);
+			return Double.parseDouble(stringOfInterest);
 		}
 		else{
 			return state.fetchVariable(stringOfInterest);
