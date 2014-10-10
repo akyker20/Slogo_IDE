@@ -63,7 +63,8 @@ public abstract class CommandParser {
 	}
 
 	protected boolean isCommandString(String string){
-		return string.matches(state.getCommandPattern());
+		String[] parts = string.split("\\.");
+		return parts[parts.length-1].matches(state.getCommandPattern());
 	}
 
 	public static CommandParser createParser(String commandName, State state) throws CompileTimeParsingException{
@@ -72,7 +73,7 @@ public abstract class CommandParser {
 			parser.setState(state);
 			return parser;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			throw new CompileTimeParsingException("commandName");
+			throw new CompileTimeParsingException(commandName);
 		}
 	}
 }
