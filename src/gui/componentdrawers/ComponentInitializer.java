@@ -14,6 +14,7 @@ public class ComponentInitializer {
     public static final String BUTTON_HOLDER_DRAWER = "ButtonHolderDrawer";
     public static final String PREVIOUS_COMMANDS = "previousCommandsDrawer";
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
+    public static final String SAVED_COMMANDS = "savedCommands";
 
     public static ComponentDrawer[] init (BorderPane pane) {
         // Component initialization
@@ -23,6 +24,7 @@ public class ComponentInitializer {
         CommandLineDrawer commandLine = new CommandLineDrawer(COMMAND_LINE_DRAWER);
         PreviousCommandsDrawer previousCommands = new PreviousCommandsDrawer(PREVIOUS_COMMANDS);
         WorkspaceVariablesDrawer workspaceVariables = new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES);
+        SavedCommandsDrawer savedCommands = new SavedCommandsDrawer(SAVED_COMMANDS);
             
         // Add components to screen
         
@@ -34,13 +36,14 @@ public class ComponentInitializer {
         pane.setLeft(leftVBox);
         
         VBox rightVBox = new VBox(10);
-        rightVBox.getChildren().addAll(workspaceVariables, buttonHolder);
+        rightVBox.getChildren().addAll(workspaceVariables, savedCommands, buttonHolder);
         pane.setRight(rightVBox);
         
         ComponentDrawer[] drawers =
                 new ComponentDrawer[] {
                                        gridDrawer, buttonHolder, commandLine, 
-                                       menuDrawer, previousCommands, workspaceVariables
+                                       menuDrawer, previousCommands, workspaceVariables,
+                                       savedCommands,
                 };
 
         return drawers;

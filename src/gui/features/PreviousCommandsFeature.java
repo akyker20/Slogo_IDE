@@ -5,7 +5,6 @@ import Control.SlogoGraphics;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.VBox;
 
 public class PreviousCommandsFeature extends ListView {
     public PreviousCommandsFeature(PreviousCommandsDrawer parentDrawer, SlogoGraphics control){

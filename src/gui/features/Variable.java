@@ -1,9 +1,5 @@
 package gui.features;
 
-import java.util.ArrayList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
 public class Variable {
     
     private String myName;
