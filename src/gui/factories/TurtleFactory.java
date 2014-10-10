@@ -39,7 +39,7 @@ public class TurtleFactory extends ObjectFactory {
     public Node generateObject (Map<String, String> params) {
         double[] newLocation = parseStringToPoints(params.get(LOCATION));
         myImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
-        myImageView.setLayoutY(newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
+        myImageView.setLayoutY(- newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
         myImageView.setRotate(Double.parseDouble(params.get(HEADING)));
         return myImageView;
     }

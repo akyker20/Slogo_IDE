@@ -27,9 +27,9 @@ public class LineFactory extends ObjectFactory {
         double[] destination = parseStringToPoints(params.get(DESTINATION));
 
         line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
-        line.setStartY(origin[1] + GridDrawer.GRID_HEIGHT/2);
+        line.setStartY(GridDrawer.GRID_HEIGHT/2 - origin[1]);
         line.setEndX(destination[0] + GridDrawer.GRID_WIDTH/2);
-        line.setEndY(destination[1] + GridDrawer.GRID_HEIGHT/2);
+        line.setEndY(GridDrawer.GRID_HEIGHT/2 - destination[1]);
 
         return line;
     }
