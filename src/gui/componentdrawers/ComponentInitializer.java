@@ -1,5 +1,7 @@
 package gui.componentdrawers;
 
+import java.util.HashMap;
+import java.util.Map;
 import gui.menus.HelpMenu;
 import gui.menus.MainMenuInitializer;
 import javafx.geometry.Insets;
@@ -21,34 +23,33 @@ public class ComponentInitializer {
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
     public static final String SAVED_COMMANDS = "savedCommands";
 
-    public static ComponentDrawer[] init (BorderPane pane) {
+    public static Map<String, ComponentDrawer> init (BorderPane pane) {
+        
         // Component initialization
-        GridDrawer gridDrawer = new GridDrawer(GRID_DRAWER);
-        ButtonHolderDrawer buttonHolder = new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER);
-        MenuDrawer menuDrawer = new MenuDrawer(MENU_DRAWER);
-        CommandLineDrawer commandLine = new CommandLineDrawer(COMMAND_LINE_DRAWER);
-        PreviousCommandsDrawer previousCommands = new PreviousCommandsDrawer(PREVIOUS_COMMANDS);
-        WorkspaceVariablesDrawer workspaceVariables = new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES);
-        SavedCommandsDrawer savedCommands = new SavedCommandsDrawer(SAVED_COMMANDS);
+        Map<String, ComponentDrawer> drawerMap = new HashMap<String, ComponentDrawer>();
+        drawerMap.put(GRID_DRAWER,  new GridDrawer(GRID_DRAWER));
+        drawerMap.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
+        drawerMap.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
+        drawerMap.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
+        drawerMap.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
+        drawerMap.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
                  
         pane.setTop(MainMenuInitializer.init());
         
         VBox leftVBox = new VBox(10);
-        leftVBox.setStyle("-fx-padding: 10px");
-        leftVBox.getChildren().addAll(gridDrawer, previousCommands, commandLine);
+        leftVBox.getStyleClass().add("leftColumn");
+        leftVBox.getChildren().addAll((GridDrawer) drawerMap.get(GRID_DRAWER), 
+                                      (PreviousCommandsDrawer) drawerMap.get(PREVIOUS_COMMANDS),
+                                      (CommandLineDrawer) drawerMap.get(COMMAND_LINE_DRAWER));
         pane.setLeft(leftVBox);
         
         VBox rightVBox = new VBox(10);
-        rightVBox.getChildren().addAll(workspaceVariables, savedCommands, buttonHolder);
+        rightVBox.getStyleClass().add("rightColumn");
+        rightVBox.getChildren().addAll((WorkspaceVariablesDrawer) drawerMap.get(WORKSPACE_VARIABLES), 
+                                       (SavedCommandsDrawer) drawerMap.get(SAVED_COMMANDS),
+                                       (ButtonHolderDrawer) drawerMap.get(BUTTON_HOLDER_DRAWER));
         pane.setRight(rightVBox);
-        
-        ComponentDrawer[] drawers =
-                new ComponentDrawer[] {
-                                       gridDrawer, buttonHolder, commandLine, 
-                                       menuDrawer, previousCommands, workspaceVariables,
-                                       savedCommands,
-                };
-
-        return drawers;
+      
+        return drawerMap;
     }
 }

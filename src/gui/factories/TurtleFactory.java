@@ -4,7 +4,6 @@ import gui.componentdrawers.GridDrawer;
 
 import java.util.Map;
 
-import state.Turtle;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
@@ -33,8 +32,9 @@ public class TurtleFactory extends ObjectFactory {
 
     @Override
     public Node generateObject (Map<String, String> params) {
-        Turtle turtle = new Turtle();
+//        Turtle turtle = new Turtle();
 
-        return turtle.getImage();
+//        return turtle.getImage();
+        return null;
     }
 }

@@ -5,7 +5,6 @@ import gui.componentdrawers.ComponentInitializer;
 import gui.factories.FactoryInitializer;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -23,12 +22,10 @@ public class Main extends Application {
         SlogoControl control = new SlogoControl(stage);
 
         Queue<DrawableObject> q = new LinkedList<DrawableObject>();
-        
-        DrawableObject turtle = new DrawableObject(ComponentInitializer.GRID_DRAWER,
-                                   FactoryInitializer.TURTLE_FACTORY,
-                                   new HashMap<String, String>());
-        //place turtle first
-        q.add(turtle);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("origin", "50 50");
+        map.put("destination", "100 120");
+        q.add(new DrawableObject("GridDrawer", "LineFactory", map));
         control.drawDrawableObjects(q);
         
     }

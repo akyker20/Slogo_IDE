@@ -1,5 +1,6 @@
 package gui.mainclasses;
 
+import java.util.Map;
 import gui.componentdrawers.ComponentDrawer;
 import gui.factories.ObjectFactory;
 import javafx.scene.Node;
@@ -8,12 +9,11 @@ import drawableobject.DrawableObject;
 
 public class DrawableObjectParser {
 
-    private ComponentDrawer[] myDrawers;
+    private Map<String, ComponentDrawer> myDrawersMap;
     private ObjectFactory[] myFactories;
 
-    public DrawableObjectParser (ComponentDrawer[] drawers, ObjectFactory[] factories) {
-        System.out.println(drawers == null);
-        myDrawers = drawers;
+    public DrawableObjectParser (Map<String, ComponentDrawer> map, ObjectFactory[] factories) {
+        myDrawersMap = map;
         myFactories = factories;
     }
 
@@ -39,8 +39,8 @@ public class DrawableObjectParser {
     }
 
     private ComponentDrawer parseComponentDrawer (String parent) {
-        for (ComponentDrawer myDrawer : myDrawers) {
-            if (myDrawer.getName().equalsIgnoreCase(parent)) { return myDrawer; }
+        for (String drawerName : myDrawersMap.keySet()) {
+            if (drawerName.equalsIgnoreCase(parent)) { return myDrawersMap.get(drawerName); }
         }
         return null;
     }

@@ -5,6 +5,7 @@ import gui.componentdrawers.ComponentInitializer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.features.FeatureInitializer;
+import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +24,7 @@ import drawableobject.DrawableObject;
 public class GUIController {
 
     private DrawableObjectParser myParser;
-    private ComponentDrawer[] myComponentDrawers;
+    private Map<String, ComponentDrawer> myComponentDrawers;
     private ObjectFactory[] myObjectFactories;
     private BorderPane myPane;
     public static ResourceBundle GUI_TEXT;
