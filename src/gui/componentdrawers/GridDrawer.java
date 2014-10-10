@@ -69,7 +69,8 @@ public class GridDrawer extends ComponentDrawer {
      */
     @Override
     public void drawShape(Node n){
-        myGrid.getChildren().add(n);
+        if(!myGrid.getChildren().contains(n))
+            myGrid.getChildren().add(n);
     }
 
     /**
