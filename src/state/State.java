@@ -68,7 +68,7 @@ public class State implements Serializable {
 		double heading = turtle.getHeading();
 		double xDisplacement = roundToHundredths(amount*Math.cos(heading/(180/Math.PI)));
 		double yDisplacement = roundToHundredths(amount*Math.sin(heading/(180/Math.PI)));
-		turtle.setLocation(turtle.getLocation().add(xDisplacement, yDisplacement));
+		turtle.getLocation().add(xDisplacement, yDisplacement);
     }
 	
 	private double roundToHundredths(double number){

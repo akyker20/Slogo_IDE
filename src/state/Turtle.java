@@ -10,13 +10,11 @@ public class Turtle implements Serializable {
 	private static final long serialVersionUID = 483416034032716037L;
 	// degrees from north
     private static final double DEFAULT_TURTLE_HEADING = 0.0;
-    private static final Color DEFAULT_TURTLE_PENCOLOR = Color.BLACK;
-    private static final boolean DEFAULT_TURTLE_PENDOWN_STATUS = false;
-    private static final Point2D DEFAULT_TURTLE_LOCATION = new Point2D(0,0);
+    private static final Location DEFAULT_TURTLE_LOCATION = new Location(0,0);
 
     private double myHeading;
     private Color myPenColor;
-    private Point2D myLocation;
+    private Location myLocation;
     private boolean myPenDownStatus;
 
     public Turtle () {
@@ -24,8 +22,6 @@ public class Turtle implements Serializable {
 
         myLocation = DEFAULT_TURTLE_LOCATION;
         myHeading = DEFAULT_TURTLE_HEADING;
-        myPenColor = DEFAULT_TURTLE_PENCOLOR;
-        myPenDownStatus = DEFAULT_TURTLE_PENDOWN_STATUS;
     }
 
     public double getHeading () {
@@ -44,11 +40,11 @@ public class Turtle implements Serializable {
         this.myPenColor = myPenColor;
     }
 
-    public Point2D getLocation () {
+    public Location getLocation () {
         return myLocation;
     }
 
-    public void setLocation (Point2D myLocation) {
+    public void setLocation (Location myLocation) {
         this.myLocation = myLocation;
     }
 
