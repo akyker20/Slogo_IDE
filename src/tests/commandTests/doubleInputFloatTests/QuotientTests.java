@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 
@@ -53,7 +54,7 @@ public class QuotientTests extends CommandTester{
 	}
 	
 	@Test
-	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
+	public void SyntaxErrorParseTest() throws RunTimeNullPointerException, CompileTimeParsingException {
 		resetTesterVariables();
 		setUpCommands("/ 50 ..2");
 		

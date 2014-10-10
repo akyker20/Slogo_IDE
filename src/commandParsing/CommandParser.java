@@ -55,38 +55,24 @@ public abstract class CommandParser {
 	}
 	
 	private boolean isStringParsableAsVariable(String string) {
-		return string.charAt(0)==':';
+		return string.matches(state.getVariablePattern());
 	}
 
 	protected boolean isStringParsableAsFloat(String string){
-		boolean isParseable = true;
-		int numDelimiters = 0;
-		for(int i=0;i<string.length();i++){
-			if(string.charAt(i)=='.'){
-				numDelimiters++;
-			}
-			if(!Character.isDigit(string.charAt(i)) & string.charAt(i) != '.'){
-				isParseable = false;
-			}
-		}
-		if(numDelimiters>1){
-			isParseable = false;
-		}
-		return isParseable;
+		return string.matches(state.getConstantPattern());
 	}
 
 	protected boolean isCommandString(String string){
-		CommandParser parser = createParser(string, state);
-		return !(parser instanceof NullCommandParser);
+		return string.matches(state.getCommandPattern());
 	}
 
-	public static CommandParser createParser(String commandName, State state){
+	public static CommandParser createParser(String commandName, State state) throws CompileTimeParsingException{
 		try {
 			CommandParser parser = (CommandParser) Class.forName(commandName).newInstance();
 			parser.setState(state);
 			return parser;
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			return new NullCommandParser();
+			throw new CompileTimeParsingException("commandName");
 		}
 	}
 }

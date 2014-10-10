@@ -7,18 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
-import java.util.stream.Collectors;
-
-import commandParsing.exceptions.RunTimeNullPointerException;
-
-import api.classes.CommandParser;
+import java.util.regex.Pattern;
 
 public class Translator {
 	
@@ -114,5 +109,25 @@ public class Translator {
 	
 	private static String clipPathName(String command) {
 		return command.substring(0, command.length()-6);
+	}
+	
+	public String getVariablePattern(){
+		return syntaxDictionary.get("Variable");
+	}
+	
+	public String getConstantPattern(){
+		return syntaxDictionary.get("Constant");
+	}
+	
+	public String getCommandPattern(){
+		return syntaxDictionary.get("Command");
+	}
+	
+	public String getListStartPattern(){
+		return syntaxDictionary.get("ListStart");
+	}
+	
+	public String getListEndPattern(){
+		return syntaxDictionary.get("ListEnd");
 	}
 }

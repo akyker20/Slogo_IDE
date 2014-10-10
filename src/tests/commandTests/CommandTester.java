@@ -12,6 +12,7 @@ import state.State;
 import state.Turtle;
 import translator.Translator;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
@@ -24,16 +25,16 @@ public abstract class CommandTester {
 	
 	@Before
 	public void setUp() throws Exception {
-		setUpStateBeforeTesting();
 		setUpTranslator("english");
-	}
-	
-	public void setUpStateBeforeTesting(){		
-		state = new State(new Turtle(), new HashMap<String, Double>());
+		setUpStateBeforeTesting();
 	}
 	
 	public void setUpTranslator(String language) throws IOException{
 		translator = new Translator(language);
+	}
+	
+	public void setUpStateBeforeTesting(){		
+		state = new State(new Turtle(), new HashMap<String, Double>(), translator);
 	}
 	
 	public void setUpCommands(String input){
@@ -45,7 +46,7 @@ public abstract class CommandTester {
 		setUpStateBeforeTesting();
 	}
 	
-	public CommandParser createCommand() throws RunTimeNullPointerException{
+	public CommandParser createCommand() throws RunTimeNullPointerException, CompileTimeParsingException{
 		return CommandParser.createParser(commands.next(), state);	
 	}
 	

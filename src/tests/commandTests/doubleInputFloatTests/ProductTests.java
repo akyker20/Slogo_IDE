@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import tests.commandTests.CommandTester;
-
 import commandParsing.CommandParser;
+import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 
@@ -54,7 +54,7 @@ public class ProductTests extends CommandTester{
 	}
 	
 	@Test
-	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
+	public void SyntaxErrorParseTest() throws RunTimeNullPointerException, CompileTimeParsingException {
 		resetTesterVariables();
 		setUpCommands("* 50.0 * 0.2 *.. 10.0 * 0.1 * 10.0 2.0");
 		

@@ -4,19 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+
+import translator.Translator;
 
 import commandParsing.exceptions.RunTimeNullPointerException;
 
 public class State implements Serializable {
 
 	private static final long serialVersionUID = 3972409856487518925L;
+	private Translator translator;
 	private Turtle turtle; 
 	private boolean penState = true;
     private Map<String, Double> variableMap;
 
-    public State (Turtle someTurtle, Map<String,Double> variables) {
+    public State (Turtle someTurtle, Map<String,Double> variables, Translator someTranslator) {
         turtle = someTurtle;
         variableMap = variables;
+        translator = someTranslator;
     }
     
     public void togglePenDown(){
@@ -75,11 +80,27 @@ public class State implements Serializable {
 		return Math.round(number*100)/100;
 	}
 	
-	public void rotateLeft(double amount) {
-		turtle.setHeading((turtle.getHeading()-amount)%360);
+	public void rotate(double amount) {
+		turtle.setHeading((turtle.getHeading()+amount)%360);
 	}
 	
-	public void rotateRight(double amount) {
-		turtle.setHeading((turtle.getHeading()+amount)%360);
+	public String getVariablePattern(){
+		return translator.getVariablePattern();
+	}
+	
+	public String getConstantPattern(){
+		return translator.getConstantPattern();
+	}
+	
+	public String getCommandPattern(){
+		return translator.getCommandPattern();
+	}
+	
+	public String getListStartPattern(){
+		return translator.getListStartPattern();
+	}
+	
+	public String getListEndPattern(){
+		return translator.getListEndPattern();
 	}
 }
