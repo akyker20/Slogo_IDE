@@ -10,7 +10,6 @@ public class Turtle implements Serializable {
 	private static final long serialVersionUID = 483416034032716037L;
 	// degrees from north
     private static final double DEFAULT_TURTLE_HEADING = 0.0;
-    private static final Location DEFAULT_TURTLE_LOCATION = new Location(0,0);
 
     private double myHeading;
     private Color myPenColor;
@@ -20,7 +19,7 @@ public class Turtle implements Serializable {
     public Turtle () {
         // call setImage() before setLocation() and setHeading()
 
-        myLocation = DEFAULT_TURTLE_LOCATION;
+        myLocation = new Location(0,0);
         myHeading = DEFAULT_TURTLE_HEADING;
     }
 

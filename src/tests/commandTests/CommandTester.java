@@ -21,29 +21,32 @@ public abstract class CommandTester {
 	protected State state;
 	protected Iterator<String> commands;
 	protected Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
-	private Translator translator;
 	
 	@Before
 	public void setUp() throws Exception {
-		setUpTranslator("english");
-		setUpStateBeforeTesting();
+		setUpStateBeforeTesting("english");
 	}
 	
-	public void setUpTranslator(String language) throws IOException{
-		translator = new Translator(language);
+	public Translator setUpTranslator(String language) throws IOException{
+		return new Translator(language);
 	}
 	
-	public void setUpStateBeforeTesting(){		
-		state = new State(new Turtle(), new HashMap<String, Double>(), translator);
+	public void setUpStateBeforeTesting(String language) throws IOException{		
+		state = new State(new Turtle(), new HashMap<String, Double>(), setUpTranslator(language));
 	}
 	
 	public void setUpCommands(String input){
-		commands = translator.translate(input);
+		commands = state.translate(input);
 	}
 	
-	public void resetTesterVariables(){
+	public void resetTesterVariables() {
 		objectQueue.clear();
-		setUpStateBeforeTesting();
+		try {
+			setUpStateBeforeTesting("english");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public CommandParser createCommand() throws RunTimeNullPointerException, CompileTimeParsingException{

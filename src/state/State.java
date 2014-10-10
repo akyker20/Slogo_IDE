@@ -2,9 +2,9 @@ package state;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import translator.Translator;
 
@@ -102,5 +102,9 @@ public class State implements Serializable {
 	
 	public String getListEndPattern(){
 		return translator.getListEndPattern();
+	}
+	
+	public Iterator<String> translate(String string){
+		return translator.translate(string);
 	}
 }
