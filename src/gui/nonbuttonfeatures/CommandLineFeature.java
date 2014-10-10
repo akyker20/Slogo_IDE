@@ -15,7 +15,7 @@ import Control.SlogoGraphics;
 
 public class CommandLineFeature extends TextField {
 
-    public CommandLineFeature (CommandLineDrawer parentDrawer, ObservableList list, SlogoGraphics control) {
+    public CommandLineFeature (CommandLineDrawer parentDrawer, ObservableList<String> list, SlogoGraphics control) {
         setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle (KeyEvent e) {
