@@ -5,6 +5,8 @@ import gui.componentdrawers.GridDrawer;
 import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
 
 
 public class TurtleFactory extends ObjectFactory {
@@ -22,27 +24,31 @@ public class TurtleFactory extends ObjectFactory {
     private static final double TURTLE_IMAGE_HEIGHT = GridDrawer.GRID_HEIGHT *
                                                      TURTLE_IMAGE_HEIGHT_RATIO;
     
-    private Image myImage;
+    private Node myImageView;
 
     public TurtleFactory (String name) {
         super(name);
-        myImage =
+       Image image =
                 new Image(getClass().getResourceAsStream(DEFAULT_TURTLE_IMAGEPATH),
                           TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
                           false, true);
+        myImageView = new ImageView(image);
     }
 
     @Override
     public Node generateObject (Map<String, String> params) {
-//        Turtle turtle = new Turtle();
+        double[] newLocation = parseStringToPoints(params.get(LOCATION));
+        myImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
+        myImageView.setLayoutY(newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
+        myImageView.setRotate(Double.parseDouble(params.get(HEADING)));
+        return myImageView;
+    }
 
-//        return turtle.getImage();
-        return null;
-        
-//        // TODO: might use binding to achieve this layout and location coupling later
-//        //using offset to have placement relative to image center
-//        image.setLayoutX(location.getX()-image.getBoundsInParent().getWidth()/2);
-//        image.setLayoutY(location.getY()-image.getBoundsInParent().getHeight()/2);
-//    }
+    private double[] parseStringToPoints(String point) {
+        String[] splitPoint = point.split(" ");
+
+        double[] parsedPoint = new double[]{Double.parseDouble(splitPoint[0]),
+                                            Double.parseDouble(splitPoint[1])};
+        return parsedPoint;
     }
 }

@@ -4,6 +4,8 @@ import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
+import gui.factories.TurtleFactory;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
@@ -43,6 +45,21 @@ public class GUIController {
         myObjectFactories = FactoryInitializer.init();
         FeatureInitializer.init(myComponentDrawers, control);
         myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);
+        placeTurtle();
+    }
+
+    
+    //not great, but works for now.
+    private void placeTurtle () {
+        for(int i = 0; i < myObjectFactories.length; i++){
+            if(myObjectFactories[i].toString().equals(FactoryInitializer.TURTLE_FACTORY)){
+                Map<String, String> initialTurtleParams = new HashMap<String, String>();
+                initialTurtleParams.put(TurtleFactory.HEADING, "0.0");
+                initialTurtleParams.put(TurtleFactory.LOCATION, "0.0 0.0");
+                myComponentDrawers.get(TurtleFactory.PARENT)
+                .drawShape(myObjectFactories[i].generateObject(initialTurtleParams));
+            }
+        }
     }
 
     /**
