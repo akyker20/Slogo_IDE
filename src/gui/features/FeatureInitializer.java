@@ -6,6 +6,7 @@ import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.GridDrawer;
 import gui.componentdrawers.MenuDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
+import gui.componentdrawers.WorkspaceVariablesDrawer;
 import Control.SlogoGraphics;
 
 
@@ -17,5 +18,6 @@ public class FeatureInitializer {
         new CommandLineFeature((CommandLineDrawer) drawers[2], control);
         new ToggleRelativeGridFeature((GridDrawer) drawers[0], (ButtonHolderDrawer) drawers[1]);
         new PreviousCommandsFeature((PreviousCommandsDrawer) drawers[4], control);
+        new WorkspaceVariablesFeature((WorkspaceVariablesDrawer) drawers[5]);
     }
 }
