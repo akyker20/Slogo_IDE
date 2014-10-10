@@ -1,6 +1,11 @@
 package gui.componentdrawers;
 
+import gui.menus.HelpMenu;
+import gui.menus.MainMenuInitializer;
 import javafx.geometry.Insets;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -25,10 +30,8 @@ public class ComponentInitializer {
         PreviousCommandsDrawer previousCommands = new PreviousCommandsDrawer(PREVIOUS_COMMANDS);
         WorkspaceVariablesDrawer workspaceVariables = new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES);
         SavedCommandsDrawer savedCommands = new SavedCommandsDrawer(SAVED_COMMANDS);
-            
-        // Add components to screen
-        
-        pane.setTop(menuDrawer);
+                 
+        pane.setTop(MainMenuInitializer.init());
         
         VBox leftVBox = new VBox(10);
         leftVBox.setStyle("-fx-padding: 10px");

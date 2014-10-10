@@ -16,7 +16,11 @@ public class GridDrawer extends ComponentDrawer {
     public static final double GRID_HEIGHT = StageInitializer.SCREEN_HEIGHT * GRID_HEIGHT_RATIO;
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
+    
+    //This is just for the grid lines
     private GridPane myGridPane;
+    
+    //This is the actual grid to which nodes will be drawn.
     private Pane myGrid;
     
     public GridDrawer (String name) {
@@ -27,6 +31,10 @@ public class GridDrawer extends ComponentDrawer {
         this.getChildren().addAll(new Label("SLogo Grid"), myGridPane);
     }
     
+    /**
+     * Creates the gridpane whose sole purpose is to aid the ToggleRelativeGridFeature
+     * @return
+     */
     private GridPane initializeGridPane () {
         GridPane pane = new GridPane();
         pane.setHgap(GridDrawer.GRID_WIDTH / GRID_NUM_ROWS);
@@ -35,17 +43,30 @@ public class GridDrawer extends ComponentDrawer {
         return pane;
     }
 
-   
+   /**
+    * If the grid lines are already visible, they are removed. Otherwise,
+    * the grid lines are displayed.
+    */
     public void toggleGrid () {
         myGridPane.setGridLinesVisible(!myGridPane.isGridLinesVisible());
     }
     
+    /**
+     * Adds the grid to the GridDrawer pane. Adds the GridPane used for drawing
+     * relative grid lines to the grid.
+     * @param grid
+     */
     public void setGrid(Pane grid){
         myGrid = grid;
         drawShape(myGridPane);
         super.drawShape(grid);
     }
     
+    /**
+     * Overrides the super drawShapeMethod - Instead of drawing shapes on the
+     * GridDrawer pane (which would have been the default), shapes will be drawn
+     * on the grid.
+     */
     @Override
     public void drawShape(Node n){
         myGrid.getChildren().add(n);
