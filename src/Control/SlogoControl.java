@@ -49,8 +49,12 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         State state = new State(new Turtle(), new HashMap<String, Double>());
         Translator translator = new Translator("english");
         Iterator<String> translatedCommands = translator.translate(command);
-        CommandParser parser = CommandParser.createParser(translatedCommands.next(), state);
-        parser.parse(translatedCommands, objectQueue);
+
+        while(translatedCommands.hasNext()){
+            CommandParser parser = CommandParser.createParser(translatedCommands.next(), state);
+            parser.parse(translatedCommands, objectQueue);
+        }
+        System.out.println(objectQueue.size());
         drawDrawableObjects(objectQueue);
         return objectQueue;
     }

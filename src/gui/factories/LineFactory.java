@@ -1,6 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.GridDrawer;
 import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
@@ -25,14 +26,21 @@ public class LineFactory extends ObjectFactory {
         double[] origin = parseStringToPoints(params.get(ORIGIN));
         double[] destination = parseStringToPoints(params.get(DESTINATION));
 
-        line.setStartX(origin[0]);
-        line.setStartY(origin[1]);
-        line.setEndX(destination[0]);
-        line.setEndY(destination[1]);
+        line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
+        line.setStartY(origin[1] + GridDrawer.GRID_HEIGHT/2);
+        line.setEndX(destination[0] + GridDrawer.GRID_WIDTH/2);
+        line.setEndY(destination[1] + GridDrawer.GRID_HEIGHT/2);
 
         return line;
     }
 
+    /**
+     * Breaks a string representing a location into an array of points.
+     * The first element in the array is the x coordinate of the location
+     * and the second element in the array is the y coordinate of the location.
+     * @param point
+     * @return
+     */
     private double[] parseStringToPoints(String point) {
         String[] splitPoint = point.split(" ");
 

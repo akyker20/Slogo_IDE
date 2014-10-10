@@ -6,7 +6,7 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 
 public class State {
 	private Turtle turtle; 
-	private boolean penState;
+	private boolean penState = true;
     private Map<String, Double> variableMap;
 
     public State (Turtle someTurtle, Map<String,Double> variables) {
