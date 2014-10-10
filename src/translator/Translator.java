@@ -25,6 +25,7 @@ public class Translator {
 	private Map<String, String> dictionary = new HashMap<String, String>();
 	private Map<String, String> classDictionary = new HashMap<String, String>();
 	private Map<String, String> languageToClassPath = new HashMap<String, String>();
+	private Map<String, String> syntaxDictionary = new HashMap<String,String>();
 	
 	public Translator(String language) throws IOException {
 		changeLanguage(language);
@@ -58,7 +59,7 @@ public class Translator {
 		String augmentedFileName = language.substring(0,1).toUpperCase() + language.substring(1).toLowerCase();
 		BufferedReader reader = new BufferedReader(new FileReader(new File("src/resources/languages/" + augmentedFileName + ".properties")));
 		String inputLine = null;
-		while ((inputLine = reader.readLine()) != null) {
+		while (((inputLine = reader.readLine()) != null) && (inputLine.contains("syntax") == false)) {
 			inputLine = inputLine.replace(" ", "");
 			String[] commands = inputLine.split("=");
 			
@@ -73,6 +74,18 @@ public class Translator {
 				dictionary.put(commands[1], commands[0]);
 			}
 		}
+		while ((inputLine = reader.readLine()) != null) {
+			inputLine = inputLine.replace(" ", "");
+			String[] commands = inputLine.split("=");
+			
+			if (inputLine.equals("") || inputLine.startsWith("#"))
+				continue;
+			
+			syntaxDictionary.put(commands[0], commands[1]);
+			
+			
+		}
+
 		reader.close();
 	}
 	
