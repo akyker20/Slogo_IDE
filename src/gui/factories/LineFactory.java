@@ -1,7 +1,7 @@
 package gui.factories;
 
+import gui.componentdrawers.GridDrawer;
 import java.util.Map;
-
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
 
@@ -24,6 +24,7 @@ public class LineFactory extends ObjectFactory {
 //        line.setStartY(origin[1]);
 //        line.setEndX(destination[0]);
 //        line.setEndY(destination[1]);
+
         return line;
     }
     

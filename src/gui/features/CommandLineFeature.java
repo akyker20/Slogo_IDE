@@ -20,7 +20,8 @@ public class CommandLineFeature extends TextField {
                 }
             }
         });
-
+        this.setPrefWidth(parentDrawer.getWidth());
+        this.setLayoutY(20);
         parentDrawer.drawShape(this);
     }
 

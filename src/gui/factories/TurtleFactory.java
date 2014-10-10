@@ -16,8 +16,7 @@ public class TurtleFactory extends ObjectFactory {
     public static final Color DEFAULT_TURTLE_PENCOLOR = Color.BLACK;
     public static final boolean DEFAULT_TURTLE_PENDOWN_STATUS = false;
     // turtle starts from center of Grid
-    public static final Point2D DEFAULT_TURTLE_LOCATION = new Point2D(GridDrawer.GRID_WIDTH / 2,
-                                                                      GridDrawer.GRID_HEIGHT / 2);
+    public static final Point2D DEFAULT_TURTLE_LOCATION = new Point2D(0,0);
     public static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image0.png";
 
     public static final double TURTLE_IMAGE_WIDTH_RATIO = 0.05;
