@@ -37,7 +37,7 @@ public class FeatureInitializer {
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
         
         new SetGridColorFeature(gridDrawer, buttonHolder);
-        PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, control);
+        PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, commandLineDrawer);
         new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
         new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);

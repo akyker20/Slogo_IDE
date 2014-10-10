@@ -33,5 +33,15 @@ public class CommandLineDrawer extends ComponentDrawer {
     public String getCurrentCommand () {
         return myCommandLine.getText();
     }
+    
+    
+    /**
+     * Sets the text of the command line text field to be the input string.
+     * This is called when a previous command is clicked (PreviousCommandFeature)
+     * @param s
+     */
+    public void setCommandLine(String s){
+        myCommandLine.setText(s);
+    }
 
 }
