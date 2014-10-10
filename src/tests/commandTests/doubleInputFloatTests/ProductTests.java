@@ -19,7 +19,7 @@ public class ProductTests extends CommandTester{
 		setUpCommands("* 50 2");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
 	}
 
@@ -29,7 +29,7 @@ public class ProductTests extends CommandTester{
 		setUpCommands("* 50.0 2.0");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
 	}
 	
@@ -39,7 +39,7 @@ public class ProductTests extends CommandTester{
 		setUpCommands("* 7.0 * 50 10.0");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 3500);
 	}
 	
@@ -49,7 +49,7 @@ public class ProductTests extends CommandTester{
 		setUpCommands("* 50.0 * 0.2 * 10.0 * 0.1 * 10.0 2.0");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 200);
 	}
 	
@@ -60,7 +60,7 @@ public class ProductTests extends CommandTester{
 		
 		CommandParser parser = createCommand();
 		try {
-			float f = parser.parse(commands, objectQueue);
+			double f = parser.parse(commands, objectQueue);
 		} catch (SLOGOException e) {
 			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "*.." + ". Incorrect syntax."));
 		}

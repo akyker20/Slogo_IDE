@@ -13,13 +13,13 @@ import drawableobject.DrawableObject;
 public abstract class FloatInputCommandParser extends CommandParser {
 	
 	@Override
-	public float parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		accumulateComponents(commandString, getNumberOfArguments(), objectQueue);
 		return operateOnComponents(expressionComponents, objectQueue);
 	}
 	
 	protected abstract int getNumberOfArguments();
 	
-	protected abstract float operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException;
+	protected abstract double operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException;
 
 }

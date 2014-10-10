@@ -18,7 +18,7 @@ public class RemainderTests extends CommandTester{
 		setUpCommands("% 50 7");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);
 	}
 	
@@ -28,7 +28,7 @@ public class RemainderTests extends CommandTester{
 		setUpCommands("% 50.0 7.0");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);
 	}
 	
@@ -38,7 +38,7 @@ public class RemainderTests extends CommandTester{
 		setUpCommands("% 7 % 50 9");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 2);
 	}
 	
@@ -48,7 +48,7 @@ public class RemainderTests extends CommandTester{
 		setUpCommands("% 10 % 17 % 11 % 7 % 19 5");
 		
 		CommandParser parser = createCommand();
-		float f = parser.parse(commands, objectQueue);
+		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 0);
 	}
 	
@@ -59,7 +59,7 @@ public class RemainderTests extends CommandTester{
 		
 		CommandParser parser = createCommand();
 		try {
-			float f = parser.parse(commands, objectQueue);
+			double f = parser.parse(commands, objectQueue);
 		} catch (SLOGOException e) {
 			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "50abs" + ". Incorrect syntax."));
 		}

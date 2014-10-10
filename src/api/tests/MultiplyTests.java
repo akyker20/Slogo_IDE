@@ -21,7 +21,7 @@ public class MultiplyTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());
 
-        float f = multiply.parse(iterator, queue);
+        double f = multiply.parse(iterator, queue);
 
         assertTrue(f == 100);
     }
@@ -33,7 +33,7 @@ public class MultiplyTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());
 
-        float f = multiply.parse(iterator, queue);
+        double f = multiply.parse(iterator, queue);
 
         assertTrue(f == 100);
     }
@@ -47,7 +47,7 @@ public class MultiplyTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());
 
-        float f = multiply.parse(iterator, queue);
+        double f = multiply.parse(iterator, queue);
 
         assertTrue(f == 3500);
     }
@@ -64,7 +64,7 @@ public class MultiplyTests {
         Queue<StateUpdate> queue = new LinkedList<StateUpdate>();
         MathCommand multiply = (Multiply) CommandParser.createParser(iterator.next());
 
-        float f = multiply.parse(iterator, queue);
+        double f = multiply.parse(iterator, queue);
 
         assertTrue(f == 50);
     }

@@ -14,7 +14,7 @@ import api.classes.StateUpdate;
  */
 public class Rotate implements StateUpdate {
 
-    public Rotate (float amount) {
+    public Rotate (double amount) {
 
     }
 

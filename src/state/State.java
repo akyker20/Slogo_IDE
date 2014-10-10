@@ -13,44 +13,44 @@ public class State {
         variableMap = variables;
     }
     
-    public void storeVariable(String name, float value){
-    	variableMap.put(name, variableMap.getOrDefault(name, (float) 0) - variableMap.getOrDefault(name, (float) 0) + value);
+    public void storeVariable(String name, double value){
+    	variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - variableMap.getOrDefault(name, (double) 0) + value);
     }
     
-    public float fetchVariable(String name) throws RunTimeNullPointerException{
+    public double fetchVariable(String name) throws RunTimeNullPointerException{
     	if(!variableMap.keySet().contains(name)){
     		throw new RunTimeNullPointerException(name);
     	}
     	return variableMap.get(name); 
     }
     
-    public float getHeading(){
-    	return (float) turtle.getHeading();
+    public double getHeading(){
+    	return (double) turtle.getHeading();
     }
     
-    public double getXLocation(){
+    public double getTurtleXLocation(){
     	return turtle.getLocation().getX();
     }
     
-    public double getYLocation(){
+    public double getTurtleYLocation(){
     	return turtle.getLocation().getY();
     }
 
-	public void moveBackward(float amount) {
+	public void moveBackward(double amount) {
 		double heading = turtle.getHeading();
 		turtle.setLocation(turtle.getLocation().add(-amount*Math.cos(heading/(180/Math.PI)), -amount*Math.sin(heading/(180/Math.PI))));
 	}
 	
-	public void moveForward(float amount) {
+	public void moveForward(double amount) {
 		double heading = turtle.getHeading();
 		turtle.setLocation(turtle.getLocation().add(amount*Math.cos(heading/(180/Math.PI)), amount*Math.sin(heading/(180/Math.PI))));
 	}
 	
-	public void rotateLeft(float amount) {
+	public void rotateLeft(double amount) {
 		turtle.setHeading(turtle.getHeading()-amount);
 	}
 	
-	public void rotateRight(float amount) {
+	public void rotateRight(double amount) {
 		turtle.setHeading(turtle.getHeading()+amount);
 	}
 }

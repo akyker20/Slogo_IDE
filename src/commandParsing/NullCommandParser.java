@@ -11,7 +11,7 @@ import drawableobject.DrawableObject;
 public class NullCommandParser extends CommandParser {
 
 	@Override
-	public float parse(Iterator<String> commandString,
+	public double parse(Iterator<String> commandString,
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
