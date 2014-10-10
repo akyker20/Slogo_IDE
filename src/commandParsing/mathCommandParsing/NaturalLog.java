@@ -11,7 +11,7 @@ import drawableobject.DrawableObject;
 public class NaturalLog extends OneInputFloatCommandParser {
 	
 	@Override
-	protected double operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
 		return (double) Math.log(components.get(0));
 	}
 

@@ -12,7 +12,7 @@ import drawableobject.DrawableObject;
 public class Right extends OneInputFloatCommandParser {
 
 	@Override
-   	protected double operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
+   	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
    		state.rotateRight(expressionComponents.get(0));
            objectQueue.add(new DrawableObject());
    		return expressionComponents.get(0);

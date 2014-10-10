@@ -1,6 +1,12 @@
 package Control;
 
+import java.io.IOException;
 import java.util.Queue;
+
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
 
 
@@ -20,7 +26,11 @@ public interface SlogoGraphics {
      *
      * @param command
      * @return
+     * @throws IOException 
+     * @throws RunTimeNullPointerException 
+     * @throws RunTimeDivideByZeroException 
+     * @throws CompileTimeParsingException 
      */
 
-    Queue<DrawableObject> parseCommandString (String command);
+    Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
 }

@@ -30,7 +30,7 @@ public class ForwardTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		state = new State((double) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Float>());
+		state = new State((double) 0.0,Color.BLACK, new Point2D(0,0), new HashMap<String,Double>());
 	}
 	
 	@Test

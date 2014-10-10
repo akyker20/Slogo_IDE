@@ -10,7 +10,7 @@ import drawableobject.DrawableObject;
 public class ArcTangent extends OneInputFloatCommandParser {
 	
 	@Override
-	protected double operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
 		return (double) Math.atan(components.get(0)/(180/Math.PI));
 	}
 

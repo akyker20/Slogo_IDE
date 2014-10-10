@@ -11,7 +11,7 @@ import drawableobject.DrawableObject;
 public class Power extends TwoInputFloatCommandParser {
 	
 	@Override
-	protected double operateOnComponents(List<Float> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
 		return (double) Math.pow(components.get(0), components.get(1));
 	}
 

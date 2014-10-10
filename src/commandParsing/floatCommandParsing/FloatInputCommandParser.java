@@ -20,6 +20,6 @@ public abstract class FloatInputCommandParser extends CommandParser {
 	
 	protected abstract int getNumberOfArguments();
 	
-	protected abstract double operateOnComponents(List<Float> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException;
+	protected abstract double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException;
 
 }
