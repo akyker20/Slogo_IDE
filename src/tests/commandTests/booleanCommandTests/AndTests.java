@@ -1,68 +1,69 @@
-package tests.commandTests.doubleInputFloatTests;
+package tests.commandTests.booleanCommandTests;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import tests.commandTests.CommandTester;
-
 import commandParsing.CommandParser;
-import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 
+import tests.commandTests.CommandTester;
 
-public class ProductTests extends CommandTester{
-	
+public class AndTests extends CommandTester {
+
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("* 50 2");
+		setUpCommands("and 50 50");
 		
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 100);
+		assertTrue(f == 1);
 	}
 
 	@Test
 	public void FloatParseTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("* 50.0 2.0");
-		
+		setUpCommands("and 50.0 50.0");
 		CommandParser parser = createCommand();
+
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 100);
+
+		assertTrue(f == 1);
 	}
-	
+
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("* 7.0 * 50 10.0");
-		
+		setUpCommands("and 50 - 50 50");
 		CommandParser parser = createCommand();
+
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 3500);
+
+		assertTrue(f == 0);
 	}
-	
+
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("* 50.0 * 0.2 * 10.0 * 0.1 * 10.0 2.0");
-		
+		setUpCommands("and 50 and 50 and 50 and 50 and 50 and 50 - 50 50");
 		CommandParser parser = createCommand();
+
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 200);
+
+		assertTrue(f == 0);
 	}
-	
+
 	@Test
-	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
+	public void SyntaxErrorParseTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("* 50.0 * 0.2 *.. 10.0 * 0.1 * 10.0 2.0");
-		
+		setUpCommands("and 50 and 50 50..");
 		CommandParser parser = createCommand();
+
 		try {
 			double f = parser.parse(commands, objectQueue);
 		} catch (SLOGOException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "*.." + ". Incorrect syntax."));
+			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "50.." + ". Incorrect syntax."));
 		}
 	}
 }

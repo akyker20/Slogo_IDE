@@ -11,8 +11,8 @@ import drawableobject.DrawableObject;
 public class Equal extends TwoInputFloatCommandParser {
 	
 	@Override
-	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		return components.get(0) == components.get(1) ? 1 : 0;
+	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+		return components.get(0).equals(components.get(1)) ? 1 : 0;
 	}
 
 }

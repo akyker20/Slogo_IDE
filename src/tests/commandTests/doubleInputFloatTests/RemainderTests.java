@@ -14,7 +14,7 @@ public class RemainderTests extends CommandTester{
 
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("% 50 7");
 		
 		CommandParser parser = createCommand();
@@ -24,7 +24,7 @@ public class RemainderTests extends CommandTester{
 	
 	@Test
 	public void FloatParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("% 50.0 7.0");
 		
 		CommandParser parser = createCommand();
@@ -34,7 +34,7 @@ public class RemainderTests extends CommandTester{
 	
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("% 7 % 50 9");
 		
 		CommandParser parser = createCommand();
@@ -44,7 +44,7 @@ public class RemainderTests extends CommandTester{
 	
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("% 10 % 17 % 11 % 7 % 19 5");
 		
 		CommandParser parser = createCommand();
@@ -54,7 +54,7 @@ public class RemainderTests extends CommandTester{
 	
 	@Test
 	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("% 7 % 50abs 9");
 		
 		CommandParser parser = createCommand();

@@ -14,7 +14,7 @@ public class SumTests extends CommandTester{
 	
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("+ 50 50");
 		
 		CommandParser parser = createCommand();
@@ -24,7 +24,7 @@ public class SumTests extends CommandTester{
 	
 	@Test
 	public void FloatParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("+ 50.0 50.0");
 		
 		CommandParser parser = createCommand();
@@ -34,7 +34,7 @@ public class SumTests extends CommandTester{
 	
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("+ 50 + 50 50");
 		
 		CommandParser parser = createCommand();
@@ -44,7 +44,7 @@ public class SumTests extends CommandTester{
 	
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("+ 50 + 50 + 50 + 50 + 50 + 50 50");
 		
 		CommandParser parser = createCommand();
@@ -54,7 +54,7 @@ public class SumTests extends CommandTester{
 	
 	@Test
 	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("+ 50 + 5s0 + 50 + 50 + 50 + 50 50");
 		
 		CommandParser parser = createCommand();

@@ -14,7 +14,7 @@ public class PowerTests extends CommandTester {
 	
 	@Test
 	public void IntegerParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("pow 2 3");
 		
 		CommandParser parser = createCommand();
@@ -24,7 +24,7 @@ public class PowerTests extends CommandTester {
 
 	@Test
 	public void FloatParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("pow 2.0 4.0");
 		
 		CommandParser parser = createCommand();
@@ -34,7 +34,7 @@ public class PowerTests extends CommandTester {
 	
 	@Test
 	public void IntegerLongParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("pow 2.0 pow 2.0 3.0");
 		
 		CommandParser parser = createCommand();
@@ -44,7 +44,7 @@ public class PowerTests extends CommandTester {
 	
 	@Test
 	public void IntegerLongerParseTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("pow 1.0 pow 0.2 pow 10.0 pow 0.1 pow 2.0 2.0");
 		
 		CommandParser parser = createCommand();
@@ -54,7 +54,7 @@ public class PowerTests extends CommandTester {
 	
 	@Test
 	public void SyntaxErrorParseTest() throws RunTimeNullPointerException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("pow 50.0 pow 0.2 pow.. 10.0 pow 0.1 pow 10.0 2.0");
 		
 		CommandParser parser = createCommand();

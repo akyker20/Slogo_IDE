@@ -18,7 +18,7 @@ public class BackwardTests extends CommandTester{
 
 	@Test
 	public void IntegerParsingTest() throws SLOGOException {
-		clearQueue();
+		resetTesterVariables();
 		setUpCommands("bk 50");
 		
 		CommandParser parser = createCommand();
@@ -30,11 +30,13 @@ public class BackwardTests extends CommandTester{
 		assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));
 		assertTrue(turtle.getType().equals(TurtleFactory.TYPE));
 		assertTrue(turtle.getParameters().get(TurtleFactory.HEADING).equals("0.0"));
-		assertTrue(turtle.getParameters().get(TurtleFactory.LOCATION).equals("0.0 50.0"));
-		
+		assertTrue(turtle.getParameters().get(TurtleFactory.LOCATION).equals("0.0 -50.0"));
+
 		assertTrue(line.getParent().equals(LineFactory.PARENT));
 		assertTrue(line.getType().equals(LineFactory.TYPE));
 		assertTrue(line.getParameters().get(LineFactory.ORIGIN).equals("0.0 0.0"));
-		assertTrue(line.getParameters().get(LineFactory.DESTINATION).equals("0.0 50.0"));
+		assertTrue(line.getParameters().get(LineFactory.DESTINATION).equals("0.0 -50.0"));
+		
+		assertTrue(objectQueue.size()==0);
 	}
 }

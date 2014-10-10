@@ -40,8 +40,9 @@ public abstract class CommandTester {
 		commands = translator.translate(input);
 	}
 	
-	public void clearQueue(){
+	public void resetTesterVariables(){
 		objectQueue.clear();
+		setUpStateBeforeTesting();
 	}
 	
 	public CommandParser createCommand() throws RunTimeNullPointerException{
