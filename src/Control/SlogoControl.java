@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import commandParsing.CommandParser;
+import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -48,15 +49,29 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     }
 
     @Override
-    public Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+    public Queue<DrawableObject> parseCommandString (String command) throws IOException {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
         
 
         Iterator<String> translatedCommands = translator.translate(command);
 
         while(translatedCommands.hasNext()){
-            CommandParser parser = CommandParser.createParser(translatedCommands.next(), state);
-            parser.parse(translatedCommands, objectQueue);
+            CommandParser parser = new NullCommandParser();
+            try {
+                parser = CommandParser.createParser(translatedCommands.next(), state);
+            }
+            catch (CompileTimeParsingException e) {
+                objectQueue.clear();
+                objectQueue.add(e.generateErrorMessage());
+            }
+            try {
+                parser.parse(translatedCommands, objectQueue);
+            }
+            catch (CompileTimeParsingException | RunTimeDivideByZeroException
+                    | RunTimeNullPointerException e) {
+                objectQueue.clear();
+                objectQueue.add(e.generateErrorMessage());
+            }
         }
         System.out.println(objectQueue.size());
         drawDrawableObjects(objectQueue);

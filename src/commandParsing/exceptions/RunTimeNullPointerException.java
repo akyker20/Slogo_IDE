@@ -1,8 +1,8 @@
 package commandParsing.exceptions;
 
+import gui.factories.ErrorMessageFactory;
 import java.util.HashMap;
 import java.util.Map;
-
 import drawableobject.DrawableObject;
 
 public class RunTimeNullPointerException extends SLOGOException {
@@ -25,9 +25,9 @@ public class RunTimeNullPointerException extends SLOGOException {
 	public DrawableObject generateErrorMessage() {
 		
 		Map<String,String> parameters = new HashMap<String,String>();
-		parameters.put("message","Error: no such variable exists: " + this.getMessage() + ".");
+		parameters.put(ErrorMessageFactory.ERROR_MESSAGE,"Error: no such variable exists: " + this.getMessage() + ".");
 		
-		return new DrawableObject("parent", "ErrorMessage", parameters);
+		return new DrawableObject(ErrorMessageFactory.PARENT,ErrorMessageFactory.TYPE, parameters);
 	}
 
 }

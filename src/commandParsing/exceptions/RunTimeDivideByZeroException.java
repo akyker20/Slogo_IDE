@@ -1,8 +1,8 @@
 package commandParsing.exceptions;
 
+import gui.factories.ErrorMessageFactory;
 import java.util.HashMap;
 import java.util.Map;
-
 import drawableobject.DrawableObject;
 
 public class RunTimeDivideByZeroException extends SLOGOException {
@@ -29,9 +29,9 @@ public class RunTimeDivideByZeroException extends SLOGOException {
 	public DrawableObject generateErrorMessage() {
 		
 		Map<String,String> parameters = new HashMap<String,String>();
-		parameters.put("message","Error: divided by zero.");
+		parameters.put(ErrorMessageFactory.ERROR_MESSAGE,"Error: divided by zero.");
 		
-		return new DrawableObject("parent", "ErrorMessage", parameters);
+		return new DrawableObject(ErrorMessageFactory.PARENT,ErrorMessageFactory.TYPE, parameters);
 	}
 
 }

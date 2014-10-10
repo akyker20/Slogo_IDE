@@ -1,8 +1,9 @@
 package commandParsing.exceptions;
 
+import gui.factories.ErrorMessageFactory;
+import gui.factories.FactoryInitializer;
 import java.util.HashMap;
 import java.util.Map;
-
 import drawableobject.DrawableObject;
 
 public class CompileTimeParsingException extends SLOGOException {
@@ -28,9 +29,9 @@ public class CompileTimeParsingException extends SLOGOException {
 	public DrawableObject generateErrorMessage(){
 		
 		Map<String,String> parameters = new HashMap<String,String>();
-		parameters.put("message","Error parsing following string: " + this.getMessage()+ ". Incorrect syntax.");
+		parameters.put(ErrorMessageFactory.ERROR_MESSAGE,"Error parsing following string: " + this.getMessage()+ ". Incorrect syntax.");
 		
-		return new DrawableObject("parent", "ErrorMessage", parameters);
+		return new DrawableObject(ErrorMessageFactory.PARENT,ErrorMessageFactory.TYPE, parameters);
 	}
 	
 }
