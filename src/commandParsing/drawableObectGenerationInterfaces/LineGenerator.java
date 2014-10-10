@@ -16,8 +16,8 @@ import drawableobject.DrawableObject;
 public interface LineGenerator {
 	
 	default public DrawableObject generateDrawableObjectRepresntingLine(double distanceToMove, State state){
-		String parent = ComponentInitializer.GRID_DRAWER;
-		String type = FactoryInitializer.LINE_FACTORY;
+		String parent = LineFactory.PARENT;
+		String type = LineFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
 		
 		

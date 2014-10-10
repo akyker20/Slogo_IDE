@@ -13,11 +13,11 @@ import drawableobject.DrawableObject;
 public class Forward extends OneInputFloatCommandParser implements LineGenerator{
 
     @Override
-	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
-		double distanceToMove = expressionComponents.get(0);
+    protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
+        double distanceToMove = expressionComponents.get(0);
         objectQueue.add(generateDrawableObjectRepresntingLine(distanceToMove, state));
         state.moveForward(distanceToMove);
-		return distanceToMove;
-	}
+        return distanceToMove;
+    }
 
 }

@@ -1,6 +1,6 @@
 package state;
 
-import gui.factories.TurtleFactory;
+import gui.componentdrawers.GridDrawer;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -8,69 +8,58 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class Turtle {
+    
+    // degrees from north
+    private static final double DEFAULT_TURTLE_HEADING = 0.0;
+    private static final Color DEFAULT_TURTLE_PENCOLOR = Color.BLACK;
+    private static final boolean DEFAULT_TURTLE_PENDOWN_STATUS = false;
+    private static final Point2D DEFAULT_TURTLE_LOCATION = new Point2D(0,0);
 
-    private double heading;
-    private Color penColor;
-    private Point2D location;
-    private Node image;
-    private boolean penDown;
+    private double myHeading;
+    private Color myPenColor;
+    private Point2D myLocation;
+    private boolean myPenDownStatus;
 
     public Turtle () {
-        penColor = TurtleFactory.DEFAULT_TURTLE_PENCOLOR;
-        penDown = TurtleFactory.DEFAULT_TURTLE_PENDOWN_STATUS;
         // call setImage() before setLocation() and setHeading()
-        Image im =
-                new Image(getClass().getResourceAsStream(TurtleFactory.DEFAULT_TURTLE_IMAGEPATH),
-                          TurtleFactory.TURTLE_IMAGE_WIDTH, TurtleFactory.TURTLE_IMAGE_HEIGHT,
-                          false, true);
-        setImage(new ImageView(im));
 
-        setLocation(TurtleFactory.DEFAULT_TURTLE_LOCATION);
-        setHeading(TurtleFactory.DEFAULT_TURTLE_HEADING);
+        myLocation = DEFAULT_TURTLE_LOCATION;
+        myHeading = DEFAULT_TURTLE_HEADING;
+        myPenColor = DEFAULT_TURTLE_PENCOLOR;
+        myPenDownStatus = DEFAULT_TURTLE_PENDOWN_STATUS;
     }
 
-    // TODO I don't think we'll use most of of these getters & setters; remove later
     public double getHeading () {
-        return heading;
+        return myHeading;
     }
 
-    public void setHeading (double newHeading) {
-        heading = newHeading;
-        // TODO: might use binding to achieve this rotate and heading coupling later
-        image.setRotate(heading);
+    public void setHeading (double myHeading) {
+        this.myHeading = myHeading;
     }
 
     public Color getPenColor () {
-        return penColor;
+        return myPenColor;
     }
 
-    public void setPenColor (Color newColor) {
-        penColor = newColor;
+    public void setPenColor (Color myPenColor) {
+        this.myPenColor = myPenColor;
     }
 
     public Point2D getLocation () {
-        return location;
+        return myLocation;
     }
 
-    public void setLocation (Point2D newLocation) {
-        location = newLocation;
-        // TODO: might use binding to achieve this layout and location coupling later
-        //using offset to have placement relative to image center
-        image.setLayoutX(location.getX()-image.getBoundsInParent().getWidth()/2);
-        image.setLayoutY(location.getY()-image.getBoundsInParent().getHeight()/2);
+    public void setLocation (Point2D myLocation) {
+        this.myLocation = myLocation;
     }
 
-    public Node getImage () {
-        return image;
+    public boolean isPenDown() {
+        return myPenDownStatus;
     }
 
-    public void setImage (Node newImage) {
-        image = newImage;
+    public void setPenDownStatus (boolean myPenDownStatus) {
+        this.myPenDownStatus = myPenDownStatus;
     }
-    public boolean getPenDownStatus() {
-        return penDown;
-    }
-    public void setPenDownStatus(boolean newStatus) {
-        penDown = newStatus;
-    }
+
+   
 }
