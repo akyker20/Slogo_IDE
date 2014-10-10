@@ -15,8 +15,8 @@ public class Backward extends OneInputFloatCommandParser implements LineGenerato
 	@Override
 	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
 		double distanceToMove = expressionComponents.get(0);
-		state.moveBackward(distanceToMove);
         objectQueue.add(generateDrawableObjectRepresntingLine(-distanceToMove, state));
+		state.moveBackward(distanceToMove);
 		return -distanceToMove;
 	}
 }
