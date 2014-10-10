@@ -29,7 +29,7 @@ public class BackwardTests extends CommandTester{
 		
 		assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));
 		assertTrue(turtle.getType().equals(TurtleFactory.TYPE));
-		assertTrue(turtle.getParameters().get(TurtleFactory.HEADING).equals("0.0"));
+		assertTrue(turtle.getParameters().get(TurtleFactory.HEADING).equals("90.0"));
 		assertTrue(turtle.getParameters().get(TurtleFactory.LOCATION).equals("0.0 -50.0"));
 		
 		assertTrue(line.getParent().equals(LineFactory.PARENT));
