@@ -7,10 +7,6 @@
 	-fx-padding-top: 40px;
 }
 
-.buttonHolder {
-	-fx-background-color: blue;
-}
-
 .list-view {
 	-fx-padding: 5px;
 	-fx-right: 20px;
@@ -21,4 +17,10 @@
 
 .leftColumn, .rightColumn {
 	-fx-padding: 10px;
+}
+
+
+#table .table-cell {
+	-fx-alignment: CENTER;
+
 }

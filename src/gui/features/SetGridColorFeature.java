@@ -10,6 +10,7 @@ public class SetGridColorFeature extends ColorPicker {
     public SetGridColorFeature (GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer) {
         setOnAction(event -> changeColor(targetDrawer));
         parentDrawer.drawShape(this);
+        this.setLayoutY(20);
     }
 
     private void changeColor (GridDrawer targetDrawer) {

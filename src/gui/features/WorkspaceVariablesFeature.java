@@ -21,11 +21,11 @@ public class WorkspaceVariablesFeature extends TableView<Variable> {
         firstNameCol.prefWidthProperty().bind(this.widthProperty().divide(2));
         TableColumn<Variable,String> lastNameCol = new TableColumn<Variable,String>("Value");
         lastNameCol.setCellValueFactory(new PropertyValueFactory("myValue"));
-        lastNameCol.prefWidthProperty().bind(this.widthProperty().divide(2));
+        lastNameCol.prefWidthProperty().bind(this.widthProperty().divide(2).subtract(2));
         this.getColumns().setAll(firstNameCol, lastNameCol);
-        
+        this.setId("table");
         this.setLayoutY(20);
-        this.setPrefHeight(100);
+        this.setPrefHeight(168);
         parentDrawer.drawShape(this);
     }
 }

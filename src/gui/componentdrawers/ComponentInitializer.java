@@ -44,7 +44,7 @@ public class ComponentInitializer {
         pane.setLeft(leftVBox);
         
         VBox rightVBox = new VBox(10);
-        rightVBox.getStyleClass().add("rightColumn");
+        rightVBox.setPadding(new Insets(10, 10, 0, 0));
         rightVBox.getChildren().addAll((WorkspaceVariablesDrawer) drawerMap.get(WORKSPACE_VARIABLES), 
                                        (SavedCommandsDrawer) drawerMap.get(SAVED_COMMANDS),
                                        (ButtonHolderDrawer) drawerMap.get(BUTTON_HOLDER_DRAWER));

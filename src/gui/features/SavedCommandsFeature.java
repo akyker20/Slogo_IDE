@@ -11,7 +11,7 @@ public class SavedCommandsFeature extends ListView {
         ObservableList<String> items =FXCollections.observableArrayList (
                                                                          "fd 50", "fd 100", "+ 10 5", "* 5 3");
         this.setItems(items);
-        this.setPrefHeight(100);
+        this.setPrefHeight(168);
         this.setLayoutY(20);
         
         parentDrawer.drawShape(this);

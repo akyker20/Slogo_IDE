@@ -10,7 +10,7 @@ public class ToggleRelativeGridFeature extends Button {
 
     public ToggleRelativeGridFeature (GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer) {
         setText(GUIController.GUI_TEXT.getString("toggleGrid"));
-        setLayoutY(50);
+        setLayoutY(60);
         setOnAction(event -> targetDrawer.toggleGrid());
         parentDrawer.drawShape(this);
     }
