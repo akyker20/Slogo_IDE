@@ -1,5 +1,5 @@
 package commandParsing.drawableObectGenerationInterfaces;
 
-public class CommandGenerator {
+public class UserDefinedCommandGenerator {
 
 }
