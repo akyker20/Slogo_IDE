@@ -1,7 +1,5 @@
 package tests.commandTests;
 
-import gui.turtle.Turtle;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,7 +8,8 @@ import java.util.Queue;
 
 import org.junit.Before;
 
-import stateUpdate.State;
+import state.State;
+import state.Turtle;
 import translator.Translator;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.RunTimeNullPointerException;

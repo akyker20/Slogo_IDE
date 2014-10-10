@@ -15,14 +15,12 @@ import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import stateUpdate.Rotate;
-import stateUpdate.State;
-
+import state.Rotate;
+import state.State;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.turtleCommandParsing.Left;
 import commandParsing.turtleCommandParsing.TurtleCommand;
-
 import drawableobject.DrawableObject;
 
 

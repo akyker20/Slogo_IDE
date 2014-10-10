@@ -31,25 +31,6 @@ public class Main extends Application {
         q.add(turtle);
         control.drawDrawableObjects(q);
         
-        //do series of movements
-        GUIState.activeTurtle.setPenDownStatus(true);
-        GUIState.activeTurtle.setHeading(180);
-        control.drawDrawableObjects(TurtleMovementInterpreter.move(100));
-        
-        GUIState.activeTurtle.setPenDownStatus(false);
-        GUIState.activeTurtle.setHeading(270);
-        control.drawDrawableObjects(TurtleMovementInterpreter.move(100));
-        
-        GUIState.activeTurtle.setPenDownStatus(true);
-        GUIState.activeTurtle.setHeading(360);
-        control.drawDrawableObjects(TurtleMovementInterpreter.move(100));
-        
-        GUIState.activeTurtle.setHeading(90);
-        control.drawDrawableObjects(TurtleMovementInterpreter.move(50));
-        
-        GUIState.activeTurtle.setHeading(0);
-        control.drawDrawableObjects(TurtleMovementInterpreter.move(25));
-        
     }
 
 }

@@ -1,6 +1,4 @@
-package stateUpdate;
-
-import gui.turtle.Turtle;
+package state;
 
 import java.util.Map;
 
