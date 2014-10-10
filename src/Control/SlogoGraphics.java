@@ -33,4 +33,7 @@ public interface SlogoGraphics {
      */
 
     Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
+    
+    DrawableObject saveCommand(String command);
+
 }

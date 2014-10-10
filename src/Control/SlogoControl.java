@@ -1,13 +1,11 @@
 package Control;
 
 import gui.mainclasses.GUIController;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -71,6 +69,12 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     public void saveCommandsToFunction (String commands) {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public DrawableObject saveCommand (String command) {
+        System.out.println("Saving: " + command);
+        return null;
     }
 
 }

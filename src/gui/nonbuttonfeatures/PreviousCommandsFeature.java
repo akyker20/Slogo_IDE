@@ -1,4 +1,4 @@
-package gui.features;
+package gui.nonbuttonfeatures;
 
 import gui.componentdrawers.PreviousCommandsDrawer;
 import Control.SlogoGraphics;

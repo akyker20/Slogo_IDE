@@ -1,4 +1,4 @@
-package gui.features;
+package gui.nonbuttonfeatures;
 
 import gui.componentdrawers.SavedCommandsDrawer;
 import javafx.collections.FXCollections;

@@ -1,4 +1,4 @@
-package gui.features;
+package gui.nonbuttonfeatures;
 
 import java.io.IOException;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -33,6 +33,7 @@ public class CommandLineFeature extends TextField {
         });
         this.setPrefWidth(parentDrawer.getWidth());
         this.setLayoutY(20);
+        parentDrawer.setCommandLine(this);
         parentDrawer.drawShape(this);
         this.requestFocus();
     }

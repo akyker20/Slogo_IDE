@@ -1,7 +1,8 @@
-package gui.features;
+package gui.nonbuttonfeatures;
 
 import gui.componentdrawers.ButtonHolderDrawer;
 import gui.componentdrawers.GridDrawer;
+import javafx.geometry.Insets;
 import javafx.scene.control.ColorPicker;
 
 
@@ -10,7 +11,8 @@ public class SetGridColorFeature extends ColorPicker {
     public SetGridColorFeature (GridDrawer targetDrawer, ButtonHolderDrawer parentDrawer) {
         setOnAction(event -> changeColor(targetDrawer));
         parentDrawer.drawShape(this);
-        this.setLayoutY(20);
+        setPrefWidth(100);
+        setPrefHeight(40);
     }
 
     private void changeColor (GridDrawer targetDrawer) {

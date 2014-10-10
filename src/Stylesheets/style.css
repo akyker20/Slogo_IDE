@@ -24,3 +24,9 @@
 	-fx-alignment: CENTER;
 
 }
+
+
+#buttonHolder {
+	-fx-background-color: white; 
+	-fx-border-color: LightGray
+}

@@ -1,4 +1,4 @@
-package gui.features;
+package gui.nonbuttonfeatures;
 import gui.componentdrawers.GridDrawer;
 import javafx.scene.layout.Pane;
 /**

@@ -1,4 +1,4 @@
-package gui.features;
+package gui.nonbuttonfeatures;
 
 public class Variable {
     
