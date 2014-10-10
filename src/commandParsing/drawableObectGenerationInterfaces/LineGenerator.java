@@ -13,18 +13,16 @@ import drawableobject.DrawableObject;
 
 public interface LineGenerator {
 	
-	default public DrawableObject generateDrawableObjectRepresntingLine(double distanceToMove, State state){
+	default public DrawableObject generateDrawableObjectRepresntingLine(State initialState, State endingState){
 		String parent = LineFactory.PARENT;
 		String type = LineFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
 		
-		
-		
-		parameters.put(LineFactory.ORIGIN, calculateOrigin(state)
+		parameters.put(LineFactory.ORIGIN, initialState.calculateLocation()
 				                                     .stream()
 				                                     .map(p -> p.toString())
 				                                     .collect(Collectors.joining(" ")));
-		parameters.put(LineFactory.DESTINATION, calculateDestination(distanceToMove,state)
+		parameters.put(LineFactory.DESTINATION, endingState.calculateLocation()
 				                                     .stream()
 				                                     .map(p -> p.toString())
 				                                     .collect(Collectors.joining(" ")));
@@ -32,27 +30,5 @@ public interface LineGenerator {
 		return new DrawableObject(parent, type, parameters);
 	}
 	
-	default public List<Double> calculateOrigin(State state){
-		@SuppressWarnings("serial")
-		List<Double> origin = new ArrayList<Double>(){{
-			add(state.getTurtleXLocation());
-			add(state.getTurtleYLocation());
-		}};
-		
-		return origin; 
-	}
-	
-	default public List<Double> calculateDestination(double distanceToMove, State state) {
-		double heading = state.getHeading();
-		List<Double> origin = calculateOrigin(state);
-		double xDisplacement = distanceToMove*Math.cos(heading/(180/Math.PI));
-		double yDisplacement = distanceToMove*Math.sin(heading/(180/Math.PI));
-		@SuppressWarnings("serial")
-		List<Double> destination = new ArrayList<Double>(){{
-			add(origin.get(0) + xDisplacement);
-			add(origin.get(1) + yDisplacement);
-		}};
-		
-		return destination;
-	}
+
 }

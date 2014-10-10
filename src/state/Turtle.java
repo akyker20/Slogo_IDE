@@ -1,15 +1,14 @@
 package state;
 
-import gui.componentdrawers.GridDrawer;
+import java.io.Serializable;
+
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class Turtle {
+public class Turtle implements Serializable {
     
-    // degrees from north
+	private static final long serialVersionUID = 483416034032716037L;
+	// degrees from north
     private static final double DEFAULT_TURTLE_HEADING = 0.0;
     private static final Color DEFAULT_TURTLE_PENCOLOR = Color.BLACK;
     private static final boolean DEFAULT_TURTLE_PENDOWN_STATUS = false;
@@ -30,7 +29,7 @@ public class Turtle {
     }
 
     public double getHeading () {
-        return myHeading;
+        return 90-myHeading;
     }
 
     public void setHeading (double myHeading) {

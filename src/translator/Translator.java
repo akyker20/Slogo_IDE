@@ -45,7 +45,6 @@ public class Translator {
 				translatedString.add(s);
 			}
 		}
-		System.out.println(translatedString);
 		return translatedString.iterator();
 	}
 
