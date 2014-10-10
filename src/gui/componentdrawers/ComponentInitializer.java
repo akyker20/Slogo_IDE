@@ -22,6 +22,7 @@ public class ComponentInitializer {
     public static final String PREVIOUS_COMMANDS = "previousCommandsDrawer";
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
     public static final String SAVED_COMMANDS = "savedCommands";
+    public static final String ERROR_POPUP = "errorPopup";
 
     public static Map<String, ComponentDrawer> init (BorderPane pane) {
         
