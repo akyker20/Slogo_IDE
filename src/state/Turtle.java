@@ -25,7 +25,7 @@ public class Turtle implements Serializable {
     }
 
     public double getHeading () {
-        return 90-myHeading;
+        return myHeading;
     }
 
     public void setHeading (double myHeading) {
