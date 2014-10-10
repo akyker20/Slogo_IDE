@@ -17,27 +17,12 @@ public interface TurtleGenerator {
 		String type = TurtleFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
 		
-		parameters.put(TurtleFactory.HEADING, String.valueOf(calculateHeading(state)));
-		parameters.put(TurtleFactory.LOCATION, calculateLocation(state)
+		parameters.put(TurtleFactory.HEADING, String.valueOf(state.getHeading()));
+		parameters.put(TurtleFactory.LOCATION, state.calculateLocation()
 				                                     .stream()
 				                                     .map(p -> p.toString())
 				                                     .collect(Collectors.joining(" ")));
 		
 		return new DrawableObject(parent, type, parameters);
 	}
-
-	default public double calculateHeading(State state){
-		return state.getHeading();
-	}
-
-	default public List<Double> calculateLocation(State state){
-		@SuppressWarnings("serial")
-		List<Double> origin = new ArrayList<Double>(){{
-			add(state.getTurtleXLocation());
-			add(state.getTurtleYLocation());
-		}};
-		
-		return origin; 
-	}
-	
 }
