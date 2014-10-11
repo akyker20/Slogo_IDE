@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 
 public interface LineGenerator {
 	
-	default public DrawableObject generateDrawableObjectRepresntingLine(State initialState, State endingState){
+	default public DrawableObject generateDrawableObjectRepresentingLine(State initialState, State endingState){
 		String parent = LineFactory.PARENT;
 		String type = LineFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();

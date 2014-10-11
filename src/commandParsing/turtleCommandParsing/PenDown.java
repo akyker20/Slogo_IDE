@@ -17,7 +17,7 @@ public class PenDown extends CommandParser {
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
 		state.togglePenDown();
-		return 0;
+		return 1;
 	}
 
 }

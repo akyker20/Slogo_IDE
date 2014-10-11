@@ -27,7 +27,7 @@ public abstract class MoveToLocation extends TwoInputFloatCommandParser implemen
 		state.moveToLocation(destination);
 		state.rotate(getDestinationHeading(state));
 		if(state.isPenDown()){
-            objectQueue.add(generateDrawableObjectRepresntingLine(initialState, state));
+            objectQueue.add(generateDrawableObjectRepresentingLine(initialState, state));
         }
         objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
         return distanceBetweenPoints(turtleLocation,destination);

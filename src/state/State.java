@@ -25,7 +25,7 @@ public class State implements Serializable {
         translator = someTranslator;
     }
     
-    public void setOpacity(double opacity){
+    private void setOpacity(double opacity){
     	turtle.setOpacity(opacity);
     }
     
@@ -47,10 +47,12 @@ public class State implements Serializable {
     
     public void showTurtle(){
     	turtleShowing = true;
+    	setOpacity(100);
     }
     
     public void hideTurtle(){
     	turtleShowing = false;
+    	setOpacity(0);
     }
     
     public boolean isTurtleShowing(){
@@ -130,6 +132,6 @@ public class State implements Serializable {
 	}
 
 	public void moveToLocation(Location loc) {
-		turtle.getLocation().add(loc.getX(),loc.getY());
+		turtle.setLocation(loc);
 	}
 }

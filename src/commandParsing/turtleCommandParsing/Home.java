@@ -6,6 +6,11 @@ import state.Location;
 import state.State;
 
 public class Home extends MoveToLocation {
+	
+	@Override
+	protected int getNumberOfArguments() {
+		return 0;
+	}
 
 	@Override
 	protected Location getDestinationLocation(List<Double> components) {
