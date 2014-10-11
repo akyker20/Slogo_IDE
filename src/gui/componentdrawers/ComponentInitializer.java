@@ -1,13 +1,9 @@
 package gui.componentdrawers;
 
+import gui.menus.MainMenuInitializer;
 import java.util.HashMap;
 import java.util.Map;
-import gui.menus.HelpMenu;
-import gui.menus.MainMenuInitializer;
 import javafx.geometry.Insets;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
