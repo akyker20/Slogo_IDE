@@ -1,7 +1,5 @@
 package gui.mainclasses;
 
-import java.util.Map;
-import javafx.collections.ObservableList;
 import gui.buttonfeatures.SaveCommandButtonFeature;
 import gui.buttonfeatures.ToggleGridButtonFeature;
 import gui.componentdrawers.ButtonHolderDrawer;
@@ -13,11 +11,11 @@ import gui.componentdrawers.PreviousCommandsDrawer;
 import gui.componentdrawers.SavedCommandsDrawer;
 import gui.componentdrawers.WorkspaceVariablesDrawer;
 import gui.nonbuttonfeatures.CommandLineFeature;
-import gui.nonbuttonfeatures.GridFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetGridColorFeature;
 import gui.nonbuttonfeatures.WorkspaceVariablesFeature;
+import java.util.Map;
 import Control.SlogoGraphics;
 
 
@@ -43,6 +41,6 @@ public class FeatureInitializer {
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
         new WorkspaceVariablesFeature(workspaceVariables);
         new SavedCommandsFeature(savedCommands, control);
-        new GridFeature(gridDrawer);
+        
     }
 }
