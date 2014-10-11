@@ -16,7 +16,6 @@ public class IfElse extends StructuralCommandOnBooleanSwitch {
 
 		accumulateComponents(commandString,1,objectQueue);
 		evaluateBooleanExpression();
-		checkForOpeningBrace(commandString);
 		
 		if(booleanSwitch){
 			extractCommandsBetweenBraces(commandString);

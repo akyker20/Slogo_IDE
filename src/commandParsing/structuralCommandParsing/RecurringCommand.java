@@ -21,7 +21,6 @@ public abstract class RecurringCommand extends StructuralCommand {
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
 		initializeLoopVariableParameters(commandString, objectQueue);
-		checkForOpeningBrace(commandString);
 		extractCommandsBetweenBraces(commandString);
 		
 		while(loopVariableIsIncrementable()){

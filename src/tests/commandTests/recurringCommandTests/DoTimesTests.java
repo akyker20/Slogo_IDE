@@ -14,14 +14,13 @@ import tests.commandTests.CommandTester;
 
 public class DoTimesTests extends CommandTester {
 	@Test
-	public void RepeatTest() throws SLOGOException {
+	public void DoTimesTest() throws SLOGOException {
 		resetTesterVariables();
 		setUpCommands("dotimes [ :somevar 10 ] [ fd 50 ]");
 		
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 50);
-		System.out.println(objectQueue.size());
 		
 		for(int i=1;i<11;i++){
 			DrawableObject line = objectQueue.poll();
