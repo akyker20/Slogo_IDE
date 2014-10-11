@@ -1,4 +1,4 @@
-package commandParsing.turtleQueries;
+package commandParsing.turtleCommandParsing;
 
 import java.util.Iterator;
 import java.util.Queue;
@@ -9,14 +9,15 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
-public class IsPenDown extends CommandParser {
+public class ClearScreen extends CommandParser {
 
 	@Override
 	public double parse(Iterator<String> commandString,
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.isPenDown() ? 1 : 0;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

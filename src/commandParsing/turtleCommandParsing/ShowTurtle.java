@@ -1,4 +1,4 @@
-package commandParsing.turtleQueries;
+package commandParsing.turtleCommandParsing;
 
 import java.util.Iterator;
 import java.util.Queue;
@@ -9,14 +9,15 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
-public class YCoordinate extends CommandParser {
+public class ShowTurtle extends CommandParser {
 
 	@Override
 	public double parse(Iterator<String> commandString,
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.getTurtleYLocation();
+		state.setOpacity(100);
+		return 1;
 	}
 
 }
