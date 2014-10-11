@@ -22,7 +22,7 @@ public class ComponentInitializer {
     public static final String PREVIOUS_COMMANDS = "previousCommandsDrawer";
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
     public static final String SAVED_COMMANDS = "savedCommands";
-    public static final String ERROR_POPUP = "errorPopup";
+    public static final String STAGE_DRAWER = "stageDrawer";
 
     public static Map<String, ComponentDrawer> init (BorderPane pane) {
         
@@ -34,6 +34,7 @@ public class ComponentInitializer {
         drawerMap.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
         drawerMap.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
         drawerMap.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
+        drawerMap.put(STAGE_DRAWER,new StageDrawer(STAGE_DRAWER));
                  
         pane.setTop(MainMenuInitializer.init());
         
