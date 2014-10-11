@@ -51,6 +51,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         myGUI = new GUIController(stage, this, variableMap);
         translator = new Translator("english");
         state = new State(new Turtle(),variableMap, translator);
+        parseCommandString("home");
     }
 
     @Override

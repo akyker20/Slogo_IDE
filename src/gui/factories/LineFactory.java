@@ -2,7 +2,9 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.GridDrawer;
+
 import java.util.Map;
+
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
 
@@ -24,10 +26,23 @@ public class LineFactory extends ObjectFactory {
 
         Line line = new Line();
         double[] origin = parseStringToPoints(params.get(ORIGIN));
-        double[] destination = GridEdgeRules.applyRules(origin,parseStringToPoints(params.get(DESTINATION)));  
+        double[] destination = parseStringToPoints(params.get(DESTINATION));  
 
         line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
         line.setStartY(GridDrawer.GRID_HEIGHT/2 - origin[1]);
+        
+        System.out.println(origin[1] + " origin1 pre-everything");
+		System.out.println(destination[1] + " destination1 pre-everything");
+		System.out.println(origin[0] + " origin0 pre-everything");
+		System.out.println(destination[0] + " destination0 pre-everything");
+
+        destination = GridEdgeRules.applyRules(origin, destination);
+        
+        System.out.println(origin[1] + " origin1 pre-everything");
+		System.out.println(destination[1] + " destination1 pre-everything");
+		System.out.println(origin[0] + " origin0 pre-everything");
+		System.out.println(destination[0] + " destination0 pre-everything");
+        
         line.setEndX(destination[0] + GridDrawer.GRID_WIDTH/2);
         line.setEndY(GridDrawer.GRID_HEIGHT/2 - destination[1]);
 
