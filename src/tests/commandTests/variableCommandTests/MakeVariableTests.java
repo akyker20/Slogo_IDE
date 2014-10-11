@@ -1,12 +1,13 @@
 package tests.commandTests.variableCommandTests;
 
 import static org.junit.Assert.assertTrue;
+import gui.factories.RefreshVariablesViewFactory;
 
 import org.junit.Test;
 
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
-
+import drawableobject.DrawableObject;
 import tests.commandTests.CommandTester;
 
 public class MakeVariableTests extends CommandTester {
@@ -18,6 +19,11 @@ public class MakeVariableTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 20);		
+		DrawableObject refreshVariables = objectQueue.poll();
+		
+		assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
+		assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+		assertTrue(refreshVariables.getParameters().size()==0);
 		assertTrue(objectQueue.size()==0);
 		assertTrue(state.fetchVariable(":var") == 20);
 	}
@@ -30,6 +36,11 @@ public class MakeVariableTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 40);		
+		DrawableObject refreshVariables = objectQueue.poll();
+		
+		assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
+		assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+		assertTrue(refreshVariables.getParameters().size()==0);
 		assertTrue(objectQueue.size()==0);
 		assertTrue(state.fetchVariable(":var") == 40);		
 	}
@@ -47,6 +58,13 @@ public class MakeVariableTests extends CommandTester {
 			f = parser.parse(commands, objectQueue);
 		}
 		assertTrue(f == 40);		
+		for(int i=0;i<4;i++){
+			DrawableObject refreshVariables = objectQueue.poll();
+			
+			assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
+			assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+			assertTrue(refreshVariables.getParameters().size()==0);
+		}
 		assertTrue(objectQueue.size()==0);
 		assertTrue(state.fetchVariable(":var") == 25);		
 		assertTrue(state.fetchVariable(":varb") == 25);	

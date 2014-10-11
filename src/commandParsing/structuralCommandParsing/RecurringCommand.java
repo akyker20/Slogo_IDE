@@ -22,14 +22,13 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
 		initializeLoopVariableParameters(commandString, objectQueue);
-		objectQueue.add(generateDrawableObjectRepresentingVariable());
 		extractCommandsBetweenBraces(commandString);
 		
 		while(loopVariableIsIncrementable()){
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
 			incrementLoopVariable();
-			objectQueue.add(generateDrawableObjectRepresentingVariable());
 		}
+		objectQueue.add(generateDrawableObjectRepresentingVariable());
 		return returnValue;
 	}
 	
