@@ -2,8 +2,10 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.GridDrawer;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,6 +35,7 @@ public class TurtleFactory extends ObjectFactory {
     public TurtleFactory (String name) {
         super(name);
         myTurtleViews = new HashMap<String,Node>();
+        System.out.println(myTurtleViews);
 
     }
 
@@ -61,14 +64,32 @@ public class TurtleFactory extends ObjectFactory {
     }
 
     private Node updateTurtleImage(Map<String, String> params) {
+
         Node currentImageView = myTurtleViews.get(params.get(TURTLE_IMAGE_ID));
 
         
-        double[] origin = new double[]{currentImageView.getLayoutX(),currentImageView.getLayoutY()};
-        double[] newLocation = GridEdgeRules.applyRules(origin,parseStringToPoints(params.get(LOCATION)));
+        double[] origin = new double[]{currentImageView.getLayoutX() - GridDrawer.GRID_WIDTH/2 + TURTLE_IMAGE_WIDTH/2,
+        		currentImageView.getLayoutY() - GridDrawer.GRID_HEIGHT/2 + TURTLE_IMAGE_HEIGHT/2};
+        double[] newLocation = parseStringToPoints(params.get(LOCATION));
+
+        System.out.println(origin[0] + " , " + origin[1] + "origin turtle");
+        System.out.println(newLocation[0] + " , " + newLocation[1] + "newlocation turtle");
+        newLocation = GridEdgeRules.applyRules(origin,newLocation);
+        System.out.println(newLocation[0] + " , " + newLocation[1] + "newlocation turtle after rules");
         
         currentImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
         currentImageView.setLayoutY(- newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
+        
+        System.out.println(origin[0] + " , " + origin[1] + "origin after setting layout");
+        System.out.println(newLocation[0] + " , " + newLocation[1] + "newlocation after setting layout");
+        System.out.println(newLocation[0] + " , " + newLocation[1] + "newlocation turtle after setting layout");
+        
+//double[] newLocation = GridEdgeRules.applyRules(origin,destination);
+//        
+//        line.setEndX(newLocation[0] + GridDrawer.GRID_WIDTH/2);
+//        line.setEndY(GridDrawer.GRID_HEIGHT/2 - newLocation[1]);
+        
+        
         currentImageView.setRotate(Double.parseDouble(params.get(HEADING)));
         currentImageView.setOpacity(Double.parseDouble(params.get(OPACITY)));  
         return new NullNode();
