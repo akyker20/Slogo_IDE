@@ -16,6 +16,7 @@ public class TurtleFactory extends ObjectFactory {
     public static final String HEADING = "heading";
     public static final String LOCATION = "location";
     public static final String OPACITY = "opacity";
+    public static final String TURTLE_IMAGE_ID = "turtleImageID";
 
     private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image.png";
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.05;
@@ -25,7 +26,7 @@ public class TurtleFactory extends ObjectFactory {
     private static final double TURTLE_IMAGE_HEIGHT = GridDrawer.GRID_HEIGHT *
             TURTLE_IMAGE_HEIGHT_RATIO;
 
-    private static final String TURTLE_IMAGE_ID = "turtleImageID";
+    
     
     private Map<String,Node> myTurtleViews;
 
@@ -39,29 +40,32 @@ public class TurtleFactory extends ObjectFactory {
     public Node generateObject (Map<String, String> params) {
         String turtleID = params.get(TURTLE_IMAGE_ID);
         if (myTurtleViews.containsKey(turtleID)) {
-            updateTurtleImage(params);
+            return updateTurtleImage(params);
         } else {
-            createTurtleImage(params);
+            return createTurtleImage(params);
         }
-        return new NullNode();
+       
     }
 
-    private void createTurtleImage(Map<String, String> params) {      
+    private Node createTurtleImage(Map<String, String> params) {      
         Image image =
                 new Image(getClass().getResourceAsStream(DEFAULT_TURTLE_IMAGEPATH),
                           TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
                           false, true);
-        myTurtleViews.put(params.get(TURTLE_IMAGE_ID), new ImageView(image));
+        ImageView imageView = new ImageView(image);
+        myTurtleViews.put(params.get(TURTLE_IMAGE_ID), imageView);
         updateTurtleImage(params);
+        return imageView;
     }
 
-    private void updateTurtleImage(Map<String, String> params) {
+    private Node updateTurtleImage(Map<String, String> params) {
         Node currentImageView = myTurtleViews.get(params.get(TURTLE_IMAGE_ID));
         double[] newLocation = parseStringToPoints(params.get(LOCATION));
         currentImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
         currentImageView.setLayoutY(- newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
         currentImageView.setRotate(Double.parseDouble(params.get(HEADING)));
-        currentImageView.setOpacity(Double.parseDouble(params.get(OPACITY)));      
+        currentImageView.setOpacity(Double.parseDouble(params.get(OPACITY)));  
+        return new NullNode();
     }
 
 
