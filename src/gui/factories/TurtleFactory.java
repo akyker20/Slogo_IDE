@@ -62,7 +62,11 @@ public class TurtleFactory extends ObjectFactory {
 
     private Node updateTurtleImage(Map<String, String> params) {
         Node currentImageView = myTurtleViews.get(params.get(TURTLE_IMAGE_ID));
-        double[] newLocation = parseStringToPoints(params.get(LOCATION));
+
+        
+        double[] origin = new double[]{currentImageView.getLayoutX(),currentImageView.getLayoutY()};
+        double[] newLocation = GridEdgeRules.applyRules(origin,parseStringToPoints(params.get(LOCATION)));
+        
         currentImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
         currentImageView.setLayoutY(- newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
         currentImageView.setRotate(Double.parseDouble(params.get(HEADING)));

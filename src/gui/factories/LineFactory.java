@@ -24,7 +24,7 @@ public class LineFactory extends ObjectFactory {
 
         Line line = new Line();
         double[] origin = parseStringToPoints(params.get(ORIGIN));
-        double[] destination = parseStringToPoints(params.get(DESTINATION));
+        double[] destination = GridEdgeRules.applyRules(origin,parseStringToPoints(params.get(DESTINATION)));  
 
         line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
         line.setStartY(GridDrawer.GRID_HEIGHT/2 - origin[1]);

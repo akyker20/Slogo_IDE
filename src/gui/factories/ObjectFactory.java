@@ -41,16 +41,4 @@ public abstract class ObjectFactory {
 	public String toString() {
 		return myName;
 	}
-
-	public double[] outOfBoundsStopper(double[] destination) {
-		if (destination[0] + GridDrawer.GRID_WIDTH / 2 < 0
-				|| destination[0] + GridDrawer.GRID_WIDTH / 2 > GridDrawer.GRID_WIDTH) {
-			destination[0] = GridDrawer.GRID_WIDTH;
-		}
-		if (destination[1] + GridDrawer.GRID_HEIGHT / 2 < 0
-				|| destination[0] + GridDrawer.GRID_HEIGHT / 2 > GridDrawer.GRID_HEIGHT) {
-			destination[1] = GridDrawer.GRID_HEIGHT;
-		}
-		return destination;
-	}
 }
