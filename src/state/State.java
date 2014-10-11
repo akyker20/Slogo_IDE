@@ -16,6 +16,7 @@ public class State implements Serializable {
 	private Translator translator;
 	private Turtle turtle; 
 	private boolean penState = true;
+	private boolean turtleShowing = true;
     private Map<String, Double> variableMap;
 
     public State (Turtle someTurtle, Map<String,Double> variables, Translator someTranslator) {
@@ -36,6 +37,18 @@ public class State implements Serializable {
     	return penState;
     }
     
+    public void showTurtle(){
+    	turtleShowing = true;
+    }
+    
+    public void hideTurtle(){
+    	turtleShowing = false;
+    }
+    
+    public boolean isTurtleShowing(){
+    	return turtleShowing;
+    }
+    
     public void storeVariable(String name, double value){
     	variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - variableMap.getOrDefault(name, (double) 0) + value);
     }
@@ -51,11 +64,11 @@ public class State implements Serializable {
     	return turtle.getHeading();
     }
     
-    private double getTurtleXLocation(){
+    public double getTurtleXLocation(){
     	return turtle.getLocation().getX();
     }
     
-    private double getTurtleYLocation(){
+    public double getTurtleYLocation(){
     	return turtle.getLocation().getY();
     }
     
