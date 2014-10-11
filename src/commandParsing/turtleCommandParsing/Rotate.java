@@ -15,7 +15,7 @@ public abstract class Rotate extends OneInputFloatCommandParser implements Turtl
    	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
    		double rotation = expressionComponents.get(0); 
 		state.rotate(amountToRotate(rotation));
-        objectQueue.add(generateDrawableObjectRepresntingTurtle(state));
+        objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
    		return rotation;
    	}
 	

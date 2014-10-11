@@ -30,7 +30,7 @@ public class Home extends CommandParser implements LineGenerator, TurtleGenerato
 		if(state.isPenDown()){
             objectQueue.add(generateDrawableObjectRepresntingLine(initialState, state));
         }
-        objectQueue.add(generateDrawableObjectRepresntingTurtle(state));
+        objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
         return distance;
 	}
 

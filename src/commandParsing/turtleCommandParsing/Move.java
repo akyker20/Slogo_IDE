@@ -23,7 +23,7 @@ public abstract class Move extends OneInputFloatCommandParser implements LineGen
         if(state.isPenDown()){
             objectQueue.add(generateDrawableObjectRepresntingLine(initialState, state));
         }
-        objectQueue.add(generateDrawableObjectRepresntingTurtle(state));
+        objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
         return distance;
     }
 	
