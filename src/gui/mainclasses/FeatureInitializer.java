@@ -14,7 +14,7 @@ import gui.nonbuttonfeatures.CommandLineFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetGridColorFeature;
-import gui.variableslist.WorkspaceVariablesList;
+import gui.variableslist.WorkspaceVariablesFeature;
 import java.util.Map;
 import Control.SlogoGraphics;
 
@@ -29,9 +29,9 @@ public class FeatureInitializer {
                 (CommandLineDrawer) drawerMap.get(ComponentInitializer.COMMAND_LINE_DRAWER);
         PreviousCommandsDrawer previousCommands = 
                 (PreviousCommandsDrawer) drawerMap.get(ComponentInitializer.PREVIOUS_COMMANDS);
-        SavedCommandsDrawer savedCommands = 
+        SavedCommandsDrawer savedCommandsDrawer = 
                 (SavedCommandsDrawer) drawerMap.get(ComponentInitializer.SAVED_COMMANDS);
-        WorkspaceVariablesDrawer workspaceVariables = 
+        WorkspaceVariablesDrawer workspaceVariablesDrawer = 
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
         
         new SetGridColorFeature(gridDrawer, buttonHolder);
@@ -39,8 +39,8 @@ public class FeatureInitializer {
         new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
         new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
-        new WorkspaceVariablesList(workspaceVariables);
-        new SavedCommandsFeature(savedCommands, control);
+        new WorkspaceVariablesFeature(workspaceVariablesDrawer);
+        new SavedCommandsFeature(savedCommandsDrawer, control);
         
     }
 }
