@@ -17,7 +17,7 @@ public class FactoryInitializer {
                                     new LineFactory(LINE_FACTORY),
                                     new TurtleFactory(TURTLE_FACTORY),
                                     new ErrorPopupFactory(ERROR_POPUP_FACTORY),
-                                    new ClearGridFactory(CLEAR_GRID_FACTORY)
+                                    new EmptyPaneFactory(CLEAR_GRID_FACTORY)
         };
     }
 

@@ -2,12 +2,17 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.GridDrawer;
+
 import java.util.Map;
+
 import javafx.scene.Node;
 
-public class ClearGridFactory extends ObjectFactory {
+public class EmptyPaneFactory extends ObjectFactory {
+	
+	public static final String PARENT = ComponentInitializer.STAGE_DRAWER;
+	public static final String TYPE = FactoryInitializer.CLEAR_GRID_FACTORY;
 
-    public ClearGridFactory (String name) {
+    public EmptyPaneFactory (String name) {
         super(name);
     }
 
