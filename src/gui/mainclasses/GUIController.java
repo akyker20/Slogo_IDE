@@ -58,6 +58,7 @@ public class GUIController {
                 Map<String, String> initialTurtleParams = new HashMap<String, String>();
                 initialTurtleParams.put(TurtleFactory.HEADING, "0.0");
                 initialTurtleParams.put(TurtleFactory.LOCATION, "0.0 0.0");
+                initialTurtleParams.put(TurtleFactory.OPACITY, "100");
                 myComponentDrawers.get(TurtleFactory.PARENT)
                 .drawShape(myObjectFactories[i].generateObject(initialTurtleParams));
             }
