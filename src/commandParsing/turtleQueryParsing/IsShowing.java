@@ -1,4 +1,4 @@
-package commandParsing.turtleQueries;
+package commandParsing.turtleQueryParsing;
 
 import java.util.Iterator;
 import java.util.Queue;

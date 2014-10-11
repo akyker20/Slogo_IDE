@@ -25,6 +25,14 @@ public class State implements Serializable {
         translator = someTranslator;
     }
     
+    public void setOpacity(double opacity){
+    	turtle.setOpacity(opacity);
+    }
+    
+    public double getOpacity(){
+    	return turtle.getOpacity();
+    }
+    
     public void togglePenDown(){
     	penState = true;
     }
@@ -87,6 +95,10 @@ public class State implements Serializable {
 		double xDisplacement = roundToHundredths(amount*Math.cos(heading/(180/Math.PI)));
 		double yDisplacement = roundToHundredths(amount*Math.sin(heading/(180/Math.PI)));
 		turtle.getLocation().add(xDisplacement, yDisplacement);
+    }
+    
+    public void move(double xMovement, double yMovement){
+    	turtle.getLocation().add(xMovement,yMovement);
     }
 	
 	private double roundToHundredths(double number){

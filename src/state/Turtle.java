@@ -15,12 +15,21 @@ public class Turtle implements Serializable {
     private Color myPenColor;
     private Location myLocation;
     private boolean myPenDownStatus;
+    private double myOpacity = 100;
 
     public Turtle () {
         // call setImage() before setLocation() and setHeading()
 
         myLocation = new Location(0,0);
         myHeading = DEFAULT_TURTLE_HEADING;
+    }
+    
+    public void setOpacity(double opacity){
+    	myOpacity = opacity;
+    }
+    
+    public double getOpacity(){
+    	return myOpacity;
     }
 
     public double getHeading () {
