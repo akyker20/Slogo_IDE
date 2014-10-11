@@ -18,7 +18,7 @@ public class ShowTurtle extends CommandParser implements TurtleGenerator {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		state.setOpacity(100);
+		state.showTurtle();
 		objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
 		return 1;
 	}

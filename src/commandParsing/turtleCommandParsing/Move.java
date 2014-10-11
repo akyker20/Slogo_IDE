@@ -21,7 +21,7 @@ public abstract class Move extends OneInputFloatCommandParser implements LineGen
 		State initialState = (State) DeepCopy.deepCopy(state);
 		state.move(distanceToMove(distance));
         if(state.isPenDown()){
-            objectQueue.add(generateDrawableObjectRepresntingLine(initialState, state));
+            objectQueue.add(generateDrawableObjectRepresentingLine(initialState, state));
         }
         objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
         return distance;

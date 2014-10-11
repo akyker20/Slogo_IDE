@@ -48,5 +48,10 @@ public class DrawableObject {
     public Map<String, String> getParameters () {
         return parameters;
     }
+    
+    @Override
+    public String toString(){
+    	return "Parent: " + parent + ", Type: " + type + ", Parameters: " + parameters.toString();
+    }
 
 }

@@ -18,7 +18,7 @@ public class HideTurtle extends CommandParser implements TurtleGenerator {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		state.setOpacity(0);
+		state.hideTurtle();
 		objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
 		return 0;
 	}

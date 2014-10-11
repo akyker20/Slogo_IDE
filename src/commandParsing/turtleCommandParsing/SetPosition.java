@@ -1,20 +1,19 @@
 package commandParsing.turtleCommandParsing;
 
 import java.util.List;
-import java.util.Queue;
 
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
-import drawableobject.DrawableObject;
+import state.Location;
+import state.State;
 
-public class SetPosition extends TwoInputFloatCommandParser {
-
+public class SetPosition extends MoveToLocation {
+	
 	@Override
-	protected double operateOnComponents(List<Double> components,
-			Queue<DrawableObject> objectQueue)
-			throws RunTimeDivideByZeroException {
-		// TODO Auto-generated method stub
-		return 0;
+	protected Location getDestinationLocation(List<Double> components) {
+		return new Location(components.get(0),components.get(1));
 	}
 
+	@Override
+	protected double getDestinationHeading(State state) {
+		return 0;
+	}
 }

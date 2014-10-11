@@ -27,7 +27,7 @@ public class SetTowards extends TwoInputFloatCommandParser implements TurtleGene
 		Location pointLocation = new Location(components.get(0),components.get(1));
 		double[] turtleHeadingVector = vectorFromAngle(heading);
 		double[] turtleToPointVector = vectorFromTwoPoints(turtleLocation,pointLocation);
-		
+			
 		double angleFromTurtleVectorToNorth = angleToNorth(turtleHeadingVector);
 		double angleFromPointVectorToNorth =  angleToNorth(turtleToPointVector);
 		double angleFromTurtleVectorToPointVector = angleBetweenVectors(turtleHeadingVector,turtleToPointVector);

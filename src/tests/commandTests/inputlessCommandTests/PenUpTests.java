@@ -1,8 +1,7 @@
-package tests.commandTests.turtleQueryTests;
+package tests.commandTests.inputlessCommandTests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import gui.factories.TurtleFactory;
 
 import org.junit.Test;
 
@@ -10,23 +9,23 @@ import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import tests.commandTests.CommandTester;
 
-public class IsShowingTests extends CommandTester {
+public class PenUpTests extends CommandTester {
 	@Test
-	public void ShowingTest() throws SLOGOException {
+	public void PenUpTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("showing?");
+		setUpCommands("pu");
 		
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 1);		
+		assertTrue(f == 0);		
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.isTurtleShowing());
+		assertFalse(state.isPenDown());
 	}
-	
+
 	@Test
-	public void ShowingAfterHideTest() throws SLOGOException {
+	public void HeadingAfterMoveTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("ht showing?");
+		setUpCommands("pd pu");
 		
 		double f = 0;
 		
@@ -34,7 +33,8 @@ public class IsShowingTests extends CommandTester {
 			CommandParser parser = createCommand();
 			f = parser.parse(commands, objectQueue);
 		}
-		assertTrue(f == 0);		
-		assertFalse(state.isTurtleShowing());
+		assertTrue(f == 0);	
+		assertTrue(objectQueue.size()==0);
+		assertFalse(state.isPenDown());
 	}
 }
