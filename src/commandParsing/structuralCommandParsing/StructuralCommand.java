@@ -19,8 +19,15 @@ public abstract class StructuralCommand extends CommandParser {
 
 	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException{
 		String stringOfInterest = commandString.next();
-		if(!stringOfInterest.equals("[")){
+		if(!stringOfInterest.equals(state.getListStartPattern())){
 			throw new CompileTimeParsingException("expected opening brace");
+		}
+	}
+	
+	protected void checkForClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException{
+		String stringOfInterest = commandString.next();
+		if(!stringOfInterest.equals(state.getListEndPattern())){
+			throw new CompileTimeParsingException("expected closing brace");
 		}
 	}
 
@@ -28,12 +35,12 @@ public abstract class StructuralCommand extends CommandParser {
 		List<String> commandList = new ArrayList<String>();
 		
 		String stringOfInterest = commandString.next();
-		while (!stringOfInterest.equals("]") & commandString.hasNext()){
+		while (!stringOfInterest.equals(state.getListEndPattern()) & commandString.hasNext()){
 			commandList.add(stringOfInterest);
 			stringOfInterest = commandString.next();
 		} 
 		
-		if(!commandString.hasNext() && !stringOfInterest.equals("]")){
+		if(!commandString.hasNext() && !stringOfInterest.equals(state.getListEndPattern())){
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 
@@ -65,10 +72,10 @@ public abstract class StructuralCommand extends CommandParser {
 	private void findBrace(Iterator<String> commandString){
 		do{
 			String stringOfInterest = commandString.next();
-			if(stringOfInterest.equals("]")){
+			if(stringOfInterest.equals(state.getListEndPattern())){
 				return;
 			}
-			else if(stringOfInterest.equals("[")){
+			else if(stringOfInterest.equals(state.getListStartPattern())){
 				findBrace(commandString);
 			}
 		}

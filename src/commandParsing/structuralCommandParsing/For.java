@@ -13,6 +13,8 @@ public class For extends RecurringCommand {
 	@Override
 	protected void initializeLoopVariableParameters(
 			Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+		checkForOpeningBrace(commandString);
+		loopVariable = commandString.next();
 		if(!isStringParsableAsVariable(loopVariable)){
 			throw new CompileTimeParsingException(loopVariable + " , expected variable name");
 		}
@@ -21,5 +23,6 @@ public class For extends RecurringCommand {
 		loopVariableBound = expressionComponents.get(1);
 		incrementAmount = expressionComponents.get(2);
 		state.storeVariable(loopVariable, start);
+		checkForClosingBrace(commandString);
 	}
 }

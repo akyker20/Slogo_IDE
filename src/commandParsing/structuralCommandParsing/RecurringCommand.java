@@ -45,6 +45,6 @@ public abstract class RecurringCommand extends StructuralCommand {
 	}
 	
 	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException{
-		return (loopVariableBound - state.fetchVariable(loopVariable)) >= incrementAmount;
+		return loopVariableBound >= state.fetchVariable(loopVariable);
 	}
 }
