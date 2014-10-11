@@ -1,21 +1,19 @@
 package gui.variableslist;
 
 import gui.componentdrawers.WorkspaceVariablesDrawer;
+import gui.mainclasses.GUIController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class WorkspaceVariablesList extends TableView<WorkspaceVariable> {
-    public WorkspaceVariablesList(WorkspaceVariablesDrawer parentDrawer){
+public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
+    private static ObservableList<WorkspaceVariable> data;
+    
+    public WorkspaceVariablesFeature(WorkspaceVariablesDrawer parentDrawer){
         //Map<String, double> 
-        
-        final ObservableList<WorkspaceVariable> data = FXCollections.observableArrayList(
-                                                                                new WorkspaceVariable("x", 1),
-                                                                                new WorkspaceVariable("y",2)
-                                                                               
-                );
+        data = FXCollections.observableArrayList(GUIController.GUI_WORKSPACE_VARIABLE_MAP.values());
         this.setItems(data);
         this.setEditable(true);
 
@@ -31,5 +29,9 @@ public class WorkspaceVariablesList extends TableView<WorkspaceVariable> {
         this.setPrefHeight(168);
         
         parentDrawer.drawShape(this);
+    }
+    
+    public static void resetObservableList() {
+        data = FXCollections.observableArrayList(GUIController.GUI_WORKSPACE_VARIABLE_MAP.values());
     }
 }
