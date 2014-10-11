@@ -41,7 +41,7 @@ public class GUIController {
      * @param control SlogoGraphics object that has access to GUI-related method calls
      */
 
-    public GUIController (Stage stage, SlogoGraphics control,HashMap<String,WorkspaceVariable> variables) {
+    public GUIController (Stage stage, SlogoGraphics control, Map<String,WorkspaceVariable> variables) {
         GUI_WORKSPACE_VARIABLE_MAP = variables;
         GUI_STAGE = stage;
         GUI_TEXT = LocaleInitializer.init();
