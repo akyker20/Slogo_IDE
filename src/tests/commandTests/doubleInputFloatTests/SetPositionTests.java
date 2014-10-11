@@ -74,13 +74,11 @@ public class SetPositionTests extends CommandTester {
 			f = parser.parse(commands, objectQueue);
 		}
 		assertTrue(f == 13);
-		System.out.println(objectQueue.poll());
-		System.out.println(objectQueue.poll());
-		System.out.println(objectQueue.poll());
+		objectQueue.poll();
+		objectQueue.poll();
+		objectQueue.poll();
 		DrawableObject line = objectQueue.poll();
-		System.out.println(line);
 		DrawableObject turtle = objectQueue.poll();
-		System.out.println(turtle);
 		
 		assertTrue(line.getParent().equals(LineFactory.PARENT));
 		assertTrue(line.getType().equals(LineFactory.TYPE));
