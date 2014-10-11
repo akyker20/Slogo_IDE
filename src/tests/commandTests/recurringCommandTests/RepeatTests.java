@@ -21,6 +21,7 @@ public class RepeatTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 50);
+		System.out.println(objectQueue.size());
 		
 		for(int i=1;i<11;i++){
 			DrawableObject line = objectQueue.poll();

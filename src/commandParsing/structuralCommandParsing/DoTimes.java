@@ -19,5 +19,6 @@ public class DoTimes extends RecurringCommand {
 			throw new CompileTimeParsingException(loopVariable + " , expected variable name");
 		}
 		basicLoopVariableInitialization(commandString, objectQueue);
+		checkForClosingBrace(commandString);
 	}
 }
