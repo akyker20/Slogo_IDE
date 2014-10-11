@@ -3,9 +3,9 @@ package gui.variableslist;
 public class WorkspaceVariable  {
     
     private String myName;
-    private int myValue;
+    private double myValue;
     
-    public WorkspaceVariable(String name, int value){
+    public WorkspaceVariable(String name, double value){
         myName = name;
         myValue = value;
     }
@@ -18,11 +18,15 @@ public class WorkspaceVariable  {
         this.myName = myName;
     }
 
-    public int getMyValue () {
+    public double getMyValue () {
         return myValue;
     }
 
-    public void setMyValue (int myValue) {
+    public void setMyValue (double myValue) {
         this.myValue = myValue;
     }    
+    
+    public void addValue (double value){
+    	myValue += value;
+    }
 }

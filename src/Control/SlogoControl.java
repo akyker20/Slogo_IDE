@@ -1,20 +1,24 @@
 package Control;
 
 import gui.mainclasses.GUIController;
+import gui.variableslist.WorkspaceVariable;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
+
+import javafx.stage.Stage;
+import state.State;
+import state.Turtle;
+import translator.Translator;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-import javafx.stage.Stage;
-import state.State;
-import state.Turtle;
-import translator.Translator;
 import drawableobject.DrawableObject;
 
 
@@ -43,9 +47,10 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      */
 
     public SlogoControl (Stage stage) throws IOException {
-        myGUI = new GUIController(stage, this);
+    	Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
+        myGUI = new GUIController(stage, this, variableMap);
         translator = new Translator("english");
-        state = new State(new Turtle(),new HashMap<String, Double>(), translator);
+        state = new State(new Turtle(),variableMap, translator);
     }
 
     @Override
