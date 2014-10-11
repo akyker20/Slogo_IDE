@@ -27,7 +27,7 @@ public abstract class CommandParser {
 		while(expressionComponents.size()<numberToAccumulate){
 			String stringOfInterest = commandString.next();
 
-			if(isCommandString(stringOfInterest)){
+			if(isStringParsableAsCommand(stringOfInterest)){
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
 				expressionComponents.add(commandParser.parse(commandString, objectQueue));
 			}
@@ -62,7 +62,7 @@ public abstract class CommandParser {
 		return string.matches(state.getConstantPattern());
 	}
 
-	protected boolean isCommandString(String string){
+	protected boolean isStringParsableAsCommand(String string){
 		String[] parts = string.split("\\.");
 		return parts[parts.length-1].matches(state.getCommandPattern());
 	}

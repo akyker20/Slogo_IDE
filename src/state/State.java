@@ -17,13 +17,14 @@ public class State implements Serializable {
     private Map<String,Turtle> turtleMap; 
     private Turtle activeTurtle;
     private Map<String, Double> variableMap;
+    private Map<String,List<String>> userDefinedCommandMap;
     
     public State (Turtle someTurtle, Map<String,Double> variables, Translator someTranslator) {
-        turtleMap = new HashMap<String,Turtle>();
+    	userDefinedCommandMap = new HashMap<String,List<String>>();
+    	turtleMap = new HashMap<String,Turtle>();
         addTurtle(someTurtle);
         variableMap = variables;
         translator = someTranslator;
-
     }
 
     public void addTurtle(Turtle someTurtle) {
@@ -63,22 +64,7 @@ public class State implements Serializable {
     public boolean isTurtleShowing(){
         return activeTurtle.isTurtleShowing();
     }
-
-    public void storeVariable(String name, double value){
-        variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - 
-        		              variableMap.getOrDefault(name, (double) 0) + value);
-    }
-
-	public void incrementVariable(String loopVariable, double incrementAmount) {
-        variableMap.put(loopVariable, variableMap.getOrDefault(loopVariable, (double) 0) + incrementAmount);
-	}
-
-    public double fetchVariable(String name) throws RunTimeNullPointerException{
-        if(!variableMap.keySet().contains(name)){
-            throw new RunTimeNullPointerException(name);
-        }
-        return variableMap.get(name); 
-    }
+    
 
     public double getHeading(){
         return activeTurtle.getHeading();
@@ -117,6 +103,26 @@ public class State implements Serializable {
         activeTurtle.setHeading((activeTurtle.getHeading()+amount)%360);
     }
 
+    public void storeVariable(String name, double value){
+        variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - 
+        		              variableMap.getOrDefault(name, (double) 0) + value);
+    }
+
+	public void incrementVariable(String loopVariable, double incrementAmount) {
+        variableMap.put(loopVariable, variableMap.getOrDefault(loopVariable, (double) 0) + incrementAmount);
+	}
+
+    public double fetchVariable(String name) throws RunTimeNullPointerException{
+        if(!variableMap.keySet().contains(name)){
+            throw new RunTimeNullPointerException(name);
+        }
+        return variableMap.get(name); 
+    }
+    
+    public boolean variableExists(String name){
+    	return variableMap.containsKey(name);
+    }
+
     public String getVariablePattern(){
         return translator.getVariablePattern();
     }
@@ -149,4 +155,7 @@ public class State implements Serializable {
         return activeTurtle.getID();
     }
 
+    public void storeUserDefinedCommand(String name, List<String> commands){
+    	userDefinedCommandMap.put(name, commands);
+    }
 }
