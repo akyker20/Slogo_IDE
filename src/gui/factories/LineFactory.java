@@ -26,22 +26,34 @@ public class LineFactory extends ObjectFactory {
 
         Line line = new Line();
         double[] origin = parseStringToPoints(params.get(ORIGIN));
+        if (origin[0] > GridDrawer.GRID_WIDTH/2){
+        	origin[0] = GridDrawer.GRID_WIDTH/2;
+        }
+        if (origin[0] < -GridDrawer.GRID_WIDTH/2){
+        	origin[0] = -GridDrawer.GRID_WIDTH/2;
+        }
+        if (origin[1] > GridDrawer.GRID_HEIGHT/2){
+        	origin[1] = GridDrawer.GRID_HEIGHT/2;
+        }
+        if (origin[1] < -GridDrawer.GRID_HEIGHT/2){
+        	origin[1] = -GridDrawer.GRID_HEIGHT/2;
+        }
         double[] destination = parseStringToPoints(params.get(DESTINATION));  
 
         line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
         line.setStartY(GridDrawer.GRID_HEIGHT/2 - origin[1]);
         
-        System.out.println(origin[1] + " origin1 pre-everything");
-		System.out.println(destination[1] + " destination1 pre-everything");
-		System.out.println(origin[0] + " origin0 pre-everything");
-		System.out.println(destination[0] + " destination0 pre-everything");
+        System.out.println(origin[1] + " origin1 pre-rules");
+		System.out.println(destination[1] + " destination1 pre-rules");
+		System.out.println(origin[0] + " origin0 pre-rules");
+		System.out.println(destination[0] + " destination0 pre-rules");
 
         destination = GridEdgeRules.applyRules(origin, destination);
         
-        System.out.println(origin[1] + " origin1 pre-everything");
-		System.out.println(destination[1] + " destination1 pre-everything");
-		System.out.println(origin[0] + " origin0 pre-everything");
-		System.out.println(destination[0] + " destination0 pre-everything");
+        System.out.println(origin[1] + " origin1 post-rules");
+		System.out.println(destination[1] + " destination1 post-rules");
+		System.out.println(origin[0] + " origin0 post-rules");
+		System.out.println(destination[0] + " destination0 post-rules");
         
         line.setEndX(destination[0] + GridDrawer.GRID_WIDTH/2);
         line.setEndY(GridDrawer.GRID_HEIGHT/2 - destination[1]);

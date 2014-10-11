@@ -83,11 +83,7 @@ public class TurtleFactory extends ObjectFactory {
         System.out.println(origin[0] + " , " + origin[1] + "origin after setting layout");
         System.out.println(newLocation[0] + " , " + newLocation[1] + "newlocation after setting layout");
         System.out.println(newLocation[0] + " , " + newLocation[1] + "newlocation turtle after setting layout");
-        
-//double[] newLocation = GridEdgeRules.applyRules(origin,destination);
-//        
-//        line.setEndX(newLocation[0] + GridDrawer.GRID_WIDTH/2);
-//        line.setEndY(GridDrawer.GRID_HEIGHT/2 - newLocation[1]);
+       
         
         
         currentImageView.setRotate(Double.parseDouble(params.get(HEADING)));
