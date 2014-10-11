@@ -29,9 +29,13 @@ public class Translator implements Serializable {
 		mapLanguageToClassPath();
 	}
 
-	public Iterator<String> translate(String commands){
-		
-		String[] splitString = commands.split(" ");
+	public Iterator<String> translate(String commands){	
+		return translateToList(commands).iterator();
+	}
+	
+
+	public List<String> translateToList(String string) {
+		String[] splitString = string.split(" ");
 		List<String> translatedString = new ArrayList<String>();
 		
 		for(String s : splitString){
@@ -42,7 +46,7 @@ public class Translator implements Serializable {
 				translatedString.add(s);
 			}
 		}
-		return translatedString.iterator();
+		return translatedString;
 	}
 
 	private void mapLanguageToClassPath() throws FileNotFoundException, IOException{
@@ -131,4 +135,5 @@ public class Translator implements Serializable {
 	public String getListEndPattern(){
 		return syntaxDictionary.get("ListEnd");
 	}
+
 }

@@ -146,6 +146,10 @@ public class State implements Serializable {
     public Iterator<String> translate(String string){
         return translator.translate(string);
     }
+    
+    public List<String> translateToList(String string){
+        return translator.translateToList(string);
+    }
 
     public void moveToLocation(Location loc) {
         activeTurtle.setLocation(loc);
@@ -157,5 +161,12 @@ public class State implements Serializable {
 
     public void storeUserDefinedCommand(String name, List<String> commands){
     	userDefinedCommandMap.put(name, commands);
+    }
+    
+    public List<String> fetchUserDefinedCommand(String name) throws RunTimeNullPointerException{
+        if(!userDefinedCommandMap.keySet().contains(name)){
+            throw new RunTimeNullPointerException(name);
+        }
+        return userDefinedCommandMap.get(name); 
     }
 }
