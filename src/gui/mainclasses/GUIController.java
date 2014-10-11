@@ -5,6 +5,7 @@ import gui.componentdrawers.ComponentInitializer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.factories.TurtleFactory;
+import gui.variableslist.WorkspaceVariable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
@@ -30,6 +31,7 @@ public class GUIController {
     private BorderPane myPane;
     public static ResourceBundle GUI_TEXT;
     public static Stage GUI_STAGE;
+    public static Map<String,WorkspaceVariable> GUI_WORKSPACE_VARIABLE_MAP;
 
 
     /**
@@ -39,7 +41,8 @@ public class GUIController {
      * @param control SlogoGraphics object that has access to GUI-related method calls
      */
 
-    public GUIController (Stage stage, SlogoGraphics control) {
+    public GUIController (Stage stage, SlogoGraphics control,HashMap<String,WorkspaceVariable> variables) {
+        GUI_WORKSPACE_VARIABLE_MAP = variables;
         GUI_STAGE = stage;
         GUI_TEXT = LocaleInitializer.init();
         myPane = StageInitializer.init(GUI_STAGE);
