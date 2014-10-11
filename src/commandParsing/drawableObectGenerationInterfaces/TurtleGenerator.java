@@ -16,7 +16,7 @@ public interface TurtleGenerator {
 		String parent = TurtleFactory.PARENT;
 		String type = TurtleFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
-		
+		parameters.put(TurtleFactory.TURTLE_IMAGE_ID, state.getCurrentTurtleID());
 		parameters.put(TurtleFactory.HEADING, String.valueOf(state.getHeading()));
 		parameters.put(TurtleFactory.LOCATION, state.calculateLocation()
 				                                     .stream()

@@ -6,6 +6,7 @@ public class FactoryInitializer {
     public static final String LINE_FACTORY = "LineFactory";
     public static final String TURTLE_FACTORY = "TurtleFactory";
     public static final String ERROR_POPUP_FACTORY = "ErrorPopupFactory";
+    public static final String CLEAR_GRID_FACTORY = "ClearGridFactory";
 
     /**
      * Makes the object factories
@@ -15,7 +16,8 @@ public class FactoryInitializer {
         return new ObjectFactory[] {
                                     new LineFactory(LINE_FACTORY),
                                     new TurtleFactory(TURTLE_FACTORY),
-                                    new ErrorPopupFactory(ERROR_POPUP_FACTORY)
+                                    new ErrorPopupFactory(ERROR_POPUP_FACTORY),
+                                    new ClearGridFactory(CLEAR_GRID_FACTORY)
         };
     }
 

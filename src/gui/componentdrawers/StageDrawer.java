@@ -3,9 +3,9 @@ package gui.componentdrawers;
 import javafx.scene.Node;
 
 /**
- * Class used to insert elements into the stage e.g. Error messages
+ * Class used to 'insert' elements into the stage e.g. Error messages
  * Not used, but placed here for consistency of DrawableObjects use, especially in 
- * the DrawableObjects parser class
+ * the DrawableObjects parser class. Used in with ErrorPopup, and ClearGrid
  * @author allankiplagat
  *
  */
