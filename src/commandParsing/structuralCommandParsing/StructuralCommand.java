@@ -14,7 +14,7 @@ import drawableobject.DrawableObject;
 
 public abstract class StructuralCommand extends CommandParser {
 	
-	protected Iterator<String> enclosedCommands;
+	protected List<String> enclosedCommands;
 	protected double returnValue;
 
 	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException{
@@ -33,11 +33,11 @@ public abstract class StructuralCommand extends CommandParser {
 			stringOfInterest = commandString.next();
 		} 
 		
-		if(!commandString.hasNext()){
+		if(!commandString.hasNext() && !stringOfInterest.equals("]")){
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 
-		enclosedCommands = commandList.iterator();
+		enclosedCommands = commandList;
 	}
 	
 	protected void parseCommandsBetweenBraces(Iterator<String> commands, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
@@ -52,7 +52,7 @@ public abstract class StructuralCommand extends CommandParser {
 	}
 	
 	protected void setEnclosedCommandsToEmptyList(){
-		enclosedCommands = Collections.<String>emptyList().iterator();
+		enclosedCommands = Collections.<String>emptyList();
 	}
 	
 	protected void ignoreUntilClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException{

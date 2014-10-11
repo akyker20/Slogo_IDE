@@ -27,7 +27,7 @@ public class If extends StructuralCommandOnBooleanSwitch {
 			setEnclosedCommandsToEmptyList();
 		}
 		
-		parseCommandsBetweenBraces(enclosedCommands, objectQueue);
+		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
 		
 		return returnValue;
 	}

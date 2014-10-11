@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import translator.Translator;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
@@ -64,8 +65,13 @@ public class State implements Serializable {
     }
 
     public void storeVariable(String name, double value){
-        variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - variableMap.getOrDefault(name, (double) 0) + value);
+        variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - 
+        		              variableMap.getOrDefault(name, (double) 0) + value);
     }
+
+	public void incrementVariable(String loopVariable, double incrementAmount) {
+        variableMap.put(loopVariable, variableMap.getOrDefault(loopVariable, (double) 0) + incrementAmount);
+	}
 
     public double fetchVariable(String name) throws RunTimeNullPointerException{
         if(!variableMap.keySet().contains(name)){
@@ -142,4 +148,5 @@ public class State implements Serializable {
     public String getCurrentTurtleID () {
         return activeTurtle.getID();
     }
+
 }
