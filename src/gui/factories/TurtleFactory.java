@@ -28,7 +28,7 @@ public class TurtleFactory extends ObjectFactory {
 
     
     
-    private Map<String,Node> myTurtleViews;
+    private static Map<String,Node> myTurtleViews;
 
     public TurtleFactory (String name) {
         super(name);
@@ -40,8 +40,10 @@ public class TurtleFactory extends ObjectFactory {
     public Node generateObject (Map<String, String> params) {
         String turtleID = params.get(TURTLE_IMAGE_ID);
         if (myTurtleViews.containsKey(turtleID)) {
-            return updateTurtleImage(params);
+            System.out.println("TurtleFactory: turtle in views\n");
+            return updateTurtleImage(params);           
         } else {
+            System.out.println("TurtleFactory: turtle not views\n");
             return createTurtleImage(params);
         }
        
@@ -68,6 +70,9 @@ public class TurtleFactory extends ObjectFactory {
         return new NullNode();
     }
 
+    public static void clearTurtleViews() {
+        myTurtleViews.clear();
+    }
 
     private double[] parseStringToPoints(String point) {
         String[] splitPoint = point.split(" ");

@@ -16,6 +16,7 @@ public class ClearGridFactory extends ObjectFactory {
         //place new grid 
         GridDrawer myDrawer = (GridDrawer) ComponentInitializer.DRAWER_MAP.get(ComponentInitializer.GRID_DRAWER);
         myDrawer.resetGrid();
+        TurtleFactory.clearTurtleViews();
         return new NullNode();
     }
 
