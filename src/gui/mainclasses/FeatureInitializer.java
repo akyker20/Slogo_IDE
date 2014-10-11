@@ -14,7 +14,7 @@ import gui.nonbuttonfeatures.CommandLineFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetGridColorFeature;
-import gui.nonbuttonfeatures.WorkspaceVariablesFeature;
+import gui.variableslist.WorkspaceVariablesList;
 import java.util.Map;
 import Control.SlogoGraphics;
 
@@ -39,7 +39,7 @@ public class FeatureInitializer {
         new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
         new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
-        new WorkspaceVariablesFeature(workspaceVariables);
+        new WorkspaceVariablesList(workspaceVariables);
         new SavedCommandsFeature(savedCommands, control);
         
     }
