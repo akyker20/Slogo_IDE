@@ -4,12 +4,14 @@ import java.util.Iterator;
 import java.util.Queue;
 
 import commandParsing.CommandParser;
+import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
 
-public class HideTurtle extends CommandParser {
+public class HideTurtle extends CommandParser implements TurtleGenerator {
 
 	@Override
 	public double parse(Iterator<String> commandString,
@@ -17,6 +19,7 @@ public class HideTurtle extends CommandParser {
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
 		state.setOpacity(0);
+		objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
 		return 0;
 	}
 

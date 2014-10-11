@@ -12,7 +12,7 @@ import state.State;
 import drawableobject.DrawableObject;
 
 public interface TurtleGenerator {
-	default public DrawableObject generateDrawableObjectRepresntingTurtle(State state){
+	default public DrawableObject generateDrawableObjectRepresentingTurtle(State state){
 		String parent = TurtleFactory.PARENT;
 		String type = TurtleFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
