@@ -3,13 +3,14 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
+import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
 import drawableobject.DrawableObject;
 
-public abstract class RecurringCommand extends StructuralCommand {
+public abstract class RecurringCommand extends StructuralCommand implements VariableGenerator {
 	
 	protected String loopVariable;
 	protected double incrementAmount;
@@ -27,6 +28,7 @@ public abstract class RecurringCommand extends StructuralCommand {
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
 			incrementLoopVariable();
 		}
+		objectQueue.add(generateDrawableObjectRepresentingVariable());
 		return returnValue;
 	}
 	

@@ -1,15 +1,16 @@
 package tests.commandTests.userDefinedCommandTests;
 
 import static org.junit.Assert.assertTrue;
+import gui.factories.RefreshVariablesViewFactory;
 
 import java.util.List;
 
 import org.junit.Test;
 
 import tests.commandTests.CommandTester;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
+import drawableobject.DrawableObject;
 
 public class MakeUserInstructionTests extends CommandTester {
 	@Test
@@ -20,6 +21,7 @@ public class MakeUserInstructionTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);		
+
 		assertTrue(objectQueue.size()==0);
 		assertTrue(state.fetchVariable(":var") == 0);
 		assertTrue(state.fetchVariable(":varb") == 0);
@@ -39,8 +41,11 @@ public class MakeUserInstructionTests extends CommandTester {
 			f = parser.parse(commands, objectQueue);
 		}
 		assertTrue(f == 1);		
-		assertTrue(objectQueue.size()==0);
-		assertTrue(state.fetchVariable(":var") == 20);
+		DrawableObject refreshVariables = objectQueue.poll();
+		
+		assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
+		assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+		assertTrue(refreshVariables.getParameters().size()==0);		assertTrue(state.fetchVariable(":var") == 20);
 		assertTrue(state.fetchVariable(":varb") == 0);
 		assertTrue(state.fetchVariable(":varc") == 0);
 		List<String> translatedCommand = state.translateToList("fd 20");

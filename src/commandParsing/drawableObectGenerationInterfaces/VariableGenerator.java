@@ -1,5 +1,7 @@
 package commandParsing.drawableObectGenerationInterfaces;
 
+import gui.factories.RefreshVariablesViewFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 

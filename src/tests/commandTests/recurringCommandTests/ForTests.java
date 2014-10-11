@@ -2,13 +2,13 @@ package tests.commandTests.recurringCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.LineFactory;
+import gui.factories.RefreshVariablesViewFactory;
 import gui.factories.TurtleFactory;
 
 import org.junit.Test;
 
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
-
 import drawableobject.DrawableObject;
 import tests.commandTests.CommandTester;
 
@@ -36,6 +36,11 @@ public class ForTests extends CommandTester {
 			assertTrue(line.getParameters().get(LineFactory.ORIGIN).equals("0.0 " + String.valueOf(50.0*(i-1))));
 			assertTrue(line.getParameters().get(LineFactory.DESTINATION).equals("0.0 " + String.valueOf(50.0*i)));
 		}
+		DrawableObject refreshVariables = objectQueue.poll();
+		
+		assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
+		assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+		assertTrue(refreshVariables.getParameters().size()==0);
 		assertTrue(objectQueue.size()==0);
 	}
 }
