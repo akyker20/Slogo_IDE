@@ -54,7 +54,7 @@ public abstract class CommandParser {
 		return isStringParsableAsFloat(string) | isStringParsableAsVariable(string);
 	}
 	
-	private boolean isStringParsableAsVariable(String string) {
+	protected boolean isStringParsableAsVariable(String string) {
 		return string.matches(state.getVariablePattern());
 	}
 

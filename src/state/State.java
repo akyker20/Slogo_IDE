@@ -64,7 +64,8 @@ public class State implements Serializable {
     }
 
     public void storeVariable(String name, double value){
-        variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - variableMap.getOrDefault(name, (double) 0) + value);
+        variableMap.put(name, variableMap.getOrDefault(name, (double) 0) - 
+        		              variableMap.getOrDefault(name, (double) 0) + value);
     }
 
     public double fetchVariable(String name) throws RunTimeNullPointerException{
