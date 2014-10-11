@@ -17,19 +17,22 @@ public class GridDrawer extends ComponentDrawer {
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
     
+    
     //This is just for the grid lines
     private GridPane myGridPane;
     
     //This is the actual grid to which nodes will be drawn.
-    private Pane myGrid;
+    private static Pane myGrid;
     
     public GridDrawer (String name) {
         super(name);
         myGridPane = initializeGridPane();
+        myGrid = new GridFeature();
         this.setPrefWidth(GRID_WIDTH);
         this.setPrefHeight(GRID_HEIGHT + 20);
         this.getChildren().addAll(new Label("SLogo Grid"), myGridPane);
     }
+    
     
     /**
      * Creates the gridpane whose sole purpose is to aid the ToggleRelativeGridFeature
@@ -43,6 +46,10 @@ public class GridDrawer extends ComponentDrawer {
         return pane;
     }
 
+    public void resetGrid() {
+        myGrid = this.new GridFeature();
+    }
+    
    /**
     * If the grid lines are already visible, they are removed. Otherwise,
     * the grid lines are displayed.
@@ -81,4 +88,22 @@ public class GridDrawer extends ComponentDrawer {
     public void changeGridColor (String style) {
         myGrid.setStyle(style);  
     }
+    
+    /**
+     * This is the grid. The reason it is a feature is that we may make
+     * it interactive in the future - for instance click to draw another
+     * turtle
+     * @author Austin Kyker
+     *
+     */
+    public class GridFeature extends Pane {
+        public GridFeature(){
+            this.setPrefWidth(GRID_WIDTH);
+            this.setPrefHeight(GRID_HEIGHT);
+            this.getStyleClass().add("grid");
+            this.setLayoutY(20);
+            setGrid(this);
+        }
+    } 
+    
 }

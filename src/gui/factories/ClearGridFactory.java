@@ -14,8 +14,8 @@ public class ClearGridFactory extends ObjectFactory {
     @Override
     public Node generateObject (Map<String, String> params) {
         //place new grid 
-        ComponentInitializer.DRAWER_MAP.put( ComponentInitializer.GRID_DRAWER,  
-                                             new GridDrawer( ComponentInitializer.GRID_DRAWER));
+        GridDrawer myDrawer = (GridDrawer) ComponentInitializer.DRAWER_MAP.get(ComponentInitializer.GRID_DRAWER);
+        myDrawer.resetGrid();
         return new NullNode();
     }
 
