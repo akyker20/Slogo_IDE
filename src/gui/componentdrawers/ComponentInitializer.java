@@ -1,13 +1,9 @@
 package gui.componentdrawers;
 
+import gui.menus.MainMenuInitializer;
 import java.util.HashMap;
 import java.util.Map;
-import gui.menus.HelpMenu;
-import gui.menus.MainMenuInitializer;
 import javafx.geometry.Insets;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -23,35 +19,33 @@ public class ComponentInitializer {
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
     public static final String SAVED_COMMANDS = "savedCommands";
     public static final String STAGE_DRAWER = "stageDrawer";
+    public static final Map<String, ComponentDrawer> DRAWER_MAP = new HashMap<String, ComponentDrawer>();
 
-    public static Map<String, ComponentDrawer> init (BorderPane pane) {
-        
-        // Component initialization
-        Map<String, ComponentDrawer> drawerMap = new HashMap<String, ComponentDrawer>();
-        drawerMap.put(GRID_DRAWER,  new GridDrawer(GRID_DRAWER));
-        drawerMap.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
-        drawerMap.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
-        drawerMap.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
-        drawerMap.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
-        drawerMap.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
-        drawerMap.put(STAGE_DRAWER,new StageDrawer(STAGE_DRAWER));
+    public static Map<String, ComponentDrawer> init (BorderPane pane) { 
+        DRAWER_MAP.put(GRID_DRAWER,  new GridDrawer(GRID_DRAWER));
+        DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
+        DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
+        DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
+        DRAWER_MAP.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
+        DRAWER_MAP.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
+        DRAWER_MAP.put(STAGE_DRAWER,new StageDrawer(STAGE_DRAWER));
                  
         pane.setTop(MainMenuInitializer.init());
         
         VBox leftVBox = new VBox(10);
         leftVBox.getStyleClass().add("leftColumn");
-        leftVBox.getChildren().addAll((GridDrawer) drawerMap.get(GRID_DRAWER), 
-                                      (PreviousCommandsDrawer) drawerMap.get(PREVIOUS_COMMANDS),
-                                      (CommandLineDrawer) drawerMap.get(COMMAND_LINE_DRAWER));
+        leftVBox.getChildren().addAll((GridDrawer) DRAWER_MAP.get(GRID_DRAWER), 
+                                      (PreviousCommandsDrawer) DRAWER_MAP.get(PREVIOUS_COMMANDS),
+                                      (CommandLineDrawer) DRAWER_MAP.get(COMMAND_LINE_DRAWER));
         pane.setLeft(leftVBox);
         
         VBox rightVBox = new VBox(10);
         rightVBox.setPadding(new Insets(10, 10, 0, 0));
-        rightVBox.getChildren().addAll((WorkspaceVariablesDrawer) drawerMap.get(WORKSPACE_VARIABLES), 
-                                       (SavedCommandsDrawer) drawerMap.get(SAVED_COMMANDS),
-                                       (ButtonHolderDrawer) drawerMap.get(BUTTON_HOLDER_DRAWER));
+        rightVBox.getChildren().addAll((WorkspaceVariablesDrawer) DRAWER_MAP.get(WORKSPACE_VARIABLES), 
+                                       (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS),
+                                       (ButtonHolderDrawer) DRAWER_MAP.get(BUTTON_HOLDER_DRAWER));
         pane.setRight(rightVBox);
       
-        return drawerMap;
+        return DRAWER_MAP;
     }
 }
