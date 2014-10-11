@@ -97,10 +97,6 @@ public class State implements Serializable {
 		turtle.getLocation().add(xDisplacement, yDisplacement);
     }
     
-    public void move(double xMovement, double yMovement){
-    	turtle.getLocation().add(xMovement,yMovement);
-    }
-	
 	private double roundToHundredths(double number){
 		return Math.round(number*100)/100;
 	}
@@ -131,5 +127,9 @@ public class State implements Serializable {
 	
 	public Iterator<String> translate(String string){
 		return translator.translate(string);
+	}
+
+	public void moveToLocation(Location loc) {
+		turtle.getLocation().add(loc.getX(),loc.getY());
 	}
 }
