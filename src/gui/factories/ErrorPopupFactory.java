@@ -6,12 +6,12 @@ import gui.nonbuttonfeatures.ErrorPopup;
 import java.util.Map;
 import javafx.scene.Node;
 
-public class ErrorMessageFactory extends ObjectFactory {
+public class ErrorPopupFactory extends ObjectFactory {
     public static final String PARENT = ComponentInitializer.STAGE_DRAWER;
-    public static final String TYPE = FactoryInitializer.ERROR_MESSAGE_FACTORY;
+    public static final String TYPE = FactoryInitializer.ERROR_POPUP_FACTORY;
     public static final String ERROR_MESSAGE = "errorMessage";
 
-    public ErrorMessageFactory (String name) {
+    public ErrorPopupFactory (String name) {
         super(name);
     }
 

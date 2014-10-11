@@ -4,7 +4,8 @@ import javafx.scene.Node;
 
 /**
  * Class used to insert elements into the stage e.g. Error messages
- * Not used, but placed here for consistency of DrawableObjects use
+ * Not used, but placed here for consistency of DrawableObjects use, especially in 
+ * the DrawableObjects parser class
  * @author allankiplagat
  *
  */

@@ -1,5 +1,6 @@
 package gui.nonbuttonfeatures;
 
+import gui.mainclasses.GUIController;
 import gui.mainclasses.StageInitializer;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -13,8 +14,8 @@ public class ErrorPopup extends Popup {
     public ErrorPopup(String errorMessage) {
         this.setWidth(ERROR_POPUP_WIDTH);
         this.setHeight(ERROR_POPUP_HEIGHT);
-        this.setX(StageInitializer.SCREEN_WIDTH/2 - ERROR_POPUP_WIDTH/2);
-        this.setY(StageInitializer.SCREEN_HEIGHT/2- ERROR_POPUP_HEIGHT/2);
+        this.setX(GUIController.GUI_STAGE.getX() + StageInitializer.SCREEN_WIDTH/2 - ERROR_POPUP_WIDTH/2);
+        this.setY(GUIController.GUI_STAGE.getY() + StageInitializer.SCREEN_HEIGHT/2 - ERROR_POPUP_HEIGHT/2);
         
         Label message = new Label(errorMessage);
         message.getStylesheets().add("/Stylesheets/style.css");
