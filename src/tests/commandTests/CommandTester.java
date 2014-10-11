@@ -1,5 +1,7 @@
 package tests.commandTests;
 
+import gui.variableslist.WorkspaceVariable;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,7 +34,7 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpStateBeforeTesting(String language) throws IOException{		
-		state = new State(new Turtle(), new HashMap<String, Double>(), setUpTranslator(language));
+		state = new State(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
 	}
 	
 	public void setUpCommands(String input){

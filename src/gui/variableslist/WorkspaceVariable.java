@@ -1,8 +1,11 @@
 package gui.variableslist;
 
-public class WorkspaceVariable  {
+import java.io.Serializable;
+
+public class WorkspaceVariable  implements Serializable {
     
-    private String myName;
+	private static final long serialVersionUID = -3083713008607735263L;
+	private String myName;
     private double myValue;
     
     public WorkspaceVariable(String name, double value){
