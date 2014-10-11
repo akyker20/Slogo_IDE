@@ -15,6 +15,7 @@ public class TurtleFactory extends ObjectFactory {
     public static final String TYPE = FactoryInitializer.TURTLE_FACTORY;
     public static final String HEADING = "heading";
     public static final String LOCATION = "location";
+    public static final String OPACITY = "opacity";
     
     private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image.png";
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.05;
@@ -41,6 +42,7 @@ public class TurtleFactory extends ObjectFactory {
         myImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
         myImageView.setLayoutY(- newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
         myImageView.setRotate(Double.parseDouble(params.get(HEADING)));
+        myImageView.setOpacity(Double.parseDouble(params.get(OPACITY)));
         return myImageView;
     }
 

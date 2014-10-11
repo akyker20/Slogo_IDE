@@ -22,6 +22,7 @@ public interface TurtleGenerator {
 				                                     .stream()
 				                                     .map(p -> p.toString())
 				                                     .collect(Collectors.joining(" ")));
+		parameters.put(TurtleFactory.OPACITY, String.valueOf(state.getOpacity()));
 		
 		return new DrawableObject(parent, type, parameters);
 	}
