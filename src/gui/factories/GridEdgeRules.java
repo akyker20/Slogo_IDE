@@ -7,10 +7,6 @@ import java.util.Arrays;
 public class GridEdgeRules {
 
 	public static double[] applyRules(double[] origin, double[] destination) {
-//		System.out.println(origin[1] + " origin1 pre-everything");
-//		System.out.println(destination[1] + " destination1 pre-everything");
-//		System.out.println(origin[0] + " origin0 pre-everything");
-//		System.out.println(destination[0] + " destination0 pre-everything");
 
 		if ((leftBorderReached(destination[0])
 				|| rightBorderReached(destination[0])
