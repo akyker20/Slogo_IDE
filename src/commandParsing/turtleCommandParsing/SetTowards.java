@@ -13,14 +13,45 @@ import drawableobject.DrawableObject;
 
 public class SetTowards extends TwoInputFloatCommandParser implements TurtleGenerator {
 
-	private final double[] northVector = vectorFromTwoPoints(new Location(0,0), new Location(0,1));
+	private final double[] northVector = vectorFromTwoPoints(
+			                         new Location(state.getTurtleXLocation(),0), 
+			                         new Location(state.getTurtleXLocation()+1,0));
 	
 	@Override
 	protected double operateOnComponents(List<Double> components,
 			Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
-		state.setOpacity(0);
-		return 0;
+		
+		double heading = 90-state.getHeading();
+		Location turtleLocation = new Location(state.getTurtleXLocation(),state.getTurtleYLocation());
+		Location pointLocation = new Location(components.get(0),components.get(1));
+		double[] turtleHeadingVector = vectorFromAngle(heading);
+		double[] turtleToPointVector = vectorFromTwoPoints(turtleLocation,pointLocation);
+		
+		double angleFromTurtleVectorToNorth = angleToNorth(turtleHeadingVector);
+		double angleFromPointVectorToNorth =  angleToNorth(turtleToPointVector);
+		double angleFromTurtleVectorToPointVector = angleBetweenVectors(turtleHeadingVector,turtleToPointVector);
+		
+		double angleToRotate = 0;
+		if(angleFromTurtleVectorToPointVector < angleFromTurtleVectorToNorth + angleFromPointVectorToNorth){
+			if(angleFromTurtleVectorToNorth < angleFromPointVectorToNorth){
+				angleToRotate = angleFromPointVectorToNorth - angleFromTurtleVectorToNorth;
+			}
+			else if(angleFromTurtleVectorToNorth > angleFromPointVectorToNorth){
+				angleToRotate = -(angleFromTurtleVectorToNorth - angleFromPointVectorToNorth);
+			}
+			else{
+				angleToRotate = 0;
+			}
+		}
+		else{
+			angleToRotate = -angleFromTurtleVectorToPointVector;
+		}
+		
+		
+		state.rotate(angleToRotate);
+		generateDrawableObjectRepresentingTurtle(state);
+		return Math.abs(angleToRotate);
 	}
 	
 	private double angleToNorth(double[] vector){
