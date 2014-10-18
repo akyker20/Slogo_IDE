@@ -1,7 +1,6 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -12,25 +11,41 @@ import translator.Translator;
 
 
 public class TranslatorTest {
+	
+	@Test
+	public void TranslatorRegExTest() throws IOException{
+		Translator t = new Translator("enGLIsh");
+		
+		assertTrue("50".matches(t.getConstantPattern()));
+		assertTrue("50.0".matches(t.getConstantPattern()));
+		assertTrue(":somevar".matches(t.getVariablePattern()));
+	}
 
 	@Test
 	public void EnglishTranslationTest() throws IOException {
 		Translator t = new Translator("enGLIsh");
 		String testString = "fd 50 + 20 20 if less? 0 20 [ sum 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
-		
+
 		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "commandParsing.structuralCommandParsing.If");
 		assertEquals(testIterator.next(), "commandParsing.booleanCommandParsing.LessThan");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "0");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "[");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "]");
 		assertFalse(testIterator.hasNext());
@@ -43,17 +58,24 @@ public class TranslatorTest {
 		Iterator<String> testIterator = t.translate(testString);
 		
 		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "commandParsing.structuralCommandParsing.If");
 		assertEquals(testIterator.next(), "commandParsing.booleanCommandParsing.LessThan");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "0");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "[");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "]");
 		assertFalse(testIterator.hasNext());
@@ -66,17 +88,24 @@ public class TranslatorTest {
 		Iterator<String> testIterator = t.translate(testString);
 		
 		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "commandParsing.structuralCommandParsing.If");
 		assertEquals(testIterator.next(), "commandParsing.booleanCommandParsing.LessThan");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "0");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "[");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "]");
 		assertFalse(testIterator.hasNext());
@@ -89,17 +118,24 @@ public class TranslatorTest {
 		Iterator<String> testIterator = t.translate(testString);
 		
 		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "commandParsing.structuralCommandParsing.If");
 		assertEquals(testIterator.next(), "commandParsing.booleanCommandParsing.LessThan");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "0");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "[");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "]");
 		assertFalse(testIterator.hasNext());
@@ -112,17 +148,24 @@ public class TranslatorTest {
 		Iterator<String> testIterator = t.translate(testString);
 		
 		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "commandParsing.structuralCommandParsing.If");
 		assertEquals(testIterator.next(), "commandParsing.booleanCommandParsing.LessThan");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "0");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "[");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "]");
 		assertFalse(testIterator.hasNext());
@@ -135,17 +178,24 @@ public class TranslatorTest {
 		Iterator<String> testIterator = t.translate(testString);
 		
 		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "commandParsing.structuralCommandParsing.If");
 		assertEquals(testIterator.next(), "commandParsing.booleanCommandParsing.LessThan");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "0");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "[");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
+		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "20");
 		assertEquals(testIterator.next(), "]");
 		assertFalse(testIterator.hasNext());
