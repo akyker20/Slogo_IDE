@@ -18,6 +18,8 @@ import java.util.jar.JarInputStream;
 public class Translator implements Serializable {
 	
 	private static final long serialVersionUID = -65773011613967680L;
+	private static final String CONSTANT = "Constant";
+	private static final String VARIABLE = "Variable";
 	private Map<String, String> dictionary = new HashMap<String, String>();
 	private Map<String, String> classDictionary = new HashMap<String, String>();
 	private Map<String, String> languageToClassPath = new HashMap<String, String>();
@@ -41,6 +43,14 @@ public class Translator implements Serializable {
 		for(String s : splitString){
 			if(dictionary.containsKey(s)){
 				translatedString.add(languageToClassPath.get(s));
+			}
+			else if (s.matches(syntaxDictionary.get("Constant"))){
+				translatedString.add(languageToClassPath.get(CONSTANT));
+				translatedString.add(s);
+			}
+			else if (s.matches(syntaxDictionary.get("Variable"))){
+				translatedString.add(languageToClassPath.get(VARIABLE));
+				translatedString.add(s);
 			}
 			else{
 				translatedString.add(s);
@@ -74,16 +84,16 @@ public class Translator implements Serializable {
 				dictionary.put(commands[1], commands[0]);
 			}
 		}
+		dictionary.put(CONSTANT, CONSTANT);
+		dictionary.put(VARIABLE, VARIABLE);
+		
 		while ((inputLine = reader.readLine()) != null) {
 			inputLine = inputLine.replace(" ", "");
 			String[] commands = inputLine.split("=");
 			
 			if (inputLine.equals("") || inputLine.startsWith("#"))
-				continue;
-			
+				continue;		
 			syntaxDictionary.put(commands[0], commands[1]);
-			
-			
 		}
 
 		reader.close();

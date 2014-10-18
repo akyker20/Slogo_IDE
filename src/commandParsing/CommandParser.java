@@ -31,35 +31,11 @@ public abstract class CommandParser {
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
 				expressionComponents.add(commandParser.parse(commandString, objectQueue));
 			}
-			else if(stringRepresentsNumber(stringOfInterest)){
-				expressionComponents.add(decodeStringToNumber(stringOfInterest));
-			}
-			else{ // not a command, not a number, compile-time error
+			else{ 
 				objectQueue.clear();
 				throw new CompileTimeParsingException(stringOfInterest);
 			}
 		}
-	}
-	
-	private Double decodeStringToNumber(String stringOfInterest) throws RunTimeNullPointerException {
-		if(isStringParsableAsFloat(stringOfInterest)){
-			return Double.parseDouble(stringOfInterest);
-		}
-		else{
-			return state.fetchVariable(stringOfInterest);
-		}
-	}
-
-	protected boolean stringRepresentsNumber(String string){
-		return isStringParsableAsFloat(string) | isStringParsableAsVariable(string);
-	}
-	
-	protected boolean isStringParsableAsVariable(String string) {
-		return string.matches(state.getVariablePattern());
-	}
-
-	protected boolean isStringParsableAsFloat(String string){
-		return string.matches(state.getConstantPattern());
 	}
 
 	protected boolean isStringParsableAsCommand(String string){
