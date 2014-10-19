@@ -16,7 +16,7 @@ import gui.nonbuttonfeatures.ErrorDisplayFeature;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
-import gui.nonbuttonfeatures.SetGridColorFeature;
+import gui.nonbuttonfeatures.SetTurtleScreenColorFeature;
 import gui.nonbuttonfeatures.WorkspaceVariablesFeature;
 import gui.variableslist.WorkspaceVariable;
 import java.util.Map;
@@ -43,14 +43,14 @@ public class FeatureInitializer {
         
         ErrorDrawer errorDrawer = (ErrorDrawer) drawerMap.get(ComponentInitializer.ERROR_DRAWER);
         
-        new SetGridColorFeature(gridDrawer, buttonHolder);
+        new SetTurtleScreenColorFeature(gridDrawer, buttonHolder);
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, commandLineDrawer);
         new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList);
         
         SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
-        new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, savedCommandsFeature);
+        new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature);
         
         new ErrorDisplayFeature(errorDrawer);
         new TurtleScreenFeature(gridDrawer);

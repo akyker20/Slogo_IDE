@@ -40,7 +40,8 @@ public class SavedCommandsFeature extends ListView<String> {
 
     /**
      * Adds the command in the command line to the list view. This method is called
-     * when the SaveCommand button is clicked in the ButtonHolder component.
+     * when the SaveCommand button is clicked in the ButtonHolder component. Does
+     * not add the command if command line is empty or command has already been saved.
      * @param currentCommand
      */
     public void addCommand (String currentCommand) {

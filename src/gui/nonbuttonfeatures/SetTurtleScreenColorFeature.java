@@ -6,9 +6,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ColorPicker;
 
 
-public class SetGridColorFeature extends ColorPicker {
+public class SetTurtleScreenColorFeature extends ColorPicker {
 
-    public SetGridColorFeature (TurtleScreenDrawer targetDrawer, ButtonHolderDrawer parentDrawer) {
+    public SetTurtleScreenColorFeature (TurtleScreenDrawer targetDrawer, ButtonHolderDrawer parentDrawer) {
         setOnAction(event -> changeColor(targetDrawer));
         parentDrawer.drawShape(this);
         setPrefWidth(100);
@@ -20,7 +20,7 @@ public class SetGridColorFeature extends ColorPicker {
     }
 
     private String getPickerColor () {
-        return "#" + SetGridColorFeature.this.getValue().toString().substring(2);
+        return "#" + SetTurtleScreenColorFeature.this.getValue().toString().substring(2);
     }
 
 }
