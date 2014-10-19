@@ -26,7 +26,6 @@ public class CommandLineFeature extends TextArea {
             @Override
             public void handle (KeyEvent e) {
                 if(newLineCombination.match(e)){
-                    System.out.println("HERE");
                     CommandLineFeature.this.setText(CommandLineFeature.this.getText()+"\n");
                     CommandLineFeature.this.positionCaret(CommandLineFeature.this.getLength());
                 }
