@@ -1,12 +1,9 @@
 package tests.commandTests.userDefinedCommandTests;
 
 import static org.junit.Assert.assertTrue;
-import gui.factories.RefreshVariablesViewFactory;
-
+import gui.factories.WorkspaceVariableFactory;
 import java.util.List;
-
 import org.junit.Test;
-
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
@@ -43,8 +40,8 @@ public class MakeUserInstructionTests extends CommandTester {
 		assertTrue(f == 1);		
 		DrawableObject refreshVariables = objectQueue.poll();
 		
-		assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
-		assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+		assertTrue(refreshVariables.getParent().equals(WorkspaceVariableFactory.PARENT));
+		assertTrue(refreshVariables.getType().equals(WorkspaceVariableFactory.TYPE));
 		assertTrue(refreshVariables.getParameters().size()==0);		assertTrue(state.fetchVariable(":var") == 20);
 		assertTrue(state.fetchVariable(":varb") == 0);
 		assertTrue(state.fetchVariable(":varc") == 0);

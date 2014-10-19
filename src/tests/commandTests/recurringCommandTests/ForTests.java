@@ -2,15 +2,13 @@ package tests.commandTests.recurringCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.LineFactory;
-import gui.factories.RefreshVariablesViewFactory;
 import gui.factories.TurtleFactory;
-
+import gui.factories.WorkspaceVariableFactory;
 import org.junit.Test;
-
+import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
-import tests.commandTests.CommandTester;
 
 public class ForTests extends CommandTester {
 	@Test
@@ -38,8 +36,8 @@ public class ForTests extends CommandTester {
 		}
 		DrawableObject refreshVariables = objectQueue.poll();
 		
-		assertTrue(refreshVariables.getParent().equals(RefreshVariablesViewFactory.PARENT));
-		assertTrue(refreshVariables.getType().equals(RefreshVariablesViewFactory.TYPE));
+		assertTrue(refreshVariables.getParent().equals(WorkspaceVariableFactory.PARENT));
+		assertTrue(refreshVariables.getType().equals(WorkspaceVariableFactory.TYPE));
 		assertTrue(refreshVariables.getParameters().size()==0);
 		assertTrue(objectQueue.size()==0);
 	}

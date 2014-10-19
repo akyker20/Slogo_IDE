@@ -26,7 +26,7 @@ public class ClearScreenTests extends CommandTester {
 		DrawableObject pane = objectQueue.poll();
 		DrawableObject turtle = objectQueue.poll();
 		
-		assertTrue(pane.getParent().equals(ComponentInitializer.STAGE_DRAWER));
+		assertTrue(pane.getParent().equals(ComponentInitializer.GRID_DRAWER));
 		assertTrue(pane.getType().equals(FactoryInitializer.CLEAR_GRID_FACTORY));
 		assertTrue(pane.getParameters().size()==0);
 		
