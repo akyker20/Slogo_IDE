@@ -1,5 +1,7 @@
 package gui.factories;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import gui.componentdrawers.ComponentInitializer;
 import gui.variableslist.WorkspaceVariable;
@@ -21,11 +23,27 @@ public class WorkspaceVariableFactory extends ObjectFactory {
 
     @Override
     public Node generateObject (Map<String, String> params) {
-        myVariablesList.add(new WorkspaceVariable(params.get("name"), Double.parseDouble(params.get("value"))));
-        
-        
-        
+        String variableName = params.get("name");
+        Double variableValue = Double.parseDouble(params.get("value"));
+        for(WorkspaceVariable var:myVariablesList){
+            if(var.getMyName().equals(variableName)){
+                var.setMyValue(variableValue);
+                refreshList();
+                return new NullNode();
+            }
+        }
+        myVariablesList.add(new WorkspaceVariable(variableName, variableValue));
         return new NullNode();
+    }
+
+    private void refreshList () {
+        List<WorkspaceVariable> list = new ArrayList<WorkspaceVariable>();
+        for(WorkspaceVariable var:myVariablesList){
+            list.add(var);
+        }
+        myVariablesList.clear();
+        myVariablesList.addAll(list);
+        
     }
 
 }
