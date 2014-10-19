@@ -14,6 +14,13 @@
 }
 
 
+.line {
+    -fx-stroke-width: 1px;
+    -fx-stroke: gray;
+}
+
+
+
 
 .leftColumn, .rightColumn {
 	-fx-padding: 10px;

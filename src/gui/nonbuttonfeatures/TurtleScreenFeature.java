@@ -14,6 +14,6 @@ public class TurtleScreenFeature extends Pane {
         this.setPrefHeight(TurtleScreenDrawer.GRID_HEIGHT);
         this.getStyleClass().add("grid");
         this.setLayoutY(20);
-        parentDrawer.setGrid(this);
+        parentDrawer.setTurtleScreenFeature(this);
     }
 }
