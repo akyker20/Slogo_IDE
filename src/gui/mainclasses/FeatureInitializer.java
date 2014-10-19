@@ -46,10 +46,12 @@ public class FeatureInitializer {
         new SetGridColorFeature(gridDrawer, buttonHolder);
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, commandLineDrawer);
         new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
-        new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList);
-        new SavedCommandsFeature(savedCommandsDrawer, control);
+        
+        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
+        new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, savedCommandsFeature);
+        
         new ErrorDisplayFeature(errorDrawer);
         new TurtleScreenFeature(gridDrawer);
         
