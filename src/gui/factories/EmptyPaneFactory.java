@@ -1,7 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.GridDrawer;
+import gui.componentdrawers.TurtleScreenDrawer;
 
 import java.util.Map;
 
@@ -19,7 +19,7 @@ public class EmptyPaneFactory extends ObjectFactory {
     @Override
     public Node generateObject (Map<String, String> params) {
         //place new grid 
-        GridDrawer myDrawer = (GridDrawer) ComponentInitializer.DRAWER_MAP.get(ComponentInitializer.GRID_DRAWER);
+        TurtleScreenDrawer myDrawer = (TurtleScreenDrawer) ComponentInitializer.DRAWER_MAP.get(ComponentInitializer.GRID_DRAWER);
         myDrawer.resetGrid();
         TurtleFactory.clearTurtleViews();
         return new NullNode();

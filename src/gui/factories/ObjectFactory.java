@@ -1,6 +1,6 @@
 package gui.factories;
 
-import gui.componentdrawers.GridDrawer;
+import gui.componentdrawers.TurtleScreenDrawer;
 
 import java.util.Map;
 

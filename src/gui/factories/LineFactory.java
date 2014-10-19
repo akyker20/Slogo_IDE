@@ -1,7 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.GridDrawer;
+import gui.componentdrawers.TurtleScreenDrawer;
 
 import java.util.Map;
 
@@ -26,27 +26,27 @@ public class LineFactory extends ObjectFactory {
 
         Line line = new Line();
         double[] origin = parseStringToPoints(params.get(ORIGIN));
-        if (origin[0] > GridDrawer.GRID_WIDTH/2){
-        	origin[0] = GridDrawer.GRID_WIDTH/2;
+        if (origin[0] > TurtleScreenDrawer.GRID_WIDTH/2){
+        	origin[0] = TurtleScreenDrawer.GRID_WIDTH/2;
         }
-        if (origin[0] < -GridDrawer.GRID_WIDTH/2){
-        	origin[0] = -GridDrawer.GRID_WIDTH/2;
+        if (origin[0] < -TurtleScreenDrawer.GRID_WIDTH/2){
+        	origin[0] = -TurtleScreenDrawer.GRID_WIDTH/2;
         }
-        if (origin[1] > GridDrawer.GRID_HEIGHT/2){
-        	origin[1] = GridDrawer.GRID_HEIGHT/2;
+        if (origin[1] > TurtleScreenDrawer.GRID_HEIGHT/2){
+        	origin[1] = TurtleScreenDrawer.GRID_HEIGHT/2;
         }
-        if (origin[1] < -GridDrawer.GRID_HEIGHT/2){
-        	origin[1] = -GridDrawer.GRID_HEIGHT/2;
+        if (origin[1] < -TurtleScreenDrawer.GRID_HEIGHT/2){
+        	origin[1] = -TurtleScreenDrawer.GRID_HEIGHT/2;
         }
         double[] destination = parseStringToPoints(params.get(DESTINATION));  
 
-        line.setStartX(origin[0] + GridDrawer.GRID_WIDTH/2);
-        line.setStartY(GridDrawer.GRID_HEIGHT/2 - origin[1]);
+        line.setStartX(origin[0] + TurtleScreenDrawer.GRID_WIDTH/2);
+        line.setStartY(TurtleScreenDrawer.GRID_HEIGHT/2 - origin[1]);
         
         destination = GridEdgeRules.applyRules(origin, destination);
         
-        line.setEndX(destination[0] + GridDrawer.GRID_WIDTH/2);
-        line.setEndY(GridDrawer.GRID_HEIGHT/2 - destination[1]);
+        line.setEndX(destination[0] + TurtleScreenDrawer.GRID_WIDTH/2);
+        line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
 
         return line;
     }

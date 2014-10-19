@@ -13,7 +13,7 @@ public class ErrorDrawer extends ComponentDrawer {
     public ErrorDrawer (String name) {
         super(name);
         this.getStyleClass().add("errorDrawer");
-        this.setWidth(StageInitializer.SCREEN_WIDTH * GridDrawer.GRID_WIDTH_RATIO);
+        this.setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
         super.drawShape(new Label("Errors"));
     }
 

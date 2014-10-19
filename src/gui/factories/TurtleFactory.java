@@ -1,7 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.GridDrawer;
+import gui.componentdrawers.TurtleScreenDrawer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,10 +22,10 @@ public class TurtleFactory extends ObjectFactory {
 
     private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image.png";
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.05;
-    private static final double TURTLE_IMAGE_WIDTH = GridDrawer.GRID_WIDTH *
+    private static final double TURTLE_IMAGE_WIDTH = TurtleScreenDrawer.GRID_WIDTH *
             TURTLE_IMAGE_WIDTH_RATIO;
     private static final double TURTLE_IMAGE_HEIGHT_RATIO = 0.1;
-    private static final double TURTLE_IMAGE_HEIGHT = GridDrawer.GRID_HEIGHT *
+    private static final double TURTLE_IMAGE_HEIGHT = TurtleScreenDrawer.GRID_HEIGHT *
             TURTLE_IMAGE_HEIGHT_RATIO;
 
     
@@ -68,14 +68,14 @@ public class TurtleFactory extends ObjectFactory {
         Node currentImageView = myTurtleViews.get(params.get(TURTLE_IMAGE_ID));
 
         
-        double[] origin = new double[]{currentImageView.getLayoutX() - GridDrawer.GRID_WIDTH/2 + TURTLE_IMAGE_WIDTH/2,
-        		currentImageView.getLayoutY() - GridDrawer.GRID_HEIGHT/2 + TURTLE_IMAGE_HEIGHT/2};
+        double[] origin = new double[]{currentImageView.getLayoutX() - TurtleScreenDrawer.GRID_WIDTH/2 + TURTLE_IMAGE_WIDTH/2,
+        		currentImageView.getLayoutY() - TurtleScreenDrawer.GRID_HEIGHT/2 + TURTLE_IMAGE_HEIGHT/2};
         double[] newLocation = parseStringToPoints(params.get(LOCATION));
 
         newLocation = GridEdgeRules.applyRules(origin,newLocation);
         
-        currentImageView.setLayoutX(newLocation[0] + GridDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
-        currentImageView.setLayoutY(- newLocation[1] + GridDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
+        currentImageView.setLayoutX(newLocation[0] + TurtleScreenDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
+        currentImageView.setLayoutY(- newLocation[1] + TurtleScreenDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
         
         currentImageView.setRotate(Double.parseDouble(params.get(HEADING)));
         currentImageView.setOpacity(Double.parseDouble(params.get(OPACITY)));  

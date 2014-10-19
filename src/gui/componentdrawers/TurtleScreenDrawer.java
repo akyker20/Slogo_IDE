@@ -4,11 +4,14 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import gui.mainclasses.StageInitializer;
+import gui.nonbuttonfeatures.TurtleScreenFeature;
 
 
-public class GridDrawer extends ComponentDrawer {
+public class TurtleScreenDrawer extends ComponentDrawer {
 
     public static final double GRID_WIDTH_RATIO = .6;
     public static final double GRID_HEIGHT_RATIO = .5;
@@ -19,18 +22,17 @@ public class GridDrawer extends ComponentDrawer {
     
     
     //This is just for the grid lines
-    private GridPane myGridPane;
+    private TurtleScreenFeature myTurtleScreenFeature;
     
     //This is the actual grid to which nodes will be drawn.
-    private static Pane myGrid;
+    private Pane myGrid;
     
-    public GridDrawer (String name) {
+    public TurtleScreenDrawer (String name) {
         super(name);
-        myGridPane = initializeGridPane();
-        myGrid = new GridFeature();
+        myGrid = initializeGridPane();
         this.setPrefWidth(GRID_WIDTH);
         this.setPrefHeight(GRID_HEIGHT + 20);
-        this.getChildren().addAll(new Label("SLogo Grid"), myGridPane);
+        this.getChildren().addAll(new Label("SLogo Grid"), myGrid);
     }
     
     
@@ -38,24 +40,43 @@ public class GridDrawer extends ComponentDrawer {
      * Creates the gridpane whose sole purpose is to aid the ToggleRelativeGridFeature
      * @return
      */
-    private GridPane initializeGridPane () {
-        GridPane pane = new GridPane();
-        pane.setHgap(GridDrawer.GRID_WIDTH / GRID_NUM_ROWS);
-        pane.setVgap(GridDrawer.GRID_HEIGHT / GRID_NUM_COLS);
-        pane.add(new Rectangle(), GRID_NUM_ROWS, GRID_NUM_COLS);
-        return pane;
-    }
-
-    public void resetGrid() {
-        myGrid = this.new GridFeature();
+    private Pane initializeGridPane () {
+        Pane grid = new Pane();
+        for(int row = 1; row < GRID_NUM_ROWS; row++){
+            grid.getChildren().add(makeRowLine(row));
+        }
+        for(int col = 1; col < GRID_NUM_COLS; col++){
+            grid.getChildren().add(makeColLine(col));
+        }
+        return grid;
     }
     
-   /**
+   private Line makeColLine (int col) {
+       Line line = new Line();
+       line.setStartX(col*GRID_WIDTH/GRID_NUM_COLS);
+       line.setStartY(0);
+       line.setEndX(col*GRID_WIDTH/GRID_NUM_COLS);
+       line.setEndY(GRID_HEIGHT);
+       return line;
+    }
+
+
+private Line makeRowLine (int row) {
+       Line line = new Line();
+       line.setStartX(0);
+       line.setStartY(row*GRID_HEIGHT/GRID_NUM_ROWS);
+       line.setEndX(GRID_WIDTH);
+       line.setEndY(row*GRID_HEIGHT/GRID_NUM_ROWS);
+       return line;
+    }
+
+
+/**
     * If the grid lines are already visible, they are removed. Otherwise,
     * the grid lines are displayed.
     */
     public void toggleGrid () {
-        myGridPane.setGridLinesVisible(!myGridPane.isGridLinesVisible());
+        myTurtleScreenFeature.getChildren().add(myGrid);
     }
     
     /**
@@ -63,10 +84,10 @@ public class GridDrawer extends ComponentDrawer {
      * relative grid lines to the grid.
      * @param grid
      */
-    public void setGrid(Pane grid){
-        myGrid = grid;
-        drawShape(myGridPane);
-        super.drawShape(grid);
+    public void setGrid(TurtleScreenFeature grid){
+        myTurtleScreenFeature = grid;
+        drawShape(myGrid);
+        super.drawShape(myTurtleScreenFeature);
     }
     
     /**
@@ -76,8 +97,8 @@ public class GridDrawer extends ComponentDrawer {
      */
     @Override
     public void drawShape(Node n){
-        if(!myGrid.getChildren().contains(n))
-            myGrid.getChildren().add(n);
+        if(!myTurtleScreenFeature.getChildren().contains(n))
+            myTurtleScreenFeature.getChildren().add(n);
     }
 
     /**
@@ -87,23 +108,5 @@ public class GridDrawer extends ComponentDrawer {
      */
     public void changeGridColor (String style) {
         myGrid.setStyle(style);  
-    }
-    
-    /**
-     * This is the grid. The reason it is a feature is that we may make
-     * it interactive in the future - for instance click to draw another
-     * turtle
-     * @author Austin Kyker
-     *
-     */
-    public class GridFeature extends Pane {
-        public GridFeature(){
-            this.setPrefWidth(GRID_WIDTH);
-            this.setPrefHeight(GRID_HEIGHT);
-            this.getStyleClass().add("grid");
-            this.setLayoutY(20);
-            setGrid(this);
-        }
-    } 
-    
+    }    
 }
