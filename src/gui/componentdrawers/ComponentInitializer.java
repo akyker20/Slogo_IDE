@@ -18,9 +18,11 @@ public class ComponentInitializer {
     public static final String PREVIOUS_COMMANDS = "previousCommandsDrawer";
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
     public static final String SAVED_COMMANDS = "savedCommands";
-    public static final String STAGE_DRAWER = "stageDrawer";
+    public static final String ERROR_DRAWER = "errorDrawer";
     public static final Map<String, ComponentDrawer> DRAWER_MAP = new HashMap<String, ComponentDrawer>();
 
+    private static String[] myLeftContainerElements = new String[]{GRID_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
+    
     public static Map<String, ComponentDrawer> init (BorderPane pane) { 
         DRAWER_MAP.put(GRID_DRAWER,  new GridDrawer(GRID_DRAWER));
         DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
@@ -28,15 +30,15 @@ public class ComponentInitializer {
         DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
         DRAWER_MAP.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
         DRAWER_MAP.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
-        DRAWER_MAP.put(STAGE_DRAWER,new StageDrawer(STAGE_DRAWER));
+        DRAWER_MAP.put(ERROR_DRAWER, new ErrorDrawer(ERROR_DRAWER));
                  
         pane.setTop(MainMenuInitializer.init());
         
         VBox leftVBox = new VBox(10);
         leftVBox.getStyleClass().add("leftColumn");
-        leftVBox.getChildren().addAll((GridDrawer) DRAWER_MAP.get(GRID_DRAWER), 
-                                      (PreviousCommandsDrawer) DRAWER_MAP.get(PREVIOUS_COMMANDS),
-                                      (CommandLineDrawer) DRAWER_MAP.get(COMMAND_LINE_DRAWER));
+        for(int i = 0; i < myLeftContainerElements.length; i ++){
+            leftVBox.getChildren().add(DRAWER_MAP.get(myLeftContainerElements[i]));
+        }
         pane.setLeft(leftVBox);
         
         VBox rightVBox = new VBox(10);

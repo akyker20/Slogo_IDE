@@ -25,9 +25,9 @@ public class DrawableObjectParser {
 
     private Node parseNodeToDraw (DrawableObject object) {
         ObjectFactory identifiedFactory = null;
-        for (ObjectFactory myFactorie : myFactories) {
-            if (myFactorie.toString().equalsIgnoreCase(object.getType())) {
-                identifiedFactory = myFactorie;
+        for (ObjectFactory myFactory : myFactories) {
+            if (myFactory.toString().equalsIgnoreCase(object.getType())) {
+                identifiedFactory = myFactory;
             }
         }
 

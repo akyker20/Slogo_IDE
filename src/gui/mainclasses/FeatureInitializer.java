@@ -6,22 +6,28 @@ import gui.componentdrawers.ButtonHolderDrawer;
 import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.ErrorDrawer;
 import gui.componentdrawers.GridDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
 import gui.componentdrawers.SavedCommandsDrawer;
 import gui.componentdrawers.WorkspaceVariablesDrawer;
 import gui.nonbuttonfeatures.CommandLineFeature;
+import gui.nonbuttonfeatures.ErrorDisplayFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetGridColorFeature;
-import gui.variableslist.WorkspaceVariablesFeature;
+import gui.nonbuttonfeatures.WorkspaceVariablesFeature;
+import gui.variableslist.WorkspaceVariable;
 import java.util.Map;
+import javafx.collections.ObservableList;
 import Control.SlogoGraphics;
 
 
 public class FeatureInitializer {
 
-    public static void init (Map<String, ComponentDrawer> drawerMap, SlogoGraphics control) {
+    public static void init (Map<String, ComponentDrawer> drawerMap, SlogoGraphics control, 
+                             ObservableList<WorkspaceVariable> variablesList) {
+        
         GridDrawer gridDrawer = (GridDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
         ButtonHolderDrawer buttonHolder = 
                 (ButtonHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
@@ -34,13 +40,16 @@ public class FeatureInitializer {
         WorkspaceVariablesDrawer workspaceVariablesDrawer = 
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
         
+        ErrorDrawer errorDrawer = (ErrorDrawer) drawerMap.get(ComponentInitializer.ERROR_DRAWER);
+        
         new SetGridColorFeature(gridDrawer, buttonHolder);
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, commandLineDrawer);
         new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
         new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
-        new WorkspaceVariablesFeature(workspaceVariablesDrawer);
+        new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList);
         new SavedCommandsFeature(savedCommandsDrawer, control);
+        new ErrorDisplayFeature(errorDrawer);
         
     }
 }

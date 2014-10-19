@@ -28,7 +28,6 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
 			incrementLoopVariable();
 		}
-		objectQueue.add(generateDrawableObjectRepresentingVariable());
 		return returnValue;
 	}
 	

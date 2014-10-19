@@ -1,6 +1,6 @@
 package commandParsing.exceptions;
 
-import gui.factories.ErrorPopupFactory;
+import gui.factories.ErrorFactory;
 import gui.factories.FactoryInitializer;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,9 +29,9 @@ public class CompileTimeParsingException extends SLOGOException {
 	public DrawableObject generateErrorMessage(){
 		
 		Map<String,String> parameters = new HashMap<String,String>();
-		parameters.put(ErrorPopupFactory.ERROR_MESSAGE,"Error parsing following string: " + this.getMessage()+ ". Incorrect syntax.");
+		parameters.put(ErrorFactory.ERROR_MESSAGE,"Error parsing following string: " + this.getMessage()+ ". Incorrect syntax.");
 		
-		return new DrawableObject(ErrorPopupFactory.PARENT,ErrorPopupFactory.TYPE, parameters);
+		return new DrawableObject(ErrorFactory.PARENT,ErrorFactory.TYPE, parameters);
 	}
 	
 }

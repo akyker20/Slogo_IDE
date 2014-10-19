@@ -107,13 +107,14 @@ public class State implements Serializable {
 		activeTurtle.setHeading((activeTurtle.getHeading()+amount)%360);
 	}
 
-	public void storeVariable(String name, double value){
+	public WorkspaceVariable storeVariable(String name, double value){
 		if(variableMap.containsKey(name)){
 			variableMap.get(name).addValue(-variableMap.get(name).getMyValue()+value);
 		}
 		else{
 			variableMap.put(name, new WorkspaceVariable(name, value));
 		}
+		return variableMap.get(name);
 	}
 
 	public void incrementVariable(String loopVariable, double incrementAmount) {

@@ -9,7 +9,7 @@ import javafx.scene.Node;
 
 public class EmptyPaneFactory extends ObjectFactory {
 	
-	public static final String PARENT = ComponentInitializer.STAGE_DRAWER;
+	public static final String PARENT = ComponentInitializer.GRID_DRAWER;
 	public static final String TYPE = FactoryInitializer.CLEAR_GRID_FACTORY;
 
     public EmptyPaneFactory (String name) {

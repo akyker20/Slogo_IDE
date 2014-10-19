@@ -1,25 +1,19 @@
 package gui.nonbuttonfeatures;
 
 import gui.componentdrawers.WorkspaceVariablesDrawer;
-import javafx.collections.FXCollections;
+import gui.variableslist.WorkspaceVariable;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class WorkspaceVariablesFeature extends TableView<Variable> {
-    public WorkspaceVariablesFeature(WorkspaceVariablesDrawer parentDrawer){
-        final ObservableList<Variable> data = FXCollections.observableArrayList(
-                                                                                new Variable("x", 1),
-                                                                                new Variable("y",2)
-                                                                               
-                );
+public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
+    public WorkspaceVariablesFeature(WorkspaceVariablesDrawer parentDrawer, ObservableList<WorkspaceVariable> data){
         this.setItems(data);
-
-        TableColumn<Variable,String> firstNameCol = new TableColumn<Variable,String>("Variable");
+        TableColumn<WorkspaceVariable,String> firstNameCol = new TableColumn<WorkspaceVariable,String>("Variable");
         firstNameCol.setCellValueFactory(new PropertyValueFactory("myName"));
         firstNameCol.prefWidthProperty().bind(this.widthProperty().divide(2));
-        TableColumn<Variable,String> lastNameCol = new TableColumn<Variable,String>("Value");
+        TableColumn<WorkspaceVariable,String> lastNameCol = new TableColumn<WorkspaceVariable,String>("Value");
         lastNameCol.setCellValueFactory(new PropertyValueFactory("myValue"));
         lastNameCol.prefWidthProperty().bind(this.widthProperty().divide(2).subtract(2));
         this.getColumns().setAll(firstNameCol, lastNameCol);

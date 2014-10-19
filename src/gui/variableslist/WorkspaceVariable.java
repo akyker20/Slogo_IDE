@@ -3,11 +3,11 @@ package gui.variableslist;
 import java.io.Serializable;
 
 public class WorkspaceVariable  implements Serializable {
-    
-	private static final long serialVersionUID = -3083713008607735263L;
-	private String myName;
+
+    private static final long serialVersionUID = -3083713008607735263L;
+    private String myName;
     private double myValue;
-    
+
     public WorkspaceVariable(String name, double value){
         myName = name;
         myValue = value;
@@ -28,8 +28,8 @@ public class WorkspaceVariable  implements Serializable {
     public void setMyValue (double myValue) {
         this.myValue = myValue;
     }    
-    
+
     public void addValue (double value){
-    	myValue += value;
+        myValue += value;
     }
 }

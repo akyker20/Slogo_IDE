@@ -1,8 +1,8 @@
 package commandParsing.variableCommandParsing;
 
+import gui.variableslist.WorkspaceVariable;
 import java.util.Iterator;
 import java.util.Queue;
-
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -28,8 +28,8 @@ public class MakeVariable extends StructuralCommand implements VariableGenerator
 		}
 		accumulateComponents(commandString, 1, objectQueue);
 		double amountToAssign = expressionComponents.get(0);
-		state.storeVariable(variableName, amountToAssign);
-		objectQueue.add(generateDrawableObjectRepresentingVariable());
+		WorkspaceVariable variable = state.storeVariable(variableName, amountToAssign);
+		objectQueue.add(generateDrawableObjectRepresentingVariable(variable));
 		return amountToAssign;
 	}
 

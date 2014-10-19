@@ -2,14 +2,14 @@ package Control;
 
 import gui.mainclasses.GUIController;
 import gui.variableslist.WorkspaceVariable;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import state.State;
 import state.Turtle;
@@ -47,8 +47,8 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      */
 
     public SlogoControl (Stage stage) throws IOException {
-    	Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
-        myGUI = new GUIController(stage, this, variableMap);
+        Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
+        myGUI = new GUIController(stage, this);
         translator = new Translator("english");
         state = new State(new Turtle(),variableMap, translator);
         parseCommandString("home");
@@ -57,7 +57,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     @Override
     public Queue<DrawableObject> parseCommandString (String command) throws IOException {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
-        
+
 
         Iterator<String> translatedCommands = translator.translate(command);
 
