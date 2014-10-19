@@ -15,7 +15,7 @@ public class LineFactory extends ObjectFactory {
     public static final String DESTINATION = "destination";
     public static final String PARENT = ComponentInitializer.GRID_DRAWER;
     public static final String TYPE = FactoryInitializer.LINE_FACTORY;
-    
+
     public LineFactory (String name) {
         super(name);
     }
@@ -26,29 +26,30 @@ public class LineFactory extends ObjectFactory {
 
         Line line = new Line();
         double[] origin = parseStringToPoints(params.get(ORIGIN));
-        if (origin[0] > TurtleScreenDrawer.GRID_WIDTH/2){
-        	origin[0] = TurtleScreenDrawer.GRID_WIDTH/2;
-        }
-        if (origin[0] < -TurtleScreenDrawer.GRID_WIDTH/2){
-        	origin[0] = -TurtleScreenDrawer.GRID_WIDTH/2;
-        }
-        if (origin[1] > TurtleScreenDrawer.GRID_HEIGHT/2){
-        	origin[1] = TurtleScreenDrawer.GRID_HEIGHT/2;
-        }
-        if (origin[1] < -TurtleScreenDrawer.GRID_HEIGHT/2){
-        	origin[1] = -TurtleScreenDrawer.GRID_HEIGHT/2;
-        }
         double[] destination = parseStringToPoints(params.get(DESTINATION));  
 
-        line.setStartX(origin[0] + TurtleScreenDrawer.GRID_WIDTH/2);
+        line.setStartX(TurtleScreenDrawer.GRID_WIDTH/2 + origin[0] );
         line.setStartY(TurtleScreenDrawer.GRID_HEIGHT/2 - origin[1]);
-        
-        destination = GridEdgeRules.applyRules(origin, destination);
-        
-        line.setEndX(destination[0] + TurtleScreenDrawer.GRID_WIDTH/2);
-        line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
 
+        if (destinationOffScreen(destination)) {
+            //determine new destination 
+            //make recursive call
+        } else {
+            line.setEndX(TurtleScreenDrawer.GRID_WIDTH/2 + destination[0] );
+            line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
+        }
+        //destination = GridEdgeRules.applyRules(origin, destination);
         return line;
+    }
+
+    private boolean destinationOffScreen(double[] destination) {
+        boolean isOffScreen = (
+                destination[0]>TurtleScreenDrawer.GRID_WIDTH/2  ||
+                destination[0]<-TurtleScreenDrawer.GRID_WIDTH/2 ||
+                destination[1]>TurtleScreenDrawer.GRID_HEIGHT/2 ||
+                destination[1]<-TurtleScreenDrawer.GRID_HEIGHT/2
+                );
+        return isOffScreen;
     }
 
     /**
