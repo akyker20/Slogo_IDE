@@ -2,6 +2,7 @@ package gui.mainclasses;
 
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.variableslist.WorkspaceVariable;
@@ -53,7 +54,7 @@ public class GUIController {
         myComponentDrawers = ComponentInitializer.init(myPane);
         
         final ObservableList<WorkspaceVariable> variablesList = FXCollections.observableArrayList();
-        myObjectFactories = FactoryInitializer.init(variablesList);
+        myObjectFactories = FactoryInitializer.init(variablesList, (TurtleScreenDrawer) myComponentDrawers.get(ComponentInitializer.GRID_DRAWER));
         FeatureInitializer.init(myComponentDrawers, control, variablesList);
         
         myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);

@@ -56,7 +56,7 @@ public class CommandLineFeature extends TextArea {
     }
 
     protected String cleanCommand (String text) {
-        return text.replace("\n", "");
+        return text.replace("\n", " ").trim();
     }
 
 }

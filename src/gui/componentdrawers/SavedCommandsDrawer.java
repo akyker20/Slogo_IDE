@@ -21,5 +21,9 @@ public class SavedCommandsDrawer extends ComponentDrawer {
         myFeature.loadCommands(savedCommands);
         
     }
+    
+    public List<String> getCommands(){
+        return myFeature.getCommands();
+    }
 
 }
