@@ -59,7 +59,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     }
 
     @Override
-    public Queue<DrawableObject> parseCommandString (String command) throws IOException {
+    public Queue<DrawableObject> parseCommandString (String command) {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 
 

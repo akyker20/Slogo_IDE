@@ -21,6 +21,8 @@ public class TurtleFactory extends ObjectFactory {
     public static final String TURTLE_IMAGE_ID = "turtleImageID";
 
     private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image.png";
+    private static final String SELECTED_TURTLE_IMAGEPATH = "selected_turtle.png";
+    
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.05;
     private static final double TURTLE_IMAGE_WIDTH = TurtleScreenDrawer.GRID_WIDTH *
             TURTLE_IMAGE_WIDTH_RATIO;
@@ -29,7 +31,7 @@ public class TurtleFactory extends ObjectFactory {
             TURTLE_IMAGE_HEIGHT_RATIO;
 
     
-    
+    private static String turtleImage = DEFAULT_TURTLE_IMAGEPATH;
     private static Map<String,Node> myTurtleViews;
 
     public TurtleFactory (String name) {
@@ -54,12 +56,13 @@ public class TurtleFactory extends ObjectFactory {
 
     private Node createTurtleImage(Map<String, String> params) {      
         Image image =
-                new Image(getClass().getResourceAsStream(DEFAULT_TURTLE_IMAGEPATH),
+                new Image(getClass().getResourceAsStream(turtleImage),
                           TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
                           false, true);
         ImageView imageView = new ImageView(image);
         myTurtleViews.put(params.get(TURTLE_IMAGE_ID), imageView);
         updateTurtleImage(params);
+        imageView.setOnMouseClicked(event->selectTurtle(imageView));
         return imageView;
     }
 
@@ -92,5 +95,23 @@ public class TurtleFactory extends ObjectFactory {
         double[] parsedPoint = new double[]{Double.parseDouble(splitPoint[0]),
                                             Double.parseDouble(splitPoint[1])};
         return parsedPoint;
+    }
+    
+    public void selectTurtle(ImageView imageView){
+        if(turtleImage==SELECTED_TURTLE_IMAGEPATH){
+            turtleImage = DEFAULT_TURTLE_IMAGEPATH;
+        }
+        else{
+            turtleImage=SELECTED_TURTLE_IMAGEPATH;
+        }
+        Image image =
+                new Image(getClass().getResourceAsStream(turtleImage),
+                          TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
+                          false, true);
+        imageView.setImage(image);
+    }
+    
+    public static boolean isTurtleSelected(){
+        return turtleImage==SELECTED_TURTLE_IMAGEPATH;
     }
 }
