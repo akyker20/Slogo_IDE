@@ -32,8 +32,74 @@ public class LineFactory extends ObjectFactory {
         line.setStartY(TurtleScreenDrawer.GRID_HEIGHT/2 - origin[1]);
 
         if (destinationOffScreen(destination)) {
-            //determine new destination 
-            //make recursive call
+
+            boolean vertical = (destination[0]==origin[0]);
+            double gradient = (destination[1]-origin[1])/(destination[0]-origin[0]);
+
+            double deltaX = 0.0;
+            double deltaY = 0.0;
+
+            boolean movingRight = true;
+            //if moving to right, set deltaX to distance from right edge
+            if (destination[0]>origin[0]) {      
+                deltaX= TurtleScreenDrawer.GRID_WIDTH/2-origin[0];
+            } else if  (destination[0]<origin[0]) {
+                deltaX = -(origin[0]-(-TurtleScreenDrawer.GRID_WIDTH/2));
+                movingRight = false;
+            }
+
+            boolean movingUp = true;
+            //if moving up, set deltaY to distance from top edge
+            if (destination[1]>origin[1]) {      
+                deltaY= TurtleScreenDrawer.GRID_HEIGHT/2-origin[1];
+            } else if (destination[1]<origin[1]) {
+                deltaY = -(origin[1]-(-TurtleScreenDrawer.GRID_HEIGHT/2));
+                movingUp = false;
+            }
+
+            //determine whether line exits screen through x edge or y edge            
+            boolean exitY = true;
+            double[] tempDestination;
+
+            if (!vertical) {
+                //if exit is through y edge, using deltaX will yield off-screen destination
+                tempDestination = new double[]{origin[0]+deltaX,origin[1]+gradient*deltaX};
+                exitY = destinationOffScreen(tempDestination);
+            } 
+
+            //determine new destination & the recursing origin-destination set
+            double[] recurseOrigin,recurseDestination;
+
+            //if moving vertically, use deltaY, keep x ordinate 
+            if (vertical) {
+                double newY = origin[1]+deltaY;
+
+                //exited top/bottom so start bottom/top
+                if (movingUp) {
+                    recurseOrigin = new double[]{origin[0],-TurtleScreenDrawer.GRID_HEIGHT/2};
+                    recurseDestination = new double[]{origin[0],
+                                          -TurtleScreenDrawer.GRID_HEIGHT/2+((destination[1]-origin[1])-deltaY)};
+                } else {
+                    recurseOrigin = new double[]{origin[0],TurtleScreenDrawer.GRID_HEIGHT/2};
+                    recurseDestination = new double[]{origin[0],TurtleScreenDrawer.GRID_HEIGHT/2-
+                                                      ((origin[1]-destination[1])-(origin[1]-newY))};
+                }
+                destination[1] = newY;
+     
+            } else {
+                //if exiting through y, use deltaY else use deltaX
+                if (exitY) {
+                    destination[1] = origin[1]+deltaY;
+                    destination[0] = origin[0]+deltaY/gradient;
+                } else {
+                    destination[0] = origin[0]+deltaX;
+                    destination[1] = origin[1]+deltaX*gradient;
+                }
+            }
+
+
+            line.setEndX(TurtleScreenDrawer.GRID_WIDTH/2 + destination[0] );
+            line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
         } else {
             line.setEndX(TurtleScreenDrawer.GRID_WIDTH/2 + destination[0] );
             line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
