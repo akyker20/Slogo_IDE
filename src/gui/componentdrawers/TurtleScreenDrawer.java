@@ -115,8 +115,8 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     }
 
 
-    public void resetGrid () {
-
+    public void resetScreen () {
+        myTurtleScreen.getChildren().clear();
     }    
 }
 
