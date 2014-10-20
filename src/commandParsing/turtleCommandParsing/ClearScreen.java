@@ -2,8 +2,12 @@ package commandParsing.turtleCommandParsing;
 
 import java.util.List;
 import java.util.Queue;
+
+import state.Turtle;
+
 import commandParsing.drawableObectGenerationInterfaces.PaneGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
+
 import drawableobject.DrawableObject;
 
 public class ClearScreen extends Home implements PaneGenerator {
@@ -15,13 +19,16 @@ public class ClearScreen extends Home implements PaneGenerator {
                                          Queue<DrawableObject> objectQueue)
                                          throws RunTimeDivideByZeroException {
         objectQueue.add(generateDrawableObjectRepresentingPane());
-        if(state.isPenDown()){
-        	state.togglePenUp();
-        	modifiedPen = true;
-        }
-        double returnValue = super.operateOnComponents(components, objectQueue);
-        if(modifiedPen){
-        	state.togglePenDown();
+        double returnValue = 0;
+        for(Turtle t : state.turtles.getActiveTurtles()){
+            if(t.pen.isPenDown()){
+            	t.pen.togglePenUp();
+            	modifiedPen = true;
+            }
+            returnValue = super.operateOnComponents(components, objectQueue);
+            if(modifiedPen){
+            	t.pen.togglePenDown();
+            }
         }
         return returnValue;
     }

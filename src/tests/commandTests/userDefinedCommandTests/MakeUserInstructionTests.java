@@ -20,11 +20,11 @@ public class MakeUserInstructionTests extends CommandTester {
 		assertTrue(f == 1);		
 
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.fetchVariable(":var") == 0);
-		assertTrue(state.fetchVariable(":varb") == 0);
-		assertTrue(state.fetchVariable(":varc") == 0);
-		List<String> translatedCommand = state.translateToList("fd 20");
-		assertTrue(state.fetchUserDefinedCommand("command").equals(translatedCommand));
+		assertTrue(state.variables.fetchVariable(":var") == 0);
+		assertTrue(state.variables.fetchVariable(":varb") == 0);
+		assertTrue(state.variables.fetchVariable(":varc") == 0);
+		List<String> translatedCommand = state.translator.translateToList("fd 20");
+		assertTrue(state.commands.fetchUserDefinedCommand("command").equals(translatedCommand));
 	}
 
 	@Test
@@ -42,10 +42,12 @@ public class MakeUserInstructionTests extends CommandTester {
 		
 		assertTrue(refreshVariables.getParent().equals(WorkspaceVariableFactory.PARENT));
 		assertTrue(refreshVariables.getType().equals(WorkspaceVariableFactory.TYPE));
-		assertTrue(refreshVariables.getParameters().size()==0);		assertTrue(state.fetchVariable(":var") == 20);
-		assertTrue(state.fetchVariable(":varb") == 0);
-		assertTrue(state.fetchVariable(":varc") == 0);
-		List<String> translatedCommand = state.translateToList("fd 20");
-		assertTrue(state.fetchUserDefinedCommand("command").equals(translatedCommand));
+		assertTrue(refreshVariables.getParameters().size()==2);		
+		assertTrue(state.variables.fetchVariable(":var") == 20);
+		assertTrue(state.variables.fetchVariable(":varb") == 0);
+		assertTrue(state.variables.fetchVariable(":varc") == 0);
+		List<String> translatedCommand = state.translator.translateToList("fd 20");
+		assertTrue(state.commands.fetchUserDefinedCommand("command").equals(translatedCommand));
 	}
 }
+

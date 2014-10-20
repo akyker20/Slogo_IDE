@@ -38,7 +38,7 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpCommands(String input){
-		commands = state.translate(input);
+		commands = state.translator.translate(input);
 	}
 	
 	public void resetTesterVariables() {

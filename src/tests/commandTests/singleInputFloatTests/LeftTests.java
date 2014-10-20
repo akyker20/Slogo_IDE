@@ -34,3 +34,4 @@ public class LeftTests extends CommandTester {
 
 	}
 }
+

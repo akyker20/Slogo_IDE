@@ -10,6 +10,7 @@ import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.variableCommandParsing.Variable;
 import drawableobject.DrawableObject;
 
 public abstract class StructuralCommand extends CommandParser {
@@ -19,14 +20,14 @@ public abstract class StructuralCommand extends CommandParser {
 
 	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException{
 		String stringOfInterest = commandString.next();
-		if(!stringOfInterest.equals(state.getListStartPattern())){
+		if(!stringOfInterest.equals(state.translator.getListStartPattern())){
 			throw new CompileTimeParsingException("expected opening brace");
 		}
 	}
 	
 	protected void checkForClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException{
 		String stringOfInterest = commandString.next();
-		if(!stringOfInterest.equals(state.getListEndPattern())){
+		if(!stringOfInterest.equals(state.translator.getListEndPattern())){
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 	}
@@ -35,12 +36,12 @@ public abstract class StructuralCommand extends CommandParser {
 		List<String> commandList = new ArrayList<String>();
 		checkForOpeningBrace(commandString);
 		String stringOfInterest = commandString.next();
-		while (!stringOfInterest.equals(state.getListEndPattern()) & commandString.hasNext()){
+		while (!stringOfInterest.equals(state.translator.getListEndPattern()) & commandString.hasNext()){
 			commandList.add(stringOfInterest);
 			stringOfInterest = commandString.next();
 		} 
 		
-		if(!commandString.hasNext() && !stringOfInterest.equals(state.getListEndPattern())){
+		if(!commandString.hasNext() && !stringOfInterest.equals(state.translator.getListEndPattern())){
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 
@@ -73,14 +74,28 @@ public abstract class StructuralCommand extends CommandParser {
 	private boolean findBrace(Iterator<String> commandString){
 		do{
 			String stringOfInterest = commandString.next();
-			if(stringOfInterest.equals(state.getListEndPattern())){
+			if(stringOfInterest.equals(state.translator.getListEndPattern())){
 				return true;
 			}
-			else if(stringOfInterest.equals(state.getListStartPattern())){
+			else if(stringOfInterest.equals(state.translator.getListStartPattern())){
 				findBrace(commandString);
 			}
 		}
 		while (commandString.hasNext());
 		return false;
+	}
+	
+	protected String getVariable(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException{
+		CommandParser commandParser = (CommandParser) createParser(commandString.next(), state);
+		if(!(commandParser instanceof Variable)){
+			throw new CompileTimeParsingException("expected variable name");
+		}
+		Variable variableParser = (Variable) commandParser;
+		try {
+			variableParser.parse(commandString, objectQueue);
+		} catch (RunTimeDivideByZeroException | RunTimeNullPointerException e) {
+		}
+		String variableName = variableParser.getVariableName();
+		return variableName;
 	}
 }

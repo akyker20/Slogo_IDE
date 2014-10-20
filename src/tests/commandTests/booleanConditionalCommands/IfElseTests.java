@@ -21,7 +21,6 @@ public class IfElseTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 50);
-		System.out.println(objectQueue.size());
 
 		DrawableObject line = objectQueue.poll();
 		DrawableObject turtle = objectQueue.poll();
@@ -33,6 +32,7 @@ public class IfElseTests extends CommandTester {
 
 		assertTrue(line.getParent().equals(LineFactory.PARENT));
 		assertTrue(line.getType().equals(LineFactory.TYPE));
+		System.out.println(line.getParameters().get(LineFactory.ORIGIN));
 		assertTrue(line.getParameters().get(LineFactory.ORIGIN).equals("0.0 0.0"));
 		assertTrue(line.getParameters().get(LineFactory.DESTINATION).equals("0.0 50.0"));
 
@@ -47,7 +47,6 @@ public class IfElseTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 100);
-		System.out.println(objectQueue.size());
 
 		DrawableObject line = objectQueue.poll();
 		DrawableObject turtle = objectQueue.poll();

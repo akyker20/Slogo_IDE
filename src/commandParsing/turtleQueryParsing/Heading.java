@@ -16,7 +16,7 @@ public class Heading extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.getHeading();
+		return state.turtles.getLastActiveTurtle().getHeading();
 	}
 
 }

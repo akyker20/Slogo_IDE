@@ -1,10 +1,11 @@
 package state;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class Location implements Serializable {
+public class Location {
 
-	private static final long serialVersionUID = -6402217875758076841L;
 	private double xLocation;
 	private double yLocation;
 	
@@ -13,6 +14,11 @@ public class Location implements Serializable {
 		yLocation = y;
 	}
 	
+	public Location(Location location) {
+		xLocation = location.getX();
+		yLocation = location.getY();
+	}
+
 	public void add(double x, double y){
 		xLocation +=x;
 		yLocation +=y;
@@ -29,5 +35,16 @@ public class Location implements Serializable {
 	public void add(Location loc){
 		xLocation += loc.xLocation;
 		yLocation += loc.yLocation;
+	}
+	
+	public String generateLocationString(){
+		List<Double> location = new ArrayList<Double>(){{
+			add(xLocation);
+			add(yLocation);
+		}};
+
+		return location.stream()
+				.map(p -> p.toString())
+				.collect(Collectors.joining(" ")); 
 	}
 }

@@ -2,27 +2,22 @@ package commandParsing.drawableObectGenerationInterfaces;
 
 import gui.factories.TurtleFactory;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import state.State;
+import state.Turtle;
 import drawableobject.DrawableObject;
 
 public interface TurtleGenerator {
-	default public DrawableObject generateDrawableObjectRepresentingTurtle(State state){
+	default public DrawableObject generateDrawableObjectRepresentingTurtle(Turtle turtle){
+		
 		String parent = TurtleFactory.PARENT;
 		String type = TurtleFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put(TurtleFactory.TURTLE_IMAGE_ID, state.getCurrentTurtleID());
-		parameters.put(TurtleFactory.HEADING, String.valueOf(state.getHeading()));
-		parameters.put(TurtleFactory.LOCATION, state.calculateLocation()
-				                                     .stream()
-				                                     .map(p -> p.toString())
-				                                     .collect(Collectors.joining(" ")));
-		parameters.put(TurtleFactory.OPACITY, String.valueOf(state.getOpacity()));
+		parameters.put(TurtleFactory.TURTLE_IMAGE_ID, turtle.getID());
+		parameters.put(TurtleFactory.HEADING, String.valueOf(turtle.getHeading()));
+		parameters.put(TurtleFactory.LOCATION, turtle.getLocation().generateLocationString());
+		parameters.put(TurtleFactory.OPACITY, String.valueOf(turtle.getOpacity()));
 		
 		return new DrawableObject(parent, type, parameters);
 	}

@@ -1,13 +1,14 @@
 package gui.componentdrawers;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import gui.mainclasses.StageInitializer;
 
 
 public class CommandLineDrawer extends ComponentDrawer {
     
-    private TextField myCommandLine;
+    private TextArea myCommandLine;
 
     public CommandLineDrawer (String name) {
         super(name);
@@ -21,7 +22,7 @@ public class CommandLineDrawer extends ComponentDrawer {
      * features can get access to the current text value of the field.
      * @param t
      */
-    public void setCommandLine(TextField t){
+    public void setCommandLine(TextArea t){
         myCommandLine = t;
     }
 

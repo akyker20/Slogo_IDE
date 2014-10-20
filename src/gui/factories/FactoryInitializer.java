@@ -1,5 +1,6 @@
 package gui.factories;
 
+import gui.componentdrawers.TurtleScreenDrawer;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.ObservableList;
 
@@ -16,12 +17,12 @@ public class FactoryInitializer {
      * Makes the object factories
      * @return an array of object factories
      */
-    public static ObjectFactory[] init (ObservableList<WorkspaceVariable> variableList) {
+    public static ObjectFactory[] init (ObservableList<WorkspaceVariable> variableList, TurtleScreenDrawer drawer) {
         return new ObjectFactory[] {
                                     new LineFactory(LINE_FACTORY),
                                     new TurtleFactory(TURTLE_FACTORY),
                                     new ErrorFactory(ERROR_FACTORY),
-                                    new EmptyPaneFactory(CLEAR_GRID_FACTORY),
+                                    new EmptyPaneFactory(CLEAR_GRID_FACTORY, drawer),
                                     new WorkspaceVariableFactory(WORKSPACE_VARIABLE_FACTORY, variableList),
         };
     }

@@ -19,7 +19,7 @@ public class Home extends MoveToLocation {
 
 	@Override
 	protected double getDestinationHeading(State state) {
-		return -state.getHeading();
+		return -state.turtles.getLastActiveTurtle().getHeading();
 	}
 
 }

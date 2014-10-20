@@ -16,7 +16,7 @@ public class YCoordinate extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.getTurtleYLocation();
+		return state.turtles.getLastActiveTurtle().getTurtleYLocation();
 	}
 
 }
