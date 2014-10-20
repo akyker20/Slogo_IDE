@@ -2,11 +2,19 @@ package tests.commandTests.userDefinedCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.WorkspaceVariableFactory;
+
+import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Test;
+
+import state.UserDefinedCommandCollection;
+import state.UserDefinedCommandCollection.Command;
 import tests.commandTests.CommandTester;
+
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
+
 import drawableobject.DrawableObject;
 
 public class MakeUserInstructionTests extends CommandTester {
@@ -24,7 +32,14 @@ public class MakeUserInstructionTests extends CommandTester {
 		assertTrue(state.variables.fetchVariable(":varb") == 0);
 		assertTrue(state.variables.fetchVariable(":varc") == 0);
 		List<String> translatedCommand = state.translator.translateToList("fd 20");
-		assertTrue(state.commands.fetchUserDefinedCommand("command").equals(translatedCommand));
+		List<String> variables = new ArrayList<String>(){{
+			add(":var");
+			add(":varb");
+			add(":varc");
+		}};
+		UserDefinedCommandCollection dummyCollection = new UserDefinedCommandCollection();
+		Command command = dummyCollection.new Command("command", 3, translatedCommand, variables);
+		assertTrue(state.commands.fetchUserDefinedCommand("command").equals(command));
 	}
 
 	@Test
