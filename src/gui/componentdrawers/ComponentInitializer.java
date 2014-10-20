@@ -1,8 +1,11 @@
 package gui.componentdrawers;
 
 import gui.menus.MainMenuInitializer;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -23,7 +26,7 @@ public class ComponentInitializer {
 
     private static String[] myLeftContainerElements = new String[]{GRID_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
     
-    public static Map<String, ComponentDrawer> init (BorderPane pane) { 
+    public static Map<String, ComponentDrawer> init (BorderPane pane) throws ParserConfigurationException, SAXException, IOException { 
         DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER));
         DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
         DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
@@ -32,7 +35,8 @@ public class ComponentInitializer {
         DRAWER_MAP.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
         DRAWER_MAP.put(ERROR_DRAWER, new ErrorDrawer(ERROR_DRAWER));
                  
-        pane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER)));
+        pane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER),
+                                             (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS)));
         
         VBox leftVBox = new VBox(10);
         leftVBox.getStyleClass().add("leftColumn");

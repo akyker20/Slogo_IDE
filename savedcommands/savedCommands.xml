@@ -1,0 +1,4 @@
+<commands>
+	<command value="fd 50"/>
+	<command value="right 20"/>
+</commands>
