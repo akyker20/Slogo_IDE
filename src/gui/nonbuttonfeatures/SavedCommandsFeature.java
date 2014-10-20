@@ -66,5 +66,9 @@ public class SavedCommandsFeature extends ListView<String> {
                 myCommands.add(command);
             }
         }
+    }
+
+    public List<String> getCommands () {
+        return myCommands;
     }   
 }
