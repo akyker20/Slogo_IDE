@@ -32,7 +32,7 @@ public class ComponentInitializer {
         DRAWER_MAP.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
         DRAWER_MAP.put(ERROR_DRAWER, new ErrorDrawer(ERROR_DRAWER));
                  
-        pane.setTop(MainMenuInitializer.init());
+        pane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER)));
         
         VBox leftVBox = new VBox(10);
         leftVBox.getStyleClass().add("leftColumn");
