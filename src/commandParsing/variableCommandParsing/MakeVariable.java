@@ -28,7 +28,7 @@ public class MakeVariable extends StructuralCommand implements VariableGenerator
 		}
 		accumulateComponents(commandString, 1, objectQueue);
 		double amountToAssign = expressionComponents.get(0);
-		WorkspaceVariable variable = state.storeVariable(variableName, amountToAssign);
+		WorkspaceVariable variable = state.variables.storeVariable(variableName, amountToAssign);
 		objectQueue.add(generateDrawableObjectRepresentingVariable(variable));
 		return amountToAssign;
 	}

@@ -10,6 +10,7 @@ import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.variableCommandParsing.Variable;
 import drawableobject.DrawableObject;
 
 public abstract class StructuralCommand extends CommandParser {
@@ -82,5 +83,19 @@ public abstract class StructuralCommand extends CommandParser {
 		}
 		while (commandString.hasNext());
 		return false;
+	}
+	
+	protected String getVariable(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException{
+		CommandParser commandParser = (CommandParser) createParser(commandString.next(), state);
+		if(!(commandParser instanceof Variable)){
+			throw new CompileTimeParsingException("expected variable name");
+		}
+		Variable variableParser = (Variable) commandParser;
+		try {
+			variableParser.parse(commandString, objectQueue);
+		} catch (RunTimeDivideByZeroException | RunTimeNullPointerException e) {
+		}
+		String variableName = variableParser.getVariableName();
+		return variableName;
 	}
 }

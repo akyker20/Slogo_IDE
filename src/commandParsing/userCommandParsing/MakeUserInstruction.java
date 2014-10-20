@@ -24,10 +24,11 @@ public class MakeUserInstruction extends StructuralCommand {
 		}
 		extractCommandsBetweenBraces(commandString);
 		for(String varName : enclosedCommands){
-			if(!state.variableExists(varName)){
-				state.storeVariable(varName, 0);
+			if(!state.variables.variableExists(varName)){
+				state.variables.storeVariable(varName, 0);
 			}
 		}
+		int numArgs = enclosedCommands.size();
 		extractCommandsBetweenBraces(commandString);
 		try{
 			Queue<DrawableObject> tempQueue = new LinkedList<DrawableObject>();
@@ -35,7 +36,7 @@ public class MakeUserInstruction extends StructuralCommand {
 		} catch (SLOGOException e) {
 			return 0;
 		}
-		state.storeUserDefinedCommand(potentialCommandName, enclosedCommands);
+		state.commands.storeUserDefinedCommand(potentialCommandName, numArgs, enclosedCommands);
 		return 1;
 	}
 }

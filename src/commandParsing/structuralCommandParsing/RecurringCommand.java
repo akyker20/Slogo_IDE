@@ -37,14 +37,14 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 		accumulateComponents(commandString, 1, objectQueue);
 		loopVariableBound = expressionComponents.get(0);
 		incrementAmount = 1;
-		state.storeVariable(loopVariable, 1);
+		state.variables.storeVariable(loopVariable, 1);
 	}
 	
 	protected void incrementLoopVariable(){
-		state.incrementVariable(loopVariable, incrementAmount);
+		state.variables.incrementVariable(loopVariable, incrementAmount);
 	}
 	
 	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException{
-		return loopVariableBound >= state.fetchVariable(loopVariable);
+		return loopVariableBound >= state.variables.fetchVariable(loopVariable);
 	}
 }

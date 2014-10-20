@@ -11,14 +11,20 @@ import drawableobject.DrawableObject;
 
 public class Variable extends CommandParser {
 
+	private String variableName;
+	
 	@Override
 	public double parse(Iterator<String> commandString,
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
 		
-		String variableName = commandString.next();
-		return state.fetchVariable(variableName);
+		variableName = commandString.next();
+		return state.variables.fetchVariable(variableName);
+	}
+	
+	public String getVariableName(){
+		return variableName;
 	}
 
 }
