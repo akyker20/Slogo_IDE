@@ -1,5 +1,6 @@
 package gui.nonbuttonfeatures;
 
+import java.util.List;
 import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.SavedCommandsDrawer;
 import javafx.collections.FXCollections;
@@ -35,6 +36,7 @@ public class SavedCommandsFeature extends ListView<String> {
                 }
             }
         });
+        parentDrawer.setFeature(this);
         parentDrawer.drawShape(this);
     }
 
@@ -49,6 +51,19 @@ public class SavedCommandsFeature extends ListView<String> {
             if(myCommands.stream().map(command->command.equals(currentCommand))
                     .filter(bool -> bool).toArray().length == 0){
                 myCommands.add(currentCommand);
+            }
+        }
+    }
+
+    /**
+     * Loads commands when user loads previously saved commands from an xml parser.
+     * This is called when the user clicks file -> Load saved commands.
+     * @param savedCommands
+     */
+    public void loadCommands (List<String> savedCommands) {
+        for(String command:savedCommands){
+            if(myCommands.stream().filter(c->c.equals(command)).count() == 0){
+                myCommands.add(command);
             }
         }
     }   

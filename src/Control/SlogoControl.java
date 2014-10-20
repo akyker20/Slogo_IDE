@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
@@ -44,9 +46,11 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      *
      * @param stage
      * @throws IOException 
+     * @throws SAXException 
+     * @throws ParserConfigurationException 
      */
 
-    public SlogoControl (Stage stage) throws IOException {
+    public SlogoControl (Stage stage) throws IOException, ParserConfigurationException, SAXException {
         Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
         myGUI = new GUIController(stage, this);
         translator = new Translator("english");

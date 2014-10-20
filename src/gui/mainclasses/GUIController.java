@@ -5,9 +5,12 @@ import gui.componentdrawers.ComponentInitializer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.variableslist.WorkspaceVariable;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
@@ -38,9 +41,12 @@ public class GUIController {
      *
      * @param stage
      * @param control SlogoGraphics object that has access to GUI-related method calls
+     * @throws IOException 
+     * @throws SAXException 
+     * @throws ParserConfigurationException 
      */
 
-    public GUIController (Stage stage, SlogoGraphics control) {
+    public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
         GUI_STAGE = stage;
         GUI_TEXT = LocaleInitializer.init();
         myPane = StageInitializer.init(GUI_STAGE);
