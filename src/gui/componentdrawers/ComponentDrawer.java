@@ -27,8 +27,8 @@ public abstract class ComponentDrawer extends Pane {
      * @param node
      */
 
-    public void drawShape (Node node) {
-        getChildren().add(node);
+    public void drawShape (Node[] node) {
+        getChildren().addAll(node);
     }
 
 

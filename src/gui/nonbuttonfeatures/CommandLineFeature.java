@@ -51,7 +51,7 @@ public class CommandLineFeature extends TextArea {
         this.setPrefRowCount(4);
         this.setLayoutY(20);
         parentDrawer.setCommandLine(this);
-        parentDrawer.drawShape(this);
+        parentDrawer.drawShape(new CommandLineFeature[]{this});
         this.requestFocus();
     }
 

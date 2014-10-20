@@ -37,7 +37,7 @@ public class SavedCommandsFeature extends ListView<String> {
             }
         });
         parentDrawer.setFeature(this);
-        parentDrawer.drawShape(this);
+        parentDrawer.drawShape(new SavedCommandsFeature[]{this});
     }
 
     /**

@@ -20,6 +20,6 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
         this.setId("table");
         this.setLayoutY(20);
         this.setPrefHeight(168);
-        parentDrawer.drawShape(this);
+        parentDrawer.drawShape(new WorkspaceVariablesFeature[]{this});
     }
 }

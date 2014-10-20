@@ -10,7 +10,7 @@ public class SetTurtleScreenColorFeature extends ColorPicker {
 
     public SetTurtleScreenColorFeature (TurtleScreenDrawer targetDrawer, ButtonHolderDrawer parentDrawer) {
         setOnAction(event -> changeColor(targetDrawer));
-        parentDrawer.drawShape(this);
+        parentDrawer.drawShape(new SetTurtleScreenColorFeature[]{this});
         setPrefWidth(100);
         setPrefHeight(40);
     }

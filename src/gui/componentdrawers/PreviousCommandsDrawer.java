@@ -9,7 +9,7 @@ public class PreviousCommandsDrawer extends ComponentDrawer {
         super(name);
         this.getStyleClass().add("previousCommands");
         this.setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        this.drawShape(new Label("Previous Commands"));
+        this.drawShape(new Label[]{new Label("Previous Commands")});
     }
 
 }

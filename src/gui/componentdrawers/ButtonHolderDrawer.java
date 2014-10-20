@@ -24,7 +24,7 @@ public class ButtonHolderDrawer extends ComponentDrawer {
      * Draw to the button holder pane rather than the entire pane.
      */
     @Override
-    public void drawShape(Node n){
-        myButtonHolder.getChildren().add(n);
+    public void drawShape(Node[] n){
+        myButtonHolder.getChildren().addAll(n);
     }
 }

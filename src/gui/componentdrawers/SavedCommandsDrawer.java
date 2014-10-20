@@ -10,7 +10,7 @@ public class SavedCommandsDrawer extends ComponentDrawer {
 
     public SavedCommandsDrawer (String name) {
         super(name);
-        this.drawShape(new Label("Saved Commands"));
+        this.drawShape(new Label[]{new Label("Saved Commands")});
     }
     
     public void setFeature(SavedCommandsFeature feature){

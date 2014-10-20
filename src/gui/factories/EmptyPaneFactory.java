@@ -20,11 +20,11 @@ public class EmptyPaneFactory extends ObjectFactory {
     }
 
     @Override
-    public Node generateObject (Map<String, String> params) {
+    public Node[] generateObject (Map<String, String> params) {
         //place new grid 
         myTurtleScreen.resetScreen();
         TurtleFactory.clearTurtleViews();
-        return new NullNode();
+        return new Node[]{new NullNode()};
     }
 
 }

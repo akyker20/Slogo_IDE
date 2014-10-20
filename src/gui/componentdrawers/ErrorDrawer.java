@@ -14,7 +14,7 @@ public class ErrorDrawer extends ComponentDrawer {
         super(name);
         this.getStyleClass().add("errorDrawer");
         this.setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        super.drawShape(new Label("Errors"));
+        super.drawShape(new Label[]{new Label("Errors")});
     }
 
     public void setParentNode(ListView view){
@@ -24,8 +24,8 @@ public class ErrorDrawer extends ComponentDrawer {
 
 
     @Override
-    public void drawShape(Node n){
-        Label label = (Label) n;
+    public void drawShape(Node[] n){
+        Label label = (Label) n[0];
         label.setStyle("-fx-color: red");
         myListView.getItems().clear();
         myListView.getItems().add(label);

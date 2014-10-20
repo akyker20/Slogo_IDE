@@ -49,7 +49,7 @@ public class PreviousCommandsFeature extends ListView {
                 }
             }
         });
-        parentDrawer.drawShape(this);
+        parentDrawer.drawShape(new PreviousCommandsFeature[]{this});
     }
 
 

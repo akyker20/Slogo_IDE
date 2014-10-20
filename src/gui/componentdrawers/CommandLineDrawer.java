@@ -14,7 +14,7 @@ public class CommandLineDrawer extends ComponentDrawer {
         super(name);
         getStyleClass().add("commandLine");
         setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        this.drawShape(new Label("Command Line"));
+        this.drawShape(new Label[]{new Label("Command Line")});
     }
     
     /**

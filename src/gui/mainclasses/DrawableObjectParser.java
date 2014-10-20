@@ -19,11 +19,11 @@ public class DrawableObjectParser {
 
     public void parseDrawableObject (DrawableObject object) {
         ComponentDrawer identifiedDrawer = parseComponentDrawer(object.getParent());
-        Node identifiedNode = parseNodeToDraw(object);
-        identifiedDrawer.drawShape(identifiedNode);
+        Node[] identifiedNodes = parseNodeToDraw(object);
+        identifiedDrawer.drawShape(identifiedNodes);
     }
 
-    private Node parseNodeToDraw (DrawableObject object) {
+    private Node[] parseNodeToDraw (DrawableObject object) {
         ObjectFactory identifiedFactory = null;
         for (ObjectFactory myFactory : myFactories) {
             if (myFactory.toString().equalsIgnoreCase(object.getType())) {

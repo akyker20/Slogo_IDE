@@ -91,7 +91,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
      */
     public void setTurtleScreenFeature(TurtleScreenFeature grid){
         myTurtleScreen = grid;
-        super.drawShape(myTurtleScreen);
+        super.drawShape(new Node[]{myTurtleScreen});
     }
 
     /**
@@ -100,9 +100,9 @@ public class TurtleScreenDrawer extends ComponentDrawer {
      * on the grid.
      */
     @Override
-    public void drawShape(Node n){
-        if(!myTurtleScreen.getChildren().contains(n))
-            myTurtleScreen.getChildren().add(n);
+    public void drawShape(Node[] n){
+        if(!myTurtleScreen.getChildren().contains(n[0]))
+            myTurtleScreen.getChildren().add(n[0]);
     }
 
     /**

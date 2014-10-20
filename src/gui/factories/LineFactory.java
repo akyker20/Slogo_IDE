@@ -2,7 +2,9 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
@@ -20,8 +22,18 @@ public class LineFactory extends ObjectFactory {
     }
 
     @Override
+    public Node[] generateObject (Map<String, String> params) {
+        List<Line> linesList = generateLines(params);
+        Line[] lines = new Line[linesList.size()];
+        for (int k=0;k<linesList.size();k++) {
+            lines[k] = linesList.get(k);
+        }
+        
+        return lines;
+    }
 
-    public Node generateObject (Map<String, String> params) {
+    public List<Line> generateLines (Map<String, String> params) {
+        List<Line> lineList = new ArrayList<Line>();
 
         Line line = new Line();
         double[] origin = parseStringToPoints(params.get(ORIGIN));
@@ -108,44 +120,49 @@ public class LineFactory extends ObjectFactory {
                     destination[1] = newDestY;
                     destination[0] = newDestX;
 
-                //exiting through x so use delta x    
+                    //exiting through x so use delta x    
                 } else {
                     double newDestY = origin[1]+deltaX*gradient;
                     double newDestX = origin[0]+deltaX;
                     double remainderDeltaX = destination[0]-origin[0]-deltaX;
-                            
+
                     //exited left/right so start right/left
                     if (movingRight) {
                         recurseOrigin = new double[]{-TurtleScreenDrawer.GRID_WIDTH/2,newDestY};
                         recurseDestination = new double[]{recurseOrigin[0]+remainderDeltaX,
-                                            recurseOrigin[1]+remainderDeltaX*gradient};
+                                                          recurseOrigin[1]+remainderDeltaX*gradient};
                     } else {
                         recurseOrigin = new double[]{TurtleScreenDrawer.GRID_WIDTH/2,newDestY};
                         recurseDestination = new double[]{recurseOrigin[0]+remainderDeltaX,
-                                            recurseOrigin[1]+remainderDeltaX*gradient};
+                                                          recurseOrigin[1]+remainderDeltaX*gradient};
                     }
-                    
+
                     destination[1] = newDestY;
                     destination[0] = newDestX;
                 }
             }
 
+            line.setEndX(TurtleScreenDrawer.GRID_WIDTH/2 + destination[0] );
+            line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
+            
             //make recursive call
             Map<String,String> recursiveParams = new HashMap<String,String>();
             recursiveParams.put(ORIGIN,recurseOrigin[0]+" "+recurseOrigin[1]);
             recursiveParams.put(DESTINATION, recurseDestination[0]+" "+recurseDestination[1]);
-            this.generateObject (recursiveParams);
-            
-            line.setEndX(TurtleScreenDrawer.GRID_WIDTH/2 + destination[0] );
-            line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
+            //add returned lines to list
+            List<Line> otherLines = this.generateLines(recursiveParams);
+            for (Line otherLine:otherLines) {
+                lineList.add(otherLine);
+            }         
+
         } else {
             line.setEndX(TurtleScreenDrawer.GRID_WIDTH/2 + destination[0] );
             line.setEndY(TurtleScreenDrawer.GRID_HEIGHT/2 - destination[1]);
         }
         //destination = GridEdgeRules.applyRules(origin, destination);
-        
-        
-        return line;
+        //add current list to lineList
+        lineList.add(line);
+        return lineList;
     }
 
     private boolean destinationOffScreen(double[] destination) {

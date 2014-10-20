@@ -22,18 +22,18 @@ public class WorkspaceVariableFactory extends ObjectFactory {
     }
 
     @Override
-    public Node generateObject (Map<String, String> params) {
+    public Node[] generateObject (Map<String, String> params) {
         String variableName = params.get("name");
         Double variableValue = Double.parseDouble(params.get("value"));
         for(WorkspaceVariable var:myVariablesList){
             if(var.getMyName().equals(variableName)){
                 var.setMyValue(variableValue);
                 refreshList();
-                return new NullNode();
+                return new Node[]{new NullNode()};
             }
         }
         myVariablesList.add(new WorkspaceVariable(variableName, variableValue));
-        return new NullNode();
+        return new Node[]{new NullNode()};
     }
 
     private void refreshList () {

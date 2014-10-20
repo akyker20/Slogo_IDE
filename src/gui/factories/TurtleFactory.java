@@ -42,7 +42,7 @@ public class TurtleFactory extends ObjectFactory {
     }
 
     @Override
-    public Node generateObject (Map<String, String> params) {
+    public Node[] generateObject (Map<String, String> params) {
         String turtleID = params.get(TURTLE_IMAGE_ID);
         if (myTurtleViews.containsKey(turtleID)) {
             System.out.println("TurtleFactory: turtle in views\n");
@@ -54,7 +54,7 @@ public class TurtleFactory extends ObjectFactory {
        
     }
 
-    private Node createTurtleImage(Map<String, String> params) {      
+    private Node[] createTurtleImage(Map<String, String> params) {      
         Image image =
                 new Image(getClass().getResourceAsStream(turtleImage),
                           TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
@@ -63,10 +63,10 @@ public class TurtleFactory extends ObjectFactory {
         myTurtleViews.put(params.get(TURTLE_IMAGE_ID), imageView);
         updateTurtleImage(params);
         imageView.setOnMouseClicked(event->selectTurtle(imageView));
-        return imageView;
+        return new ImageView[]{imageView};
     }
 
-    private Node updateTurtleImage(Map<String, String> params) {
+    private Node[] updateTurtleImage(Map<String, String> params) {
 
         Node currentImageView = myTurtleViews.get(params.get(TURTLE_IMAGE_ID));
 
@@ -82,7 +82,7 @@ public class TurtleFactory extends ObjectFactory {
         
         currentImageView.setRotate(Double.parseDouble(params.get(HEADING)));
         currentImageView.setOpacity(Double.parseDouble(params.get(OPACITY)));  
-        return new NullNode();
+        return new Node[]{new NullNode()};
     }
 
     public static void clearTurtleViews() {

@@ -15,8 +15,8 @@ public class ErrorFactory extends ObjectFactory {
     }
 
     @Override
-    public Node generateObject (Map<String, String> params) {
+    public Node[] generateObject (Map<String, String> params) {
         Label label = new Label(params.get(ERROR_MESSAGE));
-        return label;
+        return new Label[]{label};
     }
 }

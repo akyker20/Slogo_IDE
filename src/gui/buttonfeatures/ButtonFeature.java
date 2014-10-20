@@ -9,6 +9,6 @@ public class ButtonFeature extends Button {
         setText(GUIController.GUI_TEXT.getString(text));
         setPrefWidth(100);
         setPrefHeight(40);
-        component.drawShape(this);
+        component.drawShape(new ButtonFeature[]{this});
     }
 }

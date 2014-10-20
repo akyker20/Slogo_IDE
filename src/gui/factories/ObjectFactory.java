@@ -27,7 +27,7 @@ public abstract class ObjectFactory {
 	 * @param params
 	 * @return
 	 */
-	public abstract Node generateObject(Map<String, String> params);
+	public abstract Node[] generateObject(Map<String, String> params);
 
 	/**
 	 * Returns the name of the factory assigned to the constructor This method
