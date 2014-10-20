@@ -35,7 +35,7 @@ public class MakeUserInstruction extends StructuralCommand {
 				state.variables.storeVariable(varName, 0);
 			}
 		}
-		int numArgs = enclosedCommands.size();
+		int numArgs = enclosedCommands.size()/2;
 		extractCommandsBetweenBraces(commandString);
 		try{
 			Queue<DrawableObject> tempQueue = new LinkedList<DrawableObject>();
