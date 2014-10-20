@@ -3,9 +3,9 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.DeepCopy;
 import state.Location;
 import state.State;
+import state.Turtle;
 
 import commandParsing.drawableObectGenerationInterfaces.LineGenerator;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
@@ -20,16 +20,18 @@ public abstract class MoveToLocation extends TwoInputFloatCommandParser implemen
 	protected double operateOnComponents(List<Double> components,
 			Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
-		Location turtleLocation = new Location(state.getTurtleXLocation(),state.getTurtleYLocation());
 		Location destination = getDestinationLocation(components);
+		Location turtleLocation = new Location(destination);
 
-		State initialState = (State) DeepCopy.deepCopy(state);
-		state.moveToLocation(destination);
-		state.rotate(getDestinationHeading(state));
-		if(state.isPenDown()){
-            objectQueue.add(generateDrawableObjectRepresentingLine(initialState, state));
-        }
-        objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
+		for(Turtle t : state.turtles.getActiveTurtles()){
+			turtleLocation = new Location(t.getLocation());
+			t.setLocation(destination);
+			t.rotate(getDestinationHeading(state));
+			if(t.pen.isPenDown()){
+	            objectQueue.add(generateDrawableObjectRepresentingLine(turtleLocation, destination));
+	        }
+	        objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
+		}
         return distanceBetweenPoints(turtleLocation,destination);
 	}
 

@@ -36,6 +36,6 @@ public class ClearScreenTests extends CommandTester {
 		assertTrue(turtle.getParameters().get(TurtleFactory.LOCATION).equals("0.0 0.0"));
 		assertTrue(turtle.getParameters().get(TurtleFactory.OPACITY).equals("100.0"));		
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.isTurtleShowing());
+		assertTrue(state.turtles.getLastActiveTurtle().isTurtleShowing());
 	}
 }

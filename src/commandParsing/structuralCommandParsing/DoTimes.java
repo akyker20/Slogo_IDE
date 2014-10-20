@@ -21,7 +21,7 @@ public class DoTimes extends RecurringCommand {
 			throw new CompileTimeParsingException("expected variable name");
 		}
 		loopVariable = commandString.next();
-		if(!loopVariable.matches(state.getVariablePattern())){
+		if(!loopVariable.matches(state.translator.getVariablePattern())){
 			throw new CompileTimeParsingException("expected variable name: " + loopVariable);
 		}
 		basicLoopVariableInitialization(commandString, objectQueue);

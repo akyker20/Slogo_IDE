@@ -16,7 +16,7 @@ public class XCoordinate extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.getTurtleXLocation();
+		return state.turtles.getLastActiveTurtle().getTurtleXLocation();
 	}
 
 }

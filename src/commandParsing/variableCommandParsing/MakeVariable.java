@@ -23,7 +23,7 @@ public class MakeVariable extends StructuralCommand implements VariableGenerator
 			throw new CompileTimeParsingException("expected variable name");
 		}
 		String variableName = commandString.next();
-		if(!variableName.matches(state.getVariablePattern())){
+		if(!variableName.matches(state.translator.getVariablePattern())){
 			throw new CompileTimeParsingException("expected variable name: " + variableName);
 		}
 		accumulateComponents(commandString, 1, objectQueue);

@@ -16,7 +16,7 @@ public class IsShowing extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.isTurtleShowing() ? 1 : 0;
+		return state.turtles.getLastActiveTurtle().isTurtleShowing() ? 1 : 0;
 	}
 
 }

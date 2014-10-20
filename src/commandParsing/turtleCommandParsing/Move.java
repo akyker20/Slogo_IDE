@@ -3,8 +3,8 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.DeepCopy;
-import state.State;
+import state.Location;
+import state.Turtle;
 
 import commandParsing.drawableObectGenerationInterfaces.LineGenerator;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
@@ -18,12 +18,16 @@ public abstract class Move extends OneInputFloatCommandParser implements LineGen
     @Override
     protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
         double distance = expressionComponents.get(0);
-		State initialState = (State) DeepCopy.deepCopy(state);
-		state.move(distanceToMove(distance));
-        if(state.isPenDown()){
-            objectQueue.add(generateDrawableObjectRepresentingLine(initialState, state));
+        
+        for(Turtle t : state.turtles.getActiveTurtles()){
+        	Location initialLocation = new Location(t.getLocation());
+    		t.move(distanceToMove(distance));
+    		Location finalLocation = t.getLocation();
+            if(t.pen.isPenDown()){
+                objectQueue.add(generateDrawableObjectRepresentingLine(initialLocation, finalLocation));
+            }
+            objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
         }
-        objectQueue.add(generateDrawableObjectRepresentingTurtle(state));
         return distance;
     }
 	

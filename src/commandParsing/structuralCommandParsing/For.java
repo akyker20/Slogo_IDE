@@ -21,7 +21,7 @@ public class For extends RecurringCommand {
 			throw new CompileTimeParsingException("expected variable name");
 		}
 		loopVariable = commandString.next();
-		if(!loopVariable.matches(state.getVariablePattern())){
+		if(!loopVariable.matches(state.translator.getVariablePattern())){
 			throw new CompileTimeParsingException("expected variable name: " + loopVariable);
 		}
 		accumulateComponents(commandString, 3, objectQueue);

@@ -16,7 +16,7 @@ public class IsPenDown extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.isPenDown() ? 1 : 0;
+		return state.turtles.getLastActiveTurtle().pen.isPenDown() ? 1 : 0;
 	}
 
 }

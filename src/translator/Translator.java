@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,9 +14,8 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
-public class Translator implements Serializable {
-	
-	private static final long serialVersionUID = -65773011613967680L;
+public class Translator {
+
 	private static final String CONSTANT = "Constant";
 	private static final String VARIABLE = "Variable";
 	private Map<String, String> dictionary = new HashMap<String, String>();

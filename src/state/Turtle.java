@@ -1,40 +1,17 @@
 package state;
 
-import java.io.Serializable;
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-
-public class Turtle implements Serializable {
+public class Turtle {
     
-	private static final long serialVersionUID = 483416034032716037L;
-	// degrees from north
-    private static final double DEFAULT_TURTLE_HEADING = 0.0;
-
+	private static final double DEFAULT_TURTLE_HEADING = 0.0;
+	public Pen pen = new Pen();
     private double myHeading;
-    private Color myPenColor;
     private Location myLocation;
     private double myOpacity = 100;
-    private boolean penState = true;
     private boolean turtleShowing = true;
-    private String ID;
 
     public Turtle () {
-        // call setImage() before setLocation() and setHeading()
-
         myLocation = new Location(0,0);
         myHeading = DEFAULT_TURTLE_HEADING;
-    }
-    
-    public void togglePenDown(){
-        penState = true;
-    }
-
-    public void togglePenUp(){
-        penState = false;
-    }
-
-    public boolean isPenDown(){
-        return penState;
     }
 
     public void showTurtle(){
@@ -66,28 +43,41 @@ public class Turtle implements Serializable {
     public void setHeading (double myHeading) {
         this.myHeading = myHeading;
     }
+    
+    public void move(double amount){
+		double heading = 90-myHeading;
+		double xDisplacement = roundToHundredths(amount*Math.cos(heading/(180/Math.PI)));
+		double yDisplacement = roundToHundredths(amount*Math.sin(heading/(180/Math.PI)));
+		myLocation.add(xDisplacement, yDisplacement);
+	}
 
-    public Color getPenColor () {
-        return myPenColor;
-    }
+	private double roundToHundredths(double number){
+		return Math.round(number*100)/100;
+	}
 
-    public void setPenColor (Color myPenColor) {
-        this.myPenColor = myPenColor;
-    }
+	public void rotate(double amount) {
+		setHeading((myHeading+amount)%360);
+	}
+	
+	public Location getLocation(){
+		return myLocation;
+	}
 
-    public Location getLocation () {
-        return myLocation;
-    }
+	public double getTurtleXLocation(){
+		return myLocation.getX();
+	}
+
+	public double getTurtleYLocation(){
+		return myLocation.getY();
+	}
 
     public void setLocation (Location myLocation) {
         this.myLocation = myLocation;
     }
 
-    public String getID () {
-        return ID;
-    }
+	public String getID() {
+		return String.valueOf(this.toString().hashCode());
+	}
     
-    public void setID (String someID) {
-        ID = someID;
-    }
+    
 }

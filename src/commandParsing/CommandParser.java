@@ -40,7 +40,7 @@ public abstract class CommandParser {
 
 	protected boolean isStringParsableAsCommand(String string){
 		String[] parts = string.split("\\.");
-		return parts[parts.length-1].matches(state.getCommandPattern());
+		return parts[parts.length-1].matches(state.translator.getCommandPattern());
 	}
 
 	public static CommandParser createParser(String commandName, State state) throws CompileTimeParsingException{
