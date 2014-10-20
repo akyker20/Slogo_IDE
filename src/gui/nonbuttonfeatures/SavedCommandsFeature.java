@@ -61,6 +61,10 @@ public class SavedCommandsFeature extends ListView<String> {
      * @param savedCommands
      */
     public void loadCommands (List<String> savedCommands) {
-        myCommands.addAll(savedCommands);
+        for(String command:savedCommands){
+            if(myCommands.stream().filter(c->c.equals(command)).count() == 0){
+                myCommands.add(command);
+            }
+        }
     }   
 }
