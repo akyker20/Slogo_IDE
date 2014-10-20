@@ -28,7 +28,7 @@ public class For extends RecurringCommand {
 		double start = expressionComponents.get(0);
 		loopVariableBound = expressionComponents.get(1);
 		incrementAmount = expressionComponents.get(2);
-		state.storeVariable(loopVariable, start);
+		state.variables.storeVariable(loopVariable, start);
 		checkForClosingBrace(commandString);
 	}
 }

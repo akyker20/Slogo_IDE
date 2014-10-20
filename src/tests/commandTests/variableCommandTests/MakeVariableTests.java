@@ -23,7 +23,7 @@ public class MakeVariableTests extends CommandTester {
 		assertTrue(refreshVariables.getType().equals(WorkspaceVariableFactory.TYPE));
 		assertTrue(refreshVariables.getParameters().size()==2);
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.fetchVariable(":var") == 20);
+		assertTrue(state.variables.fetchVariable(":var") == 20);
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class MakeVariableTests extends CommandTester {
 		assertTrue(refreshVariables.getType().equals(WorkspaceVariableFactory.TYPE));
 		assertTrue(refreshVariables.getParameters().size()==2);
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.fetchVariable(":var") == 40);		
+		assertTrue(state.variables.fetchVariable(":var") == 40);		
 	}
 	
 	
@@ -64,9 +64,9 @@ public class MakeVariableTests extends CommandTester {
 			assertTrue(refreshVariables.getParameters().size()==2);
 		}
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.fetchVariable(":var") == 25);		
-		assertTrue(state.fetchVariable(":varb") == 25);	
-		assertTrue(state.fetchVariable(":varc") == 40);	
+		assertTrue(state.variables.fetchVariable(":var") == 25);		
+		assertTrue(state.variables.fetchVariable(":varb") == 25);	
+		assertTrue(state.variables.fetchVariable(":varc") == 40);	
 	}
 
 }

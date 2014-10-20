@@ -18,7 +18,7 @@ public class Variable extends CommandParser {
 			RunTimeNullPointerException {
 		
 		String variableName = commandString.next();
-		return state.fetchVariable(variableName);
+		return state.variables.fetchVariable(variableName);
 	}
 
 }

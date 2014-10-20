@@ -24,8 +24,8 @@ public class MakeUserInstruction extends StructuralCommand {
 		}
 		extractCommandsBetweenBraces(commandString);
 		for(String varName : enclosedCommands){
-			if(!state.variableExists(varName)){
-				state.storeVariable(varName, 0);
+			if(!state.variables.variableExists(varName)){
+				state.variables.storeVariable(varName, 0);
 			}
 		}
 		int numArgs = enclosedCommands.size();

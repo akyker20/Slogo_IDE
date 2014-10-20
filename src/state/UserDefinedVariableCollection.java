@@ -2,13 +2,14 @@ package state;
 
 import gui.variableslist.WorkspaceVariable;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import commandParsing.exceptions.RunTimeNullPointerException;
 
 public class UserDefinedVariableCollection {
 	
-	public Map<String, WorkspaceVariable> variableMap;
+	public Map<String, WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
 	public static final WorkspaceVariable defaultVar = new WorkspaceVariable("dummyVar", 0);
 
 	public WorkspaceVariable storeVariable(String name, double value){
