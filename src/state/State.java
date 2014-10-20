@@ -18,11 +18,9 @@ public class State {
 	public Turtles turtles = new Turtles();
 	
 	public Map<String, WorkspaceVariable> variableMap;
-	public Map<String,List<String>> userDefinedCommandMap;
 	public static final WorkspaceVariable defaultVar = new WorkspaceVariable("dummyVar", 0);
 
 	public State (Turtle someTurtle, Map<String,WorkspaceVariable> variables, Translator someTranslator) {
-		userDefinedCommandMap = new HashMap<String,List<String>>();
 		turtles.addTurtle(someTurtle);
 		variableMap = variables;
 		translator = someTranslator;
@@ -53,14 +51,4 @@ public class State {
 		return variableMap.containsKey(name);
 	}
 
-	public void storeUserDefinedCommand(String name, List<String> commands){
-		userDefinedCommandMap.put(name, commands);
-	}
-
-	public List<String> fetchUserDefinedCommand(String name) throws RunTimeNullPointerException{
-		if(!userDefinedCommandMap.keySet().contains(name)){
-			throw new RunTimeNullPointerException(name);
-		}
-		return userDefinedCommandMap.get(name); 
-	}
 }
