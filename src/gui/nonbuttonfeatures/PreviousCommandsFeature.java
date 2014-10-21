@@ -3,7 +3,6 @@ package gui.nonbuttonfeatures;
 import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;

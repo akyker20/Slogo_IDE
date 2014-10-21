@@ -87,6 +87,6 @@ public class GUIController {
      * @param command
      */
     public void addPreviousCommand (String command) {
-        myPreviousCommandsList.add(command);   
+        myPreviousCommandsList.add(0, command);   
     }
 }
