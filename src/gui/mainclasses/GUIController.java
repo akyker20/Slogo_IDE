@@ -83,7 +83,8 @@ public class GUIController {
     }
 
     /**
-     * Adds a command to the previous commands list view.
+     * Adds a command to the previous commands list view. Adds the command to the front
+     * of the list so it will be displayed first in the view.
      * @param command
      */
     public void addPreviousCommand (String command) {

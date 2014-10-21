@@ -49,7 +49,7 @@ public class FeatureInitializer {
                                                                                       previousCommandsList);
         new CommandLineFeature(commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
-        new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList);
+        new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList, control);
         
         SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
         new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature);
