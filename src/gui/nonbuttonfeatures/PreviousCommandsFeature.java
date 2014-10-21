@@ -1,15 +1,8 @@
 package gui.nonbuttonfeatures;
 
-import java.io.IOException;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
 import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
-import Control.SlogoGraphics;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -22,34 +15,37 @@ import javafx.scene.input.MouseEvent;
  * @author Austin Kyker
  *
  */
-public class PreviousCommandsFeature extends ListView {
+public class PreviousCommandsFeature extends ListView<String> {
 
     private ObservableList<String> myPreviousCommandsList;
+    private CommandLineDrawer myCommandLineDrawer;
 
     public PreviousCommandsFeature(PreviousCommandsDrawer parentDrawer, 
-                                   CommandLineDrawer commandLineDrawer){
-        myPreviousCommandsList = FXCollections.observableArrayList();
+                                   CommandLineDrawer commandLineDrawer,
+                                   ObservableList<String> previousCommands){
+        myPreviousCommandsList = previousCommands;
+        myCommandLineDrawer = commandLineDrawer;
         this.setItems(myPreviousCommandsList);
         this.setPrefWidth(parentDrawer.getWidth());
         this.setPrefHeight(100);
-        this.setLayoutY(20);
-        
-        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            /**
-             * If the user double clicks on a previous command, that command is run.
-             */
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton().equals(MouseButton.PRIMARY)){
-                    if(event.getClickCount() == 2){
-                        String selectedCommand = PreviousCommandsFeature.this
-                                .getSelectionModel().getSelectedItem().toString();
-                        commandLineDrawer.setCommandLine(selectedCommand);
-                    }
-                }
-            }
-        });
+        this.setLayoutY(20);    
+        this.setOnMouseClicked(event->displayPreviousCommandInCommandLineOnDblClick(event));
         parentDrawer.drawShape(new PreviousCommandsFeature[]{this});
+    }
+
+    /**
+     * When the user double clicks on a previous command that command will be displayed in the command
+     * line so the user can quickly run it by hitting enter.
+     * @param event
+     */
+    private void displayPreviousCommandInCommandLineOnDblClick (MouseEvent event) {
+        if(event.getButton().equals(MouseButton.PRIMARY)){
+            if(event.getClickCount() == 2){
+                String selectedCommand = PreviousCommandsFeature.this
+                        .getSelectionModel().getSelectedItem().toString();
+                myCommandLineDrawer.setCommandLine(selectedCommand);
+            }
+        }
     }
 
 

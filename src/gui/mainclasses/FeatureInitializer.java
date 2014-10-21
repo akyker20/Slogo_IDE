@@ -27,14 +27,15 @@ import Control.SlogoGraphics;
 public class FeatureInitializer {
 
     public static void init (Map<String, ComponentDrawer> drawerMap, SlogoGraphics control, 
-                             ObservableList<WorkspaceVariable> variablesList) {
+                             ObservableList<WorkspaceVariable> variablesList,
+                             ObservableList<String> previousCommandsList ) {
         
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
         ButtonHolderDrawer buttonHolder = 
                 (ButtonHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
         CommandLineDrawer commandLineDrawer = 
                 (CommandLineDrawer) drawerMap.get(ComponentInitializer.COMMAND_LINE_DRAWER);
-        PreviousCommandsDrawer previousCommands = 
+        PreviousCommandsDrawer previousCommandsDrawer = 
                 (PreviousCommandsDrawer) drawerMap.get(ComponentInitializer.PREVIOUS_COMMANDS);
         SavedCommandsDrawer savedCommandsDrawer = 
                 (SavedCommandsDrawer) drawerMap.get(ComponentInitializer.SAVED_COMMANDS);
@@ -44,8 +45,9 @@ public class FeatureInitializer {
         ErrorDrawer errorDrawer = (ErrorDrawer) drawerMap.get(ComponentInitializer.ERROR_DRAWER);
         
         new SetTurtleScreenColorFeature(gridDrawer, buttonHolder);
-        PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommands, commandLineDrawer);
-        new CommandLineFeature(commandLineDrawer, previousCommandsFeature.getPreviousCommandsList(), control);
+        PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
+                                                                                      previousCommandsList);
+        new CommandLineFeature(commandLineDrawer, control);
         new ToggleGridButtonFeature(gridDrawer, buttonHolder);
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList);
         

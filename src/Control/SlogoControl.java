@@ -76,6 +76,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
             }
             try {
                 parser.parse(translatedCommands, objectQueue);
+                myGUI.addPreviousCommand(command);
             }
             catch (CompileTimeParsingException | RunTimeDivideByZeroException
                     | RunTimeNullPointerException e) {
@@ -102,13 +103,5 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     @Override
     public void saveCommandsToFunction (String commands) {
         // TODO Auto-generated method stub
-
     }
-
-    @Override
-    public DrawableObject saveCommand (String command) {
-        System.out.println("Saving: " + command);
-        return null;
-    }
-
 }

@@ -1,4 +1,4 @@
-package gui.factories;
+package gui.factories.nodes;
 
 import javafx.scene.image.ImageView;
 

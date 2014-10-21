@@ -1,5 +1,6 @@
 package gui.componentdrawers;
 
+import gui.factories.nodes.TurtleNodes;
 import gui.menus.MainMenuInitializer;
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,8 +27,8 @@ public class ComponentInitializer {
 
     private static String[] myLeftContainerElements = new String[]{GRID_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
     
-    public static Map<String, ComponentDrawer> init (BorderPane pane) throws ParserConfigurationException, SAXException, IOException { 
-        DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER));
+    public static Map<String, ComponentDrawer> init (BorderPane pane, TurtleNodes turtleNodes) throws ParserConfigurationException, SAXException, IOException { 
+        DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER, turtleNodes));
         DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
         DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
         DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));

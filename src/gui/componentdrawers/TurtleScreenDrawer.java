@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
+import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.StageInitializer;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
 
@@ -21,16 +22,20 @@ public class TurtleScreenDrawer extends ComponentDrawer {
 
     //This is just for the grid lines
     private TurtleScreenFeature myTurtleScreen;
+    
+    private TurtleNodes myTurtleNodes;
 
     //This is the actual grid to which nodes will be drawn.
     private Pane myGrid;
 
-    public TurtleScreenDrawer (String name) {
+    public TurtleScreenDrawer (String name, TurtleNodes turtleNodes) {
         super(name);
         myGrid = initializeGridPane();
+        myTurtleNodes = turtleNodes;
         this.setPrefWidth(GRID_WIDTH);
         this.setPrefHeight(GRID_HEIGHT + 20);
         this.getChildren().addAll(new Label("SLogo Grid"));
+        this.setOnKeyReleased(event->System.out.println("Hello"));
     }
 
 
@@ -118,6 +123,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
 
 
     public void resetScreen () {
+        myTurtleNodes.clearTurtleNodes();
         myTurtleScreen.getChildren().clear();
     }    
 }

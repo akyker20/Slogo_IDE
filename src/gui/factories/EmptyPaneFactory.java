@@ -2,9 +2,8 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
-
+import gui.factories.nodes.NullNode;
 import java.util.Map;
-
 import javafx.scene.Node;
 
 public class EmptyPaneFactory extends ObjectFactory {
@@ -23,7 +22,7 @@ public class EmptyPaneFactory extends ObjectFactory {
     public Node[] generateObject (Map<String, String> params) {
         //place new grid 
         myTurtleScreen.resetScreen();
-        TurtleFactory.clearTurtleViews();
+//        error here
         return new Node[]{new NullNode()};
     }
 

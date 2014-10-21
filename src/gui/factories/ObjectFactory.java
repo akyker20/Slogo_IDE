@@ -1,9 +1,6 @@
 package gui.factories;
 
-import gui.componentdrawers.TurtleScreenDrawer;
-
 import java.util.Map;
-
 import javafx.scene.Node;
 
 /**
