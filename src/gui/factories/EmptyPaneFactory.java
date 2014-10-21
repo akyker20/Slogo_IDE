@@ -2,9 +2,8 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
-
+import gui.factories.nodes.NullNode;
 import java.util.Map;
-
 import javafx.scene.Node;
 
 public class EmptyPaneFactory extends ObjectFactory {

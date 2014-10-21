@@ -1,6 +1,8 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
+import gui.factories.nodes.TurtleNode;
+import gui.factories.nodes.TurtleNodes;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import javafx.scene.Node;

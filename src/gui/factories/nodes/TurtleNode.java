@@ -1,6 +1,7 @@
-package gui.factories;
+package gui.factories.nodes;
 
 import gui.componentdrawers.TurtleScreenDrawer;
+import gui.factories.TurtleFactory;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import javafx.scene.image.Image;
@@ -25,10 +26,9 @@ public class TurtleNode extends ImageView {
     private static final double TURTLE_IMAGE_HEIGHT = TurtleScreenDrawer.GRID_HEIGHT *
             TURTLE_IMAGE_HEIGHT_RATIO;
 
-
     private boolean isSelected;
 
-    public TurtleNode(Map<String, String> params) throws FileNotFoundException{
+    public TurtleNode(Map<String, String> params) throws FileNotFoundException {
         updateImage(DEFAULT_TURTLE_IMAGEPATH);
         updatePosition(params);
         setOnMouseClicked(event->selectTurtle());
@@ -40,7 +40,7 @@ public class TurtleNode extends ImageView {
      * @param params
      * @return
      */
-    protected TurtleNode[] updatePosition(Map<String, String> params){
+    public TurtleNode[] updatePosition(Map<String, String> params){
         double[] newLocation = parseStringToPoints(params.get(TurtleFactory.LOCATION));
         setLayoutX(newLocation[0] + TurtleScreenDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
         setLayoutY(- newLocation[1] + TurtleScreenDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
@@ -70,10 +70,10 @@ public class TurtleNode extends ImageView {
         isSelected = !isSelected;
         try {
             if(isSelected) {
-                updateImage(DEFAULT_TURTLE_IMAGEPATH);
+                updateImage(SELECTED_TURTLE_IMAGEPATH);
             }
             else {
-                updateImage(SELECTED_TURTLE_IMAGEPATH);
+                updateImage(DEFAULT_TURTLE_IMAGEPATH);
             }
         }
         catch (FileNotFoundException e) {
@@ -92,5 +92,9 @@ public class TurtleNode extends ImageView {
         setImage(new Image(getClass().getResourceAsStream(imagePath),
                            TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
                            false, true));
+    }
+    
+    public boolean isSelected(){
+        return isSelected;
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import gui.componentdrawers.ComponentInitializer;
+import gui.factories.nodes.NullNode;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;

@@ -18,7 +18,7 @@ import Control.SlogoGraphics;
 
 public class CommandLineFeature extends TextArea {
 
-    public CommandLineFeature (CommandLineDrawer parentDrawer, ObservableList<String> list, SlogoGraphics control) {
+    public CommandLineFeature (CommandLineDrawer parentDrawer, SlogoGraphics control) {
 
         KeyCombination newLineCombination = new KeyCodeCombination(KeyCode.ENTER,KeyCombination.SHIFT_DOWN);
 
@@ -35,7 +35,6 @@ public class CommandLineFeature extends TextArea {
                         String cleanedCommand = cleanCommand(uncleanCommand);
                         if(!cleanedCommand.isEmpty()){
                             control.parseCommandString(cleanedCommand);
-                            list.add(uncleanCommand);
                         }
                     }
                     catch (CompileTimeParsingException | RunTimeDivideByZeroException

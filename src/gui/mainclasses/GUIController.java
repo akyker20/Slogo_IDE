@@ -6,6 +6,7 @@ import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.factories.TurtleFactory;
+import gui.factories.nodes.TurtleNodes;
 import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
 import java.util.Map;
@@ -41,6 +42,8 @@ public class GUIController {
     private Map<String, ComponentDrawer> myComponentDrawers;
     private ObjectFactory[] myObjectFactories;
     private BorderPane myPane;
+    private ObservableList<WorkspaceVariable> myVariablesList;
+    private ObservableList<String> myPreviousCommandsList;
     public static ResourceBundle GUI_TEXT;
 
 
@@ -56,12 +59,15 @@ public class GUIController {
 
     public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
         GUI_TEXT = LocaleInitializer.init();
-        myPane = StageInitializer.init(stage, control);
-        myComponentDrawers = ComponentInitializer.init(myPane);
-
-        final ObservableList<WorkspaceVariable> variablesList = FXCollections.observableArrayList();
-        myObjectFactories = FactoryInitializer.init(variablesList, (TurtleScreenDrawer) myComponentDrawers.get(ComponentInitializer.GRID_DRAWER));
-        FeatureInitializer.init(myComponentDrawers, control, variablesList);
+        final TurtleNodes turtleNodes = new TurtleNodes();
+        myPane = StageInitializer.init(stage, control, turtleNodes);
+        myComponentDrawers = ComponentInitializer.init(myPane, turtleNodes);
+        myVariablesList = FXCollections.observableArrayList();
+        myPreviousCommandsList = FXCollections.observableArrayList();
+        myObjectFactories = FactoryInitializer.init(myVariablesList, (TurtleScreenDrawer) 
+                                                    myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
+                                                    turtleNodes);
+        FeatureInitializer.init(myComponentDrawers, control, myVariablesList, myPreviousCommandsList);
         myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);
 
     }
@@ -74,5 +80,13 @@ public class GUIController {
         while (!objectQueue.isEmpty()) {
             myParser.parseDrawableObject(objectQueue.poll());
         }
+    }
+
+    /**
+     * Adds a command to the previous commands list view.
+     * @param command
+     */
+    public void addPreviousCommand (String command) {
+        myPreviousCommandsList.add(command);   
     }
 }
