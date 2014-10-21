@@ -101,8 +101,10 @@ public class TurtleScreenDrawer extends ComponentDrawer {
      */
     @Override
     public void drawShape(Node[] n){
-        if(!myTurtleScreen.getChildren().contains(n[0]))
-            myTurtleScreen.getChildren().add(n[0]);
+        for (int k=0;k<n.length;k++) {
+            if (!myTurtleScreen.getChildren().contains(n[k]))
+                myTurtleScreen.getChildren().add(n[k]);
+        } 
     }
 
     /**

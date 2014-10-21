@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import com.sun.javafx.geom.Point2D;
 
-public class TurtleScreenWrapAround {
-    public static final double SCREEN_WIDTH = TurtleScreenDrawer.GRID_WIDTH;
-    public static final double SCREEN_HEIGHT = TurtleScreenDrawer.GRID_HEIGHT;
+public class TurtleScreenWrap {
+    public static final float SCREEN_WIDTH = (float) TurtleScreenDrawer.GRID_WIDTH;
+    public static final float SCREEN_HEIGHT = (float) TurtleScreenDrawer.GRID_HEIGHT;
 
     public static final String XPOS_MOVE = "XPositive move";
     public static final String XNEG_MOVE = "XNegative move";
@@ -36,7 +36,7 @@ public class TurtleScreenWrapAround {
 
         //points aligned vertically
         if (pointPair.origin.x==pointPair.dest.x) 
-            return TurtleScreenWrapAround.fragmentPoint2DPair(pointPair);
+            return TurtleScreenWrap.fragmentPoint2DPair(pointPair);
 
         float gradient = getGradient(pointPair);
         String xmovement = getXmovement(pointPair);
