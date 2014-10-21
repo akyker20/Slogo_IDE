@@ -2,8 +2,6 @@ package gui.factories;
 
 import gui.componentdrawers.TurtleScreenDrawer;
 
-import java.util.Arrays;
-
 public class GridEdgeRules {
 
 	public static double[] applyRules(double[] origin, double[] destination) {

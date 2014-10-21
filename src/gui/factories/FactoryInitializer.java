@@ -20,7 +20,7 @@ public class FactoryInitializer {
     public static ObjectFactory[] init (ObservableList<WorkspaceVariable> variableList, TurtleScreenDrawer drawer) {
         return new ObjectFactory[] {
                                     new LineFactory(LINE_FACTORY),
-                                    new TurtleFactory(TURTLE_FACTORY),
+                                    new TurtleFactory(TURTLE_FACTORY, new TurtleNodes()),
                                     new ErrorFactory(ERROR_FACTORY),
                                     new EmptyPaneFactory(CLEAR_GRID_FACTORY, drawer),
                                     new WorkspaceVariableFactory(WORKSPACE_VARIABLE_FACTORY, variableList),

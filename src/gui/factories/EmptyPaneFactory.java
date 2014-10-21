@@ -23,7 +23,7 @@ public class EmptyPaneFactory extends ObjectFactory {
     public Node[] generateObject (Map<String, String> params) {
         //place new grid 
         myTurtleScreen.resetScreen();
-        TurtleFactory.clearTurtleViews();
+//        error here
         return new Node[]{new NullNode()};
     }
 
