@@ -42,7 +42,6 @@ public class GUIController {
     private ObjectFactory[] myObjectFactories;
     private BorderPane myPane;
     public static ResourceBundle GUI_TEXT;
-    public static Stage GUI_STAGE;
 
 
     /**
@@ -56,50 +55,24 @@ public class GUIController {
      */
 
     public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
-        GUI_STAGE = stage;
         GUI_TEXT = LocaleInitializer.init();
-        myPane = StageInitializer.init(GUI_STAGE);
-        myPane.setOnKeyReleased(new EventHandler<KeyEvent>() {
-
-            @Override public void handle(KeyEvent event) {
-                if(TurtleFactory.isTurtleSelected()){
-                    String command = null;
-                    switch(event.getCode()){
-                        case UP: command = "fd 10"; break;
-                        case DOWN: command = "bk 10"; break;
-                        case RIGHT: command = "right 90"; break;
-                        case LEFT: command = "left 90"; break;
-                    }
-                    try {
-                        control.parseCommandString(command);
-                    }
-                    catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                            | RunTimeNullPointerException | IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        myPane = StageInitializer.init(stage, control);
         myComponentDrawers = ComponentInitializer.init(myPane);
 
         final ObservableList<WorkspaceVariable> variablesList = FXCollections.observableArrayList();
         myObjectFactories = FactoryInitializer.init(variablesList, (TurtleScreenDrawer) myComponentDrawers.get(ComponentInitializer.GRID_DRAWER));
         FeatureInitializer.init(myComponentDrawers, control, variablesList);
-
         myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);
 
     }
 
     /**
      * Method to convert a DrawableObject queue into shapes that can be drawn on the screen
-     *
      * @param objectQueue
      */
     public void drawDrawableObjects (Queue<DrawableObject> objectQueue) {
         while (!objectQueue.isEmpty()) {
             myParser.parseDrawableObject(objectQueue.poll());
         }
-
     }
 }
