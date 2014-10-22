@@ -18,6 +18,7 @@ public class Translator {
 
 	private static final String CONSTANT = "Constant";
 	private static final String VARIABLE = "Variable";
+	private static final String USER_DEFINED_COMMAND = "UserInstruction";
 	private Map<String, String> dictionary = new HashMap<String, String>();
 	private Map<String, String> classDictionary = new HashMap<String, String>();
 	private Map<String, String> languageToClassPath = new HashMap<String, String>();
@@ -41,6 +42,10 @@ public class Translator {
 		for(String s : splitString){
 			if(dictionary.containsKey(s)){
 				translatedString.add(languageToClassPath.get(s));
+			}
+			else if (s.matches(syntaxDictionary.get("Command")) && !languageToClassPath.containsKey(s)){
+				translatedString.add(languageToClassPath.get(USER_DEFINED_COMMAND));
+				translatedString.add(s);
 			}
 			else if (s.matches(syntaxDictionary.get("Constant"))){
 				translatedString.add(languageToClassPath.get(CONSTANT));
@@ -84,6 +89,7 @@ public class Translator {
 		}
 		dictionary.put(CONSTANT, CONSTANT);
 		dictionary.put(VARIABLE, VARIABLE);
+		dictionary.put(USER_DEFINED_COMMAND, USER_DEFINED_COMMAND); 
 		
 		while ((inputLine = reader.readLine()) != null) {
 			inputLine = inputLine.replace(" ", "");

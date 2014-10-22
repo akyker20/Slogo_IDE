@@ -29,13 +29,18 @@ public class MakeUserInstruction extends StructuralCommand {
 		}
 		
 		extractCommandsBetweenBraces(commandString);
-		parameters.addAll(enclosedCommands);
-		for(String varName : enclosedCommands){
+
+		Iterator<String> variableIterator = enclosedCommands.iterator();
+		
+		while (variableIterator.hasNext()){
+			parameters.add(getVariable(variableIterator, objectQueue));
+		}
+		for(String varName : parameters){
 			if(!state.variables.variableExists(varName)){
 				state.variables.storeVariable(varName, 0);
 			}
 		}
-		int numArgs = enclosedCommands.size()/2;
+		int numArgs = parameters.size();
 		extractCommandsBetweenBraces(commandString);
 		try{
 			Queue<DrawableObject> tempQueue = new LinkedList<DrawableObject>();
