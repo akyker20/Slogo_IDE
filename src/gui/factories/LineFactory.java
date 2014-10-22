@@ -3,7 +3,7 @@ package gui.factories;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.turtlescreenwrap.Point2DPair;
-import gui.turtlescreenwrap.TurtleScreenCoordinateChanger;
+import gui.turtlescreenwrap.CoordinateChanger;
 import gui.turtlescreenwrap.TurtleScreenWrap;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,10 +38,8 @@ public class LineFactory extends ObjectFactory {
 
     public List<Line> generateLines (Map<String, String> params) {
         
-
         Point2D origin = parseStringToPoints(params.get(ORIGIN));
-        Point2D dest = parseStringToPoints(params.get(DESTINATION));
-        
+        Point2D dest = parseStringToPoints(params.get(DESTINATION));      
         
         //split into 'sub-lines'
         List<Point2DPair> pointPairs = TurtleScreenWrap.
@@ -50,10 +48,10 @@ public class LineFactory extends ObjectFactory {
         List<Line> lineList = new ArrayList<Line>();
         for (Point2DPair pointPair:pointPairs) {
             Line line = new Line();
-            line.setStartX(TurtleScreenCoordinateChanger.convX(pointPair.origin.x));
-            line.setStartY(TurtleScreenCoordinateChanger.convY(pointPair.origin.y));
-            line.setEndX(TurtleScreenCoordinateChanger.convX(pointPair.dest.x));
-            line.setEndY(TurtleScreenCoordinateChanger.convY(pointPair.dest.y));
+            line.setStartX(CoordinateChanger.convX(pointPair.origin.x));
+            line.setStartY(CoordinateChanger.convY(pointPair.origin.y));
+            line.setEndX(CoordinateChanger.convX(pointPair.dest.x));
+            line.setEndY(CoordinateChanger.convY(pointPair.dest.y));
             lineList.add(line);
         }
         

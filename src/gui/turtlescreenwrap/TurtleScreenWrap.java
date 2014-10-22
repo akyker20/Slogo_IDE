@@ -6,8 +6,8 @@ import java.util.List;
 import com.sun.javafx.geom.Point2D;
 
 public class TurtleScreenWrap {
-    public static final float SCREEN_WIDTH = (float) TurtleScreenDrawer.GRID_WIDTH;
-    public static final float SCREEN_HEIGHT = (float) TurtleScreenDrawer.GRID_HEIGHT;
+    public static final float XMAX = (float) TurtleScreenDrawer.GRID_WIDTH/2;
+    public static final float YMAX = (float) TurtleScreenDrawer.GRID_HEIGHT/2;
 
     public static final String XPOS_MOVE = "XPositive move";
     public static final String XNEG_MOVE = "XNegative move";
@@ -36,9 +36,13 @@ public class TurtleScreenWrap {
 
         //points aligned vertically
         if (pointPair.origin.x==pointPair.dest.x) 
-            return TurtleScreenWrap.fragmentPoint2DPair(pointPair);
+            return VerticalTurtleScreenWrap.fragmentPoint2DPair(pointPair);
 
         float gradient = getGradient(pointPair);
+        //points aligned horizontally
+        if (gradient==0)
+            return HorizontalTurtleScreenWrap.fragmentPoint2DPair(pointPair);
+        
         String xmovement = getXmovement(pointPair);
         String ymovement = getYmovement(pointPair);
 
@@ -47,14 +51,12 @@ public class TurtleScreenWrap {
 
         String exitEdge = getExitEdge(pointPair,gradient,maxDeltaY,
                                       xmovement,ymovement);
-        Point2DPair[] fragments = getFragments(pointPair,exitEdge,
+        List<Point2DPair> fragments = getFragments(pointPair,exitEdge,
                                                gradient,maxDeltaX,maxDeltaY);
-        pointPairsList.add(fragments[0]);
-        pointPairsList.add(fragments[1]);
-        return pointPairsList;
+        return fragments;
     }   
 
-    public static Point2DPair[] getFragments(Point2DPair pointPair,String exitEdge,
+    public static List<Point2DPair> getFragments(Point2DPair pointPair,String exitEdge,
                                              float gradient,float maxDeltaX,float maxDeltaY) {
         Point2D destA = new Point2D();
         Point2D originB = new Point2D();
@@ -79,8 +81,12 @@ public class TurtleScreenWrap {
             destB.x = originB.x+(pointPair.dest.x-pointPair.origin.x)-maxDeltaX;
             destB.y = originB.y+(pointPair.dest.y-pointPair.origin.y)-maxDeltaX*gradient;
         }
-        return new Point2DPair[]{new Point2DPair(pointPair.origin,destA),
-                                 new Point2DPair(originB,destB)};
+        
+        List<Point2DPair> fragments = new ArrayList<Point2DPair>();
+        fragments.add(new Point2DPair(pointPair.origin,destA));
+        fragments.add(new Point2DPair(originB,destB));
+        
+        return fragments;
     }
 
     public static String getExitEdge(Point2DPair pointPair,float gradient,
@@ -107,9 +113,9 @@ public class TurtleScreenWrap {
 
     public static float getMaxDeltaY (Point2DPair pointPair, String ymovement) {
         if (ymovement.equals(YPOS_MOVE)) {
-            return (float) SCREEN_HEIGHT/2-pointPair.origin.y;
+            return (float) YMAX-pointPair.origin.y;
         } else if (ymovement.equals(YNEG_MOVE)) {
-            return (float) -SCREEN_HEIGHT/2-pointPair.origin.y;
+            return (float) -YMAX-pointPair.origin.y;
         } else if (ymovement.equals(YZERO_MOVE)){
             return 0;
         }
@@ -118,9 +124,9 @@ public class TurtleScreenWrap {
 
     public static float getMaxDeltaX (Point2DPair pointPair, String xmovement) {
         if (xmovement.equals(XPOS_MOVE)) {
-            return (float) SCREEN_WIDTH/2-pointPair.origin.x;
+            return (float) XMAX-pointPair.origin.x;
         } else if (xmovement.equals(XNEG_MOVE)) {
-            return (float) -SCREEN_WIDTH/2-pointPair.origin.x;
+            return (float) -XMAX-pointPair.origin.x;
         } else if (xmovement.equals(XZERO_MOVE)){
             return 0;
         }
@@ -162,10 +168,10 @@ public class TurtleScreenWrap {
 
     public static boolean checkOffScreen(Point2D point) {
         return(
-                point.x>SCREEN_WIDTH/2  ||
-                point.x<-SCREEN_WIDTH/2 ||
-                point.y>SCREEN_HEIGHT/2 ||
-                point.y<-SCREEN_HEIGHT/2
+                point.x>XMAX  ||
+                point.x<-XMAX ||
+                point.y>YMAX ||
+                point.y<-YMAX
                 );
     }
 }

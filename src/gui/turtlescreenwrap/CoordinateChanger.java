@@ -8,9 +8,9 @@ import gui.componentdrawers.TurtleScreenDrawer;
  * @author allankiplagat
  *
  */
-public class TurtleScreenCoordinateChanger {
-    public static final float SCREEN_WIDTH = TurtleScreenWrap.SCREEN_WIDTH;
-    public static final float SCREEN_HEIGHT = TurtleScreenWrap.SCREEN_HEIGHT;  
+public class CoordinateChanger {
+    public static final float SCREEN_WIDTH = TurtleScreenWrap.XMAX*2;
+    public static final float SCREEN_HEIGHT = TurtleScreenWrap.YMAX*2;  
     
     public static float convX(float x) {
         x = x + SCREEN_WIDTH/2;
