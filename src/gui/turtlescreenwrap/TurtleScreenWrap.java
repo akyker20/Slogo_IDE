@@ -27,8 +27,10 @@ public class TurtleScreenWrap {
      * @param pointPair
      * @return
      */
-    public static List<Point2DPair> fragmentPoint2DPair(Point2DPair pointPair) {
-        List<Point2DPair> pointPairsList = new ArrayList<Point2DPair>();
+    public static List<Point2DPair> fragmentPoint2DPair(Point2DPair tesselatedPointPair) {
+        Point2DPair pointPair = TesselationMapper.map(tesselatedPointPair);
+                
+        List<Point2DPair> pointPairsList = new ArrayList<Point2DPair>();        
         //base case: destination is on-screen
         if (!checkOffScreen(pointPair.dest)) {
             pointPairsList.add(pointPair); return pointPairsList;

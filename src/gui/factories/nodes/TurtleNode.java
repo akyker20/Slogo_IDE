@@ -55,7 +55,7 @@ public class TurtleNode extends ImageView {
         float x = CoordinateChanger.convX( pointPairs.get(pointPairs.size()-1).dest.x);
         float y = CoordinateChanger.convY( pointPairs.get(pointPairs.size()-1).dest.y);
         setLayoutX(x-this.getBoundsInParent().getWidth()/2);
-        setLayoutY(y-this.getBoundsInParent().getWidth()/2);
+        setLayoutY(y-this.getBoundsInParent().getHeight()/2);
         
         setRotate(Double.parseDouble(params.get(TurtleFactory.HEADING)));
         setOpacity(Double.parseDouble(params.get(TurtleFactory.OPACITY))); 
