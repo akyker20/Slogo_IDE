@@ -9,10 +9,12 @@ public class TesselationMapperTests {
     public static final float YMAX = TurtleScreenWrap.YMAX;
     public static final double THRESH = 0.00001;
 
-    private float origx = 0;
-    private float origy = 0;
-    private float destx = XMAX*2;
-    private float desty = YMAX*2;
+    //for current tests, origin needs to be within home screen
+    private float origx = -XMAX/2;
+    private float origy = -XMAX/2;
+    
+    private float destx = -XMAX*2;
+    private float desty = -YMAX*2;
 
     @Test
     public void testHomeScreen() {

@@ -55,7 +55,15 @@ public class TurtleScreenWrap {
                                       xmovement,ymovement);
         List<Point2DPair> fragments = getFragments(pointPair,exitEdge,
                                                gradient,maxDeltaX,maxDeltaY);
-        return fragments;
+        //recurse
+        List<Point2DPair> newfragments = fragmentPoint2DPair(fragments.get(1));
+        //combine
+        List<Point2DPair> list = new ArrayList<Point2DPair>();
+        list.add(fragments.get(0));
+        for (Point2DPair fragment:newfragments) {
+            list.add(fragment);
+        } 
+        return list;
     }   
 
     public static List<Point2DPair> getFragments(Point2DPair pointPair,String exitEdge,

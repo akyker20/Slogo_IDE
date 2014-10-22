@@ -1,56 +1,68 @@
 package gui.turtlescreenwrap;
 
+import com.sun.javafx.geom.Point2D;
+
+
+
 public class TesselationMapper {
     public static final float XMAX = TurtleScreenWrap.XMAX;
     public static final float YMAX = TurtleScreenWrap.YMAX;
 
+    /**
+     * Method returns a mapped tesselated pair, based on the origin of the point2DPair
+     * @param point
+     * @return
+     */
     public static Point2DPair map (Point2DPair pointPair) {
-        //if origin is on-screen, no mapping to be done
+        //if origin point is on-screen, no mapping to be done
         if (!TurtleScreenWrap.checkOffScreen(pointPair.origin))
             return pointPair;
+        
+        Point2D dummyOrigin = getDummyOrigin(pointPair.origin);
+        
+        pointPair.origin.x = pointPair.origin.x-dummyOrigin.x;
+        pointPair.origin.y = pointPair.origin.y-dummyOrigin.y;
+        pointPair.dest.x = pointPair.dest.x-dummyOrigin.x;
+        pointPair.dest.y = pointPair.dest.y-dummyOrigin.y;
+        
+        return pointPair;
+    }
 
-        float xsign = Math.signum(pointPair.origin.x);
-        float ysign = Math.signum(pointPair.origin.y);
-        float xsignD = Math.signum(pointPair.dest.x);
-        float ysignD = Math.signum(pointPair.dest.y);
+    /**
+     * Method returns a mapped Point2D
+     * @param point
+     * @return
+     */
+    public static Point2D map (Point2D point) {
+        if (!TurtleScreenWrap.checkOffScreen(point))
+            return point;
+        Point2D dummyOrigin = getDummyOrigin(point);
+        
+        point.x = point.x-dummyOrigin.x;
+        point.y = point.y-dummyOrigin.y;
+        return point;
+    }
+    
+    
+    /**
+     * Method gets dummy origin for point's tesselated screen 
+     * @return
+     */
+    public static Point2D getDummyOrigin (Point2D point) {
 
-        float xabs = Math.abs(pointPair.origin.x)-XMAX;
-        float yabs = Math.abs(pointPair.origin.y)-YMAX;
-        float xabsD = Math.abs(pointPair.dest.x)-XMAX;
-        float yabsD = Math.abs(pointPair.dest.y)-YMAX;
+        float xsign = Math.signum(point.x);
+        float ysign = Math.signum(point.y);
+
+        float xabs = Math.abs(point.x)-XMAX;
+        float yabs = Math.abs(point.y)-YMAX;
 
         int xcount = Math.floorDiv( (int) xabs, (int) XMAX*2);
         int ycount = Math.floorDiv( (int) yabs, (int) YMAX*2);
 
-        float xadjusted = xabs-2*XMAX*xcount;
-        float yadjusted = yabs-2*YMAX*ycount;
-        float xadjustedD = xabsD-2*XMAX*xcount;
-        float yadjustedD = yabsD-2*YMAX*ycount;               
-
-        if (xsign>0) {
-            pointPair.origin.x = -XMAX+xadjusted;
-        } else if (xsign<0) {
-            pointPair.origin.x = XMAX-xadjusted;
-        }
-
-        if (ysign>0) {
-            pointPair.origin.y = -YMAX+yadjusted;
-        } else if (ysign<0) {
-            pointPair.origin.y = YMAX-yadjusted;
-        }        
+        //dummy origin
+        float dummyX = xsign*(XMAX*2)*(xcount+1);
+        float dummyY = ysign*(YMAX*2)*(ycount+1);
         
-        if (xsignD>0) {
-            pointPair.dest.x = -XMAX+xadjustedD;
-        } else if (xsignD<0) {
-            //pointPair.dest.x = XMAX-xadjustedD;
-        }
-
-        if (ysignD>0) {
-            pointPair.dest.y = -YMAX+yadjustedD;
-        } else if (ysignD<0) {
-            //pointPair.dest.y = YMAX-yadjustedD;
-        }
-
-        return pointPair;
+        return new Point2D(dummyX,dummyY);
     }
 }

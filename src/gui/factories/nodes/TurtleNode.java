@@ -3,14 +3,12 @@ package gui.factories.nodes;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.TurtleFactory;
 import gui.turtlescreenwrap.CoordinateChanger;
-import gui.turtlescreenwrap.Point2DPair;
-import gui.turtlescreenwrap.TurtleScreenWrap;
+import gui.turtlescreenwrap.TesselationMapper;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Map;
-import com.sun.javafx.geom.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import com.sun.javafx.geom.Point2D;
 
 /**
  * Represents a turtle node on the screen. Turtles nodes can be selected by the
@@ -48,12 +46,12 @@ public class TurtleNode extends ImageView {
     public TurtleNode[] updatePosition(Map<String, String> params){
         double[] newLocation = parseStringToPoints(params.get(TurtleFactory.LOCATION));
         
-        Point2D origin = new Point2D((float) this.getLayoutX(), (float) this.getLayoutY());
-        Point2D dest   = new Point2D((float) newLocation[0], (float) newLocation[1]);
-        List<Point2DPair> pointPairs = TurtleScreenWrap.fragmentPoint2DPair(new Point2DPair(origin,dest));
+        Point2D dest = new Point2D((float) newLocation[0], (float) newLocation[1]);
+        dest = TesselationMapper.map(dest);
         
-        float x = CoordinateChanger.convX( pointPairs.get(pointPairs.size()-1).dest.x);
-        float y = CoordinateChanger.convY( pointPairs.get(pointPairs.size()-1).dest.y);
+        float x = CoordinateChanger.convX(dest.x);
+        float y = CoordinateChanger.convY(dest.y);
+        
         setLayoutX(x-this.getBoundsInParent().getWidth()/2);
         setLayoutY(y-this.getBoundsInParent().getHeight()/2);
         

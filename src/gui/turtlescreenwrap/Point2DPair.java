@@ -2,6 +2,7 @@ package gui.turtlescreenwrap;
 
 import com.sun.javafx.geom.Point2D;
 
+
 public class Point2DPair {
     public Point2D origin;
     public Point2D dest;
