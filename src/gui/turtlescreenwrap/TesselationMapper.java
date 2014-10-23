@@ -67,11 +67,12 @@ public class TesselationMapper {
     }
     
     public static boolean checkOffScreen(Point2D point) {
-        return(
+        boolean status = (
                 point.x>XMAX  ||
                 point.x<-XMAX ||
                 point.y>YMAX  ||
                 point.y<-YMAX
                 );
+        return status;
     }
 }

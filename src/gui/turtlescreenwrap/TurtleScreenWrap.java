@@ -105,8 +105,13 @@ public class TurtleScreenWrap {
     public static String getExitEdge(Point2DPair pointPair,float gradient,
                                      float maxDeltaY,String xmovement,String ymovement) {
         //if exit through left/right edge, using maxDeltaY yields off-screen point
-        Point2D tempDest = new Point2D(pointPair.origin.x+maxDeltaY/gradient,
-                                       pointPair.origin.y+maxDeltaY );
+        //IMPORTANT: converting to int for truncation. Otherwise running decimals may result in 
+        //incorrect checkOffScreen result
+        int x = (int) (pointPair.origin.x+maxDeltaY/gradient);
+        int y = (int) (pointPair.origin.y+maxDeltaY);
+        
+        Point2D tempDest = new Point2D(x,y);
+        
         if (TesselationMapper.checkOffScreen(tempDest)) {
             //exit is through left/right edge
             if (xmovement.equals(XPOS_MOVE)) {
