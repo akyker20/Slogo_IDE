@@ -15,7 +15,7 @@ public class TesselationMapper {
      */
     public static Point2DPair map (Point2DPair pointPair) {
         //if origin point is on-screen, no mapping to be done
-        if (!TurtleScreenWrap.checkOffScreen(pointPair.origin))
+        if (!checkOffScreen(pointPair.origin))
             return pointPair;
         
         Point2D dummyOrigin = getDummyOrigin(pointPair.origin);
@@ -34,7 +34,7 @@ public class TesselationMapper {
      * @return
      */
     public static Point2D map (Point2D point) {
-        if (!TurtleScreenWrap.checkOffScreen(point))
+        if (!checkOffScreen(point))
             return point;
         Point2D dummyOrigin = getDummyOrigin(point);
         
@@ -64,5 +64,14 @@ public class TesselationMapper {
         float dummyY = ysign*(YMAX*2)*(ycount+1);
         
         return new Point2D(dummyX,dummyY);
+    }
+    
+    public static boolean checkOffScreen(Point2D point) {
+        return(
+                point.x>XMAX  ||
+                point.x<-XMAX ||
+                point.y>YMAX  ||
+                point.y<-YMAX
+                );
     }
 }

@@ -9,7 +9,7 @@ public class HorizontalTurtleScreenWrap {
         List<Point2DPair> fragments = new ArrayList<Point2DPair>();
         
         //base case: destination on-screen
-        if (!TurtleScreenWrap.checkOffScreen(pointPair.dest)) {
+        if (!TesselationMapper.checkOffScreen(pointPair.dest)) {
             fragments.add(pointPair);
             return fragments;
         }

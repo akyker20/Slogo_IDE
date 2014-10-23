@@ -7,7 +7,7 @@ import gui.turtlescreenwrap.TurtleScreenWrap;
 import org.junit.Test;
 import com.sun.javafx.geom.Point2D;
 
-public class TesselationMapperTests {
+public class MapperPointPairTests {
     public static final float XMAX = TurtleScreenWrap.XMAX;
     public static final float YMAX = TurtleScreenWrap.YMAX;
     public static final double THRESH = 0.00001;

@@ -8,7 +8,7 @@ public class VerticalTurtleScreenWrap  {
     public static List<Point2DPair> fragmentPoint2DPair(Point2DPair pointPair) { 
         List<Point2DPair> fragments = new ArrayList<Point2DPair>();
         //base case: destination is on-screen
-        if (!TurtleScreenWrap.checkOffScreen(pointPair.dest)) {
+        if (!TesselationMapper.checkOffScreen(pointPair.dest)) {
             fragments.add(pointPair); 
             return fragments;
         }        

@@ -29,10 +29,10 @@ public class TurtleScreenWrap {
      */
     public static List<Point2DPair> fragmentPoint2DPair(Point2DPair tesselatedPointPair) {
         Point2DPair pointPair = TesselationMapper.map(tesselatedPointPair);
-                
+
         List<Point2DPair> pointPairsList = new ArrayList<Point2DPair>();        
         //base case: destination is on-screen
-        if (!checkOffScreen(pointPair.dest)) {
+        if (!TesselationMapper.checkOffScreen(pointPair.dest)) {
             pointPairsList.add(pointPair); 
             return pointPairsList;
         }
@@ -44,9 +44,9 @@ public class TurtleScreenWrap {
         //points aligned horizontally
         if (pointPair.origin.y==pointPair.dest.y)
             return HorizontalTurtleScreenWrap.fragmentPoint2DPair(pointPair);
-        
+
         float gradient = getGradient(pointPair);
-        
+
         String xmovement = getXmovement(pointPair);
         String ymovement = getYmovement(pointPair);
 
@@ -55,8 +55,9 @@ public class TurtleScreenWrap {
 
         String exitEdge = getExitEdge(pointPair,gradient,maxDeltaY,
                                       xmovement,ymovement);
+
         List<Point2DPair> fragments = getFragments(pointPair,exitEdge,
-                                               gradient,maxDeltaX,maxDeltaY);
+                                                   gradient,maxDeltaX,maxDeltaY);
         //recurse
         List<Point2DPair> newfragments = fragmentPoint2DPair(fragments.get(1));
         //combine
@@ -69,7 +70,7 @@ public class TurtleScreenWrap {
     }   
 
     public static List<Point2DPair> getFragments(Point2DPair pointPair,String exitEdge,
-                                             float gradient,float maxDeltaX,float maxDeltaY) {
+                                                 float gradient,float maxDeltaX,float maxDeltaY) {
         Point2D destA = new Point2D();
         Point2D originB = new Point2D();
         Point2D destB = new Point2D();
@@ -93,12 +94,12 @@ public class TurtleScreenWrap {
             destB.x = originB.x+(pointPair.dest.x-pointPair.origin.x)-maxDeltaX;
             destB.y = originB.y+(pointPair.dest.y-pointPair.origin.y)-maxDeltaX*gradient;
         }
-        
+
         List<Point2DPair> fragments = new ArrayList<Point2DPair>();
         fragments.add(new Point2DPair(pointPair.origin,destA));
         fragments.add(new Point2DPair(originB,destB));
-        
-        return fragments;
+
+        return fragments;      
     }
 
     public static String getExitEdge(Point2DPair pointPair,float gradient,
@@ -106,7 +107,7 @@ public class TurtleScreenWrap {
         //if exit through left/right edge, using maxDeltaY yields off-screen point
         Point2D tempDest = new Point2D(pointPair.origin.x+maxDeltaY/gradient,
                                        pointPair.origin.y+maxDeltaY );
-        if (checkOffScreen(tempDest)) {
+        if (TesselationMapper.checkOffScreen(tempDest)) {
             //exit is through left/right edge
             if (xmovement.equals(XPOS_MOVE)) {
                 return RIGHT_EDGE;
@@ -125,23 +126,19 @@ public class TurtleScreenWrap {
 
     public static float getMaxDeltaY (Point2DPair pointPair, String ymovement) {
         if (ymovement.equals(YPOS_MOVE)) {
-            return (float) YMAX-pointPair.origin.y;
+            return YMAX-pointPair.origin.y;
         } else if (ymovement.equals(YNEG_MOVE)) {
-            return (float) -YMAX-pointPair.origin.y;
-        } else if (ymovement.equals(YZERO_MOVE)){
-            return 0;
+            return -YMAX-pointPair.origin.y;
         }
         return 0;
     }
 
     public static float getMaxDeltaX (Point2DPair pointPair, String xmovement) {
         if (xmovement.equals(XPOS_MOVE)) {
-            return (float) XMAX-pointPair.origin.x;
+            return XMAX-pointPair.origin.x;
         } else if (xmovement.equals(XNEG_MOVE)) {
-            return (float) -XMAX-pointPair.origin.x;
-        } else if (xmovement.equals(XZERO_MOVE)){
-            return 0;
-        }
+            return -XMAX-pointPair.origin.x;
+        } 
         return 0;
     }
 
@@ -150,9 +147,9 @@ public class TurtleScreenWrap {
             return YPOS_MOVE;
         } else if (pointPair.dest.y<pointPair.origin.y) {
             return YNEG_MOVE;
-        } else {
-            return YZERO_MOVE;
-        }       
+        } 
+        //won't happen, would've already been delegated to horizontalscreenwrap
+        return YZERO_MOVE;    
     }
 
     public static String getXmovement(Point2DPair pointPair) {
@@ -160,9 +157,10 @@ public class TurtleScreenWrap {
             return XPOS_MOVE;
         } else if (pointPair.dest.x<pointPair.origin.x) {
             return XNEG_MOVE;
-        } else {
-            return XZERO_MOVE;
         }
+        //won't happen, would've already been delegated to verticalscreenwrap
+        return XZERO_MOVE;
+
     }
 
     /**
@@ -178,12 +176,4 @@ public class TurtleScreenWrap {
                 (pointPair.dest.x-pointPair.origin.x);
     }
 
-    public static boolean checkOffScreen(Point2D point) {
-        return(
-                point.x>XMAX  ||
-                point.x<-XMAX ||
-                point.y>YMAX ||
-                point.y<-YMAX
-                );
-    }
 }
