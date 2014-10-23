@@ -5,7 +5,15 @@ import java.util.List;
 import com.sun.javafx.geom.Point2D;
 
 public class HorizontalTurtleScreenWrap {
-    public static List<Point2DPair> fragmentPoint2DPair(Point2DPair pointPair) { 
+    public static List<Point2DPair> fragmentPoint2DPair(Point2DPair pointPair) {
+        List<Point2DPair> fragments = new ArrayList<Point2DPair>();
+        
+        //base case: destination on-screen
+        if (!TurtleScreenWrap.checkOffScreen(pointPair.dest)) {
+            fragments.add(pointPair);
+            return fragments;
+        }
+        
         Point2D destA = new Point2D();
         Point2D originB = new Point2D();
         Point2D destB = new Point2D();
@@ -30,10 +38,13 @@ public class HorizontalTurtleScreenWrap {
                     ((pointPair.origin.x-pointPair.dest.x)
                     -(pointPair.origin.x-(-TurtleScreenWrap.XMAX)));
         }
-        
-        List<Point2DPair> fragments = new ArrayList<Point2DPair>();
         fragments.add(new Point2DPair(pointPair.origin,destA));
-        fragments.add(new Point2DPair(originB,destB));
+        //recurse
+        List<Point2DPair> newfragments = fragmentPoint2DPair(new Point2DPair(originB,destB));
+        //combine
+        for (Point2DPair fragment:newfragments) {
+            fragments.add(fragment);
+        }
         return fragments;
     }
 }

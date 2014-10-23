@@ -1,9 +1,11 @@
-package gui.turtlescreenwrap;
+package gui.turtlescreenwrap.tests;
 
 
 import static org.junit.Assert.*;
 import java.util.List;
 import gui.componentdrawers.TurtleScreenDrawer;
+import gui.turtlescreenwrap.Point2DPair;
+import gui.turtlescreenwrap.TurtleScreenWrap;
 import org.junit.Test;
 import com.sun.javafx.geom.Point2D;
 

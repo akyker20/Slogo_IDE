@@ -6,6 +6,13 @@ import com.sun.javafx.geom.Point2D;
 
 public class VerticalTurtleScreenWrap  {
     public static List<Point2DPair> fragmentPoint2DPair(Point2DPair pointPair) { 
+        List<Point2DPair> fragments = new ArrayList<Point2DPair>();
+        //base case: destination is on-screen
+        if (!TurtleScreenWrap.checkOffScreen(pointPair.dest)) {
+            fragments.add(pointPair); 
+            return fragments;
+        }        
+        
         Point2D destA = new Point2D();
         Point2D originB = new Point2D();
         Point2D destB = new Point2D();
@@ -23,6 +30,10 @@ public class VerticalTurtleScreenWrap  {
             destB.y = -TurtleScreenWrap.YMAX+
                     ((pointPair.dest.y-pointPair.origin.y)
                     -(TurtleScreenWrap.YMAX-pointPair.origin.y));
+            /*destB.y = -TurtleScreenWrap.YMAX+
+                    pointPair.dest.y-(destA.y-pointPair.origin.y);*/
+            
+            
         } else {
             destA.y = -TurtleScreenWrap.YMAX;
             originB.y = TurtleScreenWrap.YMAX;
@@ -31,9 +42,13 @@ public class VerticalTurtleScreenWrap  {
                     -(pointPair.origin.y-(-TurtleScreenWrap.YMAX)));
         }
         
-        List<Point2DPair> fragments = new ArrayList<Point2DPair>();
         fragments.add(new Point2DPair(pointPair.origin,destA));
-        fragments.add(new Point2DPair(originB,destB));
+        //recurse
+        List<Point2DPair> newfragments = fragmentPoint2DPair(new Point2DPair(originB,destB));;
+        //combine
+        for (Point2DPair fragment:newfragments) {
+            fragments.add(fragment);
+        }
         return fragments;
     }
 }

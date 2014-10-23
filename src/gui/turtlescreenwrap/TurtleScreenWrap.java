@@ -33,17 +33,19 @@ public class TurtleScreenWrap {
         List<Point2DPair> pointPairsList = new ArrayList<Point2DPair>();        
         //base case: destination is on-screen
         if (!checkOffScreen(pointPair.dest)) {
-            pointPairsList.add(pointPair); return pointPairsList;
+            pointPairsList.add(pointPair); 
+            return pointPairsList;
         }
 
         //points aligned vertically
         if (pointPair.origin.x==pointPair.dest.x) 
             return VerticalTurtleScreenWrap.fragmentPoint2DPair(pointPair);
 
-        float gradient = getGradient(pointPair);
         //points aligned horizontally
-        if (gradient==0)
+        if (pointPair.origin.y==pointPair.dest.y)
             return HorizontalTurtleScreenWrap.fragmentPoint2DPair(pointPair);
+        
+        float gradient = getGradient(pointPair);
         
         String xmovement = getXmovement(pointPair);
         String ymovement = getYmovement(pointPair);
