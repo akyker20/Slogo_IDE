@@ -3,6 +3,7 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
+import state.State;
 import state.Turtle;
 
 import commandParsing.CommandParser;
@@ -13,6 +14,10 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 public class PenDown extends CommandParser {
+
+	public PenDown(State someState) {
+		super(someState);
+	}
 
 	@Override
 	public double parse(Iterator<String> commandString,

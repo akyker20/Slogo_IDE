@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Queue;
 
 import state.Location;
+import state.State;
 import state.Turtle;
 
 import commandParsing.drawableObectGenerationInterfaces.LineGenerator;
@@ -15,7 +16,11 @@ import drawableobject.DrawableObject;
 
 public abstract class Move extends OneInputFloatCommandParser implements LineGenerator, TurtleGenerator {
 
-    @Override
+    public Move(State someState) {
+		super(someState);
+	}
+
+	@Override
     protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
         double distance = expressionComponents.get(0);
         

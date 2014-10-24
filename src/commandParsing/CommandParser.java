@@ -1,5 +1,6 @@
 package commandParsing;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +17,7 @@ public abstract class CommandParser {
 	protected static State state;
 	protected List<Double> expressionComponents = new ArrayList<Double>();
 	
-	public void setState(State someState){
+	public CommandParser(State someState){
 		state = someState;
 	}
 	
@@ -46,12 +47,12 @@ public abstract class CommandParser {
 		return parts[parts.length-1].matches(state.translator.getCommandPattern());
 	}
 
-	public static CommandParser createParser(String commandName, State state) throws CompileTimeParsingException{
+	public static CommandParser createParser(String commandName, State state) throws CompileTimeParsingException {
 		try {
-			CommandParser parser = (CommandParser) Class.forName(commandName).newInstance();
-			parser.setState(state);
-			return parser;
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			return (CommandParser) Class.forName(commandName)
+					                    .getConstructor(State.class)
+					                    .newInstance(state);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			throw new CompileTimeParsingException(commandName);
 		}
 	}

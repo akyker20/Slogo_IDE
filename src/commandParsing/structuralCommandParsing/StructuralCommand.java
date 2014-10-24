@@ -6,15 +6,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
+import state.State;
+
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.variableCommandParsing.Variable;
+
 import drawableobject.DrawableObject;
 
 public abstract class StructuralCommand extends CommandParser {
 	
+	public StructuralCommand(State someState) {
+		super(someState);
+	}
+
 	protected List<String> enclosedCommands;
 	protected double returnValue;
 

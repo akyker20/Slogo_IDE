@@ -130,6 +130,34 @@ public class Translator {
 		return command.substring(0, command.length()-6);
 	}
 	
+	public boolean matchesVariablePattern(String str){
+		return str.matches(syntaxDictionary.get("Variable"));
+	}
+	
+	public boolean matchesConstantPattern(String str){
+		return str.matches(syntaxDictionary.get("Constant"));
+	}
+	
+	public boolean matchesCommandPattern(String str){
+		return str.matches(syntaxDictionary.get("Command"));
+	}
+	
+	public boolean matchesListStartPattern(String str){
+		return str.matches(syntaxDictionary.get("ListStart"));
+	}
+	
+	public boolean matchesListEndPattern(String str){
+		return str.matches(syntaxDictionary.get("ListEnd"));
+	}
+	
+	public boolean matchesGroupStartPattern(String str){
+		return str.matches(syntaxDictionary.get("GroupStart"));
+	}
+	
+	public boolean matchesGroupEndPattern(String str){
+		return str.matches(syntaxDictionary.get("GroupEnd"));
+	}
+	
 	public String getVariablePattern(){
 		return syntaxDictionary.get("Variable");
 	}

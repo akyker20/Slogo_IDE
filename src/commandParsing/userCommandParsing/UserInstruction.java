@@ -3,6 +3,7 @@ package commandParsing.userCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
+import state.State;
 import state.UserDefinedCommandCollection.Command;
 
 import commandParsing.CommandParser;
@@ -15,6 +16,10 @@ import drawableobject.DrawableObject;
 
 public class UserInstruction extends CommandParser {
 
+	public UserInstruction(State someState) {
+		super(someState);
+	}
+
 	private Command command;
 
 	@Override
@@ -22,8 +27,6 @@ public class UserInstruction extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		// TODO Auto-generated method stub
-
 		String commandName = commandString.next();
 		command = state.commands.fetchUserDefinedCommand(commandName);
 		accumulateComponents(commandString, command.getNumArguments(), objectQueue);
@@ -33,7 +36,7 @@ public class UserInstruction extends CommandParser {
 		Iterator<String> thisCommandIterator = command.getCommandIterator();
 		double returnValue = 0;
 		while (thisCommandIterator.hasNext()) {
-			CommandParser parser = new NullCommandParser();
+			CommandParser parser = new NullCommandParser(state);
 			parser = CommandParser.createParser(thisCommandIterator.next(), state);
 			returnValue = parser.parse(thisCommandIterator, objectQueue);
 		}

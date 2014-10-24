@@ -3,6 +3,7 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
+import state.State;
 import state.Turtle;
 
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
@@ -12,6 +13,10 @@ import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class SetHeading extends OneInputFloatCommandParser implements TurtleGenerator{
+
+	public SetHeading(State someState) {
+		super(someState);
+	}
 
 	@Override
 	protected double operateOnComponents(List<Double> components,

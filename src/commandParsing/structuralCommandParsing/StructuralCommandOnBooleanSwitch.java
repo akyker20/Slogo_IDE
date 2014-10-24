@@ -1,7 +1,13 @@
 package commandParsing.structuralCommandParsing;
 
+import state.State;
+
 
 public abstract class StructuralCommandOnBooleanSwitch extends StructuralCommand {
+
+	public StructuralCommandOnBooleanSwitch(State someState) {
+		super(someState);
+	}
 
 	protected boolean booleanSwitch;
 	

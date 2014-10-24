@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import state.State;
+
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -16,6 +18,10 @@ import drawableobject.DrawableObject;
 
 public class MakeUserInstruction extends StructuralCommand {
 	
+	public MakeUserInstruction(State someState) {
+		super(someState);
+	}
+
 	private List<String> parameters = new ArrayList<String>();
 
 	@Override

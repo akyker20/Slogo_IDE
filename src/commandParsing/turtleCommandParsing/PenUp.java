@@ -3,14 +3,21 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
+import state.State;
 import state.Turtle;
+
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
 
 public class PenUp extends CommandParser {
+
+	public PenUp(State someState) {
+		super(someState);
+	}
 
 	@Override
 	public double parse(Iterator<String> commandString,

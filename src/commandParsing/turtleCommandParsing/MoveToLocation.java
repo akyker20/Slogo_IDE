@@ -16,6 +16,10 @@ import drawableobject.DrawableObject;
 
 public abstract class MoveToLocation extends TwoInputFloatCommandParser implements LineGenerator, TurtleGenerator {
 
+	public MoveToLocation(State someState) {
+		super(someState);
+	}
+
 	@Override
 	protected double operateOnComponents(List<Double> components,
 			Queue<DrawableObject> objectQueue)

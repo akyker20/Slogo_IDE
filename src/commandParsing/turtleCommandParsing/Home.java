@@ -7,6 +7,10 @@ import state.State;
 
 public class Home extends MoveToLocation {
 	
+	public Home(State someState) {
+		super(someState);
+	}
+
 	@Override
 	protected int getNumberOfArguments() {
 		return 0;

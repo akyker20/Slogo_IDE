@@ -3,6 +3,8 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
+import state.State;
+
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -12,6 +14,10 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 public class HideTurtle extends CommandParser implements TurtleGenerator {
+
+	public HideTurtle(State someState) {
+		super(someState);
+	}
 
 	@Override
 	public double parse(Iterator<String> commandString,

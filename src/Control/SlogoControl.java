@@ -71,7 +71,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         Iterator<String> translatedCommands = translator.translate(command);
 
         while(translatedCommands.hasNext()){
-            CommandParser parser = new NullCommandParser();
+            CommandParser parser = new NullCommandParser(state);
             try {
                 parser = CommandParser.createParser(translatedCommands.next(), state);
             }

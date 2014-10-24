@@ -3,6 +3,7 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
+import state.State;
 import state.Turtle;
 
 import commandParsing.drawableObectGenerationInterfaces.PaneGenerator;
@@ -12,6 +13,10 @@ import drawableobject.DrawableObject;
 
 public class ClearScreen extends Home implements PaneGenerator {
     
+	public ClearScreen(State someState) {
+		super(someState);
+	}
+
 	private boolean modifiedPen = false;
 	
     @Override

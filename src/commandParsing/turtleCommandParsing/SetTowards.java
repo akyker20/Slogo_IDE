@@ -4,13 +4,20 @@ import java.util.List;
 import java.util.Queue;
 
 import state.Location;
+import state.State;
 import state.Turtle;
+
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
+
 import drawableobject.DrawableObject;
 
 public class SetTowards extends TwoInputFloatCommandParser implements TurtleGenerator {
+
+	public SetTowards(State someState) {
+		super(someState);
+	}
 
 	private final double[] northVector = vectorFromTwoPoints(
 			                         new Location(state.turtles.getLastActiveTurtle().getTurtleXLocation(),0), 
