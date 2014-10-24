@@ -67,7 +67,7 @@ public class GUIController {
         myObjectFactories = FactoryInitializer.init(myVariablesList, (TurtleScreenDrawer) 
                                                     myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                                                     turtleNodes);
-        FeatureInitializer.init(myComponentDrawers, control, myVariablesList, myPreviousCommandsList);
+        FeatureInitializer.init(myComponentDrawers, this, control, myVariablesList, myPreviousCommandsList);
         myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);
 
     }
@@ -89,5 +89,15 @@ public class GUIController {
      */
     public void addPreviousCommand (String command) {
         myPreviousCommandsList.add(0, command);   
+    }
+
+    /**
+     * Clears the current workspace by removing the workspace variables
+     * as well as the previous command log. This is called when the user
+     * clicks the ClearWorkspace button feature in the options TabPane.
+     */
+    public void clearCurrentWorkspace () {
+        myVariablesList.clear();
+        myPreviousCommandsList.clear();
     }
 }

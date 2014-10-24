@@ -1,5 +1,6 @@
 package gui.mainclasses;
 
+import gui.buttonfeatures.ClearWorkspaceButtonFeature;
 import gui.buttonfeatures.SaveCommandButtonFeature;
 import gui.buttonfeatures.ToggleGridButtonFeature;
 import gui.componentdrawers.CommandLineDrawer;
@@ -30,7 +31,7 @@ import Control.SlogoGraphics;
 
 public class FeatureInitializer {
 
-    public static void init (Map<String, ComponentDrawer> drawerMap, SlogoGraphics control, 
+    public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 
                              ObservableList<WorkspaceVariable> variablesList,
                              ObservableList<String> previousCommandsList ) {
         
@@ -61,7 +62,8 @@ public class FeatureInitializer {
         GeneralOptionsTab generalOptions = new GeneralOptionsTab(new Node[]{
             new SetTurtleScreenColorFeature(gridDrawer, buttonHolder),   
             new ToggleGridButtonFeature(gridDrawer, buttonHolder),
-            new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature)
+            new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature),
+            new ClearWorkspaceButtonFeature(buttonHolder, guiController)
         });
         
         PenOptionsTab penOptions = new PenOptionsTab(new Node[]{});
