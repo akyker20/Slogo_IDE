@@ -1,4 +1,4 @@
-package state;
+package workspaceState;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

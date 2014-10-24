@@ -20,7 +20,7 @@ public class IsShowingTests extends CommandTester {
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);		
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.turtles.getLastActiveTurtle().isTurtleShowing());
+		assertTrue(workspace.turtles.getLastActiveTurtle().isTurtleShowing());
 	}
 	
 	@Test
@@ -35,6 +35,6 @@ public class IsShowingTests extends CommandTester {
 			f = parser.parse(commands, objectQueue);
 		}
 		assertTrue(f == 0);		
-		assertFalse(state.turtles.getLastActiveTurtle().isTurtleShowing());
+		assertFalse(workspace.turtles.getLastActiveTurtle().isTurtleShowing());
 	}
 }

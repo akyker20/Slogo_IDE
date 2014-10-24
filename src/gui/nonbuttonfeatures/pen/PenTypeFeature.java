@@ -14,7 +14,7 @@ import commandParsing.exceptions.RunTimeNullPointerException;
  * Feature to allow the user to dynamically and interactively change the type
  * of the pen. The current options will be solid (default), dashed, and dotted.
  * A change listener is added to the choice box so that when the user selects
- * a different option, the control will be notified so the pen state class
+ * a different option, the control will be notified so the pen workspace class
  * on the back-end can be updated.
  * @author Austin Kyker
  *

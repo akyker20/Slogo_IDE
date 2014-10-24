@@ -19,7 +19,7 @@ public class PenUpTests extends CommandTester {
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 0);		
 		assertTrue(objectQueue.size()==0);
-		assertTrue(!state.turtles.getLastActiveTurtle().pen.isPenDown());
+		assertTrue(!workspace.turtles.getLastActiveTurtle().pen.isPenDown());
 	}
 
 	@Test
@@ -35,6 +35,6 @@ public class PenUpTests extends CommandTester {
 		}
 		assertTrue(f == 0);	
 		assertTrue(objectQueue.size()==0);
-		assertTrue(!state.turtles.getLastActiveTurtle().pen.isPenDown());
+		assertTrue(!workspace.turtles.getLastActiveTurtle().pen.isPenDown());
 	}
 }

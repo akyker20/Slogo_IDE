@@ -15,7 +15,7 @@ import javafx.scene.control.Slider;
  * This feature allows the user to change the thickness of the pen in pixels
  * interactively from the Pen tab in the options TabPane. The user simply slides
  * the slider to the thickness of the pixels desired and the back-end is notified
- * of the change so the pen state class can be updated.
+ * of the change so the pen workspace class can be updated.
  * @author Austin Kyker
  *
  */

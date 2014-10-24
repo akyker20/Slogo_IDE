@@ -3,15 +3,18 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.Turtle;
-
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.PaneGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
-
 import drawableobject.DrawableObject;
 
 public class ClearScreen extends Home implements PaneGenerator {
     
+	public ClearScreen(WorkspaceState someWorkspace) {
+		super(someWorkspace);
+	}
+
 	private boolean modifiedPen = false;
 	
     @Override
@@ -20,7 +23,7 @@ public class ClearScreen extends Home implements PaneGenerator {
                                          throws RunTimeDivideByZeroException {
         objectQueue.add(generateDrawableObjectRepresentingPane());
         double returnValue = 0;
-        for(Turtle t : state.turtles.getActiveTurtles()){
+        for(Turtle t : workspace.turtles.getActiveTurtles()){
             if(t.pen.isPenDown()){
             	t.pen.togglePenUp();
             	modifiedPen = true;

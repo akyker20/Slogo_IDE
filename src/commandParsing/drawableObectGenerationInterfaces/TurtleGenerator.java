@@ -5,7 +5,7 @@ import gui.factories.TurtleFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import state.Turtle;
+import workspaceState.Turtle;
 import drawableobject.DrawableObject;
 
 public interface TurtleGenerator {

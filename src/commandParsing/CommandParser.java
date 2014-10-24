@@ -1,11 +1,12 @@
 package commandParsing;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import state.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -13,11 +14,11 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandParser {
 
-	protected static Workspace state;
+	protected static WorkspaceState workspace;
 	protected List<Double> expressionComponents = new ArrayList<Double>();
-
-	public void setState(Workspace someState) {
-		state = someState;
+	
+	public CommandParser(WorkspaceState someWorkspace) {
+		workspace = someWorkspace;
 	}
 
 	public abstract double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
@@ -34,7 +35,7 @@ public abstract class CommandParser {
 			String stringOfInterest = commandString.next();
 
 			if (isStringParsableAsCommand(stringOfInterest)) {
-				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
+				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, workspace);
 				expressionComponents.add(commandParser.parse(commandString, objectQueue));
 			}
 			else {
@@ -46,16 +47,16 @@ public abstract class CommandParser {
 
 	protected boolean isStringParsableAsCommand(String string) {
 		String[] parts = string.split("\\.");
-		return parts[parts.length - 1].matches(state.translator.getCommandPattern());
+		return parts[parts.length - 1].matches(workspace.translator.getCommandPattern());
 	}
 
-	public static CommandParser createParser(String commandName, Workspace state)
+	public static CommandParser createParser(String commandName, WorkspaceState workspace)
 			throws CompileTimeParsingException {
 		try {
-			CommandParser parser = (CommandParser) Class.forName(commandName).newInstance();
-			parser.setState(state);
-			return parser;
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			return (CommandParser) Class.forName(commandName)
+					                    .getConstructor(WorkspaceState.class)
+					                    .newInstance(workspace);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			throw new CompileTimeParsingException(commandName);
 		}
 	}

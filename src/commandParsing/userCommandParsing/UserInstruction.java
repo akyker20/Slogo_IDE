@@ -3,17 +3,20 @@ package commandParsing.userCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.UserDefinedCommandCollection.Command;
-
+import workspaceState.WorkspaceState;
+import workspaceState.UserDefinedCommandCollection.Command;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class UserInstruction extends CommandParser {
+
+	public UserInstruction(WorkspaceState someWorkspace) {
+		super(someWorkspace);
+	}
 
 	private Command command;
 
@@ -22,19 +25,17 @@ public class UserInstruction extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		// TODO Auto-generated method stub
-
 		String commandName = commandString.next();
-		command = state.commands.fetchUserDefinedCommand(commandName);
+		command = workspace.commands.fetchUserDefinedCommand(commandName);
 		accumulateComponents(commandString, command.getNumArguments(), objectQueue);
 		for (int i = 0; i < command.getParameters().size(); i++) {
-			state.variables.storeVariable(command.getParameters().get(i), expressionComponents.get(i));
+			workspace.variables.storeVariable(command.getParameters().get(i), expressionComponents.get(i));
 		}
 		Iterator<String> thisCommandIterator = command.getCommandIterator();
 		double returnValue = 0;
 		while (thisCommandIterator.hasNext()) {
-			CommandParser parser = new NullCommandParser();
-			parser = CommandParser.createParser(thisCommandIterator.next(), state);
+			CommandParser parser = new NullCommandParser(workspace);
+			parser = CommandParser.createParser(thisCommandIterator.next(), workspace);
 			returnValue = parser.parse(thisCommandIterator, objectQueue);
 		}
 		return returnValue;
@@ -48,7 +49,7 @@ public class UserInstruction extends CommandParser {
 		expressionComponents.clear();
 		while (expressionComponents.size() < numberToAccumulate) {
 			if (!commandString.hasNext()) {
-				double defaultValueOfParameter = state.variables.fetchVariable(
+				double defaultValueOfParameter = workspace.variables.fetchVariable(
 						command.getParameters().get(expressionComponents.size()));
 				expressionComponents.add(defaultValueOfParameter);
 			}
@@ -56,7 +57,7 @@ public class UserInstruction extends CommandParser {
 				String stringOfInterest = commandString.next();
 
 				if (isStringParsableAsCommand(stringOfInterest)) {
-					CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
+					CommandParser commandParser = (CommandParser) createParser(stringOfInterest, workspace);
 					expressionComponents.add(commandParser.parse(commandString, objectQueue));
 				}
 				else {

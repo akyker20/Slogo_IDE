@@ -3,8 +3,9 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.Location;
-import state.Turtle;
+import workspaceState.Location;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
@@ -12,9 +13,13 @@ import drawableobject.DrawableObject;
 
 public class SetTowards extends TwoInputFloatCommandParser implements TurtleGenerator {
 
+	public SetTowards(WorkspaceState someWorkspace) {
+		super(someWorkspace);
+	}
+
 	private final double[] northVector = vectorFromTwoPoints(
-			                         new Location(state.turtles.getLastActiveTurtle().getTurtleXLocation(),0), 
-			                         new Location(state.turtles.getLastActiveTurtle().getTurtleXLocation()+1,0));
+			                         new Location(workspace.turtles.getLastActiveTurtle().getTurtleXLocation(),0), 
+			                         new Location(workspace.turtles.getLastActiveTurtle().getTurtleXLocation()+1,0));
 	
 	@Override
 	protected double operateOnComponents(List<Double> components,
@@ -22,7 +27,7 @@ public class SetTowards extends TwoInputFloatCommandParser implements TurtleGene
 			throws RunTimeDivideByZeroException {
 		
 		double angleToRotate = 0;
-		for(Turtle t : state.turtles.getActiveTurtles()){
+		for(Turtle t : workspace.turtles.getActiveTurtles()){
 			double heading = 90-t.getHeading();
 			Location turtleLocation = new Location(t.getTurtleXLocation(),t.getTurtleYLocation());
 			Location pointLocation = new Location(components.get(0),components.get(1));
