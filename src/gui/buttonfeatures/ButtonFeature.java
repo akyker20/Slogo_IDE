@@ -1,6 +1,6 @@
 package gui.buttonfeatures;
 
-import gui.componentdrawers.ButtonHolderDrawer;
+import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.mainclasses.GUIController;
 import javafx.scene.control.Button;
 

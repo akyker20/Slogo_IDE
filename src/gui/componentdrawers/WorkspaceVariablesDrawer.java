@@ -1,7 +1,6 @@
 package gui.componentdrawers;
 
 import javafx.scene.control.Label;
-import gui.mainclasses.StageInitializer;
 
 public class WorkspaceVariablesDrawer extends ComponentDrawer {
 

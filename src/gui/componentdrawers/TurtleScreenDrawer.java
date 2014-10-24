@@ -1,13 +1,12 @@
 package gui.componentdrawers;
 
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Line;
 import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.StageInitializer;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 
 
 public class TurtleScreenDrawer extends ComponentDrawer {

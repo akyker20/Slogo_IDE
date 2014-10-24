@@ -1,8 +1,7 @@
 package gui.nonbuttonfeatures;
 
-import gui.componentdrawers.ButtonHolderDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
-import javafx.geometry.Insets;
+import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import javafx.scene.control.ColorPicker;
 
 

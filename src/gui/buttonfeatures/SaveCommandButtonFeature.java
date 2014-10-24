@@ -1,7 +1,7 @@
 package gui.buttonfeatures;
 
-import gui.componentdrawers.ButtonHolderDrawer;
 import gui.componentdrawers.CommandLineDrawer;
+import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import Control.SlogoGraphics;

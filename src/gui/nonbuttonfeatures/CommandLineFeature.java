@@ -1,19 +1,17 @@
 package gui.nonbuttonfeatures;
 
-import java.io.IOException;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
 import gui.componentdrawers.CommandLineDrawer;
-import javafx.collections.ObservableList;
+import java.io.IOException;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import Control.SlogoGraphics;
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 
 
 public class CommandLineFeature extends TextArea {
