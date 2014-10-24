@@ -17,18 +17,16 @@ public class Variable extends CommandParser {
 	}
 
 	private String variableName;
-	
+
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
-		
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+
 		variableName = commandString.next();
 		return workspace.variables.fetchVariable(variableName);
 	}
-	
-	public String getVariableName(){
+
+	public String getVariableName() {
 		return variableName;
 	}
 

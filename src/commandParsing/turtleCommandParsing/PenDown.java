@@ -18,12 +18,10 @@ public class PenDown extends CommandParser {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
-		
-		for(Turtle t : workspace.turtles.getActiveTurtles()){
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+
+		for (Turtle t : workspace.turtles.getActiveTurtles()) {
 			t.pen.togglePenDown();
 		}
 		return 1;

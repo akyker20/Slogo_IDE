@@ -16,7 +16,7 @@ public abstract class CommandParser {
 
 	protected static WorkspaceState workspace;
 	protected List<Double> expressionComponents = new ArrayList<Double>();
-	
+
 	public CommandParser(WorkspaceState someWorkspace) {
 		workspace = someWorkspace;
 	}
@@ -37,8 +37,7 @@ public abstract class CommandParser {
 			if (isStringParsableAsCommand(stringOfInterest)) {
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, workspace);
 				expressionComponents.add(commandParser.parse(commandString, objectQueue));
-			}
-			else {
+			} else {
 				objectQueue.clear();
 				throw new CompileTimeParsingException(stringOfInterest);
 			}
@@ -53,10 +52,11 @@ public abstract class CommandParser {
 	public static CommandParser createParser(String commandName, WorkspaceState workspace)
 			throws CompileTimeParsingException {
 		try {
-			return (CommandParser) Class.forName(commandName)
-					                    .getConstructor(WorkspaceState.class)
-					                    .newInstance(workspace);
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			return (CommandParser) Class.forName(commandName).getConstructor(WorkspaceState.class)
+					.newInstance(workspace);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException
+				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+				| SecurityException e) {
 			throw new CompileTimeParsingException(commandName);
 		}
 	}

@@ -21,16 +21,14 @@ public class MakeVariable extends StructuralCommand implements VariableGenerator
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		CommandParser commandParser = (CommandParser) createParser(commandString.next(), workspace);
-		if(!(commandParser instanceof Variable)){
+		if (!(commandParser instanceof Variable)) {
 			throw new CompileTimeParsingException("expected variable name");
 		}
 		String variableName = commandString.next();
-		if(!workspace.translator.matchesVariablePattern(variableName)){
+		if (!workspace.translator.matchesVariablePattern(variableName)) {
 			throw new CompileTimeParsingException("expected variable name: " + variableName);
 		}
 		accumulateComponents(commandString, 1, objectQueue);

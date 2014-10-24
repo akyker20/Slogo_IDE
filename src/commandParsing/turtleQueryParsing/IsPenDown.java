@@ -17,10 +17,8 @@ public class IsPenDown extends CommandParser {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		return workspace.turtles.getLastActiveTurtle().pen.isPenDown() ? 1 : 0;
 	}
 

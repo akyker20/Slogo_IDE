@@ -17,16 +17,17 @@ public abstract class Rotate extends OneInputFloatCommandParser implements Turtl
 	}
 
 	@Override
-   	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
-   		double rotation = expressionComponents.get(0); 
-		
-   		for(Turtle t : workspace.turtles.getActiveTurtles()){
-   	   		t.rotate(amountToRotate(rotation));
-   	        objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
-   		}
-   		return rotation;
-   	}
-	
+	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
+			throws RunTimeDivideByZeroException {
+		double rotation = expressionComponents.get(0);
+
+		for (Turtle t : workspace.turtles.getActiveTurtles()) {
+			t.rotate(amountToRotate(rotation));
+			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
+		}
+		return rotation;
+	}
+
 	abstract protected double amountToRotate(double rotation);
 
 }

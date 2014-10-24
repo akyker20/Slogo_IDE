@@ -16,8 +16,9 @@ public class Repeat extends RecurringCommand {
 	}
 
 	@Override
-	protected void initializeLoopVariableParameters(
-			Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+	protected void initializeLoopVariableParameters(Iterator<String> commandString,
+			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
+			RunTimeDivideByZeroException, RunTimeNullPointerException {
 		loopVariable = ":repcount";
 		basicLoopVariableInitialization(commandString, objectQueue);
 	}

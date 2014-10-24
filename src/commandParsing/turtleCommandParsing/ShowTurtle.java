@@ -19,14 +19,12 @@ public class ShowTurtle extends CommandParser implements TurtleGenerator {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		workspace.turtles.getActiveTurtles().stream().forEach(t -> {
 			t.showTurtle();
 			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
-			});
+		});
 		return 1;
 	}
 

@@ -15,8 +15,9 @@ public class Sine extends OneInputFloatCommandParser {
 	}
 
 	@Override
-	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
-		return (double) Math.sin(components.get(0)/(180/Math.PI));
+	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
+			throws RunTimeDivideByZeroException {
+		return (double) Math.sin(components.get(0) / (180 / Math.PI));
 	}
 
 }

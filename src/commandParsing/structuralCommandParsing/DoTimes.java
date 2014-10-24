@@ -16,11 +16,12 @@ public class DoTimes extends RecurringCommand {
 	}
 
 	@Override
-	protected void initializeLoopVariableParameters(
-			Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+	protected void initializeLoopVariableParameters(Iterator<String> commandString,
+			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
+			RunTimeDivideByZeroException, RunTimeNullPointerException {
 		checkForOpeningBrace(commandString);
-		loopVariable = getVariable(commandString,objectQueue);
-		if(!workspace.translator.matchesVariablePattern(loopVariable)){
+		loopVariable = getVariable(commandString, objectQueue);
+		if (!workspace.translator.matchesVariablePattern(loopVariable)) {
 			throw new CompileTimeParsingException("expected variable name: " + loopVariable);
 		}
 		basicLoopVariableInitialization(commandString, objectQueue);

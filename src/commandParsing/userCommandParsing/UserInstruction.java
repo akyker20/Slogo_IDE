@@ -21,10 +21,8 @@ public class UserInstruction extends CommandParser {
 	private Command command;
 
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		String commandName = commandString.next();
 		command = workspace.commands.fetchUserDefinedCommand(commandName);
 		accumulateComponents(commandString, command.getNumArguments(), objectQueue);
@@ -49,18 +47,16 @@ public class UserInstruction extends CommandParser {
 		expressionComponents.clear();
 		while (expressionComponents.size() < numberToAccumulate) {
 			if (!commandString.hasNext()) {
-				double defaultValueOfParameter = workspace.variables.fetchVariable(
-						command.getParameters().get(expressionComponents.size()));
+				double defaultValueOfParameter = workspace.variables.fetchVariable(command.getParameters()
+						.get(expressionComponents.size()));
 				expressionComponents.add(defaultValueOfParameter);
-			}
-			else {
+			} else {
 				String stringOfInterest = commandString.next();
 
 				if (isStringParsableAsCommand(stringOfInterest)) {
 					CommandParser commandParser = (CommandParser) createParser(stringOfInterest, workspace);
 					expressionComponents.add(commandParser.parse(commandString, objectQueue));
-				}
-				else {
+				} else {
 					objectQueue.clear();
 					throw new CompileTimeParsingException(stringOfInterest);
 				}

@@ -16,12 +16,13 @@ public class For extends RecurringCommand {
 	}
 
 	@Override
-	protected void initializeLoopVariableParameters(
-			Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+	protected void initializeLoopVariableParameters(Iterator<String> commandString,
+			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
+			RunTimeDivideByZeroException, RunTimeNullPointerException {
 		checkForOpeningBrace(commandString);
-		loopVariable = getVariable(commandString,objectQueue);
+		loopVariable = getVariable(commandString, objectQueue);
 		try {
-			if(!workspace.translator.matchesVariablePattern(loopVariable)){
+			if (!workspace.translator.matchesVariablePattern(loopVariable)) {
 				throw new CompileTimeParsingException("expected variable name: " + loopVariable);
 			}
 		} catch (Exception e) {

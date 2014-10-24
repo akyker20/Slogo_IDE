@@ -19,8 +19,7 @@ public abstract class TwoInputFloatCommandParser extends FloatInputCommandParser
 	}
 
 	@Override
-	protected abstract double operateOnComponents(List<Double> components,
-			Queue<DrawableObject> objectQueue)
+	protected abstract double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException;
 
 }

@@ -6,7 +6,7 @@ import workspaceState.Location;
 import workspaceState.WorkspaceState;
 
 public class Home extends MoveToLocation {
-	
+
 	public Home(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
@@ -18,7 +18,7 @@ public class Home extends MoveToLocation {
 
 	@Override
 	protected Location getDestinationLocation(List<Double> components) {
-		return new Location(0,0);
+		return new Location(0, 0);
 	}
 
 	@Override

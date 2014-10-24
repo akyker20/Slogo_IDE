@@ -9,15 +9,15 @@ import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class NotEqual extends TwoInputFloatCommandParser {
-	
+
 	public NotEqual(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
 	@Override
-	protected double operateOnComponents(List<Double> components,	Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException {
+	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
+			throws RunTimeDivideByZeroException {
 		return !components.get(0).equals(components.get(1)) ? 1 : 0;
 	}
-
 
 }

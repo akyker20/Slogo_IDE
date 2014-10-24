@@ -2,7 +2,6 @@ package commandParsing.structuralCommandParsing;
 
 import workspaceState.WorkspaceState;
 
-
 public abstract class StructuralCommandOnBooleanSwitch extends StructuralCommand {
 
 	public StructuralCommandOnBooleanSwitch(WorkspaceState someWorkspace) {
@@ -10,8 +9,8 @@ public abstract class StructuralCommandOnBooleanSwitch extends StructuralCommand
 	}
 
 	protected boolean booleanSwitch;
-	
-	protected void evaluateBooleanExpression(){
+
+	protected void evaluateBooleanExpression() {
 		booleanSwitch = expressionComponents.get(0) != 0;
 	}
 
