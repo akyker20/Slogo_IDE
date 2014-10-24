@@ -3,7 +3,7 @@ package commandParsing.mathCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
 import drawableobject.DrawableObject;
@@ -11,8 +11,8 @@ import drawableobject.DrawableObject;
 
 public class Difference extends TwoInputFloatCommandParser {
 
-	public Difference(State someState) {
-		super(someState);
+	public Difference(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

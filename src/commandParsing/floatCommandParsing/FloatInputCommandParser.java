@@ -4,19 +4,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public abstract class FloatInputCommandParser extends CommandParser {
 	
-	public FloatInputCommandParser(State someState) {
-		super(someState);
+	public FloatInputCommandParser(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

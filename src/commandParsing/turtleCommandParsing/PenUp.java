@@ -3,20 +3,18 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-import state.Turtle;
-
+import workspace.Turtle;
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class PenUp extends CommandParser {
 
-	public PenUp(State someState) {
-		super(someState);
+	public PenUp(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override
@@ -24,7 +22,7 @@ public class PenUp extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		for(Turtle t : state.turtles.getActiveTurtles()){
+		for(Turtle t : workspace.turtles.getActiveTurtles()){
 			t.pen.togglePenUp();
 		}
 		return 0;

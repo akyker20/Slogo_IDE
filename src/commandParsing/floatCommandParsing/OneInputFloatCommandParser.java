@@ -3,14 +3,14 @@ package commandParsing.floatCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import drawableobject.DrawableObject;
 
 public abstract class OneInputFloatCommandParser extends FloatInputCommandParser {
 	
-	public OneInputFloatCommandParser(State someState) {
-		super(someState);
+	public OneInputFloatCommandParser(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 

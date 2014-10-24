@@ -32,7 +32,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import Control.SlogoGraphics;
 
-
+/**
+ * The purpose of this class is to initialize all of the features, both button features
+ * and non-button features that will be displayed to the user.
+ * @author Austin Kyker
+ *
+ */
 public class FeatureInitializer {
 
     public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 

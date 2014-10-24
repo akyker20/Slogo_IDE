@@ -3,19 +3,17 @@ package commandParsing.turtleQueryParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class IsShowing extends CommandParser {
 
-	public IsShowing(State someState) {
-		super(someState);
+	public IsShowing(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class IsShowing extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.turtles.getLastActiveTurtle().isTurtleShowing() ? 1 : 0;
+		return workspace.turtles.getLastActiveTurtle().isTurtleShowing() ? 1 : 0;
 	}
 
 }

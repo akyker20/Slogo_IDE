@@ -3,19 +3,17 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public abstract class RecurringCommand extends StructuralCommand implements VariableGenerator {
 	
-	public RecurringCommand(State someState) {
-		super(someState);
+	public RecurringCommand(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	protected String loopVariable;
@@ -43,14 +41,14 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 		accumulateComponents(commandString, 1, objectQueue);
 		loopVariableBound = expressionComponents.get(0);
 		incrementAmount = 1;
-		state.variables.storeVariable(loopVariable, 1);
+		workspace.variables.storeVariable(loopVariable, 1);
 	}
 	
 	protected void incrementLoopVariable(){
-		state.variables.incrementVariable(loopVariable, incrementAmount);
+		workspace.variables.incrementVariable(loopVariable, incrementAmount);
 	}
 	
 	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException{
-		return loopVariableBound >= state.variables.fetchVariable(loopVariable);
+		return loopVariableBound >= workspace.variables.fetchVariable(loopVariable);
 	}
 }

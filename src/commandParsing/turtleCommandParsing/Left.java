@@ -1,11 +1,11 @@
 package commandParsing.turtleCommandParsing;
 
-import state.State;
+import workspace.Workspace;
 
 public class Left extends Rotate {
 
-	public Left(State someState) {
-		super(someState);
+	public Left(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

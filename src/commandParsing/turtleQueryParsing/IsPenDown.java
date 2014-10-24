@@ -3,19 +3,17 @@ package commandParsing.turtleQueryParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class IsPenDown extends CommandParser {
 
-	public IsPenDown(State someState) {
-		super(someState);
+	public IsPenDown(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class IsPenDown extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.turtles.getLastActiveTurtle().pen.isPenDown() ? 1 : 0;
+		return workspace.turtles.getLastActiveTurtle().pen.isPenDown() ? 1 : 0;
 	}
 
 }

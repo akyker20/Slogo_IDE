@@ -5,7 +5,7 @@ import gui.factories.TurtleFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import state.Turtle;
+import workspace.Turtle;
 import drawableobject.DrawableObject;
 
 public interface TurtleGenerator {
@@ -14,7 +14,7 @@ public interface TurtleGenerator {
 		String parent = TurtleFactory.PARENT;
 		String type = TurtleFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put(TurtleFactory.TURTLE_IMAGE_ID, turtle.getID());
+		parameters.put(TurtleFactory.TURTLE_IMAGE_ID, String.valueOf(turtle.getID()));
 		parameters.put(TurtleFactory.HEADING, String.valueOf(turtle.getHeading()));
 		parameters.put(TurtleFactory.LOCATION, turtle.getLocation().generateLocationString());
 		parameters.put(TurtleFactory.OPACITY, String.valueOf(turtle.getOpacity()));

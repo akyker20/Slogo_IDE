@@ -3,15 +3,15 @@ package commandParsing.mathCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class ArcTangent extends OneInputFloatCommandParser {
 	
-	public ArcTangent(State someState) {
-		super(someState);
+	public ArcTangent(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

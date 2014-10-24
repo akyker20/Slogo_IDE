@@ -5,7 +5,7 @@ import gui.factories.LineFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import state.Location;
+import workspace.Location;
 import drawableobject.DrawableObject;
 
 public interface LineGenerator {

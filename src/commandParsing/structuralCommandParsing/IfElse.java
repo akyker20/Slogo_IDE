@@ -3,7 +3,7 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -11,8 +11,8 @@ import drawableobject.DrawableObject;
 
 public class IfElse extends StructuralCommandOnBooleanSwitch {
 	
-	public IfElse(State someState) {
-		super(someState);
+	public IfElse(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

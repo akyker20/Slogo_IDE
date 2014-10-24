@@ -3,15 +3,15 @@ package commandParsing.booleanCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class Not extends OneInputFloatCommandParser {
 	
-	public Not(State someState) {
-		super(someState);
+	public Not(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

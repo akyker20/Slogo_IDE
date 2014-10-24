@@ -3,19 +3,17 @@ package commandParsing.turtleQueryParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class Heading extends CommandParser {
 
-	public Heading(State someState) {
-		super(someState);
+	public Heading(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class Heading extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.turtles.getLastActiveTurtle().getHeading();
+		return workspace.turtles.getLastActiveTurtle().getHeading();
 	}
 
 }

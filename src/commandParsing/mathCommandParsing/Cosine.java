@@ -3,15 +3,15 @@ package commandParsing.mathCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class Cosine extends OneInputFloatCommandParser {
 	
-	public Cosine(State someState) {
-		super(someState);
+	public Cosine(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

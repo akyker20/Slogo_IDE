@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
+import commandParsing.drawableObectGenerationInterfaces.UserDefinedCommandGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -16,10 +16,10 @@ import commandParsing.structuralCommandParsing.StructuralCommand;
 
 import drawableobject.DrawableObject;
 
-public class MakeUserInstruction extends StructuralCommand {
+public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator {
 	
-	public MakeUserInstruction(State someState) {
-		super(someState);
+	public MakeUserInstruction(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	private List<String> parameters = new ArrayList<String>();
@@ -42,8 +42,9 @@ public class MakeUserInstruction extends StructuralCommand {
 			parameters.add(getVariable(variableIterator, objectQueue));
 		}
 		for(String varName : parameters){
-			if(!state.variables.variableExists(varName)){
-				state.variables.storeVariable(varName, 0);
+			if(!workspace.variables.variableExists(varName)){
+				workspace.variables.storeVariable(varName, 0);
+				// Is this necessary?
 			}
 		}
 		int numArgs = parameters.size();
@@ -54,7 +55,7 @@ public class MakeUserInstruction extends StructuralCommand {
 		} catch (SLOGOException e) {
 			return 0;
 		}
-		state.commands.storeUserDefinedCommand(potentialCommandName, numArgs, enclosedCommands, parameters);
+		workspace.commands.storeUserDefinedCommand(potentialCommandName, numArgs, enclosedCommands, parameters);
 		return 1;
 	}
 }

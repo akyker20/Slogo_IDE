@@ -8,13 +8,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-import state.UserDefinedCommandCollection;
-import state.UserDefinedCommandCollection.Command;
 import tests.commandTests.CommandTester;
-
+import workspace.UserDefinedCommandCollection;
+import workspace.UserDefinedCommandCollection.Command;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
-
 import drawableobject.DrawableObject;
 
 public class MakeUserInstructionTests extends CommandTester {
@@ -28,10 +26,10 @@ public class MakeUserInstructionTests extends CommandTester {
 		assertTrue(f == 1);		
 
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.variables.fetchVariable(":var") == 0);
-		assertTrue(state.variables.fetchVariable(":varb") == 0);
-		assertTrue(state.variables.fetchVariable(":varc") == 0);
-		List<String> translatedCommand = state.translator.translateToList("fd 20");
+		assertTrue(workspace.variables.fetchVariable(":var") == 0);
+		assertTrue(workspace.variables.fetchVariable(":varb") == 0);
+		assertTrue(workspace.variables.fetchVariable(":varc") == 0);
+		List<String> translatedCommand = workspace.translator.translateToList("fd 20");
 		List<String> variables = new ArrayList<String>(){{
 			add(":var");
 			add(":varb");
@@ -39,7 +37,7 @@ public class MakeUserInstructionTests extends CommandTester {
 		}};
 		UserDefinedCommandCollection dummyCollection = new UserDefinedCommandCollection();
 		Command command = dummyCollection.new Command("command", 3, translatedCommand, variables);
-		assertTrue(state.commands.fetchUserDefinedCommand("command").equals(command));
+		assertTrue(workspace.commands.fetchUserDefinedCommand("command").equals(command));
 	}
 
 	@Test
@@ -58,11 +56,11 @@ public class MakeUserInstructionTests extends CommandTester {
 		assertTrue(refreshVariables.getParent().equals(WorkspaceVariableFactory.PARENT));
 		assertTrue(refreshVariables.getType().equals(WorkspaceVariableFactory.TYPE));
 		assertTrue(refreshVariables.getParameters().size()==2);		
-		assertTrue(state.variables.fetchVariable(":var") == 20);
-		assertTrue(state.variables.fetchVariable(":varb") == 0);
-		assertTrue(state.variables.fetchVariable(":varc") == 0);
-		List<String> translatedCommand = state.translator.translateToList("fd 20");
-		assertTrue(state.commands.fetchUserDefinedCommand("command").equals(translatedCommand));
+		assertTrue(workspace.variables.fetchVariable(":var") == 20);
+		assertTrue(workspace.variables.fetchVariable(":varb") == 0);
+		assertTrue(workspace.variables.fetchVariable(":varc") == 0);
+		List<String> translatedCommand = workspace.translator.translateToList("fd 20");
+		assertTrue(workspace.commands.fetchUserDefinedCommand("command").equals(translatedCommand));
 	}
 }
 

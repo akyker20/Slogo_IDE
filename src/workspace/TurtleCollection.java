@@ -1,9 +1,9 @@
-package state;
+package workspace;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Turtles {
+public class TurtleCollection {
 	private List<Turtle> turtles = new ArrayList<Turtle>();
 	private List<Turtle> activeTurtles  = new ArrayList<Turtle>();
 	

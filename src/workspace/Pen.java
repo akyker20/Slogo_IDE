@@ -1,4 +1,4 @@
-package state;
+package workspace;
 
 import javafx.scene.paint.Color;
 

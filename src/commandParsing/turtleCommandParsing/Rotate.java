@@ -3,26 +3,24 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
-import state.Turtle;
-
+import workspace.Turtle;
+import workspace.Workspace;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
-
 import drawableobject.DrawableObject;
 
 public abstract class Rotate extends OneInputFloatCommandParser implements TurtleGenerator {
 
-	public Rotate(State someState) {
-		super(someState);
+	public Rotate(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override
    	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue) throws RunTimeDivideByZeroException{
    		double rotation = expressionComponents.get(0); 
 		
-   		for(Turtle t : state.turtles.getActiveTurtles()){
+   		for(Turtle t : workspace.turtles.getActiveTurtles()){
    	   		t.rotate(amountToRotate(rotation));
    	        objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
    		}

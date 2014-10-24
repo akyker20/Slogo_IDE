@@ -1,11 +1,15 @@
 package gui.mainclasses;
 
+import gui.commandlist.WorkspaceCommand;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.SavedCommandsDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.factories.nodes.TurtleNodes;
+import gui.mainclasses.workspace.Workspace;
+import gui.menus.MainMenuInitializer;
 import gui.variableslist.WorkspaceVariable;
 
 import java.io.IOException;
@@ -15,6 +19,7 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -35,12 +40,8 @@ import drawableobject.DrawableObject;
  */
 public class GUIController {
 
-    private DrawableObjectParser myParser;
-    private Map<String, ComponentDrawer> myComponentDrawers;
-    private ObjectFactory[] myObjectFactories;
     private BorderPane myPane;
-    private ObservableList<WorkspaceVariable> myVariablesList;
-    private ObservableList<String> myPreviousCommandsList;
+    private Workspace myCurrentWorkspace;
     public static ResourceBundle GUI_TEXT;
 
 
@@ -56,16 +57,16 @@ public class GUIController {
 
     public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
         GUI_TEXT = LocaleInitializer.init();
-        final TurtleNodes turtleNodes = new TurtleNodes();
-        myPane = StageInitializer.init(stage, control, turtleNodes);
-        myComponentDrawers = ComponentInitializer.init(myPane, turtleNodes);
-        myVariablesList = FXCollections.observableArrayList();
-        myPreviousCommandsList = FXCollections.observableArrayList();
-        myObjectFactories = FactoryInitializer.init(myVariablesList, (TurtleScreenDrawer) 
-                                                    myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
-                                                    turtleNodes);
-        FeatureInitializer.init(myComponentDrawers, this, control, myVariablesList, myPreviousCommandsList);
-        myParser = new DrawableObjectParser(myComponentDrawers, myObjectFactories);
+
+        myPane = StageInitializer.init(stage, control);
+        myCurrentWorkspace = new Workspace(this, control);
+        TabPane tabPane = new TabPane();
+        tabPane.getTabs().add(myCurrentWorkspace);
+        
+//        myPane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER),
+//                                             (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS)));
+        myPane.setCenter(tabPane);
+
 
     }
 
@@ -75,26 +76,16 @@ public class GUIController {
      */
     public void drawDrawableObjects (Queue<DrawableObject> objectQueue) {
         while (!objectQueue.isEmpty()) {
-            myParser.parseDrawableObject(objectQueue.poll());
+            myCurrentWorkspace.parseDrawableObject(objectQueue.poll());
         }
     }
 
-    /**
-     * Adds a command to the previous commands list view. Adds the command to the front
-     * of the list so it will be displayed first in the view.
-     * @param command
-     */
-    public void addPreviousCommand (String command) {
-        myPreviousCommandsList.add(0, command);   
+    public void clearCurrentWorkspace () {
+        myCurrentWorkspace.clearCurrentWorkspace();
     }
 
-    /**
-     * Clears the current workspace by removing the workspace variables
-     * as well as the previous command log. This is called when the user
-     * clicks the ClearWorkspace button feature in the options TabPane.
-     */
-    public void clearCurrentWorkspace () {
-        myVariablesList.clear();
-        myPreviousCommandsList.clear();
+    public void addPreviousCommand (String command) {
+        myCurrentWorkspace.addPreviousCommand(command);
+        
     }
 }

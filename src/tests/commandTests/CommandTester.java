@@ -10,9 +10,9 @@ import java.util.Queue;
 
 import org.junit.Before;
 
-import state.State;
-import state.Turtle;
 import translator.Translator;
+import workspace.Turtle;
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -20,7 +20,7 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandTester {
 	
-	protected State state;
+	protected Workspace workspace;
 	protected Iterator<String> commands;
 	protected Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 	
@@ -34,11 +34,11 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpStateBeforeTesting(String language) throws IOException{		
-		state = new State(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
+		workspace = new Workspace(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
 	}
 	
 	public void setUpCommands(String input){
-		commands = state.translator.translate(input);
+		commands = workspace.translator.translate(input);
 	}
 	
 	public void resetTesterVariables() {
@@ -52,7 +52,7 @@ public abstract class CommandTester {
 	}
 	
 	public CommandParser createCommand() throws RunTimeNullPointerException, CompileTimeParsingException{
-		return CommandParser.createParser(commands.next(), state);	
+		return CommandParser.createParser(commands.next(), workspace);	
 	}
 	
 	

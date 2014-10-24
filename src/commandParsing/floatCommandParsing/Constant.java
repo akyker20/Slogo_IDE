@@ -3,7 +3,7 @@ package commandParsing.floatCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -12,8 +12,8 @@ import drawableobject.DrawableObject;
 
 public class Constant extends CommandParser {
 
-	public Constant(State someState) {
-		super(someState);
+	public Constant(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

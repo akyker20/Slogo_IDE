@@ -3,18 +3,16 @@ package commandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class NullCommandParser extends CommandParser {
 
-	public NullCommandParser(State someState) {
-		super(someState);
+	public NullCommandParser(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override

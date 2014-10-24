@@ -3,19 +3,17 @@ package commandParsing.turtleQueryParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class XCoordinate extends CommandParser {
 
-	public XCoordinate(State someState) {
-		super(someState);
+	public XCoordinate(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class XCoordinate extends CommandParser {
 			Queue<DrawableObject> objectQueue)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException,
 			RunTimeNullPointerException {
-		return state.turtles.getLastActiveTurtle().getTurtleXLocation();
+		return workspace.turtles.getLastActiveTurtle().getTurtleXLocation();
 	}
 
 }

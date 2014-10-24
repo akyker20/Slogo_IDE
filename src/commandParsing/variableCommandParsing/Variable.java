@@ -3,19 +3,17 @@ package commandParsing.variableCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import state.State;
-
+import workspace.Workspace;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public class Variable extends CommandParser {
 
-	public Variable(State someState) {
-		super(someState);
+	public Variable(Workspace someWorkspace) {
+		super(someWorkspace);
 	}
 
 	private String variableName;
@@ -27,7 +25,7 @@ public class Variable extends CommandParser {
 			RunTimeNullPointerException {
 		
 		variableName = commandString.next();
-		return state.variables.fetchVariable(variableName);
+		return workspace.variables.fetchVariable(variableName);
 	}
 	
 	public String getVariableName(){
