@@ -7,6 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 
+/**
+ * Abstract super class for Pen ChoiceBox features. Current sub-classes are
+ * PenTypeFeature and PenUpOrDownFeature.
+ * @author Austin Kyker
+ *
+ */
 public abstract class PenChoiceBox extends ChoiceBox<String> {
     public PenChoiceBox(List<String> choices, ButtonHolderDrawer parentDrawer){
         this.setItems((ObservableList<String>) choices);
