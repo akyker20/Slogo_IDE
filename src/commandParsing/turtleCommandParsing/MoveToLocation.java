@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Queue;
 
 import state.Location;
-import state.State;
+import state.Workspace;
 import state.Turtle;
 
 import commandParsing.drawableObectGenerationInterfaces.LineGenerator;
@@ -37,7 +37,7 @@ public abstract class MoveToLocation extends TwoInputFloatCommandParser implemen
 
 	protected abstract Location getDestinationLocation(List<Double> components);
 
-	protected abstract double getDestinationHeading(State state);
+	protected abstract double getDestinationHeading(Workspace state);
 	
 	private double distanceBetweenPoints(Location firstPoint, Location secondPoint){
 		return Math.sqrt(Math.pow(secondPoint.getX() - firstPoint.getX(),2) 

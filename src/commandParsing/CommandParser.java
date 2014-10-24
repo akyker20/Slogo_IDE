@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import state.State;
+import state.Workspace;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -13,10 +13,10 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandParser {
 	
-	protected static State state;
+	protected static Workspace state;
 	protected List<Double> expressionComponents = new ArrayList<Double>();
 	
-	public void setState(State someState){
+	public void setState(Workspace someState){
 		state = someState;
 	}
 	
@@ -46,7 +46,7 @@ public abstract class CommandParser {
 		return parts[parts.length-1].matches(state.translator.getCommandPattern());
 	}
 
-	public static CommandParser createParser(String commandName, State state) throws CompileTimeParsingException{
+	public static CommandParser createParser(String commandName, Workspace state) throws CompileTimeParsingException{
 		try {
 			CommandParser parser = (CommandParser) Class.forName(commandName).newInstance();
 			parser.setState(state);
