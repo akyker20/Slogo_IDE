@@ -116,7 +116,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
      * SetGridColorFeature
      * @param style
      */
-    public void changeGridColor (String style) {
+    public void changeScreenColor (String style) {
         myTurtleScreen.setStyle(style);  
     }
 

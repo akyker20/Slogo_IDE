@@ -21,6 +21,7 @@ import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetTurtleScreenColorFeature;
+import gui.nonbuttonfeatures.pen.PenColorPickerFeature;
 import gui.nonbuttonfeatures.pen.PenTypeFeature;
 import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
 import gui.nonbuttonfeatures.workspacevariables.WorkspaceVariablesFeature;
@@ -71,6 +72,7 @@ public class FeatureInitializer {
         PenOptionsTab penOptions = new PenOptionsTab(new Node[]{
             new PenUpOrDownFeature(buttonHolder, control),
             new PenTypeFeature(buttonHolder, control),
+            new PenColorPickerFeature(buttonHolder, control)
         });
         
         buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions});

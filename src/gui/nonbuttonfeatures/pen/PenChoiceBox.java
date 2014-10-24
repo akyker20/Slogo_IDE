@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 
-public class PenChoiceBox extends ChoiceBox<String> {
+public abstract class PenChoiceBox extends ChoiceBox<String> {
     public PenChoiceBox(List<String> choices, ButtonHolderDrawer parentDrawer){
         this.setItems((ObservableList<String>) choices);
         this.setPrefSize(ButtonFeature.BUTTON_WIDTH, ButtonFeature.BUTTON_HEIGHT);

@@ -1,9 +1,8 @@
 package gui.componentdrawers;
 
+import gui.mainclasses.StageInitializer;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import gui.mainclasses.StageInitializer;
 
 
 public class CommandLineDrawer extends ComponentDrawer {
