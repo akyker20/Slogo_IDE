@@ -11,13 +11,10 @@ public class Turtle {
     private int myID;
 
     public Turtle () {
-        this(0);
-    }
-    public Turtle (int ID) {
-        myLocation = new Location(0,0);
+    	myLocation = new Location(0,0);
         myHeading = DEFAULT_TURTLE_HEADING;
-        myID = ID;
     }
+   
 
     public void showTurtle(){
         turtleShowing = true;
@@ -78,6 +75,10 @@ public class Turtle {
 
     public void setLocation (Location myLocation) {
         this.myLocation = myLocation;
+    }
+    
+    public void setID(int ID) {
+    	myID = ID;
     }
 
     public int getID() {
