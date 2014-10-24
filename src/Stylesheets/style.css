@@ -37,11 +37,3 @@
 	-fx-background-color: white; 
 	-fx-border-color: LightGray;
 }
-
-.errorPopup {
-    -fx-background-color: white;
-    -fx-padding: 10;
-    -fx-border-color: black; 
-    -fx-border-width: 2;
-    -fx-font-size: 11;
-}
