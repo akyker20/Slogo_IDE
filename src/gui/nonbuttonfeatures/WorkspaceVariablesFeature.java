@@ -14,7 +14,6 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
     @SuppressWarnings("unchecked")
     public WorkspaceVariablesFeature(WorkspaceVariablesDrawer parentDrawer, ObservableList<WorkspaceVariable> data, 
                                      SlogoGraphics control){
-        this.setItems(data);
 
         Callback<TableColumn<WorkspaceVariable, Double>, TableCell<WorkspaceVariable, Double>> cellFactory =
                 new Callback<TableColumn<WorkspaceVariable, Double>, TableCell<WorkspaceVariable, Double>>() {
@@ -35,6 +34,7 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
         this.setLayoutY(20);
         this.setPrefHeight(168);
         this.setEditable(true);
+        this.setItems(data);
         parentDrawer.drawShape(new WorkspaceVariablesFeature[]{this});
     }
 }
