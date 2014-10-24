@@ -21,6 +21,7 @@ import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetTurtleScreenColorFeature;
+import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
 import gui.nonbuttonfeatures.workspacevariables.WorkspaceVariablesFeature;
 import gui.variableslist.WorkspaceVariable;
 import java.util.Map;
@@ -66,7 +67,9 @@ public class FeatureInitializer {
             new ClearWorkspaceButtonFeature(buttonHolder, guiController)
         });
         
-        PenOptionsTab penOptions = new PenOptionsTab(new Node[]{});
+        PenOptionsTab penOptions = new PenOptionsTab(new Node[]{
+            new PenUpOrDownFeature(buttonHolder, control)                                                
+        });
         
         buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions});
         
