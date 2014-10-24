@@ -33,9 +33,9 @@
 }
 
 
-#buttonHolder {
+#tabPane{
 	-fx-background-color: white; 
-	-fx-border-color: LightGray
+	-fx-border-color: LightGray;
 }
 
 .errorPopup {
