@@ -4,7 +4,6 @@ import gui.mainclasses.StageInitializer;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.VBox;
 
 public class ErrorDrawer extends ComponentDrawer {
 

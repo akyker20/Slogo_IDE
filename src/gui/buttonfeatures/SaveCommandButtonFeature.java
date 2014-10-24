@@ -4,7 +4,6 @@ import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
-import Control.SlogoGraphics;
 
 public class SaveCommandButtonFeature extends ButtonFeature {
 

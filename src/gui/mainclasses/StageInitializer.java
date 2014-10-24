@@ -1,18 +1,20 @@
 package gui.mainclasses;
 
-import java.io.IOException;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
-import gui.factories.TurtleFactory;
 import gui.factories.nodes.TurtleNode;
 import gui.factories.nodes.TurtleNodes;
+
+import java.io.IOException;
+
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import Control.SlogoGraphics;
+
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 
 
 public class StageInitializer {

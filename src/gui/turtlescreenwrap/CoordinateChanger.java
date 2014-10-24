@@ -1,6 +1,5 @@
 package gui.turtlescreenwrap;
 
-import gui.componentdrawers.TurtleScreenDrawer;
 
 /**
  * Class converts coordinates from typical javafx grid ones to cartesian 2D with origin

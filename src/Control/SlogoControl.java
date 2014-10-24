@@ -2,25 +2,30 @@ package Control;
 
 import gui.mainclasses.GUIController;
 import gui.variableslist.WorkspaceVariable;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.stage.Stage;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import state.State;
 import state.Turtle;
 import translator.Translator;
+
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
 
 

@@ -1,9 +1,10 @@
 package commandParsing.exceptions;
 
 import gui.factories.ErrorFactory;
-import gui.factories.FactoryInitializer;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import drawableobject.DrawableObject;
 
 public class CompileTimeParsingException extends SLOGOException {

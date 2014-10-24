@@ -1,12 +1,14 @@
-package gui.turtlescreenwrap.tests;
+package tests.screenWrapTests;
 
 
-import static org.junit.Assert.*;
-import java.util.List;
-import gui.componentdrawers.TurtleScreenDrawer;
+import static org.junit.Assert.assertTrue;
 import gui.turtlescreenwrap.Point2DPair;
 import gui.turtlescreenwrap.TurtleScreenWrap;
+
+import java.util.List;
+
 import org.junit.Test;
+
 import com.sun.javafx.geom.Point2D;
 
 public class TurtleScreenWrapTests {

@@ -1,4 +1,4 @@
-package gui.turtlescreenwrap.tests;
+package tests.screenWrapTests;
 
 import static org.junit.Assert.*;
 import gui.turtlescreenwrap.Point2DPair;

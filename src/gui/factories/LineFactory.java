@@ -1,17 +1,18 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.TurtleScreenDrawer;
-import gui.turtlescreenwrap.Point2DPair;
 import gui.turtlescreenwrap.CoordinateChanger;
+import gui.turtlescreenwrap.Point2DPair;
 import gui.turtlescreenwrap.TurtleScreenWrap;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.sun.javafx.geom.Point2D;
+
 import javafx.scene.Node;
 import javafx.scene.shape.Line;
+
+import com.sun.javafx.geom.Point2D;
 
 
 public class LineFactory extends ObjectFactory {

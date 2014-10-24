@@ -5,26 +5,23 @@ import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
-import gui.factories.TurtleFactory;
 import gui.factories.nodes.TurtleNodes;
 import gui.variableslist.WorkspaceVariable;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import Control.SlogoGraphics;
 import drawableobject.DrawableObject;
 
