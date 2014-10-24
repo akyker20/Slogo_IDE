@@ -1,5 +1,6 @@
 package gui.mainclasses;
 
+import gui.commandlist.WorkspaceCommand;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
@@ -7,16 +8,21 @@ import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.factories.nodes.TurtleNodes;
 import gui.variableslist.WorkspaceVariable;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
+
 import Control.SlogoGraphics;
 import drawableobject.DrawableObject;
 
@@ -35,6 +41,7 @@ public class GUIController {
     private ObjectFactory[] myObjectFactories;
     private BorderPane myPane;
     private ObservableList<WorkspaceVariable> myVariablesList;
+    private ObservableList<WorkspaceCommand> myCommandList;
     private ObservableList<String> myPreviousCommandsList;
     public static ResourceBundle GUI_TEXT;
 
@@ -56,7 +63,7 @@ public class GUIController {
         myComponentDrawers = ComponentInitializer.init(myPane, turtleNodes);
         myVariablesList = FXCollections.observableArrayList();
         myPreviousCommandsList = FXCollections.observableArrayList();
-        myObjectFactories = FactoryInitializer.init(myVariablesList, (TurtleScreenDrawer) 
+        myObjectFactories = FactoryInitializer.init(myVariablesList, myCommandList, (TurtleScreenDrawer) 
                                                     myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                                                     turtleNodes);
         FeatureInitializer.init(myComponentDrawers, this, control, myVariablesList, myPreviousCommandsList);

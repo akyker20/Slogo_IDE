@@ -3,11 +3,15 @@ package gui.componentdrawers;
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.factories.nodes.TurtleNodes;
 import gui.menus.MainMenuInitializer;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
+
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -22,9 +26,11 @@ public class ComponentInitializer {
     public static final String BUTTON_HOLDER_DRAWER = "ButtonHolderDrawer";
     public static final String PREVIOUS_COMMANDS = "previousCommandsDrawer";
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
+    public static final String WORKSPACE_COMMANDS = "workspaceCommandDrawer";
     public static final String SAVED_COMMANDS = "savedCommands";
     public static final String ERROR_DRAWER = "errorDrawer";
     public static final Map<String, ComponentDrawer> DRAWER_MAP = new HashMap<String, ComponentDrawer>();
+	
 
     private static String[] myLeftContainerElements = new String[]{GRID_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
     
