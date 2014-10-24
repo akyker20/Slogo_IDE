@@ -25,6 +25,9 @@ public abstract class CommandParser {
 	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<DrawableObject> objectQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
 		expressionComponents.clear();
 		while(expressionComponents.size()<numberToAccumulate){
+			if (!commandString.hasNext()){
+				throw new CompileTimeParsingException("Ran out of bounds looking for next component");
+			}
 			String stringOfInterest = commandString.next();
 
 			if(isStringParsableAsCommand(stringOfInterest)){

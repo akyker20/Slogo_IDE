@@ -2,10 +2,13 @@ package gui.factories.nodes;
 
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.TurtleFactory;
+import gui.turtlescreenwrap.CoordinateChanger;
+import gui.turtlescreenwrap.TesselationMapper;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import com.sun.javafx.geom.Point2D;
 
 /**
  * Represents a turtle node on the screen. Turtles nodes can be selected by the
@@ -16,13 +19,13 @@ import javafx.scene.image.ImageView;
  */
 public class TurtleNode extends ImageView {
 
-    private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image.png";
+    private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image2.png";
     private static final String SELECTED_TURTLE_IMAGEPATH = "selected_turtle.png";
 
-    private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.05;
+    private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.06;
     private static final double TURTLE_IMAGE_WIDTH = TurtleScreenDrawer.GRID_WIDTH *
             TURTLE_IMAGE_WIDTH_RATIO;
-    private static final double TURTLE_IMAGE_HEIGHT_RATIO = 0.1;
+    private static final double TURTLE_IMAGE_HEIGHT_RATIO = 0.06;
     private static final double TURTLE_IMAGE_HEIGHT = TurtleScreenDrawer.GRID_HEIGHT *
             TURTLE_IMAGE_HEIGHT_RATIO;
 
@@ -42,8 +45,16 @@ public class TurtleNode extends ImageView {
      */
     public TurtleNode[] updatePosition(Map<String, String> params){
         double[] newLocation = parseStringToPoints(params.get(TurtleFactory.LOCATION));
-        setLayoutX(newLocation[0] + TurtleScreenDrawer.GRID_WIDTH/2 - TURTLE_IMAGE_WIDTH/2);
-        setLayoutY(- newLocation[1] + TurtleScreenDrawer.GRID_HEIGHT/2 - TURTLE_IMAGE_HEIGHT/2);
+        
+        Point2D dest = new Point2D((float) newLocation[0], (float) newLocation[1]);
+        dest = TesselationMapper.map(dest);
+        
+        float x = CoordinateChanger.convX(dest.x);
+        float y = CoordinateChanger.convY(dest.y);
+        
+        setLayoutX(x-this.getBoundsInParent().getWidth()/2);
+        setLayoutY(y-this.getBoundsInParent().getHeight()/2);
+        
         setRotate(Double.parseDouble(params.get(TurtleFactory.HEADING)));
         setOpacity(Double.parseDouble(params.get(TurtleFactory.OPACITY))); 
         return new TurtleNode[]{ this };

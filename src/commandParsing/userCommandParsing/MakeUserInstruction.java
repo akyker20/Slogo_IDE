@@ -1,7 +1,9 @@
 package commandParsing.userCommandParsing;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -9,9 +11,12 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
+
 import drawableobject.DrawableObject;
 
 public class MakeUserInstruction extends StructuralCommand {
+	
+	private List<String> parameters = new ArrayList<String>();
 
 	@Override
 	public double parse(Iterator<String> commandString,
@@ -22,13 +27,20 @@ public class MakeUserInstruction extends StructuralCommand {
 		if(!isStringParsableAsCommand(potentialCommandName)){
 			return 0;
 		}
+		
 		extractCommandsBetweenBraces(commandString);
-		for(String varName : enclosedCommands){
+
+		Iterator<String> variableIterator = enclosedCommands.iterator();
+		
+		while (variableIterator.hasNext()){
+			parameters.add(getVariable(variableIterator, objectQueue));
+		}
+		for(String varName : parameters){
 			if(!state.variables.variableExists(varName)){
 				state.variables.storeVariable(varName, 0);
 			}
 		}
-		int numArgs = enclosedCommands.size();
+		int numArgs = parameters.size();
 		extractCommandsBetweenBraces(commandString);
 		try{
 			Queue<DrawableObject> tempQueue = new LinkedList<DrawableObject>();
@@ -36,7 +48,7 @@ public class MakeUserInstruction extends StructuralCommand {
 		} catch (SLOGOException e) {
 			return 0;
 		}
-		state.commands.storeUserDefinedCommand(potentialCommandName, numArgs, enclosedCommands);
+		state.commands.storeUserDefinedCommand(potentialCommandName, numArgs, enclosedCommands, parameters);
 		return 1;
 	}
 }
