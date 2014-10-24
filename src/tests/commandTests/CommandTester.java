@@ -10,7 +10,7 @@ import java.util.Queue;
 
 import org.junit.Before;
 
-import state.State;
+import state.Workspace;
 import state.Turtle;
 import translator.Translator;
 import commandParsing.CommandParser;
@@ -20,7 +20,7 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandTester {
 	
-	protected State state;
+	protected Workspace state;
 	protected Iterator<String> commands;
 	protected Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 	
@@ -34,7 +34,7 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpStateBeforeTesting(String language) throws IOException{		
-		state = new State(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
+		state = new Workspace(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
 	}
 	
 	public void setUpCommands(String input){

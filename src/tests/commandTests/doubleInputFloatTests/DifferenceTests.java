@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import state.State;
+import state.Workspace;
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.RunTimeNullPointerException;
