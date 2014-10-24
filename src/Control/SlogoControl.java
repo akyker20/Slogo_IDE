@@ -15,15 +15,11 @@ import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
-<<<<<<< HEAD
 
-import state.State;
-=======
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import state.Workspace;
->>>>>>> drawableObjectGeneration
 import state.Turtle;
 import translator.Translator;
 
