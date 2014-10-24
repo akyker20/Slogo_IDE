@@ -15,8 +15,15 @@ import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+<<<<<<< HEAD
 
 import state.State;
+=======
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.stage.Stage;
+import state.Workspace;
+>>>>>>> drawableObjectGeneration
 import state.Turtle;
 import translator.Translator;
 
@@ -42,7 +49,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
 
     private GUIController myGUI;
     Translator translator;
-    State state;
+    Workspace state;
 
     /**
      * Initializes the GUIController and BackEndController,
@@ -59,7 +66,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
         myGUI = new GUIController(stage, this);
         translator = new Translator("english");
-        state = new State(new Turtle(),variableMap, translator);
+        state = new Workspace(new Turtle(),variableMap, translator);
         parseCommandString("home");
     }
 

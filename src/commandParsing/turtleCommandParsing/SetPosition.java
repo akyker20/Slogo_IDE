@@ -3,7 +3,7 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 
 import state.Location;
-import state.State;
+import state.Workspace;
 
 public class SetPosition extends MoveToLocation {
 	
@@ -13,7 +13,7 @@ public class SetPosition extends MoveToLocation {
 	}
 
 	@Override
-	protected double getDestinationHeading(State state) {
+	protected double getDestinationHeading(Workspace state) {
 		return 0;
 	}
 }
