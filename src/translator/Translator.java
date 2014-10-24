@@ -43,11 +43,11 @@ public class Translator {
 			if (dictionary.containsKey(s)) {
 				translatedString.add(languageToClassPath.get(s));
 			}
-			// else if (s.matches(syntaxDictionary.get("Command")) &&
-			// !languageToClassPath.containsKey(s)){
-			// translatedString.add(languageToClassPath.get(USER_DEFINED_COMMAND));
-			// translatedString.add(s);
-			// }
+			else if (s.matches(syntaxDictionary.get("Command")) &&
+					!languageToClassPath.containsKey(s)) {
+				translatedString.add(languageToClassPath.get(USER_DEFINED_COMMAND));
+				translatedString.add(s);
+			}
 			else if (s.matches(syntaxDictionary.get("Constant"))) {
 				translatedString.add(languageToClassPath.get(CONSTANT));
 				translatedString.add(s);
