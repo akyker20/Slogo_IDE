@@ -17,6 +17,8 @@ public class Translator {
 	private static final String CONSTANT = "Constant";
 	private static final String VARIABLE = "Variable";
 	private static final String USER_DEFINED_COMMAND = "UserInstruction";
+	private static final String JAR_NAME = "SLOGO.jar";
+	private static final String COMMAND_PACKAGE_NAME = "commandParsing";
 	private Map<String, String> dictionary = new HashMap<String, String>();
 	private Map<String, String> classDictionary = new HashMap<String, String>();
 	private Map<String, String> languageToClassPath = new HashMap<String, String>();
@@ -24,7 +26,7 @@ public class Translator {
 
 	public Translator(String language) throws IOException {
 		changeLanguage(language);
-		getClassNamesInPackage("SLOGO.jar", "commandParsing");
+		buildMapOfCommandPaths();
 		mapLanguageToClassPath();
 	}
 
@@ -39,13 +41,13 @@ public class Translator {
 		for (String s : splitString) {
 			if (dictionary.containsKey(s)) {
 				translatedString.add(languageToClassPath.get(s));
-			} else if (s.matches(syntaxDictionary.get("Command")) && !languageToClassPath.containsKey(s)) {
+			} else if (matchesCommandPattern(s) && !languageToClassPath.containsKey(s)) {
 				translatedString.add(languageToClassPath.get(USER_DEFINED_COMMAND));
 				translatedString.add(s);
-			} else if (s.matches(syntaxDictionary.get("Constant"))) {
+			} else if (matchesConstantPattern(s)) {
 				translatedString.add(languageToClassPath.get(CONSTANT));
 				translatedString.add(s);
-			} else if (s.matches(syntaxDictionary.get("Variable"))) {
+			} else if (matchesVariablePattern(s)) {
 				translatedString.add(languageToClassPath.get(VARIABLE));
 				translatedString.add(s);
 			} else {
@@ -99,10 +101,8 @@ public class Translator {
 
 	}
 
-	private void getClassNamesInPackage(String jarName, String packageName) throws FileNotFoundException,
-			IOException {
-		packageName = packageName.replaceAll("\\.", "/");
-		JarInputStream jarFile = new JarInputStream(new FileInputStream(jarName));
+	private void buildMapOfCommandPaths() throws FileNotFoundException, IOException {
+		JarInputStream jarFile = new JarInputStream(new FileInputStream(JAR_NAME));
 		JarEntry jarEntry;
 
 		while (true) {
@@ -110,7 +110,8 @@ public class Translator {
 			if (jarEntry == null) {
 				break;
 			}
-			if ((jarEntry.getName().startsWith(packageName)) && (jarEntry.getName().endsWith(".class"))) {
+			if ((jarEntry.getName().startsWith(COMMAND_PACKAGE_NAME))
+					&& (jarEntry.getName().endsWith(".class"))) {
 				String pathName = jarEntry.getName().replaceAll("/", "\\.");
 				classDictionary.put(findCommandName(pathName), clipPathName(pathName));
 			}
