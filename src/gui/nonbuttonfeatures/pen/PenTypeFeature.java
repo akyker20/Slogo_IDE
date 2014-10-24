@@ -10,28 +10,21 @@ import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
-/**
- * This class offers the user the ability to change whether the pen is
- * up or down from the pen options tab in the options TabPane. Therefore,
- * the user can change whether the pen is up or down from the CommandLine,
- * using this feature, or by loading a working script.
- * @author Austin Kyker
- *
- */
-public class PenUpOrDownFeature extends PenChoiceBox {
+public class PenTypeFeature extends PenChoiceBox {
+    
+    private static final String SOLID = "solid";
+    private static final String DASHED = "dashed";
+    private static final String DOTTED = "dotted";
+    private static final String PEN_TYPE = "pentype";
 
-    private static final String UP = "up";
-    private static final String DOWN = "down";
-    private static final String PEN = "pen";
-
-    public PenUpOrDownFeature(ButtonHolderDrawer parentDrawer, SlogoGraphics control){
-        super(FXCollections.observableArrayList(DOWN, UP), parentDrawer);
+    public PenTypeFeature(ButtonHolderDrawer parentDrawer, SlogoGraphics control){
+        super(FXCollections.observableArrayList(SOLID, DASHED, DOTTED), parentDrawer);
         
         this.valueProperty().addListener(new ChangeListener<String>(){
             @Override
             public void changed (ObservableValue<? extends String> arg0, String oldValue, String selectedValue) {
                 try {
-                    control.parseCommandString(PEN.concat(selectedValue));
+                    control.parseCommandString(PEN_TYPE.concat(" " + selectedValue));
                 }
                 catch (CompileTimeParsingException | RunTimeDivideByZeroException
                         | RunTimeNullPointerException | IOException e) {
