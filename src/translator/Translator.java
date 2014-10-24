@@ -154,25 +154,4 @@ public class Translator {
 	public boolean matchesGroupEndPattern(String str) {
 		return str.matches(syntaxDictionary.get("GroupEnd"));
 	}
-
-	public String getVariablePattern() {
-		return syntaxDictionary.get("Variable");
-	}
-
-	public String getConstantPattern() {
-		return syntaxDictionary.get("Constant");
-	}
-
-	public String getCommandPattern() {
-		return syntaxDictionary.get("Command");
-	}
-
-	public String getListStartPattern() {
-		return syntaxDictionary.get("ListStart");
-	}
-
-	public String getListEndPattern() {
-		return syntaxDictionary.get("ListEnd");
-	}
-
 }

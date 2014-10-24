@@ -8,8 +8,7 @@ import workspaceState.UserDefinedCommandCollection.Command;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public class UserInstruction extends CommandParser {
@@ -22,7 +21,7 @@ public class UserInstruction extends CommandParser {
 
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+			throws SLOGOException {
 		String commandName = commandString.next();
 		command = workspace.commands.fetchUserDefinedCommand(commandName);
 		accumulateComponents(commandString, command.getNumArguments(), objectQueue);
@@ -42,8 +41,7 @@ public class UserInstruction extends CommandParser {
 
 	@Override
 	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate,
-			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
-			RunTimeDivideByZeroException, RunTimeNullPointerException {
+			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		expressionComponents.clear();
 		while (expressionComponents.size() < numberToAccumulate) {
 			if (!commandString.hasNext()) {

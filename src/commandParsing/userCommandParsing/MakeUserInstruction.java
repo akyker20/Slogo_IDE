@@ -8,9 +8,6 @@ import java.util.Queue;
 
 import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.UserDefinedCommandGenerator;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
 import drawableobject.DrawableObject;
@@ -25,7 +22,7 @@ public class MakeUserInstruction extends StructuralCommand implements UserDefine
 
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+			throws SLOGOException {
 		String potentialCommandName = commandString.next();
 		if (!isStringParsableAsCommand(potentialCommandName)) {
 			return 0;

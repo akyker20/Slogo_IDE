@@ -4,9 +4,7 @@ import java.util.Iterator;
 import java.util.Queue;
 
 import workspaceState.WorkspaceState;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public class Repeat extends RecurringCommand {
@@ -17,8 +15,7 @@ public class Repeat extends RecurringCommand {
 
 	@Override
 	protected void initializeLoopVariableParameters(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
-			RunTimeDivideByZeroException, RunTimeNullPointerException {
+			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		loopVariable = ":repcount";
 		basicLoopVariableInitialization(commandString, objectQueue);
 	}

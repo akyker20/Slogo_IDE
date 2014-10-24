@@ -8,54 +8,56 @@ import java.util.Map;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
 public class UserDefinedCommandCollection {
-	private Map<String, Command> commandMap = new HashMap<String,Command>();
-	
-	public void storeUserDefinedCommand(String name, int numArgs, List<String> commands, List<String> parameters){
+	private Map<String, Command> commandMap = new HashMap<String, Command>();
+
+	public void storeUserDefinedCommand(String name, int numArgs, List<String> commands,
+			List<String> parameters) {
 		commandMap.put(name, new Command(name, numArgs, commands, parameters));
 	}
 
-	public Command fetchUserDefinedCommand(String name) throws RunTimeNullPointerException{
-		if(!commandMap.keySet().contains(name)){
+	public Command fetchUserDefinedCommand(String name) throws RunTimeNullPointerException {
+		if (!commandMap.keySet().contains(name)) {
 			throw new RunTimeNullPointerException(name);
 		}
-		return commandMap.get(name); 
+		return commandMap.get(name);
 	}
-	
-	public class Command{
+
+	public class Command {
 		private String name;
 		private int numberOfArguments;
 		private List<String> commandStrings;
 		private List<String> parameterList;
-		
-		public Command(String aName, int numArgs, List<String> toDo, List<String> parameters){
+
+		public Command(String aName, int numArgs, List<String> toDo, List<String> parameters) {
 			name = aName;
 			numberOfArguments = numArgs;
 			commandStrings = toDo;
 			parameterList = parameters;
 		}
-		
-		public List<String> getCommands(){
+
+		public List<String> getCommands() {
 			return commandStrings;
 		}
-		
-		public Iterator<String> getCommandIterator(){
+
+		public Iterator<String> getCommandIterator() {
 			return commandStrings.iterator();
 		}
-		
-		public int getNumArguments(){
+
+		public int getNumArguments() {
 			return numberOfArguments;
 		}
-		
-		public String getName(){
+
+		public String getName() {
 			return name;
 		}
-		
-		public List<String> getParameters(){
+
+		public List<String> getParameters() {
 			return parameterList;
 		}
+
 		@Override
-		public boolean equals(Object o){
-			if (!(o instanceof Command)){
+		public boolean equals(Object o) {
+			if (!(o instanceof Command)) {
 				return false;
 			}
 			Command b = (Command) o;

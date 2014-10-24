@@ -7,9 +7,7 @@ import workspaceState.TurtleCollection;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public class ShowTurtle extends CommandParser implements TurtleGenerator {
@@ -20,7 +18,7 @@ public class ShowTurtle extends CommandParser implements TurtleGenerator {
 
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+			throws SLOGOException {
 		workspace.turtles.getActiveTurtles().stream().forEach(t -> {
 			t.showTurtle();
 			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
