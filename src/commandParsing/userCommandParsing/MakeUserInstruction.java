@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import commandParsing.drawableObectGenerationInterfaces.UserDefinedCommandGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -14,7 +15,7 @@ import commandParsing.structuralCommandParsing.StructuralCommand;
 
 import drawableobject.DrawableObject;
 
-public class MakeUserInstruction extends StructuralCommand {
+public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator {
 	
 	private List<String> parameters = new ArrayList<String>();
 
@@ -38,6 +39,7 @@ public class MakeUserInstruction extends StructuralCommand {
 		for(String varName : parameters){
 			if(!state.variables.variableExists(varName)){
 				state.variables.storeVariable(varName, 0);
+				// Is this necessary?
 			}
 		}
 		int numArgs = parameters.size();

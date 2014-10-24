@@ -12,41 +12,45 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 public abstract class CommandParser {
-	
+
 	protected static Workspace state;
 	protected List<Double> expressionComponents = new ArrayList<Double>();
-	
-	public void setState(Workspace someState){
+
+	public void setState(Workspace someState) {
 		state = someState;
 	}
-	
-	public abstract double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
-	
-	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate, Queue<DrawableObject> objectQueue)  throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
+
+	public abstract double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
+
+	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate,
+			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
+			RunTimeDivideByZeroException, RunTimeNullPointerException {
 		expressionComponents.clear();
-		while(expressionComponents.size()<numberToAccumulate){
-			if (!commandString.hasNext()){
+		while (expressionComponents.size() < numberToAccumulate) {
+			if (!commandString.hasNext()) {
 				throw new CompileTimeParsingException("Ran out of bounds looking for next component");
 			}
 			String stringOfInterest = commandString.next();
 
-			if(isStringParsableAsCommand(stringOfInterest)){
+			if (isStringParsableAsCommand(stringOfInterest)) {
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, state);
 				expressionComponents.add(commandParser.parse(commandString, objectQueue));
 			}
-			else{ 
+			else {
 				objectQueue.clear();
 				throw new CompileTimeParsingException(stringOfInterest);
 			}
 		}
 	}
 
-	protected boolean isStringParsableAsCommand(String string){
+	protected boolean isStringParsableAsCommand(String string) {
 		String[] parts = string.split("\\.");
-		return parts[parts.length-1].matches(state.translator.getCommandPattern());
+		return parts[parts.length - 1].matches(state.translator.getCommandPattern());
 	}
 
-	public static CommandParser createParser(String commandName, Workspace state) throws CompileTimeParsingException{
+	public static CommandParser createParser(String commandName, Workspace state)
+			throws CompileTimeParsingException {
 		try {
 			CommandParser parser = (CommandParser) Class.forName(commandName).newInstance();
 			parser.setState(state);

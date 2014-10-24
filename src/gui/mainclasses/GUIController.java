@@ -1,5 +1,6 @@
 package gui.mainclasses;
 
+import gui.commandlist.WorkspaceCommand;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.SavedCommandsDrawer;
@@ -10,17 +11,22 @@ import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.workspace.Workspace;
 import gui.menus.MainMenuInitializer;
 import gui.variableslist.WorkspaceVariable;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
+
 import Control.SlogoGraphics;
 import drawableobject.DrawableObject;
 
@@ -51,7 +57,7 @@ public class GUIController {
 
     public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
         GUI_TEXT = LocaleInitializer.init();
-        
+
         myPane = StageInitializer.init(stage, control);
         myCurrentWorkspace = new Workspace(this, control);
         TabPane tabPane = new TabPane();
@@ -60,6 +66,7 @@ public class GUIController {
 //        myPane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER),
 //                                             (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS)));
         myPane.setCenter(tabPane);
+
 
     }
 
