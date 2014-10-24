@@ -5,7 +5,7 @@ import gui.variableslist.WorkspaceVariable;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -16,7 +16,7 @@ import drawableobject.DrawableObject;
 
 public class MakeVariable extends StructuralCommand implements VariableGenerator {
 
-	public MakeVariable(Workspace someWorkspace) {
+	public MakeVariable(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

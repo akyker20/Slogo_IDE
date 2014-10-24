@@ -3,7 +3,7 @@ package commandParsing.turtleQueryParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -12,7 +12,7 @@ import drawableobject.DrawableObject;
 
 public class IsShowing extends CommandParser {
 
-	public IsShowing(Workspace someWorkspace) {
+	public IsShowing(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

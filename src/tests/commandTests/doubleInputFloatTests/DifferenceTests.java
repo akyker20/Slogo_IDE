@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tests.commandTests.CommandTester;
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;

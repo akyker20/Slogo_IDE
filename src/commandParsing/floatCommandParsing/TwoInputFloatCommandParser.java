@@ -3,13 +3,13 @@ package commandParsing.floatCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import drawableobject.DrawableObject;
 
 public abstract class TwoInputFloatCommandParser extends FloatInputCommandParser {
 
-	public TwoInputFloatCommandParser(Workspace someWorkspace) {
+	public TwoInputFloatCommandParser(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

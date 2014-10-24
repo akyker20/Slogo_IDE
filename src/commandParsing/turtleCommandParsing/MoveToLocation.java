@@ -3,9 +3,9 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Location;
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Location;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.LineGenerator;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -14,7 +14,7 @@ import drawableobject.DrawableObject;
 
 public abstract class MoveToLocation extends TwoInputFloatCommandParser implements LineGenerator, TurtleGenerator {
 
-	public MoveToLocation(Workspace someWorkspace) {
+	public MoveToLocation(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
@@ -39,7 +39,7 @@ public abstract class MoveToLocation extends TwoInputFloatCommandParser implemen
 
 	protected abstract Location getDestinationLocation(List<Double> components);
 
-	protected abstract double getDestinationHeading(Workspace workspace);
+	protected abstract double getDestinationHeading(WorkspaceState workspace);
 	
 	private double distanceBetweenPoints(Location firstPoint, Location secondPoint){
 		return Math.sqrt(Math.pow(secondPoint.getX() - firstPoint.getX(),2) 

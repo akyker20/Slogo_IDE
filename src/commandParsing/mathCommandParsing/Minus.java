@@ -3,14 +3,14 @@ package commandParsing.mathCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class Minus extends OneInputFloatCommandParser {
 	
-	public Minus(Workspace someWorkspace) {
+	public Minus(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

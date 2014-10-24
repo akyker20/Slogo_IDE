@@ -3,14 +3,14 @@ package commandParsing.booleanCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class LessThan extends TwoInputFloatCommandParser {
 
-	public LessThan(Workspace someWorkspace) {
+	public LessThan(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

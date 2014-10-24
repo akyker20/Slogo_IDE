@@ -3,14 +3,14 @@ package commandParsing.booleanCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
 public class NotEqual extends TwoInputFloatCommandParser {
 	
-	public NotEqual(Workspace someWorkspace) {
+	public NotEqual(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

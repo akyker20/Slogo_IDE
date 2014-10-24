@@ -3,9 +3,9 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Location;
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Location;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.LineGenerator;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -14,7 +14,7 @@ import drawableobject.DrawableObject;
 
 public abstract class Move extends OneInputFloatCommandParser implements LineGenerator, TurtleGenerator {
 
-    public Move(Workspace someWorkspace) {
+    public Move(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

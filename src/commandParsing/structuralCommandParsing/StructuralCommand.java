@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -16,7 +16,7 @@ import drawableobject.DrawableObject;
 
 public abstract class StructuralCommand extends CommandParser {
 	
-	public StructuralCommand(Workspace someWorkspace) {
+	public StructuralCommand(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

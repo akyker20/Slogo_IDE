@@ -2,12 +2,12 @@ package commandParsing.turtleCommandParsing;
 
 import java.util.List;
 
-import workspace.Location;
-import workspace.Workspace;
+import workspaceState.Location;
+import workspaceState.WorkspaceState;
 
 public class SetPosition extends MoveToLocation {
 	
-	public SetPosition(Workspace someWorkspace) {
+	public SetPosition(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
@@ -17,7 +17,7 @@ public class SetPosition extends MoveToLocation {
 	}
 
 	@Override
-	protected double getDestinationHeading(Workspace workspace) {
+	protected double getDestinationHeading(WorkspaceState workspace) {
 		return 0;
 	}
 }

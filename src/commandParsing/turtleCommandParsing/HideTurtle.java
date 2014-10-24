@@ -3,7 +3,7 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 
 public class HideTurtle extends CommandParser implements TurtleGenerator {
 
-	public HideTurtle(Workspace someWorkspace) {
+	public HideTurtle(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

@@ -3,9 +3,9 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Location;
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Location;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 
 public class SetTowards extends TwoInputFloatCommandParser implements TurtleGenerator {
 
-	public SetTowards(Workspace someWorkspace) {
+	public SetTowards(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

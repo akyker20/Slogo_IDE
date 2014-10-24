@@ -1,9 +1,9 @@
 package commandParsing.turtleCommandParsing;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 
 public class Forward extends Move {
-	public Forward(Workspace someWorkspace) {
+	public Forward(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

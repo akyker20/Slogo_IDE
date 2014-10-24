@@ -3,8 +3,8 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.TurtleCollection;
-import workspace.Workspace;
+import workspaceState.TurtleCollection;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -14,7 +14,7 @@ import drawableobject.DrawableObject;
 
 public class ShowTurtle extends CommandParser implements TurtleGenerator {
 
-	public ShowTurtle(Workspace someWorkspace) {
+	public ShowTurtle(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

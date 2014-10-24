@@ -3,8 +3,8 @@ package commandParsing.userCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
-import workspace.UserDefinedCommandCollection.Command;
+import workspaceState.WorkspaceState;
+import workspaceState.UserDefinedCommandCollection.Command;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -14,7 +14,7 @@ import drawableobject.DrawableObject;
 
 public class UserInstruction extends CommandParser {
 
-	public UserInstruction(Workspace someWorkspace) {
+	public UserInstruction(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

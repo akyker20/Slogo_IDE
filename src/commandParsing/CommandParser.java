@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -14,10 +14,10 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandParser {
 
-	protected static Workspace workspace;
+	protected static WorkspaceState workspace;
 	protected List<Double> expressionComponents = new ArrayList<Double>();
 	
-	public CommandParser(Workspace someWorkspace) {
+	public CommandParser(WorkspaceState someWorkspace) {
 		workspace = someWorkspace;
 	}
 
@@ -50,11 +50,11 @@ public abstract class CommandParser {
 		return parts[parts.length - 1].matches(workspace.translator.getCommandPattern());
 	}
 
-	public static CommandParser createParser(String commandName, Workspace workspace)
+	public static CommandParser createParser(String commandName, WorkspaceState workspace)
 			throws CompileTimeParsingException {
 		try {
 			return (CommandParser) Class.forName(commandName)
-					                    .getConstructor(Workspace.class)
+					                    .getConstructor(WorkspaceState.class)
 					                    .newInstance(workspace);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			throw new CompileTimeParsingException(commandName);

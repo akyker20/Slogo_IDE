@@ -3,7 +3,7 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -12,7 +12,7 @@ import drawableobject.DrawableObject;
 
 public abstract class RecurringCommand extends StructuralCommand implements VariableGenerator {
 	
-	public RecurringCommand(Workspace someWorkspace) {
+	public RecurringCommand(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

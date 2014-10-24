@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 
 public abstract class FloatInputCommandParser extends CommandParser {
 	
-	public FloatInputCommandParser(Workspace someWorkspace) {
+	public FloatInputCommandParser(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

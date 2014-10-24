@@ -1,11 +1,11 @@
 package commandParsing.structuralCommandParsing;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 
 
 public abstract class StructuralCommandOnBooleanSwitch extends StructuralCommand {
 
-	public StructuralCommandOnBooleanSwitch(Workspace someWorkspace) {
+	public StructuralCommandOnBooleanSwitch(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

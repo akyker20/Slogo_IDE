@@ -3,7 +3,7 @@ package commandParsing.variableCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -12,7 +12,7 @@ import drawableobject.DrawableObject;
 
 public class Variable extends CommandParser {
 
-	public Variable(Workspace someWorkspace) {
+	public Variable(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

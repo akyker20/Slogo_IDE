@@ -3,7 +3,7 @@ package commandParsing.mathCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.TwoInputFloatCommandParser;
 import drawableobject.DrawableObject;
@@ -11,7 +11,7 @@ import drawableobject.DrawableObject;
 
 public class Remainder extends TwoInputFloatCommandParser {
 
-	public Remainder(Workspace someWorkspace) {
+	public Remainder(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

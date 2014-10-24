@@ -20,8 +20,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import translator.Translator;
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -43,7 +43,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
 
     private GUIController myGUI;
     Translator translator;
-    Workspace workspace;
+    WorkspaceState workspace;
 
     /**
      * Initializes the GUIController and BackEndController,
@@ -60,7 +60,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
         myGUI = new GUIController(stage, this);
         translator = new Translator("english");
-        workspace = new Workspace(new Turtle(),variableMap, translator);
+        workspace = new WorkspaceState(new Turtle(),variableMap, translator);
         parseCommandString("home");
     }
 

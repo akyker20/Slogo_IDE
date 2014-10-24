@@ -11,8 +11,8 @@ import java.util.Queue;
 import org.junit.Before;
 
 import translator.Translator;
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -20,7 +20,7 @@ import drawableobject.DrawableObject;
 
 public abstract class CommandTester {
 	
-	protected Workspace workspace;
+	protected WorkspaceState workspace;
 	protected Iterator<String> commands;
 	protected Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 	
@@ -34,7 +34,7 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpStateBeforeTesting(String language) throws IOException{		
-		workspace = new Workspace(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
+		workspace = new WorkspaceState(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
 	}
 	
 	public void setUpCommands(String input){

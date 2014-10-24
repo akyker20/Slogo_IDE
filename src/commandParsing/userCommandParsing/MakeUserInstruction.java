@@ -6,19 +6,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.UserDefinedCommandGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
-
 import drawableobject.DrawableObject;
 
 public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator {
 	
-	public MakeUserInstruction(Workspace someWorkspace) {
+	public MakeUserInstruction(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

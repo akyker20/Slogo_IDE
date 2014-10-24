@@ -2,12 +2,12 @@ package commandParsing.turtleCommandParsing;
 
 import java.util.List;
 
-import workspace.Location;
-import workspace.Workspace;
+import workspaceState.Location;
+import workspaceState.WorkspaceState;
 
 public class Home extends MoveToLocation {
 	
-	public Home(Workspace someWorkspace) {
+	public Home(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
@@ -22,7 +22,7 @@ public class Home extends MoveToLocation {
 	}
 
 	@Override
-	protected double getDestinationHeading(Workspace workspace) {
+	protected double getDestinationHeading(WorkspaceState workspace) {
 		return -workspace.turtles.getLastActiveTurtle().getHeading();
 	}
 

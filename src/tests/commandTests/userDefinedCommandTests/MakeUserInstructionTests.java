@@ -9,8 +9,8 @@ import java.util.List;
 import org.junit.Test;
 
 import tests.commandTests.CommandTester;
-import workspace.UserDefinedCommandCollection;
-import workspace.UserDefinedCommandCollection.Command;
+import workspaceState.UserDefinedCommandCollection;
+import workspaceState.UserDefinedCommandCollection.Command;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;

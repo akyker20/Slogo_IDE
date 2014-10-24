@@ -3,8 +3,8 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
@@ -12,7 +12,7 @@ import drawableobject.DrawableObject;
 
 public abstract class Rotate extends OneInputFloatCommandParser implements TurtleGenerator {
 
-	public Rotate(Workspace someWorkspace) {
+	public Rotate(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

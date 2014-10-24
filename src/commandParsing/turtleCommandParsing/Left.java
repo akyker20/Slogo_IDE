@@ -1,10 +1,10 @@
 package commandParsing.turtleCommandParsing;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 
 public class Left extends Rotate {
 
-	public Left(Workspace someWorkspace) {
+	public Left(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

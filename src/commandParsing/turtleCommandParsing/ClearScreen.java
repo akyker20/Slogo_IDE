@@ -3,15 +3,15 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.PaneGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import drawableobject.DrawableObject;
 
 public class ClearScreen extends Home implements PaneGenerator {
     
-	public ClearScreen(Workspace someWorkspace) {
+	public ClearScreen(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

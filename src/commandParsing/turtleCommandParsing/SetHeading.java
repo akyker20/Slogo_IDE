@@ -3,8 +3,8 @@ package commandParsing.turtleCommandParsing;
 import java.util.List;
 import java.util.Queue;
 
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
@@ -12,7 +12,7 @@ import drawableobject.DrawableObject;
 
 public class SetHeading extends OneInputFloatCommandParser implements TurtleGenerator{
 
-	public SetHeading(Workspace someWorkspace) {
+	public SetHeading(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

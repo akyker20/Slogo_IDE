@@ -3,8 +3,8 @@ package commandParsing.turtleCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Turtle;
-import workspace.Workspace;
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -13,7 +13,7 @@ import drawableobject.DrawableObject;
 
 public class PenUp extends CommandParser {
 
-	public PenUp(Workspace someWorkspace) {
+	public PenUp(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

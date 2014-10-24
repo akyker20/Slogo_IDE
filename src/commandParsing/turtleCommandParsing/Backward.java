@@ -1,9 +1,9 @@
 package commandParsing.turtleCommandParsing;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 
 public class Backward extends Move {
-	public Backward(Workspace someWorkspace) {
+	public Backward(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 

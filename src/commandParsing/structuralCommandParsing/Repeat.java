@@ -3,7 +3,7 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspace.Workspace;
+import workspaceState.WorkspaceState;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -11,7 +11,7 @@ import drawableobject.DrawableObject;
 
 public class Repeat extends RecurringCommand {
 
-	public Repeat(Workspace someWorkspace) {
+	public Repeat(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
