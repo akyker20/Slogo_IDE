@@ -1,13 +1,13 @@
 package commandParsing.floatCommandParsing;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
 
 public class Constant extends CommandParser {
@@ -19,6 +19,4 @@ public class Constant extends CommandParser {
 			RunTimeNullPointerException {
 		return Double.parseDouble(commandString.next());
 	}
-
-
 }

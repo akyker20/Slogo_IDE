@@ -1,15 +1,16 @@
 package commandParsing.userCommandParsing;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 
 import state.UserDefinedCommandCollection.Command;
+
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+
 import drawableobject.DrawableObject;
 
 public class UserInstruction extends CommandParser {

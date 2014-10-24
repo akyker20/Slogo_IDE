@@ -3,11 +3,10 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
-import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-import commandParsing.variableCommandParsing.Variable;
+
 import drawableobject.DrawableObject;
 
 public class For extends RecurringCommand {
