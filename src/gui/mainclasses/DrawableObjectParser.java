@@ -8,24 +8,16 @@ import drawableobject.DrawableObject;
 
 
 public class DrawableObjectParser {
-
-    private Map<String, ComponentDrawer> myDrawersMap;
-    private ObjectFactory[] myFactories;
-
-    public DrawableObjectParser (Map<String, ComponentDrawer> map, ObjectFactory[] factories) {
-        myDrawersMap = map;
-        myFactories = factories;
-    }
-
-    public void parseDrawableObject (DrawableObject object) {
-        ComponentDrawer identifiedDrawer = parseComponentDrawer(object.getParent());
-        Node[] identifiedNodes = parseNodeToDraw(object);
+    
+    public static void parseDrawableObject (DrawableObject object, Map<String, ComponentDrawer> drawerMap, ObjectFactory[] factories) {
+        ComponentDrawer identifiedDrawer = parseComponentDrawer(object.getParent(), drawerMap);
+        Node[] identifiedNodes = parseNodeToDraw(object, factories);
         identifiedDrawer.drawShape(identifiedNodes);
     }
 
-    private Node[] parseNodeToDraw (DrawableObject object) {
+    private static Node[] parseNodeToDraw (DrawableObject object, ObjectFactory[] factories) {
         ObjectFactory identifiedFactory = null;
-        for (ObjectFactory myFactory : myFactories) {
+        for (ObjectFactory myFactory : factories) {
             if (myFactory.toString().equalsIgnoreCase(object.getType())) {
                 identifiedFactory = myFactory;
             }
@@ -38,9 +30,9 @@ public class DrawableObjectParser {
         return null;
     }
 
-    private ComponentDrawer parseComponentDrawer (String parent) {
-        for (String drawerName : myDrawersMap.keySet()) {
-            if (drawerName.equalsIgnoreCase(parent)) { return myDrawersMap.get(drawerName); }
+    private static ComponentDrawer parseComponentDrawer (String parent,  Map<String, ComponentDrawer> drawerMap) {
+        for (String drawerName : drawerMap.keySet()) {
+            if (drawerName.equalsIgnoreCase(parent)) { return drawerMap.get(drawerName); }
         }
         return null;
     }

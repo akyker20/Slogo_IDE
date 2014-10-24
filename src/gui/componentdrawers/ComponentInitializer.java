@@ -36,9 +36,6 @@ public class ComponentInitializer {
         DRAWER_MAP.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
         DRAWER_MAP.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
         DRAWER_MAP.put(ERROR_DRAWER, new ErrorDrawer(ERROR_DRAWER));
-                 
-        pane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER),
-                                             (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS)));
         
         VBox leftVBox = new VBox(10);
         leftVBox.getStyleClass().add("leftColumn");
