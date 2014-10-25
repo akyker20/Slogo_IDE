@@ -21,14 +21,16 @@ public class TurtleScreenDrawer extends ComponentDrawer {
 
     //This is just for the grid lines
     private TurtleScreenFeature myTurtleScreen;
+    private int id;
     
     private TurtleNodes myTurtleNodes;
 
     //This is the actual grid to which nodes will be drawn.
     private Pane myGrid;
 
-    public TurtleScreenDrawer (String name, TurtleNodes turtleNodes) {
+    public TurtleScreenDrawer (String name, TurtleNodes turtleNodes, int id) {
         super(name);
+        id = id;
         myGrid = initializeGridPane();
         myTurtleNodes = turtleNodes;
         this.setPrefWidth(GRID_WIDTH);

@@ -4,6 +4,7 @@ import static java.nio.file.StandardCopyOption.*;
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import com.sun.javafx.geom.Rectangle;
@@ -41,7 +42,7 @@ public class TurtleImageFeature extends VBox {
         });
 
 
-        // Upon exiting, the background of the scene returns to White.
+        // Upon exiting, the background of the scene returns to green.
         this.setOnDragExited(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
@@ -64,9 +65,8 @@ public class TurtleImageFeature extends VBox {
                     String filePath = null;
                     for (File file:db.getFiles()) {
                         /*
-                        File targetFile = new File("./src/gui/factories/nodes/")
-                        Files.copy(filePath, target, REPLACE_EXISTING);
-
+                        File targetFile = new File("./src/gui/factories/nodes/");
+                        Files.copy(filePath, targetFile, REPLACE_EXISTING);
 
                         File xmlFile = null;
                         for(File f:directory.listFiles()){
@@ -74,12 +74,10 @@ public class TurtleImageFeature extends VBox {
                                 xmlFile = f;
                             }
                         }*/
-
                     }
                 }
                 event.setDropCompleted(success);
                 event.consume();
-
             }
         });
     }

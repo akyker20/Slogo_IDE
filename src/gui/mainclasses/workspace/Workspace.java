@@ -40,21 +40,23 @@ public class Workspace extends Tab {
     private BorderPane myPane;
     private TurtleNodes myTurtleNodes;
     private SlogoGraphics myControl;
+    private int myID;
     public static final int SCREEN_WIDTH = 700;
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
-    public Workspace(GUIController guiControl, SlogoGraphics control) {
-        final TurtleNodes turtleNodes = new TurtleNodes();
+    public Workspace(GUIController guiControl, SlogoGraphics control,int workspaceID) {
+        myID = workspaceID;
+        myTurtleNodes = new TurtleNodes();
         myPane = createPane();
         this.setContent(myPane);
-        myComponentDrawers = ComponentInitializer.init(myPane, turtleNodes);
+        myComponentDrawers = ComponentInitializer.init(myPane, myTurtleNodes, myID);
         myVariablesList = FXCollections.observableArrayList();
         myPreviousCommandsList = FXCollections.observableArrayList();
         
         myObjectFactories = FactoryInitializer.init(myVariablesList, myCommandList, (TurtleScreenDrawer) 
                 myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
-                turtleNodes);
+                myTurtleNodes);
 
         FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList);
     }

@@ -34,5 +34,6 @@ public interface SlogoGraphics {
     RunTimeDivideByZeroException, RunTimeNullPointerException;
     
     public void createWorkspaceState(int workspaceID);
+    public void setActiveWorkspaceState(int workspaceID);
 
 }

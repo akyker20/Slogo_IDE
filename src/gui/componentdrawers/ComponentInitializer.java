@@ -34,8 +34,8 @@ public class ComponentInitializer {
 
     private static String[] myLeftContainerElements = new String[]{GRID_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
     
-    public static Map<String, ComponentDrawer> init (BorderPane pane, TurtleNodes turtleNodes)  { 
-        DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER, turtleNodes));
+    public static Map<String, ComponentDrawer> init (BorderPane pane, TurtleNodes turtleNodes, int id)  { 
+        DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER, turtleNodes, id));
         DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
         DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
         DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
