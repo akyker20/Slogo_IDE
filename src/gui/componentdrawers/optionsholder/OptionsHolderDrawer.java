@@ -1,7 +1,6 @@
 package gui.componentdrawers.optionsholder;
 
 import gui.componentdrawers.ComponentDrawer;
-import gui.componentdrawers.optionsholder.tabs.OptionsTab;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;

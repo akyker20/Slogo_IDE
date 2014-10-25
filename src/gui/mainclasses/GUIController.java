@@ -5,6 +5,7 @@ import gui.menus.MainMenuInitializer;
 import java.io.IOException;
 import java.util.Queue;
 import java.util.ResourceBundle;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
@@ -49,7 +50,12 @@ public class GUIController {
         myWorkspaceManager = new WorkspaceManager(this,control);               
         myPane.setTop(MainMenuInitializer.init());
         myPane.setCenter(myWorkspaceManager.getTabPane());
+        myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
 
+    }
+
+    private void moveActiveTurtlesInActiveWorkspace (KeyEvent event) {
+        myWorkspaceManager.getActiveWorkspace().moveActiveTurtles(event);
     }
 
     /**

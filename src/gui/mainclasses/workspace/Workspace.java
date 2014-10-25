@@ -61,7 +61,7 @@ public class Workspace extends Tab {
         myPreviousCommandsList = FXCollections.observableArrayList();
         myUserDefinedCommandList = userDefinedCommands;
         mySavedCommandsList = savedCommands;
-
+        
         myObjectFactories = FactoryInitializer.init(myVariablesList, myCommandList, (TurtleScreenDrawer) 
                                                     myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                                                     myTurtleNodes);
@@ -69,16 +69,16 @@ public class Workspace extends Tab {
         FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, 
                                 myPreviousCommandsList, screenParams, myUserDefinedCommandList, 
                                 mySavedCommandsList, myColorIndexList);
+        
     }
 
     private BorderPane createPane() {
         BorderPane pane = new BorderPane();
         pane.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        pane.setOnKeyReleased(event->moveActiveTurtles(event));
         return pane;
     }
 
-    private void moveActiveTurtles (KeyEvent event) {
+    public void moveActiveTurtles (KeyEvent event) {
         for(TurtleNode turtleNode:myTurtleNodes.getActiveNodes()){
             String command = null;
             switch(event.getCode()){
