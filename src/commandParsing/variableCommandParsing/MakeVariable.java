@@ -7,13 +7,13 @@ import java.util.Queue;
 
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
-import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
+import commandParsing.drawableObectGenerationInterfaces.UserDefinedVariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
 import drawableobject.DrawableObject;
 
-public class MakeVariable extends StructuralCommand implements VariableGenerator {
+public class MakeVariable extends StructuralCommand implements UserDefinedVariableGenerator {
 
 	public MakeVariable(WorkspaceState someWorkspace) {
 		super(someWorkspace);
