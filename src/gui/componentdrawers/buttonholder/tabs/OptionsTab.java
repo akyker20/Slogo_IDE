@@ -14,5 +14,6 @@ public class OptionsTab extends Tab {
         }
         this.setContent(featureContainer);
         this.setText(tabName);
+        this.setClosable(false);
     }
 }

@@ -9,12 +9,13 @@ import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.ErrorDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
-import gui.componentdrawers.SavedCommandsDrawer;
 import gui.componentdrawers.WorkspaceVariablesDrawer;
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.componentdrawers.buttonholder.tabs.GeneralOptionsTab;
 import gui.componentdrawers.buttonholder.tabs.OptionsTab;
 import gui.componentdrawers.buttonholder.tabs.PenOptionsTab;
+import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
+import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
 import gui.nonbuttonfeatures.CommandLineFeature;
 import gui.nonbuttonfeatures.ErrorDisplayFeature;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
@@ -31,6 +32,7 @@ import java.util.Map;
 import XML.workspaceparams.WorkspaceParameters;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.Tab;
 import Control.SlogoGraphics;
 
 /**
@@ -52,8 +54,8 @@ public class FeatureInitializer {
                 (CommandLineDrawer) drawerMap.get(ComponentInitializer.COMMAND_LINE_DRAWER);
         PreviousCommandsDrawer previousCommandsDrawer = 
                 (PreviousCommandsDrawer) drawerMap.get(ComponentInitializer.PREVIOUS_COMMANDS);
-        SavedCommandsDrawer savedCommandsDrawer = 
-                (SavedCommandsDrawer) drawerMap.get(ComponentInitializer.SAVED_COMMANDS);
+        SignificantCommandsDrawer significantCommandsDrawer = 
+                (SignificantCommandsDrawer) drawerMap.get(ComponentInitializer.SIGNIFICANT_COMMANDS_DRAWER);
         WorkspaceVariablesDrawer workspaceVariablesDrawer = 
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
         
@@ -64,7 +66,12 @@ public class FeatureInitializer {
         new CommandLineFeature(commandLineDrawer, control);
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList, control);
         
-        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
+        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer);
+        
+        
+        SavedCommandsTab savedCommandsTab = new SavedCommandsTab(savedCommandsFeature);
+        
+        
         
         new ErrorDisplayFeature(errorDrawer);
         new TurtleScreenFeature(gridDrawer, screenParameters);
@@ -84,6 +91,8 @@ public class FeatureInitializer {
         });
         
         buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions});
+        
+        significantCommandsDrawer.addTabs(new Tab[]{savedCommandsTab});
         
     }
 }

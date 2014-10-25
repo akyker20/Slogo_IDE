@@ -1,17 +1,16 @@
 package gui.componentdrawers;
 
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
 import gui.factories.nodes.TurtleNodes;
-import gui.menus.MainMenuInitializer;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
-import XML.workspaceparams.WorkspaceParameters;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 
 public class ComponentInitializer {
@@ -24,7 +23,7 @@ public class ComponentInitializer {
     public static final String PREVIOUS_COMMANDS = "previousCommandsDrawer";
     public static final String WORKSPACE_VARIABLES = "workspaceVariablesDrawer";
     public static final String WORKSPACE_COMMANDS = "workspaceCommandDrawer";
-    public static final String SAVED_COMMANDS = "savedCommands";
+    public static final String SIGNIFICANT_COMMANDS_DRAWER = "significantCommandsDrawer";
     public static final String ERROR_DRAWER = "errorDrawer";
     public static final Map<String, ComponentDrawer> DRAWER_MAP = new HashMap<String, ComponentDrawer>();
 	
@@ -37,7 +36,7 @@ public class ComponentInitializer {
         DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
         DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
         DRAWER_MAP.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
-        DRAWER_MAP.put(SAVED_COMMANDS, new SavedCommandsDrawer(SAVED_COMMANDS));
+        DRAWER_MAP.put(SIGNIFICANT_COMMANDS_DRAWER, new SignificantCommandsDrawer(SIGNIFICANT_COMMANDS_DRAWER));
         DRAWER_MAP.put(ERROR_DRAWER, new ErrorDrawer(ERROR_DRAWER));
         
         VBox leftVBox = new VBox(10);
@@ -50,7 +49,7 @@ public class ComponentInitializer {
         VBox rightVBox = new VBox(10);
         rightVBox.setPadding(new Insets(10, 10, 0, 0));
         rightVBox.getChildren().addAll((WorkspaceVariablesDrawer) DRAWER_MAP.get(WORKSPACE_VARIABLES), 
-                                       (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS),
+                                       (SignificantCommandsDrawer) DRAWER_MAP.get(SIGNIFICANT_COMMANDS_DRAWER),
                                        (ButtonHolderDrawer) DRAWER_MAP.get(BUTTON_HOLDER_DRAWER));
         pane.setRight(rightVBox);
       

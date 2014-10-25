@@ -1,7 +1,7 @@
 package gui.menus;
 
 import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.SavedCommandsDrawer;
+import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
 import gui.mainclasses.GUIController;
 import java.awt.List;
 import java.io.File;
@@ -45,7 +45,7 @@ public class FileMenu extends Menu {
         loadCommands.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    SavedCommandsDrawer currentDrawer = (SavedCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
+                    SavedCommandsTab currentDrawer = (SavedCommandsTab) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
                     currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser()));
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
@@ -58,7 +58,7 @@ public class FileMenu extends Menu {
         saveCommands.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    SavedCommandsDrawer currentDrawer = (SavedCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
+                    SavedCommandsTab currentDrawer = (SavedCommandsTab) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
                     SavedCommandsXMLWriter.writeFile(currentDrawer.getCommands());
                 }
                 catch (TransformerException | ParserConfigurationException e1) {
