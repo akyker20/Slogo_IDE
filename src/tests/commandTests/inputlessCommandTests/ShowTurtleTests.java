@@ -1,10 +1,8 @@
 package tests.commandTests.inputlessCommandTests;
 
 import static org.junit.Assert.assertTrue;
-import gui.factories.TurtleFactory;
-
+import gui.factories.turtlefactory.TurtleFactory;
 import org.junit.Test;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;

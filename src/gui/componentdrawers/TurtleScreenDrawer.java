@@ -2,7 +2,7 @@ package gui.componentdrawers;
 
 import XML.readers.SavedWorkspaceXMLReader;
 import XML.workspaceparams.WorkspaceParameters;
-import gui.factories.nodes.TurtleNodes;
+import gui.factories.turtlefactory.TurtleNodes;
 import gui.mainclasses.StageInitializer;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
 import javafx.scene.Node;

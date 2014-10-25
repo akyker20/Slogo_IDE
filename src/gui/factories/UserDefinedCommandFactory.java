@@ -1,7 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentBuilder;
-import gui.factories.nodes.NullNode;
+import gui.factories.turtlefactory.NullNode;
 import java.util.List;
 import java.util.Map;
 import javafx.collections.ObservableList;

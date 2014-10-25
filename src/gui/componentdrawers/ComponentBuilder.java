@@ -2,7 +2,7 @@ package gui.componentdrawers;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
-import gui.factories.nodes.TurtleNodes;
+import gui.factories.turtlefactory.TurtleNodes;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.geometry.Insets;

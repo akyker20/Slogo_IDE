@@ -83,7 +83,6 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 
         Iterator<String> translatedCommands = workspace.translator.translate(command);
-
         while (translatedCommands.hasNext()) {
             CommandParser parser = new NullCommandParser(activeState);
             try {
@@ -94,12 +93,12 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
             }
             try {
                 parser.parse(translatedCommands, objectQueue);
-                myGUI.getWorkspaceManager().getActiveWorkspace().addPreviousCommand(command);
             } catch (SLOGOException e) {
                 objectQueue.clear();
                 objectQueue.add(e.generateErrorMessage());
             }
         }
+        myGUI.getWorkspaceManager().getActiveWorkspace().addPreviousCommand(command);
         drawDrawableObjects(objectQueue);
         return objectQueue;
     }
