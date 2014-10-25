@@ -2,24 +2,27 @@
 <workspace>
 	
 	<parameters>
-		<screen color="white" toggleGrid="true" />
+		<screen color="LightGray" toggleGrid="true" />
 		<pen color="Black" pixels="1" type="solid" status="up" />
 	</parameters>
 	
-	<script>
-		fd 10
-		right 20
-		fd 10
-		left 100
-		pen up
-		fd 30
-	</script>
+	<userDefinedCommands>
+		<command>
+TO circle
+	REPEAT 180 [ FD 1 RT 2 ]
+END
+		</command>	
+	</userDefinedCommands>
 	
 	<savedCommands>
 		<command> fd 100 </command>
 		<command> pen up </command>
-		<command> right 20
-				  fd 100 </command>
+		<command> right 20</command>
 	</savedCommands>
+	
+	<variables>
+		<variable name="x" value="1.0" />
+		<variable name="y" value="2.0" />
+	</variables>
 	
 </workspace>

@@ -6,7 +6,7 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import Control.SlogoGraphics;
 import gui.buttonfeatures.ButtonFeature;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
@@ -25,7 +25,7 @@ public class PenThicknessSliderFeature extends Slider {
 
     private SlogoGraphics myControl;
 
-    public PenThicknessSliderFeature(ButtonHolderDrawer parentDrawer, SlogoGraphics control){
+    public PenThicknessSliderFeature(OptionsHolderDrawer parentDrawer, SlogoGraphics control){
         myControl = control;
         setSliderProperties();
         setChangeListener();

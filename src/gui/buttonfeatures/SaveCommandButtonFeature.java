@@ -1,7 +1,7 @@
 package gui.buttonfeatures;
 
 import gui.componentdrawers.CommandLineDrawer;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 
@@ -11,7 +11,7 @@ public class SaveCommandButtonFeature extends ButtonFeature {
     private PreviousCommandsFeature myPreviousCommands;
     private SavedCommandsFeature mySavedCommands;
 
-    public SaveCommandButtonFeature(ButtonHolderDrawer parent, CommandLineDrawer commandLine, 
+    public SaveCommandButtonFeature(OptionsHolderDrawer parent, CommandLineDrawer commandLine, 
                                     PreviousCommandsFeature previousCommands, 
                                     SavedCommandsFeature savedCommands){
         super("saveCommand", parent);

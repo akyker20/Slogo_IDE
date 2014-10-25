@@ -1,5 +1,7 @@
 package gui.componentdrawers;
 
+import XML.readers.SavedWorkspaceXMLReader;
+import XML.workspaceparams.WorkspaceParameters;
 import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.StageInitializer;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
@@ -18,25 +20,21 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
 
-
     //This is just for the grid lines
     private TurtleScreenFeature myTurtleScreen;
-    private int id;
     
     private TurtleNodes myTurtleNodes;
 
     //This is the actual grid to which nodes will be drawn.
     private Pane myGrid;
 
-    public TurtleScreenDrawer (String name, TurtleNodes turtleNodes, int id) {
+    public TurtleScreenDrawer (String name, TurtleNodes turtleNodes) {
         super(name);
-        id = id;
         myGrid = initializeGridPane();
         myTurtleNodes = turtleNodes;
         this.setPrefWidth(GRID_WIDTH);
         this.setPrefHeight(GRID_HEIGHT + 20);
-        this.getChildren().addAll(new Label("SLogo Grid"));
-        this.setOnKeyReleased(event->System.out.println("Hello"));
+        this.getChildren().addAll(new Label("SLogo Grid"));  
     }
 
 

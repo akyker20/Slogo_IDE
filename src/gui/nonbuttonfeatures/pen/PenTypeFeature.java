@@ -1,6 +1,6 @@
 package gui.nonbuttonfeatures.pen;
 
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import java.io.IOException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,7 +26,7 @@ public class PenTypeFeature extends PenChoiceBox {
     private static final String DOTTED = "dotted";
     private static final String PEN_TYPE = "pentype";
 
-    public PenTypeFeature(ButtonHolderDrawer parentDrawer, SlogoGraphics control){
+    public PenTypeFeature(OptionsHolderDrawer parentDrawer, SlogoGraphics control){
         super(FXCollections.observableArrayList(SOLID, DASHED, DOTTED), parentDrawer);
         
         this.valueProperty().addListener(new ChangeListener<String>(){

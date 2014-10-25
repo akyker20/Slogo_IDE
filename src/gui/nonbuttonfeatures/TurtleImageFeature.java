@@ -1,30 +1,27 @@
 package gui.nonbuttonfeatures;
 
-import static java.nio.file.StandardCopyOption.*;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import com.sun.javafx.geom.Rectangle;
+import java.nio.file.Path;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.input.TransferMode;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
-public class TurtleImageFeature extends VBox {
-    public TurtleImageFeature(ButtonHolderDrawer parentDrawer) {
-        this.setHeight(parentDrawer.getHeight());
-        this.getChildren().add(new Label("Image-drop"));
-        this.setStyle("-fx-background-color: green");
+public class TurtleImageFeature extends BorderPane {
+    public TurtleImageFeature(OptionsHolderDrawer parentDrawer) {
+        Label label = new Label("Image Drop Area");
+        this.setTop(label);
+        VBox vbox = new VBox(10);
+        vbox.setStyle("-fx-border-color: lightgray");
+        vbox.setPrefSize(105, 155);
+        this.setCenter(vbox);
 
         // When a file is dragged over the scene, the background becomes
         // green and a copy message is displayed near the mouse
@@ -34,7 +31,7 @@ public class TurtleImageFeature extends VBox {
                 Dragboard db = event.getDragboard();
                 if (db.hasFiles()) {
                     event.acceptTransferModes(TransferMode.COPY);
-                    TurtleImageFeature.this.setStyle("fx-background-color: lightgreen");
+                    vbox.setStyle("-fx-border-color: lightgray; -fx-background-color: lightgreen");
                 } else {
                     event.consume();
                 }
@@ -46,7 +43,7 @@ public class TurtleImageFeature extends VBox {
         this.setOnDragExited(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                TurtleImageFeature.this.setStyle("fx-background-color: green");
+                vbox.setStyle("-fx-background-color: white; -fx-border-color: lightgray");
             }
         });
 
@@ -62,18 +59,24 @@ public class TurtleImageFeature extends VBox {
                 boolean success = false;
                 if (db.hasFiles()) {
                     success = true;
-                    String filePath = null;
                     for (File file:db.getFiles()) {
-                        /*
-                        File targetFile = new File("./src/gui/factories/nodes/");
-                        Files.copy(filePath, targetFile, REPLACE_EXISTING);
 
-                        File xmlFile = null;
-                        for(File f:directory.listFiles()){
-                            if(f.getAbsolutePath().contains("kogo")){
-                                xmlFile = f;
+                        Path filePath = file.toPath();
+                        String fileName = file.toPath().toString();
+                        if(fileName.toLowerCase().contains(".jpg")|| 
+                                fileName.toLowerCase().contains(".jpeg") ||
+                                fileName.toLowerCase().contains(".png")){
+                            File targetFile = new File("./src/resources/guiResources/turtleImages/" 
+                                + filePath.getFileName().toString());
+                            try {
+                                Files.copy(file.toPath(), targetFile.toPath(), REPLACE_EXISTING);
                             }
-                        }*/
+                            catch (IOException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+
                     }
                 }
                 event.setDropCompleted(success);

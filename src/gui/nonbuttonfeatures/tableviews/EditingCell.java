@@ -1,4 +1,4 @@
-package gui.nonbuttonfeatures.workspacevariables;
+package gui.nonbuttonfeatures.tableviews;
 
 import java.io.IOException;
 import commandParsing.exceptions.CompileTimeParsingException;

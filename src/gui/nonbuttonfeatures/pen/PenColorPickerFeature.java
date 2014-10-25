@@ -1,6 +1,6 @@
 package gui.nonbuttonfeatures.pen;
 
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.nonbuttonfeatures.ColorPickerFeature;
 import java.io.IOException;
 import Control.SlogoGraphics;
@@ -22,7 +22,7 @@ public class PenColorPickerFeature extends ColorPickerFeature {
     
     private SlogoGraphics myControl;
     
-    public PenColorPickerFeature (ButtonHolderDrawer parentDrawer, SlogoGraphics control) {
+    public PenColorPickerFeature (OptionsHolderDrawer parentDrawer, SlogoGraphics control) {
         super(parentDrawer);
         myControl = control;
         setOnAction(event -> changePenColor());

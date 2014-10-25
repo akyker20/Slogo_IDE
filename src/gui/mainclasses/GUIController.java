@@ -1,34 +1,19 @@
 package gui.mainclasses;
 
-import gui.commandlist.WorkspaceCommand;
-import gui.componentdrawers.ComponentDrawer;
-import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.SavedCommandsDrawer;
-import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.FactoryInitializer;
-import gui.factories.ObjectFactory;
-import gui.factories.nodes.TurtleNodes;
-import gui.mainclasses.workspace.Workspace;
 import gui.mainclasses.workspace.WorkspaceManager;
 import gui.menus.MainMenuInitializer;
-import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TabPane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import Control.SlogoGraphics;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-import Control.SlogoGraphics;
 import drawableobject.DrawableObject;
 
 
@@ -61,11 +46,16 @@ public class GUIController {
     public GUIController (Stage stage, SlogoGraphics control)   {
         GUI_TEXT = LocaleInitializer.init();
 
-        myPane = StageInitializer.init(stage, control);
+        myPane = StageInitializer.init(stage);
         myWorkspaceManager = new WorkspaceManager(this,control);               
         myPane.setTop(MainMenuInitializer.init());
         myPane.setCenter(myWorkspaceManager.getTabPane());
+        myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
 
+    }
+
+    private void moveActiveTurtlesInActiveWorkspace (KeyEvent event) {
+        myWorkspaceManager.getActiveWorkspace().moveActiveTurtles(event);
     }
 
     /**

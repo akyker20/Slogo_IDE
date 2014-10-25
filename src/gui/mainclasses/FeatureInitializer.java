@@ -7,31 +7,39 @@ import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.ErrorDrawer;
-import gui.componentdrawers.TurtleScreenDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
-import gui.componentdrawers.SavedCommandsDrawer;
+import gui.componentdrawers.TurtleScreenDrawer;
 import gui.componentdrawers.WorkspaceVariablesDrawer;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
-import gui.componentdrawers.buttonholder.tabs.GeneralOptionsTab;
-import gui.componentdrawers.buttonholder.tabs.OptionsTab;
-import gui.componentdrawers.buttonholder.tabs.PenOptionsTab;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.componentdrawers.optionsholder.tabs.ColorIndexTab;
+import gui.componentdrawers.optionsholder.tabs.GeneralOptionsTab;
+import gui.componentdrawers.optionsholder.tabs.OptionsTab;
+import gui.componentdrawers.optionsholder.tabs.PenOptionsTab;
+import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
+import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
+import gui.componentdrawers.significantcommands.tabs.UserDefinedCommandsTab;
 import gui.nonbuttonfeatures.CommandLineFeature;
 import gui.nonbuttonfeatures.ErrorDisplayFeature;
-import gui.nonbuttonfeatures.TurtleImageFeature;
-import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetTurtleScreenColorFeature;
+import gui.nonbuttonfeatures.TurtleImageFeature;
+import gui.nonbuttonfeatures.TurtleScreenFeature;
+import gui.nonbuttonfeatures.UserDefinedCommandsFeature;
 import gui.nonbuttonfeatures.pen.PenColorPickerFeature;
 import gui.nonbuttonfeatures.pen.PenThicknessSliderFeature;
 import gui.nonbuttonfeatures.pen.PenTypeFeature;
 import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
-import gui.nonbuttonfeatures.workspacevariables.WorkspaceVariablesFeature;
+import gui.nonbuttonfeatures.tableviews.ColorIndex;
+import gui.nonbuttonfeatures.tableviews.ColorIndexFeature;
+import gui.nonbuttonfeatures.tableviews.WorkspaceVariablesFeature;
 import gui.variableslist.WorkspaceVariable;
 import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.Tab;
 import Control.SlogoGraphics;
+import XML.workspaceparams.WorkspaceParameters;
 
 /**
  * The purpose of this class is to initialize all of the features, both button features
@@ -42,18 +50,21 @@ import Control.SlogoGraphics;
 public class FeatureInitializer {
 
     public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 
-                             ObservableList<WorkspaceVariable> variablesList,
-                             ObservableList<String> previousCommandsList ) {
+                             ObservableList<WorkspaceVariable> workspaceVariables,
+                             ObservableList<String> previousCommandsList, WorkspaceParameters screenParameters,
+                             ObservableList<String> userDefinedCommands,
+                             ObservableList<String> savedCommands,
+                             ObservableList<ColorIndex> colorIndexList) {
 
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
-        ButtonHolderDrawer buttonHolder = 
-                (ButtonHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
+        OptionsHolderDrawer buttonHolder = 
+                (OptionsHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
         CommandLineDrawer commandLineDrawer = 
                 (CommandLineDrawer) drawerMap.get(ComponentInitializer.COMMAND_LINE_DRAWER);
         PreviousCommandsDrawer previousCommandsDrawer = 
                 (PreviousCommandsDrawer) drawerMap.get(ComponentInitializer.PREVIOUS_COMMANDS);
-        SavedCommandsDrawer savedCommandsDrawer = 
-                (SavedCommandsDrawer) drawerMap.get(ComponentInitializer.SAVED_COMMANDS);
+        SignificantCommandsDrawer significantCommandsDrawer = 
+                (SignificantCommandsDrawer) drawerMap.get(ComponentInitializer.SIGNIFICANT_COMMANDS_DRAWER);
         WorkspaceVariablesDrawer workspaceVariablesDrawer = 
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
 
@@ -62,12 +73,15 @@ public class FeatureInitializer {
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
                                                                                       previousCommandsList);
         new CommandLineFeature(commandLineDrawer, control);
-        new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList, control);
 
-        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
+        new WorkspaceVariablesFeature(workspaceVariablesDrawer, workspaceVariables, control);
+
+        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer, savedCommands);
+
+
 
         new ErrorDisplayFeature(errorDrawer);
-        new TurtleScreenFeature(gridDrawer);
+        new TurtleScreenFeature(gridDrawer, screenParameters);
 
         GeneralOptionsTab generalOptions = 
                 new GeneralOptionsTab(
@@ -89,8 +103,14 @@ public class FeatureInitializer {
                 },
                 new Node[]{}
                 );
+        
+        ColorIndexTab colorIndexTab = new ColorIndexTab(new ColorIndexFeature(colorIndexList, buttonHolder));
 
-        buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions});
+        buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions, colorIndexTab});
 
+        significantCommandsDrawer.addTabs(new Tab[]{
+                                                    new SavedCommandsTab(savedCommandsFeature),
+                                                    new UserDefinedCommandsTab(new UserDefinedCommandsFeature(userDefinedCommands))    
+        });
     }
 }
