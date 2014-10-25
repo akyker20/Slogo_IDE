@@ -12,6 +12,9 @@ import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+import commandParsing.exceptions.LanguageFileNotFoundException;
+import commandParsing.exceptions.PropertyFileAccessException;
+
 public class Translator {
 
 	private static final String CONSTANT = "Constant";
@@ -24,11 +27,12 @@ public class Translator {
 	private Map<String, String> dictionaryLanguageToClassPath = new HashMap<String, String>();
 	private Map<String, String> syntaxDictionary = new HashMap<String, String>();
 
-	public Translator(String language) throws IOException {
+
+	public Translator(String language) throws LanguageFileNotFoundException, PropertyFileAccessException {
 		createMappingsGivenLanguage(language);
 	}
 	
-	public void createMappingsGivenLanguage(String language) throws IOException{
+	public void createMappingsGivenLanguage(String language) throws LanguageFileNotFoundException, PropertyFileAccessException{
 		buildDictionaryOfCommandsToEnglish(language);
 		buildMapOfCommandPaths();
 		mapLanguageToClassPath();
@@ -61,14 +65,13 @@ public class Translator {
 		return translatedString;
 	}
 
-	private void mapLanguageToClassPath() throws FileNotFoundException, IOException {
+	private void mapLanguageToClassPath() {
 		dictionaryLanguageToEnglish.keySet().stream().forEach((k) -> {
 			dictionaryLanguageToClassPath.put(k, dictionaryOfClassNameToPath.get(dictionaryLanguageToEnglish.get(k)));
 		});
 	}
 
-	private void buildDictionaryOfCommandsToEnglish(String language) throws FileNotFoundException,
-			IOException {
+	private void buildDictionaryOfCommandsToEnglish(String language) {
 		String augmentedFileName = language.substring(0, 1).toUpperCase()
 				+ language.substring(1).toLowerCase();
 		Scanner scan = new Scanner(this.getClass().getResourceAsStream(
@@ -107,12 +110,23 @@ public class Translator {
 
 	}
 
-	private void buildMapOfCommandPaths() throws FileNotFoundException, IOException {
-		JarInputStream jarFile = new JarInputStream(new FileInputStream(JAR_NAME));
+	private void buildMapOfCommandPaths() throws LanguageFileNotFoundException, PropertyFileAccessException {
+		JarInputStream jarFile;
+		try {
+			jarFile = new JarInputStream(new FileInputStream(JAR_NAME));
+		} catch (FileNotFoundException e) {
+			throw new LanguageFileNotFoundException();
+		} catch (IOException e) {
+			throw new PropertyFileAccessException();
+		}
 		JarEntry jarEntry;
 
 		while (true) {
-			jarEntry = jarFile.getNextJarEntry();
+			try {
+				jarEntry = jarFile.getNextJarEntry();
+			} catch (IOException e) {
+				throw new PropertyFileAccessException();
+			}
 			if (jarEntry == null) {
 				break;
 			}
@@ -122,7 +136,11 @@ public class Translator {
 				dictionaryOfClassNameToPath.put(findCommandName(pathName), clipPathName(pathName));
 			}
 		}
-		jarFile.close();
+		try {
+			jarFile.close();
+		} catch (IOException e) {
+			throw new PropertyFileAccessException();
+		}
 	}
 
 	private static String findCommandName(String command) {
