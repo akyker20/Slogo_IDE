@@ -11,9 +11,14 @@ public class Turtle {
 	private int myID;
 
 	public Turtle() {
-		myLocation = new Location(0, 0);
+		this(0,0);
+	}
+	
+	public Turtle(double x, double y) {
+		myLocation = new Location(x, y);
 		myHeading = DEFAULT_TURTLE_HEADING;
 	}
+
 
 	public void showTurtle() {
 		turtleShowing = true;
