@@ -87,7 +87,6 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
                 objectQueue.add(e.generateErrorMessage());
             }
         }
-        System.out.println(objectQueue.size());
         drawDrawableObjects(objectQueue);
         return objectQueue;
     }
