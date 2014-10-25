@@ -14,25 +14,24 @@ import java.io.ObjectOutputStream;
  *
  */
 public class DeepCopy {
-    public static Object deepCopy(Object originalObject) {
-        Object newObject = null;
-        try {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(originalObject);
-            objectOutputStream.flush();
-            objectOutputStream.close();
+	public static Object deepCopy(Object originalObject) {
+		Object newObject = null;
+		try {
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+			objectOutputStream.writeObject(originalObject);
+			objectOutputStream.flush();
+			objectOutputStream.close();
 
-            ObjectInputStream inputStream = new ObjectInputStream(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()));
-            newObject = inputStream.readObject();
-        }
-        catch(IOException ioE) {
-            ioE.printStackTrace();
-        }
-        catch(ClassNotFoundException notFoundE) {
-            notFoundE.printStackTrace();
-        }
-        return newObject;
-    }
+			ObjectInputStream inputStream = new ObjectInputStream(new ByteArrayInputStream(
+					byteArrayOutputStream.toByteArray()));
+			newObject = inputStream.readObject();
+		} catch (IOException ioE) {
+			ioE.printStackTrace();
+		} catch (ClassNotFoundException notFoundE) {
+			notFoundE.printStackTrace();
+		}
+		return newObject;
+	}
 
 }

@@ -18,16 +18,16 @@ public class TurtleCollection {
 	public void activateTurtle(Turtle someTurtle) {
 		activeTurtles.add(someTurtle);
 	}
-	
-	public void clearActiveTurtles(){
+
+	public void clearActiveTurtles() {
 		activeTurtles.clear();
 	}
-	
-	public List<Turtle> getActiveTurtles(){
+
+	public List<Turtle> getActiveTurtles() {
 		return activeTurtles;
 	}
-	
-	public Turtle getLastActiveTurtle(){
-		return activeTurtles.get(activeTurtles.size()-1);
+
+	public Turtle getLastActiveTurtle() {
+		return activeTurtles.get(activeTurtles.size() - 1);
 	}
 }

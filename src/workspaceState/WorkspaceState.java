@@ -13,8 +13,8 @@ public class WorkspaceState {
 	public UserDefinedCommandCollection commands = new UserDefinedCommandCollection();
 	public TurtleCollection turtles = new TurtleCollection();
 
-
-	public WorkspaceState (Turtle someTurtle, Map<String,WorkspaceVariable> variables, Translator someTranslator) {
+	public WorkspaceState(Turtle someTurtle, Map<String, WorkspaceVariable> variables,
+			Translator someTranslator) {
 		turtles.addTurtle(someTurtle);
 		translator = someTranslator;
 	}

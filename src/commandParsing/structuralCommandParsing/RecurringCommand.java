@@ -5,9 +5,8 @@ import java.util.Queue;
 
 import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public abstract class RecurringCommand extends StructuralCommand implements VariableGenerator {
@@ -22,7 +21,7 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+			throws SLOGOException {
 		initializeLoopVariableParameters(commandString, objectQueue);
 		extractCommandsBetweenBraces(commandString);
 
@@ -34,12 +33,10 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 	}
 
 	abstract protected void initializeLoopVariableParameters(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
-			RunTimeDivideByZeroException, RunTimeNullPointerException;
+			Queue<DrawableObject> objectQueue) throws SLOGOException;
 
 	protected void basicLoopVariableInitialization(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
-			RunTimeDivideByZeroException, RunTimeNullPointerException {
+			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		accumulateComponents(commandString, 1, objectQueue);
 		loopVariableBound = expressionComponents.get(0);
 		incrementAmount = 1;

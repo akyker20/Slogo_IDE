@@ -5,9 +5,7 @@ import java.util.Queue;
 
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public class Variable extends CommandParser {
@@ -20,7 +18,7 @@ public class Variable extends CommandParser {
 
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+			throws SLOGOException {
 
 		variableName = commandString.next();
 		return workspace.variables.fetchVariable(variableName);

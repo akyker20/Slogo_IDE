@@ -8,8 +8,7 @@ import java.util.Queue;
 
 import workspaceState.WorkspaceState;
 import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public abstract class CommandParser {
@@ -22,11 +21,10 @@ public abstract class CommandParser {
 	}
 
 	public abstract double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
+			throws SLOGOException;
 
 	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate,
-			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
-			RunTimeDivideByZeroException, RunTimeNullPointerException {
+			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		expressionComponents.clear();
 		while (expressionComponents.size() < numberToAccumulate) {
 			if (!commandString.hasNext()) {
@@ -46,7 +44,7 @@ public abstract class CommandParser {
 
 	protected boolean isStringParsableAsCommand(String string) {
 		String[] parts = string.split("\\.");
-		return parts[parts.length - 1].matches(workspace.translator.getCommandPattern());
+		return workspace.translator.matchesCommandPattern(parts[parts.length - 1]);
 	}
 
 	public static CommandParser createParser(String commandName, WorkspaceState workspace)

@@ -17,14 +17,16 @@ public class Translator {
 	private static final String CONSTANT = "Constant";
 	private static final String VARIABLE = "Variable";
 	private static final String USER_DEFINED_COMMAND = "UserInstruction";
-	private Map<String, String> dictionary = new HashMap<String, String>();
-	private Map<String, String> classDictionary = new HashMap<String, String>();
-	private Map<String, String> languageToClassPath = new HashMap<String, String>();
+	private static final String JAR_NAME = "SLOGO.jar";
+	private static final String COMMAND_PACKAGE_NAME = "commandParsing";
+	private Map<String, String> dictionaryLanguageToEnglish = new HashMap<String, String>();
+	private Map<String, String> dictionaryOfClassNameToPath = new HashMap<String, String>();
+	private Map<String, String> dictionaryLanguageToClassPath = new HashMap<String, String>();
 	private Map<String, String> syntaxDictionary = new HashMap<String, String>();
 
 	public Translator(String language) throws IOException {
-		changeLanguage(language);
-		getClassNamesInPackage("SLOGO.jar", "commandParsing");
+		buildDictionaryOfCommandsToEnglish(language);
+		buildMapOfCommandPaths();
 		mapLanguageToClassPath();
 	}
 
@@ -37,16 +39,16 @@ public class Translator {
 		List<String> translatedString = new ArrayList<String>();
 
 		for (String s : splitString) {
-			if (dictionary.containsKey(s)) {
-				translatedString.add(languageToClassPath.get(s));
-			} else if (s.matches(syntaxDictionary.get("Command")) && !languageToClassPath.containsKey(s)) {
-				translatedString.add(languageToClassPath.get(USER_DEFINED_COMMAND));
+			if (dictionaryLanguageToEnglish.containsKey(s)) {
+				translatedString.add(dictionaryLanguageToClassPath.get(s));
+			} else if (matchesCommandPattern(s) && !dictionaryLanguageToClassPath.containsKey(s)) {
+				translatedString.add(dictionaryLanguageToClassPath.get(USER_DEFINED_COMMAND));
 				translatedString.add(s);
-			} else if (s.matches(syntaxDictionary.get("Constant"))) {
-				translatedString.add(languageToClassPath.get(CONSTANT));
+			} else if (matchesConstantPattern(s)) {
+				translatedString.add(dictionaryLanguageToClassPath.get(CONSTANT));
 				translatedString.add(s);
-			} else if (s.matches(syntaxDictionary.get("Variable"))) {
-				translatedString.add(languageToClassPath.get(VARIABLE));
+			} else if (matchesVariablePattern(s)) {
+				translatedString.add(dictionaryLanguageToClassPath.get(VARIABLE));
 				translatedString.add(s);
 			} else {
 				translatedString.add(s);
@@ -56,53 +58,53 @@ public class Translator {
 	}
 
 	private void mapLanguageToClassPath() throws FileNotFoundException, IOException {
-		dictionary.keySet().stream().forEach((k) -> {
-			languageToClassPath.put(k, classDictionary.get(dictionary.get(k)));
+		dictionaryLanguageToEnglish.keySet().stream().forEach((k) -> {
+			dictionaryLanguageToClassPath.put(k, dictionaryOfClassNameToPath.get(dictionaryLanguageToEnglish.get(k)));
 		});
 	}
 
-	private void changeLanguage(String language) throws FileNotFoundException, IOException {
+	private void buildDictionaryOfCommandsToEnglish(String language) throws FileNotFoundException,
+			IOException {
 		String augmentedFileName = language.substring(0, 1).toUpperCase()
 				+ language.substring(1).toLowerCase();
 		Scanner scan = new Scanner(this.getClass().getResourceAsStream(
 				"/resources/languages/" + augmentedFileName + ".properties"));
 		String inputLine = scan.nextLine();
-		while (((scan.hasNextLine()) != false) && (inputLine.contains("syntax") == false)) {
+		while (scan.hasNextLine() && !inputLine.contains("Syntax")) {
 			inputLine = scan.nextLine();
 			inputLine = inputLine.replace(" ", "");
 			String[] commands = inputLine.split("=");
 
 			if (inputLine.equals("") || inputLine.startsWith("#"))
 				continue;
-			if (inputLine.contains(",")) {
-				String[] multipleCommandsOneAction = commands[1].split(",");
+			if (inputLine.contains("|")) {
+				String[] multipleCommandsOneAction = commands[1].split("\\|");
 				for (int i = 0; i < multipleCommandsOneAction.length; i++) {
-					dictionary.put(multipleCommandsOneAction[i], commands[0]);
+					dictionaryLanguageToEnglish.put(multipleCommandsOneAction[i], commands[0]);
 				}
 			} else {
-				dictionary.put(commands[1], commands[0]);
+				dictionaryLanguageToEnglish.put(commands[1], commands[0]);
 			}
 		}
-		dictionary.put(CONSTANT, CONSTANT);
-		dictionary.put(VARIABLE, VARIABLE);
-		dictionary.put(USER_DEFINED_COMMAND, USER_DEFINED_COMMAND);
+		dictionaryLanguageToEnglish.put(CONSTANT, CONSTANT);
+		dictionaryLanguageToEnglish.put(VARIABLE, VARIABLE);
+		dictionaryLanguageToEnglish.put(USER_DEFINED_COMMAND, USER_DEFINED_COMMAND);
 
-		while ((scan.hasNextLine()) != false) {
+		while (scan.hasNextLine()) {
 			inputLine = scan.nextLine();
 			inputLine = inputLine.replace(" ", "");
 			String[] commands = inputLine.split("=");
 
-			if (inputLine.equals("") || inputLine.startsWith("#"))
+			if (inputLine.equals("") || inputLine.startsWith("#")){
 				continue;
+			}
 			syntaxDictionary.put(commands[0], commands[1]);
 		}
 
 	}
 
-	private void getClassNamesInPackage(String jarName, String packageName) throws FileNotFoundException,
-			IOException {
-		packageName = packageName.replaceAll("\\.", "/");
-		JarInputStream jarFile = new JarInputStream(new FileInputStream(jarName));
+	private void buildMapOfCommandPaths() throws FileNotFoundException, IOException {
+		JarInputStream jarFile = new JarInputStream(new FileInputStream(JAR_NAME));
 		JarEntry jarEntry;
 
 		while (true) {
@@ -110,9 +112,10 @@ public class Translator {
 			if (jarEntry == null) {
 				break;
 			}
-			if ((jarEntry.getName().startsWith(packageName)) && (jarEntry.getName().endsWith(".class"))) {
+			if ((jarEntry.getName().startsWith(COMMAND_PACKAGE_NAME))
+					&& (jarEntry.getName().endsWith(".class"))) {
 				String pathName = jarEntry.getName().replaceAll("/", "\\.");
-				classDictionary.put(findCommandName(pathName), clipPathName(pathName));
+				dictionaryOfClassNameToPath.put(findCommandName(pathName), clipPathName(pathName));
 			}
 		}
 		jarFile.close();
@@ -154,25 +157,4 @@ public class Translator {
 	public boolean matchesGroupEndPattern(String str) {
 		return str.matches(syntaxDictionary.get("GroupEnd"));
 	}
-
-	public String getVariablePattern() {
-		return syntaxDictionary.get("Variable");
-	}
-
-	public String getConstantPattern() {
-		return syntaxDictionary.get("Constant");
-	}
-
-	public String getCommandPattern() {
-		return syntaxDictionary.get("Command");
-	}
-
-	public String getListStartPattern() {
-		return syntaxDictionary.get("ListStart");
-	}
-
-	public String getListEndPattern() {
-		return syntaxDictionary.get("ListEnd");
-	}
-
 }

@@ -9,8 +9,7 @@ import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
 import drawableobject.DrawableObject;
 
@@ -22,7 +21,7 @@ public class MakeVariable extends StructuralCommand implements VariableGenerator
 
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+			throws SLOGOException {
 		CommandParser commandParser = (CommandParser) createParser(commandString.next(), workspace);
 		if (!(commandParser instanceof Variable)) {
 			throw new CompileTimeParsingException("expected variable name");

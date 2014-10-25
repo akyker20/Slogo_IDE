@@ -16,17 +16,15 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.stage.Stage;
 import translator.Translator;
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
+
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+import commandParsing.exceptions.SLOGOException;
+
 import drawableobject.DrawableObject;
 
 
@@ -84,8 +82,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
                 parser.parse(translatedCommands, objectQueue);
                 myGUI.addPreviousCommand(command);
             }
-            catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                    | RunTimeNullPointerException e) {
+            catch (SLOGOException e) {
                 objectQueue.clear();
                 objectQueue.add(e.generateErrorMessage());
             }
