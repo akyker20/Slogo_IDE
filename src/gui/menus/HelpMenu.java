@@ -22,7 +22,7 @@ public class HelpMenu extends Menu {
     public static final String BASIC_COMMANDS_URL = "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
     public static final String EXTENDED_COMMANDS_URL = "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands2.php";
     
-    public HelpMenu(TurtleScreenDrawer turtleScreen){
+    public HelpMenu(){
         this.setText("Help");
         
         //use Lambda notation and make these open HTML help pages...

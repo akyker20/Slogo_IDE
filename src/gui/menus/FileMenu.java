@@ -1,6 +1,8 @@
 package gui.menus;
 
+import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.SavedCommandsDrawer;
+import gui.mainclasses.GUIController;
 import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -25,7 +27,7 @@ public class FileMenu extends Menu {
     
     private static final String SAVED_COMMAND_FILES_DIR = "./savedcommands";
 
-    public FileMenu(SavedCommandsDrawer savedCommandsDrawer) throws ParserConfigurationException, SAXException, IOException {
+    public FileMenu() throws ParserConfigurationException, SAXException, IOException {
         this.setText("File");
         
         //use Lambda notation and make these open HTML help pages...
@@ -39,7 +41,8 @@ public class FileMenu extends Menu {
         loadCommands.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    savedCommandsDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser()));
+                    SavedCommandsDrawer currentDrawer = (SavedCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
+                    currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser()));
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block
@@ -51,7 +54,8 @@ public class FileMenu extends Menu {
         saveCommands.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    SavedCommandsXMLWriter.writeFile(savedCommandsDrawer.getCommands());
+                    SavedCommandsDrawer currentDrawer = (SavedCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
+                    SavedCommandsXMLWriter.writeFile(currentDrawer.getCommands());
                 }
                 catch (TransformerException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block
@@ -59,7 +63,21 @@ public class FileMenu extends Menu {
                 }
             }
         });
-        this.getItems().addAll(loadGrid, loadCommands, saveCommands);
+        
+        MenuItem newWorkspace = new MenuItem("New Workspace");
+        saveCommands.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                try {
+                    GUIController.myWorkspaceManager.addWorkspace();
+                }
+                catch (ParserConfigurationException | SAXException | IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+        });
+        
+        this.getItems().addAll(loadGrid, loadCommands, saveCommands,newWorkspace);
     }
     
     /**

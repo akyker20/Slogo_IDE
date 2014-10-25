@@ -8,9 +8,12 @@ import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
 import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.workspace.Workspace;
+import gui.mainclasses.workspace.WorkspaceManager;
 import gui.menus.MainMenuInitializer;
 import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
@@ -35,9 +38,8 @@ import drawableobject.DrawableObject;
 public class GUIController {
 
     private BorderPane myPane;
-    private Workspace myCurrentWorkspace;
     public static ResourceBundle GUI_TEXT;
-
+    public static WorkspaceManager myWorkspaceManager;
 
     /**
      * Constructor that initializes GUI variables and features
@@ -51,16 +53,10 @@ public class GUIController {
 
     public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
         GUI_TEXT = LocaleInitializer.init();
-        
         myPane = StageInitializer.init(stage, control);
-        myCurrentWorkspace = new Workspace(this, control);
-        TabPane tabPane = new TabPane();
-        tabPane.getTabs().add(myCurrentWorkspace);
-        
-//        myPane.setTop(MainMenuInitializer.init((TurtleScreenDrawer) DRAWER_MAP.get(GRID_DRAWER),
-//                                             (SavedCommandsDrawer) DRAWER_MAP.get(SAVED_COMMANDS)));
-        myPane.setCenter(tabPane);
-
+        myWorkspaceManager = new WorkspaceManager(this,control);               
+        myPane.setTop(MainMenuInitializer.init());
+        myPane.setCenter(myWorkspaceManager.getTabPane());
     }
 
     /**
@@ -69,16 +65,15 @@ public class GUIController {
      */
     public void drawDrawableObjects (Queue<DrawableObject> objectQueue) {
         while (!objectQueue.isEmpty()) {
-            myCurrentWorkspace.parseDrawableObject(objectQueue.poll());
+            myWorkspaceManager.getActiveWorkspace().parseDrawableObject(objectQueue.poll());
         }
     }
 
     public void clearCurrentWorkspace () {
-        myCurrentWorkspace.clearCurrentWorkspace();
+        myWorkspaceManager.getActiveWorkspace().clearCurrentWorkspace();
     }
 
     public void addPreviousCommand (String command) {
-        myCurrentWorkspace.addPreviousCommand(command);
-        
+        myWorkspaceManager.getActiveWorkspace().addPreviousCommand(command);    
     }
 }

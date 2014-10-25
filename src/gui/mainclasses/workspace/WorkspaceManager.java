@@ -1,53 +1,42 @@
 package gui.mainclasses.workspace;
 
-import gui.factories.nodes.TurtleNode;
-import gui.factories.nodes.TurtleNodes;
+import gui.mainclasses.GUIController;
 import java.io.IOException;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.control.TabPane;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 import Control.SlogoGraphics;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
 
-public class WorkspaceTabInitializer {
-    
-    public static final int SCREEN_WIDTH = 700;
-    public static final int SCREEN_HEIGHT = 700;
-    public static final String STYLESHEET_PACKAGE = "Stylesheets/";
-    
-    private static TurtleNodes myTurtleNodes;
-    private static SlogoGraphics myControl;
+public class WorkspaceManager {
+    private Workspace activeWorkspace;
+    private List<Workspace> myWorkspaces;
+    private GUIController myGuiController;
+    private SlogoGraphics myControl;
+    private TabPane tabPane;
 
-    public static BorderPane init (SlogoGraphics control, TurtleNodes turtleNodes) {
-        myTurtleNodes = turtleNodes;
+    public WorkspaceManager(GUIController guiControl, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException  {
+        myGuiController = guiControl;
         myControl = control;
-        BorderPane pane = new BorderPane();
-        pane.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        pane.setOnKeyReleased(event->moveActiveTurtles(event));
-        return pane;
+        myWorkspaces = new ArrayList<Workspace>();
+        tabPane = new TabPane();     
+        addWorkspace();
     }
 
-    private static void moveActiveTurtles (KeyEvent event) {
-        for(TurtleNode turtleNode:myTurtleNodes.getActiveNodes()){
-            String command = null;
-            switch(event.getCode()){
-                case UP: command = "fd 10"; break;
-                case DOWN: command = "bk 10"; break;
-                case RIGHT: command = "right 90"; break;
-                case LEFT: command = "left 90"; break;
-                default:
-                    return;
-            }
-            try {
-                myControl.parseCommandString(command);
-            }
-            catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                    | RunTimeNullPointerException | IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
+    public void addWorkspace() throws ParserConfigurationException, SAXException, IOException {
+        Workspace newWorkspace = new Workspace(myGuiController,myControl);
+        myWorkspaces.add(newWorkspace);
+        tabPane.getTabs().add(newWorkspace); 
+        //set active workspace as most most recenty added workspace
+        activeWorkspace = myWorkspaces.get(myWorkspaces.size()-1);
+    }
+    
+    public Workspace getActiveWorkspace() {
+        return activeWorkspace;
+    }
+
+    public TabPane getTabPane() {
+        return tabPane;
     }
 }
-
