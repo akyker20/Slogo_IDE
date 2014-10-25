@@ -18,6 +18,7 @@ public class Turtle {
 	public Turtle(double x, double y) {
 		myLocation = new Location(x, y);
 		myHeading = DEFAULT_TURTLE_HEADING;
+		shape = new Shape("/src/resources/guiResources/turtleImages/default_turtle.png");
 	}
 
 
