@@ -9,6 +9,7 @@ public class Turtle {
 	private double myOpacity = 100;
 	private boolean turtleShowing = true;
 	private int myID;
+	private Shape shape;
 
 	public Turtle() {
 		myLocation = new Location(0, 0);
@@ -82,6 +83,14 @@ public class Turtle {
 
 	public int getID() {
 		return myID;
+	}
+
+	public void setShape(Shape fromPalette) {
+		shape = fromPalette;
+	}
+	
+	public Shape getShape(){
+		return shape;
 	}
 
 }

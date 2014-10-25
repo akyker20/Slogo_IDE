@@ -31,4 +31,8 @@ public class Pen {
 	public void setPenSize(double size){
 		thickness = size;
 	}
+	
+	public double getPenSize(){
+		return thickness;
+	}
 }

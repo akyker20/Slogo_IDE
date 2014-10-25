@@ -25,6 +25,10 @@ public class Translator {
 	private Map<String, String> syntaxDictionary = new HashMap<String, String>();
 
 	public Translator(String language) throws IOException {
+		createMappingsGivenLanguage(language);
+	}
+	
+	public void createMappingsGivenLanguage(String language) throws IOException{
 		buildDictionaryOfCommandsToEnglish(language);
 		buildMapOfCommandPaths();
 		mapLanguageToClassPath();
