@@ -16,10 +16,10 @@ public class TranslatorTest {
 	public void TranslatorRegExTest() throws IOException{
 		Translator t = new Translator("enGLIsh");
 		
-		assertTrue("50".matches(t.getConstantPattern()));
-		assertTrue("50.0".matches(t.getConstantPattern()));
-		assertTrue(":somevar".matches(t.getVariablePattern()));
-		assertFalse("[".matches(t.getCommandPattern()));
+		assertTrue(t.matchesConstantPattern("50"));
+		assertTrue(t.matchesConstantPattern("50.0"));
+		assertTrue(t.matchesVariablePattern(":someVar"));
+		assertFalse(t.matchesCommandPattern("["));
 	}
 
 	@Test

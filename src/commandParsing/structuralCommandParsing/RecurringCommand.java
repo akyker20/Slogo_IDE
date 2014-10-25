@@ -3,48 +3,54 @@ package commandParsing.structuralCommandParsing;
 import java.util.Iterator;
 import java.util.Queue;
 
+import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 public abstract class RecurringCommand extends StructuralCommand implements VariableGenerator {
-	
+
+	public RecurringCommand(WorkspaceState someWorkspace) {
+		super(someWorkspace);
+	}
+
 	protected String loopVariable;
 	protected double incrementAmount;
 	protected double loopVariableBound;
 
 	@Override
-	public double parse(Iterator<String> commandString,
-			Queue<DrawableObject> objectQueue)
-			throws CompileTimeParsingException, RunTimeDivideByZeroException,
-			RunTimeNullPointerException {
+	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		initializeLoopVariableParameters(commandString, objectQueue);
 		extractCommandsBetweenBraces(commandString);
-		
-		while(loopVariableIsIncrementable()){
+
+		while (loopVariableIsIncrementable()) {
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
 			incrementLoopVariable();
 		}
 		return returnValue;
 	}
-	
-	abstract protected void initializeLoopVariableParameters(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException;
-	
-	protected void basicLoopVariableInitialization(Iterator<String> commandString, Queue<DrawableObject> objectQueue) throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException{
+
+	abstract protected void initializeLoopVariableParameters(Iterator<String> commandString,
+			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
+			RunTimeDivideByZeroException, RunTimeNullPointerException;
+
+	protected void basicLoopVariableInitialization(Iterator<String> commandString,
+			Queue<DrawableObject> objectQueue) throws CompileTimeParsingException,
+			RunTimeDivideByZeroException, RunTimeNullPointerException {
 		accumulateComponents(commandString, 1, objectQueue);
 		loopVariableBound = expressionComponents.get(0);
 		incrementAmount = 1;
-		state.variables.storeVariable(loopVariable, 1);
+		workspace.variables.storeVariable(loopVariable, 1);
 	}
-	
-	protected void incrementLoopVariable(){
-		state.variables.incrementVariable(loopVariable, incrementAmount);
+
+	protected void incrementLoopVariable() {
+		workspace.variables.incrementVariable(loopVariable, incrementAmount);
 	}
-	
-	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException{
-		return loopVariableBound >= state.variables.fetchVariable(loopVariable);
+
+	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException {
+		return loopVariableBound >= workspace.variables.fetchVariable(loopVariable);
 	}
 }

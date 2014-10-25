@@ -19,16 +19,14 @@ import org.xml.sax.SAXException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-import state.Workspace;
-import state.Turtle;
 import translator.Translator;
-
+import workspaceState.Turtle;
+import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
-
 import drawableobject.DrawableObject;
 
 
@@ -45,7 +43,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
 
     private GUIController myGUI;
     Translator translator;
-    Workspace state;
+    WorkspaceState workspace;
 
     /**
      * Initializes the GUIController and BackEndController,
@@ -62,7 +60,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
         myGUI = new GUIController(stage, this);
         translator = new Translator("english");
-        state = new Workspace(new Turtle(),variableMap, translator);
+        workspace = new WorkspaceState(new Turtle(),variableMap, translator);
         parseCommandString("home");
     }
 
@@ -74,9 +72,9 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         Iterator<String> translatedCommands = translator.translate(command);
 
         while(translatedCommands.hasNext()){
-            CommandParser parser = new NullCommandParser();
+            CommandParser parser = new NullCommandParser(workspace);
             try {
-                parser = CommandParser.createParser(translatedCommands.next(), state);
+                parser = CommandParser.createParser(translatedCommands.next(), workspace);
             }
             catch (CompileTimeParsingException e) {
                 objectQueue.clear();

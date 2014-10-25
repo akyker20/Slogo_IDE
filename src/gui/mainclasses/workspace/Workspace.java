@@ -3,13 +3,15 @@ package gui.mainclasses.workspace;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Queue;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+
+
 import drawableobject.DrawableObject;
 import Control.SlogoGraphics;
+import gui.commandlist.WorkspaceCommand;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
@@ -33,6 +35,7 @@ public class Workspace extends Tab {
     private Map<String, ComponentDrawer> myComponentDrawers;
     private ObjectFactory[] myObjectFactories;
     private ObservableList<WorkspaceVariable> myVariablesList;
+    private ObservableList<WorkspaceCommand> myCommandList;
     private ObservableList<String> myPreviousCommandsList;
     private BorderPane myPane;
     private TurtleNodes myTurtleNodes;
@@ -49,9 +52,11 @@ public class Workspace extends Tab {
         myComponentDrawers = ComponentInitializer.init(myPane, turtleNodes);
         myVariablesList = FXCollections.observableArrayList();
         myPreviousCommandsList = FXCollections.observableArrayList();
-        myObjectFactories = FactoryInitializer.init(myVariablesList, (TurtleScreenDrawer) 
-                                                    myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
-                                                    turtleNodes);
+        
+        myObjectFactories = FactoryInitializer.init(myVariablesList, myCommandList, (TurtleScreenDrawer) 
+                myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
+                turtleNodes);
+
         FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList);
     }
 

@@ -22,7 +22,7 @@ public class ShowTurtleTests extends CommandTester {
 		DrawableObject turtle = objectQueue.poll();
 		assertTrue(turtle.getParameters().get(TurtleFactory.OPACITY).equals("100.0"));		
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.turtles.getLastActiveTurtle().isTurtleShowing());
+		assertTrue(workspace.turtles.getLastActiveTurtle().isTurtleShowing());
 	}
 
 	@Test
@@ -46,6 +46,6 @@ public class ShowTurtleTests extends CommandTester {
 		turtle = objectQueue.poll();
 		assertTrue(turtle.getParameters().get(TurtleFactory.OPACITY).equals("100.0"));	
 		assertTrue(objectQueue.size()==0);
-		assertTrue(state.turtles.getLastActiveTurtle().isTurtleShowing());
+		assertTrue(workspace.turtles.getLastActiveTurtle().isTurtleShowing());
 	}
 }

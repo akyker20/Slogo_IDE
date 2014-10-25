@@ -1,4 +1,4 @@
-package state;
+package workspaceState;
 
 public class Turtle {
 
@@ -8,11 +8,13 @@ public class Turtle {
     private Location myLocation;
     private double myOpacity = 100;
     private boolean turtleShowing = true;
+    private int myID;
 
     public Turtle () {
-        myLocation = new Location(0,0);
+    	myLocation = new Location(0,0);
         myHeading = DEFAULT_TURTLE_HEADING;
     }
+   
 
     public void showTurtle(){
         turtleShowing = true;
@@ -74,9 +76,13 @@ public class Turtle {
     public void setLocation (Location myLocation) {
         this.myLocation = myLocation;
     }
+    
+    public void setID(int ID) {
+    	myID = ID;
+    }
 
-    public String getID() {
-        return String.valueOf(this.toString().hashCode());
+    public int getID() {
+        return myID;
     }
 
 

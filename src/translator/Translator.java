@@ -1,10 +1,7 @@
 package translator;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,21 +39,16 @@ public class Translator {
 		for (String s : splitString) {
 			if (dictionary.containsKey(s)) {
 				translatedString.add(languageToClassPath.get(s));
-			}
-			else if (s.matches(syntaxDictionary.get("Command")) &&
-					!languageToClassPath.containsKey(s)) {
+			} else if (s.matches(syntaxDictionary.get("Command")) && !languageToClassPath.containsKey(s)) {
 				translatedString.add(languageToClassPath.get(USER_DEFINED_COMMAND));
 				translatedString.add(s);
-			}
-			else if (s.matches(syntaxDictionary.get("Constant"))) {
+			} else if (s.matches(syntaxDictionary.get("Constant"))) {
 				translatedString.add(languageToClassPath.get(CONSTANT));
 				translatedString.add(s);
-			}
-			else if (s.matches(syntaxDictionary.get("Variable"))) {
+			} else if (s.matches(syntaxDictionary.get("Variable"))) {
 				translatedString.add(languageToClassPath.get(VARIABLE));
 				translatedString.add(s);
-			}
-			else {
+			} else {
 				translatedString.add(s);
 			}
 		}
@@ -72,8 +64,8 @@ public class Translator {
 	private void changeLanguage(String language) throws FileNotFoundException, IOException {
 		String augmentedFileName = language.substring(0, 1).toUpperCase()
 				+ language.substring(1).toLowerCase();
-		Scanner scan = new Scanner(this.getClass().getResourceAsStream("/resources/languages/"
-				+ augmentedFileName + ".properties"));
+		Scanner scan = new Scanner(this.getClass().getResourceAsStream(
+				"/resources/languages/" + augmentedFileName + ".properties"));
 		String inputLine = scan.nextLine();
 		while (((scan.hasNextLine()) != false) && (inputLine.contains("syntax") == false)) {
 			inputLine = scan.nextLine();
@@ -107,8 +99,8 @@ public class Translator {
 
 	}
 
-	private void getClassNamesInPackage(String jarName,
-			String packageName) throws FileNotFoundException, IOException {
+	private void getClassNamesInPackage(String jarName, String packageName) throws FileNotFoundException,
+			IOException {
 		packageName = packageName.replaceAll("\\.", "/");
 		JarInputStream jarFile = new JarInputStream(new FileInputStream(jarName));
 		JarEntry jarEntry;
@@ -133,6 +125,34 @@ public class Translator {
 
 	private static String clipPathName(String command) {
 		return command.substring(0, command.length() - 6);
+	}
+
+	public boolean matchesVariablePattern(String str) {
+		return str.matches(syntaxDictionary.get("Variable"));
+	}
+
+	public boolean matchesConstantPattern(String str) {
+		return str.matches(syntaxDictionary.get("Constant"));
+	}
+
+	public boolean matchesCommandPattern(String str) {
+		return str.matches(syntaxDictionary.get("Command"));
+	}
+
+	public boolean matchesListStartPattern(String str) {
+		return str.matches(syntaxDictionary.get("ListStart"));
+	}
+
+	public boolean matchesListEndPattern(String str) {
+		return str.matches(syntaxDictionary.get("ListEnd"));
+	}
+
+	public boolean matchesGroupStartPattern(String str) {
+		return str.matches(syntaxDictionary.get("GroupStart"));
+	}
+
+	public boolean matchesGroupEndPattern(String str) {
+		return str.matches(syntaxDictionary.get("GroupEnd"));
 	}
 
 	public String getVariablePattern() {
