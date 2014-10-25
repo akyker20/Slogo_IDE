@@ -1,7 +1,5 @@
 package gui.mainclasses.workspace;
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Tab;
@@ -9,26 +7,24 @@ import javafx.scene.control.TabPane;
 import Control.SlogoGraphics;
 import XML.workspaceparams.WorkspaceParameters;
 
-public class WorkspaceManager {
+public class WorkspaceManager extends TabPane {
 
     public static Workspace myActiveWorkspace;
 
     private static int workspaceID = 0;
-    private List<Workspace> myWorkspaces;
+
     private SlogoGraphics myControl;
-    private TabPane myTabPane;
     private int myWorkspaceID;
 
     public WorkspaceManager(SlogoGraphics control)    {
         myControl = control;
-        myWorkspaces = new ArrayList<Workspace>();
         initializeTabPane(); 
-        addWorkspace(new WorkspaceParameters(), new WorkspaceParameters(), new WorkspaceDataHolder());
+        addWorkspace(new WorkspaceParameters(), new WorkspaceParameters(), 
+                     new WorkspaceDataHolder());
     }
 
-    private void initializeTabPane () {
-        myTabPane = new TabPane();      
-        myTabPane
+    private void initializeTabPane () {    
+        this
         .getSelectionModel()
         .selectedItemProperty()
         .addListener(
@@ -41,18 +37,14 @@ public class WorkspaceManager {
                 );  
     }
 
-
     public void addWorkspace(WorkspaceParameters screenParams, 
                              WorkspaceParameters penParams, 
                              WorkspaceDataHolder dataHolder) {
-       Workspace newWorkspace = new Workspace(myControl, screenParams, penParams, dataHolder);
-
-        myWorkspaces.add(newWorkspace);
-        myTabPane.getTabs().add(newWorkspace); 
-        //set active workspace as most most recently added workspace
-        myActiveWorkspace = newWorkspace;
+        Workspace newWorkspace = new Workspace(myControl, screenParams, penParams, dataHolder);
         newWorkspace.setText("Workspace " + workspaceID);
-        //create corresponding workspace state object
+        
+        getTabs().add(newWorkspace); 
+        myActiveWorkspace = newWorkspace;
         myControl.createWorkspaceState(workspaceID);
         myControl.setActiveWorkspaceState(myWorkspaceID);
         workspaceID++;     
@@ -60,13 +52,5 @@ public class WorkspaceManager {
 
     public Workspace getActiveWorkspace() {
         return myActiveWorkspace;
-    }
-
-    public void setActiveWorkspace() {
-        myActiveWorkspace = (Workspace) myTabPane.getSelectionModel().getSelectedItem();
-    }
-
-    public TabPane getTabPane() {
-        return myTabPane;
     }
 }
