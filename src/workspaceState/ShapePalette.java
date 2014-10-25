@@ -1,14 +1,13 @@
 package workspaceState;
 
-public class ShapePalette extends Palette<Shape> {
+public class ShapePalette extends Palette<String> {
 	
 	public void addImageToPalette(int ID, String URI) {
-		Shape shape = new Shape(URI);
-		addToPalette(ID, shape);
+		addToPalette(ID, URI);
 	}
 	
 	public String getImageURIFromPalette(int ID){
-		return getFromPalette(ID).getURI();
+		return getFromPalette(ID);
 	}
 	
 }
