@@ -1,20 +1,18 @@
 package tests.commandTests;
 
-import gui.variableslist.WorkspaceVariable;
-
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import org.junit.Before;
 
-import translator.Translator;
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.LanguageFileNotFoundException;
+import commandParsing.exceptions.PropertyFileAccessException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
@@ -30,11 +28,20 @@ public abstract class CommandTester {
 	}
 	
 	public void setUpTranslator(String language) throws IOException{
-		workspace.translator.createMappingsGivenLanguage(language);;
+		try {
+			workspace.translator.createMappingsGivenLanguage(language);
+		} catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
+			e.printStackTrace();
+		};
 	}
 	
 	public void setUpStateBeforeTesting(String language) throws IOException{		
-		workspace = new WorkspaceState();
+		try {
+			workspace = new WorkspaceState();
+			workspace.turtles.addTurtle(new Turtle());
+		} catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void setUpCommands(String input){
