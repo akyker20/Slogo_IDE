@@ -21,27 +21,6 @@ public class Tell extends StructuralCommand {
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
 		
-//		accumulateComponents(commandStringIterator, 1, objectQueue);
-//		evaluateBooleanExpression();
-//
-//		if (booleanSwitch) {
-//			extractCommandsBetweenBraces(commandStringIterator);
-//		} else {
-//			ignoreUntilClosingBrace(commandStringIterator);
-//			setEnclosedCommandsToEmptyList();
-//		}
-//
-//		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
-//
-//		return returnValue;
-		
-//		double amountToRotate = 0;
-//		for (Turtle t : workspace.turtles.getActiveTurtles()) {
-//			amountToRotate = components.get(0) - t.getHeading();
-//			t.rotate(amountToRotate);
-//			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
-//		}
-//		return Math.abs(amountToRotate);
 		workspace.turtles.clearActiveTurtles();
 		List<Integer> turtleIDList = new ArrayList<Integer>();
 		double lastTurtleID =0;
