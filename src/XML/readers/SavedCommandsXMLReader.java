@@ -1,4 +1,4 @@
-package XML;
+package XML.readers;
 
 import java.io.File;
 import java.io.FileInputStream;

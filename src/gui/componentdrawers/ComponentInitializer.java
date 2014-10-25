@@ -3,15 +3,12 @@ package gui.componentdrawers;
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.factories.nodes.TurtleNodes;
 import gui.menus.MainMenuInitializer;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.xml.sax.SAXException;
-
+import XML.workspaceparams.WorkspaceParameters;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;

@@ -28,6 +28,7 @@ import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
 import gui.nonbuttonfeatures.workspacevariables.WorkspaceVariablesFeature;
 import gui.variableslist.WorkspaceVariable;
 import java.util.Map;
+import XML.workspaceparams.WorkspaceParameters;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import Control.SlogoGraphics;
@@ -42,7 +43,7 @@ public class FeatureInitializer {
 
     public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 
                              ObservableList<WorkspaceVariable> variablesList,
-                             ObservableList<String> previousCommandsList ) {
+                             ObservableList<String> previousCommandsList, WorkspaceParameters screenParameters ) {
         
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
         ButtonHolderDrawer buttonHolder = 
@@ -66,7 +67,7 @@ public class FeatureInitializer {
         SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
         
         new ErrorDisplayFeature(errorDrawer);
-        new TurtleScreenFeature(gridDrawer);
+        new TurtleScreenFeature(gridDrawer, screenParameters);
         
         GeneralOptionsTab generalOptions = new GeneralOptionsTab(new Node[]{
             new SetTurtleScreenColorFeature(gridDrawer, buttonHolder),   

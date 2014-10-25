@@ -1,34 +1,29 @@
 package gui.mainclasses.workspace;
 
-import java.io.IOException;
-import java.util.Map;
-import java.util.Queue;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
-
-import drawableobject.DrawableObject;
-import Control.SlogoGraphics;
 import gui.commandlist.WorkspaceCommand;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryInitializer;
 import gui.factories.ObjectFactory;
-import gui.factories.nodes.TurtleNode;
 import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureInitializer;
 import gui.mainclasses.GUIController;
-import gui.mainclasses.StageInitializer;
 import gui.variableslist.WorkspaceVariable;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Tab;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
+import Control.SlogoGraphics;
+import XML.workspaceparams.WorkspaceParameters;
+import drawableobject.DrawableObject;
 
 public class Workspace extends Tab {
 
@@ -44,7 +39,8 @@ public class Workspace extends Tab {
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
-    public Workspace(GUIController guiControl, SlogoGraphics control) 
+    public Workspace(GUIController guiControl, SlogoGraphics control, WorkspaceParameters screenParams, 
+                     WorkspaceParameters penParams, List<String> userDefinedCommands) 
             throws ParserConfigurationException, SAXException, IOException{
         final TurtleNodes turtleNodes = new TurtleNodes();
         myPane = createPane();
@@ -57,7 +53,7 @@ public class Workspace extends Tab {
                 myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                 turtleNodes);
 
-        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList);
+        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList, screenParams);
     }
 
     private BorderPane createPane() {

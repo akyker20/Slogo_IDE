@@ -7,6 +7,8 @@ import java.util.List;
 import javafx.scene.control.TabPane;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import XML.workspaceparams.DefaultWorkspaceParameters;
+import XML.workspaceparams.WorkspaceParameters;
 import Control.SlogoGraphics;
 
 public class WorkspaceManager {
@@ -25,11 +27,12 @@ public class WorkspaceManager {
         myControl = control;
         myWorkspaces = new ArrayList<Workspace>();
         tabPane = new TabPane();     
-        addWorkspace();
+        addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), new ArrayList<String>());
     }
 
-    public void addWorkspace() throws ParserConfigurationException, SAXException, IOException {
-        Workspace newWorkspace = new Workspace(myGuiController,myControl);
+    public void addWorkspace(WorkspaceParameters screenParams, WorkspaceParameters penParams, 
+                             List<String> userDefinedCommands) throws ParserConfigurationException, SAXException, IOException {
+        Workspace newWorkspace = new Workspace(myGuiController, myControl, screenParams, penParams, userDefinedCommands);
         myWorkspaces.add(newWorkspace);
         tabPane.getTabs().add(newWorkspace); 
         //set active workspace as most most recenty added workspace

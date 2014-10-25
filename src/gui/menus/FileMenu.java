@@ -3,8 +3,10 @@ package gui.menus;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.SavedCommandsDrawer;
 import gui.mainclasses.GUIController;
+import java.awt.List;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -14,8 +16,10 @@ import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
-import XML.SavedCommandsXMLReader;
-import XML.SavedCommandsXMLWriter;
+import XML.readers.SavedCommandsXMLReader;
+import XML.readers.SavedWorkspaceXMLReader;
+import XML.workspaceparams.DefaultWorkspaceParameters;
+import XML.writers.SavedCommandsXMLWriter;
 
 /**
  * Class will be used to load files such as previously saved commands or
@@ -64,11 +68,32 @@ public class FileMenu extends Menu {
             }
         });
         
+        
+        MenuItem loadWorkspace = new MenuItem("Load Workspace");
+        loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                try {
+                    SavedWorkspaceXMLReader reader = new SavedWorkspaceXMLReader(createFileChooser()); 
+                    GUIController.myWorkspaceManager.addWorkspace(
+                                 reader.getScreenParameters(), reader.getPenParams(), 
+                                 reader.getUserDefinedCommands());
+                    
+                }
+                catch (SAXException | IOException | ParserConfigurationException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+        });
+        
+        
+        
+       
         MenuItem newWorkspace = new MenuItem("New Workspace");
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    GUIController.myWorkspaceManager.addWorkspace();
+                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), new ArrayList());
                 }
                 catch (ParserConfigurationException | SAXException | IOException e1) {
                     // TODO Auto-generated catch block
@@ -77,7 +102,7 @@ public class FileMenu extends Menu {
             }
         });
         
-        this.getItems().addAll(loadGrid, loadCommands, saveCommands, newWorkspace);
+        this.getItems().addAll(loadGrid, loadCommands, saveCommands, loadWorkspace, newWorkspace);
     }
     
     /**
