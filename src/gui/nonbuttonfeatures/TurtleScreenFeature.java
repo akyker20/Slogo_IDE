@@ -1,4 +1,6 @@
 package gui.nonbuttonfeatures;
+import XML.readers.SavedWorkspaceXMLReader;
+import XML.workspaceparams.WorkspaceParameters;
 import gui.componentdrawers.TurtleScreenDrawer;
 import javafx.scene.layout.Pane;
 /**
@@ -9,11 +11,23 @@ import javafx.scene.layout.Pane;
  *
  */
 public class TurtleScreenFeature extends Pane {
-    public TurtleScreenFeature(TurtleScreenDrawer parentDrawer){
+    
+    private static final String COLOR = SavedWorkspaceXMLReader.COLOR;
+    private static final String TOGGLE_GRID = SavedWorkspaceXMLReader.TOGGLE_GRID;
+    
+    
+    public TurtleScreenFeature(TurtleScreenDrawer parentDrawer, WorkspaceParameters screenParams){
         this.setPrefWidth(TurtleScreenDrawer.GRID_WIDTH);
         this.setPrefHeight(TurtleScreenDrawer.GRID_HEIGHT);
         this.getStyleClass().add("grid");
         this.setLayoutY(20);
         parentDrawer.setTurtleScreenFeature(this);
+
+        if(screenParams.extractParams(TOGGLE_GRID).equalsIgnoreCase("true")){
+            parentDrawer.toggleGrid();
+        }
+        if(screenParams.hasParam(COLOR)) {
+            parentDrawer.changeScreenColor("-fx-background-color: " + screenParams.extractParams(COLOR));
+        }
     }
 }
