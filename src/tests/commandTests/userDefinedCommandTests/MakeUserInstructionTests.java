@@ -60,7 +60,14 @@ public class MakeUserInstructionTests extends CommandTester {
 		assertTrue(workspace.variables.fetchVariable(":varb") == 0);
 		assertTrue(workspace.variables.fetchVariable(":varc") == 0);
 		List<String> translatedCommand = workspace.translator.translateToList("fd 20");
-		assertTrue(workspace.commands.fetchUserDefinedCommand("command").equals(translatedCommand));
+		List<String> variables = new ArrayList<String>(){{
+			add(":var");
+			add(":varb");
+			add(":varc");
+		}};
+		UserDefinedCommandCollection dummyCollection = new UserDefinedCommandCollection();
+		Command command = dummyCollection.new Command("command", 3, translatedCommand, variables);
+		assertTrue(workspace.commands.fetchUserDefinedCommand("command").equals(command));
 	}
 }
 
