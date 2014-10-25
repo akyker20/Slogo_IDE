@@ -4,6 +4,8 @@ import gui.mainclasses.GUIController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TabPane;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -27,11 +29,11 @@ public class WorkspaceManager {
         myControl = control;
         myWorkspaces = new ArrayList<Workspace>();
         tabPane = new TabPane();     
-        addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), new ArrayList<String>());
+        addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList());
     }
 
     public void addWorkspace(WorkspaceParameters screenParams, WorkspaceParameters penParams, 
-                             List<String> userDefinedCommands) throws ParserConfigurationException, SAXException, IOException {
+                             ObservableList<String> userDefinedCommands) throws ParserConfigurationException, SAXException, IOException {
         Workspace newWorkspace = new Workspace(myGuiController, myControl, screenParams, penParams, userDefinedCommands);
         myWorkspaces.add(newWorkspace);
         tabPane.getTabs().add(newWorkspace); 

@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -56,11 +58,11 @@ public class SavedWorkspaceXMLReader {
         return params; 
     }
     
-    public List<String> getUserDefinedCommands(){
-        List<String> userDefinedCommands = new ArrayList<String>();                 
+    public ObservableList<String> getUserDefinedCommands(){
+        ObservableList<String> userDefinedCommands = FXCollections.observableArrayList();           
         NodeList commands = myRoot.getElementsByTagName(USER_DEFINED_CMDS);
         for(int i = 0; i < commands.getLength(); i++){
-            userDefinedCommands.add(commands.item(i).getNodeValue());
+            userDefinedCommands.add(commands.item(i).getTextContent());
         } 
         return userDefinedCommands;
     }

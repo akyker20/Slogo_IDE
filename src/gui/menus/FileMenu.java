@@ -1,12 +1,14 @@
 package gui.menus;
 
 import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
 import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
 import gui.mainclasses.GUIController;
 import java.awt.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -41,32 +43,34 @@ public class FileMenu extends Menu {
                 System.out.println("Code to open previous grid config...");
             }
         });
+        
         MenuItem loadCommands = new MenuItem("Load Commands");
-        loadCommands.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                try {
-                    SavedCommandsTab currentDrawer = (SavedCommandsTab) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
-                    currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser()));
-                }
-                catch (SAXException | IOException | ParserConfigurationException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            }
-        });
+//        loadCommands.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override public void handle(ActionEvent e) {
+//                try {
+//                    SignificantCommandsDrawer currentDrawer = (SignificantCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SIGNIFICANT_COMMANDS_DRAWER);
+//                    currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser()));
+//                }
+//                catch (SAXException | IOException | ParserConfigurationException e1) {
+//                    // TODO Auto-generated catch block
+//                    e1.printStackTrace();
+//                }
+//            }
+//        });
+        
         MenuItem saveCommands = new MenuItem("Save Commands");
-        saveCommands.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                try {
-                    SavedCommandsTab currentDrawer = (SavedCommandsTab) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
-                    SavedCommandsXMLWriter.writeFile(currentDrawer.getCommands());
-                }
-                catch (TransformerException | ParserConfigurationException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            }
-        });
+//        saveCommands.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override public void handle(ActionEvent e) {
+//                try {
+//                    SavedCommandsTab currentDrawer = (SavedCommandsTab) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
+//                    SavedCommandsXMLWriter.writeFile(currentDrawer.getCommands());
+//                }
+//                catch (TransformerException | ParserConfigurationException e1) {
+//                    // TODO Auto-generated catch block
+//                    e1.printStackTrace();
+//                }
+//            }
+//        });
         
         
         MenuItem loadWorkspace = new MenuItem("Load Workspace");
@@ -93,7 +97,7 @@ public class FileMenu extends Menu {
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), new ArrayList());
+                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList());
                 }
                 catch (ParserConfigurationException | SAXException | IOException e1) {
                     // TODO Auto-generated catch block
