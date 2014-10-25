@@ -4,6 +4,8 @@ import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.TurtleFactory;
 import gui.turtlescreenwrap.CoordinateChanger;
 import gui.turtlescreenwrap.TesselationMapper;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import javafx.scene.image.Image;
@@ -19,8 +21,8 @@ import com.sun.javafx.geom.Point2D;
  */
 public class TurtleNode extends ImageView {
 
-    private static final String DEFAULT_TURTLE_IMAGEPATH = "turtle_image2.png";
-    private static final String SELECTED_TURTLE_IMAGEPATH = "selected_turtle.png";
+    private static final String DEFAULT_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/turtle_image2.png";
+    private static final String SELECTED_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/selected_turtle.png";
 
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.06;
     private static final double TURTLE_IMAGE_WIDTH = TurtleScreenDrawer.GRID_WIDTH *
@@ -100,7 +102,7 @@ public class TurtleNode extends ImageView {
      * @throws FileNotFoundException
      */
     private void updateImage(String imagePath) throws FileNotFoundException {
-        setImage(new Image(getClass().getResourceAsStream(imagePath),
+        setImage(new Image(new FileInputStream(new File(imagePath)),
                            TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
                            false, true));
     }

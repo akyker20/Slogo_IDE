@@ -12,24 +12,22 @@ import gui.mainclasses.workspace.Workspace;
 import gui.mainclasses.workspace.WorkspaceManager;
 import gui.menus.MainMenuInitializer;
 import gui.variableslist.WorkspaceVariable;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.xml.sax.SAXException;
-
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import Control.SlogoGraphics;
 import drawableobject.DrawableObject;
 
@@ -55,9 +53,12 @@ public class GUIController {
      * @throws IOException 
      * @throws SAXException 
      * @throws ParserConfigurationException 
+     * @throws RunTimeNullPointerException 
+     * @throws RunTimeDivideByZeroException 
+     * @throws CompileTimeParsingException 
      */
 
-    public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
+    public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
         GUI_TEXT = LocaleInitializer.init();
 
         myPane = StageInitializer.init(stage, control);

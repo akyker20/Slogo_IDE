@@ -2,29 +2,24 @@ package Control;
 
 import gui.mainclasses.GUIController;
 import gui.variableslist.WorkspaceVariable;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-
 import javafx.stage.Stage;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.xml.sax.SAXException;
-
 import translator.Translator;
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
-
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
-
 import drawableobject.DrawableObject;
 
 
@@ -52,12 +47,15 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      * @throws IOException 
      * @throws SAXException 
      * @throws ParserConfigurationException 
+     * @throws RunTimeNullPointerException 
+     * @throws RunTimeDivideByZeroException 
+     * @throws CompileTimeParsingException 
      */
 
-    public SlogoControl (Stage stage) throws IOException, ParserConfigurationException, SAXException {
+    public SlogoControl (Stage stage) throws IOException, ParserConfigurationException, SAXException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
         Map<String,WorkspaceVariable> variableMap = new HashMap<String,WorkspaceVariable>();
-        myGUI = new GUIController(stage, this);
         translator = new Translator("english");
+        myGUI = new GUIController(stage, this);
         workspace = new WorkspaceState(new Turtle(),variableMap, translator);
         parseCommandString("home");
     }

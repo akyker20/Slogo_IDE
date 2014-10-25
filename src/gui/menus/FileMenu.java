@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
+import commandParsing.exceptions.CompileTimeParsingException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import XML.SavedCommandsXMLReader;
 import XML.SavedCommandsXMLWriter;
 
@@ -67,13 +70,16 @@ public class FileMenu extends Menu {
         MenuItem newWorkspace = new MenuItem("New Workspace");
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                try {
-                    GUIController.myWorkspaceManager.addWorkspace();
-                }
-                catch (ParserConfigurationException | SAXException | IOException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+
+                        try {
+                            GUIController.myWorkspaceManager.addWorkspace();
+                        }
+                        catch (CompileTimeParsingException | RunTimeDivideByZeroException
+                                | RunTimeNullPointerException | ParserConfigurationException
+                                | SAXException | IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
             }
         });
         

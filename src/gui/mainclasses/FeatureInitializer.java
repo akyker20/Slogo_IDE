@@ -17,6 +17,7 @@ import gui.componentdrawers.buttonholder.tabs.OptionsTab;
 import gui.componentdrawers.buttonholder.tabs.PenOptionsTab;
 import gui.nonbuttonfeatures.CommandLineFeature;
 import gui.nonbuttonfeatures.ErrorDisplayFeature;
+import gui.nonbuttonfeatures.TurtleImageFeature;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
@@ -43,7 +44,7 @@ public class FeatureInitializer {
     public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 
                              ObservableList<WorkspaceVariable> variablesList,
                              ObservableList<String> previousCommandsList ) {
-        
+
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
         ButtonHolderDrawer buttonHolder = 
                 (ButtonHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
@@ -55,34 +56,41 @@ public class FeatureInitializer {
                 (SavedCommandsDrawer) drawerMap.get(ComponentInitializer.SAVED_COMMANDS);
         WorkspaceVariablesDrawer workspaceVariablesDrawer = 
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentInitializer.WORKSPACE_VARIABLES);
-        
+
         ErrorDrawer errorDrawer = (ErrorDrawer) drawerMap.get(ComponentInitializer.ERROR_DRAWER);
-        
+
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
                                                                                       previousCommandsList);
         new CommandLineFeature(commandLineDrawer, control);
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList, control);
-        
+
         SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(savedCommandsDrawer, commandLineDrawer);
-        
+
         new ErrorDisplayFeature(errorDrawer);
         new TurtleScreenFeature(gridDrawer);
-        
-        GeneralOptionsTab generalOptions = new GeneralOptionsTab(new Node[]{
-            new SetTurtleScreenColorFeature(gridDrawer, buttonHolder),   
-            new ToggleGridButtonFeature(gridDrawer, buttonHolder),
-            new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature),
-            new ClearWorkspaceButtonFeature(buttonHolder, guiController)
-        });
-        
-        PenOptionsTab penOptions = new PenOptionsTab(new Node[]{
-            new PenUpOrDownFeature(buttonHolder, control),
-            new PenTypeFeature(buttonHolder, control),
-            new PenColorPickerFeature(buttonHolder, control),
-            new PenThicknessSliderFeature(buttonHolder, control),
-        });
-        
+
+        GeneralOptionsTab generalOptions = 
+                new GeneralOptionsTab(
+                                      new Node[]{
+                                                 new SetTurtleScreenColorFeature(gridDrawer, buttonHolder),   
+                                                 new ToggleGridButtonFeature(gridDrawer, buttonHolder),
+                                                 new SaveCommandButtonFeature(buttonHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature),
+                                                 new ClearWorkspaceButtonFeature(buttonHolder, guiController)
+                                      }, 
+                                      new Node[] {new TurtleImageFeature(buttonHolder)}
+                        );
+
+        PenOptionsTab penOptions = 
+                new PenOptionsTab(new Node[]{
+                                             new PenUpOrDownFeature(buttonHolder, control),
+                                             new PenTypeFeature(buttonHolder, control),
+                                             new PenColorPickerFeature(buttonHolder, control),
+                                             new PenThicknessSliderFeature(buttonHolder, control),
+                },
+                new Node[]{}
+                );
+
         buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions});
-        
+
     }
 }

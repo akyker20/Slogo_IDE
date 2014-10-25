@@ -6,7 +6,7 @@ public class PenOptionsTab extends OptionsTab {
     
     private static final String TAB_NAME = "Pen";
     
-    public PenOptionsTab(Node[] features){
-        super(features, TAB_NAME);
+    public PenOptionsTab(Node[] leftFeatures,Node[] rightFeatures){
+        super(leftFeatures,rightFeatures, TAB_NAME);
     }
 }
