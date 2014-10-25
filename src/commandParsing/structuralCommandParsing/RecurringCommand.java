@@ -4,12 +4,12 @@ import java.util.Iterator;
 import java.util.Queue;
 
 import workspaceState.WorkspaceState;
-import commandParsing.drawableObectGenerationInterfaces.VariableGenerator;
+import commandParsing.drawableObectGenerationInterfaces.UserDefinedVariableGenerator;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
-public abstract class RecurringCommand extends StructuralCommand implements VariableGenerator {
+public abstract class RecurringCommand extends StructuralCommand implements UserDefinedVariableGenerator {
 
 	public RecurringCommand(WorkspaceState someWorkspace) {
 		super(someWorkspace);
