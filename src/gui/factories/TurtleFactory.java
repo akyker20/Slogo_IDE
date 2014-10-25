@@ -3,8 +3,10 @@ package gui.factories;
 import gui.componentdrawers.ComponentInitializer;
 import gui.factories.nodes.TurtleNode;
 import gui.factories.nodes.TurtleNodes;
+
 import java.io.FileNotFoundException;
 import java.util.Map;
+
 import javafx.scene.Node;
 
 
@@ -16,6 +18,7 @@ public class TurtleFactory extends ObjectFactory {
     public static final String LOCATION = "location";
     public static final String OPACITY = "opacity";
     public static final String TURTLE_IMAGE_ID = "turtleImageID";
+	public static final String IMAGE_PATH = "imagePath";
 
 
     private TurtleNodes myTurtleNodes;

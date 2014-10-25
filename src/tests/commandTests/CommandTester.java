@@ -29,12 +29,12 @@ public abstract class CommandTester {
 		setUpStateBeforeTesting("english");
 	}
 	
-	public Translator setUpTranslator(String language) throws IOException{
-		return new Translator(language);
+	public void setUpTranslator(String language) throws IOException{
+		workspace.translator.createMappingsGivenLanguage(language);;
 	}
 	
 	public void setUpStateBeforeTesting(String language) throws IOException{		
-		workspace = new WorkspaceState(new Turtle(), new HashMap<String, WorkspaceVariable>(), setUpTranslator(language));
+		workspace = new WorkspaceState();
 	}
 	
 	public void setUpCommands(String input){

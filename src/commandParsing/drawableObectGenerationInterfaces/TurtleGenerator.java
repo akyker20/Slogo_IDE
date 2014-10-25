@@ -18,6 +18,7 @@ public interface TurtleGenerator {
 		parameters.put(TurtleFactory.HEADING, String.valueOf(turtle.getHeading()));
 		parameters.put(TurtleFactory.LOCATION, turtle.getLocation().generateLocationString());
 		parameters.put(TurtleFactory.OPACITY, String.valueOf(turtle.getOpacity()));
+		parameters.put(TurtleFactory.IMAGE_PATH, turtle.getShape().getPath());
 
 		return new DrawableObject(parent, type, parameters);
 	}

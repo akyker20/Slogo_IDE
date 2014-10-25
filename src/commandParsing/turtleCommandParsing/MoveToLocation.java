@@ -30,7 +30,7 @@ public abstract class MoveToLocation extends TwoInputFloatCommandParser implemen
 			t.setLocation(destination);
 			t.rotate(getDestinationHeading(workspace));
 			if (t.pen.isPenDown()) {
-				objectQueue.add(generateDrawableObjectRepresentingLine(turtleLocation, destination));
+				objectQueue.add(generateDrawableObjectRepresentingLine(turtleLocation, destination, t.pen));
 			}
 			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
 		}

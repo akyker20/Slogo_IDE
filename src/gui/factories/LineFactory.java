@@ -21,6 +21,8 @@ public class LineFactory extends ObjectFactory {
     public static final String DESTINATION = "destination";
     public static final String PARENT = ComponentInitializer.GRID_DRAWER;
     public static final String TYPE = FactoryInitializer.LINE_FACTORY;
+	public static final String LINE_WIDTH = "lineWidth";
+	public static final String LINE_COLOR = "lineColor";
 
     public LineFactory (String name) {
         super(name);
