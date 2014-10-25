@@ -42,16 +42,13 @@ public class GUIController {
      * @throws RunTimeDivideByZeroException 
      * @throws CompileTimeParsingException 
      */
-
     public GUIController (Stage stage, SlogoGraphics control)   {
         GUI_TEXT = LocaleInitializer.init();
-
         myPane = StageInitializer.init(stage);
-        myWorkspaceManager = new WorkspaceManager(this,control);               
+        myWorkspaceManager = new WorkspaceManager(control);               
         myPane.setTop(MainMenuInitializer.init(myWorkspaceManager));
         myPane.setCenter(myWorkspaceManager.getTabPane());
         myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
-
     }
 
     private void moveActiveTurtlesInActiveWorkspace (KeyEvent event) {

@@ -4,7 +4,6 @@ import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.mainclasses.workspace.WorkspaceManager;
 import java.io.File;
 import java.io.IOException;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 import XML.readers.SavedWorkspaceXMLReader;
-import XML.workspaceparams.DefaultWorkspaceParameters;
+import XML.workspaceparams.WorkspaceParameters;
 
 
 /**
@@ -50,14 +49,8 @@ public class FileMenu extends Menu {
         MenuItem newWorkspace = new MenuItem("New Workspace");
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                try {
-                    workspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), 
-                                                  new WorkspaceDataHolder());
-                }
-                catch (ParserConfigurationException | SAXException | IOException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                    workspaceManager.addWorkspace(new WorkspaceParameters(), new WorkspaceParameters(), 
+                                                  new WorkspaceDataHolder());             
             }
         });
 

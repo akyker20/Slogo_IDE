@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WorkspaceParameters {
+    
     protected Map<String, String> myMap;
 
     public WorkspaceParameters(){
