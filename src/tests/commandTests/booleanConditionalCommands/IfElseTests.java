@@ -32,7 +32,6 @@ public class IfElseTests extends CommandTester {
 
 		assertTrue(line.getParent().equals(LineFactory.PARENT));
 		assertTrue(line.getType().equals(LineFactory.TYPE));
-		System.out.println(line.getParameters().get(LineFactory.ORIGIN));
 		assertTrue(line.getParameters().get(LineFactory.ORIGIN).equals("0.0 0.0"));
 		assertTrue(line.getParameters().get(LineFactory.DESTINATION).equals("0.0 50.0"));
 
