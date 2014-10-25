@@ -44,8 +44,7 @@ public class Workspace extends Tab {
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
-    public Workspace(GUIController guiControl, SlogoGraphics control) 
-            throws ParserConfigurationException, SAXException, IOException{
+    public Workspace(GUIController guiControl, SlogoGraphics control) {
         final TurtleNodes turtleNodes = new TurtleNodes();
         myPane = createPane();
         this.setContent(myPane);

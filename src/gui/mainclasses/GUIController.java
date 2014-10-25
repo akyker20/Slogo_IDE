@@ -58,7 +58,7 @@ public class GUIController {
      * @throws CompileTimeParsingException 
      */
 
-    public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+    public GUIController (Stage stage, SlogoGraphics control)  {
         GUI_TEXT = LocaleInitializer.init();
 
         myPane = StageInitializer.init(stage, control);

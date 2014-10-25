@@ -23,7 +23,7 @@ public class WorkspaceManager {
 
     private int myWorkspaceID;
 
-    public WorkspaceManager(GUIController guiControl, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException  {
+    public WorkspaceManager(GUIController guiControl, SlogoGraphics control)   {
         myGuiController = guiControl;
         myControl = control;
         myWorkspaces = new ArrayList<Workspace>();
@@ -31,7 +31,7 @@ public class WorkspaceManager {
         addWorkspace();
     }
 
-    public void addWorkspace() throws ParserConfigurationException, SAXException, IOException, CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
+    public void addWorkspace()  {
         Workspace newWorkspace = new Workspace(myGuiController,myControl);
         myWorkspaces.add(newWorkspace);
         tabPane.getTabs().add(newWorkspace); 

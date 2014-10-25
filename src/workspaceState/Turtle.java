@@ -9,6 +9,7 @@ public class Turtle {
 	private double myOpacity = 100;
 	private boolean turtleShowing = true;
 	private int myID;
+	private Shape shape;
 
 	public Turtle() {
 		this(0,0);
@@ -17,6 +18,7 @@ public class Turtle {
 	public Turtle(double x, double y) {
 		myLocation = new Location(x, y);
 		myHeading = DEFAULT_TURTLE_HEADING;
+		shape = new Shape("/src/resources/guiResources/turtleImages/default_turtle.png");
 	}
 
 
@@ -87,6 +89,14 @@ public class Turtle {
 
 	public int getID() {
 		return myID;
+	}
+
+	public void setShape(Shape fromPalette) {
+		shape = fromPalette;
+	}
+	
+	public Shape getShape(){
+		return shape;
 	}
 
 }

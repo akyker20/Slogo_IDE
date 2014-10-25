@@ -30,7 +30,7 @@ public class FileMenu extends Menu {
     
     private static final String SAVED_COMMAND_FILES_DIR = "./savedcommands";
 
-    public FileMenu() throws ParserConfigurationException, SAXException, IOException {
+    public FileMenu()  {
         this.setText("File");
         
         //use Lambda notation and make these open HTML help pages...
@@ -71,15 +71,9 @@ public class FileMenu extends Menu {
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
 
-                        try {
+                     
                             GUIController.myWorkspaceManager.addWorkspace();
-                        }
-                        catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                                | RunTimeNullPointerException | ParserConfigurationException
-                                | SAXException | IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
+                        
             }
         });
         

@@ -9,8 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 public class MainMenuInitializer {
-    public static MenuBar init()
-            throws ParserConfigurationException, SAXException, IOException{
+    public static MenuBar init(){
         MenuBar mainMenu = new MenuBar();
         mainMenu.getMenus().addAll(new FileMenu(), new EditMenu(), new HelpMenu());
         return mainMenu;

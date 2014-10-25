@@ -28,7 +28,7 @@ public abstract class Move extends OneInputFloatCommandParser implements LineGen
 			t.move(distanceToMove(distance));
 			Location finalLocation = t.getLocation();
 			if (t.pen.isPenDown()) {
-				objectQueue.add(generateDrawableObjectRepresentingLine(initialLocation, finalLocation));
+				objectQueue.add(generateDrawableObjectRepresentingLine(initialLocation, finalLocation,t.pen));
 			}
 			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
 		}
