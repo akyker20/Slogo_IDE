@@ -11,6 +11,7 @@ import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureInitializer;
 import gui.mainclasses.GUIController;
+import gui.nonbuttonfeatures.tableviews.ColorIndex;
 import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
 import java.util.Map;
@@ -37,6 +38,7 @@ public class Workspace extends Tab {
     private ObservableList<String> myPreviousCommandsList;
     private ObservableList<String> myUserDefinedCommandList;
     private ObservableList<String> mySavedCommandsList;
+    private ObservableList<ColorIndex> myColorIndexList;
     private BorderPane myPane;
     private SlogoGraphics myControl;
     private TurtleNodes myTurtleNodes;
@@ -64,7 +66,9 @@ public class Workspace extends Tab {
                                                     myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                                                     myTurtleNodes);
 
-        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList, screenParams, myUserDefinedCommandList, mySavedCommandsList);
+        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, 
+                                myPreviousCommandsList, screenParams, myUserDefinedCommandList, 
+                                mySavedCommandsList, myColorIndexList);
     }
 
     private BorderPane createPane() {

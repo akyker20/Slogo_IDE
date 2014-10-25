@@ -10,10 +10,11 @@ import gui.componentdrawers.ErrorDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.componentdrawers.WorkspaceVariablesDrawer;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
-import gui.componentdrawers.buttonholder.tabs.GeneralOptionsTab;
-import gui.componentdrawers.buttonholder.tabs.OptionsTab;
-import gui.componentdrawers.buttonholder.tabs.PenOptionsTab;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.componentdrawers.optionsholder.tabs.ColorIndexTab;
+import gui.componentdrawers.optionsholder.tabs.GeneralOptionsTab;
+import gui.componentdrawers.optionsholder.tabs.OptionsTab;
+import gui.componentdrawers.optionsholder.tabs.PenOptionsTab;
 import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
 import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
 import gui.componentdrawers.significantcommands.tabs.UserDefinedCommandsTab;
@@ -30,7 +31,9 @@ import gui.nonbuttonfeatures.pen.PenColorPickerFeature;
 import gui.nonbuttonfeatures.pen.PenThicknessSliderFeature;
 import gui.nonbuttonfeatures.pen.PenTypeFeature;
 import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
-import gui.nonbuttonfeatures.workspacevariables.WorkspaceVariablesFeature;
+import gui.nonbuttonfeatures.tableviews.ColorIndex;
+import gui.nonbuttonfeatures.tableviews.ColorIndexFeature;
+import gui.nonbuttonfeatures.tableviews.WorkspaceVariablesFeature;
 import gui.variableslist.WorkspaceVariable;
 import java.util.Map;
 import javafx.collections.ObservableList;
@@ -51,11 +54,12 @@ public class FeatureInitializer {
                              ObservableList<WorkspaceVariable> workspaceVariables,
                              ObservableList<String> previousCommandsList, WorkspaceParameters screenParameters,
                              ObservableList<String> userDefinedCommands,
-                             ObservableList<String> savedCommands) {
+                             ObservableList<String> savedCommands,
+                             ObservableList<ColorIndex> colorIndexList) {
 
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
-        ButtonHolderDrawer buttonHolder = 
-                (ButtonHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
+        OptionsHolderDrawer buttonHolder = 
+                (OptionsHolderDrawer) drawerMap.get(ComponentInitializer.BUTTON_HOLDER_DRAWER);
         CommandLineDrawer commandLineDrawer = 
                 (CommandLineDrawer) drawerMap.get(ComponentInitializer.COMMAND_LINE_DRAWER);
         PreviousCommandsDrawer previousCommandsDrawer = 
@@ -100,8 +104,10 @@ public class FeatureInitializer {
                 },
                 new Node[]{}
                 );
+        
+        ColorIndexTab colorIndexTab = new ColorIndexTab(new ColorIndexFeature(colorIndexList, buttonHolder));
 
-        buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions});
+        buttonHolder.addTabs(new OptionsTab[]{generalOptions, penOptions, colorIndexTab});
 
         significantCommandsDrawer.addTabs(new Tab[]{
                                                     new SavedCommandsTab(savedCommandsFeature),

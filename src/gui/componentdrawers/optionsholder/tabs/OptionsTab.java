@@ -1,4 +1,4 @@
-package gui.componentdrawers.buttonholder.tabs;
+package gui.componentdrawers.optionsholder.tabs;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -8,8 +8,10 @@ import javafx.scene.layout.VBox;
 
 public class OptionsTab extends Tab {
     
-    public OptionsTab(String tabName) {
-        
+    public OptionsTab(Node feature, String tabName) {
+        this.setContent(feature);
+        this.setText(tabName);
+        this.setClosable(false);
     }
     
     public OptionsTab(Node[] leftFeatures,Node[] rightFeatures,  String tabName){    

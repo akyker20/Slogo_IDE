@@ -1,4 +1,4 @@
-package gui.componentdrawers.buttonholder.tabs;
+package gui.componentdrawers.optionsholder.tabs;
 
 import javafx.scene.Node;
 

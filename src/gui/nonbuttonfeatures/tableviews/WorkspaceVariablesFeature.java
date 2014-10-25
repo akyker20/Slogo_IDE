@@ -1,4 +1,4 @@
-package gui.nonbuttonfeatures.workspacevariables;
+package gui.nonbuttonfeatures.tableviews;
 
 import gui.componentdrawers.WorkspaceVariablesDrawer;
 import gui.variableslist.WorkspaceVariable;

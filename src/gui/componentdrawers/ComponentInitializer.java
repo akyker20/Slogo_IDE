@@ -1,6 +1,6 @@
 package gui.componentdrawers;
 
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
 import gui.factories.nodes.TurtleNodes;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class ComponentInitializer {
     
     public static Map<String, ComponentDrawer> init (BorderPane pane, TurtleNodes turtleNodes)  { 
         DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER, turtleNodes));
-        DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new ButtonHolderDrawer(BUTTON_HOLDER_DRAWER));
+        DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new OptionsHolderDrawer(BUTTON_HOLDER_DRAWER));
         DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
         DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
         DRAWER_MAP.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
@@ -50,7 +50,7 @@ public class ComponentInitializer {
         rightVBox.setPadding(new Insets(10, 10, 0, 0));
         rightVBox.getChildren().addAll((WorkspaceVariablesDrawer) DRAWER_MAP.get(WORKSPACE_VARIABLES), 
                                        (SignificantCommandsDrawer) DRAWER_MAP.get(SIGNIFICANT_COMMANDS_DRAWER),
-                                       (ButtonHolderDrawer) DRAWER_MAP.get(BUTTON_HOLDER_DRAWER));
+                                       (OptionsHolderDrawer) DRAWER_MAP.get(BUTTON_HOLDER_DRAWER));
         pane.setRight(rightVBox);
       
         return DRAWER_MAP;

@@ -1,7 +1,7 @@
 package gui.nonbuttonfeatures;
 
 import static java.nio.file.StandardCopyOption.*;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import java.io.File;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +20,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.paint.Color;
 
 public class TurtleImageFeature extends VBox {
-    public TurtleImageFeature(ButtonHolderDrawer parentDrawer) {
+    public TurtleImageFeature(OptionsHolderDrawer parentDrawer) {
         this.setHeight(parentDrawer.getHeight());
         this.getChildren().add(new Label("Image-drop"));
         this.setStyle("-fx-background-color: green");

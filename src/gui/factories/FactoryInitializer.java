@@ -16,6 +16,7 @@ public class FactoryInitializer {
     public static final String CLEAR_GRID_FACTORY = "ClearGridFactory";
     public static final String WORKSPACE_VARIABLE_FACTORY = "WorkspaceVariableFactory";
     public static final String WORKSPACE_COMMAND_FACTORY = "WorkspaceCommandFactory";
+    public static final String SCREEN_COLOR_FACTORY = "ScreenColorFactory";
 
     /**
      * Makes the object factories

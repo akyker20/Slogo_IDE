@@ -1,16 +1,17 @@
-package gui.componentdrawers.buttonholder;
+package gui.componentdrawers.optionsholder;
 
 import gui.componentdrawers.ComponentDrawer;
-import gui.componentdrawers.buttonholder.tabs.OptionsTab;
+import gui.componentdrawers.optionsholder.tabs.OptionsTab;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
 
-public class ButtonHolderDrawer extends ComponentDrawer {
+public class OptionsHolderDrawer extends ComponentDrawer {
     private TabPane myButtonHolder;
 
-    public ButtonHolderDrawer (String name) {
+    public OptionsHolderDrawer (String name) {
         super(name);
         myButtonHolder = new TabPane();
         myButtonHolder.setId("tabPane");
@@ -24,7 +25,7 @@ public class ButtonHolderDrawer extends ComponentDrawer {
      * after the tabs are initialized with their corresponding features.
      * @param optionsTabs
      */
-    public void addTabs (OptionsTab[] optionsTabs) {
+    public void addTabs (Tab[] optionsTabs) {
         myButtonHolder.getTabs().addAll(optionsTabs);
     }
 }

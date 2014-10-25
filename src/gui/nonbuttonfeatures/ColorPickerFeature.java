@@ -1,7 +1,7 @@
 package gui.nonbuttonfeatures;
 
 import gui.buttonfeatures.ButtonFeature;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import javafx.scene.control.ColorPicker;
 
 /**
@@ -11,7 +11,7 @@ import javafx.scene.control.ColorPicker;
  *
  */
 public abstract class ColorPickerFeature extends ColorPicker {
-    public ColorPickerFeature (ButtonHolderDrawer parentDrawer) {
+    public ColorPickerFeature (OptionsHolderDrawer parentDrawer) {
         parentDrawer.drawShape(new ColorPickerFeature[]{this});
         setPrefSize(ButtonFeature.BUTTON_WIDTH, ButtonFeature.BUTTON_HEIGHT);
     }
