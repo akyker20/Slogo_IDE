@@ -21,7 +21,7 @@ import com.sun.javafx.geom.Point2D;
  */
 public class TurtleNode extends ImageView {
 
-    private static final String DEFAULT_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/turtle_image2.png";
+    private static final String DEFAULT_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/default_turtle.png";
     private static final String SELECTED_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/selected_turtle.png";
 
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.06;
