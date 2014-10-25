@@ -20,6 +20,16 @@ public class Turtle {
 		myHeading = DEFAULT_TURTLE_HEADING;
 		shape = new Shape("/src/resources/guiResources/turtleImages/default_turtle.png");
 	}
+	
+	public Turtle(Turtle turtle){
+		pen = new Pen(turtle.pen);
+		myHeading = turtle.myHeading;
+		myLocation = turtle.myLocation;
+		myOpacity = turtle.myOpacity;
+		turtleShowing = turtle.turtleShowing;
+		myID = turtle.myID*941083987; // large prime number
+		shape = new Shape(turtle.shape.getPath());
+	}
 
 
 	public void showTurtle() {

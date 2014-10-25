@@ -19,6 +19,7 @@ public class TurtleFactory extends ObjectFactory {
     public static final String OPACITY = "opacity";
     public static final String TURTLE_IMAGE_ID = "turtleImageID";
 	public static final String IMAGE_PATH = "imagePath";
+	public static final String DELETION_FLAG = "deletionFlag";
 
 
     private TurtleNodes myTurtleNodes;

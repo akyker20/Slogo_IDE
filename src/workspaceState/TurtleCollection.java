@@ -6,6 +6,7 @@ import java.util.List;
 public class TurtleCollection {
 	private List<Turtle> turtles = new ArrayList<Turtle>();
 	private List<Turtle> activeTurtles  = new ArrayList<Turtle>();
+	private List<Turtle> turtleStamps = new ArrayList<Turtle>();
 	private int IDCounter = 0;
 	
 	public void addTurtle(Turtle someTurtle) {
@@ -29,5 +30,17 @@ public class TurtleCollection {
 
 	public Turtle getLastActiveTurtle() {
 		return activeTurtles.get(activeTurtles.size() - 1);
+	}
+	
+	public void addStamp(Turtle stamp){
+		turtleStamps.add(stamp);
+	}
+	
+	public List<Turtle> getStamps(){
+		return turtleStamps;
+	}
+	
+	public void removeAllStamps(){
+		turtleStamps.clear();
 	}
 }
