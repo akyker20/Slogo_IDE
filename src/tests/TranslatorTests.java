@@ -10,7 +10,7 @@ import org.junit.Test;
 import translator.Translator;
 
 
-public class TranslatorTest {
+public class TranslatorTests {
 	
 	@Test
 	public void TranslatorRegExTest() throws IOException{
