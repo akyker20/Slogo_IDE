@@ -30,13 +30,14 @@ public class Workspace extends Tab {
     private ObjectFactory[] myObjectFactories;
     private WorkspaceDataHolder myDataHolder;
     private BorderPane myPane;
+    private int myID;
 
     public Workspace(SlogoGraphics control, WorkspaceParameters screenParams, 
-                     WorkspaceParameters penParams, WorkspaceDataHolder dataHolder) {
+                     WorkspaceParameters penParams, WorkspaceDataHolder dataHolder, int id) {
         myControl = control;
         myDataHolder = dataHolder;
         myTurtleNodes = new TurtleNodes(this);
-        
+        myID = id; 
         
         myPane = createPane();
         myComponentDrawers = ComponentBuilder.build(myPane, myTurtleNodes);
@@ -118,5 +119,9 @@ public class Workspace extends Tab {
             activeTurtleStr += node.getTurtleID();
         }
         parseCommandString("Tell [ " + activeTurtleStr.trim() + " ]");
+    }
+
+    public int getWorkspaceID () {
+        return myID;
     }
 }
