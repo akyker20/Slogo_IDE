@@ -6,6 +6,7 @@ public class Pen {
 
 	private boolean isPenDown = true;
 	private Color myPenColor;
+	private double thickness = 1;
 
 	public void togglePenDown() {
 		isPenDown = true;
@@ -25,5 +26,9 @@ public class Pen {
 
 	public void setPenColor(Color myPenColor) {
 		this.myPenColor = myPenColor;
+	}
+	
+	public void setPenSize(double size){
+		thickness = size;
 	}
 }
