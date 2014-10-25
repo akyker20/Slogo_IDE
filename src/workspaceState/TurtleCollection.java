@@ -1,16 +1,20 @@
 package workspaceState;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TurtleCollection {
 	private List<Turtle> turtles = new ArrayList<Turtle>();
 	private List<Turtle> activeTurtles  = new ArrayList<Turtle>();
-	private int IDCounter = 0;
+	private Map<Integer, Turtle> IDtoTurtleMap = new HashMap<Integer, Turtle>();
+	private int IDCounter = 1;
 	
 	public void addTurtle(Turtle someTurtle) {
 		turtles.add(someTurtle);
 		someTurtle.setID(IDCounter);
+		IDtoTurtleMap.put(IDCounter, someTurtle);
 		activateTurtle(someTurtle);
 		IDCounter++;
 	}
@@ -29,5 +33,9 @@ public class TurtleCollection {
 
 	public Turtle getLastActiveTurtle() {
 		return activeTurtles.get(activeTurtles.size() - 1);
+	}
+	
+	public Turtle getTurtleWithID(Integer ID){
+		return IDtoTurtleMap.get(ID);
 	}
 }
