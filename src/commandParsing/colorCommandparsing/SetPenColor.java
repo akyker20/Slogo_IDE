@@ -21,7 +21,7 @@ public class SetPenColor extends OneInputFloatCommandParser {
 	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
 		double index = components.get(0);
-		for(Turtle t : workspace.turtles.getActiveTurtles()){
+		for (Turtle t : workspace.turtles.getActiveTurtles()) {
 			t.pen.setPenColor(workspace.colorPalette.getColor((int) index));
 		}
 		return index;
