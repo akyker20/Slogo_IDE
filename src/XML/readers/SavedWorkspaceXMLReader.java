@@ -32,6 +32,7 @@ public class SavedWorkspaceXMLReader {
     public static final String NAME = "name";
     private static final String VARIABLE = "variable";
     private static final String VALUE = "value";
+    private static final String SAVED_COMMANDS = "savedCommands";
     
     private File myFile;
     private Element myRoot;
@@ -60,16 +61,7 @@ public class SavedWorkspaceXMLReader {
         params.put(TOGGLE_GRID, screenParameters.getAttribute(TOGGLE_GRID));
         return params; 
     }
-    
-    public ObservableList<String> getUserDefinedCommands(){
-        ObservableList<String> userDefinedCommands = FXCollections.observableArrayList();           
-        NodeList commands = myRoot.getElementsByTagName(USER_DEFINED_CMDS);
-        for(int i = 0; i < commands.getLength(); i++){
-            userDefinedCommands.add(commands.item(i).getTextContent());
-        } 
-        return userDefinedCommands;
-    }
-    
+      
     public ObservableList<WorkspaceVariable> getWorkspaceVariables(){
         ObservableList<WorkspaceVariable> workspaceVariables = FXCollections.observableArrayList();           
         NodeList commands = myRoot.getElementsByTagName(VARIABLE);
@@ -80,5 +72,23 @@ public class SavedWorkspaceXMLReader {
                                                          Double.parseDouble(var.getAttribute(VALUE))));
         } 
         return workspaceVariables;
+    }
+    
+    public ObservableList<String> getUserDefinedCommands(){
+        return getStringListFromElements(USER_DEFINED_CMDS);
+    }
+    
+    public ObservableList<String> getSavedCommands () {
+        return getStringListFromElements(SAVED_COMMANDS);
+    }
+    
+    public ObservableList<String> getStringListFromElements(String elementName){
+        ObservableList<String> userDefinedCommands = FXCollections.observableArrayList();           
+        Element headNode = (Element) myRoot.getElementsByTagName(elementName).item(0);
+        NodeList commands = headNode.getElementsByTagName(COMMAND);
+        for(int i = 0; i < commands.getLength(); i++){
+            userDefinedCommands.add(commands.item(i).getTextContent());
+        } 
+        return userDefinedCommands;
     }
 }

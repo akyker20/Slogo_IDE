@@ -8,17 +8,16 @@
 	
 	<userDefinedCommands>
 		<command>
-			TO circle
-  				REPEAT 180 [ FD 1 RT 2 ]
-			END
+TO circle
+	REPEAT 180 [ FD 1 RT 2 ]
+END
 		</command>	
 	</userDefinedCommands>
 	
 	<savedCommands>
 		<command> fd 100 </command>
 		<command> pen up </command>
-		<command> right 20
-				  fd 100 </command>
+		<command> right 20</command>
 	</savedCommands>
 	
 	<variables>

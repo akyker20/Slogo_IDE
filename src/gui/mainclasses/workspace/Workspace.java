@@ -12,7 +12,6 @@ import gui.mainclasses.FeatureInitializer;
 import gui.mainclasses.GUIController;
 import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,15 +33,14 @@ public class Workspace extends Tab {
     private ObservableList<String> myPreviousCommandsList;
     private ObservableList<String> myUserDefinedCommandList;
     private BorderPane myPane;
-    private TurtleNodes myTurtleNodes;
-    private SlogoGraphics myControl;
     public static final int SCREEN_WIDTH = 700;
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
     public Workspace(GUIController guiControl, SlogoGraphics control, WorkspaceParameters screenParams, 
                      WorkspaceParameters penParams, ObservableList<String> userDefinedCommands,
-                     ObservableList<WorkspaceVariable> workspaceVariables) 
+                     ObservableList<WorkspaceVariable> workspaceVariables,
+                     ObservableList<String> savedCommands)
             throws ParserConfigurationException, SAXException, IOException{
         final TurtleNodes turtleNodes = new TurtleNodes();
         myPane = createPane();
@@ -56,7 +54,7 @@ public class Workspace extends Tab {
                 myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                 turtleNodes);
 
-        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList, screenParams, myUserDefinedCommandList);
+        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList, screenParams, myUserDefinedCommandList, savedCommands);
     }
 
     private BorderPane createPane() {

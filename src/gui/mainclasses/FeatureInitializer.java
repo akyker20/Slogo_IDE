@@ -48,7 +48,8 @@ public class FeatureInitializer {
     public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 
                              ObservableList<WorkspaceVariable> workspaceVariables,
                              ObservableList<String> previousCommandsList, WorkspaceParameters screenParameters,
-                             ObservableList<String> userDefinedCommands) {
+                             ObservableList<String> userDefinedCommands,
+                             ObservableList<String> savedCommands) {
 
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
         ButtonHolderDrawer buttonHolder = 
@@ -69,7 +70,7 @@ public class FeatureInitializer {
         new CommandLineFeature(commandLineDrawer, control);
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, workspaceVariables, control);
 
-        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer);
+        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer, savedCommands);
 
 
 

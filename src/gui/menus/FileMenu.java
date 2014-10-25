@@ -29,43 +29,7 @@ public class FileMenu extends Menu {
     public FileMenu() throws ParserConfigurationException, SAXException, IOException {
         this.setText("File");
         
-        //use Lambda notation and make these open HTML help pages...
-        MenuItem loadGrid = new MenuItem("Load Grid");
-        loadGrid.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                System.out.println("Code to open previous grid config...");
-            }
-        });
-        
-        MenuItem loadCommands = new MenuItem("Load Commands");
-//        loadCommands.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override public void handle(ActionEvent e) {
-//                try {
-//                    SignificantCommandsDrawer currentDrawer = (SignificantCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SIGNIFICANT_COMMANDS_DRAWER);
-//                    currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser(SAVED_COMMAND_FILES_DIR)));
-//                }
-//                catch (SAXException | IOException | ParserConfigurationException e1) {
-//                    // TODO Auto-generated catch block
-//                    e1.printStackTrace();
-//                }
-//            }
-//        });
-        
-        MenuItem saveCommands = new MenuItem("Save Commands");
-//        saveCommands.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override public void handle(ActionEvent e) {
-//                try {
-//                    SavedCommandsTab currentDrawer = (SavedCommandsTab) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SAVED_COMMANDS);
-//                    SavedCommandsXMLWriter.writeFile(currentDrawer.getCommands());
-//                }
-//                catch (TransformerException | ParserConfigurationException e1) {
-//                    // TODO Auto-generated catch block
-//                    e1.printStackTrace();
-//                }
-//            }
-//        });
-        
-        
+         
         MenuItem loadWorkspace = new MenuItem("Load Workspace");
         loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -74,7 +38,8 @@ public class FileMenu extends Menu {
                     GUIController.myWorkspaceManager.addWorkspace(
                                  reader.getScreenParameters(), reader.getPenParams(), 
                                  reader.getUserDefinedCommands(),
-                                 reader.getWorkspaceVariables());
+                                 reader.getWorkspaceVariables(),
+                                 reader.getSavedCommands());
                     
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
@@ -91,7 +56,8 @@ public class FileMenu extends Menu {
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
+                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), 
+                                                                  FXCollections.observableArrayList(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
                 }
                 catch (ParserConfigurationException | SAXException | IOException e1) {
                     // TODO Auto-generated catch block
@@ -100,7 +66,7 @@ public class FileMenu extends Menu {
             }
         });
         
-        this.getItems().addAll(loadGrid, loadCommands, saveCommands, loadWorkspace, newWorkspace);
+        this.getItems().addAll(loadWorkspace, newWorkspace);
     }
     
     /**
