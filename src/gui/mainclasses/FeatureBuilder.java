@@ -49,6 +49,7 @@ public class FeatureBuilder {
 
     public static void init (Workspace workspace, Map<String, ComponentDrawer> drawerMap, WorkspaceParameters screenParameters, WorkspaceDataHolder dataHolder) {
 
+        
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentBuilder.SCREEN_DRAWER);
         OptionsHolderDrawer optionsHolder = 
                 (OptionsHolderDrawer) drawerMap.get(ComponentBuilder.BUTTON_HOLDER_DRAWER);
@@ -67,17 +68,13 @@ public class FeatureBuilder {
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
                                                                                       dataHolder.getMyPreviousCommandsList());
         new CommandLineFeature(commandLineDrawer, workspace);
-
         new WorkspaceVariablesFeature(workspaceVariablesDrawer, dataHolder.getMyVariablesList(), workspace);
-
         SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer, dataHolder.getMySavedCommandsList());
-
-        new ErrorDisplayFeature(errorDrawer);
-        
+        new ErrorDisplayFeature(errorDrawer);    
         new TurtleScreenFeature(gridDrawer, screenParameters);
 
         
-        
+           
         
         GeneralOptionsTab generalOptions = 
                 new GeneralOptionsTab(
@@ -91,7 +88,8 @@ public class FeatureBuilder {
                         );
 
         PenOptionsTab penOptions = 
-                new PenOptionsTab(new Node[]{
+                new PenOptionsTab(
+                                  new Node[]{
                                              new PenUpOrDownFeature(optionsHolder, workspace),
                                              new PenTypeFeature(optionsHolder, workspace),
                                              new PenColorPickerFeature(optionsHolder, workspace),

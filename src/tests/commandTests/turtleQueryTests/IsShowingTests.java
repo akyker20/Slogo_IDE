@@ -2,10 +2,8 @@ package tests.commandTests.turtleQueryTests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import gui.factories.TurtleFactory;
-
+import gui.factories.turtlefactory.TurtleFactory;
 import org.junit.Test;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import tests.commandTests.CommandTester;

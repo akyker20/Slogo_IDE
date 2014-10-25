@@ -1,11 +1,11 @@
-package gui.factories.nodes;
+package gui.factories.turtlefactory;
 
+import gui.mainclasses.workspace.Workspace;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
@@ -13,18 +13,18 @@ public class TurtleNodes {
     
     public static final String TURTLE_IMAGE_ID = "turtleImageID";
   
-    private Map<String, TurtleNode> myMap = new HashMap<String, TurtleNode>();
+    private List<TurtleNode> myTurtleNodes = new ArrayList<TurtleNode>();
+    private Workspace myWorkspace;
+    
+    public TurtleNodes(Workspace workspace){
+        myWorkspace = workspace;
+    }
 
-    /**
-     * Looks up the turtle node based on its image id. This is used in the turtle
-     * factory generateShape method when it is trying to determine if a new turtle
-     * has been created or an old turtle is being updated.
-     * @param imageID
-     * @return
-     */
-    public TurtleNode lookupNode (String imageID) {
-        if(myMap.containsKey(imageID)){
-            return myMap.get(imageID);
+    public TurtleNode getTurtleWithID(String imageID) {
+        for(TurtleNode node:myTurtleNodes){
+            if(node.getTurtleID().equals(imageID)) {
+                return node;
+            }
         }
         return null;
     }
@@ -36,8 +36,8 @@ public class TurtleNodes {
      * @throws FileNotFoundException
      */
     public Node[] addTurtleNode(Map<String, String> params) throws FileNotFoundException {
-        TurtleNode newTurtleNode = new TurtleNode(params);
-        myMap.put(params.get(TURTLE_IMAGE_ID), newTurtleNode);
+        TurtleNode newTurtleNode = new TurtleNode(params, myWorkspace);
+        myTurtleNodes.add(newTurtleNode);
         return new ImageView[]{ newTurtleNode };
     }
 
@@ -46,7 +46,7 @@ public class TurtleNodes {
      * drawable object arrives.
      */
     public void clearTurtleNodes() {
-        myMap.clear();
+        myTurtleNodes.clear();
     }
 
     /**
@@ -55,7 +55,7 @@ public class TurtleNodes {
      * @return List of active turtle nodes.
      */
     public List<TurtleNode> getActiveNodes () {
-       return myMap.values().stream()
+       return myTurtleNodes.stream()
                .filter(TurtleNode::isSelected)
                .collect(Collectors.toList());
     }

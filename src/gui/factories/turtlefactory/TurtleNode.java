@@ -1,7 +1,7 @@
-package gui.factories.nodes;
+package gui.factories.turtlefactory;
 
 import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.TurtleFactory;
+import gui.mainclasses.workspace.Workspace;
 import gui.turtlescreenwrap.CoordinateChanger;
 import gui.turtlescreenwrap.TesselationMapper;
 import java.io.File;
@@ -32,8 +32,12 @@ public class TurtleNode extends ImageView {
             TURTLE_IMAGE_HEIGHT_RATIO;
 
     private boolean isSelected;
+    private Workspace myWorkspace;
+    private String myID;
 
-    public TurtleNode(Map<String, String> params) throws FileNotFoundException {
+    public TurtleNode(Map<String, String> params, Workspace workspace) throws FileNotFoundException {
+        myWorkspace = workspace;
+        myID = params.get(TurtleNodes.TURTLE_IMAGE_ID);    
         updateImage(DEFAULT_TURTLE_IMAGEPATH);
         updatePosition(params);
         setOnMouseClicked(event->selectTurtle());
@@ -93,6 +97,8 @@ public class TurtleNode extends ImageView {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+        myWorkspace.notifyOfTurtleSelectionChange();
     }
 
     /**
@@ -109,5 +115,9 @@ public class TurtleNode extends ImageView {
     
     public boolean isSelected(){
         return isSelected;
+    }
+
+    public String getTurtleID () {
+       return myID;
     }
 }

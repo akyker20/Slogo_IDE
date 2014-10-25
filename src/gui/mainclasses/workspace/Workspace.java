@@ -5,8 +5,8 @@ import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryBuilder;
 import gui.factories.ObjectFactory;
-import gui.factories.nodes.TurtleNode;
-import gui.factories.nodes.TurtleNodes;
+import gui.factories.turtlefactory.TurtleNode;
+import gui.factories.turtlefactory.TurtleNodes;
 import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureBuilder;
 import gui.mainclasses.StageInitializer;
@@ -35,7 +35,9 @@ public class Workspace extends Tab {
                      WorkspaceParameters penParams, WorkspaceDataHolder dataHolder) {
         myControl = control;
         myDataHolder = dataHolder;
-        myTurtleNodes = new TurtleNodes();
+        myTurtleNodes = new TurtleNodes(this);
+        
+        
         myPane = createPane();
         myComponentDrawers = ComponentBuilder.build(myPane, myTurtleNodes);
         myObjectFactories = FactoryBuilder
@@ -43,7 +45,6 @@ public class Workspace extends Tab {
                       myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
         FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
         this.setContent(myPane);
-
     }
 
     private BorderPane createPane() {
@@ -85,10 +86,6 @@ public class Workspace extends Tab {
         }
     }
 
-    public Map<String, ComponentDrawer> getComponentDrawers() {
-        return myComponentDrawers;
-    }
-
     /**
      * Adds a command to the previous commands list view. Adds the command to the front
      * of the list so it will be displayed first in the view.
@@ -113,5 +110,13 @@ public class Workspace extends Tab {
      */
     public void parseDrawableObject (DrawableObject poll) {
         DrawableObjectParser.parseDrawableObject(poll, myComponentDrawers, myObjectFactories);
+    }
+
+    public void notifyOfTurtleSelectionChange () {
+        String activeTurtleStr = "";
+        for(TurtleNode node:myTurtleNodes.getActiveNodes()){
+            activeTurtleStr += node.getTurtleID();
+        }
+        parseCommandString("Tell [ " + activeTurtleStr.trim() + " ]");
     }
 }
