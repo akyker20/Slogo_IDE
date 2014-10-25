@@ -7,7 +7,6 @@ import gui.mainclasses.workspace.WorkspaceDataHolder;
 
 public class FactoryBuilder {
 
-    // Probably put in a config file eventually
     public static final String LINE_FACTORY = "LineFactory";
     public static final String TURTLE_FACTORY = "TurtleFactory";
     public static final String ERROR_FACTORY = "ErrorFactory";

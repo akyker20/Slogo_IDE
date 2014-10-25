@@ -2,18 +2,12 @@ package gui.mainclasses;
 
 import gui.mainclasses.workspace.WorkspaceManager;
 import gui.menus.MainMenuInitializer;
-import java.io.IOException;
 import java.util.Queue;
 import java.util.ResourceBundle;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
 import Control.SlogoGraphics;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 
@@ -31,23 +25,16 @@ public class GUIController {
     private WorkspaceManager myWorkspaceManager;
 
     /**
-     * Constructor that initializes GUI variables and features
-     *
+     * 
      * @param stage
-     * @param control SlogoGraphics object that has access to GUI-related method calls
-     * @throws IOException 
-     * @throws SAXException 
-     * @throws ParserConfigurationException 
-     * @throws RunTimeNullPointerException 
-     * @throws RunTimeDivideByZeroException 
-     * @throws CompileTimeParsingException 
+     * @param control
      */
     public GUIController (Stage stage, SlogoGraphics control)   {
         GUI_TEXT = LocaleInitializer.init();
         myPane = StageInitializer.init(stage);
         myWorkspaceManager = new WorkspaceManager(control);               
         myPane.setTop(MainMenuInitializer.init(myWorkspaceManager));
-        myPane.setCenter(myWorkspaceManager.getTabPane());
+        myPane.setCenter(myWorkspaceManager);
         myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
     }
 

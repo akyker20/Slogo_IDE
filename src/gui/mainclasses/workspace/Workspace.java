@@ -1,7 +1,7 @@
 package gui.mainclasses.workspace;
 
-import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentBuilder;
+import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryBuilder;
 import gui.factories.ObjectFactory;
@@ -9,14 +9,12 @@ import gui.factories.nodes.TurtleNode;
 import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureBuilder;
-import gui.mainclasses.GUIController;
+import gui.mainclasses.StageInitializer;
 import java.io.IOException;
 import java.util.Map;
 import javafx.scene.control.Tab;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
 import Control.SlogoGraphics;
 import XML.workspaceparams.WorkspaceParameters;
 import commandParsing.exceptions.CompileTimeParsingException;
@@ -25,17 +23,13 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 public class Workspace extends Tab {
-
+    
+    private SlogoGraphics myControl;
+    private TurtleNodes myTurtleNodes;
     private Map<String, ComponentDrawer> myComponentDrawers;
     private ObjectFactory[] myObjectFactories;
     private WorkspaceDataHolder myDataHolder;
     private BorderPane myPane;
-    private SlogoGraphics myControl;
-
-    private TurtleNodes myTurtleNodes;
-    public static final int SCREEN_WIDTH = 700;
-    public static final int SCREEN_HEIGHT = 700;
-    public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
     public Workspace(SlogoGraphics control, WorkspaceParameters screenParams, 
                      WorkspaceParameters penParams, WorkspaceDataHolder dataHolder) {
@@ -43,19 +37,18 @@ public class Workspace extends Tab {
         myDataHolder = dataHolder;
         myTurtleNodes = new TurtleNodes();
         myPane = createPane();
-        this.setContent(myPane);
-        myComponentDrawers = ComponentBuilder.init(myPane, myTurtleNodes);
+        myComponentDrawers = ComponentBuilder.build(myPane, myTurtleNodes);
         myObjectFactories = FactoryBuilder
                 .init(myDataHolder, (TurtleScreenDrawer) 
                       myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
-
         FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
+        this.setContent(myPane);
 
     }
 
     private BorderPane createPane() {
         BorderPane pane = new BorderPane();
-        pane.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        pane.setPrefSize(StageInitializer.SCREEN_WIDTH, StageInitializer.SCREEN_HEIGHT);
         return pane;
     }
 
