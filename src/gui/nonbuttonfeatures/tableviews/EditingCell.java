@@ -1,10 +1,11 @@
-package gui.nonbuttonfeatures.workspacevariables;
+package gui.nonbuttonfeatures.tableviews;
 
 import java.io.IOException;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import Control.SlogoGraphics;
+import gui.mainclasses.workspace.Workspace;
 import gui.variableslist.WorkspaceVariable;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableCell;
@@ -23,10 +24,10 @@ import javafx.scene.input.KeyEvent;
 public class EditingCell extends TableCell<WorkspaceVariable, Double> {
 
     private TextField textField;
-    private SlogoGraphics myControl;
+    private Workspace myWorkspace;
 
-    public EditingCell(SlogoGraphics control) {
-        myControl = control;
+    public EditingCell(Workspace workspace) {
+        myWorkspace = workspace;
         textField = new TextField();
         textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
     }
@@ -59,15 +60,11 @@ public class EditingCell extends TableCell<WorkspaceVariable, Double> {
                 if (t.getCode() == KeyCode.ENTER) {
                     Double newValue = Double.parseDouble(textField.getText());
                     commitEdit(newValue);
-                    try {
-                        WorkspaceVariable selectedVariable = EditingCell.this.getTableView().getSelectionModel().getSelectedItem();
-                        myControl.parseCommandString("set " + selectedVariable.getMyName() + " " + newValue);
-                    }
-                    catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                            | RunTimeNullPointerException | IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+
+                    WorkspaceVariable selectedVariable = EditingCell.this.getTableView().getSelectionModel().getSelectedItem();
+                    myWorkspace.parseCommandString("set " + selectedVariable.getMyName() + " " + newValue);
+
+
                 }
             }
         });

@@ -1,6 +1,7 @@
-package gui.nonbuttonfeatures.workspacevariables;
+package gui.nonbuttonfeatures.tableviews;
 
 import gui.componentdrawers.WorkspaceVariablesDrawer;
+import gui.mainclasses.workspace.Workspace;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableCell;
@@ -8,17 +9,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
-import Control.SlogoGraphics;
 
 public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
     @SuppressWarnings("unchecked")
     public WorkspaceVariablesFeature(WorkspaceVariablesDrawer parentDrawer, ObservableList<WorkspaceVariable> data, 
-                                     SlogoGraphics control){
+                                     Workspace workspace){
 
         Callback<TableColumn<WorkspaceVariable, Double>, TableCell<WorkspaceVariable, Double>> cellFactory =
                 new Callback<TableColumn<WorkspaceVariable, Double>, TableCell<WorkspaceVariable, Double>>() {
             public TableCell<WorkspaceVariable, Double> call(TableColumn<WorkspaceVariable, Double> p) {
-                return new EditingCell(control);
+                return new EditingCell(workspace);
             }
         };
 

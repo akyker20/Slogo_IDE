@@ -6,7 +6,8 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import Control.SlogoGraphics;
 import gui.buttonfeatures.ButtonFeature;
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.mainclasses.workspace.Workspace;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
@@ -23,10 +24,10 @@ public class PenThicknessSliderFeature extends Slider {
     
     private static final String SET_PEN_SIZE = "SETPS";
 
-    private SlogoGraphics myControl;
+    private Workspace myWorkspace;
 
-    public PenThicknessSliderFeature(ButtonHolderDrawer parentDrawer, SlogoGraphics control){
-        myControl = control;
+    public PenThicknessSliderFeature(OptionsHolderDrawer parentDrawer, Workspace workspace){
+        myWorkspace = workspace;
         setSliderProperties();
         setChangeListener();
         parentDrawer.drawShape(new PenThicknessSliderFeature[]{this});
@@ -41,14 +42,7 @@ public class PenThicknessSliderFeature extends Slider {
         this.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
                                 Number oldVal, Number newVal) {
-                try {
-                    myControl.parseCommandString(SET_PEN_SIZE + " " + newVal);
-                }
-                catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                        | RunTimeNullPointerException | IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                    myWorkspace.parseCommandString(SET_PEN_SIZE + " " + newVal);
             }
         });
     }

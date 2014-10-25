@@ -1,15 +1,15 @@
 package gui.factories;
 
-import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.ComponentBuilder;
 import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.nodes.NullNode;
+import gui.factories.turtlefactory.NullNode;
 import java.util.Map;
 import javafx.scene.Node;
 
 public class EmptyPaneFactory extends ObjectFactory {
 
-    public static final String PARENT = ComponentInitializer.GRID_DRAWER;
-    public static final String TYPE = FactoryInitializer.CLEAR_GRID_FACTORY;
+    public static final String PARENT = ComponentBuilder.SCREEN_DRAWER;
+    public static final String TYPE = FactoryBuilder.CLEAR_GRID_FACTORY;
     
     private TurtleScreenDrawer myTurtleScreen;
 

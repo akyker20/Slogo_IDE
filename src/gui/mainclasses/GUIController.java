@@ -1,35 +1,12 @@
 package gui.mainclasses;
 
-import gui.commandlist.WorkspaceCommand;
-import gui.componentdrawers.ComponentDrawer;
-import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.SavedCommandsDrawer;
-import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.FactoryInitializer;
-import gui.factories.ObjectFactory;
-import gui.factories.nodes.TurtleNodes;
-import gui.mainclasses.workspace.Workspace;
 import gui.mainclasses.workspace.WorkspaceManager;
 import gui.menus.MainMenuInitializer;
-import gui.variableslist.WorkspaceVariable;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.TabPane;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
 import Control.SlogoGraphics;
 import drawableobject.DrawableObject;
 
@@ -45,26 +22,24 @@ public class GUIController {
 
     private BorderPane myPane;
     public static ResourceBundle GUI_TEXT;
-    public static WorkspaceManager myWorkspaceManager;
+    private WorkspaceManager myWorkspaceManager;
 
     /**
-     * Constructor that initializes GUI variables and features
-     *
+     * 
      * @param stage
-     * @param control SlogoGraphics object that has access to GUI-related method calls
-     * @throws IOException 
-     * @throws SAXException 
-     * @throws ParserConfigurationException 
+     * @param control
      */
-
-    public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
+    public GUIController (Stage stage, SlogoGraphics control)   {
         GUI_TEXT = LocaleInitializer.init();
+        myPane = StageInitializer.init(stage);
+        myWorkspaceManager = new WorkspaceManager(control);               
+        myPane.setTop(MainMenuInitializer.init(myWorkspaceManager));
+        myPane.setCenter(myWorkspaceManager);
+        myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
+    }
 
-        myPane = StageInitializer.init(stage, control);
-        myWorkspaceManager = new WorkspaceManager(this,control);               
-        myPane.setTop(MainMenuInitializer.init());
-        myPane.setCenter(myWorkspaceManager.getTabPane());
-
+    private void moveActiveTurtlesInActiveWorkspace (KeyEvent event) {
+        myWorkspaceManager.getActiveWorkspace().moveActiveTurtles(event);
     }
 
     /**
@@ -76,12 +51,8 @@ public class GUIController {
             myWorkspaceManager.getActiveWorkspace().parseDrawableObject(objectQueue.poll());
         }
     }
-
-    public void clearCurrentWorkspace () {
-        myWorkspaceManager.getActiveWorkspace().clearCurrentWorkspace();
-    }
-
-    public void addPreviousCommand (String command) {
-        myWorkspaceManager.getActiveWorkspace().addPreviousCommand(command);    
+    
+    public WorkspaceManager getWorkspaceManager(){
+        return myWorkspaceManager;
     }
 }

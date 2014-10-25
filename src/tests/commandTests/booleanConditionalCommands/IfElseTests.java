@@ -2,13 +2,10 @@ package tests.commandTests.booleanConditionalCommands;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.LineFactory;
-import gui.factories.TurtleFactory;
-
+import gui.factories.turtlefactory.TurtleFactory;
 import org.junit.Test;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
-
 import drawableobject.DrawableObject;
 import tests.commandTests.CommandTester;
 

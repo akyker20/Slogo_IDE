@@ -2,8 +2,8 @@ package tests.commandTests.recurringCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.LineFactory;
-import gui.factories.TurtleFactory;
 import gui.factories.WorkspaceVariableFactory;
+import gui.factories.turtlefactory.TurtleFactory;
 import org.junit.Test;
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;

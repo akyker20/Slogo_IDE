@@ -32,5 +32,8 @@ public interface SlogoGraphics {
 
     Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, 
     RunTimeDivideByZeroException, RunTimeNullPointerException;
+    
+    public void createWorkspaceState(int workspaceID);
+    public void setActiveWorkspaceState(int workspaceID);
 
 }

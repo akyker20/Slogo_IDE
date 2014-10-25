@@ -1,6 +1,7 @@
 package gui.nonbuttonfeatures;
 
 import gui.componentdrawers.CommandLineDrawer;
+import gui.mainclasses.workspace.Workspace;
 import java.io.IOException;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextArea;
@@ -16,7 +17,7 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 
 public class CommandLineFeature extends TextArea {
 
-    public CommandLineFeature (CommandLineDrawer parentDrawer, SlogoGraphics control) {
+    public CommandLineFeature (CommandLineDrawer parentDrawer, Workspace workspace) {
 
         KeyCombination newLineCombination = new KeyCodeCombination(KeyCode.ENTER,KeyCombination.SHIFT_DOWN);
 
@@ -28,17 +29,10 @@ public class CommandLineFeature extends TextArea {
                     CommandLineFeature.this.positionCaret(CommandLineFeature.this.getLength());
                 }
                 else if (e.getCode().equals(KeyCode.ENTER)) {
-                    try {
-                        String uncleanCommand = CommandLineFeature.this.getText();
-                        String cleanedCommand = cleanCommand(uncleanCommand);
-                        if(!cleanedCommand.isEmpty()){
-                            control.parseCommandString(cleanedCommand);
-                        }
-                    }
-                    catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                            | RunTimeNullPointerException | IOException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+                    String uncleanCommand = CommandLineFeature.this.getText();
+                    String cleanedCommand = cleanCommand(uncleanCommand);
+                    if(!cleanedCommand.isEmpty()){
+                        workspace.parseCommandString(cleanedCommand);
                     }
                     CommandLineFeature.this.clear();
                 }

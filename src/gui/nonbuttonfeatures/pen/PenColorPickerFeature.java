@@ -1,6 +1,7 @@
 package gui.nonbuttonfeatures.pen;
 
-import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
+import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.mainclasses.workspace.Workspace;
 import gui.nonbuttonfeatures.ColorPickerFeature;
 import java.io.IOException;
 import Control.SlogoGraphics;
@@ -20,11 +21,11 @@ public class PenColorPickerFeature extends ColorPickerFeature {
     
     private static final String PEN_COLOR = "PC";
     
-    private SlogoGraphics myControl;
+    private Workspace myWorkspace;
     
-    public PenColorPickerFeature (ButtonHolderDrawer parentDrawer, SlogoGraphics control) {
+    public PenColorPickerFeature (OptionsHolderDrawer parentDrawer, Workspace workspace) {
         super(parentDrawer);
-        myControl = control;
+        myWorkspace = workspace;
         setOnAction(event -> changePenColor());
     }
 
@@ -33,13 +34,6 @@ public class PenColorPickerFeature extends ColorPickerFeature {
      * of the pen has been changed.
      */
     private void changePenColor () {
-        try {
-            myControl.parseCommandString(PEN_COLOR + " " + getPickerColor());
-        }
-        catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                | RunTimeNullPointerException | IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            myWorkspace.parseCommandString(PEN_COLOR + " " + getPickerColor());
     }
 }

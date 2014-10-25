@@ -1,8 +1,7 @@
 package gui.nonbuttonfeatures;
 
-import java.util.List;
 import gui.componentdrawers.CommandLineDrawer;
-import gui.componentdrawers.SavedCommandsDrawer;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -14,9 +13,8 @@ public class SavedCommandsFeature extends ListView<String> {
     
     private ObservableList<String> myCommands;
     
-    public SavedCommandsFeature(SavedCommandsDrawer parentDrawer, 
-                                CommandLineDrawer commandLineDrawer){
-        myCommands = FXCollections.observableArrayList();
+    public SavedCommandsFeature(CommandLineDrawer commandLineDrawer, ObservableList<String> savedCommands){
+        myCommands = savedCommands;
         this.setItems(myCommands);
         this.setPrefHeight(168);
         this.setLayoutY(20);
@@ -36,8 +34,6 @@ public class SavedCommandsFeature extends ListView<String> {
                 }
             }
         });
-        parentDrawer.setFeature(this);
-        parentDrawer.drawShape(new SavedCommandsFeature[]{this});
     }
 
     /**

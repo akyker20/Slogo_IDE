@@ -1,11 +1,8 @@
 package commandParsing.drawableObectGenerationInterfaces;
 
 import gui.factories.LineFactory;
-
 import java.util.HashMap;
 import java.util.Map;
-
-import javafx.scene.paint.Color;
 import workspaceState.Location;
 import workspaceState.Pen;
 import drawableobject.DrawableObject;

@@ -1,6 +1,6 @@
 package gui.factories;
 
-import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.ComponentBuilder;
 import gui.turtlescreenwrap.CoordinateChanger;
 import gui.turtlescreenwrap.Point2DPair;
 import gui.turtlescreenwrap.TurtleScreenWrap;
@@ -19,8 +19,8 @@ public class LineFactory extends ObjectFactory {
 
     public static final String ORIGIN = "origin";
     public static final String DESTINATION = "destination";
-    public static final String PARENT = ComponentInitializer.GRID_DRAWER;
-    public static final String TYPE = FactoryInitializer.LINE_FACTORY;
+    public static final String PARENT = ComponentBuilder.SCREEN_DRAWER;
+    public static final String TYPE = FactoryBuilder.LINE_FACTORY;
 	public static final String LINE_WIDTH = "lineWidth";
 	public static final String LINE_COLOR = "lineColor";
 

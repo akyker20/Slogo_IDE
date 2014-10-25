@@ -1,7 +1,6 @@
 package Control;
 
 import gui.mainclasses.GUIController;
-import gui.variableslist.WorkspaceVariable;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,13 +16,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import translator.Translator;
-import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.NullCommandParser;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.LanguageFileNotFoundException;
 import commandParsing.exceptions.PropertyFileAccessException;
+import commandParsing.exceptions.RunTimeDivideByZeroException;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
@@ -38,75 +38,84 @@ import drawableobject.DrawableObject;
 
 public class SlogoControl implements SlogoGraphics, SlogoBackend {
 
-	private GUIController myGUI;
-	Translator translator;
-	WorkspaceState workspace;
+    private GUIController myGUI;
+    Translator translator;
+    WorkspaceState workspace;
+    private WorkspaceState activeState;
+    private Map<Integer,WorkspaceState> myWorkspaceStates;
 
-	/**
-	 * Initializes the GUIController and BackEndController, providing a
-	 * SlogoGraphics instance of itself to the front-end and a SlogoBackEnd
-	 * instance of itself to the back-end
-	 *
-	 * @param stage
-	 * @throws IOException
-	 * @throws SAXException
-	 * @throws ParserConfigurationException
-	 */
+    /**
+     * Initializes the GUIController and BackEndController, providing a
+     * SlogoGraphics instance of itself to the front-end and a SlogoBackEnd
+     * instance of itself to the back-end
+     *
+     * @param stage
+     * @throws RunTimeNullPointerException 
+     * @throws RunTimeDivideByZeroException 
+     * @throws CompileTimeParsingException 
+     * @throws IOException
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     */
 
-	public SlogoControl(Stage stage) {
-		try {
-			myGUI = new GUIController(stage, this);
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			workspace = new WorkspaceState();
-		} catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    public SlogoControl(Stage stage)  {
+    	myWorkspaceStates = new HashMap<Integer,WorkspaceState>();
+        myGUI = new GUIController(stage, this);
+    }
 
-	@Override
-	public Queue<DrawableObject> parseCommandString(String command) {
-		Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
+    public void createWorkspaceState(int workspaceID) {
+        try {
+            workspace = new WorkspaceState();
+            myWorkspaceStates.put(workspaceID, workspace);
+            activeState = workspace;
+        } catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    public void setActiveWorkspaceState(int workspaceID) {
+    	activeState = myWorkspaceStates.get(workspaceID);
+    }
+    
+    @Override
+    public Queue<DrawableObject> parseCommandString(String command) {
+        Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 
-		Iterator<String> translatedCommands = workspace.translator.translate(command);
+        Iterator<String> translatedCommands = workspace.translator.translate(command);
+        while (translatedCommands.hasNext()) {
+            CommandParser parser = new NullCommandParser(workspace);
+            try {
+                parser = CommandParser.createParser(translatedCommands.next(), workspace);
+            } catch (CompileTimeParsingException e) {
+                objectQueue.clear();
+                objectQueue.add(e.generateErrorMessage());
+            }
+            try {
+                parser.parse(translatedCommands, objectQueue);
+            } catch (SLOGOException e) {
+                objectQueue.clear();
+                objectQueue.add(e.generateErrorMessage());
+            }
+        }
+        myGUI.getWorkspaceManager().getActiveWorkspace().addPreviousCommand(command);
+        drawDrawableObjects(objectQueue);
+        return objectQueue;
+    }
 
-		while (translatedCommands.hasNext()) {
-			CommandParser parser = new NullCommandParser(workspace);
-			try {
-				parser = CommandParser.createParser(translatedCommands.next(), workspace);
-			} catch (CompileTimeParsingException e) {
-				objectQueue.clear();
-				objectQueue.add(e.generateErrorMessage());
-			}
-			try {
-				parser.parse(translatedCommands, objectQueue);
-				myGUI.addPreviousCommand(command);
-			} catch (SLOGOException e) {
-				objectQueue.clear();
-				objectQueue.add(e.generateErrorMessage());
-			}
-		}
-		drawDrawableObjects(objectQueue);
-		return objectQueue;
-	}
+    @Override
+    public void drawDrawableObjects(Queue<DrawableObject> objects) {
+        myGUI.drawDrawableObjects(objects);
+    }
 
-	@Override
-	public void drawDrawableObjects(Queue<DrawableObject> objects) {
-		myGUI.drawDrawableObjects(objects);
-	}
+    @Override
+    public DrawableObject setVariable(String name, int value) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public DrawableObject setVariable(String name, int value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void saveCommandsToFunction(String commands) {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void saveCommandsToFunction(String commands) {
+        // TODO Auto-generated method stub
+    }
 }

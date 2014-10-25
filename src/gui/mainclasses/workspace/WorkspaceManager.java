@@ -1,48 +1,56 @@
 package gui.mainclasses.workspace;
 
-import gui.mainclasses.GUIController;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
 import Control.SlogoGraphics;
+import XML.workspaceparams.WorkspaceParameters;
 
-public class WorkspaceManager {
-    private Workspace activeWorkspace;
-    private List<Workspace> myWorkspaces;
-    private GUIController myGuiController;
+public class WorkspaceManager extends TabPane {
+
+    public static Workspace myActiveWorkspace;
+
+    private static int workspaceID = 0;
+
     private SlogoGraphics myControl;
-    private TabPane tabPane;
-    
-    private static int workspaceID = 1;
-    
     private int myWorkspaceID;
 
-    public WorkspaceManager(GUIController guiControl, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException  {
-        myGuiController = guiControl;
+    public WorkspaceManager(SlogoGraphics control)    {
         myControl = control;
-        myWorkspaces = new ArrayList<Workspace>();
-        tabPane = new TabPane();     
-        addWorkspace();
+        initializeTabPane(); 
+        addWorkspace(new WorkspaceParameters(), new WorkspaceParameters(), 
+                     new WorkspaceDataHolder());
     }
 
-    public void addWorkspace() throws ParserConfigurationException, SAXException, IOException {
-        Workspace newWorkspace = new Workspace(myGuiController,myControl);
-        myWorkspaces.add(newWorkspace);
-        tabPane.getTabs().add(newWorkspace); 
-        //set active workspace as most most recenty added workspace
-        activeWorkspace = newWorkspace;
+    private void initializeTabPane () {    
+        this
+        .getSelectionModel()
+        .selectedItemProperty()
+        .addListener(
+                     new ChangeListener<Tab>() {
+                         @Override
+                         public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+                             myActiveWorkspace = (Workspace) t1;
+                         }
+                     }
+                );  
+    }
+
+    public void addWorkspace(WorkspaceParameters screenParams, 
+                             WorkspaceParameters penParams, 
+                             WorkspaceDataHolder dataHolder) {
+        Workspace newWorkspace = new Workspace(myControl, screenParams, penParams, dataHolder);
         newWorkspace.setText("Workspace " + workspaceID);
-        workspaceID++;
-    }
-    
-    public Workspace getActiveWorkspace() {
-        return activeWorkspace;
+        
+        getTabs().add(newWorkspace); 
+        myActiveWorkspace = newWorkspace;
+        myControl.createWorkspaceState(workspaceID);
+        myControl.setActiveWorkspaceState(myWorkspaceID);
+        workspaceID++;     
     }
 
-    public TabPane getTabPane() {
-        return tabPane;
+    public Workspace getActiveWorkspace() {
+        return myActiveWorkspace;
     }
 }

@@ -1,4 +1,4 @@
-package XML;
+package XML.writers;
 
 import java.io.File;
 import java.util.List;
