@@ -2,7 +2,7 @@
 <workspace>
 	
 	<parameters>
-		<screen color="white" toggleGrid="true" />
+		<screen color="LightGray" toggleGrid="true" />
 		<pen color="Black" pixels="1" type="solid" status="up" />
 	</parameters>
 	

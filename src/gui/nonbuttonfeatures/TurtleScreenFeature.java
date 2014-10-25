@@ -27,7 +27,7 @@ public class TurtleScreenFeature extends Pane {
             parentDrawer.toggleGrid();
         }
         if(screenParams.hasParam(COLOR)) {
-            parentDrawer.changeScreenColor("-fx-background-color: " + COLOR);
+            parentDrawer.changeScreenColor("-fx-background-color: " + screenParams.extractParams(COLOR));
         }
     }
 }
