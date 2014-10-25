@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 public class Pen {
 
 	private boolean isPenDown = true;
-	private Color myPenColor;
+	private Color myPenColor = Color.BLACK;
 	private double thickness = 1;
 
 	public void togglePenDown() {
