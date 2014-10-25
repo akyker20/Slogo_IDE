@@ -41,13 +41,14 @@ public class Workspace extends Tab {
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
     public Workspace(GUIController guiControl, SlogoGraphics control, WorkspaceParameters screenParams, 
-                     WorkspaceParameters penParams, ObservableList<String> userDefinedCommands) 
+                     WorkspaceParameters penParams, ObservableList<String> userDefinedCommands,
+                     ObservableList<WorkspaceVariable> workspaceVariables) 
             throws ParserConfigurationException, SAXException, IOException{
         final TurtleNodes turtleNodes = new TurtleNodes();
         myPane = createPane();
         this.setContent(myPane);
         myComponentDrawers = ComponentInitializer.init(myPane, turtleNodes);
-        myVariablesList = FXCollections.observableArrayList();
+        myVariablesList = workspaceVariables;
         myPreviousCommandsList = FXCollections.observableArrayList();
         myUserDefinedCommandList = userDefinedCommands;
         

@@ -21,4 +21,9 @@
 				  fd 100 </command>
 	</savedCommands>
 	
+	<variables>
+		<variable name="x" value="1.0" />
+		<variable name="y" value="2.0" />
+	</variables>
+	
 </workspace>

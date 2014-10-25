@@ -1,5 +1,6 @@
 package XML.readers;
 
+import gui.variableslist.WorkspaceVariable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,6 +30,8 @@ public class SavedWorkspaceXMLReader {
     public static final String PIXELS = "pixels";
     public static final String USER_DEFINED_CMDS = "userDefinedCommands";
     public static final String NAME = "name";
+    private static final String VARIABLE = "variable";
+    private static final String VALUE = "value";
     
     private File myFile;
     private Element myRoot;
@@ -65,5 +68,17 @@ public class SavedWorkspaceXMLReader {
             userDefinedCommands.add(commands.item(i).getTextContent());
         } 
         return userDefinedCommands;
+    }
+    
+    public ObservableList<WorkspaceVariable> getWorkspaceVariables(){
+        ObservableList<WorkspaceVariable> workspaceVariables = FXCollections.observableArrayList();           
+        NodeList commands = myRoot.getElementsByTagName(VARIABLE);
+        for(int i = 0; i < commands.getLength(); i++){
+            Element var = (Element) commands.item(i);
+            workspaceVariables.add(
+                                   new WorkspaceVariable(var.getAttribute(NAME), 
+                                                         Double.parseDouble(var.getAttribute(VALUE))));
+        } 
+        return workspaceVariables;
     }
 }

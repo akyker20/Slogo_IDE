@@ -7,8 +7,8 @@ import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.ComponentInitializer;
 import gui.componentdrawers.ErrorDrawer;
-import gui.componentdrawers.TurtleScreenDrawer;
 import gui.componentdrawers.PreviousCommandsDrawer;
+import gui.componentdrawers.TurtleScreenDrawer;
 import gui.componentdrawers.WorkspaceVariablesDrawer;
 import gui.componentdrawers.buttonholder.ButtonHolderDrawer;
 import gui.componentdrawers.buttonholder.tabs.GeneralOptionsTab;
@@ -19,10 +19,10 @@ import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
 import gui.componentdrawers.significantcommands.tabs.UserDefinedCommandsTab;
 import gui.nonbuttonfeatures.CommandLineFeature;
 import gui.nonbuttonfeatures.ErrorDisplayFeature;
-import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 import gui.nonbuttonfeatures.SetTurtleScreenColorFeature;
+import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.UserDefinedCommandsFeature;
 import gui.nonbuttonfeatures.pen.PenColorPickerFeature;
 import gui.nonbuttonfeatures.pen.PenThicknessSliderFeature;
@@ -30,13 +30,12 @@ import gui.nonbuttonfeatures.pen.PenTypeFeature;
 import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
 import gui.nonbuttonfeatures.workspacevariables.WorkspaceVariablesFeature;
 import gui.variableslist.WorkspaceVariable;
-import java.util.List;
 import java.util.Map;
-import XML.workspaceparams.WorkspaceParameters;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import Control.SlogoGraphics;
+import XML.workspaceparams.WorkspaceParameters;
 
 /**
  * The purpose of this class is to initialize all of the features, both button features
@@ -47,9 +46,9 @@ import Control.SlogoGraphics;
 public class FeatureInitializer {
 
     public static void init (Map<String, ComponentDrawer> drawerMap, GUIController guiController, SlogoGraphics control, 
-                             ObservableList<WorkspaceVariable> variablesList,
+                             ObservableList<WorkspaceVariable> workspaceVariables,
                              ObservableList<String> previousCommandsList, WorkspaceParameters screenParameters,
-                             List<String> userDefinedCommands) {
+                             ObservableList<String> userDefinedCommands) {
 
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentInitializer.GRID_DRAWER);
         ButtonHolderDrawer buttonHolder = 
@@ -68,7 +67,7 @@ public class FeatureInitializer {
         PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
                                                                                       previousCommandsList);
         new CommandLineFeature(commandLineDrawer, control);
-        new WorkspaceVariablesFeature(workspaceVariablesDrawer, variablesList, control);
+        new WorkspaceVariablesFeature(workspaceVariablesDrawer, workspaceVariables, control);
 
         SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer);
 

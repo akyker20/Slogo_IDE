@@ -1,6 +1,7 @@
 package gui.mainclasses.workspace;
 
 import gui.mainclasses.GUIController;
+import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +30,13 @@ public class WorkspaceManager {
         myControl = control;
         myWorkspaces = new ArrayList<Workspace>();
         tabPane = new TabPane();     
-        addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList());
+        addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
     }
 
     public void addWorkspace(WorkspaceParameters screenParams, WorkspaceParameters penParams, 
-                             ObservableList<String> userDefinedCommands) throws ParserConfigurationException, SAXException, IOException {
-        Workspace newWorkspace = new Workspace(myGuiController, myControl, screenParams, penParams, userDefinedCommands);
+                             ObservableList<String> userDefinedCommands,
+                             ObservableList<WorkspaceVariable> workspaceVariables) throws ParserConfigurationException, SAXException, IOException {
+        Workspace newWorkspace = new Workspace(myGuiController, myControl, screenParams, penParams, userDefinedCommands, workspaceVariables);
         myWorkspaces.add(newWorkspace);
         tabPane.getTabs().add(newWorkspace); 
         //set active workspace as most most recenty added workspace

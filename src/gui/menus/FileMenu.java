@@ -1,13 +1,8 @@
 package gui.menus;
 
-import gui.componentdrawers.ComponentInitializer;
-import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
-import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
 import gui.mainclasses.GUIController;
-import java.awt.List;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,12 +11,9 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
-import XML.readers.SavedCommandsXMLReader;
 import XML.readers.SavedWorkspaceXMLReader;
 import XML.workspaceparams.DefaultWorkspaceParameters;
-import XML.writers.SavedCommandsXMLWriter;
 
 /**
  * Class will be used to load files such as previously saved commands or
@@ -32,6 +24,7 @@ import XML.writers.SavedCommandsXMLWriter;
 public class FileMenu extends Menu {
     
     private static final String SAVED_COMMAND_FILES_DIR = "./savedcommands";
+    protected static final String SAVED_WORKSPACE_FILES_DIR = "./WorkspaceFiles";
 
     public FileMenu() throws ParserConfigurationException, SAXException, IOException {
         this.setText("File");
@@ -49,7 +42,7 @@ public class FileMenu extends Menu {
 //            @Override public void handle(ActionEvent e) {
 //                try {
 //                    SignificantCommandsDrawer currentDrawer = (SignificantCommandsDrawer) GUIController.myWorkspaceManager.getActiveWorkspace().getComponentDrawers().get(ComponentInitializer.SIGNIFICANT_COMMANDS_DRAWER);
-//                    currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser()));
+//                    currentDrawer.loadCommands(SavedCommandsXMLReader.getSavedCommands(createFileChooser(SAVED_COMMAND_FILES_DIR)));
 //                }
 //                catch (SAXException | IOException | ParserConfigurationException e1) {
 //                    // TODO Auto-generated catch block
@@ -77,10 +70,11 @@ public class FileMenu extends Menu {
         loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    SavedWorkspaceXMLReader reader = new SavedWorkspaceXMLReader(createFileChooser()); 
+                    SavedWorkspaceXMLReader reader = new SavedWorkspaceXMLReader(createFileChooser(SAVED_WORKSPACE_FILES_DIR)); 
                     GUIController.myWorkspaceManager.addWorkspace(
                                  reader.getScreenParameters(), reader.getPenParams(), 
-                                 reader.getUserDefinedCommands());
+                                 reader.getUserDefinedCommands(),
+                                 reader.getWorkspaceVariables());
                     
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
@@ -97,7 +91,7 @@ public class FileMenu extends Menu {
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList());
+                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
                 }
                 catch (ParserConfigurationException | SAXException | IOException e1) {
                     // TODO Auto-generated catch block
@@ -114,14 +108,14 @@ public class FileMenu extends Menu {
      * This will be the only button not disabled to start the simulation.
      * @return 
      */
-    private File createFileChooser () {
+    private File createFileChooser (String defaultDir) {
         FileChooser myFileChooser = new FileChooser();
         myFileChooser.setTitle("Select XML File");
         FileChooser.ExtensionFilter extentionFilter =
                 new FileChooser.ExtensionFilter(
                                                 "XML files (*.xml)", "*.xml");
         myFileChooser.getExtensionFilters().add(extentionFilter);
-        myFileChooser.setInitialDirectory(new File(SAVED_COMMAND_FILES_DIR));
+        myFileChooser.setInitialDirectory(new File(defaultDir));
         return myFileChooser.showOpenDialog(new Stage());
     }
 }
