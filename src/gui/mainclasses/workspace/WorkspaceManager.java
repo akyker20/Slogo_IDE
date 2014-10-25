@@ -15,6 +15,10 @@ public class WorkspaceManager {
     private GUIController myGuiController;
     private SlogoGraphics myControl;
     private TabPane tabPane;
+    
+    private static int workspaceID = 1;
+    
+    private int myWorkspaceID;
 
     public WorkspaceManager(GUIController guiControl, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException  {
         myGuiController = guiControl;
@@ -29,7 +33,9 @@ public class WorkspaceManager {
         myWorkspaces.add(newWorkspace);
         tabPane.getTabs().add(newWorkspace); 
         //set active workspace as most most recenty added workspace
-        activeWorkspace = myWorkspaces.get(myWorkspaces.size()-1);
+        activeWorkspace = newWorkspace;
+        newWorkspace.setText("Workspace " + workspaceID);
+        workspaceID++;
     }
     
     public Workspace getActiveWorkspace() {

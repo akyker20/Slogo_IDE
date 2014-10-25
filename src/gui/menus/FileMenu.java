@@ -65,7 +65,7 @@ public class FileMenu extends Menu {
         });
         
         MenuItem newWorkspace = new MenuItem("New Workspace");
-        saveCommands.setOnAction(new EventHandler<ActionEvent>() {
+        newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
                     GUIController.myWorkspaceManager.addWorkspace();
@@ -77,7 +77,7 @@ public class FileMenu extends Menu {
             }
         });
         
-        this.getItems().addAll(loadGrid, loadCommands, saveCommands,newWorkspace);
+        this.getItems().addAll(loadGrid, loadCommands, saveCommands, newWorkspace);
     }
     
     /**
