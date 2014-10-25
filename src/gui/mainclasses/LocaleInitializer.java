@@ -11,7 +11,7 @@ public class LocaleInitializer {
                                      Locale.FRENCH
         };
         ResourceBundle guiText =
-                ResourceBundle.getBundle("gui.resources/LabelsBundle", supportedLocales[0]);
+                ResourceBundle.getBundle("resources.guiResources/LabelsBundle", supportedLocales[0]);
         return guiText;
     }
 }
