@@ -20,10 +20,10 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 	protected double loopVariableBound;
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		initializeLoopVariableParameters(commandString, objectQueue);
-		extractCommandsBetweenBraces(commandString);
+		initializeLoopVariableParameters(commandStringIterator, objectQueue);
+		extractCommandsBetweenBraces(commandStringIterator);
 
 		while (loopVariableIsIncrementable()) {
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
@@ -32,12 +32,12 @@ public abstract class RecurringCommand extends StructuralCommand implements Vari
 		return returnValue;
 	}
 
-	abstract protected void initializeLoopVariableParameters(Iterator<String> commandString,
+	abstract protected void initializeLoopVariableParameters(Iterator<String> commandStringIterator,
 			Queue<DrawableObject> objectQueue) throws SLOGOException;
 
-	protected void basicLoopVariableInitialization(Iterator<String> commandString,
+	protected void basicLoopVariableInitialization(Iterator<String> commandStringIterator,
 			Queue<DrawableObject> objectQueue) throws SLOGOException {
-		accumulateComponents(commandString, 1, objectQueue);
+		accumulateComponents(commandStringIterator, 1, objectQueue);
 		loopVariableBound = expressionComponents.get(0);
 		incrementAmount = 1;
 		workspace.variables.storeVariable(loopVariable, 1);

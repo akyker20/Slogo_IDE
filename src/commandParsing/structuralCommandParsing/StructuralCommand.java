@@ -24,31 +24,31 @@ public abstract class StructuralCommand extends CommandParser {
 	protected List<String> enclosedCommands;
 	protected double returnValue;
 
-	protected void checkForOpeningBrace(Iterator<String> commandString) throws CompileTimeParsingException {
-		String stringOfInterest = commandString.next();
+	protected void checkForOpeningBrace(Iterator<String> commandStringIterator) throws CompileTimeParsingException {
+		String stringOfInterest = commandStringIterator.next();
 		if (!workspace.translator.matchesListStartPattern(stringOfInterest)) {
 			throw new CompileTimeParsingException("expected opening brace");
 		}
 	}
 
-	protected void checkForClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException {
-		String stringOfInterest = commandString.next();
+	protected void checkForClosingBrace(Iterator<String> commandStringIterator) throws CompileTimeParsingException {
+		String stringOfInterest = commandStringIterator.next();
 		if (!workspace.translator.matchesListEndPattern(stringOfInterest)) {
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 	}
 
-	protected void extractCommandsBetweenBraces(Iterator<String> commandString)
+	protected void extractCommandsBetweenBraces(Iterator<String> commandStringIterator)
 			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		List<String> commandList = new ArrayList<String>();
-		checkForOpeningBrace(commandString);
-		String stringOfInterest = commandString.next();
-		while (!workspace.translator.matchesListEndPattern(stringOfInterest) & commandString.hasNext()) {
+		checkForOpeningBrace(commandStringIterator);
+		String stringOfInterest = commandStringIterator.next();
+		while (!workspace.translator.matchesListEndPattern(stringOfInterest) & commandStringIterator.hasNext()) {
 			commandList.add(stringOfInterest);
-			stringOfInterest = commandString.next();
+			stringOfInterest = commandStringIterator.next();
 		}
 
-		if (!commandString.hasNext() && !workspace.translator.matchesListEndPattern(stringOfInterest)) {
+		if (!commandStringIterator.hasNext() && !workspace.translator.matchesListEndPattern(stringOfInterest)) {
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 
@@ -71,38 +71,37 @@ public abstract class StructuralCommand extends CommandParser {
 		enclosedCommands = Collections.<String> emptyList();
 	}
 
-	protected void ignoreUntilClosingBrace(Iterator<String> commandString) throws CompileTimeParsingException {
-		checkForOpeningBrace(commandString);
-		boolean stoppedParsingBeforeEndOfString = findBrace(commandString);
+	protected void ignoreUntilClosingBrace(Iterator<String> commandStringIterator) throws CompileTimeParsingException {
+		checkForOpeningBrace(commandStringIterator);
+		boolean stoppedParsingBeforeEndOfString = findBrace(commandStringIterator);
 		if (!stoppedParsingBeforeEndOfString) {
 			throw new CompileTimeParsingException("expected closing brace");
 		}
 	}
 
-	private boolean findBrace(Iterator<String> commandString) {
+	private boolean findBrace(Iterator<String> commandStringIterator) {
 		do {
-			String stringOfInterest = commandString.next();
+			String stringOfInterest = commandStringIterator.next();
 			if (workspace.translator.matchesListEndPattern(stringOfInterest)) {
 				return true;
 			} else if (workspace.translator.matchesListStartPattern(stringOfInterest)) {
-				findBrace(commandString);
+				findBrace(commandStringIterator);
 			}
-		} while (commandString.hasNext());
+		} while (commandStringIterator.hasNext());
 		return false;
 	}
 
-	protected String getVariable(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	protected String getVariable(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		CommandParser commandParser = (CommandParser) createParser(commandString.next(), workspace);
+		CommandParser commandParser = (CommandParser) createParser(commandStringIterator.next(), workspace);
 		if (!(commandParser instanceof Variable)) {
 			throw new CompileTimeParsingException("expected variable name");
 		}
 		Variable variableParser = (Variable) commandParser;
 		try {
-			variableParser.parse(commandString, objectQueue);
+			variableParser.parse(commandStringIterator, objectQueue);
 		} catch (RunTimeDivideByZeroException | RunTimeNullPointerException e) {
 		}
-		String variableName = variableParser.getVariableName();
-		return variableName;
+		return variableParser.getVariableName();
 	}
 }

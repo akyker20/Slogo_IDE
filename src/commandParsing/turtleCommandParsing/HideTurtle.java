@@ -16,7 +16,7 @@ public class HideTurtle extends CommandParser implements TurtleGenerator {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
 		workspace.turtles.getActiveTurtles().stream().forEach(t -> {
 			t.hideTurtle();

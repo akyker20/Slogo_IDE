@@ -14,18 +14,18 @@ public class IfElse extends StructuralCommandOnBooleanSwitch {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
 
-		accumulateComponents(commandString, 1, objectQueue);
+		accumulateComponents(commandStringIterator, 1, objectQueue);
 		evaluateBooleanExpression();
 
 		if (booleanSwitch) {
-			extractCommandsBetweenBraces(commandString);
-			ignoreUntilClosingBrace(commandString);
+			extractCommandsBetweenBraces(commandStringIterator);
+			ignoreUntilClosingBrace(commandStringIterator);
 		} else {
-			ignoreUntilClosingBrace(commandString);
-			extractCommandsBetweenBraces(commandString);
+			ignoreUntilClosingBrace(commandStringIterator);
+			extractCommandsBetweenBraces(commandStringIterator);
 		}
 
 		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);

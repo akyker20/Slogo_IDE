@@ -16,15 +16,16 @@ public class UserInstruction extends CommandParser {
 	public UserInstruction(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
-
+	
+	String commandName;
 	private Command command;
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		String commandName = commandString.next();
+		commandName = commandStringIterator.next();
 		command = workspace.commands.fetchUserDefinedCommand(commandName);
-		accumulateComponents(commandString, command.getNumArguments(), objectQueue);
+		accumulateComponents(commandStringIterator, command.getNumArguments(), objectQueue);
 		for (int i = 0; i < command.getParameters().size(); i++) {
 			workspace.variables.storeVariable(command.getParameters().get(i), expressionComponents.get(i));
 		}
@@ -36,24 +37,23 @@ public class UserInstruction extends CommandParser {
 			returnValue = parser.parse(thisCommandIterator, objectQueue);
 		}
 		return returnValue;
-
 	}
 
 	@Override
-	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate,
+	protected void accumulateComponents(Iterator<String> commandStringIterator, int numberToAccumulate,
 			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		expressionComponents.clear();
 		while (expressionComponents.size() < numberToAccumulate) {
-			if (!commandString.hasNext()) {
+			if (!commandStringIterator.hasNext()) {
 				double defaultValueOfParameter = workspace.variables.fetchVariable(command.getParameters()
 						.get(expressionComponents.size()));
 				expressionComponents.add(defaultValueOfParameter);
 			} else {
-				String stringOfInterest = commandString.next();
+				String stringOfInterest = commandStringIterator.next();
 
 				if (isStringParsableAsCommand(stringOfInterest)) {
 					CommandParser commandParser = (CommandParser) createParser(stringOfInterest, workspace);
-					expressionComponents.add(commandParser.parse(commandString, objectQueue));
+					expressionComponents.add(commandParser.parse(commandStringIterator, objectQueue));
 				} else {
 					objectQueue.clear();
 					throw new CompileTimeParsingException(stringOfInterest);

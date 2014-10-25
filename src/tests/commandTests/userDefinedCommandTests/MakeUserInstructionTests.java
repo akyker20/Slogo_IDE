@@ -20,7 +20,7 @@ public class MakeUserInstructionTests extends CommandTester {
 	public void MakeCommandTest() throws SLOGOException {
 		resetTesterVariables();
 		setUpCommands("to command [ :var :varb :varc ] [ fd 20 ]");
-
+			
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);		

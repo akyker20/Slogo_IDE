@@ -17,10 +17,10 @@ public class Variable extends CommandParser {
 	private String variableName;
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
 
-		variableName = commandString.next();
+		variableName = commandStringIterator.next();
 		return workspace.variables.fetchVariable(variableName);
 	}
 

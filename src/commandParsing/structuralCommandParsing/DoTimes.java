@@ -15,14 +15,14 @@ public class DoTimes extends RecurringCommand {
 	}
 
 	@Override
-	protected void initializeLoopVariableParameters(Iterator<String> commandString,
+	protected void initializeLoopVariableParameters(Iterator<String> commandStringIterator,
 			Queue<DrawableObject> objectQueue) throws SLOGOException {
-		checkForOpeningBrace(commandString);
-		loopVariable = getVariable(commandString, objectQueue);
+		checkForOpeningBrace(commandStringIterator);
+		loopVariable = getVariable(commandStringIterator, objectQueue);
 		if (!workspace.translator.matchesVariablePattern(loopVariable)) {
 			throw new CompileTimeParsingException("expected variable name: " + loopVariable);
 		}
-		basicLoopVariableInitialization(commandString, objectQueue);
-		checkForClosingBrace(commandString);
+		basicLoopVariableInitialization(commandStringIterator, objectQueue);
+		checkForClosingBrace(commandStringIterator);
 	}
 }

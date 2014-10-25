@@ -15,10 +15,10 @@ public class For extends RecurringCommand {
 	}
 
 	@Override
-	protected void initializeLoopVariableParameters(Iterator<String> commandString,
+	protected void initializeLoopVariableParameters(Iterator<String> commandStringIterator,
 			Queue<DrawableObject> objectQueue) throws SLOGOException {
-		checkForOpeningBrace(commandString);
-		loopVariable = getVariable(commandString, objectQueue);
+		checkForOpeningBrace(commandStringIterator);
+		loopVariable = getVariable(commandStringIterator, objectQueue);
 		try {
 			if (!workspace.translator.matchesVariablePattern(loopVariable)) {
 				throw new CompileTimeParsingException("expected variable name: " + loopVariable);
@@ -27,11 +27,11 @@ public class For extends RecurringCommand {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		accumulateComponents(commandString, 3, objectQueue);
+		accumulateComponents(commandStringIterator, 3, objectQueue);
 		double start = expressionComponents.get(0);
 		loopVariableBound = expressionComponents.get(1);
 		incrementAmount = expressionComponents.get(2);
 		workspace.variables.storeVariable(loopVariable, start);
-		checkForClosingBrace(commandString);
+		checkForClosingBrace(commandStringIterator);
 	}
 }

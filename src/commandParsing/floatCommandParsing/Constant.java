@@ -15,8 +15,8 @@ public class Constant extends CommandParser {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		return Double.parseDouble(commandString.next());
+		return Double.parseDouble(commandStringIterator.next());
 	}
 }

@@ -20,21 +20,21 @@ public abstract class CommandParser {
 		workspace = someWorkspace;
 	}
 
-	public abstract double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public abstract double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException;
 
-	protected void accumulateComponents(Iterator<String> commandString, int numberToAccumulate,
+	protected void accumulateComponents(Iterator<String> commandStringIterator, int numberToAccumulate,
 			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		expressionComponents.clear();
 		while (expressionComponents.size() < numberToAccumulate) {
-			if (!commandString.hasNext()) {
+			if (!commandStringIterator.hasNext()) {
 				throw new CompileTimeParsingException("Ran out of bounds looking for next component");
 			}
-			String stringOfInterest = commandString.next();
+			String stringOfInterest = commandStringIterator.next();
 
 			if (isStringParsableAsCommand(stringOfInterest)) {
 				CommandParser commandParser = (CommandParser) createParser(stringOfInterest, workspace);
-				expressionComponents.add(commandParser.parse(commandString, objectQueue));
+				expressionComponents.add(commandParser.parse(commandStringIterator, objectQueue));
 			} else {
 				objectQueue.clear();
 				throw new CompileTimeParsingException(stringOfInterest);

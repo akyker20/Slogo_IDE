@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Queue;
 
 import workspaceState.WorkspaceState;
+import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.UserDefinedCommandGenerator;
+import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
+import commandParsing.variableCommandParsing.Variable;
 import drawableobject.DrawableObject;
 
 public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator {
@@ -21,14 +24,18 @@ public class MakeUserInstruction extends StructuralCommand implements UserDefine
 	private List<String> parameters = new ArrayList<String>();
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		String potentialCommandName = commandString.next();
+		CommandParser commandParser = (CommandParser) createParser(commandStringIterator.next(), workspace);
+		if (!(commandParser instanceof UserInstruction)) {
+			throw new CompileTimeParsingException("expected command name");
+		}
+		String potentialCommandName = commandStringIterator.next();
 		if (!isStringParsableAsCommand(potentialCommandName)) {
 			return 0;
 		}
 
-		extractCommandsBetweenBraces(commandString);
+		extractCommandsBetweenBraces(commandStringIterator);
 
 		Iterator<String> variableIterator = enclosedCommands.iterator();
 
@@ -42,7 +49,7 @@ public class MakeUserInstruction extends StructuralCommand implements UserDefine
 			}
 		}
 		int numArgs = parameters.size();
-		extractCommandsBetweenBraces(commandString);
+		extractCommandsBetweenBraces(commandStringIterator);
 		try {
 			Queue<DrawableObject> tempQueue = new LinkedList<DrawableObject>();
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), tempQueue);

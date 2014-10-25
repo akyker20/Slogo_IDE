@@ -14,9 +14,9 @@ public class Repeat extends RecurringCommand {
 	}
 
 	@Override
-	protected void initializeLoopVariableParameters(Iterator<String> commandString,
+	protected void initializeLoopVariableParameters(Iterator<String> commandStringIterator,
 			Queue<DrawableObject> objectQueue) throws SLOGOException {
 		loopVariable = ":repcount";
-		basicLoopVariableInitialization(commandString, objectQueue);
+		basicLoopVariableInitialization(commandStringIterator, objectQueue);
 	}
 }

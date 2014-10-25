@@ -15,7 +15,7 @@ public class IsShowing extends CommandParser {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
 		return workspace.turtles.getLastActiveTurtle().isTurtleShowing() ? 1 : 0;
 	}

@@ -17,9 +17,9 @@ public abstract class FloatInputCommandParser extends CommandParser {
 	}
 
 	@Override
-	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
+	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		accumulateComponents(commandString, getNumberOfArguments(), objectQueue);
+		accumulateComponents(commandStringIterator, getNumberOfArguments(), objectQueue);
 		return operateOnComponents(expressionComponents, objectQueue);
 	}
 
