@@ -32,6 +32,7 @@ public class Workspace extends Tab {
     private ObservableList<WorkspaceCommand> myCommandList;
     private ObservableList<String> myPreviousCommandsList;
     private ObservableList<String> myUserDefinedCommandList;
+    private ObservableList<String> mySavedCommandsList;
     private BorderPane myPane;
     public static final int SCREEN_WIDTH = 700;
     public static final int SCREEN_HEIGHT = 700;
@@ -49,12 +50,13 @@ public class Workspace extends Tab {
         myVariablesList = workspaceVariables;
         myPreviousCommandsList = FXCollections.observableArrayList();
         myUserDefinedCommandList = userDefinedCommands;
+        mySavedCommandsList = savedCommands;
         
         myObjectFactories = FactoryInitializer.init(myVariablesList, myCommandList, (TurtleScreenDrawer) 
                 myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
                 turtleNodes);
 
-        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList, screenParams, myUserDefinedCommandList, savedCommands);
+        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, myPreviousCommandsList, screenParams, myUserDefinedCommandList, mySavedCommandsList);
     }
 
     private BorderPane createPane() {
@@ -107,6 +109,8 @@ public class Workspace extends Tab {
     public void clearCurrentWorkspace () {
         myVariablesList.clear();
         myPreviousCommandsList.clear();
+        myUserDefinedCommandList.clear();
+        mySavedCommandsList.clear();
     }
 
     /**
