@@ -1,21 +1,17 @@
 package commandParsing.drawableObectGenerationInterfaces;
 
-import gui.commandlist.WorkspaceCommand;
-import gui.factories.WorkspaceCommandFactory;
-
+import gui.factories.UserDefinedCommandFactory;
 import java.util.HashMap;
 import java.util.Map;
-
 import drawableobject.DrawableObject;
 
 public interface UserDefinedCommandGenerator {
 
-	default public DrawableObject generateDrawableObjectRepresentingCommand(WorkspaceCommand command) {
-		String parent = WorkspaceCommandFactory.PARENT;
-		String type = WorkspaceCommandFactory.TYPE;
+	default public DrawableObject generateDrawableObjectRepresentingCommand(String command) {
+		String parent = UserDefinedCommandFactory.PARENT;
+		String type = UserDefinedCommandFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put("name", command.getMyName());
-		parameters.put("value", "" + command.getMyValue());
+		parameters.put("command", command);
 
 		return new DrawableObject(parent, type, parameters);
 	}

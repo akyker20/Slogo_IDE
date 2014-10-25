@@ -1,22 +1,17 @@
 package gui.mainclasses.workspace;
 
-import gui.commandlist.WorkspaceCommand;
 import gui.componentdrawers.ComponentDrawer;
-import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.ComponentBuilder;
 import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.FactoryInitializer;
+import gui.factories.FactoryBuilder;
 import gui.factories.ObjectFactory;
 import gui.factories.nodes.TurtleNode;
 import gui.factories.nodes.TurtleNodes;
 import gui.mainclasses.DrawableObjectParser;
-import gui.mainclasses.FeatureInitializer;
+import gui.mainclasses.FeatureBuilder;
 import gui.mainclasses.GUIController;
-import gui.nonbuttonfeatures.tableviews.ColorIndex;
-import gui.variableslist.WorkspaceVariable;
 import java.io.IOException;
 import java.util.Map;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Tab;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -33,53 +28,47 @@ public class Workspace extends Tab {
 
     private Map<String, ComponentDrawer> myComponentDrawers;
     private ObjectFactory[] myObjectFactories;
-    private ObservableList<WorkspaceVariable> myVariablesList;
-    private ObservableList<WorkspaceCommand> myCommandList;
-    private ObservableList<String> myPreviousCommandsList;
-    private ObservableList<String> myUserDefinedCommandList;
-    private ObservableList<String> mySavedCommandsList;
-    private ObservableList<ColorIndex> myColorIndexList;
+    private WorkspaceDataHolder myDataHolder;
     private BorderPane myPane;
     private SlogoGraphics myControl;
-    
-    private int myID;
+
     private TurtleNodes myTurtleNodes;
     public static final int SCREEN_WIDTH = 700;
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
     public Workspace(GUIController guiControl, SlogoGraphics control, WorkspaceParameters screenParams, 
-                     WorkspaceParameters penParams, ObservableList<String> userDefinedCommands,
-                     ObservableList<WorkspaceVariable> workspaceVariables,
-                     ObservableList<String> savedCommands)
+                     WorkspaceParameters penParams, WorkspaceDataHolder dataHolder)
                              throws ParserConfigurationException, SAXException, IOException{
         myControl = control;
+        myDataHolder = dataHolder;
         myTurtleNodes = new TurtleNodes();
         myPane = createPane();
         this.setContent(myPane);
-        myComponentDrawers = ComponentInitializer.init(myPane, myTurtleNodes);
-        myVariablesList = workspaceVariables;
+        myComponentDrawers = ComponentBuilder.init(myPane, myTurtleNodes);
+        myObjectFactories = FactoryBuilder
+                .init(myDataHolder, (TurtleScreenDrawer) 
+                      myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
 
-        myPreviousCommandsList = FXCollections.observableArrayList();
-        myUserDefinedCommandList = userDefinedCommands;
-        mySavedCommandsList = savedCommands;
-        
-        myObjectFactories = FactoryInitializer.init(myVariablesList, myCommandList, (TurtleScreenDrawer) 
+        FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
 
-                myComponentDrawers.get(ComponentInitializer.GRID_DRAWER),
-                myTurtleNodes);
-
-
-        FeatureInitializer.init(myComponentDrawers, guiControl, control, myVariablesList, 
-                                myPreviousCommandsList, screenParams, myUserDefinedCommandList, 
-                                mySavedCommandsList, myColorIndexList);
-        
     }
 
     private BorderPane createPane() {
         BorderPane pane = new BorderPane();
         pane.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         return pane;
+    }
+
+    public void parseCommandString(String command) {
+        try {
+            myControl.parseCommandString(command);
+        }
+        catch (CompileTimeParsingException | RunTimeDivideByZeroException
+                | RunTimeNullPointerException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void moveActiveTurtles (KeyEvent event) {
@@ -114,7 +103,7 @@ public class Workspace extends Tab {
      * @param command
      */
     public void addPreviousCommand (String command) {
-        myPreviousCommandsList.add(0, command);   
+        myDataHolder.getMyPreviousCommandsList().add(0, command);   
     }
 
     /**
@@ -122,11 +111,8 @@ public class Workspace extends Tab {
      * as well as the previous command log. This is called when the user
      * clicks the ClearWorkspace button feature in the options TabPane.
      */
-    public void clearCurrentWorkspace () {
-        myVariablesList.clear();
-        myPreviousCommandsList.clear();
-        myUserDefinedCommandList.clear();
-        mySavedCommandsList.clear();
+    public void clear() {
+        myDataHolder.clear();
     }
 
     /**

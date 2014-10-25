@@ -3,7 +3,7 @@ package gui.factories;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.ComponentBuilder;
 import gui.factories.nodes.NullNode;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.ObservableList;
@@ -11,8 +11,8 @@ import javafx.scene.Node;
 
 public class WorkspaceVariableFactory extends ObjectFactory {
     
-    public static final String PARENT = ComponentInitializer.WORKSPACE_VARIABLES;
-    public static final String TYPE = FactoryInitializer.WORKSPACE_VARIABLE_FACTORY;
+    public static final String PARENT = ComponentBuilder.WORKSPACE_VARIABLES;
+    public static final String TYPE = FactoryBuilder.WORKSPACE_VARIABLE_FACTORY;
     
     private ObservableList<WorkspaceVariable> myVariablesList;
 

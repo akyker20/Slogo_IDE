@@ -1,6 +1,7 @@
 package gui.menus;
 
-import gui.mainclasses.GUIController;
+import gui.mainclasses.workspace.WorkspaceDataHolder;
+import gui.mainclasses.workspace.WorkspaceManager;
 import java.io.File;
 import java.io.IOException;
 import javafx.collections.FXCollections;
@@ -24,10 +25,9 @@ import XML.workspaceparams.DefaultWorkspaceParameters;
  */
 public class FileMenu extends Menu {
 
-    private static final String SAVED_COMMAND_FILES_DIR = "./savedcommands";
     protected static final String SAVED_WORKSPACE_FILES_DIR = "./WorkspaceFiles";
 
-    public FileMenu()  {
+    public FileMenu(WorkspaceManager workspaceManager)  {
         this.setText("File");
 
 
@@ -36,12 +36,8 @@ public class FileMenu extends Menu {
             @Override public void handle(ActionEvent e) {
                 try {
                     SavedWorkspaceXMLReader reader = new SavedWorkspaceXMLReader(createFileChooser(SAVED_WORKSPACE_FILES_DIR)); 
-                    GUIController.myWorkspaceManager.addWorkspace(
-                                                                  reader.getScreenParameters(), reader.getPenParams(), 
-                                                                  reader.getUserDefinedCommands(),
-                                                                  reader.getWorkspaceVariables(),
-                                                                  reader.getSavedCommands());
-
+                    WorkspaceDataHolder dataHolder = reader.getWorkspaceDataHolder();
+                    workspaceManager.addWorkspace(reader.getScreenParameters(), reader.getPenParams(), dataHolder);
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block
@@ -51,14 +47,12 @@ public class FileMenu extends Menu {
         });
 
 
-
-
         MenuItem newWorkspace = new MenuItem("New Workspace");
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
-                    GUIController.myWorkspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), 
-                                                                  FXCollections.observableArrayList(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
+                    workspaceManager.addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), 
+                                                  new WorkspaceDataHolder());
                 }
                 catch (ParserConfigurationException | SAXException | IOException e1) {
                     // TODO Auto-generated catch block

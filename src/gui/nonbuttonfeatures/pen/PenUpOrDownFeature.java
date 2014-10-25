@@ -1,14 +1,10 @@
 package gui.nonbuttonfeatures.pen;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
-import java.io.IOException;
+import gui.mainclasses.workspace.Workspace;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import Control.SlogoGraphics;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
 
 /**
  * This class offers the user the ability to change whether the pen is
@@ -24,20 +20,13 @@ public class PenUpOrDownFeature extends PenChoiceBox {
     private static final String DOWN = "down";
     private static final String PEN = "pen";
 
-    public PenUpOrDownFeature(OptionsHolderDrawer parentDrawer, SlogoGraphics control){
+    public PenUpOrDownFeature(OptionsHolderDrawer parentDrawer, Workspace workspace){
         super(FXCollections.observableArrayList(DOWN, UP), parentDrawer);
-        
+
         this.valueProperty().addListener(new ChangeListener<String>(){
             @Override
             public void changed (ObservableValue<? extends String> arg0, String oldValue, String selectedValue) {
-                try {
-                    control.parseCommandString(PEN.concat(selectedValue));
-                }
-                catch (CompileTimeParsingException | RunTimeDivideByZeroException
-                        | RunTimeNullPointerException | IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } 
+                workspace.parseCommandString(PEN.concat(selectedValue));
             }      
         });
     }

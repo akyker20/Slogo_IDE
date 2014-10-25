@@ -1,8 +1,8 @@
 package tests.commandTests.inputlessCommandTests;
 
 import static org.junit.Assert.assertTrue;
-import gui.componentdrawers.ComponentInitializer;
-import gui.factories.FactoryInitializer;
+import gui.componentdrawers.ComponentBuilder;
+import gui.factories.FactoryBuilder;
 import gui.factories.TurtleFactory;
 
 import org.junit.Test;
@@ -26,8 +26,8 @@ public class ClearScreenTests extends CommandTester {
 		DrawableObject pane = objectQueue.poll();
 		DrawableObject turtle = objectQueue.poll();
 		
-		assertTrue(pane.getParent().equals(ComponentInitializer.GRID_DRAWER));
-		assertTrue(pane.getType().equals(FactoryInitializer.CLEAR_GRID_FACTORY));
+		assertTrue(pane.getParent().equals(ComponentBuilder.GRID_DRAWER));
+		assertTrue(pane.getType().equals(FactoryBuilder.CLEAR_GRID_FACTORY));
 		assertTrue(pane.getParameters().size()==0);
 		
 		assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));

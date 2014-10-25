@@ -2,6 +2,7 @@ package gui.buttonfeatures;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.mainclasses.GUIController;
+import gui.mainclasses.workspace.Workspace;
 
 /**
  * This class offers the user the ability to clear the current workspace
@@ -11,8 +12,8 @@ import gui.mainclasses.GUIController;
  *
  */
 public class ClearWorkspaceButtonFeature extends ButtonFeature {
-    public ClearWorkspaceButtonFeature (OptionsHolderDrawer parentDrawer, GUIController guiControl) {
+    public ClearWorkspaceButtonFeature (OptionsHolderDrawer parentDrawer, Workspace workspace) {
         super("clearWorkspace", parentDrawer);
-        setOnAction(event -> guiControl.clearCurrentWorkspace());
+        setOnAction(event -> workspace.clear());
     }
 }

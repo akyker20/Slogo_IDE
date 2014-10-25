@@ -1,12 +1,11 @@
 package XML.readers;
 
+import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.variableslist.WorkspaceVariable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.xml.parsers.DocumentBuilder;
@@ -34,11 +33,9 @@ public class SavedWorkspaceXMLReader {
     private static final String VALUE = "value";
     private static final String SAVED_COMMANDS = "savedCommands";
     
-    private File myFile;
     private Element myRoot;
     
     public SavedWorkspaceXMLReader(File file) throws ParserConfigurationException, FileNotFoundException, SAXException, IOException{
-        myFile = file;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new FileInputStream(file));
@@ -90,5 +87,10 @@ public class SavedWorkspaceXMLReader {
             userDefinedCommands.add(commands.item(i).getTextContent());
         } 
         return userDefinedCommands;
+    }
+
+    public WorkspaceDataHolder getWorkspaceDataHolder () {
+        return new WorkspaceDataHolder(getWorkspaceVariables(), FXCollections.observableArrayList(), getUserDefinedCommands(), 
+                                       getSavedCommands(), FXCollections.observableArrayList());
     }
 }

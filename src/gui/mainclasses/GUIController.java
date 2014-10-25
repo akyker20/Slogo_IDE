@@ -28,7 +28,7 @@ public class GUIController {
 
     private BorderPane myPane;
     public static ResourceBundle GUI_TEXT;
-    public static WorkspaceManager myWorkspaceManager;
+    private WorkspaceManager myWorkspaceManager;
 
     /**
      * Constructor that initializes GUI variables and features
@@ -48,7 +48,7 @@ public class GUIController {
 
         myPane = StageInitializer.init(stage);
         myWorkspaceManager = new WorkspaceManager(this,control);               
-        myPane.setTop(MainMenuInitializer.init());
+        myPane.setTop(MainMenuInitializer.init(myWorkspaceManager));
         myPane.setCenter(myWorkspaceManager.getTabPane());
         myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
 
@@ -67,12 +67,8 @@ public class GUIController {
             myWorkspaceManager.getActiveWorkspace().parseDrawableObject(objectQueue.poll());
         }
     }
-
-    public void clearCurrentWorkspace () {
-        myWorkspaceManager.getActiveWorkspace().clearCurrentWorkspace();
-    }
-
-    public void addPreviousCommand (String command) {
-        myWorkspaceManager.getActiveWorkspace().addPreviousCommand(command);    
+    
+    public WorkspaceManager getWorkspaceManager(){
+        return myWorkspaceManager;
     }
 }

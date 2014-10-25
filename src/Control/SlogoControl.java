@@ -94,7 +94,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
             }
             try {
                 parser.parse(translatedCommands, objectQueue);
-                myGUI.addPreviousCommand(command);
+                myGUI.getWorkspaceManager().getActiveWorkspace().addPreviousCommand(command);
             } catch (SLOGOException e) {
                 objectQueue.clear();
                 objectQueue.add(e.generateErrorMessage());

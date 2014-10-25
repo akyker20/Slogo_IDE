@@ -1,6 +1,6 @@
 package gui.factories;
 
-import gui.componentdrawers.ComponentInitializer;
+import gui.componentdrawers.ComponentBuilder;
 import gui.factories.nodes.TurtleNode;
 import gui.factories.nodes.TurtleNodes;
 
@@ -12,8 +12,8 @@ import javafx.scene.Node;
 
 public class TurtleFactory extends ObjectFactory {
 
-    public static final String PARENT = ComponentInitializer.GRID_DRAWER;
-    public static final String TYPE = FactoryInitializer.TURTLE_FACTORY;
+    public static final String PARENT = ComponentBuilder.SCREEN_DRAWER;
+    public static final String TYPE = FactoryBuilder.TURTLE_FACTORY;
     public static final String HEADING = "heading";
     public static final String LOCATION = "location";
     public static final String OPACITY = "opacity";

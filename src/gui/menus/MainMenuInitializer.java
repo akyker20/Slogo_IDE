@@ -1,17 +1,12 @@
 package gui.menus;
 
-import gui.componentdrawers.TurtleScreenDrawer;
-import gui.componentdrawers.significantcommands.tabs.SavedCommandsTab;
-import gui.mainclasses.workspace.Workspace;
-import java.io.IOException;
+import gui.mainclasses.workspace.WorkspaceManager;
 import javafx.scene.control.MenuBar;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
 
 public class MainMenuInitializer {
-    public static MenuBar init(){
+    public static MenuBar init(WorkspaceManager workspaceManager){
         MenuBar mainMenu = new MenuBar();
-        mainMenu.getMenus().addAll(new FileMenu(), new EditMenu(), new HelpMenu());
+        mainMenu.getMenus().addAll(new FileMenu(workspaceManager), new EditMenu(), new HelpMenu());
         return mainMenu;
     }
 }

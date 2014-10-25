@@ -45,8 +45,7 @@ public class WorkspaceManager {
                 );   
         //tabPane.get;
         try {
-            addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), FXCollections.observableArrayList(), FXCollections.observableArrayList(),
-                         FXCollections.observableArrayList());
+            addWorkspace(new DefaultWorkspaceParameters(), new DefaultWorkspaceParameters(), new WorkspaceDataHolder());
         }
         catch (ParserConfigurationException | SAXException | IOException e) {
             // TODO Auto-generated catch block
@@ -56,10 +55,9 @@ public class WorkspaceManager {
 
 
     public void addWorkspace(WorkspaceParameters screenParams, WorkspaceParameters penParams, 
-                             ObservableList<String> userDefinedCommands,
-                             ObservableList<WorkspaceVariable> workspaceVariables,
-                             ObservableList<String> savedCommands) throws ParserConfigurationException, SAXException, IOException {
-        Workspace newWorkspace = new Workspace(myGuiController, myControl, screenParams, penParams, userDefinedCommands, workspaceVariables, savedCommands);
+                             WorkspaceDataHolder dataHolder) throws ParserConfigurationException, SAXException, IOException {
+//        WorkspaceDataHolder dataHolder = new WorkspaceDataHolder(workspaceVariables, FXCollections.observableArrayList(), userDefinedCommands, savedCommands, FXCollections.observableArrayList());
+        Workspace newWorkspace = new Workspace(myGuiController, myControl, screenParams, penParams, dataHolder);
 
 
         myWorkspaces.add(newWorkspace);
@@ -78,7 +76,6 @@ public class WorkspaceManager {
     }
 
     public void setActiveWorkspace() {
-        System.out.println("Hello\n");
         activeWorkspace = (Workspace) tabPane.getSelectionModel().getSelectedItem();
     }
 

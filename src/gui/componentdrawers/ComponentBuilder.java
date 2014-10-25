@@ -13,10 +13,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 
-public class ComponentInitializer {
+public class ComponentBuilder {
 
     // Eventually move these to a config file....
-    public static final String GRID_DRAWER = "GridDrawer";
+    public static final String SCREEN_DRAWER = "ScreenDrawer";
     public static final String MENU_DRAWER = "MenuDrawer";
     public static final String COMMAND_LINE_DRAWER = "CommandLineDrawer";
     public static final String BUTTON_HOLDER_DRAWER = "ButtonHolderDrawer";
@@ -28,10 +28,10 @@ public class ComponentInitializer {
     public static final Map<String, ComponentDrawer> DRAWER_MAP = new HashMap<String, ComponentDrawer>();
 	
 
-    private static String[] myLeftContainerElements = new String[]{GRID_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
+    private static String[] myLeftContainerElements = new String[]{SCREEN_DRAWER, PREVIOUS_COMMANDS, COMMAND_LINE_DRAWER, ERROR_DRAWER};
     
     public static Map<String, ComponentDrawer> init (BorderPane pane, TurtleNodes turtleNodes)  { 
-        DRAWER_MAP.put(GRID_DRAWER,  new TurtleScreenDrawer(GRID_DRAWER, turtleNodes));
+        DRAWER_MAP.put(SCREEN_DRAWER,  new TurtleScreenDrawer(SCREEN_DRAWER, turtleNodes));
         DRAWER_MAP.put(BUTTON_HOLDER_DRAWER, new OptionsHolderDrawer(BUTTON_HOLDER_DRAWER));
         DRAWER_MAP.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
         DRAWER_MAP.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
