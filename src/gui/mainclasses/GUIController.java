@@ -55,7 +55,7 @@ public class GUIController {
     public GUIController (Stage stage, SlogoGraphics control) throws ParserConfigurationException, SAXException, IOException {
         GUI_TEXT = LocaleInitializer.init();
 
-        myPane = StageInitializer.init(stage, control);
+        myPane = StageInitializer.init(stage);
         myWorkspaceManager = new WorkspaceManager(this,control);               
         myPane.setTop(MainMenuInitializer.init());
         myPane.setCenter(myWorkspaceManager.getTabPane());
