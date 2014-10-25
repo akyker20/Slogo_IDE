@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import drawableobject.DrawableObject;
 
-public interface VariableGenerator {
+public interface UserDefinedVariableGenerator {
 	default public DrawableObject generateDrawableObjectRepresentingVariable(WorkspaceVariable variable) {
 		String parent = WorkspaceVariableFactory.PARENT;
 		String type = WorkspaceVariableFactory.TYPE;

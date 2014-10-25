@@ -1,9 +1,6 @@
 package workspaceState;
 
-import gui.variableslist.WorkspaceVariable;
-
-import java.util.Map;
-
+import javafx.scene.paint.Color;
 import translator.Translator;
 
 public class WorkspaceState {
@@ -12,10 +9,7 @@ public class WorkspaceState {
 	public UserDefinedVariableCollection variables = new UserDefinedVariableCollection();
 	public UserDefinedCommandCollection commands = new UserDefinedCommandCollection();
 	public TurtleCollection turtles = new TurtleCollection();
+	public Palette<Color> colorPalette = new ColorPalette();
+	public Palette<Shape> shapePalette = new ShapePalette();
 
-	public WorkspaceState(Turtle someTurtle, Map<String, WorkspaceVariable> variables,
-			Translator someTranslator) {
-		turtles.addTurtle(someTurtle);
-		translator = someTranslator;
-	}
 }
