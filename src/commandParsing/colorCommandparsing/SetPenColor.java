@@ -22,7 +22,7 @@ public class SetPenColor extends OneInputFloatCommandParser {
 			throws RunTimeDivideByZeroException {
 		double index = components.get(0);
 		for (Turtle t : workspace.turtles.getActiveTurtles()) {
-			t.pen.setPenColor(workspace.colorPalette.getColor((int) index));
+			t.pen.setPenColor(workspace.colorPalette.getFromPalette((int) index));
 		}
 		return index;
 	}
