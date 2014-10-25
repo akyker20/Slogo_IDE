@@ -23,24 +23,26 @@ public class WorkspaceManager {
 
     private int myWorkspaceID;
 
-    public WorkspaceManager(GUIController guiControl, SlogoGraphics control)   {
+    public WorkspaceManager(GUIController guiControl, SlogoGraphics control)    {
         myGuiController = guiControl;
         myControl = control;
         myWorkspaces = new ArrayList<Workspace>();
         tabPane = new TabPane();     
+        //tabPane.get;
         addWorkspace();
     }
 
-    public void addWorkspace()  {
+    public void addWorkspace()   {
         Workspace newWorkspace = new Workspace(myGuiController,myControl);
         myWorkspaces.add(newWorkspace);
         tabPane.getTabs().add(newWorkspace); 
-        //set active workspace as most most recenty added workspace
+        //set active workspace as most most recently added workspace
         activeWorkspace = newWorkspace;
         newWorkspace.setText("Workspace " + workspaceID);
+        myControl.createWorkspaceState(workspaceID);
         workspaceID++;
         //place new turtle at (0,0)
-        //myControl.parseCommandString("mk");
+        //myControl.parseCommandString("mk");       
     }
 
     public Workspace getActiveWorkspace() {
