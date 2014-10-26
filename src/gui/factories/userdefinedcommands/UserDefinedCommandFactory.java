@@ -15,7 +15,7 @@ public class UserDefinedCommandFactory extends ObjectFactory {
     public static final String TYPE = FactoryBuilder.USER_DEFINED_COMMAND_FACTORY;
 
     public static final String NAME = "name";
-    public static final String PARAMS = "params";
+    public static final String PARAMETERS = "params";
     public static final String CONTENT = "content";
 
     private ObservableList<DisplayedUserCommand> myUserDefinedCommandsList;
@@ -27,7 +27,7 @@ public class UserDefinedCommandFactory extends ObjectFactory {
 
     @Override
     public Node[] generateObject(Map<String, String> params) {
-        myUserDefinedCommandsList.add(new DisplayedUserCommand(params.get(NAME), params.get(PARAMS), params.get(CONTENT)));
+        myUserDefinedCommandsList.add(new DisplayedUserCommand(params.get(NAME), params.get(PARAMETERS), params.get(CONTENT)));
         return new Node[] { new NullNode() };
     }
 

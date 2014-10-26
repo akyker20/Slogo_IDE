@@ -2,8 +2,10 @@ package tests.commandTests.userDefinedCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.WorkspaceVariableFactory;
+import gui.factories.userdefinedcommands.UserDefinedCommandFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -24,7 +26,11 @@ public class MakeUserInstructionTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 1);		
-
+		DrawableObject commandObj = objectQueue.poll();
+		assertTrue(commandObj.getParameters().get(UserDefinedCommandFactory.NAME).equals("command"));
+		assertTrue(commandObj.getParameters().get(UserDefinedCommandFactory.CONTENT).equals("forward 20"));
+		assertTrue(commandObj.getParameters().get(UserDefinedCommandFactory.PARAMETERS).equals(":var :varb :varc"));
+		
 		assertTrue(objectQueue.size()==0);
 		assertTrue(workspace.variables.fetchVariable(":var") == 0);
 		assertTrue(workspace.variables.fetchVariable(":varb") == 0);

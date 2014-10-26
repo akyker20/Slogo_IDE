@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
+import java.util.stream.Collectors;
 
 import commandParsing.exceptions.LanguageFileNotFoundException;
 import commandParsing.exceptions.PropertyFileAccessException;
@@ -24,8 +26,9 @@ public class Translator {
 	private static final String COMMAND_PACKAGE_NAME = "commandParsing";
 	private Map<String, String> dictionaryLanguageToEnglish = new HashMap<String, String>();
 	private Map<String, String> dictionaryOfClassNameToPath = new HashMap<String, String>();
-	private Map<String, String> dictionaryLanguageToClassPath = new HashMap<String, String>();
+	private Map<String, String> dictionaryOfLanguageToClassPath = new HashMap<String, String>();
 	private Map<String, String> syntaxDictionary = new HashMap<String, String>();
+	private Map<String, String> reverseMapping = new HashMap<String,String>();
 
 
 	public Translator(String language) throws LanguageFileNotFoundException, PropertyFileAccessException {
@@ -36,6 +39,7 @@ public class Translator {
 		buildDictionaryOfCommandsToEnglish(language);
 		buildMapOfCommandPaths();
 		mapLanguageToClassPath();
+		createReverseMapping();
 	}
 
 	public Iterator<String> translate(String commands) {
@@ -49,15 +53,15 @@ public class Translator {
 		for (String s : splitString) {
 			String potentialCommandName = s.toLowerCase();
 			if (dictionaryLanguageToEnglish.containsKey(potentialCommandName)) {
-				translatedString.add(dictionaryLanguageToClassPath.get(potentialCommandName));
-			} else if (matchesCommandPattern(s) && !dictionaryLanguageToClassPath.containsKey(potentialCommandName)) {
-				translatedString.add(dictionaryLanguageToClassPath.get(USER_DEFINED_COMMAND));
+				translatedString.add(dictionaryOfLanguageToClassPath.get(potentialCommandName));
+			} else if (matchesCommandPattern(s) && !dictionaryOfLanguageToClassPath.containsKey(potentialCommandName)) {
+				translatedString.add(dictionaryOfLanguageToClassPath.get(USER_DEFINED_COMMAND));
 				translatedString.add(s);
 			} else if (matchesConstantPattern(s)) {
-				translatedString.add(dictionaryLanguageToClassPath.get(CONSTANT));
+				translatedString.add(dictionaryOfLanguageToClassPath.get(CONSTANT));
 				translatedString.add(s);
 			} else if (matchesVariablePattern(s)) {
-				translatedString.add(dictionaryLanguageToClassPath.get(VARIABLE));
+				translatedString.add(dictionaryOfLanguageToClassPath.get(VARIABLE));
 				translatedString.add(s);
 			} else {
 				translatedString.add(s);
@@ -65,10 +69,22 @@ public class Translator {
 		}
 		return translatedString;
 	}
+	
+	public String reverseTranslate(List<String> strings){
+		for(String s : strings){
+			if(!reverseMapping.containsKey(s)){
+				reverseMapping.put(s, s);
+			}
+		}
+		return strings.stream()
+			      	  .map(s -> reverseMapping.get(s))
+			      	  .filter(s -> s.length()>0)
+			      	  .collect(Collectors.joining(" "));
+	}
 
 	private void mapLanguageToClassPath() {
 		dictionaryLanguageToEnglish.keySet().stream().forEach((k) -> {
-			dictionaryLanguageToClassPath.put(k, dictionaryOfClassNameToPath.get(dictionaryLanguageToEnglish.get(k)));
+			dictionaryOfLanguageToClassPath.put(k, dictionaryOfClassNameToPath.get(dictionaryLanguageToEnglish.get(k)));
 		});
 	}
 
@@ -142,6 +158,17 @@ public class Translator {
 		} catch (IOException e) {
 			throw new PropertyFileAccessException();
 		}
+	}
+	
+	private void createReverseMapping() {
+		dictionaryOfLanguageToClassPath.entrySet()
+									 .stream()
+									 .forEach(e -> {
+										 reverseMapping.put(e.getValue(), e.getKey());
+									 });
+		reverseMapping.put(dictionaryOfLanguageToClassPath.get(USER_DEFINED_COMMAND), "");
+		reverseMapping.put(dictionaryOfLanguageToClassPath.get(CONSTANT), "");
+		reverseMapping.put(dictionaryOfLanguageToClassPath.get(VARIABLE), "");
 	}
 
 	private static String findCommandName(String command) {
