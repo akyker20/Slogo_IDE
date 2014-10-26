@@ -17,6 +17,15 @@ import java.util.stream.Collectors;
 import commandParsing.exceptions.LanguageFileNotFoundException;
 import commandParsing.exceptions.PropertyFileAccessException;
 
+/**
+ * This file deals with translating the commands in different languages to Strings 
+ * that our parser can actually work with and deal with. 
+ * 
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
+
 public class Translator {
 
 	private static final String CONSTANT = "Constant";
@@ -34,6 +43,14 @@ public class Translator {
 	public Translator(String language) throws LanguageFileNotFoundException, PropertyFileAccessException {
 		createMappingsGivenLanguage(language);
 	}
+	
+	/**
+	 * Creating a few different maps, it creates a mapping of the language to what we actually need.
+	 * It takes in a language as a String.
+	 * @param language 
+	 * @throws LanguageFileNotFoundException
+	 * @throws PropertyFileAccessException
+	 */
 	
 	public void createMappingsGivenLanguage(String language) throws LanguageFileNotFoundException, PropertyFileAccessException{
 		buildDictionaryOfCommandsToEnglish(language);

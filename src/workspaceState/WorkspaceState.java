@@ -7,6 +7,15 @@ import commandParsing.exceptions.PropertyFileAccessException;
 
 import translator.Translator;
 
+/**
+ * This is the primary class that contains the data and information for each workspace. It holds
+ * the translator, variables, commands, turtles, colorPalettes, and shapePalettes. When workspaces
+ * are switched out on the frontend, it corresponds to a different WorkspaceState.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
+
 public class WorkspaceState {
 
 	public Translator translator;
