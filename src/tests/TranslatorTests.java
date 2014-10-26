@@ -22,6 +22,7 @@ public class TranslatorTests {
 		assertTrue(t.matchesConstantPattern("50"));
 		assertTrue(t.matchesConstantPattern("50.0"));
 		assertTrue(t.matchesVariablePattern(":someVar"));
+		assertFalse(t.matchesVariablePattern("SEPS"));
 		assertFalse(t.matchesCommandPattern("["));
 	}
 
