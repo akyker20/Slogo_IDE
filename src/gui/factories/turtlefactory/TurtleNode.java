@@ -115,7 +115,7 @@ public class TurtleNode extends ImageView {
      * @param imagePath
      * @throws FileNotFoundException
      */
-    private void updateImage (String imagePath) throws FileNotFoundException {
+    protected void updateImage (String imagePath) throws FileNotFoundException {
         setImage(new Image(new FileInputStream(new File(imagePath)),
                            TURTLE_IMAGE_WIDTH, TURTLE_IMAGE_HEIGHT,
                            false, true));
