@@ -15,6 +15,9 @@ public class TurtleCollection {
 	
 	public void addTurtle(Turtle someTurtle) {
 		turtles.add(someTurtle);
+		while (IDtoTurtleMap.containsKey(IDCounter)){
+			IDCounter++;
+		}
 		someTurtle.setID(IDCounter);
 		IDtoTurtleMap.put(IDCounter, someTurtle);
 		activateTurtle(someTurtle);
@@ -31,6 +34,10 @@ public class TurtleCollection {
 
 	public List<Turtle> getActiveTurtles() {
 		return activeTurtles;
+	}
+	
+	public List<Turtle> getAllTurtles() {
+		return turtles;
 	}
 
 	public Turtle getLastActiveTurtle() {
@@ -51,5 +58,9 @@ public class TurtleCollection {
 		
 	public Turtle getTurtleWithID(Integer ID){
 		return IDtoTurtleMap.get(ID);
+	}
+	
+	public boolean hasTurtleWithID(Integer ID){
+		return IDtoTurtleMap.containsKey(ID);
 	}
 }

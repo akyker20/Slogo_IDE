@@ -23,10 +23,19 @@ public class Tell extends StructuralCommand {
 		
 		workspace.turtles.clearActiveTurtles();
 		List<Integer> turtleIDList = new ArrayList<Integer>();
-		double lastTurtleID =0;
-//		getTurtleIDsBetweenBraces
+		double lastTurtleID = 0;
+		extractCommandsBetweenBraces(commandStringIterator);
+		
+		for (String s: enclosedCommands){
+			turtleIDList.add(Integer.parseInt(s));
+		}
 		for (Integer i: turtleIDList){
-			workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
+			if(workspace.turtles.hasTurtleWithID(i)){
+				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
+			}
+			else{
+				workspace.turtles.addTurtle(new Turtle(i));
+			}
 			lastTurtleID = i;
 		}
 		

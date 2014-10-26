@@ -22,20 +22,29 @@ public class Ask extends StructuralCommand {
 		List<Turtle> savedListOfTurtles = workspace.turtles.getActiveTurtles();
 		workspace.turtles.clearActiveTurtles();
 		List<Integer> turtleIDList = new ArrayList<Integer>();
-		double lastTurtleID = 0;
-		// getTurtleIDsBetweenBraces
-		for (Integer i : turtleIDList) {
-			workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
-			lastTurtleID = i;
+		extractCommandsBetweenBraces(commandStringIterator);
+
+		for (String s : enclosedCommands) {
+			turtleIDList.add(Integer.parseInt(s));
 		}
-		// Extract command between braces
-		// Run commands
-		// Return result of last command on last active turtle
+		for (Integer i : turtleIDList) {
+			if (workspace.turtles.hasTurtleWithID(i)) {
+				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
+			}
+			else {
+				workspace.turtles.addTurtle(new Turtle(i));
+			}
+		}
+		ignoreUntilClosingBrace(commandStringIterator);
+		extractCommandsBetweenBraces(commandStringIterator);
+		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
+
 		workspace.turtles.clearActiveTurtles();
 		for (Turtle t : savedListOfTurtles) {
 			workspace.turtles.activateTurtle(t);
 		}
-		return lastTurtleID;
+		return returnValue;
+
 	}
 
 }

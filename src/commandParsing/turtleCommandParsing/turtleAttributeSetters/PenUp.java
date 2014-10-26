@@ -1,4 +1,4 @@
-package commandParsing.turtleCommandParsing;
+package commandParsing.turtleCommandParsing.turtleAttributeSetters;
 
 import java.util.Iterator;
 import java.util.Queue;
@@ -9,20 +9,19 @@ import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
-public class PenDown extends CommandParser {
+public class PenUp extends CommandParser {
 
-	public PenDown(WorkspaceState someWorkspace) {
+	public PenUp(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
 	@Override
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-
 		for (Turtle t : workspace.turtles.getActiveTurtles()) {
-			t.pen.togglePenDown();
+			t.pen.togglePenUp();
 		}
-		return 1;
+		return 0;
 	}
 
 }

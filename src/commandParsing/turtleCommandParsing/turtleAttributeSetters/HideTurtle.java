@@ -1,18 +1,17 @@
-package commandParsing.turtleCommandParsing;
+package commandParsing.turtleCommandParsing.turtleAttributeSetters;
 
 import java.util.Iterator;
 import java.util.Queue;
 
-import workspaceState.TurtleCollection;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
-public class ShowTurtle extends CommandParser implements TurtleGenerator {
+public class HideTurtle extends CommandParser implements TurtleGenerator {
 
-	public ShowTurtle(WorkspaceState someWorkspace) {
+	public HideTurtle(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
@@ -20,10 +19,10 @@ public class ShowTurtle extends CommandParser implements TurtleGenerator {
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
 		workspace.turtles.getActiveTurtles().stream().forEach(t -> {
-			t.showTurtle();
+			t.hideTurtle();
 			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
 		});
-		return 1;
+		return 0;
 	}
 
 }

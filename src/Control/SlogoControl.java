@@ -36,8 +36,6 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     public static final String NEW_TURTLE_COMMAND = "mk";
 
     private GUIController myGUI;
-    Translator translator;
-    WorkspaceState workspace;
     private WorkspaceState activeState;
     private Map<Integer,WorkspaceState> myWorkspaceStates;
 
@@ -63,9 +61,8 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
 
     public void createWorkspaceState(int workspaceID) {
         try {
-            workspace = new WorkspaceState();
-            myWorkspaceStates.put(workspaceID, workspace);
-            activeState = workspace;
+        	activeState = new WorkspaceState();
+            myWorkspaceStates.put(workspaceID, activeState);
         } catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -80,7 +77,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     public Queue<DrawableObject> parseCommandString(String command) {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 
-        Iterator<String> translatedCommands = workspace.translator.translate(command);
+        Iterator<String> translatedCommands = activeState.translator.translate(command);
         while (translatedCommands.hasNext()) {
             CommandParser parser = new NullCommandParser(activeState);
             try {

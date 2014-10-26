@@ -1,6 +1,8 @@
-package commandParsing.turtleCommandParsing;
+package commandParsing.turtleCommandParsing.turtleAttributeSetters;
 
 import java.util.List;
+
+import commandParsing.turtleCommandParsing.turtleMovement.MoveToLocation;
 
 import workspaceState.Location;
 import workspaceState.WorkspaceState;
