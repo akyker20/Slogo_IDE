@@ -7,6 +7,12 @@ import javafx.scene.control.TabPane;
 import gui.componentdrawers.ComponentDrawer;
 import gui.mainclasses.TextGenerator;
 
+/**
+ * A component drawer that holds both the saved commands tab
+ * and the user defined functions tab.
+ * @author akyker20
+ *
+ */
 public class SignificantCommandsDrawer extends ComponentDrawer {
     
     private TabPane mySignificantCommandsPane;
@@ -21,6 +27,10 @@ public class SignificantCommandsDrawer extends ComponentDrawer {
                                     mySignificantCommandsPane});
     }
 
+    /**
+     * A method to add the tabs to the tabpane.
+     * @param tabs
+     */
     public void addTabs (Tab[] tabs) {
         mySignificantCommandsPane.getTabs().addAll(tabs);   
     }
