@@ -9,7 +9,11 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * This class is responsible for building all of the components.
+ * @author akyker20
+ *
+ */
 public class ComponentBuilder {
 
     public static final String SCREEN_DRAWER = "ScreenDrawer";
@@ -40,6 +44,11 @@ public class ComponentBuilder {
     }
 
 
+    /**
+     * Adds the components that will be on the right side of the screen to the borderpane.
+     * @param pane
+     * @param drawerMap
+     */
     private static void buildRightComponents (BorderPane pane,
                                               Map<String, ComponentDrawer> drawerMap) {
         VBox rightVBox = new VBox(10);
@@ -48,7 +57,11 @@ public class ComponentBuilder {
         pane.setRight(rightVBox);
     }
 
-
+    /**
+     * Adds the components that will be on the left side of the screen to the borderpane.
+     * @param pane
+     * @param drawerMap
+     */
     private static void buildLeftComponents (BorderPane pane, Map<String, ComponentDrawer> drawerMap) {
         VBox leftVBox = new VBox(10);
         leftVBox.getStyleClass().add("leftColumn");
@@ -56,13 +69,23 @@ public class ComponentBuilder {
         pane.setLeft(leftVBox);
     }
     
+    /**
+     * A helper method to make code DRYer
+     * @param drawerMap
+     * @param components
+     * @param vBox
+     */
     private static void addComponentsToBox (Map<String, ComponentDrawer> drawerMap, String[] components, VBox vBox) {
         for(int i = 0; i < components.length; i ++){
             vBox.getChildren().add(drawerMap.get(components[i]));
         }
     }
 
-    
+    /**
+     * Returns a map that maps the name of the component drawer to the component drawer itself.
+     * @param turtleNodes
+     * @return
+     */
     private static Map<String, ComponentDrawer> createComponentsDrawerMap (TurtleNodes turtleNodes) {
         Map<String, ComponentDrawer> drawerMap = new HashMap<String, ComponentDrawer>();
         

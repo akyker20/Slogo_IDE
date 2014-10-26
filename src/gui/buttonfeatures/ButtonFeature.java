@@ -5,6 +5,11 @@ import gui.mainclasses.GUIController;
 import gui.mainclasses.TextGenerator;
 import javafx.scene.control.Button;
 
+/**
+ * A button super class for buttons that will be added to the options holder component.
+ * @author Austin Kyker
+ *
+ */
 public class ButtonFeature extends Button {
     
     public static final int BUTTON_WIDTH = 120;
