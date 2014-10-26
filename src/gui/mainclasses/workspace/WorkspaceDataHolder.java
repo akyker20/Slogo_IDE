@@ -2,6 +2,7 @@ package gui.mainclasses.workspace;
 
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.nonbuttonfeatures.tableviews.ColorIndex;
+import gui.nonbuttonfeatures.tableviews.ImageIndex;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,12 +13,14 @@ public class WorkspaceDataHolder {
     private ObservableList<DisplayedUserCommand> myUserDefinedCommandList;
     private ObservableList<String> mySavedCommandsList;
     private ObservableList<ColorIndex> myColorIndexList;
+    private ObservableList<ImageIndex> myImageIndexList;
     
     /**
      * Default constructor
      */
     public WorkspaceDataHolder(){
         this(FXCollections.observableArrayList(),
+             FXCollections.observableArrayList(),
              FXCollections.observableArrayList(),
              FXCollections.observableArrayList(),
              FXCollections.observableArrayList(),
@@ -36,12 +39,14 @@ public class WorkspaceDataHolder {
                                ObservableList<String> myPreviousCommandsList,
                                ObservableList<DisplayedUserCommand> myUserDefinedCommandList,
                                ObservableList<String> mySavedCommandsList,
-                               ObservableList<ColorIndex> myColorIndexList) {
+                               ObservableList<ColorIndex> myColorIndexList,
+                               ObservableList<ImageIndex> myImageIndexList) {
         this.myVariablesList = myVariablesList;
         this.myPreviousCommandsList = myPreviousCommandsList;
         this.myUserDefinedCommandList = myUserDefinedCommandList;
         this.mySavedCommandsList = mySavedCommandsList;
         this.myColorIndexList = myColorIndexList;
+        this.myImageIndexList = myImageIndexList;
     }
 
     public ObservableList<WorkspaceVariable> getMyVariablesList () {
@@ -63,6 +68,10 @@ public class WorkspaceDataHolder {
 
     public ObservableList<ColorIndex> getMyColorIndexList () {
         return myColorIndexList;
+    }
+    
+    public ObservableList<ImageIndex> getMyImageIndexList() {
+        return myImageIndexList;
     }
 
     public void clear () {

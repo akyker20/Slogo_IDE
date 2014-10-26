@@ -36,7 +36,7 @@ public class ColorIndexFeature extends TableView<ColorIndex> {
         this.setPrefHeight(parentDrawer.getHeight());
     }
 
-    static class ColorCell extends TableCell<ColorIndex, Color> {
+    private class ColorCell extends TableCell<ColorIndex, Color> {
         @Override
         public void updateItem(Color item, boolean empty) {
             super.updateItem(item, empty);

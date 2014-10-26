@@ -2,10 +2,13 @@ package gui.nonbuttonfeatures;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.nonbuttonfeatures.tableviews.ImageIndex;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.DragEvent;
@@ -15,7 +18,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class TurtleImageFeature extends BorderPane {
-    public TurtleImageFeature(OptionsHolderDrawer parentDrawer) {
+    
+    private ObservableList<ImageIndex> myImageFilesList;
+    
+    public TurtleImageFeature(OptionsHolderDrawer parentDrawer, List<ImageIndex> imageFilesList) {
+        myImageFilesList = (ObservableList<ImageIndex>) imageFilesList;
         Label label = new Label("Image Drop Area");
         this.setTop(label);
         VBox vbox = new VBox(10);
@@ -70,6 +77,7 @@ public class TurtleImageFeature extends BorderPane {
                                 + filePath.getFileName().toString());
                             try {
                                 Files.copy(file.toPath(), targetFile.toPath(), REPLACE_EXISTING);
+                                myImageFilesList.add(new ImageIndex(myImageFilesList.size()+1, file));
                             }
                             catch (IOException e) {
                                 // TODO Auto-generated catch block

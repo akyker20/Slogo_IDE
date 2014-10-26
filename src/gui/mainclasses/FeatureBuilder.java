@@ -13,6 +13,7 @@ import gui.componentdrawers.WorkspaceVariablesDrawer;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.componentdrawers.optionsholder.tabs.ColorIndexTab;
 import gui.componentdrawers.optionsholder.tabs.GeneralOptionsTab;
+import gui.componentdrawers.optionsholder.tabs.ImageIndexTab;
 import gui.componentdrawers.optionsholder.tabs.OptionsTab;
 import gui.componentdrawers.optionsholder.tabs.PenOptionsTab;
 import gui.componentdrawers.significantcommands.SignificantCommandsDrawer;
@@ -31,6 +32,7 @@ import gui.nonbuttonfeatures.pen.PenColorPickerFeature;
 import gui.nonbuttonfeatures.pen.PenThicknessSliderFeature;
 import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
 import gui.nonbuttonfeatures.tableviews.ColorIndexFeature;
+import gui.nonbuttonfeatures.tableviews.ImageIndexFeature;
 import gui.nonbuttonfeatures.tableviews.UserDefinedCommandsFeature;
 import gui.nonbuttonfeatures.tableviews.WorkspaceVariablesFeature;
 import java.util.Map;
@@ -83,7 +85,7 @@ public class FeatureBuilder {
                                                  new SaveCommandButtonFeature(optionsHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature),
                                                  new ClearWorkspaceButtonFeature(optionsHolder,workspace )
                                       }, 
-                                      new Node[] {new TurtleImageFeature(optionsHolder)}
+                                      new Node[] {new TurtleImageFeature(optionsHolder, dataHolder.getMyImageIndexList())}
                         );
 
         PenOptionsTab penOptions = 
@@ -98,7 +100,9 @@ public class FeatureBuilder {
         
         ColorIndexTab colorIndexTab = new ColorIndexTab(new ColorIndexFeature(dataHolder.getMyColorIndexList(), optionsHolder));
 
-        optionsHolder.addTabs(new OptionsTab[]{generalOptions, penOptions, colorIndexTab});
+        ImageIndexTab imageIndexTab = new ImageIndexTab(new ImageIndexFeature(dataHolder.getMyImageIndexList(), optionsHolder));
+        
+        optionsHolder.addTabs(new OptionsTab[]{generalOptions, penOptions, colorIndexTab, imageIndexTab});
 
         significantCommandsDrawer.addTabs(new Tab[]{
                                                     new SavedCommandsTab(savedCommandsFeature),
