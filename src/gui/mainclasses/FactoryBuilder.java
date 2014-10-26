@@ -1,7 +1,14 @@
-package gui.factories;
+package gui.mainclasses;
 
 
 import gui.componentdrawers.TurtleScreenDrawer;
+import gui.factories.ColorPaletteEntryFactory;
+import gui.factories.ErrorFactory;
+import gui.factories.LineFactory;
+import gui.factories.ObjectFactory;
+import gui.factories.PaneFactory;
+import gui.factories.ShapePaletteEntryFactory;
+import gui.factories.WorkspaceVariableFactory;
 import gui.factories.turtlefactory.TurtleFactory;
 import gui.factories.turtlefactory.TurtleNodes;
 import gui.factories.userdefinedcommands.UserDefinedCommandFactory;
@@ -17,6 +24,7 @@ public class FactoryBuilder {
     public static final String USER_DEFINED_COMMAND_FACTORY = "UserDefinedCommandFactory";
     public static final String SCREEN_COLOR_FACTORY = "ScreenColorFactory";
     public static final String COLOR_INDEX_FACTORY = "ColorIndexFactory";
+    public static final String SHAPE_PALETTE_INDEX_FACTORY = "ShapePaletteEntryFactory";
 
     /**
      * Makes the object factories
@@ -32,6 +40,7 @@ public class FactoryBuilder {
                                     new WorkspaceVariableFactory(WORKSPACE_VARIABLE_FACTORY, holder.getMyVariablesList()),
                                     new UserDefinedCommandFactory(USER_DEFINED_COMMAND_FACTORY, holder.getMyUserDefinedCommandList()),
                                     new ColorPaletteEntryFactory(COLOR_INDEX_FACTORY, holder.getMyColorIndexList()),
+                                    new ShapePaletteEntryFactory(SHAPE_PALETTE_INDEX_FACTORY, holder.getMyImageIndexList())
         };
     }
 

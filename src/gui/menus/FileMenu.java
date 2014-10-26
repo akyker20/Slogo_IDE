@@ -92,17 +92,21 @@ public class FileMenu extends Menu {
             }
         });
 
+//        Menu newWorkspace = new Menu(TextGenerator.get(TextGenerator.NEW_WORKSPACE));    
+//        String[] languageOptions = new String[]{TextGenerator.ENGLISH, TextGenerator.FRENCH, TextGenerator.CHINESE }
+//        for(String language:languageOptions){
+//            MenuItem languageMenuItem = new MenuItem(language);
+//            languageMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override public void handle(ActionEvent e) {
+//                    TextGenerator.setLanguage(language);
+//                    myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
+//                                                    new WorkspaceDataHolder()); 
+//                    addTurtleToWorkspace();
+//                }
+//            });
+//        }
 
-        MenuItem newWorkspace = new MenuItem(TextGenerator.get(TextGenerator.NEW_WORKSPACE));
-        newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
-                                                new WorkspaceDataHolder()); 
-                addTurtleToWorkspace();
-            }
-        });
-
-        this.getItems().addAll(loadWorkspace, saveWorkspace, newWorkspace);
+//        this.getItems().addAll(loadWorkspace, saveWorkspace, newWorkspace);
     }
 
     private void addTurtleToWorkspace () {

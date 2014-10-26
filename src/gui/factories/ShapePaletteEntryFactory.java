@@ -2,6 +2,7 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentBuilder;
 import gui.factories.turtlefactory.NullNode;
+import gui.mainclasses.FactoryBuilder;
 import gui.nonbuttonfeatures.tableviews.imageindex.ImageIndex;
 import java.io.File;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import javafx.scene.Node;
 public class ShapePaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;
-    public static final String TYPE = FactoryBuilder.COLOR_INDEX_FACTORY;
+    public static final String TYPE = FactoryBuilder.SHAPE_PALETTE_INDEX_FACTORY;
     public static final String IMAGE_PATH = "path";
     public static final String INDEX = "index";
 

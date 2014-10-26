@@ -84,5 +84,6 @@ public class TextGenerator {
 
     public static void setLanguage(String language) {
         myLanguagesBundle = getResourceBundle(language);
+
     }
 }

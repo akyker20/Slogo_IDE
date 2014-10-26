@@ -1,8 +1,8 @@
 package gui.factories.turtlefactory;
 
 import gui.componentdrawers.ComponentBuilder;
-import gui.factories.FactoryBuilder;
 import gui.factories.ObjectFactory;
+import gui.mainclasses.FactoryBuilder;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import javafx.scene.Node;
@@ -32,7 +32,6 @@ public class TurtleFactory extends ObjectFactory {
     public Node[] generateObject (Map<String, String> params) {
         TurtleNode turtleNode = myTurtleNodes.getTurtleWithID(params.get(TURTLE_ID));
         if(turtleNode == null){
-            System.out.println("Hello there");
             try {
                 return myTurtleNodes.addTurtleNode(params);
             }
