@@ -28,6 +28,9 @@ import javafx.scene.layout.VBox;
 public class TurtleImageFeature extends BorderPane {
 
     private ObservableList<ImageIndex> myImageFilesList;
+    private static final int VBOX_ROW_COUNT = 10;
+    private static final int VBOX_WIDTH = 105;
+    private static final int VBOX_HEIGHT = 155;
 
     public TurtleImageFeature (OptionsHolderDrawer parentDrawer,
                                List<ImageIndex> imageFilesList,
@@ -35,9 +38,9 @@ public class TurtleImageFeature extends BorderPane {
         myImageFilesList = (ObservableList<ImageIndex>) imageFilesList;
         Label label = new Label(TextGenerator.get(TextGenerator.IMAGE_DROP_AREA));
         setTop(label);
-        VBox vbox = new VBox(10);
+        VBox vbox = new VBox(VBOX_ROW_COUNT);
         vbox.setStyle("-fx-border-color: lightgray");
-        vbox.setPrefSize(105, 155);
+        vbox.setPrefSize(VBOX_WIDTH, VBOX_HEIGHT);
         setCenter(vbox);
 
         // When a file is dragged over the scene, the background becomes
