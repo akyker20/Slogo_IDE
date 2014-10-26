@@ -27,6 +27,6 @@ public class WorkspaceVariable {
     }    
 
     public void addValue (double value){
-        myValue += value;
+    	myValue += value;
     }
 }

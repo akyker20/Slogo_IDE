@@ -18,21 +18,4 @@ public interface SlogoBackend {
      * @param objects
      */
     void drawDrawableObjects (Queue<DrawableObject> objects);
-
-    /**
-     * Returns information to create or edit a variable held in the SlogoControl
-     *
-     * @param name
-     * @param value
-     * @return
-     */
-    DrawableObject setVariable (String name, int value);
-
-    /**
-     * Returns a valid command string that will be saved in SlogoControl for future use
-     *
-     * @param commands
-     */
-    void saveCommandsToFunction (String commands);
-
 }

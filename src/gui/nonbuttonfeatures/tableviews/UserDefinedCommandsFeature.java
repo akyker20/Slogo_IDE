@@ -1,6 +1,7 @@
 package gui.nonbuttonfeatures.tableviews;
 
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
+import gui.mainclasses.TextGenerator;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import java.util.List;
 import javafx.collections.ObservableList;
@@ -38,10 +39,10 @@ public class UserDefinedCommandsFeature extends TableView<DisplayedUserCommand> 
         myCommandsList = (ObservableList<DisplayedUserCommand>) userDefinedCommands;
 
 
-        TableColumn<DisplayedUserCommand,String> commandName = new TableColumn<DisplayedUserCommand,String>("Name");
+        TableColumn<DisplayedUserCommand,String> commandName = new TableColumn<DisplayedUserCommand,String>(TextGenerator.get(TextGenerator.NAME));
         commandName.setCellValueFactory(new PropertyValueFactory("myName"));
         commandName.prefWidthProperty().bind(this.widthProperty().divide(3));
-        TableColumn<DisplayedUserCommand,String> params = new TableColumn<DisplayedUserCommand,String>("Parameters");
+        TableColumn<DisplayedUserCommand,String> params = new TableColumn<DisplayedUserCommand,String>(TextGenerator.get(TextGenerator.PARAMETERS));
         params.setCellValueFactory(new PropertyValueFactory("myParams"));
         params.prefWidthProperty().bind(this.widthProperty().multiply(2).divide(3).subtract(2));    
         this.getColumns().setAll(commandName, params);
