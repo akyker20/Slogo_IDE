@@ -29,7 +29,7 @@ public class WorkspaceVariable {
     }
 
     /**
-     * Necessary to make the valye editable.
+     * Necessary to make the value editable.
      * @param myValue
      */
     public void setMyValue (double myValue) {

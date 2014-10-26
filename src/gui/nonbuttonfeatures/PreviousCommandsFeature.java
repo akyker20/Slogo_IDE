@@ -21,6 +21,8 @@ public class PreviousCommandsFeature extends ListView<String> {
 
     private ObservableList<String> myPreviousCommandsList;
     private CommandLineDrawer myCommandLineDrawer;
+    private static final int HEIGHT = 100;
+    private static final int LAYOUT = 20;
 
     public PreviousCommandsFeature (PreviousCommandsDrawer parentDrawer,
                                     CommandLineDrawer commandLineDrawer,
@@ -29,8 +31,8 @@ public class PreviousCommandsFeature extends ListView<String> {
         myCommandLineDrawer = commandLineDrawer;
         setItems(myPreviousCommandsList);
         setPrefWidth(parentDrawer.getWidth());
-        setPrefHeight(100);
-        setLayoutY(20);
+        setPrefHeight(HEIGHT);
+        setLayoutY(LAYOUT);
         setOnMouseClicked(event -> displayPreviousCommandInCommandLineOnDblClick(event));
         parentDrawer.drawShape(new PreviousCommandsFeature[] { this });
     }

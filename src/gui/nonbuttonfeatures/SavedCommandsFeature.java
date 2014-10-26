@@ -16,13 +16,15 @@ import javafx.scene.input.MouseEvent;
 public class SavedCommandsFeature extends ListView<String> {
 
     private ObservableList<String> myCommands;
+    private static final int HEIGHT = 168;
+    private static final int LAYOUT = 20;
 
     public SavedCommandsFeature (CommandLineDrawer commandLineDrawer,
                                  ObservableList<String> savedCommands) {
         myCommands = savedCommands;
         setItems(myCommands);
-        setPrefHeight(168);
-        setLayoutY(20);
+        setPrefHeight(HEIGHT);
+        setLayoutY(LAYOUT);
 
         setOnMouseClicked(new EventHandler<MouseEvent>() {
             /**
