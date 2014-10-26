@@ -78,7 +78,7 @@ public class FileMenu extends Menu {
             }
         });
         
-        MenuItem saveWorkspace = new MenuItem("Save Workspace");
+        MenuItem saveWorkspace = new MenuItem(TextGenerator.get(TextGenerator.SAVE_WORKSPACE));
         saveWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
   

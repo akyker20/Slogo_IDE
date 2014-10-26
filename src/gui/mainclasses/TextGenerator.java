@@ -11,6 +11,7 @@ public class TextGenerator {
     
     public static final String FILE = "file";
     public static final String LOAD_WORKSPACE = "loadWorkspace";
+    public static final String SAVE_WORKSPACE = "saveWorkspace";
     public static final String NEW_WORKSPACE = "newWorkspace";
     public static final String SELECT_XMLFILE = "selectXMLFile";
     
@@ -37,6 +38,8 @@ public class TextGenerator {
     public static final String COMMANDS = "commands";
     public static final String SAVED = "saved";
     public static final String USER_DEFINED = "userDefined";
+    public static final String NAME = "name";
+    public static final String PARAMETERS = "parameters";
     
     public static final String OPTIONS = "options";   
     public static final String GENERAL = "general";
@@ -65,5 +68,4 @@ public class TextGenerator {
     public static String get(String text) {
         return myLanguagesBundle.getString(text);
     }
-    
 }
