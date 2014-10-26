@@ -7,6 +7,12 @@ import translator.Translator;
 import workspaceState.UserDefinedCommandCollection.Command;
 import drawableobject.DrawableObject;
 
+/**
+ * This class generates the actual UserDefinedCommand drawableObjects to give to the GUI.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public interface UserDefinedCommandGenerator {
 

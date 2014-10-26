@@ -6,6 +6,12 @@ import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import drawableobject.DrawableObject;
 
+/**
+ * This parses commands that require a single float input.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public abstract class OneInputFloatCommandParser extends FloatInputCommandParser {
 

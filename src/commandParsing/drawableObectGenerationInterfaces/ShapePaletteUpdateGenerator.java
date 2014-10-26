@@ -6,6 +6,12 @@ import java.util.Map;
 import workspaceState.Shape;
 import drawableobject.DrawableObject;
 
+/**
+ * This class generates the actual ShapePaletteUpdate drawableObjects to give to the GUI.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public interface ShapePaletteUpdateGenerator {
     default public DrawableObject generateDrawableObjectRepresentingShapePaletteUpdate (int index,

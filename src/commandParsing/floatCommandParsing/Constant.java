@@ -7,6 +7,12 @@ import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This parses constants.
+ * 
+ * @author Steve Kuznetsov
+ *
+ */
 
 public class Constant extends CommandParser {
 

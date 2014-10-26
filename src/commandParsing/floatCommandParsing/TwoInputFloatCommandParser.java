@@ -6,6 +6,12 @@ import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import drawableobject.DrawableObject;
 
+/**
+ * This parses commands that require two float inputs.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public abstract class TwoInputFloatCommandParser extends FloatInputCommandParser {
 

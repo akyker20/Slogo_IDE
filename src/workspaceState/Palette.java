@@ -5,6 +5,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * This class is the Palette class that contains all of the information for each Palette.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class Palette<T> {
     private Map<Integer, T> palette = new HashMap<Integer, T>();

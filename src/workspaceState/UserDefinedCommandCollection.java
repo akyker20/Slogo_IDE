@@ -6,6 +6,13 @@ import java.util.List;
 import java.util.Map;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
+/**
+ * This class contains all of the information for the user-defined Commands, and is where we 
+ * edit or modify them. 
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class UserDefinedCommandCollection {
     private Map<String, Command> commandMap = new HashMap<String, Command>();

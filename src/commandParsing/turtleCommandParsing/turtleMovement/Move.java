@@ -11,6 +11,13 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
+/**
+ * This is the generic move command used as a superclass for all of the actual move commands that are
+ * implemented.
+ * 
+ * @author Steve Kuznetsov, Stanley Yuan
+ *
+ */
 
 public abstract class Move extends OneInputFloatCommandParser implements LineGenerator,
 TurtleGenerator {

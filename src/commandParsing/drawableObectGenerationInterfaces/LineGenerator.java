@@ -7,6 +7,12 @@ import workspaceState.Location;
 import workspaceState.Pen;
 import drawableobject.DrawableObject;
 
+/**
+ * This class generates the actual Line drawableObjects to give to the GUI.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public interface LineGenerator {
 

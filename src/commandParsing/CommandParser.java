@@ -10,6 +10,12 @@ import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This is the broad CommandParser class, the superclass for every parser class.
+ * 
+ * @author Steve Kuznetsov
+ *
+ */
 
 public abstract class CommandParser {
 
