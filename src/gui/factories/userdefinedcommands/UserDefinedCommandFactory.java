@@ -6,7 +6,6 @@ import gui.factories.ObjectFactory;
 import gui.factories.turtlefactory.NullNode;
 import java.util.List;
 import java.util.Map;
-import workspaceState.UserDefinedCommandCollection.Command;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -28,7 +27,7 @@ public class UserDefinedCommandFactory extends ObjectFactory {
 
     @Override
     public Node[] generateObject(Map<String, String> params) {
-        myUserDefinedCommandsList.add(new DisplayedUserCommand(params.get(NAME), params.get(PARAMS)));
+        myUserDefinedCommandsList.add(new DisplayedUserCommand(params.get(NAME), params.get(PARAMS), params.get(CONTENT)));
         return new Node[] { new NullNode() };
     }
 

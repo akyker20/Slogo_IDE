@@ -4,7 +4,6 @@ import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.mainclasses.workspace.WorkspaceManager;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -12,11 +11,12 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
 import Control.SlogoControl;
 import XML.readers.SavedWorkspaceXMLReader;
-import XML.workspaceparams.WorkspacePenCommands;
 import XML.workspaceparams.WorkspaceScreenParameters;
+import XML.writers.SavedWorkspaceXMLWriter;
 
 
 /**
@@ -56,6 +56,21 @@ public class FileMenu extends Menu {
                 }
             }
         });
+        
+        MenuItem saveWorkspace = new MenuItem("Save Workspace");
+        saveWorkspace.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+  
+                    try {
+                        SavedWorkspaceXMLWriter.writeFile(myWorkspaceManager.getActiveWorkspace().getDataHolder());
+                    }
+                    catch (TransformerException | ParserConfigurationException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+   
+            }
+        });
 
 
         MenuItem newWorkspace = new MenuItem("New Workspace");
@@ -67,7 +82,7 @@ public class FileMenu extends Menu {
             }
         });
 
-        this.getItems().addAll(loadWorkspace, newWorkspace);
+        this.getItems().addAll(loadWorkspace, saveWorkspace, newWorkspace);
     }
 
     private void addTurtleToWorkspace () {

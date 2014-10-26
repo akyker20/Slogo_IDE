@@ -58,6 +58,7 @@ public class MakeUserInstruction extends StructuralCommand implements UserDefine
 		}
 		workspace.commands.storeUserDefinedCommand(potentialCommandName, numArgs, enclosedCommands,
 				parameters);
+		objectQueue.add(generateDrawableObjectRepresentingCommand(workspace.commands.fetchUserDefinedCommand(potentialCommandName)));
 		return 1;
 	}
 }

@@ -6,23 +6,21 @@
 		<pen r="1.0" g="0" b="0" pixels="3" status="down" />
 	</parameters>
 	
-	<userDefinedCommands>
-		<command>
-TO circle
-	REPEAT 180 [ FD 1 RT 2 ]
-END
-		</command>	
-	</userDefinedCommands>
+	<userdefinedcommands>
+		<command name="command" params=":var :varb :varc">
+		fd 20
+		</command>
+	</userdefinedcommands>
 	
-	<savedCommands>
+	<savedcommands>
 		<command> fd 100 </command>
 		<command> pen up </command>
 		<command> right 20</command>
-	</savedCommands>
+	</savedcommands>
 	
-	<variables>
-		<variable name="x" value="1.0" />
-		<variable name="y" value="2.0" />
-	</variables>
+	<workspacevariables>
+		<variable name=":x" value="1.0" />
+		<variable name=":y" value="2.0" />
+	</workspacevariables>
 	
 </workspace>
