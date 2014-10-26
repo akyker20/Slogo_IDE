@@ -11,6 +11,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
 
+/**
+ * Class displays the indexed colors saved by the user for setting the turtle line color
+ * @author akyker20, allankiplagat
+ *
+ */
 public class ColorIndexFeature extends TableView<ColorIndex> {
     @SuppressWarnings("unchecked")
     public ColorIndexFeature(ObservableList<ColorIndex> data, OptionsHolderDrawer parentDrawer){

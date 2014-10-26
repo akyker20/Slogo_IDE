@@ -18,13 +18,11 @@ public class DrawableObject {
 
 
     /**
-     *
-     * @param someParent The string name of the ComponentDrawer the shape is to be drawn in
-     * @param someType The ObjectFactory used to build the shape to be drawn
-     * @param someName The name the drawable object
-     * @param rawParameters Parameters used by the ObjectFactory to generate a shape
+     * 
+     * @param someParent
+     * @param someType
+     * @param rawParameters
      */
-
     public DrawableObject (String someParent,
                            String someType,
                            Map<String, String> rawParameters) {
@@ -33,11 +31,7 @@ public class DrawableObject {
         parameters = rawParameters;
     }
 
-    public DrawableObject() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getParent () {
+    public String getParent () {
         return parent;
     }
 
@@ -48,10 +42,10 @@ public class DrawableObject {
     public Map<String, String> getParameters () {
         return parameters;
     }
-    
+
     @Override
     public String toString(){
-    	return "Parent: " + parent + ", Type: " + type + ", Parameters: " + parameters.toString();
+        return "Parent: " + parent + ", Type: " + type + ", Parameters: " + parameters.toString();
     }
 
 }

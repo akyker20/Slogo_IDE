@@ -8,10 +8,16 @@ import javafx.scene.control.TabPane;
 import Control.SlogoGraphics;
 import XML.workspaceparams.WorkspaceScreenParameters;
 
+/**
+ * Class manages the workspace components that are presented in the GUI as
+ * tabs within this TabPane
+ * @author allankiplagat, akyker20
+ *
+ */
+
 public class WorkspaceManager extends TabPane {
 
     public static Workspace myActiveWorkspace;
-
     private static int workspaceID = 0;
 
     private SlogoGraphics myControl;
