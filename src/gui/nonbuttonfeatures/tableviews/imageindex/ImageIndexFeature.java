@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.mainclasses.TextGenerator;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
@@ -27,10 +28,10 @@ public class ImageIndexFeature extends TableView<ImageIndex> {
             }
         };
 
-        TableColumn<ImageIndex,Integer> index = new TableColumn<ImageIndex,Integer>("Index");
+        TableColumn<ImageIndex,Integer> index = new TableColumn<ImageIndex,Integer>(TextGenerator.get(TextGenerator.INDEX));
         index.setCellValueFactory(new PropertyValueFactory("myIndex"));
         index.prefWidthProperty().bind(this.widthProperty().divide(2));
-        TableColumn<ImageIndex, File> imageCol = new TableColumn<ImageIndex, File>("Image");
+        TableColumn<ImageIndex, File> imageCol = new TableColumn<ImageIndex, File>(TextGenerator.get(TextGenerator.IMAGE));
         imageCol.setCellValueFactory(new PropertyValueFactory("myImageFile"));
         imageCol.prefWidthProperty().bind(this.widthProperty().divide(2).subtract(2));
 

@@ -24,7 +24,7 @@ public class StageInitializer {
         Scene scene = new Scene(pane, SCREEN_WIDTH, SCREEN_HEIGHT, Color.CORNSILK);
         scene.getStylesheets().add(STYLESHEET_PACKAGE + "style.css");
         stage.setScene(scene);
-        stage.setTitle(GuiTextGenerator.get(GuiTextGenerator.SLOGO_TITLE_TEXT));
+        stage.setTitle(TextGenerator.get(TextGenerator.SLOGO));
         stage.setResizable(false);
         stage.show();
         return pane;

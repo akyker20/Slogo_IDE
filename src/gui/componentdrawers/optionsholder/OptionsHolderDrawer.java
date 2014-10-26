@@ -1,6 +1,7 @@
 package gui.componentdrawers.optionsholder;
 
 import gui.componentdrawers.ComponentDrawer;
+import gui.mainclasses.TextGenerator;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -16,7 +17,7 @@ public class OptionsHolderDrawer extends ComponentDrawer {
         myButtonHolder.setId("tabPane");
         myButtonHolder.setPrefWidth(245);
         myButtonHolder.setLayoutY(20);
-        super.drawShape(new Node[]{ new Label("Options"), myButtonHolder});
+        super.drawShape(new Node[]{ new Label(TextGenerator.get(TextGenerator.OPTIONS)), myButtonHolder});
     }
 
     /**

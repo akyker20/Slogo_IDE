@@ -1,6 +1,7 @@
 package gui.componentdrawers;
 
 import gui.mainclasses.StageInitializer;
+import gui.mainclasses.TextGenerator;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -12,7 +13,7 @@ public class ErrorDrawer extends ComponentDrawer {
     public ErrorDrawer (String name) {
         super(name);
         this.setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        super.drawShape(new Label[]{new Label("Errors")});
+        super.drawShape(new Label[]{new Label(TextGenerator.get(TextGenerator.ERRORS))});
     }
 
     public void setParentNode(ListView view){

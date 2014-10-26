@@ -2,6 +2,7 @@ package gui.nonbuttonfeatures;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.mainclasses.TextGenerator;
 import gui.nonbuttonfeatures.tableviews.imageindex.ImageIndex;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class TurtleImageFeature extends BorderPane {
     
     public TurtleImageFeature(OptionsHolderDrawer parentDrawer, List<ImageIndex> imageFilesList) {
         myImageFilesList = (ObservableList<ImageIndex>) imageFilesList;
-        Label label = new Label("Image Drop Area");
+        Label label = new Label(TextGenerator.get(TextGenerator.IMAGE_DROP_AREA));
         this.setTop(label);
         VBox vbox = new VBox(10);
         vbox.setStyle("-fx-border-color: lightgray");
