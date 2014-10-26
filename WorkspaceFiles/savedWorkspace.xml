@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <workspace>
-<savedCommands>
-<command>mk</command>
-</savedCommands>
-<workspacevariables>
-<command name=":x" value="5.0"/>
-</workspacevariables>
+<savedCommands/>
+<workspacevariables/>
 <colorindices/>
 <userdefinedcommands>
-<command name="command" params=":var, :varb, :varc">fd 50</command>
+<command name="command" params=":var :varb :varc">forward 20</command>
 </userdefinedcommands>
 </workspace>
