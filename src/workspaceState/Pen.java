@@ -2,6 +2,12 @@ package workspaceState;
 
 import javafx.scene.paint.Color;
 
+/**
+ * This class is the Pen class that contains all of the information about the Pen.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class Pen {
 

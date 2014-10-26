@@ -12,6 +12,12 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This parses commands meant to be sent to multiple turtles.
+ * 
+ * @author Stanley Yuan
+ *
+ */
 
 public abstract class MultipleTurtleCommand extends StructuralCommand implements TurtleGenerator {
 

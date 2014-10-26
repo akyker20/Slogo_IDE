@@ -1,5 +1,12 @@
 package workspaceState;
 
+/**
+ * This class is the Shape class that contains all of the information for each Shape.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
+
 public class Shape {
     private String URI;
 

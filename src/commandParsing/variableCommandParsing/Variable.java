@@ -7,6 +7,12 @@ import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This class is the Variable class that contains the information for parsing each Variable.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class Variable extends CommandParser {
 

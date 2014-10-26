@@ -13,6 +13,13 @@ import commandParsing.exceptions.PropertyFileAccessException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
+/**
+ * This is the base for almost all of the tests, with the methods for setting up being almost universally
+ * used to initialize the language and start the tests.
+ * 
+ * @author Steve Kuznetsov
+ *
+ */
 
 public abstract class CommandTester {
 

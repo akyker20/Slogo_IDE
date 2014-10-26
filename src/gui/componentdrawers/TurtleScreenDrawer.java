@@ -1,5 +1,9 @@
 package gui.componentdrawers;
 
+import java.util.HashMap;
+import java.util.Map;
+import XML.readers.SavedWorkspaceXMLReader;
+import XML.workspaceparams.WorkspaceScreenParameters;
 import gui.factories.turtlefactory.TurtleNodes;
 import gui.mainclasses.StageInitializer;
 import gui.mainclasses.TextGenerator;
@@ -7,6 +11,7 @@ import gui.nonbuttonfeatures.TurtleScreenFeature;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 /**
@@ -22,6 +27,8 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     public static final double GRID_HEIGHT = StageInitializer.SCREEN_HEIGHT * GRID_HEIGHT_RATIO;
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
+    
+    private Color myScreenColor;
 
     // This is just for the grid lines
     private TurtleScreenFeature myTurtleScreen;
@@ -120,12 +127,29 @@ public class TurtleScreenDrawer extends ComponentDrawer {
      *
      * @param style
      */
-    public void changeScreenColor (String style) {
-        myTurtleScreen.setStyle(style);
+    public void changeScreenColor (Color color) {
+        myScreenColor = color;
+        myTurtleScreen.setStyle("-fx-background-color: #" + color.toString().substring(2));
     }
 
+    /**
+     * Resets the screen. This is called when the clear screen command is called.
+     */
     public void resetScreen () {
         myTurtleNodes.clearTurtleNodes();
         myTurtleScreen.getChildren().clear();
+    }
+
+    /**
+     * Returns screen parameters. This is called by the xml file writer.
+     * @return WorkspaceScreenParameters
+     */
+    public WorkspaceScreenParameters getScreenParams () {
+        WorkspaceScreenParameters params = new WorkspaceScreenParameters();
+        params.put(SavedWorkspaceXMLReader.TOGGLE_GRID, 
+                         myTurtleScreen.getChildren().contains(myGrid)+"");
+        params.put(SavedWorkspaceXMLReader.COLOR, 
+                         myScreenColor.toString());
+        return params;
     }
 }

@@ -14,6 +14,6 @@ public class SetTurtleScreenColorFeature extends ColorPickerFeature {
                                         OptionsHolderDrawer parentDrawer) {
         super(parentDrawer);
         setOnAction(event -> targetDrawer
-                    .changeScreenColor("-fx-background-color: " + getPickerColor()));
+                    .changeScreenColor(this.getValue()));
     }
 }

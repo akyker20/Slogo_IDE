@@ -6,6 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 import drawableobject.DrawableObject;
 
+/**
+ * This class generates the actual UserDefinedVariable drawableObjects to give to the GUI.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public interface UserDefinedVariableGenerator {
     default public DrawableObject generateDrawableObjectRepresentingVariable (WorkspaceVariable variable) {

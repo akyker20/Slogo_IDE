@@ -1,5 +1,12 @@
 package workspaceState;
 
+/**
+ * This class is the Turtle class that contains all of the information for each Turtle.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
+
 public class Turtle {
 
     private static final double DEFAULT_TURTLE_HEADING = 0.0;

@@ -10,6 +10,12 @@ import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This class is the UserInstruction class that contains the information for parsing each UserDefinedInstruction.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class UserInstruction extends CommandParser {
 

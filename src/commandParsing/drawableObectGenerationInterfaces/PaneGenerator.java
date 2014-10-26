@@ -6,6 +6,12 @@ import java.util.Map;
 import javafx.scene.paint.Color;
 import drawableobject.DrawableObject;
 
+/**
+ * This class generates the actual Pane drawableObjects to give to the GUI.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public interface PaneGenerator {
 

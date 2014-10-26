@@ -14,6 +14,12 @@ import commandParsing.exceptions.SLOGOException;
 import commandParsing.variableCommandParsing.Variable;
 import drawableobject.DrawableObject;
 
+/**
+ * This is the abstract class for all kinds of structural command parsing.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public abstract class StructuralCommand extends CommandParser {
 

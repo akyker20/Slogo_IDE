@@ -8,6 +8,12 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This specifically parses any kind of recurring command such as for, doTimes, and repeat.
+ * 
+ * @author Steve Kuznetsov
+ *
+ */
 
 public abstract class RecurringCommand extends StructuralCommand implements
 UserDefinedVariableGenerator {

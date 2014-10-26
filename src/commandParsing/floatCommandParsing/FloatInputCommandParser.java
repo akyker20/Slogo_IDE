@@ -9,6 +9,12 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+/**
+ * This parses anything that you input either one or two floats.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public abstract class FloatInputCommandParser extends CommandParser {
 

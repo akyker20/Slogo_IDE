@@ -7,6 +7,15 @@ import java.util.Map;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
 
+/**
+ * This class contains all of the turtles, all of the active turtles, and all of the stamps.
+ * This class is for the most part where any kind of interactions with turtles happen.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
+
+
 public class TurtleCollection {
     private Map<Integer, Turtle> turtles = new HashMap<Integer, Turtle>();
     private Map<Integer, Turtle> activeTurtles = new HashMap<Integer, Turtle>();
