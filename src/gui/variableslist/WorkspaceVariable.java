@@ -27,6 +27,8 @@ public class WorkspaceVariable {
     }    
 
     public void addValue (double value){
-        myValue += value;
+        System.out.print("Old value of: " + myName + ": " + myValue);
+    	myValue += value;
+    	System.out.println(", new value: " + myValue);
     }
 }
