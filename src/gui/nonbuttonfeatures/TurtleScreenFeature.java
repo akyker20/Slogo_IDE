@@ -1,6 +1,6 @@
 package gui.nonbuttonfeatures;
 import XML.readers.SavedWorkspaceXMLReader;
-import XML.workspaceparams.WorkspaceParameters;
+import XML.workspaceparams.WorkspaceScreenParameters;
 import gui.componentdrawers.TurtleScreenDrawer;
 import javafx.scene.layout.Pane;
 /**
@@ -16,7 +16,7 @@ public class TurtleScreenFeature extends Pane {
     private static final String TOGGLE_GRID = SavedWorkspaceXMLReader.TOGGLE_GRID;
     
     
-    public TurtleScreenFeature(TurtleScreenDrawer parentDrawer, WorkspaceParameters screenParams){
+    public TurtleScreenFeature(TurtleScreenDrawer parentDrawer, WorkspaceScreenParameters screenParams){
         this.setPrefWidth(TurtleScreenDrawer.GRID_WIDTH);
         this.setPrefHeight(TurtleScreenDrawer.GRID_HEIGHT);
         this.getStyleClass().add("grid");

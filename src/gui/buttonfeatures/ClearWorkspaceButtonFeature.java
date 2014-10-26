@@ -1,7 +1,6 @@
 package gui.buttonfeatures;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
-import gui.mainclasses.GUIController;
 import gui.mainclasses.workspace.Workspace;
 
 /**

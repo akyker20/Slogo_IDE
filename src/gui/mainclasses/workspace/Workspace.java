@@ -11,12 +11,14 @@ import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureBuilder;
 import gui.mainclasses.StageInitializer;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import javafx.scene.control.Tab;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import Control.SlogoGraphics;
-import XML.workspaceparams.WorkspaceParameters;
+import XML.workspaceparams.WorkspacePenCommands;
+import XML.workspaceparams.WorkspaceScreenParameters;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
@@ -32,8 +34,8 @@ public class Workspace extends Tab {
     private BorderPane myPane;
     private int myID;
 
-    public Workspace(SlogoGraphics control, WorkspaceParameters screenParams, 
-                     WorkspaceParameters penParams, WorkspaceDataHolder dataHolder, int id) {
+    public Workspace(SlogoGraphics control, WorkspaceScreenParameters screenParams, 
+                     WorkspaceDataHolder dataHolder, int id) {
         myControl = control;
         myDataHolder = dataHolder;
         myTurtleNodes = new TurtleNodes(this);
@@ -44,8 +46,14 @@ public class Workspace extends Tab {
         myObjectFactories = FactoryBuilder
                 .init(myDataHolder, (TurtleScreenDrawer) 
                       myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
-        FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
+        FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);        
         this.setContent(myPane);
+    }
+
+    public void setInitialPenConfiguration(WorkspacePenCommands penCommandsList){
+        for(String penCommand:penCommandsList){
+            parseCommandString(penCommand);
+        }
     }
 
     private BorderPane createPane() {

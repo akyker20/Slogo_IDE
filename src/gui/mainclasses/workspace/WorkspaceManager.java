@@ -5,9 +5,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import Control.SlogoGraphics;
-import XML.workspaceparams.WorkspaceParameters;
+import XML.workspaceparams.WorkspacePenCommands;
+import XML.workspaceparams.WorkspaceScreenParameters;
 
 public class WorkspaceManager extends TabPane {
+
+    private static final String NEW_TURTLE_COMMAND = "mk";
 
     public static Workspace myActiveWorkspace;
 
@@ -19,7 +22,7 @@ public class WorkspaceManager extends TabPane {
     public WorkspaceManager(SlogoGraphics control)    {
         myControl = control;
         initializeTabPane(); 
-        addWorkspace(new WorkspaceParameters(), new WorkspaceParameters(), 
+        addWorkspace(new WorkspaceScreenParameters(), new WorkspacePenCommands(), 
                      new WorkspaceDataHolder());
     }
 
@@ -39,17 +42,18 @@ public class WorkspaceManager extends TabPane {
                 );  
     }
 
-    public void addWorkspace(WorkspaceParameters screenParams, 
-                             WorkspaceParameters penParams, 
+    public void addWorkspace(WorkspaceScreenParameters screenParams, 
+                             WorkspacePenCommands penCommandsList, 
                              WorkspaceDataHolder dataHolder) {
-        Workspace newWorkspace = new Workspace(myControl, screenParams, penParams, dataHolder, workspaceID);
+        Workspace newWorkspace = new Workspace(myControl, screenParams, dataHolder, workspaceID);
         newWorkspace.setText("Workspace " + workspaceID);
         
         getTabs().add(newWorkspace); 
         myActiveWorkspace = newWorkspace;
+        myActiveWorkspace.setInitialPenConfiguration(penCommandsList);
         myControl.createWorkspaceState(workspaceID);
         myControl.setActiveWorkspaceState(myWorkspaceID);
-        workspaceID++;     
+        workspaceID++;   
     }
 
     public Workspace getActiveWorkspace() {

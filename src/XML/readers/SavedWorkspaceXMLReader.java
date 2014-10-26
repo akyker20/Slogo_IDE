@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.xml.parsers.DocumentBuilder;
@@ -15,7 +17,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import XML.workspaceparams.WorkspaceParameters;
+import XML.workspaceparams.WorkspacePenCommands;
+import XML.workspaceparams.WorkspaceScreenParameters;
 
 public class SavedWorkspaceXMLReader {
     
@@ -31,6 +34,11 @@ public class SavedWorkspaceXMLReader {
     private static final String VARIABLE = "variable";
     private static final String VALUE = "value";
     private static final String SAVED_COMMANDS = "savedCommands";
+    private static final String STATUS = "status";
+    private static final String GREEN = "g";
+    private static final String RED = "r";
+    private static final String BLUE = "b";
+    private static final String PEN = "pen";
     
     private Element myRoot;
     
@@ -41,16 +49,20 @@ public class SavedWorkspaceXMLReader {
         myRoot = document.getDocumentElement();
     }
 
-    public WorkspaceParameters getPenParams () {
-        WorkspaceParameters params = new WorkspaceParameters();
-        Element penParameters = (Element) myRoot.getElementsByTagName(SCREEN).item(0);
-        params.put(COLOR, penParameters.getAttribute(COLOR));
-        params.put(PIXELS, penParameters.getAttribute(PIXELS));
-        return params;
+    public WorkspacePenCommands getInitialPenCommands () {
+        WorkspacePenCommands penCommands = new WorkspacePenCommands();
+        Element penParameters = (Element) myRoot.getElementsByTagName(PEN).item(0);
+        penCommands.addCommand("setpalette 0 "  +  penParameters.getAttribute(RED) + " " + 
+                                            penParameters.getAttribute(GREEN) + " " + 
+                                            penParameters.getAttribute(BLUE));
+        penCommands.addCommand("setpencolor 0");
+        penCommands.addCommand("setpensize " + penParameters.getAttribute(PIXELS));
+        penCommands.addCommand("pen" + penParameters.getAttribute(STATUS).toLowerCase());
+        return penCommands;
     }
 
-    public WorkspaceParameters getScreenParameters () {
-        WorkspaceParameters params = new WorkspaceParameters();
+    public WorkspaceScreenParameters getScreenParameters () {
+        WorkspaceScreenParameters params = new WorkspaceScreenParameters();
         Element screenParameters = (Element) myRoot.getElementsByTagName(SCREEN).item(0);
         params.put(COLOR, screenParameters.getAttribute(COLOR));
         params.put(TOGGLE_GRID, screenParameters.getAttribute(TOGGLE_GRID));

@@ -1,20 +1,15 @@
 package Control;
 
 import gui.mainclasses.GUIController;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-
 import javafx.stage.Stage;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.xml.sax.SAXException;
-
 import translator.Translator;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
@@ -37,6 +32,8 @@ import drawableobject.DrawableObject;
  */
 
 public class SlogoControl implements SlogoGraphics, SlogoBackend {
+    
+    public static final String NEW_TURTLE_COMMAND = "mk";
 
     private GUIController myGUI;
     Translator translator;
@@ -59,8 +56,9 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
      */
 
     public SlogoControl(Stage stage)  {
-    	myWorkspaceStates = new HashMap<Integer,WorkspaceState>();
+        myWorkspaceStates = new HashMap<Integer,WorkspaceState>();
         myGUI = new GUIController(stage, this);
+        parseCommandString(NEW_TURTLE_COMMAND);
     }
 
     public void createWorkspaceState(int workspaceID) {
@@ -73,9 +71,9 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
             e.printStackTrace();
         }
     }
-    
+
     public void setActiveWorkspaceState(int workspaceID) {
-    	activeState = myWorkspaceStates.get(workspaceID);
+        activeState = myWorkspaceStates.get(workspaceID);
     }
     
     @Override
@@ -99,6 +97,7 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
             }
         }
         myGUI.getWorkspaceManager().getActiveWorkspace().addPreviousCommand(command);
+        
         drawDrawableObjects(objectQueue);
         return objectQueue;
     }

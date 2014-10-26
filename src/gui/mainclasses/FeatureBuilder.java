@@ -36,7 +36,7 @@ import gui.nonbuttonfeatures.tableviews.WorkspaceVariablesFeature;
 import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
-import XML.workspaceparams.WorkspaceParameters;
+import XML.workspaceparams.WorkspaceScreenParameters;
 
 /**
  * The purpose of this class is to initialize all of the features, both button features
@@ -46,7 +46,7 @@ import XML.workspaceparams.WorkspaceParameters;
  */
 public class FeatureBuilder {
 
-    public static void init (Workspace workspace, Map<String, ComponentDrawer> drawerMap, WorkspaceParameters screenParameters, WorkspaceDataHolder dataHolder) {
+    public static void init (Workspace workspace, Map<String, ComponentDrawer> drawerMap, WorkspaceScreenParameters screenParameters, WorkspaceDataHolder dataHolder) {
 
         
         TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentBuilder.SCREEN_DRAWER);

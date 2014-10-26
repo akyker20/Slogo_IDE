@@ -4,6 +4,7 @@ import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.mainclasses.workspace.WorkspaceManager;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -12,8 +13,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import Control.SlogoControl;
 import XML.readers.SavedWorkspaceXMLReader;
-import XML.workspaceparams.WorkspaceParameters;
+import XML.workspaceparams.WorkspacePenCommands;
+import XML.workspaceparams.WorkspaceScreenParameters;
 
 
 /**
@@ -36,7 +39,7 @@ public class FileMenu extends Menu {
                 try {
                     SavedWorkspaceXMLReader reader = new SavedWorkspaceXMLReader(createFileChooser(SAVED_WORKSPACE_FILES_DIR)); 
                     WorkspaceDataHolder dataHolder = reader.getWorkspaceDataHolder();
-                    workspaceManager.addWorkspace(reader.getScreenParameters(), reader.getPenParams(), dataHolder);
+                    workspaceManager.addWorkspace(reader.getScreenParameters(), reader.getInitialPenCommands(), dataHolder);
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block
@@ -49,8 +52,9 @@ public class FileMenu extends Menu {
         MenuItem newWorkspace = new MenuItem("New Workspace");
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                    workspaceManager.addWorkspace(new WorkspaceParameters(), new WorkspaceParameters(), 
-                                                  new WorkspaceDataHolder());             
+                    workspaceManager.addWorkspace(new WorkspaceScreenParameters(), new WorkspacePenCommands(), 
+                                                  new WorkspaceDataHolder()); 
+                    workspaceManager.getActiveWorkspace().parseCommandString(SlogoControl.NEW_TURTLE_COMMAND);
             }
         });
 

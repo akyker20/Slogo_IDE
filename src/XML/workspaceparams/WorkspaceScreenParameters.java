@@ -3,11 +3,11 @@ package XML.workspaceparams;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WorkspaceParameters {
+public class WorkspaceScreenParameters {
     
     protected Map<String, String> myMap;
 
-    public WorkspaceParameters(){
+    public WorkspaceScreenParameters(){
         myMap = new HashMap<String, String>();
     }
 
