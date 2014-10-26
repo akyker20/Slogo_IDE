@@ -20,6 +20,11 @@ public class Turtle {
 		myHeading = DEFAULT_TURTLE_HEADING;
 		shape = new Shape("/src/resources/guiResources/turtleImages/default_turtle.png");
 	}
+	
+	public Turtle(int ID){
+		this(0,0);
+		this.setID(ID);
+	}
 
 
 	public void showTurtle() {

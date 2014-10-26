@@ -23,7 +23,20 @@ public class Ask extends StructuralCommand {
 		workspace.turtles.clearActiveTurtles();
 		List<Integer> turtleIDList = new ArrayList<Integer>();
 		double lastTurtleID = 0;
-		// getTurtleIDsBetweenBraces
+		extractCommandsBetweenBraces(commandStringIterator);
+
+		for (String s : enclosedCommands) {
+			turtleIDList.add(Integer.parseInt(s));
+		}
+		for (Integer i : turtleIDList) {
+			if (workspace.turtles.hasTurtleWithID(i)) {
+				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
+			}
+			else {
+				workspace.turtles.addTurtle(new Turtle(i));
+			}
+			lastTurtleID = i;
+		}
 		for (Integer i : turtleIDList) {
 			workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
 			lastTurtleID = i;
@@ -31,11 +44,30 @@ public class Ask extends StructuralCommand {
 		// Extract command between braces
 		// Run commands
 		// Return result of last command on last active turtle
+		
+		extractCommandsBetweenBraces(commandStringIterator);
+		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
+		
 		workspace.turtles.clearActiveTurtles();
 		for (Turtle t : savedListOfTurtles) {
 			workspace.turtles.activateTurtle(t);
 		}
-		return lastTurtleID;
+		return returnValue;
+
+		/*
+		 * workspace.turtles.clearActiveTurtles(); List<Integer> turtleIDList =
+		 * new ArrayList<Integer>(); double lastTurtleID = 0;
+		 * extractCommandsBetweenBraces(commandStringIterator);
+		 * 
+		 * for (String s: enclosedCommands){
+		 * turtleIDList.add(Integer.parseInt(s)); } for (Integer i:
+		 * turtleIDList){ if(workspace.turtles.hasTurtleWithID(i)){
+		 * workspace.turtles
+		 * .activateTurtle(workspace.turtles.getTurtleWithID(i)); } else{
+		 * workspace.turtles.addTurtle(new Turtle(i)); } lastTurtleID = i; }
+		 * 
+		 * return lastTurtleID;
+		 */
 	}
 
 }
