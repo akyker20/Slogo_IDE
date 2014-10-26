@@ -40,7 +40,6 @@ public class SetShapeTests extends CommandTester {
 			CommandParser parser = createCommand();
 			f = parser.parse(commands, objectQueue);
 		}
-		System.out.println(objectQueue.size());
 		DrawableObject turtle = objectQueue.poll();
 		assertTrue(turtle.getParameters().get(TurtleFactory.IMAGE_PATH)
 				.equals(workspace.shapePalette.getFromPalette(1).getPath()));

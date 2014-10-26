@@ -111,7 +111,6 @@ public class AskWithTests extends CommandTester {
 			f = parser.parse(commands, objectQueue);
 		}
 		assertTrue(f == 50);
-		System.out.println(objectQueue);
 		
 		DrawableObject turtle = objectQueue.poll();
 		assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));
