@@ -47,12 +47,4 @@ public class PreviousCommandsFeature extends ListView<String> {
             }
         }
     }
-
-
-    /**
-     * @returns the observable list so it can be updated from the command line feature.
-     */
-    public ObservableList<String> getPreviousCommandsList () {
-        return myPreviousCommandsList;
-    }
 }

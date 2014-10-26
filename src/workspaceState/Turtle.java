@@ -21,9 +21,21 @@ public class Turtle {
 		shape = new Shape("/src/resources/guiResources/turtleImages/default_turtle.png");
 	}
 	
+
 	public Turtle(int ID){
 		this(0,0);
 		this.setID(ID);
+	}
+
+	public Turtle(Turtle turtle){
+		pen = new Pen(turtle.pen);
+		myHeading = turtle.myHeading;
+		myLocation = turtle.myLocation;
+		myOpacity = turtle.myOpacity;
+		turtleShowing = turtle.turtleShowing;
+		myID = turtle.myID*941083987; // large prime number
+		shape = new Shape(turtle.shape.getPath());
+
 	}
 
 

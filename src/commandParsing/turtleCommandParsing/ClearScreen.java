@@ -20,7 +20,7 @@ public class ClearScreen extends Home implements PaneGenerator {
 	@Override
 	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
-		objectQueue.add(generateDrawableObjectRepresentingPane());
+		objectQueue.add(generateDrawableObjectRepresentingPaneReset());
 		double returnValue = 0;
 		for (Turtle t : workspace.turtles.getActiveTurtles()) {
 			if (t.pen.isPenDown()) {

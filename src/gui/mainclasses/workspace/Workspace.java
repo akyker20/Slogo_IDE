@@ -5,8 +5,8 @@ import gui.componentdrawers.ComponentDrawer;
 import gui.componentdrawers.TurtleScreenDrawer;
 import gui.factories.FactoryBuilder;
 import gui.factories.ObjectFactory;
-import gui.factories.nodes.TurtleNode;
-import gui.factories.nodes.TurtleNodes;
+import gui.factories.turtlefactory.TurtleNode;
+import gui.factories.turtlefactory.TurtleNodes;
 import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureBuilder;
 import gui.mainclasses.StageInitializer;
@@ -30,12 +30,15 @@ public class Workspace extends Tab {
     private ObjectFactory[] myObjectFactories;
     private WorkspaceDataHolder myDataHolder;
     private BorderPane myPane;
+    private int myID;
 
     public Workspace(SlogoGraphics control, WorkspaceParameters screenParams, 
-                     WorkspaceParameters penParams, WorkspaceDataHolder dataHolder) {
+                     WorkspaceParameters penParams, WorkspaceDataHolder dataHolder, int id) {
         myControl = control;
         myDataHolder = dataHolder;
-        myTurtleNodes = new TurtleNodes();
+        myTurtleNodes = new TurtleNodes(this);
+        myID = id; 
+        
         myPane = createPane();
         myComponentDrawers = ComponentBuilder.build(myPane, myTurtleNodes);
         myObjectFactories = FactoryBuilder
@@ -43,7 +46,6 @@ public class Workspace extends Tab {
                       myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
         FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
         this.setContent(myPane);
-
     }
 
     private BorderPane createPane() {
@@ -85,10 +87,6 @@ public class Workspace extends Tab {
         }
     }
 
-    public Map<String, ComponentDrawer> getComponentDrawers() {
-        return myComponentDrawers;
-    }
-
     /**
      * Adds a command to the previous commands list view. Adds the command to the front
      * of the list so it will be displayed first in the view.
@@ -113,5 +111,17 @@ public class Workspace extends Tab {
      */
     public void parseDrawableObject (DrawableObject poll) {
         DrawableObjectParser.parseDrawableObject(poll, myComponentDrawers, myObjectFactories);
+    }
+
+    public void notifyOfTurtleSelectionChange () {
+        String activeTurtleStr = "";
+        for(TurtleNode node:myTurtleNodes.getActiveNodes()){
+            activeTurtleStr += node.getTurtleID();
+        }
+        parseCommandString("Tell [ " + activeTurtleStr.trim() + " ]");
+    }
+
+    public int getWorkspaceID () {
+        return myID;
     }
 }

@@ -3,15 +3,11 @@ package tests.commandTests.inputlessCommandTests;
 import static org.junit.Assert.assertTrue;
 import gui.componentdrawers.ComponentBuilder;
 import gui.factories.FactoryBuilder;
-import gui.factories.TurtleFactory;
-
+import gui.factories.turtlefactory.TurtleFactory;
 import org.junit.Test;
-
 import tests.commandTests.CommandTester;
-
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
-
 import drawableobject.DrawableObject;
 
 public class ClearScreenTests extends CommandTester {

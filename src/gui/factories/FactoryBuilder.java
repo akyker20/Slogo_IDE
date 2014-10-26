@@ -2,7 +2,8 @@ package gui.factories;
 
 
 import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.nodes.TurtleNodes;
+import gui.factories.turtlefactory.TurtleFactory;
+import gui.factories.turtlefactory.TurtleNodes;
 import gui.mainclasses.workspace.WorkspaceDataHolder;
 
 public class FactoryBuilder {

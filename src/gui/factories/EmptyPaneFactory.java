@@ -2,7 +2,7 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentBuilder;
 import gui.componentdrawers.TurtleScreenDrawer;
-import gui.factories.nodes.NullNode;
+import gui.factories.turtlefactory.NullNode;
 import java.util.Map;
 import javafx.scene.Node;
 

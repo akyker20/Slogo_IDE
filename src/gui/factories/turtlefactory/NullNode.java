@@ -1,4 +1,4 @@
-package gui.factories.nodes;
+package gui.factories.turtlefactory;
 
 import javafx.scene.image.ImageView;
 
