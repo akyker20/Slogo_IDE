@@ -35,6 +35,10 @@ public class TurtleCollection {
 	public List<Turtle> getActiveTurtles() {
 		return activeTurtles;
 	}
+	
+	public List<Turtle> getAllTurtles() {
+		return turtles;
+	}
 
 	public Turtle getLastActiveTurtle() {
 		return activeTurtles.get(activeTurtles.size() - 1);
