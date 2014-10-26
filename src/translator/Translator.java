@@ -47,9 +47,10 @@ public class Translator {
 		List<String> translatedString = new ArrayList<String>();
 
 		for (String s : splitString) {
-			if (dictionaryLanguageToEnglish.containsKey(s)) {
-				translatedString.add(dictionaryLanguageToClassPath.get(s));
-			} else if (matchesCommandPattern(s) && !dictionaryLanguageToClassPath.containsKey(s)) {
+			String potentialCommandName = s.toLowerCase();
+			if (dictionaryLanguageToEnglish.containsKey(potentialCommandName)) {
+				translatedString.add(dictionaryLanguageToClassPath.get(potentialCommandName));
+			} else if (matchesCommandPattern(s) && !dictionaryLanguageToClassPath.containsKey(potentialCommandName)) {
 				translatedString.add(dictionaryLanguageToClassPath.get(USER_DEFINED_COMMAND));
 				translatedString.add(s);
 			} else if (matchesConstantPattern(s)) {
@@ -87,7 +88,7 @@ public class Translator {
 			if (inputLine.contains("|")) {
 				String[] multipleCommandsOneAction = commands[1].split("\\|");
 				for (int i = 0; i < multipleCommandsOneAction.length; i++) {
-					dictionaryLanguageToEnglish.put(multipleCommandsOneAction[i], commands[0]);
+					dictionaryLanguageToEnglish.put(multipleCommandsOneAction[i].toLowerCase(), commands[0]);
 				}
 			} else {
 				dictionaryLanguageToEnglish.put(commands[1], commands[0]);
