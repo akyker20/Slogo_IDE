@@ -55,12 +55,11 @@ public class TurtleCollection {
 
 	public Turtle getLastActiveTurtle() {
 		Turtle lastTurtle = new Turtle(-1);
-		activeTurtles.values().stream()
-				.forEach(t -> {
-					if (t.getID() > lastTurtle.getID()) {
-						t = lastTurtle;
-					}
-				});
+		for(Turtle t : activeTurtles.values()) {
+			if (t.getID() > lastTurtle.getID()) {
+				lastTurtle = t;
+			}
+		}
 		return lastTurtle;
 	}
 

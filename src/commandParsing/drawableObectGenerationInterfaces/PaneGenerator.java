@@ -15,7 +15,7 @@ public interface PaneGenerator {
 		String type = EmptyPaneFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put(PaneFactory.RESET_FLAG, "true");
-		parameters.put(PaneFactory.BACKGROUND_COLOR, Color.WHITE);
+		parameters.put(PaneFactory.BACKGROUND_COLOR, Color.WHITE.toString());
 
 		return new DrawableObject(parent, type, parameters);
 	}
