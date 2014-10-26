@@ -1,5 +1,6 @@
 package XML.readers;
 
+import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.variableslist.WorkspaceVariable;
 import java.io.File;
@@ -29,11 +30,11 @@ public class SavedWorkspaceXMLReader {
     public static final String TOGGLE_GRID = "toggleGrid";
     public static final String TRUE = "true";
     public static final String PIXELS = "pixels";
-    public static final String USER_DEFINED_CMDS = "userDefinedCommands";
+    public static final String USER_DEFINED_CMDS = "userdefinedcommands";
     public static final String NAME = "name";
     private static final String VARIABLE = "variable";
     private static final String VALUE = "value";
-    private static final String SAVED_COMMANDS = "savedCommands";
+    private static final String SAVED_COMMANDS = "savedcommands";
     private static final String STATUS = "status";
     private static final String GREEN = "g";
     private static final String RED = "r";
@@ -81,8 +82,17 @@ public class SavedWorkspaceXMLReader {
         return workspaceVariables;
     }
     
-    public ObservableList<String> getUserDefinedCommands(){
-        return getStringListFromElements(USER_DEFINED_CMDS);
+    public ObservableList<DisplayedUserCommand> getUserDefinedCommands(){
+        ObservableList<DisplayedUserCommand> userDefinedCommands = FXCollections.observableArrayList();           
+        Element headNode = (Element) myRoot.getElementsByTagName("userdefinedcommands").item(0);
+        NodeList commands = headNode.getElementsByTagName(COMMAND);
+        for(int i = 0; i < commands.getLength(); i++){
+            Element el = (Element) commands.item(i);
+            userDefinedCommands.add(new DisplayedUserCommand(el.getAttribute(NAME),
+                                                             el.getAttribute("params"),
+                                                             el.getTextContent()));
+        } 
+        return userDefinedCommands;
     }
     
     public ObservableList<String> getSavedCommands () {
@@ -101,6 +111,6 @@ public class SavedWorkspaceXMLReader {
 
     public WorkspaceDataHolder getWorkspaceDataHolder () {
         return new WorkspaceDataHolder(getWorkspaceVariables(), FXCollections.observableArrayList(), getUserDefinedCommands(), 
-                                       getSavedCommands(), FXCollections.observableArrayList());
+                                       getSavedCommands(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
     }
 }

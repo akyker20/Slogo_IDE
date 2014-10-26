@@ -124,4 +124,8 @@ public class Workspace extends Tab {
     public int getWorkspaceID () {
         return myID;
     }
+
+    public WorkspaceDataHolder getDataHolder () {
+        return myDataHolder;
+    }
 }

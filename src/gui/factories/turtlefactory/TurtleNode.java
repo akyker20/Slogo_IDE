@@ -38,7 +38,7 @@ public class TurtleNode extends ImageView {
     public TurtleNode(Map<String, String> params, Workspace workspace) throws FileNotFoundException {
         isSelected = true;
         myWorkspace = workspace;
-        myID = params.get(TurtleNodes.TURTLE_IMAGE_ID);    
+        myID = params.get(TurtleFactory.TURTLE_ID);    
         updateImage(SELECTED_TURTLE_IMAGEPATH);
         updatePosition(params);
         setOnMouseClicked(event->selectTurtle());
