@@ -27,7 +27,7 @@ public abstract class RecurringCommand extends StructuralCommand implements User
 
 		while (loopVariableIsIncrementable()) {
 			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
-			incrementLoopVariable();
+			incrementLoopVariable(objectQueue);
 		}
 		return returnValue;
 	}
@@ -41,10 +41,14 @@ public abstract class RecurringCommand extends StructuralCommand implements User
 		loopVariableBound = expressionComponents.get(0);
 		incrementAmount = 1;
 		workspace.variables.storeVariable(loopVariable, 1);
+		objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
+				.fetchWorkspaceVariable(loopVariable)));
 	}
 
-	protected void incrementLoopVariable() {
+	protected void incrementLoopVariable(Queue<DrawableObject> objectQueue) throws RunTimeNullPointerException {
 		workspace.variables.incrementVariable(loopVariable, incrementAmount);
+		objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
+				.fetchWorkspaceVariable(loopVariable)));
 	}
 
 	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException {

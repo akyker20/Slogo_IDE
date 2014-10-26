@@ -32,6 +32,8 @@ public class For extends RecurringCommand {
 		loopVariableBound = expressionComponents.get(1);
 		incrementAmount = expressionComponents.get(2);
 		workspace.variables.storeVariable(loopVariable, start);
+		objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
+				.fetchWorkspaceVariable(loopVariable)));
 		checkForClosingBrace(commandStringIterator);
 	}
 }

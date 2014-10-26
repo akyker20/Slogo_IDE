@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Queue;
 
 import workspaceState.WorkspaceState;
+
 import commandParsing.CommandParser;
 import commandParsing.drawableObectGenerationInterfaces.UserDefinedCommandGenerator;
+import commandParsing.drawableObectGenerationInterfaces.UserDefinedVariableGenerator;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
-import commandParsing.variableCommandParsing.Variable;
+
 import drawableobject.DrawableObject;
 
-public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator {
+public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator, UserDefinedVariableGenerator {
 
 	public MakeUserInstruction(WorkspaceState someWorkspace) {
 		super(someWorkspace);
@@ -45,7 +47,8 @@ public class MakeUserInstruction extends StructuralCommand implements UserDefine
 		for (String varName : parameters) {
 			if (!workspace.variables.variableExists(varName)) {
 				workspace.variables.storeVariable(varName, 0);
-				// Is this necessary?
+				objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
+						.fetchWorkspaceVariable(varName)));
 			}
 		}
 		int numArgs = parameters.size();

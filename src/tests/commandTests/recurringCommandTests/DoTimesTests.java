@@ -4,7 +4,9 @@ import static org.junit.Assert.assertTrue;
 import gui.factories.LineFactory;
 import gui.factories.WorkspaceVariableFactory;
 import gui.factories.turtlefactory.TurtleFactory;
+
 import org.junit.Test;
+
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
@@ -21,8 +23,12 @@ public class DoTimesTests extends CommandTester {
 		assertTrue(f == 50);
 		
 		for(int i=1;i<11;i++){
+			DrawableObject variable = objectQueue.poll();
 			DrawableObject line = objectQueue.poll();
 			DrawableObject turtle = objectQueue.poll();
+
+			assertTrue(variable.getParameters().get(WorkspaceVariableFactory.NAME).equals(":somevar"));
+			assertTrue(Double.parseDouble(variable.getParameters().get(WorkspaceVariableFactory.VALUE)) == (double) i);
 			
 			assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));
 			assertTrue(turtle.getType().equals(TurtleFactory.TYPE));

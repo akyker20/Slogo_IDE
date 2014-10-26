@@ -2,7 +2,7 @@ package tests.commandTests.colorCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import javafx.scene.paint.Color;
-import gui.factories.ColorIndexFactory;
+import gui.factories.ColorPaletteEntryFactory;
 import gui.factories.PaneFactory;
 import gui.factories.turtlefactory.TurtleFactory;
 
@@ -24,9 +24,9 @@ public class SetPaletteTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		DrawableObject colorIndex = objectQueue.poll();
-		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.COLOR)
+		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.COLOR)
 				.equals(workspace.colorPalette.getFromPalette(10).toString()));
-		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.INDEX).equals("10"));
+		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.INDEX).equals("10"));
 		assertTrue(f==10);
 	}
 	
@@ -44,9 +44,9 @@ public class SetPaletteTests extends CommandTester {
 		}
 		objectQueue.poll();
 		DrawableObject colorIndex = objectQueue.poll();
-		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.COLOR)
+		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.COLOR)
 				.equals(workspace.colorPalette.getFromPalette(10).toString()));
-		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.INDEX).equals("10"));
+		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.INDEX).equals("10"));
 		assertTrue(f==10);
 	}
 

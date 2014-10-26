@@ -31,7 +31,7 @@ public class FactoryBuilder {
                                     new PaneFactory(CLEAR_GRID_FACTORY, drawer),
                                     new WorkspaceVariableFactory(WORKSPACE_VARIABLE_FACTORY, holder.getMyVariablesList()),
                                     new UserDefinedCommandFactory(USER_DEFINED_COMMAND_FACTORY, holder.getMyUserDefinedCommandList()),
-                                    new ColorIndexFactory(COLOR_INDEX_FACTORY, holder.getMyColorIndexList()),
+                                    new ColorPaletteEntryFactory(COLOR_INDEX_FACTORY, holder.getMyColorIndexList()),
         };
     }
 

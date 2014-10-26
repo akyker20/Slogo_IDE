@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-public class ColorIndexFactory extends ObjectFactory {
+public class ColorPaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;
     public static final String TYPE = FactoryBuilder.COLOR_INDEX_FACTORY;
@@ -19,7 +19,7 @@ public class ColorIndexFactory extends ObjectFactory {
 
     private ObservableList<ColorIndex> myColorIndexList;
 
-    public ColorIndexFactory(String name, List<ColorIndex> colorIndexList) {
+    public ColorPaletteEntryFactory(String name, List<ColorIndex> colorIndexList) {
         super(name);
         myColorIndexList = (ObservableList<ColorIndex>) colorIndexList;
     }
