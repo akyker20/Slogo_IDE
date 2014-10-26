@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,7 +29,7 @@ public class ImageIndexFeature extends TableView<ImageIndex> {
 
         TableColumn<ImageIndex,Integer> index = new TableColumn<ImageIndex,Integer>("Index");
         index.setCellValueFactory(new PropertyValueFactory("myIndex"));
-        index.prefWidthProperty().bind(this.widthProperty().divide(3));
+        index.prefWidthProperty().bind(this.widthProperty().divide(2));
         TableColumn<ImageIndex, File> imageCol = new TableColumn<ImageIndex, File>("Image");
         imageCol.setCellValueFactory(new PropertyValueFactory("myImageFile"));
         imageCol.prefWidthProperty().bind(this.widthProperty().divide(2).subtract(2));
@@ -48,7 +49,8 @@ public class ImageIndexFeature extends TableView<ImageIndex> {
             if(!empty && item != null){
                 ImageView imageView = new ImageView();
                 try {
-                    imageView.setImage(new Image(new FileInputStream(item)));
+                    imageView.setImage(new Image(new FileInputStream(item), 80, 50, false, true));
+                    this.setAlignment(Pos.CENTER);
                 }
                 catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
