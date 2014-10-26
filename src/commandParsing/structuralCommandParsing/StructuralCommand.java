@@ -44,11 +44,21 @@ public abstract class StructuralCommand extends CommandParser {
 			throws CompileTimeParsingException, RunTimeDivideByZeroException, RunTimeNullPointerException {
 		List<String> commandList = new ArrayList<String>();
 		checkForOpeningBrace(commandStringIterator);
-		String stringOfInterest = commandStringIterator.next();
-		while (!workspace.translator.matchesListEndPattern(stringOfInterest)
-				& commandStringIterator.hasNext()) {
-			commandList.add(stringOfInterest);
+		int braceImbalance = 1;
+		String stringOfInterest = "";
+		while (commandStringIterator.hasNext()) {
 			stringOfInterest = commandStringIterator.next();
+			if(workspace.translator.matchesListStartPattern(stringOfInterest)){
+				braceImbalance++;
+			}
+			if(workspace.translator.matchesListEndPattern(stringOfInterest)){
+				braceImbalance--;
+				if(braceImbalance==0){
+					enclosedCommands = commandList;
+					return;
+				}
+			}
+			commandList.add(stringOfInterest);
 		}
 
 		if (!commandStringIterator.hasNext() && !workspace.translator.matchesListEndPattern(stringOfInterest)) {
