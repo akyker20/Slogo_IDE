@@ -22,7 +22,22 @@ public class WorkspaceState {
 		commands = new UserDefinedCommandCollection();
 		turtles = new TurtleCollection();
 		colorPalette = new Palette<Color>();
+		addDefaultColorsToPalette();
 		shapePalette = new Palette<Shape>();
+		addDefaultShapesToPalette();
+	}
+
+	private void addDefaultShapesToPalette() {
+		shapePalette
+				.addToPalette(0, new Shape("/src/resources/guiResources/turtleImages/default_turtle.png"));
+	}
+
+	private void addDefaultColorsToPalette() {
+		Color[] defaultColors = { Color.BLACK, Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN,
+				Color.BLUE, Color.INDIGO, Color.VIOLET };
+		for (int i = 0; i < defaultColors.length; i++) {
+			colorPalette.addToPalette(i, defaultColors[i]);
+		}
 	}
 
 }

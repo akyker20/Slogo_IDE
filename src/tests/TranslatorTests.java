@@ -32,7 +32,7 @@ public class TranslatorTests {
 		String testString = "fd 50 + 20 20 if less? 0 20 [ sum 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
 
-		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.turtleMovement.Forward");
 		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
@@ -62,7 +62,7 @@ public class TranslatorTests {
 		String testString = "qj 50 + 20 20 ruguo xiao? 0 20 [ jia 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
 		
-		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.turtleMovement.Forward");
 		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
@@ -92,7 +92,7 @@ public class TranslatorTests {
 		String testString = "vr 50 + 20 20 yesli ms 0 20 [ summa 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
 		
-		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.turtleMovement.Forward");
 		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
@@ -122,7 +122,7 @@ public class TranslatorTests {
 		String testString = "dev 50 + 20 20 si inferieur? 0 20 [ somme 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
 		
-		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.turtleMovement.Forward");
 		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
@@ -152,7 +152,7 @@ public class TranslatorTests {
 		String testString = "avanti 50 + 20 20 se meno? 0 20 [ somma 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
 		
-		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.turtleMovement.Forward");
 		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
@@ -182,7 +182,7 @@ public class TranslatorTests {
 		String testString = "fr 50 + 20 20 se menor? 0 20 [ soma 20 20 ]";
 		Iterator<String> testIterator = t.translate(testString);
 		
-		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.Forward");
+		assertEquals(testIterator.next(), "commandParsing.turtleCommandParsing.turtleMovement.Forward");
 		assertEquals(testIterator.next(), "commandParsing.floatCommandParsing.Constant");
 		assertEquals(testIterator.next(), "50");
 		assertEquals(testIterator.next(), "commandParsing.mathCommandParsing.Sum");
