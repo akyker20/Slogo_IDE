@@ -26,17 +26,9 @@ public class Tell extends MultipleTurtleCommand {
 		workspace.turtles.clearActiveTurtles();
 		double lastTurtleID = 0;
 		extractCommandsBetweenBraces(commandStringIterator);
-		parseCommandsBetweenBraces(commandStringIterator, objectQueue);
+		determineTurtlesToActivate(commandStringIterator, objectQueue);
 		
-		for (Integer i: activeTurtleIDList){
-			if(workspace.turtles.hasTurtleWithID(i)){
-				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
-			}
-			else{
-				workspace.turtles.addTurtle(new Turtle(i));
-			}
-			lastTurtleID = i;
-		}
+		makeAndActivateGivenTurtles();
 		
 		return lastTurtleID;
 	}
