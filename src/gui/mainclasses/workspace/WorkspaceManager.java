@@ -9,8 +9,6 @@ import XML.workspaceparams.WorkspaceScreenParameters;
 
 public class WorkspaceManager extends TabPane {
 
-    private static final String NEW_TURTLE_COMMAND = "mk";
-
     public static Workspace myActiveWorkspace;
 
     private static int workspaceID = 0;

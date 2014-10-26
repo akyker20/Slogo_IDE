@@ -116,7 +116,7 @@ public class Workspace extends Tab {
     public void notifyOfTurtleSelectionChange () {
         String activeTurtleStr = "";
         for(TurtleNode node:myTurtleNodes.getActiveNodes()){
-            activeTurtleStr += node.getTurtleID();
+            activeTurtleStr += node.getTurtleID() + " ";
         }
         parseCommandString("Tell [ " + activeTurtleStr.trim() + " ]");
     }

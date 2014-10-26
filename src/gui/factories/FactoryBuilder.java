@@ -15,6 +15,7 @@ public class FactoryBuilder {
     public static final String WORKSPACE_VARIABLE_FACTORY = "WorkspaceVariableFactory";
     public static final String WORKSPACE_COMMAND_FACTORY = "WorkspaceCommandFactory";
     public static final String SCREEN_COLOR_FACTORY = "ScreenColorFactory";
+    public static final String COLOR_INDEX_FACTORY = "ColorIndexFactory";
 
     /**
      * Makes the object factories
@@ -26,9 +27,10 @@ public class FactoryBuilder {
                                     new LineFactory(LINE_FACTORY),
                                     new TurtleFactory(TURTLE_FACTORY, turtleNodes),
                                     new ErrorFactory(ERROR_FACTORY),
-                                    new EmptyPaneFactory(CLEAR_GRID_FACTORY, drawer),
+                                    new PaneFactory(CLEAR_GRID_FACTORY, drawer),
                                     new WorkspaceVariableFactory(WORKSPACE_VARIABLE_FACTORY, holder.getMyVariablesList()),
                                     new UserDefinedCommandFactory(WORKSPACE_COMMAND_FACTORY, holder.getMyUserDefinedCommandList()),
+                                    new ColorIndexFactory(COLOR_INDEX_FACTORY, holder.getMyColorIndexList()),
         };
     }
 
