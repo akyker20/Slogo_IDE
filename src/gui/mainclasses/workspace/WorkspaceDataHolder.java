@@ -1,8 +1,8 @@
 package gui.mainclasses.workspace;
 
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
-import gui.nonbuttonfeatures.tableviews.ColorIndex;
-import gui.nonbuttonfeatures.tableviews.ImageIndex;
+import gui.nonbuttonfeatures.tableviews.colorindex.ColorIndex;
+import gui.nonbuttonfeatures.tableviews.imageindex.ImageIndex;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

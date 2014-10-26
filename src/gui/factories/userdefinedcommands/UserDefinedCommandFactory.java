@@ -4,6 +4,7 @@ import gui.componentdrawers.ComponentBuilder;
 import gui.factories.FactoryBuilder;
 import gui.factories.ObjectFactory;
 import gui.factories.turtlefactory.NullNode;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javafx.collections.ObservableList;
@@ -26,19 +27,29 @@ public class UserDefinedCommandFactory extends ObjectFactory {
     }
 
     @Override
-    public Node[] generateObject(Map<String, String> params) {
-        myUserDefinedCommandsList.add(new DisplayedUserCommand(params.get(NAME), params.get(PARAMETERS), params.get(CONTENT)));
+    public Node[] generateObject(Map<String, String> paramsMap) {
+        String name = paramsMap.get(NAME);
+        String params = paramsMap.get(PARAMETERS);
+        String content = paramsMap.get(CONTENT);
+
+        for(DisplayedUserCommand command:myUserDefinedCommandsList){
+            if(command.getMyName().equalsIgnoreCase(name)){
+                command.setMyParams(params);
+                command.setMyContent(content);
+                refreshList();
+                return new Node[] { new NullNode() };
+            }
+        }
+        myUserDefinedCommandsList.add(new DisplayedUserCommand(name, params, content));
         return new Node[] { new NullNode() };
     }
 
     private void refreshList() {
-        //		List<WorkspaceCommand> list = new ArrayList<WorkspaceCommand>();
-        //		for (WorkspaceCommand command : myCommandsList) {
-        //			list.add(command);
-        //		}
-        //		myCommandsList.clear();
-        //		myCommandsList.addAll(list);
-
+        List<DisplayedUserCommand> list = new ArrayList<DisplayedUserCommand>();
+        for (DisplayedUserCommand command : myUserDefinedCommandsList) {
+            list.add(command);
+        }
+        myUserDefinedCommandsList.clear();
+        myUserDefinedCommandsList.addAll(list);
     }
-
 }

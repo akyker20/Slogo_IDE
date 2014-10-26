@@ -1,6 +1,6 @@
 package gui.componentdrawers.optionsholder.tabs;
 
-import gui.nonbuttonfeatures.tableviews.ColorIndexFeature;
+import gui.nonbuttonfeatures.tableviews.colorindex.ColorIndexFeature;
 
 public class ColorIndexTab extends OptionsTab {
 

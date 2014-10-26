@@ -22,4 +22,12 @@ public class DisplayedUserCommand {
     public String getMyContent () {
         return myContent;
     }
+
+    public void setMyParams (String params) {
+        myParams = params; 
+    }
+    
+    public void setMyContent (String content) {
+        myParams = content; 
+    }
 }
