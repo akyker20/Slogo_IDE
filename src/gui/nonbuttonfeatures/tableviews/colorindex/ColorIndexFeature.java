@@ -47,12 +47,23 @@ public class ColorIndexFeature extends TableView<ColorIndex> {
         setPrefHeight(parentDrawer.getHeight());
     }
 
+    /**
+     * Class is used to override the table cell class so that
+     * we can draw a rectangle of the actual color instead of
+     * simply a string representing the color.
+     * @author Austin Kyker
+     *
+     */
     private class ColorCell extends TableCell<ColorIndex, Color> {
+        
+        private static final int COLOR_BAR_WIDTH = 150;
+        private static final int COLOR_BAR_HEIGHT = 20;
+        
         @Override
         public void updateItem (Color item, boolean empty) {
             super.updateItem(item, empty);
             if (!empty) {
-                Rectangle rect = new Rectangle(150, 20);
+                Rectangle rect = new Rectangle(COLOR_BAR_WIDTH, COLOR_BAR_HEIGHT);
                 rect.setStroke(Color.LIGHTGRAY);
                 if (item != null) {
                     rect.setFill(item);

@@ -2,6 +2,7 @@ package gui.nonbuttonfeatures.tableviews;
 
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.mainclasses.TextGenerator;
+import gui.nonbuttonfeatures.tableviews.variables.WorkspaceVariablesFeature;
 import java.util.List;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -28,9 +29,7 @@ import javafx.stage.Stage;
  *
  */
 public class UserDefinedCommandsFeature extends TableView<DisplayedUserCommand> {
-
-    private static final String POPUP_WIDTH = null;
-    private static final String POPUP_HEIGHT = null;
+    
     private ObservableList<DisplayedUserCommand> myCommandsList;
 
     public UserDefinedCommandsFeature (List<DisplayedUserCommand> userDefinedCommands) {
@@ -48,8 +47,8 @@ public class UserDefinedCommandsFeature extends TableView<DisplayedUserCommand> 
         params.prefWidthProperty().bind(widthProperty().multiply(2).divide(3).subtract(2));
         getColumns().setAll(commandName, params);
         setItems(myCommandsList);
-        setPrefHeight(168);
-        setLayoutY(20);
+        setPrefHeight(WorkspaceVariablesFeature.TABLE_HEIGHT);
+        setLayoutY(WorkspaceVariablesFeature.LAYOUT_Y);
         setOnMouseClicked(event -> showCommandContent(event));
     }
 

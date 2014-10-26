@@ -17,13 +17,4 @@ public abstract class ColorPickerFeature extends ColorPicker {
         parentDrawer.drawShape(new ColorPickerFeature[] { this });
         setPrefSize(ButtonFeature.BUTTON_WIDTH, ButtonFeature.BUTTON_HEIGHT);
     }
-
-    /**
-     * Returns a string representing the current color of the color picker.
-     *
-     * @return String
-     */
-    public String getPickerColor () {
-        return "#".concat(getValue().toString().substring(2));
-    }
 }

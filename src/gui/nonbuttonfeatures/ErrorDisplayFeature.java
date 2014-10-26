@@ -9,10 +9,14 @@ import javafx.scene.control.ListView;
  *
  */
 public class ErrorDisplayFeature extends ListView<String> {
+    
+    private static final int HEIGHT = 30;
+    private static final int MARGIN_TOP = 20;
+    
     public ErrorDisplayFeature (ErrorDrawer parentDrawer) {
         setPrefWidth(parentDrawer.getWidth());
-        setPrefHeight(30);
-        setLayoutY(20);
+        setPrefHeight(HEIGHT);
+        setLayoutY(MARGIN_TOP);
         parentDrawer.setParentNode(this);
     }
 

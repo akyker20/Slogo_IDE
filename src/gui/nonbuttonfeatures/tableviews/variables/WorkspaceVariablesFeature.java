@@ -18,6 +18,11 @@ import javafx.util.Callback;
  *
  */
 public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
+    
+    public static final int TABLE_HEIGHT = 168;
+    public static final int LAYOUT_Y = 20;
+    public static final String TABLE_ID = "table";
+    
     @SuppressWarnings("unchecked")
     public WorkspaceVariablesFeature (WorkspaceVariablesDrawer parentDrawer,
                                       ObservableList<WorkspaceVariable> data,
@@ -43,9 +48,9 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
         variableValue.prefWidthProperty().bind(widthProperty().divide(2).subtract(2));
         variableValue.setCellFactory(cellFactory);
         getColumns().setAll(variableName, variableValue);
-        setId("table");
-        setLayoutY(20);
-        setPrefHeight(168);
+        setId(TABLE_ID);
+        setLayoutY(LAYOUT_Y);
+        setPrefHeight(TABLE_HEIGHT);
         setEditable(true);
         setItems(data);
         parentDrawer.drawShape(new WorkspaceVariablesFeature[] { this });
