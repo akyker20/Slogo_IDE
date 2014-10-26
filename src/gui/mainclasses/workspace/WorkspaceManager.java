@@ -1,5 +1,6 @@
 package gui.mainclasses.workspace;
 
+import gui.mainclasses.GuiTextGenerator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Tab;
@@ -40,7 +41,7 @@ public class WorkspaceManager extends TabPane {
     public void addWorkspace(WorkspaceScreenParameters screenParams,  
                              WorkspaceDataHolder dataHolder) {
         Workspace newWorkspace = new Workspace(myControl, screenParams, dataHolder, workspaceID);
-        newWorkspace.setText("Workspace " + workspaceID);
+        newWorkspace.setText(GuiTextGenerator.get(GuiTextGenerator.WORKSPACE_LABEL_TEXT)+" " + workspaceID);
         
         getTabs().add(newWorkspace); 
         myActiveWorkspace = newWorkspace;

@@ -25,6 +25,8 @@ public class GuiTextGenerator {
     public static final String BASIC_COMMANDS_TEXT = "basicCommands";
     public static final String COMPLEX_COMMANDS_TEXT = "complexCommands";
     
+    public static final String WORKSPACE_LABEL_TEXT = "workspaceLabel";
+    
     private static ResourceBundle init () {
         Locale[] supportedLocales = {
                                      Locale.ENGLISH,
