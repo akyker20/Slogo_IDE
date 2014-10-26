@@ -19,7 +19,8 @@ import commandParsing.exceptions.RunTimeNullPointerException;
  */
 public class PenColorPickerFeature extends ColorPickerFeature {
     
-    private static final String PEN_COLOR = "PC";
+    private static final String SET_PEN_COLOR = "setpencolor 0";
+    private static final String SET_PALETTE = "setpalette";
     
     private Workspace myWorkspace;
     
@@ -34,6 +35,13 @@ public class PenColorPickerFeature extends ColorPickerFeature {
      * of the pen has been changed.
      */
     private void changePenColor () {
-            myWorkspace.parseCommandString(PEN_COLOR + " " + getPickerColor());
+        myWorkspace.parseCommandString(SET_PALETTE + " 0 " + getRGBStr());
+            myWorkspace.parseCommandString(SET_PEN_COLOR);
+    }
+
+    private String getRGBStr () {
+        return  this.getValue().getRed() + " " + 
+                this.getValue().getBlue() + " " + 
+                this.getValue().getRed();
     }
 }

@@ -4,14 +4,12 @@ import gui.componentdrawers.ComponentBuilder;
 import gui.turtlescreenwrap.CoordinateChanger;
 import gui.turtlescreenwrap.Point2DPair;
 import gui.turtlescreenwrap.TurtleScreenWrap;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-
 import com.sun.javafx.geom.Point2D;
 
 
@@ -57,6 +55,7 @@ public class LineFactory extends ObjectFactory {
             line.setEndY(CoordinateChanger.convY(pointPair.dest.y));
             lineList.add(line);
             line.setStrokeWidth(Double.parseDouble(params.get(LINE_WIDTH)));
+            line.setStroke(Color.valueOf(params.get(LINE_COLOR)));
         }
         
         return lineList;
