@@ -68,7 +68,6 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
             myWorkspaceStates.put(workspaceID, activeState);
         }
         catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
