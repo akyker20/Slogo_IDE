@@ -92,21 +92,23 @@ public class FileMenu extends Menu {
             }
         });
 
-//        Menu newWorkspace = new Menu(TextGenerator.get(TextGenerator.NEW_WORKSPACE));    
-//        String[] languageOptions = new String[]{TextGenerator.ENGLISH, TextGenerator.FRENCH, TextGenerator.CHINESE }
-//        for(String language:languageOptions){
-//            MenuItem languageMenuItem = new MenuItem(language);
-//            languageMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override public void handle(ActionEvent e) {
-//                    TextGenerator.setLanguage(language);
-//                    myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
-//                                                    new WorkspaceDataHolder()); 
-//                    addTurtleToWorkspace();
-//                }
-//            });
-//        }
+        Menu newWorkspace = new Menu(TextGenerator.get(TextGenerator.NEW_WORKSPACE));    
+        String[] languageOptions = new String[]{TextGenerator.ENGLISH, TextGenerator.FRENCH, TextGenerator.CHINESE };
+        for(String language:languageOptions){
+            MenuItem languageMenuItem = new MenuItem(language);
+            languageMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    TextGenerator.setLanguage(language);
+                    myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
+                                                    new WorkspaceDataHolder());
+                    myWorkspaceManager.getActiveWorkspace().parseCommandString("setlanguage /"+language);
+                    addTurtleToWorkspace();
+                }
+            });
+            newWorkspace.getItems().add(languageMenuItem);
+        }
 
-//        this.getItems().addAll(loadWorkspace, saveWorkspace, newWorkspace);
+        this.getItems().addAll(loadWorkspace, saveWorkspace, newWorkspace);
     }
 
     private void addTurtleToWorkspace () {
