@@ -32,7 +32,6 @@ public class WorkspaceManager extends TabPane {
                          public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                              myActiveWorkspace = (Workspace) t1;
                              myControl.setActiveWorkspaceState(myActiveWorkspace.getWorkspaceID());
-                             System.out.println(myActiveWorkspace.getWorkspaceID());
                          }
                      }
                 );  
