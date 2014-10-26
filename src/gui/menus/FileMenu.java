@@ -3,6 +3,7 @@ package gui.menus;
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.mainclasses.workspace.WorkspaceManager;
+import gui.variableslist.WorkspaceVariable;
 import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -49,6 +50,12 @@ public class FileMenu extends Menu {
                     for(String penCommand:reader.getInitialPenCommands()){
                         myWorkspaceManager.getActiveWorkspace().parseCommandString(penCommand);
                     }
+                    
+                    for(WorkspaceVariable variable:reader.getWorkspaceVariables()){
+                        String varStr = "set " + variable.getMyName() + " " + variable.getMyValue();
+                        myWorkspaceManager.getActiveWorkspace().parseCommandString(varStr);
+                    }
+                    
                     for(DisplayedUserCommand command: reader.getUserDefinedCommands()){
                         String commandStr = "to " + command.getMyName().trim() + " [ " + command.getMyParams().trim() + " ] [ " + 
                                 command.getMyContent().trim() + " ]";
