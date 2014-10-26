@@ -21,11 +21,13 @@ public class ClearStamps extends CommandParser implements TurtleGenerator {
 	@Override
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
+		boolean stampsCleared = false;
 		for(Turtle stamp : workspace.turtles.getStamps()){
 			objectQueue.add(generateDrawableObjectRepresentingTurtleDeletion(stamp));
+			stampsCleared = true;
 		}
 		workspace.turtles.removeAllStamps();
-		return 0;
+		return stampsCleared ? 1 : 0;
 	}
 
 }
