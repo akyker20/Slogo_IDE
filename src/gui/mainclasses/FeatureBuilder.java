@@ -30,7 +30,6 @@ import gui.nonbuttonfeatures.TurtleScreenFeature;
 import gui.nonbuttonfeatures.UserDefinedCommandsFeature;
 import gui.nonbuttonfeatures.pen.PenColorPickerFeature;
 import gui.nonbuttonfeatures.pen.PenThicknessSliderFeature;
-import gui.nonbuttonfeatures.pen.PenTypeFeature;
 import gui.nonbuttonfeatures.pen.PenUpOrDownFeature;
 import gui.nonbuttonfeatures.tableviews.ColorIndexFeature;
 import gui.nonbuttonfeatures.tableviews.WorkspaceVariablesFeature;
@@ -91,7 +90,6 @@ public class FeatureBuilder {
                 new PenOptionsTab(
                                   new Node[]{
                                              new PenUpOrDownFeature(optionsHolder, workspace),
-                                             new PenTypeFeature(optionsHolder, workspace),
                                              new PenColorPickerFeature(optionsHolder, workspace),
                                              new PenThicknessSliderFeature(optionsHolder, workspace),
                 },

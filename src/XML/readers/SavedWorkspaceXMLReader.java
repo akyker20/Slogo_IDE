@@ -25,7 +25,6 @@ public class SavedWorkspaceXMLReader {
     public static final String COLOR = "color";
     public static final String TOGGLE_GRID = "toggleGrid";
     public static final String TRUE = "true";
-    public static final String TYPE = "type";
     public static final String PIXELS = "pixels";
     public static final String USER_DEFINED_CMDS = "userDefinedCommands";
     public static final String NAME = "name";
@@ -46,7 +45,6 @@ public class SavedWorkspaceXMLReader {
         WorkspaceParameters params = new WorkspaceParameters();
         Element penParameters = (Element) myRoot.getElementsByTagName(SCREEN).item(0);
         params.put(COLOR, penParameters.getAttribute(COLOR));
-        params.put(TYPE, penParameters.getAttribute(TYPE));
         params.put(PIXELS, penParameters.getAttribute(PIXELS));
         return params;
     }
