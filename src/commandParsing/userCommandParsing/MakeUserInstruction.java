@@ -14,6 +14,12 @@ import commandParsing.exceptions.SLOGOException;
 import commandParsing.structuralCommandParsing.StructuralCommand;
 import drawableobject.DrawableObject;
 
+/**
+ * This class is the MakeUserInstruction class that contains the information for actually creating and defining new user instructions.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class MakeUserInstruction extends StructuralCommand implements UserDefinedCommandGenerator,
 UserDefinedVariableGenerator {

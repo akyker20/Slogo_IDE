@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class is the Location class.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public class Location {
 
