@@ -54,10 +54,8 @@ public abstract class MultipleTurtleCommand extends StructuralCommand implements
 		return lastTurtleID;
 	}
 	
-	protected List<Turtle> saveCurrentActiveTurtles() {
-		List<Turtle> savedListOfTurtles = new ArrayList<Turtle>();
+	protected void saveCurrentActiveTurtles() {
 		savedListOfTurtles.addAll(workspace.turtles.getActiveTurtles());
-		return savedListOfTurtles;
 	}
 	
 	protected void restorePreviouslySavedActiveTurtles() throws RunTimeNullPointerException {
