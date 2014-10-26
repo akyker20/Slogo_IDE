@@ -1,6 +1,6 @@
 package gui.componentdrawers.significantcommands.tabs;
 
-import gui.nonbuttonfeatures.UserDefinedCommandsFeature;
+import gui.nonbuttonfeatures.tableviews.UserDefinedCommandsFeature;
 import javafx.scene.control.Tab;
 
 public class UserDefinedCommandsTab extends Tab {
