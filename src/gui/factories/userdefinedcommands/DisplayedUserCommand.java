@@ -28,6 +28,6 @@ public class DisplayedUserCommand {
     }
     
     public void setMyContent (String content) {
-        myParams = content; 
+        myContent = content; 
     }
 }

@@ -1,15 +1,22 @@
 package Control;
 
 import gui.mainclasses.GUIController;
+
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import java.util.stream.Collectors;
+
 import javafx.stage.Stage;
+
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
+
 import translator.Translator;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
@@ -77,6 +84,8 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
     public Queue<DrawableObject> parseCommandString(String command) {
         Queue<DrawableObject> objectQueue = new LinkedList<DrawableObject>();
 
+        command = sanitize(command);
+        
         Iterator<String> translatedCommands = activeState.translator.translate(command);
         while (translatedCommands.hasNext()) {
             CommandParser parser = new NullCommandParser(activeState);
@@ -99,19 +108,14 @@ public class SlogoControl implements SlogoGraphics, SlogoBackend {
         return objectQueue;
     }
 
-    @Override
+    private String sanitize(String command) {
+    	return Arrays.asList(command.split(" ")).stream()
+    											.filter(s -> s.length()>0)
+    											.collect(Collectors.joining(" "));
+	}
+
+	@Override
     public void drawDrawableObjects(Queue<DrawableObject> objects) {
         myGUI.drawDrawableObjects(objects);
-    }
-
-    @Override
-    public DrawableObject setVariable(String name, int value) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void saveCommandsToFunction(String commands) {
-        // TODO Auto-generated method stub
     }
 }
