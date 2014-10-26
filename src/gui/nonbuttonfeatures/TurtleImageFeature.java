@@ -79,7 +79,6 @@ public class TurtleImageFeature extends BorderPane {
                                 + filePath.getFileName().toString());
                             try {
                                 Files.copy(file.toPath(), targetFile.toPath(), REPLACE_EXISTING);
-                                myImageFilesList.add(new ImageIndex(myImageFilesList.size()+1, file));
                                 workspace.parseCommandString("setsp 0 " + targetFile.toPath().toString());
                             }
                             catch (IOException e) {

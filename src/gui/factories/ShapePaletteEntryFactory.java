@@ -13,7 +13,7 @@ import javafx.scene.Node;
 public class ShapePaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;
-    public static final String TYPE = FactoryBuilder.COLOR_INDEX_FACTORY;
+    public static final String TYPE = FactoryBuilder.SHAPE_PALETTE_INDEX_FACTORY;
     public static final String IMAGE_PATH = "path";
     public static final String INDEX = "index";
 

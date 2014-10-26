@@ -17,6 +17,7 @@ public class FactoryBuilder {
     public static final String USER_DEFINED_COMMAND_FACTORY = "UserDefinedCommandFactory";
     public static final String SCREEN_COLOR_FACTORY = "ScreenColorFactory";
     public static final String COLOR_INDEX_FACTORY = "ColorIndexFactory";
+    public static final String SHAPE_PALETTE_INDEX_FACTORY = "ShapePaletteEntryFactory";
 
     /**
      * Makes the object factories
@@ -32,6 +33,7 @@ public class FactoryBuilder {
                                     new WorkspaceVariableFactory(WORKSPACE_VARIABLE_FACTORY, holder.getMyVariablesList()),
                                     new UserDefinedCommandFactory(USER_DEFINED_COMMAND_FACTORY, holder.getMyUserDefinedCommandList()),
                                     new ColorPaletteEntryFactory(COLOR_INDEX_FACTORY, holder.getMyColorIndexList()),
+                                    new ShapePaletteEntryFactory(SHAPE_PALETTE_INDEX_FACTORY, holder.getMyImageIndexList())
         };
     }
 

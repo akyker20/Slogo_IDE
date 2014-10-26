@@ -85,7 +85,7 @@ public class FeatureBuilder {
                                                  new SaveCommandButtonFeature(optionsHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature),
                                                  new ClearWorkspaceButtonFeature(optionsHolder,workspace )
                                       }, 
-                                      new Node[] {new TurtleImageFeature(optionsHolder, dataHolder.getMyImageIndexList())}
+                                      new Node[] {new TurtleImageFeature(optionsHolder, dataHolder.getMyImageIndexList(), workspace)}
                         );
 
         PenOptionsTab penOptions = 
