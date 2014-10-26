@@ -9,7 +9,7 @@ import gui.nonbuttonfeatures.SavedCommandsFeature;
 
 /**
  * This class allows the user to save a command for future use. Commands can
- * be saved from the command line or from the previous commands list view.s
+ * be saved from the command line or from the previous commands list view.
  *
  * @author Austin Kyker
  *

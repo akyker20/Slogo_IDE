@@ -30,14 +30,30 @@ public class DrawableObject {
         parameters = rawParameters;
     }
 
+    /**
+     * The parent represents the drawable component where the drawable object
+     * will be drawn.
+     * @return String
+     */
     public String getParent () {
         return parent;
     }
 
+    /**
+     * The type represents the type of factory that will be used to draw the
+     * drawable object.
+     * @return
+     */
     public String getType () {
         return type;
     }
 
+    /**
+     * These parameters are used by the factories to build certain nodes.
+     * Each different factory will receive different parameters depending
+     * on what it needs to know to draw the object it creates.
+     * @return
+     */
     public Map<String, String> getParameters () {
         return parameters;
     }

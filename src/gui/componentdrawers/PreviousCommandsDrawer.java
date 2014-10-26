@@ -5,7 +5,9 @@ import gui.mainclasses.TextGenerator;
 import javafx.scene.control.Label;
 
 /**
- * Class manages displaying of previous commands
+ * Class manages displaying of previous commands. The user will be
+ * able to use this feature to reference previous commands as 
+ * well as to select these commands to run again or to save.
  * @author akyker20, allankiplagat
  *
  */
