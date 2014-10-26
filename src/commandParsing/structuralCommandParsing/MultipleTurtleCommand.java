@@ -15,9 +15,9 @@ import drawableobject.DrawableObject;
 
 public abstract class MultipleTurtleCommand extends StructuralCommand implements TurtleGenerator {
 	
-	List<Integer> activeTurtleIDList = new ArrayList<Integer>();
 	List<Turtle> savedListOfTurtles = new ArrayList<Turtle>();
-
+	List<Integer> activeTurtleIDList = new ArrayList<Integer>();
+	
 	public MultipleTurtleCommand(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
@@ -58,7 +58,7 @@ public abstract class MultipleTurtleCommand extends StructuralCommand implements
 		savedListOfTurtles.addAll(workspace.turtles.getActiveTurtles());
 	}
 	
-	protected void restorePreviouslySavedActiveTurtles() throws RunTimeNullPointerException {
+	protected void restoreActiveTurtles() throws RunTimeNullPointerException {
 		for (Turtle t : savedListOfTurtles) {
 			workspace.turtles.activateTurtle(t.getID());
 		}

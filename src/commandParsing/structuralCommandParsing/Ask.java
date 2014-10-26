@@ -30,16 +30,8 @@ public class Ask extends MultipleTurtleCommand {
 		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
 		
 		workspace.turtles.clearActiveTurtles();
-		restorePreviouslySavedActiveTurtles();
+		restoreActiveTurtles();
 		
 		return returnValue;
-
 	}
-	
-	
-
-	
-
-	
-
 }
