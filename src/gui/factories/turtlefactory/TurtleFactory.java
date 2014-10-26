@@ -15,7 +15,7 @@ public class TurtleFactory extends ObjectFactory {
     public static final String HEADING = "heading";
     public static final String LOCATION = "location";
     public static final String OPACITY = "opacity";
-    public static final String TURTLE_IMAGE_ID = "turtleImageID";
+    public static final String TURTLE_ID = "turtleID";
 	public static final String IMAGE_PATH = "imagePath";
 	public static final String DELETION_FLAG = "deletionFlag";
 
@@ -30,7 +30,7 @@ public class TurtleFactory extends ObjectFactory {
 
     @Override
     public Node[] generateObject (Map<String, String> params) {
-        TurtleNode turtleNode = myTurtleNodes.getTurtleWithID(params.get(TURTLE_IMAGE_ID));
+        TurtleNode turtleNode = myTurtleNodes.getTurtleWithID(params.get(TURTLE_ID));
         if(turtleNode == null){
             System.out.println("Hello there");
             try {

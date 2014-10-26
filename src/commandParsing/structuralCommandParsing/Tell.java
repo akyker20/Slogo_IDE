@@ -11,14 +11,11 @@ import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public class Tell extends MultipleTurtleCommand {
-	
 
 	public Tell(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 	
-	
-
 	@Override
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
@@ -26,9 +23,9 @@ public class Tell extends MultipleTurtleCommand {
 		workspace.turtles.clearActiveTurtles();
 		double lastTurtleID = 0;
 		extractCommandsBetweenBraces(commandStringIterator);
-		determineTurtlesToActivate(commandStringIterator, objectQueue);
+		determineTurtlesToActivate(enclosedCommands.iterator(), objectQueue);
 		
-		makeAndActivateGivenTurtles();
+		makeAndActivateGivenTurtles(objectQueue);
 		
 		return lastTurtleID;
 	}

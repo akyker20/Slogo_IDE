@@ -1,10 +1,8 @@
 package tests.commandTests.colorCommandTests;
 
 import static org.junit.Assert.assertTrue;
-
+import javafx.scene.paint.Color;
 import org.junit.Test;
-
-import com.sun.prism.paint.Color;
 
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
@@ -21,7 +19,6 @@ public class SetPenColorTests extends CommandTester {
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 0);
 		assertTrue(objectQueue.size() == 0);
-		
 		assertTrue(workspace.turtles.getLastActiveTurtle().pen.getPenColor().equals(Color.BLACK));
 	}
 

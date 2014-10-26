@@ -13,7 +13,7 @@ public class MapperRandomPointTests {
 
     @Test
     public void testRandom() {
-        for (int k=0;k<100000000;k++) {
+        for (int k=0;k<10;k++) {
             Point2D point = new Point2D(700+randx.nextFloat(),840+randy.nextFloat());
             Point2D mappedpoint = TesselationMapper.map(point);
             assertFalse(TesselationMapper.checkOffScreen(mappedpoint));
