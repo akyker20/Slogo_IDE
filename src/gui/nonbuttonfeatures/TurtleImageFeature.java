@@ -3,6 +3,7 @@ package gui.nonbuttonfeatures;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.mainclasses.TextGenerator;
+import gui.mainclasses.workspace.Workspace;
 import gui.nonbuttonfeatures.tableviews.imageindex.ImageIndex;
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class TurtleImageFeature extends BorderPane {
     
     private ObservableList<ImageIndex> myImageFilesList;
     
-    public TurtleImageFeature(OptionsHolderDrawer parentDrawer, List<ImageIndex> imageFilesList) {
+    public TurtleImageFeature(OptionsHolderDrawer parentDrawer, List<ImageIndex> imageFilesList, Workspace workspace) {
         myImageFilesList = (ObservableList<ImageIndex>) imageFilesList;
         Label label = new Label(TextGenerator.get(TextGenerator.IMAGE_DROP_AREA));
         this.setTop(label);
@@ -79,6 +80,7 @@ public class TurtleImageFeature extends BorderPane {
                             try {
                                 Files.copy(file.toPath(), targetFile.toPath(), REPLACE_EXISTING);
                                 myImageFilesList.add(new ImageIndex(myImageFilesList.size()+1, file));
+                                workspace.parseCommandString("setsp 0 " + targetFile.toPath().toString());
                             }
                             catch (IOException e) {
                                 // TODO Auto-generated catch block
