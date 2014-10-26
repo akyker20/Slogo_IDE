@@ -2,56 +2,60 @@ package commandParsing.structuralCommandParsing;
 
 import java.util.Iterator;
 import java.util.Queue;
-
 import workspaceState.WorkspaceState;
 import commandParsing.drawableObectGenerationInterfaces.UserDefinedVariableGenerator;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
-public abstract class RecurringCommand extends StructuralCommand implements UserDefinedVariableGenerator {
 
-	public RecurringCommand(WorkspaceState someWorkspace) {
-		super(someWorkspace);
-	}
+public abstract class RecurringCommand extends StructuralCommand implements
+UserDefinedVariableGenerator {
 
-	protected String loopVariable;
-	protected double incrementAmount;
-	protected double loopVariableBound;
+    public RecurringCommand (WorkspaceState someWorkspace) {
+        super(someWorkspace);
+    }
 
-	@Override
-	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
-			throws SLOGOException {
-		initializeLoopVariableParameters(commandStringIterator, objectQueue);
-		extractCommandsBetweenBraces(commandStringIterator);
+    protected String loopVariable;
+    protected double incrementAmount;
+    protected double loopVariableBound;
 
-		while (loopVariableIsIncrementable()) {
-			parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
-			incrementLoopVariable(objectQueue);
-		}
-		return returnValue;
-	}
+    @Override
+    public double parse (Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
+            throws SLOGOException {
+        initializeLoopVariableParameters(commandStringIterator, objectQueue);
+        extractCommandsBetweenBraces(commandStringIterator);
 
-	abstract protected void initializeLoopVariableParameters(Iterator<String> commandStringIterator,
-			Queue<DrawableObject> objectQueue) throws SLOGOException;
+        while (loopVariableIsIncrementable()) {
+            parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
+            incrementLoopVariable(objectQueue);
+        }
+        return returnValue;
+    }
 
-	protected void basicLoopVariableInitialization(Iterator<String> commandStringIterator,
-			Queue<DrawableObject> objectQueue) throws SLOGOException {
-		accumulateComponents(commandStringIterator, 1, objectQueue);
-		loopVariableBound = expressionComponents.get(0);
-		incrementAmount = 1;
-		workspace.variables.storeVariable(loopVariable, 1);
-		objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
-				.fetchWorkspaceVariable(loopVariable)));
-	}
+    abstract protected void initializeLoopVariableParameters (Iterator<String> commandStringIterator,
+                                                              Queue<DrawableObject> objectQueue)
+                                                                      throws SLOGOException;
 
-	protected void incrementLoopVariable(Queue<DrawableObject> objectQueue) throws RunTimeNullPointerException {
-		workspace.variables.incrementVariable(loopVariable, incrementAmount);
-		objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
-				.fetchWorkspaceVariable(loopVariable)));
-	}
+    protected void basicLoopVariableInitialization (Iterator<String> commandStringIterator,
+                                                    Queue<DrawableObject> objectQueue)
+                                                            throws SLOGOException {
+        accumulateComponents(commandStringIterator, 1, objectQueue);
+        loopVariableBound = expressionComponents.get(0);
+        incrementAmount = 1;
+        workspace.variables.storeVariable(loopVariable, 1);
+        objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
+                                                                   .fetchWorkspaceVariable(loopVariable)));
+    }
 
-	protected boolean loopVariableIsIncrementable() throws RunTimeNullPointerException {
-		return loopVariableBound >= workspace.variables.fetchVariable(loopVariable);
-	}
+    protected void incrementLoopVariable (Queue<DrawableObject> objectQueue)
+            throws RunTimeNullPointerException {
+        workspace.variables.incrementVariable(loopVariable, incrementAmount);
+        objectQueue.add(generateDrawableObjectRepresentingVariable(workspace.variables
+                                                                   .fetchWorkspaceVariable(loopVariable)));
+    }
+
+    protected boolean loopVariableIsIncrementable () throws RunTimeNullPointerException {
+        return loopVariableBound >= workspace.variables.fetchVariable(loopVariable);
+    }
 }

@@ -1,10 +1,8 @@
 package gui.componentdrawers;
 
-import XML.readers.SavedWorkspaceXMLReader;
-import XML.workspaceparams.WorkspaceScreenParameters;
 import gui.factories.turtlefactory.TurtleNodes;
-import gui.mainclasses.TextGenerator;
 import gui.mainclasses.StageInitializer;
+import gui.mainclasses.TextGenerator;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -21,34 +19,34 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
 
-    //This is just for the grid lines
+    // This is just for the grid lines
     private TurtleScreenFeature myTurtleScreen;
-    
+
     private TurtleNodes myTurtleNodes;
 
-    //This is the actual grid to which nodes will be drawn.
+    // This is the actual grid to which nodes will be drawn.
     private Pane myGrid;
 
     public TurtleScreenDrawer (String name, TurtleNodes turtleNodes) {
         super(name);
         myGrid = initializeGridPane();
         myTurtleNodes = turtleNodes;
-        this.setPrefWidth(GRID_WIDTH);
-        this.setPrefHeight(GRID_HEIGHT + 20);
-        this.getChildren().addAll(new Label(TextGenerator.get(TextGenerator.TURTLE_SCREEN)));  
+        setPrefWidth(GRID_WIDTH);
+        setPrefHeight(GRID_HEIGHT + 20);
+        getChildren().addAll(new Label(TextGenerator.get(TextGenerator.TURTLE_SCREEN)));
     }
-
 
     /**
      * Creates the gridpane whose sole purpose is to aid the ToggleRelativeGridFeature
+     *
      * @return
      */
     private Pane initializeGridPane () {
         Pane grid = new Pane();
-        for(int row = 1; row < GRID_NUM_ROWS; row++){
+        for (int row = 1; row < GRID_NUM_ROWS; row++) {
             grid.getChildren().add(makeRowLine(row));
         }
-        for(int col = 1; col < GRID_NUM_COLS; col++){
+        for (int col = 1; col < GRID_NUM_COLS; col++) {
             grid.getChildren().add(makeColLine(col));
         }
         return grid;
@@ -57,34 +55,32 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     private Line makeColLine (int col) {
         Line line = new Line();
         line.getStyleClass().add("line");
-        line.setStartX(col*GRID_WIDTH/GRID_NUM_COLS);
+        line.setStartX(col * GRID_WIDTH / GRID_NUM_COLS);
         line.setStartY(0);
-        line.setEndX(col*GRID_WIDTH/GRID_NUM_COLS);
+        line.setEndX(col * GRID_WIDTH / GRID_NUM_COLS);
         line.setEndY(GRID_HEIGHT);
         return line;
     }
-
 
     private Line makeRowLine (int row) {
         Line line = new Line();
         line.getStyleClass().add("line");
         line.setStartX(0);
-        line.setStartY(row*GRID_HEIGHT/GRID_NUM_ROWS);
+        line.setStartY(row * GRID_HEIGHT / GRID_NUM_ROWS);
         line.setEndX(GRID_WIDTH);
-        line.setEndY(row*GRID_HEIGHT/GRID_NUM_ROWS);
+        line.setEndY(row * GRID_HEIGHT / GRID_NUM_ROWS);
         return line;
     }
-
 
     /**
      * If the grid lines are already visible, they are removed. Otherwise,
      * the grid lines are displayed.
      */
     public void toggleGrid () {
-        if(!myTurtleScreen.getChildren().contains(myGrid)){
+        if (!myTurtleScreen.getChildren().contains(myGrid)) {
             myTurtleScreen.getChildren().add(0, myGrid);
         }
-        else{
+        else {
             myTurtleScreen.getChildren().remove(myGrid);
         }
     }
@@ -92,11 +88,12 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     /**
      * Adds the grid to the GridDrawer pane. Adds the GridPane used for drawing
      * relative grid lines to the grid.
+     *
      * @param grid
      */
-    public void setTurtleScreenFeature(TurtleScreenFeature grid){
+    public void setTurtleScreenFeature (TurtleScreenFeature grid) {
         myTurtleScreen = grid;
-        super.drawShape(new Node[]{myTurtleScreen});
+        super.drawShape(new Node[] { myTurtleScreen });
     }
 
     /**
@@ -105,26 +102,26 @@ public class TurtleScreenDrawer extends ComponentDrawer {
      * on the grid.
      */
     @Override
-    public void drawShape(Node[] n){
-        for (int k=0;k<n.length;k++) {
-            if (!myTurtleScreen.getChildren().contains(n[k]))
+    public void drawShape (Node[] n) {
+        for (int k = 0; k < n.length; k++) {
+            if (!myTurtleScreen.getChildren().contains(n[k])) {
                 myTurtleScreen.getChildren().add(n[k]);
-        } 
+            }
+        }
     }
 
     /**
      * Changes the background color of the grid, this method is called from the
      * SetGridColorFeature
+     *
      * @param style
      */
     public void changeScreenColor (String style) {
-        myTurtleScreen.setStyle(style);  
+        myTurtleScreen.setStyle(style);
     }
-
 
     public void resetScreen () {
         myTurtleNodes.clearTurtleNodes();
         myTurtleScreen.getChildren().clear();
-    }    
+    }
 }
-

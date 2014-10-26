@@ -10,6 +10,7 @@ import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
+
 public class UserDefinedCommandFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.SIGNIFICANT_COMMANDS_DRAWER;
@@ -21,19 +22,19 @@ public class UserDefinedCommandFactory extends ObjectFactory {
 
     private ObservableList<DisplayedUserCommand> myUserDefinedCommandsList;
 
-    public UserDefinedCommandFactory(String name, List<DisplayedUserCommand> commandList) {
+    public UserDefinedCommandFactory (String name, List<DisplayedUserCommand> commandList) {
         super(name);
         myUserDefinedCommandsList = (ObservableList<DisplayedUserCommand>) commandList;
     }
 
     @Override
-    public Node[] generateObject(Map<String, String> paramsMap) {
+    public Node[] generateObject (Map<String, String> paramsMap) {
         String name = paramsMap.get(NAME);
         String params = paramsMap.get(PARAMETERS);
         String content = paramsMap.get(CONTENT);
 
-        for(DisplayedUserCommand command:myUserDefinedCommandsList){
-            if(command.getMyName().equalsIgnoreCase(name)){
+        for (DisplayedUserCommand command : myUserDefinedCommandsList) {
+            if (command.getMyName().equalsIgnoreCase(name)) {
                 command.setMyParams(params);
                 command.setMyContent(content);
                 refreshList();
@@ -44,7 +45,7 @@ public class UserDefinedCommandFactory extends ObjectFactory {
         return new Node[] { new NullNode() };
     }
 
-    private void refreshList() {
+    private void refreshList () {
         List<DisplayedUserCommand> list = new ArrayList<DisplayedUserCommand>();
         for (DisplayedUserCommand command : myUserDefinedCommandsList) {
             list.add(command);

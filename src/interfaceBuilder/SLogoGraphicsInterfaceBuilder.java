@@ -37,6 +37,7 @@ public class SLogoGraphicsInterfaceBuilder {
 
     /**
      * Method adds a listener method to the listener interface class
+     *
      * @param methodSignature The method name
      * @param methodArgument The argument that the method will receive
      * @return True if method was added to class successfully, False otherwise
@@ -51,6 +52,7 @@ public class SLogoGraphicsInterfaceBuilder {
 
     /**
      * Method writes out the constructed class into an actual java source code class file
+     *
      * @return True if class written to file successfully, false otherwise
      */
     protected boolean writeClass () {

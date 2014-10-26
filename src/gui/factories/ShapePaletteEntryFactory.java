@@ -11,6 +11,7 @@ import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
+
 public class ShapePaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;
@@ -20,17 +21,17 @@ public class ShapePaletteEntryFactory extends ObjectFactory {
 
     private ObservableList<ImageIndex> myImageIndexList;
 
-    public ShapePaletteEntryFactory(String name, List<ImageIndex> imageIndexList) {
+    public ShapePaletteEntryFactory (String name, List<ImageIndex> imageIndexList) {
         super(name);
         myImageIndexList = (ObservableList<ImageIndex>) imageIndexList;
     }
 
     @Override
-    public Node[] generateObject(Map<String, String> params) {
+    public Node[] generateObject (Map<String, String> params) {
         int index = Integer.parseInt(params.get(INDEX));
         File image = new File(params.get(IMAGE_PATH));
-        for(ImageIndex imageIndex:myImageIndexList){
-            if(imageIndex.getMyIndex() == index) {
+        for (ImageIndex imageIndex : myImageIndexList) {
+            if (imageIndex.getMyIndex() == index) {
                 imageIndex.setMyImageFile(image);
                 refreshList();
                 return new Node[] { new NullNode() };
@@ -40,7 +41,7 @@ public class ShapePaletteEntryFactory extends ObjectFactory {
         return new Node[] { new NullNode() };
     }
 
-    private void refreshList() {
+    private void refreshList () {
         List<ImageIndex> list = new ArrayList<ImageIndex>();
         for (ImageIndex command : myImageIndexList) {
             list.add(command);

@@ -17,12 +17,14 @@ public class OptionsHolderDrawer extends ComponentDrawer {
         myButtonHolder.setId("tabPane");
         myButtonHolder.setPrefWidth(245);
         myButtonHolder.setLayoutY(20);
-        super.drawShape(new Node[]{ new Label(TextGenerator.get(TextGenerator.OPTIONS)), myButtonHolder});
+        super.drawShape(new Node[] { new Label(TextGenerator.get(TextGenerator.OPTIONS)),
+                                     myButtonHolder });
     }
 
     /**
      * Adds the options tabs to the tab pane. This method is called in feature intializer
      * after the tabs are initialized with their corresponding features.
+     *
      * @param optionsTabs
      */
     public void addTabs (Tab[] optionsTabs) {

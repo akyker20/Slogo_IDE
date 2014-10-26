@@ -14,11 +14,10 @@ public class DrawableObject {
 
     private String parent;
     private String type;
-    private Map<String,String> parameters;
-
+    private Map<String, String> parameters;
 
     /**
-     * 
+     *
      * @param someParent
      * @param someType
      * @param rawParameters
@@ -44,7 +43,7 @@ public class DrawableObject {
     }
 
     @Override
-    public String toString(){
+    public String toString () {
         return "Parent: " + parent + ", Type: " + type + ", Parameters: " + parameters.toString();
     }
 

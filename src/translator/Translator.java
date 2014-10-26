@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,9 +12,9 @@ import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 import java.util.stream.Collectors;
-
 import commandParsing.exceptions.LanguageFileNotFoundException;
 import commandParsing.exceptions.PropertyFileAccessException;
+
 
 /**
  * This file deals with translating the commands in different languages to Strings 

@@ -3,7 +3,6 @@ package gui.mainclasses;
 import gui.mainclasses.workspace.WorkspaceManager;
 import gui.menus.MainMenuInitializer;
 import java.util.Queue;
-import java.util.ResourceBundle;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -23,16 +22,16 @@ public class GUIController {
     private WorkspaceManager myWorkspaceManager;
 
     /**
-     * 
+     *
      * @param stage
      * @param control
      */
-    public GUIController (Stage stage, SlogoGraphics control)   {
+    public GUIController (Stage stage, SlogoGraphics control) {
         myPane = StageInitializer.init(stage);
-        myWorkspaceManager = new WorkspaceManager(control);               
+        myWorkspaceManager = new WorkspaceManager(control);
         myPane.setTop(MainMenuInitializer.init(myWorkspaceManager));
         myPane.setCenter(myWorkspaceManager);
-        myPane.setOnKeyReleased(event->moveActiveTurtlesInActiveWorkspace(event));
+        myPane.setOnKeyReleased(event -> moveActiveTurtlesInActiveWorkspace(event));
     }
 
     private void moveActiveTurtlesInActiveWorkspace (KeyEvent event) {
@@ -41,6 +40,7 @@ public class GUIController {
 
     /**
      * Method to convert a DrawableObject queue into shapes that can be drawn on the screen
+     *
      * @param objectQueue
      */
     public void drawDrawableObjects (Queue<DrawableObject> objectQueue) {
@@ -48,8 +48,8 @@ public class GUIController {
             myWorkspaceManager.getActiveWorkspace().parseDrawableObject(objectQueue.poll());
         }
     }
-    
-    public WorkspaceManager getWorkspaceManager(){
+
+    public WorkspaceManager getWorkspaceManager () {
         return myWorkspaceManager;
     }
 }

@@ -5,8 +5,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class TextGenerator {
 
+public class TextGenerator {
 
     public static final String SLOGO = "slogo";
 
@@ -42,7 +42,7 @@ public class TextGenerator {
     public static final String NAME = "name";
     public static final String PARAMETERS = "parameters";
 
-    public static final String OPTIONS = "options";   
+    public static final String OPTIONS = "options";
     public static final String GENERAL = "general";
     public static final String PEN = "pen";
     public static final String COLORS = "colors";
@@ -62,7 +62,7 @@ public class TextGenerator {
     public static final String FRENCH = "French";
     public static final String ITALIAN = "Italian";
 
-    private static Map<String,Locale> supportedLocales = new HashMap<String,Locale>();
+    private static Map<String, Locale> supportedLocales = new HashMap<String, Locale>();
 
     static {
         supportedLocales.put(CHINESE, Locale.CHINESE);
@@ -73,16 +73,16 @@ public class TextGenerator {
 
     private static ResourceBundle myLanguagesBundle = getResourceBundle(ENGLISH);
 
-
-    private static ResourceBundle getResourceBundle(String language) {     
-        return ResourceBundle.getBundle("resources.guiResources/LabelsBundle", supportedLocales.get(language));
+    private static ResourceBundle getResourceBundle (String language) {
+        return ResourceBundle.getBundle("resources.guiResources/LabelsBundle",
+                                        supportedLocales.get(language));
     }
 
-    public static String get(String text) {
+    public static String get (String text) {
         return myLanguagesBundle.getString(text);
     }
 
-    public static void setLanguage(String language) {
+    public static void setLanguage (String language) {
         myLanguagesBundle = getResourceBundle(language);
 
     }

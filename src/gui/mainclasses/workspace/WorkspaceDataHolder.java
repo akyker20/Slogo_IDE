@@ -7,6 +7,7 @@ import gui.variableslist.WorkspaceVariable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+
 public class WorkspaceDataHolder {
     private ObservableList<WorkspaceVariable> myVariablesList;
     private ObservableList<String> myPreviousCommandsList;
@@ -14,11 +15,11 @@ public class WorkspaceDataHolder {
     private ObservableList<String> mySavedCommandsList;
     private ObservableList<ColorIndex> myColorIndexList;
     private ObservableList<ImageIndex> myImageIndexList;
-    
+
     /**
      * Default constructor
      */
-    public WorkspaceDataHolder(){
+    public WorkspaceDataHolder () {
         this(FXCollections.observableArrayList(),
              FXCollections.observableArrayList(),
              FXCollections.observableArrayList(),
@@ -26,21 +27,21 @@ public class WorkspaceDataHolder {
              FXCollections.observableArrayList(),
              FXCollections.observableArrayList());
     }
-    
+
     /**
-     * 
+     *
      * @param myVariablesList
      * @param myPreviousCommandsList
      * @param myUserDefinedCommandList
      * @param mySavedCommandsList
      * @param myColorIndexList
      */
-    public WorkspaceDataHolder(ObservableList<WorkspaceVariable> myVariablesList,
-                               ObservableList<String> myPreviousCommandsList,
-                               ObservableList<DisplayedUserCommand> myUserDefinedCommandList,
-                               ObservableList<String> mySavedCommandsList,
-                               ObservableList<ColorIndex> myColorIndexList,
-                               ObservableList<ImageIndex> myImageIndexList) {
+    public WorkspaceDataHolder (ObservableList<WorkspaceVariable> myVariablesList,
+                                ObservableList<String> myPreviousCommandsList,
+                                ObservableList<DisplayedUserCommand> myUserDefinedCommandList,
+                                ObservableList<String> mySavedCommandsList,
+                                ObservableList<ColorIndex> myColorIndexList,
+                                ObservableList<ImageIndex> myImageIndexList) {
         this.myVariablesList = myVariablesList;
         this.myPreviousCommandsList = myPreviousCommandsList;
         this.myUserDefinedCommandList = myUserDefinedCommandList;
@@ -52,7 +53,6 @@ public class WorkspaceDataHolder {
     public ObservableList<WorkspaceVariable> getMyVariablesList () {
         return myVariablesList;
     }
-
 
     public ObservableList<String> getMyPreviousCommandsList () {
         return myPreviousCommandsList;
@@ -69,8 +69,8 @@ public class WorkspaceDataHolder {
     public ObservableList<ColorIndex> getMyColorIndexList () {
         return myColorIndexList;
     }
-    
-    public ObservableList<ImageIndex> getMyImageIndexList() {
+
+    public ObservableList<ImageIndex> getMyImageIndexList () {
         return myImageIndexList;
     }
 
@@ -80,5 +80,5 @@ public class WorkspaceDataHolder {
         myUserDefinedCommandList.clear();
         mySavedCommandsList.clear();
         myColorIndexList.clear();
-    }   
+    }
 }

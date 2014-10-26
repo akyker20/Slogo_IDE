@@ -8,11 +8,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+
 /**
- *This class is a super class for different types of editing cells.
- *For now, there will only be a StringEditingCell because the integer
- *fields should not be editable, but this provides a means for future
- *extension.
+ * This class is a super class for different types of editing cells.
+ * For now, there will only be a StringEditingCell because the integer
+ * fields should not be editable, but this provides a means for future
+ * extension.
+ *
  * @author Austin Kyker
  *
  */
@@ -21,10 +23,10 @@ public class EditingCell extends TableCell<WorkspaceVariable, Double> {
     private TextField textField;
     private Workspace myWorkspace;
 
-    public EditingCell(Workspace workspace) {
+    public EditingCell (Workspace workspace) {
         myWorkspace = workspace;
         textField = new TextField();
-        textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
+        textField.setMinWidth(getWidth() - getGraphicTextGap() * 2);
     }
 
     /**
@@ -32,7 +34,7 @@ public class EditingCell extends TableCell<WorkspaceVariable, Double> {
      * created that gives the user the ability to edit the value of the variable.
      */
     @Override
-    public void startEdit() {
+    public void startEdit () {
         if (!isEmpty()) {
             super.startEdit();
             createTextField();
@@ -41,24 +43,25 @@ public class EditingCell extends TableCell<WorkspaceVariable, Double> {
         }
     }
 
-
     /**
      * A text box is created with a key listener. When the user hits enter
      * the contents of the text box are committed and the observable list is
      * edited! To let the back-end know of the variable change, a command is
      * sent to the control representing the change in the value of the variable.
      */
-    public void createTextField() {
+    public void createTextField () {
         textField = new TextField(getString());
         textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override public void handle(KeyEvent t) {
+            @Override
+            public void handle (KeyEvent t) {
                 if (t.getCode() == KeyCode.ENTER) {
                     Double newValue = Double.parseDouble(textField.getText());
                     commitEdit(newValue);
 
-                    WorkspaceVariable selectedVariable = EditingCell.this.getTableView().getSelectionModel().getSelectedItem();
-                    myWorkspace.parseCommandString("set " + selectedVariable.getMyName() + " " + newValue);
-
+                    WorkspaceVariable selectedVariable =
+                            EditingCell.this.getTableView().getSelectionModel().getSelectedItem();
+                    myWorkspace.parseCommandString("set " + selectedVariable.getMyName() + " " +
+                            newValue);
 
                 }
             }
@@ -70,9 +73,9 @@ public class EditingCell extends TableCell<WorkspaceVariable, Double> {
      * and the textbox is removed.
      */
     @Override
-    public void updateItem(Double item, boolean empty) {
+    public void updateItem (Double item, boolean empty) {
         super.updateItem(item, empty);
-        if(!empty){
+        if (!empty) {
             setText(getString());
             setGraphic(null);
         }
@@ -81,9 +84,10 @@ public class EditingCell extends TableCell<WorkspaceVariable, Double> {
     /**
      * Method to return the item as a string. If the item is null (an empty cell),
      * an empty string is returned.
+     *
      * @return String representing item
      */
-    protected String getString() {
+    protected String getString () {
         return getItem() == null ? "" : getItem().toString();
     }
 }

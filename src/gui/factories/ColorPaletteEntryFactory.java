@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
+
 public class ColorPaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;
@@ -20,17 +21,17 @@ public class ColorPaletteEntryFactory extends ObjectFactory {
 
     private ObservableList<ColorIndex> myColorIndexList;
 
-    public ColorPaletteEntryFactory(String name, List<ColorIndex> colorIndexList) {
+    public ColorPaletteEntryFactory (String name, List<ColorIndex> colorIndexList) {
         super(name);
         myColorIndexList = (ObservableList<ColorIndex>) colorIndexList;
     }
 
     @Override
-    public Node[] generateObject(Map<String, String> params) {
+    public Node[] generateObject (Map<String, String> params) {
         int index = Integer.parseInt(params.get(INDEX));
         Color color = Color.valueOf(params.get(COLOR));
-        for(ColorIndex colorIndex:myColorIndexList){
-            if(colorIndex.getMyIndex() == index) {
+        for (ColorIndex colorIndex : myColorIndexList) {
+            if (colorIndex.getMyIndex() == index) {
                 colorIndex.setMyColor(color);
                 refreshList();
                 return new Node[] { new NullNode() };
@@ -40,7 +41,7 @@ public class ColorPaletteEntryFactory extends ObjectFactory {
         return new Node[] { new NullNode() };
     }
 
-    private void refreshList() {
+    private void refreshList () {
         List<ColorIndex> list = new ArrayList<ColorIndex>();
         for (ColorIndex command : myColorIndexList) {
             list.add(command);

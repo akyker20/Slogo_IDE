@@ -22,8 +22,9 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
+
 public class Workspace extends Tab {
-    
+
     private SlogoGraphics myControl;
     private TurtleNodes myTurtleNodes;
     private Map<String, ComponentDrawer> myComponentDrawers;
@@ -32,29 +33,29 @@ public class Workspace extends Tab {
     private BorderPane myPane;
     private int myID;
 
-    public Workspace(SlogoGraphics control, WorkspaceScreenParameters screenParams, 
-                     WorkspaceDataHolder dataHolder, int id) {
+    public Workspace (SlogoGraphics control, WorkspaceScreenParameters screenParams,
+                      WorkspaceDataHolder dataHolder, int id) {
         myControl = control;
         myDataHolder = dataHolder;
         myTurtleNodes = new TurtleNodes(this);
-        myID = id; 
-        
+        myID = id;
+
         myPane = createPane();
         myComponentDrawers = ComponentBuilder.build(myPane, myTurtleNodes);
         myObjectFactories = FactoryBuilder
-                .init(myDataHolder, (TurtleScreenDrawer) 
+                .init(myDataHolder, (TurtleScreenDrawer)
                       myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
-        FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);        
-        this.setContent(myPane);
+        FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
+        setContent(myPane);
     }
 
-    private BorderPane createPane() {
+    private BorderPane createPane () {
         BorderPane pane = new BorderPane();
         pane.setPrefSize(StageInitializer.SCREEN_WIDTH, StageInitializer.SCREEN_HEIGHT);
         return pane;
     }
 
-    public void parseCommandString(String command) {
+    public void parseCommandString (String command) {
         try {
             myControl.parseCommandString(command);
         }
@@ -66,13 +67,21 @@ public class Workspace extends Tab {
     }
 
     public void moveActiveTurtles (KeyEvent event) {
-        for(TurtleNode turtleNode:myTurtleNodes.getActiveNodes()){
+        for (TurtleNode turtleNode : myTurtleNodes.getActiveNodes()) {
             String command = null;
-            switch(event.getCode()){
-                case UP: command = "fd 10"; break;
-                case DOWN: command = "bk 10"; break;
-                case RIGHT: command = "right 90"; break;
-                case LEFT: command = "left 90"; break;
+            switch (event.getCode()) {
+                case UP:
+                    command = "fd 10";
+                    break;
+                case DOWN:
+                    command = "bk 10";
+                    break;
+                case RIGHT:
+                    command = "right 90";
+                    break;
+                case LEFT:
+                    command = "left 90";
+                    break;
                 default:
                     return;
             }
@@ -90,10 +99,11 @@ public class Workspace extends Tab {
     /**
      * Adds a command to the previous commands list view. Adds the command to the front
      * of the list so it will be displayed first in the view.
+     *
      * @param command
      */
     public void addPreviousCommand (String command) {
-        myDataHolder.getMyPreviousCommandsList().add(0, command);   
+        myDataHolder.getMyPreviousCommandsList().add(0, command);
     }
 
     /**
@@ -101,12 +111,13 @@ public class Workspace extends Tab {
      * as well as the previous command log. This is called when the user
      * clicks the ClearWorkspace button feature in the options TabPane.
      */
-    public void clear() {
+    public void clear () {
         myDataHolder.clear();
     }
 
     /**
      * Method to convert a DrawableObject queue into shapes that can be drawn on the screen
+     *
      * @param objectQueue
      */
     public void parseDrawableObject (DrawableObject poll) {
@@ -115,7 +126,7 @@ public class Workspace extends Tab {
 
     public void notifyOfTurtleSelectionChange () {
         String activeTurtleStr = "";
-        for(TurtleNode node:myTurtleNodes.getActiveNodes()){
+        for (TurtleNode node : myTurtleNodes.getActiveNodes()) {
             activeTurtleStr += node.getTurtleID() + " ";
         }
         parseCommandString("Tell [ " + activeTurtleStr.trim() + " ]");

@@ -1,74 +1,70 @@
 package tests.commandTests.doubleInputFloatTests;
 
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
 import org.junit.Test;
-
 import tests.commandTests.CommandTester;
-import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
-import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 
 
-public class DifferenceTests extends CommandTester{
+public class DifferenceTests extends CommandTester {
 
-	@Test
-	public void IntegerParseTest() throws SLOGOException {
-		resetTesterVariables();
-		setUpCommands("- 50 50");
-		
-		CommandParser parser = createCommand();
-		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 0);
-	}
+    @Test
+    public void IntegerParseTest () throws SLOGOException {
+        resetTesterVariables();
+        setUpCommands("- 50 50");
 
-	@Test
-	public void FloatParseTest() throws SLOGOException {
-		resetTesterVariables();
-		setUpCommands("- 50.0 50.0");
-		CommandParser parser = createCommand();
+        CommandParser parser = createCommand();
+        double f = parser.parse(commands, objectQueue);
+        assertTrue(f == 0);
+    }
 
-		double f = parser.parse(commands, objectQueue);
+    @Test
+    public void FloatParseTest () throws SLOGOException {
+        resetTesterVariables();
+        setUpCommands("- 50.0 50.0");
+        CommandParser parser = createCommand();
 
-		assertTrue(f == 0);
-	}
+        double f = parser.parse(commands, objectQueue);
 
-	@Test
-	public void IntegerLongParseTest() throws SLOGOException {
-		resetTesterVariables();
-		setUpCommands("- 50 - 50 50");
-		CommandParser parser = createCommand();
+        assertTrue(f == 0);
+    }
 
-		double f = parser.parse(commands, objectQueue);
+    @Test
+    public void IntegerLongParseTest () throws SLOGOException {
+        resetTesterVariables();
+        setUpCommands("- 50 - 50 50");
+        CommandParser parser = createCommand();
 
-		assertTrue(f == 50);
-	}
+        double f = parser.parse(commands, objectQueue);
 
-	@Test
-	public void IntegerLongerParseTest() throws SLOGOException {
-		resetTesterVariables();
-		setUpCommands("- 50 - 50 - 50 - 50 - 50 - 50 - 50 50");
-		CommandParser parser = createCommand();
+        assertTrue(f == 50);
+    }
 
-		double f = parser.parse(commands, objectQueue);
+    @Test
+    public void IntegerLongerParseTest () throws SLOGOException {
+        resetTesterVariables();
+        setUpCommands("- 50 - 50 - 50 - 50 - 50 - 50 - 50 50");
+        CommandParser parser = createCommand();
 
-		assertTrue(f == 0);
-	}
+        double f = parser.parse(commands, objectQueue);
 
-	@Test
-	public void SyntaxErrorParseTest() throws SLOGOException {
-		resetTesterVariables();
-		setUpCommands("- 50 - 50 50..");
-		CommandParser parser = createCommand();
+        assertTrue(f == 0);
+    }
 
-		try {
-			double f = parser.parse(commands, objectQueue);
-		} catch (SLOGOException e) {
-			assertTrue(e.generateErrorMessage().getParameters().values().contains("Error parsing following string: " + "50.." + ". Incorrect syntax."));
-		}
-	}
-	
+    @Test
+    public void SyntaxErrorParseTest () throws SLOGOException {
+        resetTesterVariables();
+        setUpCommands("- 50 - 50 50..");
+        CommandParser parser = createCommand();
+
+        try {
+            parser.parse(commands, objectQueue);
+        }
+        catch (SLOGOException e) {
+            assertTrue(e.generateErrorMessage().getParameters().values()
+                       .contains("Error parsing following string: " + "50.." + ". Incorrect syntax."));
+        }
+    }
 
 }

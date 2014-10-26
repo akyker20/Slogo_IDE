@@ -11,33 +11,38 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
+
 public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
     @SuppressWarnings("unchecked")
-    public WorkspaceVariablesFeature(WorkspaceVariablesDrawer parentDrawer, ObservableList<WorkspaceVariable> data, 
-                                     Workspace workspace){
+    public WorkspaceVariablesFeature (WorkspaceVariablesDrawer parentDrawer,
+                                      ObservableList<WorkspaceVariable> data,
+                                      Workspace workspace) {
 
         Callback<TableColumn<WorkspaceVariable, Double>, TableCell<WorkspaceVariable, Double>> cellFactory =
                 new Callback<TableColumn<WorkspaceVariable, Double>, TableCell<WorkspaceVariable, Double>>() {
-            public TableCell<WorkspaceVariable, Double> call(TableColumn<WorkspaceVariable, Double> p) {
+            @Override
+            public TableCell<WorkspaceVariable, Double> call (TableColumn<WorkspaceVariable, Double> p) {
                 return new EditingCell(workspace);
             }
         };
 
-        TableColumn<WorkspaceVariable,String> variableName = 
-                new TableColumn<WorkspaceVariable,String>(TextGenerator.get(TextGenerator.VARIABLE));
+        TableColumn<WorkspaceVariable, String> variableName =
+                new TableColumn<WorkspaceVariable, String>(
+                        TextGenerator
+                        .get(TextGenerator.VARIABLE));
         variableName.setCellValueFactory(new PropertyValueFactory("myName"));
-        variableName.prefWidthProperty().bind(this.widthProperty().divide(2));
-        TableColumn<WorkspaceVariable,Double> variableValue = 
-                new TableColumn<WorkspaceVariable,Double>(TextGenerator.get(TextGenerator.VALUE));
+        variableName.prefWidthProperty().bind(widthProperty().divide(2));
+        TableColumn<WorkspaceVariable, Double> variableValue =
+                new TableColumn<WorkspaceVariable, Double>(TextGenerator.get(TextGenerator.VALUE));
         variableValue.setCellValueFactory(new PropertyValueFactory("myValue"));
-        variableValue.prefWidthProperty().bind(this.widthProperty().divide(2).subtract(2));
+        variableValue.prefWidthProperty().bind(widthProperty().divide(2).subtract(2));
         variableValue.setCellFactory(cellFactory);
-        this.getColumns().setAll(variableName, variableValue);
-        this.setId("table");
-        this.setLayoutY(20);
-        this.setPrefHeight(168);
-        this.setEditable(true);
-        this.setItems(data);
-        parentDrawer.drawShape(new WorkspaceVariablesFeature[]{this});
+        getColumns().setAll(variableName, variableValue);
+        setId("table");
+        setLayoutY(20);
+        setPrefHeight(168);
+        setEditable(true);
+        setItems(data);
+        parentDrawer.drawShape(new WorkspaceVariablesFeature[] { this });
     }
 }

@@ -1,8 +1,8 @@
 package Control;
 
-
 import javafx.application.Application;
 import javafx.stage.Stage;
+
 
 public class Main extends Application {
 
@@ -12,6 +12,6 @@ public class Main extends Application {
 
     @Override
     public void start (Stage stage) throws Exception {
-        SlogoControl control = new SlogoControl(stage); 
+        new SlogoControl(stage);
     }
 }

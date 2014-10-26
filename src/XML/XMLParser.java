@@ -6,17 +6,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import drawableobject.DrawableObject;
 
 
@@ -68,7 +64,7 @@ public class XMLParser extends DefaultHandler {
                               Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("drawableObject")) {
             if (rawParameters.size() > 0) {
-                objectQueue.add(new DrawableObject(parent, type,rawParameters));
+                objectQueue.add(new DrawableObject(parent, type, rawParameters));
             }
             parent = attributes.getValue("parent");
             type = attributes.getValue("type");

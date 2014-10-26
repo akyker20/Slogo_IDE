@@ -9,8 +9,10 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+
 /**
  * This class is responsible for building all of the components.
+ *
  * @author akyker20
  *
  */
@@ -25,27 +27,26 @@ public class ComponentBuilder {
     public static final String WORKSPACE_COMMANDS = "workspaceCommandDrawer";
     public static final String SIGNIFICANT_COMMANDS_DRAWER = "significantCommandsDrawer";
     public static final String ERROR_DRAWER = "errorDrawer";
-        
-    private static String[] myLeftContainerElements = new String[]{ SCREEN_DRAWER, 
-                                                                    PREVIOUS_COMMANDS, 
-                                                                    COMMAND_LINE_DRAWER, 
-                                                                    ERROR_DRAWER };
-    
-    private static String[] myRightContainerElements = new String[]{ WORKSPACE_VARIABLES, 
-                                                                     SIGNIFICANT_COMMANDS_DRAWER, 
-                                                                     BUTTON_HOLDER_DRAWER };
-    
-    
-    public static Map<String, ComponentDrawer> build (BorderPane pane, TurtleNodes turtleNodes)  {      
-        Map<String, ComponentDrawer> drawerMap = createComponentsDrawerMap(turtleNodes);       
-        buildLeftComponents(pane, drawerMap);     
-        buildRightComponents(pane, drawerMap);    
+
+    private static String[] myLeftContainerElements = new String[] { SCREEN_DRAWER,
+                                                                     PREVIOUS_COMMANDS,
+                                                                     COMMAND_LINE_DRAWER,
+                                                                     ERROR_DRAWER };
+
+    private static String[] myRightContainerElements = new String[] { WORKSPACE_VARIABLES,
+                                                                      SIGNIFICANT_COMMANDS_DRAWER,
+                                                                      BUTTON_HOLDER_DRAWER };
+
+    public static Map<String, ComponentDrawer> build (BorderPane pane, TurtleNodes turtleNodes) {
+        Map<String, ComponentDrawer> drawerMap = createComponentsDrawerMap(turtleNodes);
+        buildLeftComponents(pane, drawerMap);
+        buildRightComponents(pane, drawerMap);
         return drawerMap;
     }
 
-
     /**
      * Adds the components that will be on the right side of the screen to the borderpane.
+     *
      * @param pane
      * @param drawerMap
      */
@@ -59,6 +60,7 @@ public class ComponentBuilder {
 
     /**
      * Adds the components that will be on the left side of the screen to the borderpane.
+     *
      * @param pane
      * @param drawerMap
      */
@@ -68,35 +70,40 @@ public class ComponentBuilder {
         addComponentsToBox(drawerMap, myLeftContainerElements, leftVBox);
         pane.setLeft(leftVBox);
     }
-    
+
     /**
      * A helper method to make code DRYer
+     *
      * @param drawerMap
      * @param components
      * @param vBox
      */
-    private static void addComponentsToBox (Map<String, ComponentDrawer> drawerMap, String[] components, VBox vBox) {
-        for(int i = 0; i < components.length; i ++){
-            vBox.getChildren().add(drawerMap.get(components[i]));
+    private static void addComponentsToBox (Map<String, ComponentDrawer> drawerMap,
+                                            String[] components,
+                                            VBox vBox) {
+        for (String component : components) {
+            vBox.getChildren().add(drawerMap.get(component));
         }
     }
 
     /**
      * Returns a map that maps the name of the component drawer to the component drawer itself.
+     *
      * @param turtleNodes
      * @return
      */
     private static Map<String, ComponentDrawer> createComponentsDrawerMap (TurtleNodes turtleNodes) {
         Map<String, ComponentDrawer> drawerMap = new HashMap<String, ComponentDrawer>();
-        
-        drawerMap.put(SCREEN_DRAWER,  new TurtleScreenDrawer(SCREEN_DRAWER, turtleNodes));
+
+        drawerMap.put(SCREEN_DRAWER, new TurtleScreenDrawer(SCREEN_DRAWER, turtleNodes));
         drawerMap.put(BUTTON_HOLDER_DRAWER, new OptionsHolderDrawer(BUTTON_HOLDER_DRAWER));
         drawerMap.put(COMMAND_LINE_DRAWER, new CommandLineDrawer(COMMAND_LINE_DRAWER));
         drawerMap.put(PREVIOUS_COMMANDS, new PreviousCommandsDrawer(PREVIOUS_COMMANDS));
         drawerMap.put(WORKSPACE_VARIABLES, new WorkspaceVariablesDrawer(WORKSPACE_VARIABLES));
-        drawerMap.put(SIGNIFICANT_COMMANDS_DRAWER, new SignificantCommandsDrawer(SIGNIFICANT_COMMANDS_DRAWER));
+        drawerMap.put(SIGNIFICANT_COMMANDS_DRAWER,
+                      new SignificantCommandsDrawer(SIGNIFICANT_COMMANDS_DRAWER));
         drawerMap.put(ERROR_DRAWER, new ErrorDrawer(ERROR_DRAWER));
-        
+
         return drawerMap;
     }
 }
