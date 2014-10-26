@@ -9,7 +9,11 @@ import java.util.stream.Collectors;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
-
+/**
+ * Class represents a collection of TurtleNode objects
+ * @author akyker20
+ *
+ */
 public class TurtleNodes {
 
     private List<TurtleNode> myTurtleNodes = new ArrayList<TurtleNode>();

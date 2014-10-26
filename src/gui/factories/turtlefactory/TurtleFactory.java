@@ -7,7 +7,11 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 import javafx.scene.Node;
 
-
+/**
+ * Class handles turtle creation on front-end
+ * @author akyker20, allankiplagat
+ *
+ */
 public class TurtleFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.SCREEN_DRAWER;

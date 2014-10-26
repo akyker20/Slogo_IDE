@@ -11,7 +11,11 @@ import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-
+/**
+ * Class implements adding images to be used for the Turtles
+ * @author akyker20, allankiplagat
+ *
+ */
 public class ShapePaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;

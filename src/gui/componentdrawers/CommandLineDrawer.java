@@ -35,7 +35,7 @@ public class CommandLineDrawer extends ComponentDrawer {
 
     /**
      * Returns the current text in the command line, called from the SaveCommandButtonFeature.
-     * That feature needs the current input value so it can pass it to the backend to be saved.
+     * That feature needs the current input value so it can pass it to the back-end to be saved.
      *
      * @return
      */

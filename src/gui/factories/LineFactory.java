@@ -13,7 +13,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import com.sun.javafx.geom.Point2D;
 
-
+/**
+ * Class generates lines to be drawn on the TurtleScreen
+ * @author akyker20, allankiplagat
+ *
+ */
 public class LineFactory extends ObjectFactory {
 
     public static final String ORIGIN = "origin";
@@ -38,6 +42,11 @@ public class LineFactory extends ObjectFactory {
         return lines;
     }
 
+    /**
+     * Method generates lines to be drawn on the TurtleScreen
+     * @param params
+     * @return returns a list of Lines to be drawn 
+     */
     public List<Line> generateLines (Map<String, String> params) {
 
         Point2D origin = parseStringToPoints(params.get(ORIGIN));

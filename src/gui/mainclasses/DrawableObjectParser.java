@@ -6,7 +6,11 @@ import java.util.Map;
 import javafx.scene.Node;
 import drawableobject.DrawableObject;
 
-
+/**
+ * Class parses a DrawableObject and calls the respective drawer and factory classes with parameters
+ * @author akyker20, allankiplagat
+ *
+ */
 public class DrawableObjectParser {
 
     public static void parseDrawableObject (DrawableObject object,

@@ -6,7 +6,11 @@ import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
-
+/**
+ * Class manages addition of errors to the error display 
+ * @author akyker20, allankiplagat
+ *
+ */
 public class ErrorFactory extends ObjectFactory {
     public static final String PARENT = ComponentBuilder.ERROR_DRAWER;
     public static final String TYPE = FactoryBuilder.ERROR_FACTORY;

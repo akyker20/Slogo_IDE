@@ -9,7 +9,11 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 
-
+/**
+ * Class manages command entering through the command line
+ * @author akyker20, allankiplagat
+ *
+ */
 public class CommandLineFeature extends TextArea {
 
     public CommandLineFeature (CommandLineDrawer parentDrawer, Workspace workspace) {

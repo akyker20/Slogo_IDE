@@ -8,7 +8,11 @@ import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-
+/**
+ *Class implements changing the TurtleScreen color and resetting the TurtleScreen
+ * @author akyker20, allankiplagat
+ *
+ */
 public class PaneFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.SCREEN_DRAWER;

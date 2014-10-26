@@ -7,7 +7,11 @@ import gui.variableslist.WorkspaceVariable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
+/**
+ * Class hosts the data for a workspace
+ * @author akyker20, allankiplagat
+ *
+ */
 public class WorkspaceDataHolder {
     private ObservableList<WorkspaceVariable> myVariablesList;
     private ObservableList<String> myPreviousCommandsList;

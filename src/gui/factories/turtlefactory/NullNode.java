@@ -4,8 +4,7 @@ import javafx.scene.image.ImageView;
 
 
 /**
- * Null Node class to avoid null pointer exceptions
- *
+ * Null Node class to prevent null pointer exceptions
  */
 public class NullNode extends ImageView {
 

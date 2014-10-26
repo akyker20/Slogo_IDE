@@ -15,7 +15,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
-
+/**
+ * Presents the user with images that they can use as the turtle image
+ * @author akyker20
+ *
+ */
 public class ImageIndexFeature extends TableView<ImageIndex> {
     @SuppressWarnings("unchecked")
     public ImageIndexFeature (ObservableList<ImageIndex> data, OptionsHolderDrawer parentDrawer) {

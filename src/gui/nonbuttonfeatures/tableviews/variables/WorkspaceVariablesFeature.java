@@ -11,7 +11,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
-
+/**
+ * Class manages the displaying of workspace variables 
+ * @author akyker20, allankiplagat
+ *
+ */
 public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
     @SuppressWarnings("unchecked")
     public WorkspaceVariablesFeature (WorkspaceVariablesDrawer parentDrawer,

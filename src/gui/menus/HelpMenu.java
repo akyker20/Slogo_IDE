@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 /**
  * Sets up a help menu with several different options. The getting started
- * menu item displays an html page that tells the user
+ * menu item displays an HTML page that tells the user
  *
  * @author Austin Kyker
  *

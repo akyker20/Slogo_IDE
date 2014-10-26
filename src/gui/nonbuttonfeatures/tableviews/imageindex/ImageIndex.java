@@ -2,7 +2,11 @@ package gui.nonbuttonfeatures.tableviews.imageindex;
 
 import java.io.File;
 
-
+/**
+ * Class encapsulates a turtle image
+ * @author akyker20, allankiplagat
+ *
+ */
 public class ImageIndex {
     private int myIndex;
     private File myImageFile;

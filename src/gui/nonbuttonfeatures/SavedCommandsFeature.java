@@ -8,7 +8,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-
+/**
+ * Class is a ListView used to display the commands saved by the user
+ * @author akyker20
+ *
+ */
 public class SavedCommandsFeature extends ListView<String> {
 
     private ObservableList<String> myCommands;

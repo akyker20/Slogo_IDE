@@ -7,7 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
-
+/**
+ * Class hosts a TabPane in which tabs (General,Pen,Colors and Images) are displayed
+ * @author akyker20, allankiplagat
+ *
+ */
 public class OptionsHolderDrawer extends ComponentDrawer {
     private TabPane myButtonHolder;
 
@@ -22,7 +26,7 @@ public class OptionsHolderDrawer extends ComponentDrawer {
     }
 
     /**
-     * Adds the options tabs to the tab pane. This method is called in feature intializer
+     * Adds the options tabs to the tab pane. This method is called in feature initializer
      * after the tabs are initialized with their corresponding features.
      *
      * @param optionsTabs

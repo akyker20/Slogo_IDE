@@ -3,7 +3,11 @@ package gui.componentdrawers;
 import gui.mainclasses.TextGenerator;
 import javafx.scene.control.Label;
 
-
+/**
+ * Class manages the workspace variables display
+ * @author akyker20, allankiplagat
+ *
+ */
 public class WorkspaceVariablesDrawer extends ComponentDrawer {
 
     public WorkspaceVariablesDrawer (String name) {

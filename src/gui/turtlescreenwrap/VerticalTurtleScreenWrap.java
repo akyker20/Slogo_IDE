@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import com.sun.javafx.geom.Point2D;
 
-
+/**
+ *  * Class handles screen wrapping when the turtle is moving vertically
+ * @author allankiplagat
+ *
+ */
 public class VerticalTurtleScreenWrap {
     public static List<Point2DPair> fragmentPoint2DPair (Point2DPair pointPair) {
         List<Point2DPair> fragments = new ArrayList<Point2DPair>();

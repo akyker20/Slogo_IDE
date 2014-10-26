@@ -11,7 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-
+/**
+ * Class manages displaying of user-saved colors 
+ * @author akyker20, allankiplagat
+ *
+ */
 public class ColorPaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;

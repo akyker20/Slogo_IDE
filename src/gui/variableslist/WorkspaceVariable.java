@@ -1,5 +1,10 @@
 package gui.variableslist;
 
+/**
+ * Class is used to represent variables displayed on the GUI
+ * @author akyker20, allankiplagat
+ *
+ */
 public class WorkspaceVariable {
 
     private String myName;

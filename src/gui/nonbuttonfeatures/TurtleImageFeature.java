@@ -19,7 +19,11 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * Class is a BorderPane within which images that the user can select for turtles are displayed
+ * @author akyker20, allankiplagat
+ *
+ */
 public class TurtleImageFeature extends BorderPane {
 
     private ObservableList<ImageIndex> myImageFilesList;

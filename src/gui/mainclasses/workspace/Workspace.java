@@ -22,7 +22,11 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
-
+/**
+ * Class manages a single workspace that hosts 
+ * @author akyker20, allankiplagat
+ *
+ */
 public class Workspace extends Tab {
 
     private SlogoGraphics myControl;

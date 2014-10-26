@@ -2,7 +2,12 @@ package gui.turtlescreenwrap;
 
 import com.sun.javafx.geom.Point2D;
 
-
+/**
+ * Class maps a Point2D pair to the TurtleScreen's visible coordinates such that any 
+ * Point2DPair is within (or at least its origin) starts within the visible TurtleScreen
+ * @author allankiplagat
+ *
+ */
 public class TesselationMapper {
     public static final float XMAX = TurtleScreenWrap.XMAX;
     public static final float YMAX = TurtleScreenWrap.YMAX;
@@ -64,7 +69,12 @@ public class TesselationMapper {
 
         return new Point2D(dummyX, dummyY);
     }
-
+    
+    /**
+     * Method checks whether a point is off the screen
+     * @param point
+     * @return
+     */
     public static boolean checkOffScreen (Point2D point) {
         boolean status = (
                 point.x > XMAX ||

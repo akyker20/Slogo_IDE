@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import com.sun.javafx.geom.Point2D;
 
-
+/**
+ * Class applies wrapping around algorithm to a Point2DPair object
+ * @author allankiplagat
+ *
+ */
 public class TurtleScreenWrap {
     public static final float XMAX = (float) TurtleScreenDrawer.GRID_WIDTH / 2;
     public static final float YMAX = (float) TurtleScreenDrawer.GRID_HEIGHT / 2;
@@ -24,8 +28,7 @@ public class TurtleScreenWrap {
 
     /**
      * Method takes in a Point2DPair (that contains an origin and destination Point2D) and returns
-     * the
-     * corresponding sequence of sub-Point2DPairs to be displayed on the screen with wrap-around
+     * the corresponding sequence of sub-Point2DPairs to be displayed on the screen with wrap-around
      * applied
      *
      * @param pointPair

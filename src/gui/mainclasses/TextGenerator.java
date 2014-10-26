@@ -5,7 +5,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-
+/**
+ * Class generates the text to be displayed on the GUI using resource bundles
+ * @author allankiplagat
+ *
+ */
 public class TextGenerator {
 
     public static final String SLOGO = "slogo";

@@ -9,7 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
-
+/**
+ * Class manages the screen area within which the turtle is displayed and draws lines
+ * @author akyker20, allankiplagat
+ *
+ */
 public class TurtleScreenDrawer extends ComponentDrawer {
 
     public static final double GRID_WIDTH_RATIO = .6;

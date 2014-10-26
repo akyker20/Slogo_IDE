@@ -1,5 +1,10 @@
 package gui.factories.userdefinedcommands;
 
+/**
+ * Class encapsulates a user-defined command displayed in the GUI
+ * @author akyker20, allankiplagat
+ *
+ */
 public class DisplayedUserCommand {
     private String myName;
     private String myParams;

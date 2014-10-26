@@ -10,7 +10,11 @@ import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-
+/**
+ * Class generates and maintains user DisplayedUserCommand objects 
+ * @author akyker20, allankiplagat
+ *
+ */
 public class UserDefinedCommandFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.SIGNIFICANT_COMMANDS_DRAWER;

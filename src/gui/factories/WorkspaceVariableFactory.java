@@ -10,7 +10,11 @@ import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-
+/**
+ * Class manages the workspace variables display
+ * @author allankiplagat
+ *
+ */
 public class WorkspaceVariableFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.WORKSPACE_VARIABLES;

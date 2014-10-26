@@ -2,7 +2,11 @@ package gui.turtlescreenwrap;
 
 import com.sun.javafx.geom.Point2D;
 
-
+/**
+ * Class represents a Point2D tuple of a starting and ending point
+ * @author allankiplagat
+ *
+ */
 public class Point2DPair {
     public Point2D origin;
     public Point2D dest;
