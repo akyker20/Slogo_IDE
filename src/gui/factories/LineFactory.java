@@ -1,6 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentBuilder;
+import gui.mainclasses.FactoryBuilder;
 import gui.turtlescreenwrap.CoordinateChanger;
 import gui.turtlescreenwrap.Point2DPair;
 import gui.turtlescreenwrap.TurtleScreenWrap;

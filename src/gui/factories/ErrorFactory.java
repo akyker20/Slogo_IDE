@@ -1,6 +1,7 @@
 package gui.factories;
 
 import gui.componentdrawers.ComponentBuilder;
+import gui.mainclasses.FactoryBuilder;
 import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.control.Label;

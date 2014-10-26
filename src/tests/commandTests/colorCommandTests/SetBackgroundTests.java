@@ -3,11 +3,9 @@ package tests.commandTests.colorCommandTests;
 import static org.junit.Assert.assertTrue;
 import javafx.scene.paint.Color;
 import gui.componentdrawers.ComponentBuilder;
-import gui.factories.FactoryBuilder;
 import gui.factories.PaneFactory;
-
+import gui.mainclasses.FactoryBuilder;
 import org.junit.Test;
-
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;

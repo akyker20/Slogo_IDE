@@ -1,7 +1,14 @@
-package gui.factories;
+package gui.mainclasses;
 
 
 import gui.componentdrawers.TurtleScreenDrawer;
+import gui.factories.ColorPaletteEntryFactory;
+import gui.factories.ErrorFactory;
+import gui.factories.LineFactory;
+import gui.factories.ObjectFactory;
+import gui.factories.PaneFactory;
+import gui.factories.ShapePaletteEntryFactory;
+import gui.factories.WorkspaceVariableFactory;
 import gui.factories.turtlefactory.TurtleFactory;
 import gui.factories.turtlefactory.TurtleNodes;
 import gui.factories.userdefinedcommands.UserDefinedCommandFactory;

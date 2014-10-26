@@ -68,4 +68,8 @@ public class TextGenerator {
     public static String get(String text) {
         return myLanguagesBundle.getString(text);
     }
+    
+    public static setLanguage(String language) {
+        
+    }
 }

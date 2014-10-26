@@ -2,6 +2,7 @@ package gui.factories;
 
 import gui.componentdrawers.ComponentBuilder;
 import gui.factories.turtlefactory.NullNode;
+import gui.mainclasses.FactoryBuilder;
 import gui.nonbuttonfeatures.tableviews.colorindex.ColorIndex;
 import java.util.ArrayList;
 import java.util.List;
