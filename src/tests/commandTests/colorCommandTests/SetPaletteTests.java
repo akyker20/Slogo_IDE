@@ -23,10 +23,10 @@ public class SetPaletteTests extends CommandTester {
 		
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
-		DrawableObject colorIndex = objectQueue.poll();
-		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.COLOR)
+		DrawableObject colorPaletteUpdate = objectQueue.poll();
+		assertTrue(colorPaletteUpdate.getParameters().get(ColorPaletteEntryFactory.COLOR)
 				.equals(workspace.colorPalette.getFromPalette(10).toString()));
-		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.INDEX).equals("10"));
+		assertTrue(colorPaletteUpdate.getParameters().get(ColorPaletteEntryFactory.INDEX).equals("10"));
 		assertTrue(f==10);
 	}
 	
@@ -43,10 +43,10 @@ public class SetPaletteTests extends CommandTester {
 			f = parser.parse(commands, objectQueue);
 		}
 		objectQueue.poll();
-		DrawableObject colorIndex = objectQueue.poll();
-		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.COLOR)
+		DrawableObject colorPaletteUpdate = objectQueue.poll();
+		assertTrue(colorPaletteUpdate.getParameters().get(ColorPaletteEntryFactory.COLOR)
 				.equals(workspace.colorPalette.getFromPalette(10).toString()));
-		assertTrue(colorIndex.getParameters().get(ColorPaletteEntryFactory.INDEX).equals("10"));
+		assertTrue(colorPaletteUpdate.getParameters().get(ColorPaletteEntryFactory.INDEX).equals("10"));
 		assertTrue(f==10);
 	}
 

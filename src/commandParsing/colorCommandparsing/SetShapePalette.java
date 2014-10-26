@@ -27,7 +27,7 @@ public class SetShapePalette extends CommandParser implements ShapePaletteUpdate
 		Shape newShape = new Shape(path);
 		workspace.shapePalette.addToPalette(index, newShape);
 		objectQueue.add(generateDrawableObjectRepresentingShapePaletteUpdate(index, newShape));
-		return 1;
+		return index;
 	}
 
 
