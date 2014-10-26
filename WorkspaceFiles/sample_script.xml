@@ -3,7 +3,7 @@
 	
 	<parameters>
 		<screen color="LightGray" toggleGrid="true" />
-		<pen r="1.0" g="0" b="0" pixels="3" status="down" />
+		<pen r="255" g="0" b="0" pixels="3" status="down" />
 	</parameters>
 	
 	<userdefinedcommands>

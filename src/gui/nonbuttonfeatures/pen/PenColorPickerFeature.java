@@ -18,6 +18,7 @@ public class PenColorPickerFeature extends ColorPickerFeature {
 
     private static final String SET_PEN_COLOR = "setpencolor 0";
     private static final String SET_PALETTE = "setpalette";
+    private static final int RGB_CONVERSION = 255;
 
     private Workspace myWorkspace;
 
@@ -37,8 +38,8 @@ public class PenColorPickerFeature extends ColorPickerFeature {
     }
 
     private String getRGBStr () {
-        return getValue().getRed() + " " +
-                getValue().getBlue() + " " +
-                getValue().getRed();
+        return getValue().getRed()*RGB_CONVERSION + " " +
+                getValue().getBlue()*RGB_CONVERSION + " " +
+                getValue().getRed()*RGB_CONVERSION;
     }
 }
