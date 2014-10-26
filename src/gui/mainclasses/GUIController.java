@@ -19,9 +19,7 @@ import drawableobject.DrawableObject;
  *
  */
 public class GUIController {
-
     private BorderPane myPane;
-    public static ResourceBundle GUI_TEXT;
     private WorkspaceManager myWorkspaceManager;
 
     /**
@@ -30,7 +28,6 @@ public class GUIController {
      * @param control
      */
     public GUIController (Stage stage, SlogoGraphics control)   {
-        GUI_TEXT = LocaleInitializer.init();
         myPane = StageInitializer.init(stage);
         myWorkspaceManager = new WorkspaceManager(control);               
         myPane.setTop(MainMenuInitializer.init(myWorkspaceManager));

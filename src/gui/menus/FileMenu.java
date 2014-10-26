@@ -1,5 +1,6 @@
 package gui.menus;
 
+import gui.mainclasses.GuiTextGenerator;
 import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.mainclasses.workspace.WorkspaceManager;
 import java.io.File;
@@ -28,6 +29,8 @@ import XML.workspaceparams.WorkspaceScreenParameters;
 public class FileMenu extends Menu {
 
     protected static final String SAVED_WORKSPACE_FILES_DIR = "./WorkspaceFiles";
+    private static final String XML_FILE_EXTENSION_DESCRIPTION = "XML files (*.xml)"; 
+    private static final String XML_FILE_EXTENSION = "*.xml";
 
     private WorkspaceManager myWorkspaceManager;
 
@@ -35,9 +38,9 @@ public class FileMenu extends Menu {
 
         myWorkspaceManager = workspaceManager;
 
-        this.setText("File");
+        this.setText(GuiTextGenerator.get(GuiTextGenerator.FILE_TEXT));
 
-        MenuItem loadWorkspace = new MenuItem("Load Workspace");
+        MenuItem loadWorkspace = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.LOAD_WORKSPACE_TEXT));
         loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
@@ -48,7 +51,7 @@ public class FileMenu extends Menu {
                     for(String penCommand:reader.getInitialPenCommands()){
                         myWorkspaceManager.getActiveWorkspace().parseCommandString(penCommand);
                     }
-                    
+
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block
@@ -58,7 +61,7 @@ public class FileMenu extends Menu {
         });
 
 
-        MenuItem newWorkspace = new MenuItem("New Workspace");
+        MenuItem newWorkspace = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.NEW_WORKSPACE_TEXT));
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
@@ -81,10 +84,10 @@ public class FileMenu extends Menu {
      */
     private File createFileChooser (String defaultDir) {
         FileChooser myFileChooser = new FileChooser();
-        myFileChooser.setTitle("Select XML File");
+        myFileChooser.setTitle(GuiTextGenerator.get(GuiTextGenerator.SELECT_XMLFILE_TEXT));
         FileChooser.ExtensionFilter extentionFilter =
                 new FileChooser.ExtensionFilter(
-                                                "XML files (*.xml)", "*.xml");
+                                                XML_FILE_EXTENSION_DESCRIPTION, XML_FILE_EXTENSION);
         myFileChooser.getExtensionFilters().add(extentionFilter);
         myFileChooser.setInitialDirectory(new File(defaultDir));
         return myFileChooser.showOpenDialog(new Stage());

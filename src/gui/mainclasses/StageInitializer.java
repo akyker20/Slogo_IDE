@@ -17,13 +17,14 @@ public class StageInitializer {
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
 
+
     public static BorderPane init (Stage stage) {
         BorderPane pane = new BorderPane();
         pane.setPrefSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         Scene scene = new Scene(pane, SCREEN_WIDTH, SCREEN_HEIGHT, Color.CORNSILK);
         scene.getStylesheets().add(STYLESHEET_PACKAGE + "style.css");
         stage.setScene(scene);
-        stage.setTitle("SLogo");
+        stage.setTitle(GuiTextGenerator.get(GuiTextGenerator.SLOGO_TITLE_TEXT));
         stage.setResizable(false);
         stage.show();
         return pane;

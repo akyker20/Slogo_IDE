@@ -1,6 +1,7 @@
 package gui.menus;
 
 import gui.componentdrawers.TurtleScreenDrawer;
+import gui.mainclasses.GuiTextGenerator;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -23,23 +24,23 @@ public class HelpMenu extends Menu {
     public static final String EXTENDED_COMMANDS_URL = "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands2.php";
     
     public HelpMenu(){
-        this.setText("Help");
+        this.setText(GuiTextGenerator.get(GuiTextGenerator.HELP_TEXT));
         
         //use Lambda notation and make these open HTML help pages...
-        MenuItem gettingStarted = new MenuItem("Getting Started");
+        MenuItem gettingStarted = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.GETTING_STARTED_TEXT));
         gettingStarted.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("Opening getting started page...");
             }
         });
-        MenuItem basicCommandHelp = new MenuItem("Basic Commands");
+        MenuItem basicCommandHelp = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.BASIC_COMMANDS_TEXT));
         basicCommandHelp.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                displayHelpPage(BASIC_COMMANDS_URL);
             }
         });
         
-        MenuItem complexCommandHelp = new MenuItem("Complex Commands");
+        MenuItem complexCommandHelp = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.COMPLEX_COMMANDS_TEXT));
         complexCommandHelp.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 displayHelpPage(EXTENDED_COMMANDS_URL);
