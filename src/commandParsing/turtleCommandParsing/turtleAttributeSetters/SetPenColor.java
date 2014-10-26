@@ -1,32 +1,30 @@
-package commandParsing.turtleCommandParsing;
+package commandParsing.turtleCommandParsing.turtleAttributeSetters;
 
 import java.util.List;
 import java.util.Queue;
 
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
-import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
+
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
+
 import drawableobject.DrawableObject;
 
-public class SetHeading extends OneInputFloatCommandParser implements TurtleGenerator {
+public class SetPenColor extends OneInputFloatCommandParser {
 
-	public SetHeading(WorkspaceState someWorkspace) {
+	public SetPenColor(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 
 	@Override
 	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
-
-		double amountToRotate = 0;
+		double index = components.get(0);
 		for (Turtle t : workspace.turtles.getActiveTurtles()) {
-			amountToRotate = components.get(0) - t.getHeading();
-			t.rotate(amountToRotate);
-			objectQueue.add(generateDrawableObjectRepresentingTurtle(t));
+			t.pen.setPenColor(workspace.colorPalette.getFromPalette((int) index));
 		}
-		return Math.abs(amountToRotate);
+		return index;
 	}
 
 }

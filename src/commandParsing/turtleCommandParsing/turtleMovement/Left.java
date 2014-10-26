@@ -1,4 +1,4 @@
-package commandParsing.turtleCommandParsing;
+package commandParsing.turtleCommandParsing.turtleMovement;
 
 import workspaceState.WorkspaceState;
 
