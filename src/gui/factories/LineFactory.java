@@ -38,7 +38,6 @@ public class LineFactory extends ObjectFactory {
         for (int k = 0; k < linesList.size(); k++) {
             lines[k] = linesList.get(k);
         }
-
         return lines;
     }
 

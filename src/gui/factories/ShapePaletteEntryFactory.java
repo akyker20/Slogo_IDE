@@ -12,7 +12,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 /**
- * Class implements adding images to be used for the Turtles
+ * Class implements adding images to be used for the Turtles. The factory
+ * generates an ImageIndex object which essentially provides the user
+ * with an ability to reference images from the command line.
  * @author akyker20, allankiplagat
  *
  */
@@ -45,6 +47,10 @@ public class ShapePaletteEntryFactory extends ObjectFactory {
         return new Node[] { new NullNode() };
     }
 
+    /**
+     * Refreshes the observable list to ensure instantaneous update of the
+     * tableview.
+     */
     private void refreshList () {
         List<ImageIndex> list = new ArrayList<ImageIndex>();
         for (ImageIndex command : myImageIndexList) {

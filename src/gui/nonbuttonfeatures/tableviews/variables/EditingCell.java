@@ -10,11 +10,9 @@ import javafx.scene.input.KeyEvent;
 
 
 /**
- * This class is a super class for different types of editing cells.
- * For now, there will only be a StringEditingCell because the integer
- * fields should not be editable, but this provides a means for future
- * extension.
- *
+ * This class allows the user to edit the value column of a workspace
+ * variable. When an edit is made, a call to the backend is made
+ * to make it aware of the change.
  * @author Austin Kyker
  *
  */

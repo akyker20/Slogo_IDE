@@ -8,7 +8,7 @@ import XML.workspaceparams.WorkspaceScreenParameters;
 
 
 /**
- * This is the grid. The reason it is a feature is that we may make
+ * This is the turtle screen. The reason it is a feature is that we may make
  * it interactive in the future - for instance click to draw another
  * turtle
  *
@@ -20,6 +20,12 @@ public class TurtleScreenFeature extends Pane {
     private static final String COLOR = SavedWorkspaceXMLReader.COLOR;
     private static final String TOGGLE_GRID = SavedWorkspaceXMLReader.TOGGLE_GRID;
 
+    /**
+     * Constructor
+     * @param parentDrawer
+     * @param screenParams - parameters used to set up the screen. Will be null
+     * unless an xml file was loaded containing screen parameters.
+     */
     public TurtleScreenFeature (TurtleScreenDrawer parentDrawer,
                                 WorkspaceScreenParameters screenParams) {
         setPrefWidth(TurtleScreenDrawer.GRID_WIDTH);

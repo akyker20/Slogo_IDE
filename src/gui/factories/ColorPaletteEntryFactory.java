@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
 /**
- * Class manages displaying of user-saved colors 
+ * Class manages displaying of user-saved colors.
  * @author akyker20, allankiplagat
  *
  */
@@ -30,6 +30,11 @@ public class ColorPaletteEntryFactory extends ObjectFactory {
         myColorIndexList = (ObservableList<ColorIndex>) colorIndexList;
     }
 
+    /**
+     * Creates a color index object that can be displayed to the user.
+     * This object will allow the user to make commands and reference
+     * the particular color.
+     */
     @Override
     public Node[] generateObject (Map<String, String> params) {
         int index = Integer.parseInt(params.get(INDEX));
@@ -45,6 +50,10 @@ public class ColorPaletteEntryFactory extends ObjectFactory {
         return new Node[] { new NullNode() };
     }
 
+    /**
+     * Refreshes the observable list so the changes will be reflected
+     * instantaneously in the tableview.
+     */
     private void refreshList () {
         List<ColorIndex> list = new ArrayList<ColorIndex>();
         for (ColorIndex command : myColorIndexList) {

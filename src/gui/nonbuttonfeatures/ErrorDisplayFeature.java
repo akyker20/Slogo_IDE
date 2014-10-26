@@ -4,7 +4,7 @@ import gui.componentdrawers.ErrorDrawer;
 import javafx.scene.control.ListView;
 
 /**
- * Errors are displayed by this class
+ * Errors are displayed by this class.
  * @author akyker20
  *
  */

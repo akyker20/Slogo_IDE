@@ -14,6 +14,7 @@ import javafx.util.Callback;
 
 /**
  * Class displays the indexed colors saved by the user for setting the turtle line color
+ * in a tableview.
  *
  * @author akyker20, allankiplagat
  *

@@ -10,7 +10,10 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 
 /**
- * Class manages command entering through the command line
+ * Class manages command entering through the command line. If the user hits
+ * enter, the command is sent to the back-end for parsing. If the user hits
+ * enter + shift, they are allowed an additional line to continue typing their
+ * command without it being entered.
  * @author akyker20, allankiplagat
  *
  */

@@ -5,7 +5,7 @@ import javafx.scene.control.MenuBar;
 
 
 /**
- * Class instantiates the menu-bar items
+ * Class instantiates the menu-bar items.
  *
  * @author akyker20, allankiplagat
  *

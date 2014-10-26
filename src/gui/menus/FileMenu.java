@@ -23,10 +23,14 @@ import XML.writers.SavedWorkspaceXMLWriter;
 
 
 /**
- * Class will be used to load files such as previously saved commands or
- * grid configurations.
+ * Class offers the user three major features.
+ * 1) The user can load an xml file to load a workspace (variables, screen
+ * parameters, pen parameters, etc.)
+ * 2) The user can save the workspace to an xml file for later retrieval
+ * 3) The user can create a new workspace - the user can do this in
+ * several different languages to allow globalization.
  *
- * @author Austin Kyker
+ * @author akyker20
  *
  */
 public class FileMenu extends Menu {

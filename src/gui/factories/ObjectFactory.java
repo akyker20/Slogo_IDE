@@ -5,7 +5,9 @@ import javafx.scene.Node;
 
 
 /**
- * Class to generate objects that will be drawn in a component
+ * Abstract super class to define subclasses that take the parameters of
+ * a drawable object and can actually draw a node that will be displayed
+ * on the screen.
  *
  * @author akyker20, allankiplagat
  *

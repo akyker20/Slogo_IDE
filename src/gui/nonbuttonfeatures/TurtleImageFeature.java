@@ -20,7 +20,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 /**
- * Class is a BorderPane within which images that the user can select for turtles are displayed
+ * Class is a BorderPane that allows the user to drag and drop images that will
+ * be turned into ImageIndex objects and displayed in a tableview.
  * @author akyker20, allankiplagat
  *
  */

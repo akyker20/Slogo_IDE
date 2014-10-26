@@ -9,7 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
 /**
- *Class implements changing the TurtleScreen color and resetting the TurtleScreen
+ * Class handles drawable objects to both reset the turtle screen and to
+ * change the background color of the turtle screen.
  * @author akyker20, allankiplagat
  *
  */
@@ -27,6 +28,11 @@ public class PaneFactory extends ObjectFactory {
         myTurtleScreen = drawer;
     }
 
+    /**
+     * If the reset flag parameter is true, the drawable object
+     * is indicating that the turtle screen should be reset. Otherwise,
+     * the background color of the screen is being modified.
+     */
     @Override
     public Node[] generateObject (Map<String, String> params) {
         if (params.get(RESET_FLAG).equalsIgnoreCase("true")) {
