@@ -1,5 +1,6 @@
 package gui.menus;
 
+import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.mainclasses.workspace.WorkspaceDataHolder;
 import gui.mainclasses.workspace.WorkspaceManager;
 import java.io.File;
@@ -48,6 +49,11 @@ public class FileMenu extends Menu {
                     for(String penCommand:reader.getInitialPenCommands()){
                         myWorkspaceManager.getActiveWorkspace().parseCommandString(penCommand);
                     }
+                    for(DisplayedUserCommand command: reader.getUserDefinedCommands()){
+                        String commandStr = "to " + command.getMyName().trim() + " [ " + command.getMyParams().trim() + " ] [ " + 
+                                command.getMyContent().trim() + " ]";
+                        myWorkspaceManager.getActiveWorkspace().parseCommandString(commandStr);
+                    }
                     
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
@@ -68,7 +74,6 @@ public class FileMenu extends Menu {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
                     }
-   
             }
         });
 

@@ -2,11 +2,12 @@
 <workspace>
 <savedCommands>
 <command>mk</command>
-<command>set :x 5</command>
-<command>fd 100</command>
 </savedCommands>
 <workspacevariables>
 <command name=":x" value="5.0"/>
-<command name=":y" value="2.0"/>
 </workspacevariables>
+<colorindices/>
+<userdefinedcommands>
+<command name="command" params=":var, :varb, :varc">fd 50</command>
+</userdefinedcommands>
 </workspace>
