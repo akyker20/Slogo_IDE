@@ -3,27 +3,24 @@ package gui.nonbuttonfeatures.pen;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.mainclasses.workspace.Workspace;
 import gui.nonbuttonfeatures.ColorPickerFeature;
-import java.io.IOException;
-import Control.SlogoGraphics;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
+
 
 /**
  * Feature that allows user to interactively change the color of the pen
- * without using the command line. This feature will be located in the 
- * Pen tab in the options TabPane in the lower right hand corner of the 
+ * without using the command line. This feature will be located in the
+ * Pen tab in the options TabPane in the lower right hand corner of the
  * IDE.
+ *
  * @author Austin Kyker
  *
  */
 public class PenColorPickerFeature extends ColorPickerFeature {
-    
+
     private static final String SET_PEN_COLOR = "setpencolor 0";
     private static final String SET_PALETTE = "setpalette";
-    
+
     private Workspace myWorkspace;
-    
+
     public PenColorPickerFeature (OptionsHolderDrawer parentDrawer, Workspace workspace) {
         super(parentDrawer);
         myWorkspace = workspace;
@@ -36,12 +33,12 @@ public class PenColorPickerFeature extends ColorPickerFeature {
      */
     private void changePenColor () {
         myWorkspace.parseCommandString(SET_PALETTE + " 0 " + getRGBStr());
-            myWorkspace.parseCommandString(SET_PEN_COLOR);
+        myWorkspace.parseCommandString(SET_PEN_COLOR);
     }
 
     private String getRGBStr () {
-        return  this.getValue().getRed() + " " + 
-                this.getValue().getBlue() + " " + 
-                this.getValue().getRed();
+        return getValue().getRed() + " " +
+                getValue().getBlue() + " " +
+                getValue().getRed();
     }
 }

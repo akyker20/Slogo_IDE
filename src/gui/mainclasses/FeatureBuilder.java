@@ -40,73 +40,95 @@ import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import XML.workspaceparams.WorkspaceScreenParameters;
 
+
 /**
  * The purpose of this class is to initialize all of the features, both button features
  * and non-button features that will be displayed to the user.
+ *
  * @author Austin Kyker
  *
  */
 public class FeatureBuilder {
 
-    public static void init (Workspace workspace, Map<String, ComponentDrawer> drawerMap, WorkspaceScreenParameters screenParameters, WorkspaceDataHolder dataHolder) {
+    public static void init (Workspace workspace,
+                             Map<String, ComponentDrawer> drawerMap,
+                             WorkspaceScreenParameters screenParameters,
+                             WorkspaceDataHolder dataHolder) {
 
-        
-        TurtleScreenDrawer gridDrawer = (TurtleScreenDrawer) drawerMap.get(ComponentBuilder.SCREEN_DRAWER);
-        OptionsHolderDrawer optionsHolder = 
+        TurtleScreenDrawer gridDrawer =
+                (TurtleScreenDrawer) drawerMap.get(ComponentBuilder.SCREEN_DRAWER);
+        OptionsHolderDrawer optionsHolder =
                 (OptionsHolderDrawer) drawerMap.get(ComponentBuilder.BUTTON_HOLDER_DRAWER);
-        CommandLineDrawer commandLineDrawer = 
+        CommandLineDrawer commandLineDrawer =
                 (CommandLineDrawer) drawerMap.get(ComponentBuilder.COMMAND_LINE_DRAWER);
-        PreviousCommandsDrawer previousCommandsDrawer = 
+        PreviousCommandsDrawer previousCommandsDrawer =
                 (PreviousCommandsDrawer) drawerMap.get(ComponentBuilder.PREVIOUS_COMMANDS);
-        SignificantCommandsDrawer significantCommandsDrawer = 
-                (SignificantCommandsDrawer) drawerMap.get(ComponentBuilder.SIGNIFICANT_COMMANDS_DRAWER);
-        WorkspaceVariablesDrawer workspaceVariablesDrawer = 
+        SignificantCommandsDrawer significantCommandsDrawer =
+                (SignificantCommandsDrawer) drawerMap
+                .get(ComponentBuilder.SIGNIFICANT_COMMANDS_DRAWER);
+        WorkspaceVariablesDrawer workspaceVariablesDrawer =
                 (WorkspaceVariablesDrawer) drawerMap.get(ComponentBuilder.WORKSPACE_VARIABLES);
         ErrorDrawer errorDrawer = (ErrorDrawer) drawerMap.get(ComponentBuilder.ERROR_DRAWER);
 
-        
-            
-        PreviousCommandsFeature previousCommandsFeature = new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
-                                                                                      dataHolder.getMyPreviousCommandsList());
+        PreviousCommandsFeature previousCommandsFeature =
+                new PreviousCommandsFeature(previousCommandsDrawer, commandLineDrawer,
+                                            dataHolder.getMyPreviousCommandsList());
         new CommandLineFeature(commandLineDrawer, workspace);
-        new WorkspaceVariablesFeature(workspaceVariablesDrawer, dataHolder.getMyVariablesList(), workspace);
-        SavedCommandsFeature savedCommandsFeature = new SavedCommandsFeature(commandLineDrawer, dataHolder.getMySavedCommandsList());
-        new ErrorDisplayFeature(errorDrawer);    
+        new WorkspaceVariablesFeature(workspaceVariablesDrawer, dataHolder.getMyVariablesList(),
+                                      workspace);
+        SavedCommandsFeature savedCommandsFeature =
+                new SavedCommandsFeature(commandLineDrawer, dataHolder.getMySavedCommandsList());
+        new ErrorDisplayFeature(errorDrawer);
         new TurtleScreenFeature(gridDrawer, screenParameters);
 
-        
-           
-        
-        GeneralOptionsTab generalOptions = 
+        GeneralOptionsTab generalOptions =
                 new GeneralOptionsTab(
-                                      new Node[]{
-                                                 new SetTurtleScreenColorFeature(gridDrawer, optionsHolder),   
-                                                 new ToggleGridButtonFeature(gridDrawer, optionsHolder),
-                                                 new SaveCommandButtonFeature(optionsHolder, commandLineDrawer, previousCommandsFeature, savedCommandsFeature),
-                                                 new ClearWorkspaceButtonFeature(optionsHolder,workspace )
-                                      }, 
-                                      new Node[] {new TurtleImageFeature(optionsHolder, dataHolder.getMyImageIndexList(), workspace)}
+                                      new Node[] {
+                                                  new SetTurtleScreenColorFeature(gridDrawer,
+                                                                                  optionsHolder),
+                                                                                  new ToggleGridButtonFeature(gridDrawer,
+                                                                                                              optionsHolder),
+                                                                                                              new SaveCommandButtonFeature(
+                                                                                                                                           optionsHolder,
+                                                                                                                                           commandLineDrawer,
+                                                                                                                                           previousCommandsFeature,
+                                                                                                                                           savedCommandsFeature),
+                                                                                                                                           new ClearWorkspaceButtonFeature(optionsHolder,
+                                                                                                                                                                           workspace)
+                                      },
+                                      new Node[] { new TurtleImageFeature(optionsHolder, dataHolder
+                                                                          .getMyImageIndexList(), workspace) }
                         );
 
-        PenOptionsTab penOptions = 
+        PenOptionsTab penOptions =
                 new PenOptionsTab(
-                                  new Node[]{
-                                             new PenUpOrDownFeature(optionsHolder, workspace),
-                                             new PenColorPickerFeature(optionsHolder, workspace),
-                                             new PenThicknessSliderFeature(optionsHolder, workspace),
-                },
-                new Node[]{}
+                                  new Node[] {
+                                              new PenUpOrDownFeature(optionsHolder, workspace),
+                                              new PenColorPickerFeature(optionsHolder, workspace),
+                                              new PenThicknessSliderFeature(optionsHolder,
+                                                                            workspace),
+                                  },
+                                  new Node[] {}
                 );
-        
-        ColorIndexTab colorIndexTab = new ColorIndexTab(new ColorIndexFeature(dataHolder.getMyColorIndexList(), optionsHolder));
 
-        ImageIndexTab imageIndexTab = new ImageIndexTab(new ImageIndexFeature(dataHolder.getMyImageIndexList(), optionsHolder));
-        
-        optionsHolder.addTabs(new OptionsTab[]{generalOptions, penOptions, colorIndexTab, imageIndexTab});
+        ColorIndexTab colorIndexTab =
+                new ColorIndexTab(new ColorIndexFeature(dataHolder.getMyColorIndexList(),
+                                                        optionsHolder));
 
-        significantCommandsDrawer.addTabs(new Tab[]{
-                                                    new SavedCommandsTab(savedCommandsFeature),
-                                                    new UserDefinedCommandsTab(new UserDefinedCommandsFeature(dataHolder.getMyUserDefinedCommandList()))    
+        ImageIndexTab imageIndexTab =
+                new ImageIndexTab(new ImageIndexFeature(dataHolder.getMyImageIndexList(),
+                                                        optionsHolder));
+
+        optionsHolder.addTabs(new OptionsTab[] { generalOptions, penOptions, colorIndexTab,
+                                                 imageIndexTab });
+
+        significantCommandsDrawer
+        .addTabs(new Tab[] {
+                            new SavedCommandsTab(savedCommandsFeature),
+                            new UserDefinedCommandsTab(
+                                                       new UserDefinedCommandsFeature(
+                                                                                      dataHolder
+                                                                                      .getMyUserDefinedCommandList()))
         });
     }
 }

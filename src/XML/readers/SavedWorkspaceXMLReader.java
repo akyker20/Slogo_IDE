@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.xml.parsers.DocumentBuilder;
@@ -21,8 +19,9 @@ import org.xml.sax.SAXException;
 import XML.workspaceparams.WorkspacePenCommands;
 import XML.workspaceparams.WorkspaceScreenParameters;
 
+
 public class SavedWorkspaceXMLReader {
-    
+
     public static final String COMMAND = "command";
     public static final String PARAMETERS = "parameters";
     public static final String SCREEN = "screen";
@@ -40,10 +39,11 @@ public class SavedWorkspaceXMLReader {
     private static final String RED = "r";
     private static final String BLUE = "b";
     private static final String PEN = "pen";
-    
+
     private Element myRoot;
-    
-    public SavedWorkspaceXMLReader(File file) throws ParserConfigurationException, FileNotFoundException, SAXException, IOException{
+
+    public SavedWorkspaceXMLReader (File file) throws ParserConfigurationException,
+    FileNotFoundException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new FileInputStream(file));
@@ -53,9 +53,9 @@ public class SavedWorkspaceXMLReader {
     public WorkspacePenCommands getInitialPenCommands () {
         WorkspacePenCommands penCommands = new WorkspacePenCommands();
         Element penParameters = (Element) myRoot.getElementsByTagName(PEN).item(0);
-        penCommands.addCommand("setpalette 0 "  +  penParameters.getAttribute(RED) + " " + 
-                                            penParameters.getAttribute(GREEN) + " " + 
-                                            penParameters.getAttribute(BLUE));
+        penCommands.addCommand("setpalette 0 " + penParameters.getAttribute(RED) + " " +
+                penParameters.getAttribute(GREEN) + " " +
+                penParameters.getAttribute(BLUE));
         penCommands.addCommand("setpencolor 0");
         penCommands.addCommand("setpensize " + penParameters.getAttribute(PIXELS));
         penCommands.addCommand("pen" + penParameters.getAttribute(STATUS).toLowerCase());
@@ -67,50 +67,54 @@ public class SavedWorkspaceXMLReader {
         Element screenParameters = (Element) myRoot.getElementsByTagName(SCREEN).item(0);
         params.put(COLOR, screenParameters.getAttribute(COLOR));
         params.put(TOGGLE_GRID, screenParameters.getAttribute(TOGGLE_GRID));
-        return params; 
+        return params;
     }
-      
-    public ObservableList<WorkspaceVariable> getWorkspaceVariables(){
-        ObservableList<WorkspaceVariable> workspaceVariables = FXCollections.observableArrayList();           
+
+    public ObservableList<WorkspaceVariable> getWorkspaceVariables () {
+        ObservableList<WorkspaceVariable> workspaceVariables = FXCollections.observableArrayList();
         NodeList commands = myRoot.getElementsByTagName(VARIABLE);
-        for(int i = 0; i < commands.getLength(); i++){
+        for (int i = 0; i < commands.getLength(); i++) {
             Element var = (Element) commands.item(i);
             workspaceVariables.add(
-                                   new WorkspaceVariable(var.getAttribute(NAME), 
+                                   new WorkspaceVariable(var.getAttribute(NAME),
                                                          Double.parseDouble(var.getAttribute(VALUE))));
-        } 
+        }
         return workspaceVariables;
     }
-    
-    public ObservableList<DisplayedUserCommand> getUserDefinedCommands(){
-        ObservableList<DisplayedUserCommand> userDefinedCommands = FXCollections.observableArrayList();           
+
+    public ObservableList<DisplayedUserCommand> getUserDefinedCommands () {
+        ObservableList<DisplayedUserCommand> userDefinedCommands =
+                FXCollections.observableArrayList();
         Element headNode = (Element) myRoot.getElementsByTagName("userdefinedcommands").item(0);
         NodeList commands = headNode.getElementsByTagName(COMMAND);
-        for(int i = 0; i < commands.getLength(); i++){
+        for (int i = 0; i < commands.getLength(); i++) {
             Element el = (Element) commands.item(i);
             userDefinedCommands.add(new DisplayedUserCommand(el.getAttribute(NAME),
                                                              el.getAttribute("params"),
                                                              el.getTextContent()));
-        } 
+        }
         return userDefinedCommands;
     }
-    
+
     public ObservableList<String> getSavedCommands () {
         return getStringListFromElements(SAVED_COMMANDS);
     }
-    
-    public ObservableList<String> getStringListFromElements(String elementName){
-        ObservableList<String> userDefinedCommands = FXCollections.observableArrayList();           
+
+    public ObservableList<String> getStringListFromElements (String elementName) {
+        ObservableList<String> userDefinedCommands = FXCollections.observableArrayList();
         Element headNode = (Element) myRoot.getElementsByTagName(elementName).item(0);
         NodeList commands = headNode.getElementsByTagName(COMMAND);
-        for(int i = 0; i < commands.getLength(); i++){
+        for (int i = 0; i < commands.getLength(); i++) {
             userDefinedCommands.add(commands.item(i).getTextContent());
-        } 
+        }
         return userDefinedCommands;
     }
 
     public WorkspaceDataHolder getWorkspaceDataHolder () {
-        return new WorkspaceDataHolder(getWorkspaceVariables(), FXCollections.observableArrayList(), getUserDefinedCommands(), 
-                                       getSavedCommands(), FXCollections.observableArrayList(), FXCollections.observableArrayList());
+        return new WorkspaceDataHolder(getWorkspaceVariables(),
+                                       FXCollections.observableArrayList(),
+                                       getUserDefinedCommands(),
+                                       getSavedCommands(), FXCollections.observableArrayList(),
+                                       FXCollections.observableArrayList());
     }
 }

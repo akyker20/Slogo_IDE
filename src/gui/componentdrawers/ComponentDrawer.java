@@ -4,7 +4,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 
-
 /**
  * Class represents a component of the GUI e.g. GridDrawer
  *
@@ -20,7 +19,6 @@ public abstract class ComponentDrawer extends Pane {
         myName = name;
     }
 
-
     /**
      * Draws a shape in this component
      *
@@ -30,7 +28,6 @@ public abstract class ComponentDrawer extends Pane {
     public void drawShape (Node[] node) {
         getChildren().addAll(node);
     }
-
 
     /**
      * Returns the name of the component assigned by the constructor

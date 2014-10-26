@@ -10,7 +10,7 @@ public class Point2DPair {
     public Point2DPair (Point2D origin, Point2D destination) {
         super();
         this.origin = origin;
-        this.dest = destination;
+        dest = destination;
     }
-   
+
 }

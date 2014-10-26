@@ -6,6 +6,7 @@ import java.util.Map;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
+
 public class ErrorFactory extends ObjectFactory {
     public static final String PARENT = ComponentBuilder.ERROR_DRAWER;
     public static final String TYPE = FactoryBuilder.ERROR_FACTORY;
@@ -18,6 +19,6 @@ public class ErrorFactory extends ObjectFactory {
     @Override
     public Node[] generateObject (Map<String, String> params) {
         Label label = new Label(params.get(ERROR_MESSAGE));
-        return new Label[]{label};
+        return new Label[] { label };
     }
 }

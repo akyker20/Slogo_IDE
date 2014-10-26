@@ -2,49 +2,50 @@ package workspaceState;
 
 import javafx.scene.paint.Color;
 
+
 public class Pen {
 
-	private boolean isPenDown;
-	private Color myPenColor;
-	private double thickness;
-	
-	public Pen(){
-		isPenDown = true;
-		myPenColor = Color.BLACK;
-		thickness = 1;
-	}
+    private boolean isPenDown;
+    private Color myPenColor;
+    private double thickness;
 
-	public Pen(Pen pen) {
-		isPenDown = pen.isPenDown;
-		myPenColor = pen.myPenColor;
-		thickness = pen.thickness;
-	}
+    public Pen () {
+        isPenDown = true;
+        myPenColor = Color.BLACK;
+        thickness = 1;
+    }
 
-	public void togglePenDown() {
-		isPenDown = true;
-	}
+    public Pen (Pen pen) {
+        isPenDown = pen.isPenDown;
+        myPenColor = pen.myPenColor;
+        thickness = pen.thickness;
+    }
 
-	public void togglePenUp() {
-		isPenDown = false;
-	}
+    public void togglePenDown () {
+        isPenDown = true;
+    }
 
-	public boolean isPenDown() {
-		return isPenDown;
-	}
+    public void togglePenUp () {
+        isPenDown = false;
+    }
 
-	public Color getPenColor() {
-		return myPenColor;
-	}
+    public boolean isPenDown () {
+        return isPenDown;
+    }
 
-	public void setPenColor(Color myPenColor) {
-		this.myPenColor = myPenColor;
-	}
-	
-	public void setPenSize(double size){
-		thickness = size;
-	}
-	
-	public double getPenSize(){
-		return thickness;
-	}
+    public Color getPenColor () {
+        return myPenColor;
+    }
+
+    public void setPenColor (Color myPenColor) {
+        this.myPenColor = myPenColor;
+    }
+
+    public void setPenSize (double size) {
+        thickness = size;
+    }
+
+    public double getPenSize () {
+        return thickness;
+    }
 }

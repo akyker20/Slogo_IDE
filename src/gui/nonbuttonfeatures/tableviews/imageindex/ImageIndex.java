@@ -2,11 +2,12 @@ package gui.nonbuttonfeatures.tableviews.imageindex;
 
 import java.io.File;
 
+
 public class ImageIndex {
     private int myIndex;
     private File myImageFile;
-    
-    public ImageIndex(int index, File image){
+
+    public ImageIndex (int index, File image) {
         myIndex = index;
         myImageFile = image;
     }
@@ -26,5 +27,5 @@ public class ImageIndex {
     public void setMyImageFile (File myImageFile) {
         this.myImageFile = myImageFile;
     }
-    
+
 }

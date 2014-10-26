@@ -5,7 +5,7 @@ public class WorkspaceVariable {
     private String myName;
     private double myValue;
 
-    public WorkspaceVariable(String name, double value){
+    public WorkspaceVariable (String name, double value) {
         myName = name;
         myValue = value;
     }
@@ -24,9 +24,9 @@ public class WorkspaceVariable {
 
     public void setMyValue (double myValue) {
         this.myValue = myValue;
-    }    
+    }
 
-    public void addValue (double value){
-    	myValue += value;
+    public void addValue (double value) {
+        myValue += value;
     }
 }

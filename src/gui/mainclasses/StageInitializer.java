@@ -5,9 +5,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+
 /**
  * The purpose of this class is to initialize the stage and add the scene to it,
  * as well as the borderpane that will serve as the major backbone of the GUI.
+ *
  * @author Austin Kyker
  *
  */
@@ -16,7 +18,6 @@ public class StageInitializer {
     public static final int SCREEN_WIDTH = 700;
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
-
 
     public static BorderPane init (Stage stage) {
         BorderPane pane = new BorderPane();

@@ -2,27 +2,27 @@ package commandParsing.turtleCommandParsing.turtleAttributeSetters;
 
 import java.util.Iterator;
 import java.util.Queue;
-
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+
 public class PenDown extends CommandParser {
 
-	public PenDown(WorkspaceState someWorkspace) {
-		super(someWorkspace);
-	}
+    public PenDown (WorkspaceState someWorkspace) {
+        super(someWorkspace);
+    }
 
-	@Override
-	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
-			throws SLOGOException {
+    @Override
+    public double parse (Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
+            throws SLOGOException {
 
-		for (Turtle t : workspace.turtles.getActiveTurtles()) {
-			t.pen.togglePenDown();
-		}
-		return 1;
-	}
+        for (Turtle t : workspace.turtles.getActiveTurtles()) {
+            t.pen.togglePenDown();
+        }
+        return 1;
+    }
 
 }

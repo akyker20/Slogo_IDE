@@ -4,87 +4,87 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import commandParsing.exceptions.RunTimeNullPointerException;
 
+
 public class TurtleCollection {
-	private Map<Integer, Turtle> turtles = new HashMap<Integer, Turtle>();
-	private Map<Integer, Turtle> activeTurtles = new HashMap<Integer, Turtle>();
-	private Map<Integer, Turtle> turtleStamps = new HashMap<Integer, Turtle>();
-	private int IDCounter = 1;
-	private int lastAddedID = 1;
-	
-	public void addTurtle() throws RunTimeNullPointerException {
-		generateValidTurtleID();
-		addTurtle(IDCounter);
-		IDCounter++;
-	}
+    private Map<Integer, Turtle> turtles = new HashMap<Integer, Turtle>();
+    private Map<Integer, Turtle> activeTurtles = new HashMap<Integer, Turtle>();
+    private Map<Integer, Turtle> turtleStamps = new HashMap<Integer, Turtle>();
+    private int IDCounter = 1;
+    private int lastAddedID = 1;
 
-	public void addTurtle(int ID) throws RunTimeNullPointerException {
-		Turtle newTurtle = new Turtle(ID);
-		turtles.put(ID, newTurtle);
-		activateTurtle(ID);
-		lastAddedID = ID;
-	}
+    public void addTurtle () throws RunTimeNullPointerException {
+        generateValidTurtleID();
+        addTurtle(IDCounter);
+        IDCounter++;
+    }
 
-	protected void generateValidTurtleID() {
-		while (turtles.containsKey(IDCounter)) {
-			IDCounter++;
-		}
-	}
+    public void addTurtle (int ID) throws RunTimeNullPointerException {
+        Turtle newTurtle = new Turtle(ID);
+        turtles.put(ID, newTurtle);
+        activateTurtle(ID);
+        lastAddedID = ID;
+    }
 
-	public void activateTurtle(int ID) throws RunTimeNullPointerException {
-		if (!turtles.containsKey(ID)) {
-			throw new RunTimeNullPointerException("Turtle with ID: " + ID
-					+ "cannot be activated as it does not exist.");
-		}
-		activeTurtles.put(ID, turtles.get(ID));
-	}
+    protected void generateValidTurtleID () {
+        while (turtles.containsKey(IDCounter)) {
+            IDCounter++;
+        }
+    }
 
-	public void clearActiveTurtles() {
-		activeTurtles.clear();
-	}
+    public void activateTurtle (int ID) throws RunTimeNullPointerException {
+        if (!turtles.containsKey(ID)) { throw new RunTimeNullPointerException("Turtle with ID: " +
+                ID
+                +
+                "cannot be activated as it does not exist."); }
+        activeTurtles.put(ID, turtles.get(ID));
+    }
 
-	public List<Turtle> getActiveTurtles() {
-		return new ArrayList<Turtle>(activeTurtles.values());
-	}
+    public void clearActiveTurtles () {
+        activeTurtles.clear();
+    }
 
-	public List<Turtle> getAllTurtles() {
-		return new ArrayList<Turtle>(turtles.values());
-	}
+    public List<Turtle> getActiveTurtles () {
+        return new ArrayList<Turtle>(activeTurtles.values());
+    }
 
-	public Turtle getLastActiveTurtle() {
-		Turtle lastTurtle = new Turtle(-1);
-		for(Turtle t : activeTurtles.values()) {
-			if (t.getID() > lastTurtle.getID()) {
-				lastTurtle = t;
-			}
-		}
-		return lastTurtle;
-	}
+    public List<Turtle> getAllTurtles () {
+        return new ArrayList<Turtle>(turtles.values());
+    }
 
-	public void addStamp(Turtle stamp) {
-		turtleStamps.put(stamp.getID(), stamp);
-	}
+    public Turtle getLastActiveTurtle () {
+        Turtle lastTurtle = new Turtle(-1);
+        for (Turtle t : activeTurtles.values()) {
+            if (t.getID() > lastTurtle.getID()) {
+                lastTurtle = t;
+            }
+        }
+        return lastTurtle;
+    }
 
-	public List<Turtle> getStamps() {
-		return new ArrayList<Turtle>(turtleStamps.values());
-	}
+    public void addStamp (Turtle stamp) {
+        turtleStamps.put(stamp.getID(), stamp);
+    }
 
-	public void removeAllStamps() {
-		turtleStamps.clear();
-	}
+    public List<Turtle> getStamps () {
+        return new ArrayList<Turtle>(turtleStamps.values());
+    }
 
-	public Turtle getTurtleWithID(Integer ID) {
-		return turtles.get(ID);
-	}
+    public void removeAllStamps () {
+        turtleStamps.clear();
+    }
 
-	public boolean hasTurtleWithID(Integer ID) {
-		return turtles.containsKey(ID);
-	}
-	
-	public Turtle getLastAddedTurtle() {
-		return turtles.get(lastAddedID);
-	}
+    public Turtle getTurtleWithID (Integer ID) {
+        return turtles.get(ID);
+    }
+
+    public boolean hasTurtleWithID (Integer ID) {
+        return turtles.containsKey(ID);
+    }
+
+    public Turtle getLastAddedTurtle () {
+        return turtles.get(lastAddedID);
+    }
 
 }

@@ -6,9 +6,11 @@ import gui.mainclasses.TextGenerator;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 
+
 /**
  * This class allows the user to save a command for future use. Commands can
  * be saved from the command line or from the previous commands list view.s
+ *
  * @author Austin Kyker
  *
  */
@@ -18,9 +20,9 @@ public class SaveCommandButtonFeature extends ButtonFeature {
     private PreviousCommandsFeature myPreviousCommands;
     private SavedCommandsFeature mySavedCommands;
 
-    public SaveCommandButtonFeature(OptionsHolderDrawer parent, CommandLineDrawer commandLine, 
-                                    PreviousCommandsFeature previousCommands, 
-                                    SavedCommandsFeature savedCommands){
+    public SaveCommandButtonFeature (OptionsHolderDrawer parent, CommandLineDrawer commandLine,
+                                     PreviousCommandsFeature previousCommands,
+                                     SavedCommandsFeature savedCommands) {
         super(TextGenerator.SAVE_COMMAND, parent);
         myCommandLine = commandLine;
         myPreviousCommands = previousCommands;
@@ -36,12 +38,13 @@ public class SaveCommandButtonFeature extends ButtonFeature {
      */
     private void saveCommand () {
         String currentCommandLineCommand = myCommandLine.getCurrentCommand();
-        if(!myPreviousCommands.getSelectionModel().isEmpty()){
-            mySavedCommands.addCommand(myPreviousCommands.getSelectionModel().getSelectedItem().toString()); 
+        if (!myPreviousCommands.getSelectionModel().isEmpty()) {
+            mySavedCommands.addCommand(myPreviousCommands.getSelectionModel().getSelectedItem()
+                                       .toString());
             myPreviousCommands.getSelectionModel().clearSelection();
         }
-        else if(!currentCommandLineCommand.isEmpty()){
-            mySavedCommands.addCommand(currentCommandLineCommand); 
+        else if (!currentCommandLineCommand.isEmpty()) {
+            mySavedCommands.addCommand(currentCommandLineCommand);
         }
     }
 }

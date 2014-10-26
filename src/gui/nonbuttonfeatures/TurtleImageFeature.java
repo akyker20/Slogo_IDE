@@ -19,67 +19,70 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+
 public class TurtleImageFeature extends BorderPane {
-    
+
     private ObservableList<ImageIndex> myImageFilesList;
-    
-    public TurtleImageFeature(OptionsHolderDrawer parentDrawer, List<ImageIndex> imageFilesList, Workspace workspace) {
+
+    public TurtleImageFeature (OptionsHolderDrawer parentDrawer,
+                               List<ImageIndex> imageFilesList,
+                               Workspace workspace) {
         myImageFilesList = (ObservableList<ImageIndex>) imageFilesList;
         Label label = new Label(TextGenerator.get(TextGenerator.IMAGE_DROP_AREA));
-        this.setTop(label);
+        setTop(label);
         VBox vbox = new VBox(10);
         vbox.setStyle("-fx-border-color: lightgray");
         vbox.setPrefSize(105, 155);
-        this.setCenter(vbox);
+        setCenter(vbox);
 
         // When a file is dragged over the scene, the background becomes
         // green and a copy message is displayed near the mouse
-        this.setOnDragOver(new EventHandler<DragEvent>() {
+        setOnDragOver(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
+            public void handle (DragEvent event) {
                 Dragboard db = event.getDragboard();
                 if (db.hasFiles()) {
                     event.acceptTransferModes(TransferMode.COPY);
                     vbox.setStyle("-fx-border-color: lightgray; -fx-background-color: lightgreen");
-                } else {
+                }
+                else {
                     event.consume();
                 }
             }
         });
 
-
         // Upon exiting, the background of the scene returns to green.
-        this.setOnDragExited(new EventHandler<DragEvent>() {
+        setOnDragExited(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
+            public void handle (DragEvent event) {
                 vbox.setStyle("-fx-background-color: white; -fx-border-color: lightgray");
             }
         });
 
-
         // When a file is actually dropped it is validated to
-        // ensure it has the correct name. The controller is 
+        // ensure it has the correct name. The controller is
         // then called to initialize the driving environment.
-        this.setOnDragDropped(new EventHandler<DragEvent>() {
+        setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
+            public void handle (DragEvent event) {
 
                 Dragboard db = event.getDragboard();
                 boolean success = false;
                 if (db.hasFiles()) {
                     success = true;
-                    for (File file:db.getFiles()) {
+                    for (File file : db.getFiles()) {
 
                         Path filePath = file.toPath();
                         String fileName = file.toPath().toString();
-                        if(fileName.toLowerCase().contains(".jpg")|| 
+                        if (fileName.toLowerCase().contains(".jpg") ||
                                 fileName.toLowerCase().contains(".jpeg") ||
-                                fileName.toLowerCase().contains(".png")){
-                            File targetFile = new File("./src/resources/guiResources/turtleImages/" 
-                                + filePath.getFileName().toString());
+                                fileName.toLowerCase().contains(".png")) {
+                            File targetFile = new File("./src/resources/guiResources/turtleImages/"
+                                    + filePath.getFileName().toString());
                             try {
                                 Files.copy(file.toPath(), targetFile.toPath(), REPLACE_EXISTING);
-                                workspace.parseCommandString("setsp 0 " + targetFile.toPath().toString());
+                                workspace.parseCommandString("setsp 0 " +
+                                        targetFile.toPath().toString());
                             }
                             catch (IOException e) {
                                 // TODO Auto-generated catch block
@@ -95,5 +98,3 @@ public class TurtleImageFeature extends BorderPane {
         });
     }
 }
-
-

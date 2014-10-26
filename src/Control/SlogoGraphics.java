@@ -8,7 +8,6 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 import drawableobject.DrawableObject;
 
 
-
 /**
  * Class defines methods accessible to the GUIController
  *
@@ -24,16 +23,19 @@ public interface SlogoGraphics {
      *
      * @param command
      * @return
-     * @throws IOException 
-     * @throws RunTimeNullPointerException 
-     * @throws RunTimeDivideByZeroException 
-     * @throws CompileTimeParsingException 
+     * @throws IOException
+     * @throws RunTimeNullPointerException
+     * @throws RunTimeDivideByZeroException
+     * @throws CompileTimeParsingException
      */
 
-    Queue<DrawableObject> parseCommandString (String command) throws IOException, CompileTimeParsingException, 
-    RunTimeDivideByZeroException, RunTimeNullPointerException;
-    
-    public void createWorkspaceState(int workspaceID);
-    public void setActiveWorkspaceState(int workspaceID);
+    Queue<DrawableObject> parseCommandString (String command) throws IOException,
+    CompileTimeParsingException,
+    RunTimeDivideByZeroException,
+    RunTimeNullPointerException;
+
+    public void createWorkspaceState (int workspaceID);
+
+    public void setActiveWorkspaceState (int workspaceID);
 
 }

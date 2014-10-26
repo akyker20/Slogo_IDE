@@ -1,5 +1,5 @@
-package interfaceBuilder; 
- 
-public interface SLogoGraphicsInterface { 
-//protected abstract void doButtonAction (); 
+package interfaceBuilder;
+
+public interface SLogoGraphicsInterface {
+    // protected abstract void doButtonAction ();
 }
