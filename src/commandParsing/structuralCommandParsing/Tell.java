@@ -12,9 +12,24 @@ import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
 public class Tell extends StructuralCommand {
+	
+	List<Integer> turtleIDList = new ArrayList<Integer>();
 
 	public Tell(WorkspaceState someWorkspace) {
 		super(someWorkspace);
+	}
+	
+	@Override
+	protected void parseCommandsBetweenBraces(Iterator<String> commands, Queue<DrawableObject> objectQueue)
+			throws SLOGOException {
+		double value = 0;
+		while (commands.hasNext()) {
+			String stringOfInterest = commands.next();
+			CommandParser parser = (CommandParser) createParser(stringOfInterest, workspace);
+			value = parser.parse(commands, objectQueue);
+			turtleIDList.add((int) value);
+		}
+		returnValue = value;
 	}
 
 	@Override
@@ -22,13 +37,10 @@ public class Tell extends StructuralCommand {
 			throws SLOGOException {
 		
 		workspace.turtles.clearActiveTurtles();
-		List<Integer> turtleIDList = new ArrayList<Integer>();
 		double lastTurtleID = 0;
 		extractCommandsBetweenBraces(commandStringIterator);
+		parseCommandsBetweenBraces(commandStringIterator, objectQueue);
 		
-		for (String s: enclosedCommands){
-			turtleIDList.add(Integer.parseInt(s));
-		}
 		for (Integer i: turtleIDList){
 			if(workspace.turtles.hasTurtleWithID(i)){
 				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));

@@ -7,10 +7,12 @@ import java.util.Queue;
 
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
+
 import commandParsing.exceptions.SLOGOException;
+
 import drawableobject.DrawableObject;
 
-public class Ask extends StructuralCommand {
+public class Ask extends MultipleTurtleCommand {
 
 	public Ask(WorkspaceState someWorkspace) {
 		super(someWorkspace);
@@ -19,32 +21,28 @@ public class Ask extends StructuralCommand {
 	@Override
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		List<Turtle> savedListOfTurtles = workspace.turtles.getActiveTurtles();
-		workspace.turtles.clearActiveTurtles();
-		List<Integer> turtleIDList = new ArrayList<Integer>();
-		extractCommandsBetweenBraces(commandStringIterator);
 
-		for (String s : enclosedCommands) {
-			turtleIDList.add(Integer.parseInt(s));
-		}
-		for (Integer i : turtleIDList) {
-			if (workspace.turtles.hasTurtleWithID(i)) {
-				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
-			}
-			else {
-				workspace.turtles.addTurtle(new Turtle(i));
-			}
-		}
-		ignoreUntilClosingBrace(commandStringIterator);
+		saveCurrentActiveTurtles();
+		workspace.turtles.clearActiveTurtles();
+		
+		extractCommandsBetweenBraces(commandStringIterator);
+		determineTurtlesToActivate(commandStringIterator, objectQueue);
+		makeAndActivateGivenTurtles();
+		
 		extractCommandsBetweenBraces(commandStringIterator);
 		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);
-
+		
 		workspace.turtles.clearActiveTurtles();
-		for (Turtle t : savedListOfTurtles) {
-			workspace.turtles.activateTurtle(t);
-		}
+		restorePreviouslySavedActiveTurtles();
+		
 		return returnValue;
 
 	}
+	
+	
+
+	
+
+	
 
 }
