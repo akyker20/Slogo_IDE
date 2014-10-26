@@ -56,6 +56,7 @@ public class LineFactory extends ObjectFactory {
             line.setEndX(CoordinateChanger.convX(pointPair.dest.x));
             line.setEndY(CoordinateChanger.convY(pointPair.dest.y));
             lineList.add(line);
+            line.setStrokeWidth(Double.parseDouble(params.get(LINE_WIDTH)));
         }
         
         return lineList;
