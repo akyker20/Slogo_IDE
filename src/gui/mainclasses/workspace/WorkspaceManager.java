@@ -5,7 +5,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import Control.SlogoGraphics;
-import XML.workspaceparams.WorkspacePenCommands;
 import XML.workspaceparams.WorkspaceScreenParameters;
 
 public class WorkspaceManager extends TabPane {
@@ -17,13 +16,11 @@ public class WorkspaceManager extends TabPane {
     private static int workspaceID = 0;
 
     private SlogoGraphics myControl;
-    private int myWorkspaceID;
 
     public WorkspaceManager(SlogoGraphics control)    {
         myControl = control;
         initializeTabPane(); 
-        addWorkspace(new WorkspaceScreenParameters(), new WorkspacePenCommands(), 
-                     new WorkspaceDataHolder());
+        addWorkspace(new WorkspaceScreenParameters(), new WorkspaceDataHolder());
     }
 
     private void initializeTabPane () {    
@@ -42,18 +39,16 @@ public class WorkspaceManager extends TabPane {
                 );  
     }
 
-    public void addWorkspace(WorkspaceScreenParameters screenParams, 
-                             WorkspacePenCommands penCommandsList, 
+    public void addWorkspace(WorkspaceScreenParameters screenParams,  
                              WorkspaceDataHolder dataHolder) {
         Workspace newWorkspace = new Workspace(myControl, screenParams, dataHolder, workspaceID);
         newWorkspace.setText("Workspace " + workspaceID);
         
         getTabs().add(newWorkspace); 
         myActiveWorkspace = newWorkspace;
-        myActiveWorkspace.setInitialPenConfiguration(penCommandsList);
         myControl.createWorkspaceState(workspaceID);
-        myControl.setActiveWorkspaceState(myWorkspaceID);
-        workspaceID++;   
+        myControl.setActiveWorkspaceState(workspaceID);
+        workspaceID++;
     }
 
     public Workspace getActiveWorkspace() {

@@ -29,9 +29,13 @@ public class FileMenu extends Menu {
 
     protected static final String SAVED_WORKSPACE_FILES_DIR = "./WorkspaceFiles";
 
-    public FileMenu(WorkspaceManager workspaceManager)  {
-        this.setText("File");
+    private WorkspaceManager myWorkspaceManager;
 
+    public FileMenu(WorkspaceManager workspaceManager)  {
+
+        myWorkspaceManager = workspaceManager;
+
+        this.setText("File");
 
         MenuItem loadWorkspace = new MenuItem("Load Workspace");
         loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
@@ -39,7 +43,12 @@ public class FileMenu extends Menu {
                 try {
                     SavedWorkspaceXMLReader reader = new SavedWorkspaceXMLReader(createFileChooser(SAVED_WORKSPACE_FILES_DIR)); 
                     WorkspaceDataHolder dataHolder = reader.getWorkspaceDataHolder();
-                    workspaceManager.addWorkspace(reader.getScreenParameters(), reader.getInitialPenCommands(), dataHolder);
+                    myWorkspaceManager.addWorkspace(reader.getScreenParameters(), dataHolder);
+                    addTurtleToWorkspace();
+                    for(String penCommand:reader.getInitialPenCommands()){
+                        myWorkspaceManager.getActiveWorkspace().parseCommandString(penCommand);
+                    }
+                    
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block
@@ -52,13 +61,17 @@ public class FileMenu extends Menu {
         MenuItem newWorkspace = new MenuItem("New Workspace");
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                    workspaceManager.addWorkspace(new WorkspaceScreenParameters(), new WorkspacePenCommands(), 
-                                                  new WorkspaceDataHolder()); 
-                    workspaceManager.getActiveWorkspace().parseCommandString(SlogoControl.NEW_TURTLE_COMMAND);
+                myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
+                                                new WorkspaceDataHolder()); 
+                addTurtleToWorkspace();
             }
         });
 
         this.getItems().addAll(loadWorkspace, newWorkspace);
+    }
+
+    private void addTurtleToWorkspace () {
+        myWorkspaceManager.getActiveWorkspace().parseCommandString(SlogoControl.NEW_TURTLE_COMMAND);
     }
 
     /**

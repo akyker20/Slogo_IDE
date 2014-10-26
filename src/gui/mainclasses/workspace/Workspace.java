@@ -11,13 +11,11 @@ import gui.mainclasses.DrawableObjectParser;
 import gui.mainclasses.FeatureBuilder;
 import gui.mainclasses.StageInitializer;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import javafx.scene.control.Tab;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import Control.SlogoGraphics;
-import XML.workspaceparams.WorkspacePenCommands;
 import XML.workspaceparams.WorkspaceScreenParameters;
 import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
@@ -48,12 +46,6 @@ public class Workspace extends Tab {
                       myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
         FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);        
         this.setContent(myPane);
-    }
-
-    public void setInitialPenConfiguration(WorkspacePenCommands penCommandsList){
-        for(String penCommand:penCommandsList){
-            parseCommandString(penCommand);
-        }
     }
 
     private BorderPane createPane() {
