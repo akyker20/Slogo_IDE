@@ -22,29 +22,20 @@ import javafx.scene.control.Slider;
  */
 public class PenThicknessSliderFeature extends Slider {
     
-    private static final String SET_PEN_SIZE = "SETPS";
+    private static final String SET_PEN_SIZE = "setpensize";
 
     private Workspace myWorkspace;
 
     public PenThicknessSliderFeature(OptionsHolderDrawer parentDrawer, Workspace workspace){
         myWorkspace = workspace;
         setSliderProperties();
-        setChangeListener();
+        this.setOnMouseReleased(event->setPenSize());
         parentDrawer.drawShape(new PenThicknessSliderFeature[]{this});
     }
+        
 
-    /**
-     * Sets the change listener on the slider. If the user selects a 
-     * different pixel size for the pen, the control updates the backend
-     * with the change.
-     */
-    private void setChangeListener () {
-        this.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                                Number oldVal, Number newVal) {
-                    myWorkspace.parseCommandString(SET_PEN_SIZE + " " + newVal);
-            }
-        });
+    private void setPenSize () {
+        myWorkspace.parseCommandString(SET_PEN_SIZE + " " + this.getValue());
     }
 
     /**

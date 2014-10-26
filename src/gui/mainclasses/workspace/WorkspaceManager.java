@@ -32,6 +32,8 @@ public class WorkspaceManager extends TabPane {
                          @Override
                          public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
                              myActiveWorkspace = (Workspace) t1;
+                             myControl.setActiveWorkspaceState(myActiveWorkspace.getWorkspaceID());
+                             System.out.println(myActiveWorkspace.getWorkspaceID());
                          }
                      }
                 );  
@@ -40,7 +42,7 @@ public class WorkspaceManager extends TabPane {
     public void addWorkspace(WorkspaceParameters screenParams, 
                              WorkspaceParameters penParams, 
                              WorkspaceDataHolder dataHolder) {
-        Workspace newWorkspace = new Workspace(myControl, screenParams, penParams, dataHolder);
+        Workspace newWorkspace = new Workspace(myControl, screenParams, penParams, dataHolder, workspaceID);
         newWorkspace.setText("Workspace " + workspaceID);
         
         getTabs().add(newWorkspace); 
