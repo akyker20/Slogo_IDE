@@ -19,7 +19,7 @@ public class StampTests extends CommandTester {
 
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 0);
+		assertTrue(f == 1);
 		DrawableObject turtle = objectQueue.poll();
 
 		assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));

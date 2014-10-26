@@ -12,7 +12,7 @@ import commandParsing.exceptions.SLOGOException;
 
 import drawableobject.DrawableObject;
 
-public class Stamp extends CommandParser implements TurtleGenerator{
+public class Stamp extends CommandParser implements TurtleGenerator {
 
 	public Stamp(WorkspaceState someWorkspace) {
 		super(someWorkspace);
@@ -21,12 +21,13 @@ public class Stamp extends CommandParser implements TurtleGenerator{
 	@Override
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		for(Turtle t : workspace.turtles.getActiveTurtles()){
+		double turtleStampIndex = 0;
+		for (Turtle t : workspace.turtles.getActiveTurtles()) {
 			Turtle stamp = new Turtle(t);
 			workspace.turtles.addStamp(stamp);
 			objectQueue.add(generateDrawableObjectRepresentingTurtle(stamp));
+			turtleStampIndex = t.getID();
 		}
-		return 0;
+		return turtleStampIndex;
 	}
-
 }

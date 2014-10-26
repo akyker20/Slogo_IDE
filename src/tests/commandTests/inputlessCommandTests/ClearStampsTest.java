@@ -27,7 +27,7 @@ public class ClearStampsTest extends CommandTester {
 		objectQueue.poll();
 		DrawableObject stampDeletion = objectQueue.poll();
 		
-		assertTrue(f == 0);
+		assertTrue(f == 1);
 		
 		assertTrue(stampDeletion.getParent().equals(TurtleFactory.PARENT));
 		assertTrue(stampDeletion.getType().equals(TurtleFactory.TYPE));
