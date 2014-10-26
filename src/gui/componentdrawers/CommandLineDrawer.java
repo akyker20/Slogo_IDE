@@ -1,5 +1,6 @@
 package gui.componentdrawers;
 
+import gui.mainclasses.TextGenerator;
 import gui.mainclasses.StageInitializer;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -13,7 +14,7 @@ public class CommandLineDrawer extends ComponentDrawer {
         super(name);
         getStyleClass().add("commandLine");
         setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        this.drawShape(new Label[]{new Label("Command Line")});
+        this.drawShape(new Label[]{new Label(TextGenerator.get(TextGenerator.COMMAND_LINE))});
     }
     
     /**

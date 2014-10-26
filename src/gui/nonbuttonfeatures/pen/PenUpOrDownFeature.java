@@ -1,6 +1,7 @@
 package gui.nonbuttonfeatures.pen;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.mainclasses.TextGenerator;
 import gui.mainclasses.workspace.Workspace;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,13 +16,11 @@ import javafx.collections.FXCollections;
  *
  */
 public class PenUpOrDownFeature extends PenChoiceBox {
-
-    private static final String UP = "up";
-    private static final String DOWN = "down";
     private static final String PEN = "pen";
 
     public PenUpOrDownFeature(OptionsHolderDrawer parentDrawer, Workspace workspace){
-        super(FXCollections.observableArrayList(DOWN, UP), parentDrawer);
+        super(FXCollections.observableArrayList(TextGenerator.get(TextGenerator.DOWN), 
+                                                TextGenerator.get(TextGenerator.UP)), parentDrawer);
 
         this.valueProperty().addListener(new ChangeListener<String>(){
             @Override

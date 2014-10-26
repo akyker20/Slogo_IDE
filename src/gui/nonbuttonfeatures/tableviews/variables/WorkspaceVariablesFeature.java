@@ -1,6 +1,7 @@
 package gui.nonbuttonfeatures.tableviews.variables;
 
 import gui.componentdrawers.WorkspaceVariablesDrawer;
+import gui.mainclasses.TextGenerator;
 import gui.mainclasses.workspace.Workspace;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.ObservableList;
@@ -22,10 +23,12 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
             }
         };
 
-        TableColumn<WorkspaceVariable,String> variableName = new TableColumn<WorkspaceVariable,String>("Variable");
+        TableColumn<WorkspaceVariable,String> variableName = 
+                new TableColumn<WorkspaceVariable,String>(TextGenerator.get(TextGenerator.VARIABLE));
         variableName.setCellValueFactory(new PropertyValueFactory("myName"));
         variableName.prefWidthProperty().bind(this.widthProperty().divide(2));
-        TableColumn<WorkspaceVariable,Double> variableValue = new TableColumn<WorkspaceVariable,Double>("Value");
+        TableColumn<WorkspaceVariable,Double> variableValue = 
+                new TableColumn<WorkspaceVariable,Double>(TextGenerator.get(TextGenerator.VALUE));
         variableValue.setCellValueFactory(new PropertyValueFactory("myValue"));
         variableValue.prefWidthProperty().bind(this.widthProperty().divide(2).subtract(2));
         variableValue.setCellFactory(cellFactory);

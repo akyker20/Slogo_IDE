@@ -1,6 +1,7 @@
 package gui.nonbuttonfeatures.tableviews.colorindex;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
+import gui.mainclasses.TextGenerator;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -21,10 +22,10 @@ public class ColorIndexFeature extends TableView<ColorIndex> {
             }
         };
 
-        TableColumn<ColorIndex,Integer> index = new TableColumn<ColorIndex,Integer>("Index");
+        TableColumn<ColorIndex,Integer> index = new TableColumn<ColorIndex,Integer>(TextGenerator.get(TextGenerator.INDEX));
         index.setCellValueFactory(new PropertyValueFactory("myIndex"));
         index.prefWidthProperty().bind(this.widthProperty().divide(3));
-        TableColumn<ColorIndex,Color> colorCol = new TableColumn<ColorIndex,Color>("Color");
+        TableColumn<ColorIndex,Color> colorCol = new TableColumn<ColorIndex,Color>(TextGenerator.get(TextGenerator.COLOR));
         colorCol.setCellValueFactory(new PropertyValueFactory("myColor"));
         colorCol.prefWidthProperty().bind(this.widthProperty().multiply(2).divide(3).subtract(2));
 

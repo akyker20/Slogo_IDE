@@ -3,6 +3,7 @@ package gui.componentdrawers;
 import XML.readers.SavedWorkspaceXMLReader;
 import XML.workspaceparams.WorkspaceScreenParameters;
 import gui.factories.turtlefactory.TurtleNodes;
+import gui.mainclasses.TextGenerator;
 import gui.mainclasses.StageInitializer;
 import gui.nonbuttonfeatures.TurtleScreenFeature;
 import javafx.scene.Node;
@@ -34,7 +35,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
         myTurtleNodes = turtleNodes;
         this.setPrefWidth(GRID_WIDTH);
         this.setPrefHeight(GRID_HEIGHT + 20);
-        this.getChildren().addAll(new Label("SLogo Grid"));  
+        this.getChildren().addAll(new Label(TextGenerator.get(TextGenerator.TURTLE_SCREEN)));  
     }
 
 

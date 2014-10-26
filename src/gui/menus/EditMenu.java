@@ -1,6 +1,6 @@
 package gui.menus;
 
-import gui.mainclasses.GuiTextGenerator;
+import gui.mainclasses.TextGenerator;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -13,10 +13,10 @@ import javafx.scene.control.MenuItem;
  */
 public class EditMenu extends Menu {
     public EditMenu(){
-        this.setText(GuiTextGenerator.get(GuiTextGenerator.EDIT_MENU_TEXT));
+        this.setText(TextGenerator.get(TextGenerator.EDIT));
         
         //use Lambda notation and make these open HTML help pages...
-        MenuItem preferences = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.PREFERENCES_TEXT));
+        MenuItem preferences = new MenuItem(TextGenerator.get(TextGenerator.PREFERENCES));
         preferences.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 System.out.println("Code to modify preferences...");

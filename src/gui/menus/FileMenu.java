@@ -1,7 +1,7 @@
 package gui.menus;
 
 
-import gui.mainclasses.GuiTextGenerator;
+import gui.mainclasses.TextGenerator;
 
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
 
@@ -43,9 +43,9 @@ public class FileMenu extends Menu {
 
         myWorkspaceManager = workspaceManager;
 
-        this.setText(GuiTextGenerator.get(GuiTextGenerator.FILE_TEXT));
+        this.setText(TextGenerator.get(TextGenerator.FILE));
 
-        MenuItem loadWorkspace = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.LOAD_WORKSPACE_TEXT));
+        MenuItem loadWorkspace = new MenuItem(TextGenerator.get(TextGenerator.LOAD_WORKSPACE));
         loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 try {
@@ -93,7 +93,7 @@ public class FileMenu extends Menu {
         });
 
 
-        MenuItem newWorkspace = new MenuItem(GuiTextGenerator.get(GuiTextGenerator.NEW_WORKSPACE_TEXT));
+        MenuItem newWorkspace = new MenuItem(TextGenerator.get(TextGenerator.NEW_WORKSPACE));
         newWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(), 
@@ -116,7 +116,7 @@ public class FileMenu extends Menu {
      */
     private File createFileChooser (String defaultDir) {
         FileChooser myFileChooser = new FileChooser();
-        myFileChooser.setTitle(GuiTextGenerator.get(GuiTextGenerator.SELECT_XMLFILE_TEXT));
+        myFileChooser.setTitle(TextGenerator.get(TextGenerator.SELECT_XMLFILE));
         FileChooser.ExtensionFilter extentionFilter =
                 new FileChooser.ExtensionFilter(
                                                 XML_FILE_EXTENSION_DESCRIPTION, XML_FILE_EXTENSION);

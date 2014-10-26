@@ -2,7 +2,7 @@ package gui.buttonfeatures;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import gui.mainclasses.GUIController;
-import gui.mainclasses.GuiTextGenerator;
+import gui.mainclasses.TextGenerator;
 import javafx.scene.control.Button;
 
 public class ButtonFeature extends Button {
@@ -11,7 +11,7 @@ public class ButtonFeature extends Button {
     public static final int BUTTON_HEIGHT = 40;
     
     public ButtonFeature(String text, OptionsHolderDrawer component) {
-        setText(GuiTextGenerator.get(text));
+        setText(TextGenerator.get(text));
         setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         component.drawShape(new ButtonFeature[]{this});
     }

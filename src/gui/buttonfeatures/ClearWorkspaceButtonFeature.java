@@ -1,7 +1,7 @@
 package gui.buttonfeatures;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
-import gui.mainclasses.GuiTextGenerator;
+import gui.mainclasses.TextGenerator;
 import gui.mainclasses.workspace.Workspace;
 
 /**
@@ -16,7 +16,7 @@ public class ClearWorkspaceButtonFeature extends ButtonFeature {
     
     
     public ClearWorkspaceButtonFeature (OptionsHolderDrawer parentDrawer, Workspace workspace) {
-        super(GuiTextGenerator.CLEAR_WORKSPACE_TEXT, parentDrawer);
+        super(TextGenerator.CLEAR_WORKSPACE, parentDrawer);
         setOnAction(event -> workspace.clear());
     }
 }

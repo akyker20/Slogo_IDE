@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import gui.componentdrawers.ComponentDrawer;
+import gui.mainclasses.TextGenerator;
 
 public class SignificantCommandsDrawer extends ComponentDrawer {
     
@@ -16,7 +17,8 @@ public class SignificantCommandsDrawer extends ComponentDrawer {
         mySignificantCommandsPane.setId("tabPane");
         mySignificantCommandsPane.setPrefWidth(245);
         mySignificantCommandsPane.setLayoutY(20);
-        super.drawShape(new Node[]{ new Label("Commands"), mySignificantCommandsPane});
+        super.drawShape(new Node[]{ new Label(TextGenerator.get(TextGenerator.COMMANDS)), 
+                                    mySignificantCommandsPane});
     }
 
     public void addTabs (Tab[] tabs) {

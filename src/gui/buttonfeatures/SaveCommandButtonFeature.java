@@ -2,7 +2,7 @@ package gui.buttonfeatures;
 
 import gui.componentdrawers.CommandLineDrawer;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
-import gui.mainclasses.GuiTextGenerator;
+import gui.mainclasses.TextGenerator;
 import gui.nonbuttonfeatures.PreviousCommandsFeature;
 import gui.nonbuttonfeatures.SavedCommandsFeature;
 
@@ -15,7 +15,7 @@ public class SaveCommandButtonFeature extends ButtonFeature {
     public SaveCommandButtonFeature(OptionsHolderDrawer parent, CommandLineDrawer commandLine, 
                                     PreviousCommandsFeature previousCommands, 
                                     SavedCommandsFeature savedCommands){
-        super(GuiTextGenerator.CLEAR_WORKSPACE_TEXT, parent);
+        super(TextGenerator.SAVE_COMMAND, parent);
         myCommandLine = commandLine;
         myPreviousCommands = previousCommands;
         mySavedCommands = savedCommands;
