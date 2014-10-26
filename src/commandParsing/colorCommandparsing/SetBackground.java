@@ -21,7 +21,8 @@ public class SetBackground extends OneInputFloatCommandParser implements PaneGen
 	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
 		double index = components.get(0);
-		objectQueue.add(generateDrawableObjectRepresentingPane(workspace.colorPalette.getFromPalette((int) index)));
+		objectQueue.add(generateDrawableObjectRepresentingPane(workspace.colorPalette
+				.getFromPalette((int) index)));
 		return index;
 	}
 

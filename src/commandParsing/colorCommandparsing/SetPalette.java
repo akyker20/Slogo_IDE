@@ -24,12 +24,12 @@ public class SetPalette extends FloatInputCommandParser implements ColorIndexGen
 	protected double operateOnComponents(List<Double> components, Queue<DrawableObject> objectQueue)
 			throws RunTimeDivideByZeroException {
 		double index = components.get(0);
-		double r = components.get(1);
-		double g = components.get(2);
-		double b = components.get(3);
+		double r = components.get(1)/256;
+		double g = components.get(2)/256;
+		double b = components.get(3)/256;
 		
 		workspace.colorPalette.addToPalette((int) index, Color.color(r,g,b));
-		
+		objectQueue.add(generateDrawableObjectRepresentingColorIndex((int) index, Color.color(r,g,b)));
 		return index;
 	}
 

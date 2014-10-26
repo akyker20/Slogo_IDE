@@ -1,12 +1,12 @@
 package tests.commandTests.colorCommandTests;
 
 import static org.junit.Assert.assertTrue;
+import javafx.scene.paint.Color;
 import gui.componentdrawers.ComponentBuilder;
 import gui.factories.FactoryBuilder;
+import gui.factories.PaneFactory;
 
 import org.junit.Test;
-
-import com.sun.prism.paint.Color;
 
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
@@ -30,7 +30,6 @@ public class SetBackgroundTests extends CommandTester {
 		assertTrue(pane.getParameters().get(PaneFactory.RESET_FLAG).equals("false"));
 		assertTrue(pane.getParameters().get(PaneFactory.BACKGROUND_COLOR).equals(Color.BLACK.toString()));
 		
-			
 		assertTrue(objectQueue.size()==0);
 	}
 

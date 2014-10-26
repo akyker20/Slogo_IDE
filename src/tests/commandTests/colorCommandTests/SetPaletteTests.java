@@ -2,6 +2,8 @@ package tests.commandTests.colorCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import javafx.scene.paint.Color;
+import gui.factories.ColorIndexFactory;
+import gui.factories.PaneFactory;
 import gui.factories.turtlefactory.TurtleFactory;
 
 import org.junit.Test;
@@ -17,20 +19,21 @@ public class SetPaletteTests extends CommandTester {
 	@Test
 	public void SetPaletteTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("setpalette 1");
-		workspace.colorPalette.addToPalette(1, Color.DARKGREY);
-		TurtleShapEdsf.
+		setUpCommands("setpalette 10 0 0 0");
+		
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
-		DrawableObject turtle = objectQueue.poll();
-		assertTrue(turtle.getParameters().get(TurtleFactory.IMAGE_PATH)
-				.equals(workspace.shapePalette.getFromPalette(1).getPath()));
+		DrawableObject colorIndex = objectQueue.poll();
+		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.COLOR)
+				.equals(workspace.colorPalette.getFromPalette(10).toString()));
+		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.INDEX).equals("10"));
+		assertTrue(f==10);
 	}
 	
 	@Test
 	public void SetPaletteAfterSetPaletteTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("setpalette 1 setpalette 0");
+		setUpCommands("setpalette 10 2 3 4 setpalette 10 0 0 0");
 		workspace.shapePalette.addToPalette(1, new Shape("somePath/image.png"));
 
 		double f = 0;
@@ -39,13 +42,12 @@ public class SetPaletteTests extends CommandTester {
 			CommandParser parser = createCommand();
 			f = parser.parse(commands, objectQueue);
 		}
-		System.out.println(objectQueue.size());
-		DrawableObject turtle = objectQueue.poll();
-		assertTrue(turtle.getParameters().get(TurtleFactory.IMAGE_PATH)
-				.equals(workspace.shapePalette.getFromPalette(1).getPath()));
-		turtle = objectQueue.poll();
-		assertTrue(turtle.getParameters().get(TurtleFactory.IMAGE_PATH)
-				.equals(workspace.shapePalette.getFromPalette(0).getPath()));
+		objectQueue.poll();
+		DrawableObject colorIndex = objectQueue.poll();
+		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.COLOR)
+				.equals(workspace.colorPalette.getFromPalette(10).toString()));
+		assertTrue(colorIndex.getParameters().get(ColorIndexFactory.INDEX).equals("10"));
+		assertTrue(f==10);
 	}
 
 }
