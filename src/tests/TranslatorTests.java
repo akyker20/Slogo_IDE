@@ -24,6 +24,14 @@ public class TranslatorTests {
 		assertTrue(t.matchesVariablePattern(":someVar"));
 		assertFalse(t.matchesVariablePattern("SEPS"));
 		assertFalse(t.matchesCommandPattern("["));
+		
+		assertFalse(t.matchesCommandPattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
+		assertFalse(t.matchesConstantPattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
+		assertFalse(t.matchesGroupEndPattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
+		assertFalse(t.matchesGroupStartPattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
+		assertFalse(t.matchesListEndPattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
+		assertFalse(t.matchesListStartPattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
+		assertFalse(t.matchesVariablePattern("/src/resources/guiResources/turtleImages/default_turtle.png"));
 	}
 
 	@Test

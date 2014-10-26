@@ -10,16 +10,16 @@ import java.util.Map;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-public class ImageIndexFactory extends ObjectFactory {
+public class ShapePaletteEntryFactory extends ObjectFactory {
 
     public static final String PARENT = ComponentBuilder.BUTTON_HOLDER_DRAWER;
     public static final String TYPE = FactoryBuilder.COLOR_INDEX_FACTORY;
-    public static final String FILE = "file";
+    public static final String IMAGE_PATH = "path";
     public static final String INDEX = "index";
 
     private ObservableList<ImageIndex> myImageIndexList;
 
-    public ImageIndexFactory(String name, List<ImageIndex> imageIndexList) {
+    public ShapePaletteEntryFactory(String name, List<ImageIndex> imageIndexList) {
         super(name);
         myImageIndexList = (ObservableList<ImageIndex>) imageIndexList;
     }
@@ -27,7 +27,7 @@ public class ImageIndexFactory extends ObjectFactory {
     @Override
     public Node[] generateObject(Map<String, String> params) {
         int index = Integer.parseInt(params.get(INDEX));
-        File image = new File(params.get(FILE));
+        File image = new File(params.get(IMAGE_PATH));
         for(ImageIndex imageIndex:myImageIndexList){
             if(imageIndex.getMyIndex() == index) {
                 imageIndex.setMyImageFile(image);

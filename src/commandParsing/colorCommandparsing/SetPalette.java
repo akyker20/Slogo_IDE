@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Queue;
 import javafx.scene.paint.Color;
 import workspaceState.WorkspaceState;
-import commandParsing.drawableObectGenerationInterfaces.ColorPaneUpdateGenerator;
+import commandParsing.drawableObectGenerationInterfaces.ColorPaletteUpdateGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.FloatInputCommandParser;
 import drawableobject.DrawableObject;
 
-public class SetPalette extends FloatInputCommandParser implements ColorPaneUpdateGenerator {
+public class SetPalette extends FloatInputCommandParser implements ColorPaletteUpdateGenerator {
 
 	public SetPalette(WorkspaceState someWorkspace) {
 		super(someWorkspace);
@@ -29,7 +29,7 @@ public class SetPalette extends FloatInputCommandParser implements ColorPaneUpda
 		double b = components.get(3)/256;
 		
 		workspace.colorPalette.addToPalette((int) index, Color.color(r,g,b));
-		objectQueue.add(generateDrawableObjectRepresentingColorPaneUpdate((int) index, Color.color(r,g,b)));
+		objectQueue.add(generateDrawableObjectRepresentingColorPaletteUpdate((int) index, Color.color(r,g,b)));
 		return index;
 	}
 
