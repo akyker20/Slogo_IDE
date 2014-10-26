@@ -29,10 +29,8 @@ public class PaneFactory extends ObjectFactory {
             myTurtleScreen.resetScreen();
         }
         else {
-            System.out.println(Color.valueOf(params.get(BACKGROUND_COLOR)));
-            myTurtleScreen.changeScreenColor("-fx-background-color: #" +
-                    Color.valueOf(params.get(BACKGROUND_COLOR)).toString()
-                    .substring(2));
+            myTurtleScreen
+            .changeScreenColor(Color.valueOf(params.get(BACKGROUND_COLOR)));
         }
         return new Node[] { new NullNode() };
     }

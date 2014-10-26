@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <workspace>
-<savedCommands/>
-<workspacevariables/>
-<colorindices/>
-<userdefinedcommands>
-<command name="command" params=":var :varb :varc">forward 20</command>
-</userdefinedcommands>
+<parameters>
+<screen color="0x6680e6ff" toggleGrid="false"/>
+</parameters>
+<savedcommands/>
+<workspace/>
+<userdefinedcommands/>
 </workspace>

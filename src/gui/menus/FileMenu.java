@@ -86,7 +86,9 @@ public class FileMenu extends Menu {
 
                 try {
                     SavedWorkspaceXMLWriter.writeFile(myWorkspaceManager.getActiveWorkspace()
-                                                      .getDataHolder());
+                                                      .getDataHolder(),
+                                                      myWorkspaceManager.getActiveWorkspace()
+                                                      .getScreenParams());
                 }
                 catch (TransformerException | ParserConfigurationException e1) {
                     // TODO Auto-generated catch block

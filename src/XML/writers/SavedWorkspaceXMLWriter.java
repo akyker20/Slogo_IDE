@@ -16,6 +16,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import XML.readers.SavedWorkspaceXMLReader;
+import XML.workspaceparams.WorkspaceScreenParameters;
 
 
 /**
@@ -27,6 +29,8 @@ import org.w3c.dom.Element;
  *
  */
 public class SavedWorkspaceXMLWriter {
+    
+    private static final String PARAMETERS = "parameters";
 
     /**
      * Writes the contents of the document to the XML file specified.
@@ -36,50 +40,53 @@ public class SavedWorkspaceXMLWriter {
      * @throws TransformerException
      * @throws ParserConfigurationException
      */
-    public static void writeFile (WorkspaceDataHolder dataHolder) throws TransformerException,
+    public static void writeFile (WorkspaceDataHolder dataHolder, 
+                                  WorkspaceScreenParameters screenParams) throws TransformerException,
     ParserConfigurationException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.newDocument();
 
-        Element root = document.createElement("workspace");
+        Element root = document.createElement(SavedWorkspaceXMLReader.WORKSPACE);
         document.appendChild(root);
+        
+        Element parameters = document.createElement(PARAMETERS);
+        Element screen = document.createElement(SavedWorkspaceXMLReader.SCREEN);
+        parameters.appendChild(screen);
+        screen.setAttribute(SavedWorkspaceXMLReader.TOGGLE_GRID, 
+                            screenParams.extractParams(SavedWorkspaceXMLReader.TOGGLE_GRID));
+        screen.setAttribute(SavedWorkspaceXMLReader.COLOR, 
+                            screenParams.extractParams(SavedWorkspaceXMLReader.COLOR));
+        
+        
 
-        Element savedCommands = document.createElement("savedCommands");
+        Element savedCommands = document.createElement(SavedWorkspaceXMLReader.SAVED_COMMANDS);
         for (String savedCommand : dataHolder.getMySavedCommandsList()) {
-            Element command = document.createElement("command");
+            Element command = document.createElement(SavedWorkspaceXMLReader.COMMAND);
             command.setTextContent(savedCommand);
             savedCommands.appendChild(command);
         }
 
-        Element workspaceVariables = document.createElement("workspacevariables");
+        Element workspaceVariables = document.createElement(SavedWorkspaceXMLReader.WORKSPACE);
         for (WorkspaceVariable workspaceVariable : dataHolder.getMyVariablesList()) {
-            Element command = document.createElement("command");
-            command.setAttribute("name", workspaceVariable.getMyName());
-            command.setAttribute("value", "" + workspaceVariable.getMyValue());
+            Element command = document.createElement(SavedWorkspaceXMLReader.COMMAND);
+            command.setAttribute(SavedWorkspaceXMLReader.NAME, workspaceVariable.getMyName());
+            command.setAttribute(SavedWorkspaceXMLReader.VALUE, "" + workspaceVariable.getMyValue());
             workspaceVariables.appendChild(command);
         }
 
-        Element colorIndices = document.createElement("colorindices");
-        for (ColorIndex colorIndex : dataHolder.getMyColorIndexList()) {
-            Element el = document.createElement("colorindex");
-            el.setAttribute("index", "" + colorIndex.getMyIndex());
-            el.setAttribute("color", "" + colorIndex.getMyColor().toString());
-            colorIndices.appendChild(el);
-        }
-
-        Element userDefinedCommands = document.createElement("userdefinedcommands");
+        Element userDefinedCommands = document.createElement(SavedWorkspaceXMLReader.USER_DEFINED_CMDS);
         for (DisplayedUserCommand userDefinedCommand : dataHolder.getMyUserDefinedCommandList()) {
-            Element el = document.createElement("command");
-            el.setAttribute("name", userDefinedCommand.getMyName());
-            el.setAttribute("params", userDefinedCommand.getMyParams());
+            Element el = document.createElement(SavedWorkspaceXMLReader.COMMAND);
+            el.setAttribute(SavedWorkspaceXMLReader.NAME, userDefinedCommand.getMyName());
+            el.setAttribute(SavedWorkspaceXMLReader.PARAMS, userDefinedCommand.getMyParams());
             el.setTextContent(userDefinedCommand.getMyContent());
             userDefinedCommands.appendChild(el);
         }
 
+        root.appendChild(parameters);
         root.appendChild(savedCommands);
         root.appendChild(workspaceVariables);
-        root.appendChild(colorIndices);
         root.appendChild(userDefinedCommands);
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();

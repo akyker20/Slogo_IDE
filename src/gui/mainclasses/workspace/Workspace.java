@@ -30,6 +30,7 @@ public class Workspace extends Tab {
     private Map<String, ComponentDrawer> myComponentDrawers;
     private ObjectFactory[] myObjectFactories;
     private WorkspaceDataHolder myDataHolder;
+    private TurtleScreenDrawer myTurtleScreenDrawer;
     private BorderPane myPane;
     private int myID;
 
@@ -42,9 +43,10 @@ public class Workspace extends Tab {
 
         myPane = createPane();
         myComponentDrawers = ComponentBuilder.build(myPane, myTurtleNodes);
+        myTurtleScreenDrawer = (TurtleScreenDrawer)
+                myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER);
         myObjectFactories = FactoryBuilder
-                .init(myDataHolder, (TurtleScreenDrawer)
-                      myComponentDrawers.get(ComponentBuilder.SCREEN_DRAWER), myTurtleNodes);
+                .init(myDataHolder, myTurtleScreenDrawer, myTurtleNodes);
         FeatureBuilder.init(this, myComponentDrawers, screenParams, myDataHolder);
         setContent(myPane);
     }
@@ -124,6 +126,9 @@ public class Workspace extends Tab {
         DrawableObjectParser.parseDrawableObject(poll, myComponentDrawers, myObjectFactories);
     }
 
+    /**
+     * When a turtle is selected, the back-end is made aware of the change.
+     */
     public void notifyOfTurtleSelectionChange () {
         String activeTurtleStr = "";
         for (TurtleNode node : myTurtleNodes.getActiveNodes()) {
@@ -132,11 +137,25 @@ public class Workspace extends Tab {
         parseCommandString("Tell [ " + activeTurtleStr.trim() + " ]");
     }
 
+    /**
+     * Returns the workspace id of the workspace. This is necessary for the back-end
+     * to know which workspace is selected.
+     * @return
+     */
     public int getWorkspaceID () {
         return myID;
     }
 
+    /**
+     * Returns the data holder. Used by the xml writer to write the workspace
+     * configuration to a file for later use.
+     * @return
+     */
     public WorkspaceDataHolder getDataHolder () {
         return myDataHolder;
+    }
+
+    public WorkspaceScreenParameters getScreenParams () {
+        return myTurtleScreenDrawer.getScreenParams();
     }
 }

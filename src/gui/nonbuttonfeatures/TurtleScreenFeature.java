@@ -2,6 +2,7 @@ package gui.nonbuttonfeatures;
 
 import gui.componentdrawers.TurtleScreenDrawer;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import XML.readers.SavedWorkspaceXMLReader;
 import XML.workspaceparams.WorkspaceScreenParameters;
 
@@ -31,8 +32,8 @@ public class TurtleScreenFeature extends Pane {
             parentDrawer.toggleGrid();
         }
         if (screenParams.hasParam(COLOR)) {
-            parentDrawer.changeScreenColor("-fx-background-color: " +
-                    screenParams.extractParams(COLOR));
+            parentDrawer.changeScreenColor(Color.valueOf(
+                    screenParams.extractParams(COLOR)));
         }
     }
 }
