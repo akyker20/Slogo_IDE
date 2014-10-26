@@ -1,4 +1,4 @@
-package gui.nonbuttonfeatures.tableviews;
+package gui.nonbuttonfeatures.tableviews.colorindex;
 
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
 import javafx.collections.ObservableList;

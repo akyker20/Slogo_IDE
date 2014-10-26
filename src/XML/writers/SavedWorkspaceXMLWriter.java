@@ -2,7 +2,7 @@ package XML.writers;
 
 import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.mainclasses.workspace.WorkspaceDataHolder;
-import gui.nonbuttonfeatures.tableviews.ColorIndex;
+import gui.nonbuttonfeatures.tableviews.colorindex.ColorIndex;
 import gui.variableslist.WorkspaceVariable;
 import java.io.File;
 import java.util.List;

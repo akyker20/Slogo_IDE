@@ -2,7 +2,7 @@ package gui.nonbuttonfeatures;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import gui.componentdrawers.optionsholder.OptionsHolderDrawer;
-import gui.nonbuttonfeatures.tableviews.ImageIndex;
+import gui.nonbuttonfeatures.tableviews.imageindex.ImageIndex;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package gui.nonbuttonfeatures.tableviews;
+package gui.nonbuttonfeatures.tableviews.imageindex;
 
 import java.io.File;
 
