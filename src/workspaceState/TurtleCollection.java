@@ -9,7 +9,7 @@ import commandParsing.exceptions.RunTimeNullPointerException;
 
 /**
  * This class contains all of the turtles, all of the active turtles, and all of the stamps.
- * 
+ * This class is for the most part where any kind of interactions with turtles happen.
  * 
  * @author Stanley Yuan, Steve Kuznetsov
  *

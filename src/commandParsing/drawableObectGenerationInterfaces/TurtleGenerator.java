@@ -6,6 +6,12 @@ import java.util.Map;
 import workspaceState.Turtle;
 import drawableobject.DrawableObject;
 
+/**
+ * This class generates the actual Turtle drawableObjects to give to the GUI.
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
 
 public interface TurtleGenerator {
     default public DrawableObject generateDrawableObjectRepresentingTurtle (Turtle turtle) {

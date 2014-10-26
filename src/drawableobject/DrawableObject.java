@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Class encapsulates a data type that specifies how to draw something on the screen
  *
- * @author akyker20, steven, stanley, allankiplagat
+ * @author Austin Kyker, Steve Kuznetsov, Stanley Yuan, Allan Kiplagat
  *
  */
 

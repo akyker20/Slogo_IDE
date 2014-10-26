@@ -6,6 +6,14 @@ import java.util.Map;
 import commandParsing.exceptions.RunTimeNullPointerException;
 
 
+/**
+ * This class contains all of the information for the user defined variables, and is where we 
+ * edit or modify them. 
+ * 
+ * @author Stanley Yuan, Steve Kuznetsov
+ *
+ */
+
 public class UserDefinedVariableCollection {
 
     public Map<String, WorkspaceVariable> variableMap = new HashMap<String, WorkspaceVariable>();
