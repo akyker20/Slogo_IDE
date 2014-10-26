@@ -18,7 +18,7 @@ public class AskWith extends Ask {
 	@Override
 	protected void determineTurtlesToActivate(Iterator<String> commands, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-
+dfgsf g
 		for (Turtle t : workspace.turtles.getAllTurtles()) {
 			double value = 0;
 			while (commands.hasNext()) {

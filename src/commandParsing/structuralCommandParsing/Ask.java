@@ -1,11 +1,8 @@
 package commandParsing.structuralCommandParsing;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 
-import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
 
 import commandParsing.exceptions.SLOGOException;
@@ -26,8 +23,8 @@ public class Ask extends MultipleTurtleCommand {
 		workspace.turtles.clearActiveTurtles();
 		
 		extractCommandsBetweenBraces(commandStringIterator);
-		determineTurtlesToActivate(commandStringIterator, objectQueue);
-		makeAndActivateGivenTurtles();
+		determineTurtlesToActivate(enclosedCommands.iterator(), objectQueue);
+		makeAndActivateGivenTurtles(objectQueue);
 		
 		extractCommandsBetweenBraces(commandStringIterator);
 		parseCommandsBetweenBraces(enclosedCommands.iterator(), objectQueue);

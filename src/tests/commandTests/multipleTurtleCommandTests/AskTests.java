@@ -2,22 +2,22 @@ package tests.commandTests.multipleTurtleCommandTests;
 
 import static org.junit.Assert.assertTrue;
 import gui.factories.LineFactory;
-import gui.factories.WorkspaceVariableFactory;
 import gui.factories.turtlefactory.TurtleFactory;
 
 import org.junit.Test;
 
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
+
 import drawableobject.DrawableObject;
 import tests.commandTests.CommandTester;
 
-public class TellTests extends CommandTester {
-
+public class AskTests extends CommandTester {
+	
 	@Test
-	public void TellTests() throws SLOGOException {
+	public void AskTests() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("tell [ 1 2 ] fd 50");
+		setUpCommands("ask [ 1 2 ] [fd 50]");
 
 		double f = 0;
 
@@ -62,8 +62,7 @@ public class TellTests extends CommandTester {
 		assertTrue(objectQueue.size() == 0);
 		
 		assertTrue(workspace.turtles.getActiveTurtles().contains(workspace.turtles.getTurtleWithID(1)));
-		assertTrue(workspace.turtles.getActiveTurtles().contains(workspace.turtles.getTurtleWithID(2)));
-		assertTrue(workspace.turtles.getActiveTurtles().size() == 2);
+		assertTrue(workspace.turtles.getActiveTurtles().size() == 1);
 	}
 
 }
