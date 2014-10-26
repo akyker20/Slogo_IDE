@@ -1,36 +1,23 @@
 package commandParsing.structuralCommandParsing;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Queue;
 
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
-import commandParsing.CommandParser;
+
 import commandParsing.exceptions.SLOGOException;
+
 import drawableobject.DrawableObject;
 
-public class Tell extends StructuralCommand {
+public class Tell extends MultipleTurtleCommand {
 	
-	List<Integer> turtleIDList = new ArrayList<Integer>();
 
 	public Tell(WorkspaceState someWorkspace) {
 		super(someWorkspace);
 	}
 	
-	@Override
-	protected void parseCommandsBetweenBraces(Iterator<String> commands, Queue<DrawableObject> objectQueue)
-			throws SLOGOException {
-		double value = 0;
-		while (commands.hasNext()) {
-			String stringOfInterest = commands.next();
-			CommandParser parser = (CommandParser) createParser(stringOfInterest, workspace);
-			value = parser.parse(commands, objectQueue);
-			turtleIDList.add((int) value);
-		}
-		returnValue = value;
-	}
+	
 
 	@Override
 	public double parse(Iterator<String> commandStringIterator, Queue<DrawableObject> objectQueue)
@@ -41,7 +28,7 @@ public class Tell extends StructuralCommand {
 		extractCommandsBetweenBraces(commandStringIterator);
 		parseCommandsBetweenBraces(commandStringIterator, objectQueue);
 		
-		for (Integer i: turtleIDList){
+		for (Integer i: activeTurtleIDList){
 			if(workspace.turtles.hasTurtleWithID(i)){
 				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
 			}
