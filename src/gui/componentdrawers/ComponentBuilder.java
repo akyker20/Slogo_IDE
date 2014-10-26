@@ -11,7 +11,9 @@ import javafx.scene.layout.VBox;
 
 
 /**
- * This class is responsible for building all of the components.
+ * This class is responsible for building all of the components. The
+ * components are large areas of the screen that house different
+ * components.
  *
  * @author akyker20
  *

@@ -5,7 +5,8 @@ import javafx.scene.layout.Pane;
 
 
 /**
- * Class represents a component of the GUI e.g. GridDrawer
+ * Class represents a component of the GUI e.g. GridDrawer. Each
+ * of these components contains at least one feature.
  *
  * @author akyker20, allankiplagat
  *

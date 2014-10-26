@@ -34,8 +34,17 @@ public interface SlogoGraphics {
     RunTimeDivideByZeroException,
     RunTimeNullPointerException;
 
+    /**
+     * Creates a new workspace state.
+     * @param workspaceID
+     */
     public void createWorkspaceState (int workspaceID);
 
+    /**
+     * Lets the backend know which workspace is currently selected (which
+     * workspace is being viewed by the user).
+     * @param workspaceID
+     */
     public void setActiveWorkspaceState (int workspaceID);
 
 }

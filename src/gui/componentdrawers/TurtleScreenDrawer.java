@@ -63,6 +63,13 @@ public class TurtleScreenDrawer extends ComponentDrawer {
         return grid;
     }
 
+    /**
+     * Used to make the column lines of the relative grid
+     * that can be displayed when the user hits the 
+     * toggle grid button.
+     * @param col
+     * @return
+     */
     private Line makeColLine (int col) {
         Line line = new Line();
         line.getStyleClass().add("line");
@@ -73,6 +80,12 @@ public class TurtleScreenDrawer extends ComponentDrawer {
         return line;
     }
 
+    /**
+     * Used to make the row lines for the relative grid that
+     * the user can turn on by hitting toggle grid.
+     * @param row
+     * @return
+     */
     private Line makeRowLine (int row) {
         Line line = new Line();
         line.getStyleClass().add("line");

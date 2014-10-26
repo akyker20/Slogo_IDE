@@ -9,7 +9,7 @@ import gui.mainclasses.TextGenerator;
  * The purpose of this class is to allow the user to toggle a relative grid on or
  * off in the Turtle Screen Drawer.
  *
- * @author Austin Kyker
+ * @author akyker20
  *
  */
 public class ToggleGridButtonFeature extends ButtonFeature {
