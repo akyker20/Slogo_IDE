@@ -25,6 +25,9 @@ public class HelpMenu extends Menu {
             "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands.php";
     public static final String EXTENDED_COMMANDS_URL =
             "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands2.php";
+    
+    public static final int HELP_PAGE_WIDTH = 800;
+    public static final int HELP_PAGE_HEIGHT = 600;
 
     public HelpMenu () {
         setText(TextGenerator.get(TextGenerator.HELP));
@@ -60,7 +63,7 @@ public class HelpMenu extends Menu {
     protected void displayHelpPage (String url) {
         Stage stage = new Stage();
         Group root = new Group();
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, HELP_PAGE_WIDTH, HELP_PAGE_HEIGHT);
         final WebView browser = new WebView();
         final WebEngine webEngine = browser.getEngine();
 

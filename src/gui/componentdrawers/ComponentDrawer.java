@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 public abstract class ComponentDrawer extends Pane {
 
     private String myName;
+    public static final String TABPANE_LABEL = "tabPane";
 
     public ComponentDrawer (String name) {
         myName = name;

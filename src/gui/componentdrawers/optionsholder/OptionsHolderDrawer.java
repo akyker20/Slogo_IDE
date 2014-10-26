@@ -18,7 +18,7 @@ public class OptionsHolderDrawer extends ComponentDrawer {
     public OptionsHolderDrawer (String name) {
         super(name);
         myButtonHolder = new TabPane();
-        myButtonHolder.setId("tabPane");
+        myButtonHolder.setId(ComponentDrawer.TABPANE_LABEL);
         myButtonHolder.setPrefWidth(245);
         myButtonHolder.setLayoutY(20);
         super.drawShape(new Node[] { new Label(TextGenerator.get(TextGenerator.OPTIONS)),

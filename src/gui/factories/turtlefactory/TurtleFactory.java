@@ -38,7 +38,6 @@ public class TurtleFactory extends ObjectFactory {
                 return myTurtleNodes.addTurtleNode(params);
             }
             catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

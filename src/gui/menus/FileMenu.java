@@ -73,7 +73,6 @@ public class FileMenu extends Menu {
 
                 }
                 catch (SAXException | IOException | ParserConfigurationException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
             }
@@ -91,7 +90,6 @@ public class FileMenu extends Menu {
                                                       .getScreenParams());
                 }
                 catch (TransformerException | ParserConfigurationException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
             }

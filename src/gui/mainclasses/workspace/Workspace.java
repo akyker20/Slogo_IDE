@@ -37,6 +37,11 @@ public class Workspace extends Tab {
     private TurtleScreenDrawer myTurtleScreenDrawer;
     private BorderPane myPane;
     private int myID;
+    
+    private static String FORWARD_COMMAND = "fd 10";
+    private static String BACK_COMMAND = "bk 10";
+    private static String RIGHT_COMMAND = "right 90";
+    private static String LEFT_COMMAND = "left 90";
 
     public Workspace (SlogoGraphics control, WorkspaceScreenParameters screenParams,
                       WorkspaceDataHolder dataHolder, int id) {
@@ -77,16 +82,16 @@ public class Workspace extends Tab {
             String command = null;
             switch (event.getCode()) {
                 case UP:
-                    command = "fd 10";
+                    command = FORWARD_COMMAND;
                     break;
                 case DOWN:
-                    command = "bk 10";
+                    command = BACK_COMMAND;
                     break;
                 case RIGHT:
-                    command = "right 90";
+                    command = RIGHT_COMMAND;
                     break;
                 case LEFT:
-                    command = "left 90";
+                    command = LEFT_COMMAND;
                     break;
                 default:
                     return;
@@ -96,7 +101,6 @@ public class Workspace extends Tab {
             }
             catch (CompileTimeParsingException | RunTimeDivideByZeroException
                     | RunTimeNullPointerException | IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

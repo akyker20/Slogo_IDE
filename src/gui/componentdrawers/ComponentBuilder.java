@@ -29,6 +29,7 @@ public class ComponentBuilder {
     public static final String WORKSPACE_COMMANDS = "workspaceCommandDrawer";
     public static final String SIGNIFICANT_COMMANDS_DRAWER = "significantCommandsDrawer";
     public static final String ERROR_DRAWER = "errorDrawer";
+    public static final int PADDING = 10;
 
     private static String[] myLeftContainerElements = new String[] { SCREEN_DRAWER,
                                                                      PREVIOUS_COMMANDS,
@@ -55,7 +56,7 @@ public class ComponentBuilder {
     private static void buildRightComponents (BorderPane pane,
                                               Map<String, ComponentDrawer> drawerMap) {
         VBox rightVBox = new VBox(10);
-        rightVBox.setPadding(new Insets(10, 10, 0, 0));
+        rightVBox.setPadding(new Insets(PADDING, PADDING, 0, 0));
         addComponentsToBox(drawerMap, myRightContainerElements, rightVBox);
         pane.setRight(rightVBox);
     }

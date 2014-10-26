@@ -27,6 +27,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
     public static final double GRID_HEIGHT = StageInitializer.SCREEN_HEIGHT * GRID_HEIGHT_RATIO;
     public static final int GRID_NUM_ROWS = 10;
     public static final int GRID_NUM_COLS = 10;
+    public static final int GRID_HEIGHT_DEVIATION = 20;
     
     private Color myScreenColor;
 
@@ -43,7 +44,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
         myGrid = initializeGridPane();
         myTurtleNodes = turtleNodes;
         setPrefWidth(GRID_WIDTH);
-        setPrefHeight(GRID_HEIGHT + 20);
+        setPrefHeight(GRID_HEIGHT + GRID_HEIGHT_DEVIATION);
         getChildren().addAll(new Label(TextGenerator.get(TextGenerator.TURTLE_SCREEN)));
     }
 

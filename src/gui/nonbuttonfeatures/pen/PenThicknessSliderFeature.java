@@ -18,6 +18,10 @@ import javafx.scene.control.Slider;
 public class PenThicknessSliderFeature extends Slider {
 
     private static final String SET_PEN_SIZE = "setpensize";
+    private static final int SLIDER_MIN = 1;
+    private static final int SLIDER_MAX = 5;
+    private static final int SLIDER_START = 5;
+    private static final int SLIDER_TICK_UNIT = 1;
 
     private Workspace myWorkspace;
 
@@ -36,12 +40,12 @@ public class PenThicknessSliderFeature extends Slider {
      * Sets the properties of the slider.
      */
     private void setSliderProperties () {
-        setMin(1);
-        setMax(5);
-        setValue(1);
+        setMin(SLIDER_MIN);
+        setMax(SLIDER_MAX);
+        setValue(SLIDER_START);
         setShowTickLabels(true);
         setShowTickMarks(true);
-        setMajorTickUnit(1);
+        setMajorTickUnit(SLIDER_TICK_UNIT);
         setMinorTickCount(0);
         snapToTicksProperty().set(true);
         setWidth(ButtonFeature.BUTTON_WIDTH);

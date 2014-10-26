@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
  *
  */
 public class OptionsTab extends Tab {
+    public static final int PADDING = 5;
 
     /**
      * Default constructor will draw its features in the centers.
@@ -45,8 +46,8 @@ public class OptionsTab extends Tab {
         featureContainerHolder.getChildren().add(leftFeatureContainer);
         featureContainerHolder.getChildren().add(rightFeatureContainer);
 
-        leftFeatureContainer.setPadding(new Insets(5, 0, 5, 5));
-        rightFeatureContainer.setPadding(new Insets(5, 0, 5, 5));
+        leftFeatureContainer.setPadding(new Insets(PADDING, 0, PADDING, PADDING));
+        rightFeatureContainer.setPadding(new Insets(PADDING, 0, PADDING, PADDING));
 
         for (Node feature : leftFeatures) {
             leftFeatureContainer.getChildren().add(feature);

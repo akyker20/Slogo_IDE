@@ -22,7 +22,7 @@ public class SignificantCommandsDrawer extends ComponentDrawer {
     public SignificantCommandsDrawer (String name) {
         super(name);
         mySignificantCommandsPane = new TabPane();
-        mySignificantCommandsPane.setId("tabPane");
+        mySignificantCommandsPane.setId(ComponentDrawer.TABPANE_LABEL);
         mySignificantCommandsPane.setPrefWidth(245);
         mySignificantCommandsPane.setLayoutY(20);
         super.drawShape(new Node[] { new Label(TextGenerator.get(TextGenerator.COMMANDS)),
