@@ -5,7 +5,11 @@ import gui.mainclasses.StageInitializer;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-
+/**
+ * The command line drawer is the component responsible for the command line feature.
+ * @author akyker20
+ *
+ */
 public class CommandLineDrawer extends ComponentDrawer {
     
     private TextArea myCommandLine;

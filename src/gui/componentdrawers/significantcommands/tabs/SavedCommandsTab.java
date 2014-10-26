@@ -5,6 +5,13 @@ import gui.nonbuttonfeatures.SavedCommandsFeature;
 import java.util.List;
 import javafx.scene.control.Tab;
 
+/**
+ * This tab allows the user to see saved commands. The user can double click on
+ * these commands and they will appear in the command line without the user
+ * having to type them again.
+ * @author akyker20
+ *
+ */
 public class SavedCommandsTab extends Tab {
     
     private SavedCommandsFeature myFeature;

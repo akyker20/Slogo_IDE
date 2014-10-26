@@ -11,6 +11,8 @@ import commandParsing.exceptions.CompileTimeParsingException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+
+
 public abstract class CommandParser {
 
 	protected static WorkspaceState workspace;
