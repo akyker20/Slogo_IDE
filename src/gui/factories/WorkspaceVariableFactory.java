@@ -19,7 +19,6 @@ public class WorkspaceVariableFactory extends ObjectFactory {
     public WorkspaceVariableFactory (String name, ObservableList<WorkspaceVariable> variablesList) {
         super(name);
         myVariablesList = variablesList;
-        // TODO Auto-generated constructor stub
     }
 
     @Override

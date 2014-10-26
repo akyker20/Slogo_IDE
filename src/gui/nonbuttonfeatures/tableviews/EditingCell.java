@@ -1,10 +1,5 @@
 package gui.nonbuttonfeatures.tableviews;
 
-import java.io.IOException;
-import commandParsing.exceptions.CompileTimeParsingException;
-import commandParsing.exceptions.RunTimeDivideByZeroException;
-import commandParsing.exceptions.RunTimeNullPointerException;
-import Control.SlogoGraphics;
 import gui.mainclasses.workspace.Workspace;
 import gui.variableslist.WorkspaceVariable;
 import javafx.event.EventHandler;

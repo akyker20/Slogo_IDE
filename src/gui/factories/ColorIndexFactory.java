@@ -26,7 +26,16 @@ public class ColorIndexFactory extends ObjectFactory {
 
     @Override
     public Node[] generateObject(Map<String, String> params) {
-        myColorIndexList.add(new ColorIndex(Integer.parseInt(params.get(INDEX)), Color.valueOf(params.get(COLOR))));
+        int index = Integer.parseInt(params.get(INDEX));
+        Color color = Color.valueOf(params.get(COLOR));
+        for(ColorIndex colorIndex:myColorIndexList){
+            if(colorIndex.getMyIndex() == index) {
+                colorIndex.setMyColor(color);
+                refreshList();
+                return new Node[] { new NullNode() };
+            }
+        }
+        myColorIndexList.add(new ColorIndex(index, color));
         return new Node[] { new NullNode() };
     }
 
@@ -37,7 +46,5 @@ public class ColorIndexFactory extends ObjectFactory {
         }
         myColorIndexList.clear();
         myColorIndexList.addAll(list);
-
     }
-
 }
