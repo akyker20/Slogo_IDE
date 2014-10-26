@@ -12,7 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 /**
- * Class manages the displaying of workspace variables 
+ * Class manages the displaying of workspace variables in a tableview.
+ * The user will be able to edit the variables as well.
  * @author akyker20, allankiplagat
  *
  */

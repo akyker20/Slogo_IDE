@@ -19,10 +19,10 @@ import javafx.stage.Stage;
 
 
 /**
- * This class is a list view used to store previous commands. All commands that are entered
- * are put into this list (including commands that raise exceptions - thats how its done
- * in Matlab and other IDEs). The user can run a previous command by double clicking on
- * a list item.
+ * This class is a tableview used to store user defined commands.
+ * The table will display the name of the function as well as the 
+ * parameters. If the user double clicks on the function, they will be
+ * able to see the content as well.
  *
  * @author Austin Kyker
  *

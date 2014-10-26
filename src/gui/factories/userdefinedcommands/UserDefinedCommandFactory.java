@@ -31,6 +31,11 @@ public class UserDefinedCommandFactory extends ObjectFactory {
         myUserDefinedCommandsList = (ObservableList<DisplayedUserCommand>) commandList;
     }
 
+    /**
+     * If a command with the same name as the drawable object parameter name
+     * exists, then this command is overwritten. Otherwise, a new command is
+     * created.
+     */
     @Override
     public Node[] generateObject (Map<String, String> paramsMap) {
         String name = paramsMap.get(NAME);
@@ -49,6 +54,10 @@ public class UserDefinedCommandFactory extends ObjectFactory {
         return new Node[] { new NullNode() };
     }
 
+    /**
+     * Refreshes the observable list so the changes will be reflected
+     * instantaneously in the tableview.
+     */
     private void refreshList () {
         List<DisplayedUserCommand> list = new ArrayList<DisplayedUserCommand>();
         for (DisplayedUserCommand command : myUserDefinedCommandsList) {

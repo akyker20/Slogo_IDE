@@ -8,7 +8,9 @@ import java.util.Map;
 import javafx.scene.Node;
 
 /**
- * Class handles turtle creation on front-end
+ * Class handles turtle creation on front-end. It makes use
+ * of the turtlenodes and turtlenode class to manage the turtle
+ * nodes that are displayed in the turtle screen component.
  * @author akyker20, allankiplagat
  *
  */
@@ -30,6 +32,11 @@ public class TurtleFactory extends ObjectFactory {
         myTurtleNodes = turtleNodes;
     }
 
+    /**
+     * Looks to see if the drawable object id parameter matches that
+     * of a turtle that already exists. If this is the case, then that
+     * turtle is updated. Otherwise, a new turtle node is added.
+     */
     @Override
     public Node[] generateObject (Map<String, String> params) {
         TurtleNode turtleNode = myTurtleNodes.getTurtleWithID(params.get(TURTLE_ID));

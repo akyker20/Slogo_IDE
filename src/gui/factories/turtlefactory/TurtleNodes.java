@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
 /**
- * Class represents a collection of TurtleNode objects
+ * Class represents a collection of TurtleNode objects.
  * @author akyker20
  *
  */
@@ -23,6 +23,12 @@ public class TurtleNodes {
         myWorkspace = workspace;
     }
 
+    /**
+     * Looks for a turtle with an id of imageID. If it finds the turtle,
+     * it returns it. Otherwise, it returns null.
+     * @param imageID
+     * @return
+     */
     public TurtleNode getTurtleWithID (String imageID) {
         for (TurtleNode node : myTurtleNodes) {
             if (node.getTurtleID().equals(imageID)) { return node; }

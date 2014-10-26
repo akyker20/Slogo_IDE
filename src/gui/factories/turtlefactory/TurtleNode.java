@@ -121,10 +121,18 @@ public class TurtleNode extends ImageView {
                            false, true));
     }
 
+    /**
+     * Returns true if the turtle is selected (green) and false otherwise.
+     * @return Boolean
+     */
     public boolean isSelected () {
         return isSelected;
     }
 
+    /**
+     * Returns the id of the turtle
+     * @return String
+     */
     public String getTurtleID () {
         return myID;
     }

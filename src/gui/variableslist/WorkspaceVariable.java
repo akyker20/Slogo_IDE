@@ -1,7 +1,8 @@
 package gui.variableslist;
 
 /**
- * Class is used to represent variables displayed on the GUI
+ * Class is used to represent variables displayed on the GUI. This 
+ * class is necessary to create a tableview of workspace variables.
  * @author akyker20, allankiplagat
  *
  */
@@ -27,6 +28,10 @@ public class WorkspaceVariable {
         return myValue;
     }
 
+    /**
+     * Necessary to make the valye editable.
+     * @param myValue
+     */
     public void setMyValue (double myValue) {
         this.myValue = myValue;
     }

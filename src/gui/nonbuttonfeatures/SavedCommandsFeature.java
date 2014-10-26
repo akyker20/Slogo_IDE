@@ -9,7 +9,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 /**
- * Class is a ListView used to display the commands saved by the user
+ * Class is a ListView used to display the commands saved by the user.
  * @author akyker20
  *
  */
@@ -71,6 +71,10 @@ public class SavedCommandsFeature extends ListView<String> {
         }
     }
 
+    /**
+     * Returns the list of saved commands.
+     * @return
+     */
     public List<String> getCommands () {
         return myCommands;
     }
