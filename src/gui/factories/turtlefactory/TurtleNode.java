@@ -21,8 +21,8 @@ import com.sun.javafx.geom.Point2D;
  */
 public class TurtleNode extends ImageView {
 
-    private static final String DEFAULT_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/default_turtle.png";
     private static final String SELECTED_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/selected_turtle.png";
+    private static final String DESELECTED_TURTLE_IMAGEPATH = "./src/resources/guiResources/turtleImages/deselected_turtle.png";
 
     private static final double TURTLE_IMAGE_WIDTH_RATIO = 0.06;
     private static final double TURTLE_IMAGE_WIDTH = TurtleScreenDrawer.GRID_WIDTH *
@@ -36,9 +36,10 @@ public class TurtleNode extends ImageView {
     private String myID;
 
     public TurtleNode(Map<String, String> params, Workspace workspace) throws FileNotFoundException {
+        isSelected = true;
         myWorkspace = workspace;
         myID = params.get(TurtleNodes.TURTLE_IMAGE_ID);    
-        updateImage(DEFAULT_TURTLE_IMAGEPATH);
+        updateImage(SELECTED_TURTLE_IMAGEPATH);
         updatePosition(params);
         setOnMouseClicked(event->selectTurtle());
     }
@@ -90,7 +91,7 @@ public class TurtleNode extends ImageView {
                 updateImage(SELECTED_TURTLE_IMAGEPATH);
             }
             else {
-                updateImage(DEFAULT_TURTLE_IMAGEPATH);
+                updateImage(DESELECTED_TURTLE_IMAGEPATH);
             }
         }
         catch (FileNotFoundException e) {

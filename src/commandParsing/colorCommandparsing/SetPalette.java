@@ -2,16 +2,14 @@ package commandParsing.colorCommandparsing;
 
 import java.util.List;
 import java.util.Queue;
-
 import javafx.scene.paint.Color;
 import workspaceState.WorkspaceState;
-
+import commandParsing.drawableObectGenerationInterfaces.ColorIndexGenerator;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.FloatInputCommandParser;
-
 import drawableobject.DrawableObject;
 
-public class SetPalette extends FloatInputCommandParser {
+public class SetPalette extends FloatInputCommandParser implements ColorIndexGenerator {
 
 	public SetPalette(WorkspaceState someWorkspace) {
 		super(someWorkspace);
