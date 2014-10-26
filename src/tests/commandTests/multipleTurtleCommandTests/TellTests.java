@@ -15,7 +15,7 @@ import tests.commandTests.CommandTester;
 public class TellTests extends CommandTester {
 
 	@Test
-	public void TellTests() throws SLOGOException {
+	public void SimpleTellTests() throws SLOGOException {
 		resetTesterVariables();
 		setUpCommands("tell [ 1 2 ] fd 50");
 
