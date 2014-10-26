@@ -8,6 +8,7 @@ import java.util.Queue;
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
+import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
@@ -36,14 +37,14 @@ public abstract class MultipleTurtleCommand extends StructuralCommand {
 		returnValue = value;
 	}
 	
-	protected int makeAndActivateGivenTurtles() {
+	protected int makeAndActivateGivenTurtles() throws RunTimeNullPointerException {
 		int lastTurtleID = 0;
-		for (Integer i : activeTurtleIDList) {
+		for (int i : activeTurtleIDList) {
 			if (workspace.turtles.hasTurtleWithID(i)) {
-				workspace.turtles.activateTurtle(workspace.turtles.getTurtleWithID(i));
+				workspace.turtles.activateTurtle(i);
 			}
 			else {
-				workspace.turtles.addTurtle(new Turtle(i));
+				workspace.turtles.addTurtle(i);
 			}
 			lastTurtleID = i;			
 		}
@@ -56,9 +57,9 @@ public abstract class MultipleTurtleCommand extends StructuralCommand {
 		return savedListOfTurtles;
 	}
 	
-	protected void restorePreviouslySavedActiveTurtles() {
+	protected void restorePreviouslySavedActiveTurtles() throws RunTimeNullPointerException {
 		for (Turtle t : savedListOfTurtles) {
-			workspace.turtles.activateTurtle(t);
+			workspace.turtles.activateTurtle(t.getID());
 		}
 	}
 

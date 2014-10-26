@@ -38,8 +38,8 @@ public abstract class CommandTester {
 	public void setUpStateBeforeTesting(String language) throws IOException{		
 		try {
 			workspace = new WorkspaceState();
-			workspace.turtles.addTurtle(new Turtle());
-		} catch (LanguageFileNotFoundException | PropertyFileAccessException e) {
+			workspace.turtles.addTurtle();
+		} catch (LanguageFileNotFoundException | PropertyFileAccessException | RunTimeNullPointerException e) {
 			e.printStackTrace();
 		}
 	}

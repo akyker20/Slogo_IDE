@@ -22,8 +22,8 @@ public class MakeTurtle extends CommandParser implements TurtleGenerator {
 	@Override
 	public double parse(Iterator<String> commandString, Queue<DrawableObject> objectQueue)
 			throws SLOGOException {
-		Turtle newTurtle = new Turtle();
-		workspace.turtles.addTurtle(newTurtle);
+		workspace.turtles.addTurtle();
+		Turtle newTurtle = workspace.turtles.getLastAddedTurtle();
 		objectQueue.add(generateDrawableObjectRepresentingTurtle(newTurtle));
 		return 0;
 	}
