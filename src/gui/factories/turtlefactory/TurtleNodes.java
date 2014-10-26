@@ -10,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
 public class TurtleNodes {
-    
-    public static final String TURTLE_IMAGE_ID = "turtleImageID";
   
     private List<TurtleNode> myTurtleNodes = new ArrayList<TurtleNode>();
     private Workspace myWorkspace;
