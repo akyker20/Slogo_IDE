@@ -1,5 +1,6 @@
 package gui.mainclasses.workspace;
 
+import gui.factories.userdefinedcommands.DisplayedUserCommand;
 import gui.nonbuttonfeatures.tableviews.ColorIndex;
 import gui.variableslist.WorkspaceVariable;
 import javafx.collections.FXCollections;
@@ -8,7 +9,7 @@ import javafx.collections.ObservableList;
 public class WorkspaceDataHolder {
     private ObservableList<WorkspaceVariable> myVariablesList;
     private ObservableList<String> myPreviousCommandsList;
-    private ObservableList<String> myUserDefinedCommandList;
+    private ObservableList<DisplayedUserCommand> myUserDefinedCommandList;
     private ObservableList<String> mySavedCommandsList;
     private ObservableList<ColorIndex> myColorIndexList;
     
@@ -33,7 +34,7 @@ public class WorkspaceDataHolder {
      */
     public WorkspaceDataHolder(ObservableList<WorkspaceVariable> myVariablesList,
                                ObservableList<String> myPreviousCommandsList,
-                               ObservableList<String> myUserDefinedCommandList,
+                               ObservableList<DisplayedUserCommand> myUserDefinedCommandList,
                                ObservableList<String> mySavedCommandsList,
                                ObservableList<ColorIndex> myColorIndexList) {
         this.myVariablesList = myVariablesList;
@@ -52,7 +53,7 @@ public class WorkspaceDataHolder {
         return myPreviousCommandsList;
     }
 
-    public ObservableList<String> getMyUserDefinedCommandList () {
+    public ObservableList<DisplayedUserCommand> getMyUserDefinedCommandList () {
         return myUserDefinedCommandList;
     }
 
