@@ -1,10 +1,14 @@
 package tests.commandTests.inputlessCommandTests;
 
 import static org.junit.Assert.assertTrue;
+import javafx.scene.paint.Color;
 import gui.componentdrawers.ComponentBuilder;
 import gui.factories.FactoryBuilder;
+import gui.factories.PaneFactory;
 import gui.factories.turtlefactory.TurtleFactory;
+
 import org.junit.Test;
+
 import tests.commandTests.CommandTester;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
@@ -24,7 +28,9 @@ public class ClearScreenTests extends CommandTester {
 		
 		assertTrue(pane.getParent().equals(ComponentBuilder.SCREEN_DRAWER));
 		assertTrue(pane.getType().equals(FactoryBuilder.CLEAR_GRID_FACTORY));
-		assertTrue(pane.getParameters().size()==0);
+		assertTrue(pane.getParameters().get(PaneFactory.RESET_FLAG).equals("true"));
+		assertTrue(pane.getParameters().get(PaneFactory.BACKGROUND_COLOR).equals(Color.WHITE.toString()));
+		
 		
 		assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));
 		assertTrue(turtle.getType().equals(TurtleFactory.TYPE));

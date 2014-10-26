@@ -24,14 +24,16 @@ public abstract class StructuralCommand extends CommandParser {
 	protected List<String> enclosedCommands;
 	protected double returnValue;
 
-	protected void checkForOpeningBrace(Iterator<String> commandStringIterator) throws CompileTimeParsingException {
+	protected void checkForOpeningBrace(Iterator<String> commandStringIterator)
+			throws CompileTimeParsingException {
 		String stringOfInterest = commandStringIterator.next();
 		if (!workspace.translator.matchesListStartPattern(stringOfInterest)) {
 			throw new CompileTimeParsingException("expected opening brace");
 		}
 	}
 
-	protected void checkForClosingBrace(Iterator<String> commandStringIterator) throws CompileTimeParsingException {
+	protected void checkForClosingBrace(Iterator<String> commandStringIterator)
+			throws CompileTimeParsingException {
 		String stringOfInterest = commandStringIterator.next();
 		if (!workspace.translator.matchesListEndPattern(stringOfInterest)) {
 			throw new CompileTimeParsingException("expected closing brace");
@@ -43,7 +45,8 @@ public abstract class StructuralCommand extends CommandParser {
 		List<String> commandList = new ArrayList<String>();
 		checkForOpeningBrace(commandStringIterator);
 		String stringOfInterest = commandStringIterator.next();
-		while (!workspace.translator.matchesListEndPattern(stringOfInterest) & commandStringIterator.hasNext()) {
+		while (!workspace.translator.matchesListEndPattern(stringOfInterest)
+				& commandStringIterator.hasNext()) {
 			commandList.add(stringOfInterest);
 			stringOfInterest = commandStringIterator.next();
 		}
@@ -71,7 +74,8 @@ public abstract class StructuralCommand extends CommandParser {
 		enclosedCommands = Collections.<String> emptyList();
 	}
 
-	protected void ignoreUntilClosingBrace(Iterator<String> commandStringIterator) throws CompileTimeParsingException {
+	protected void ignoreUntilClosingBrace(Iterator<String> commandStringIterator)
+			throws CompileTimeParsingException {
 		checkForOpeningBrace(commandStringIterator);
 		boolean stoppedParsingBeforeEndOfString = findBrace(commandStringIterator);
 		if (!stoppedParsingBeforeEndOfString) {

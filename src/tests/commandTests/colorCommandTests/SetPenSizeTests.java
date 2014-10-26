@@ -1,10 +1,7 @@
 package tests.commandTests.colorCommandTests;
 
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
-
-import com.sun.prism.paint.Color;
 import commandParsing.CommandParser;
 import commandParsing.exceptions.SLOGOException;
 
@@ -25,18 +22,19 @@ public class SetPenSizeTests extends CommandTester {
 	}
 
 	@Test
-	public void SetPenColorAfterSetPenColorTest() throws SLOGOException {
+	public void SetPenSizeAfterSetPenSizeTest() throws SLOGOException {
 		resetTesterVariables();
-		setUpCommands("setpc 4 setpc 0");
+		setUpCommands("setps 3 setps 1");
 
 		double f = 0;
-		while (commands.hasNext()) {
+
+		while(commands.hasNext()){
 			CommandParser parser = createCommand();
 			f = parser.parse(commands, objectQueue);
 		}
-		assertTrue(f == 0);
+		assertTrue(f == 1);
 		assertTrue(objectQueue.size() == 0);
-		assertTrue(!workspace.turtles.getLastActiveTurtle().pen.getPenColor().equals(Color.BLACK));
+		assertTrue(workspace.turtles.getLastActiveTurtle().pen.getPenSize()==1);
 	}
 
 }

@@ -8,11 +8,12 @@ import java.util.Queue;
 import workspaceState.Turtle;
 import workspaceState.WorkspaceState;
 import commandParsing.CommandParser;
+import commandParsing.drawableObectGenerationInterfaces.TurtleGenerator;
 import commandParsing.exceptions.RunTimeNullPointerException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
-public abstract class MultipleTurtleCommand extends StructuralCommand {
+public abstract class MultipleTurtleCommand extends StructuralCommand implements TurtleGenerator {
 	
 	List<Integer> activeTurtleIDList = new ArrayList<Integer>();
 	List<Turtle> savedListOfTurtles = new ArrayList<Turtle>();
@@ -37,7 +38,7 @@ public abstract class MultipleTurtleCommand extends StructuralCommand {
 		returnValue = value;
 	}
 	
-	protected int makeAndActivateGivenTurtles() throws RunTimeNullPointerException {
+	protected int makeAndActivateGivenTurtles(Queue<DrawableObject> objectQueue) throws RunTimeNullPointerException {
 		int lastTurtleID = 0;
 		for (int i : activeTurtleIDList) {
 			if (workspace.turtles.hasTurtleWithID(i)) {
@@ -45,6 +46,8 @@ public abstract class MultipleTurtleCommand extends StructuralCommand {
 			}
 			else {
 				workspace.turtles.addTurtle(i);
+				Turtle newTurtle = workspace.turtles.getLastAddedTurtle();
+				objectQueue.add(generateDrawableObjectRepresentingTurtle(newTurtle));
 			}
 			lastTurtleID = i;			
 		}

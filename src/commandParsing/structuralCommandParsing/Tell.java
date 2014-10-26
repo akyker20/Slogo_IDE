@@ -28,7 +28,7 @@ public class Tell extends MultipleTurtleCommand {
 		extractCommandsBetweenBraces(commandStringIterator);
 		determineTurtlesToActivate(commandStringIterator, objectQueue);
 		
-		makeAndActivateGivenTurtles();
+		makeAndActivateGivenTurtles(objectQueue);
 		
 		return lastTurtleID;
 	}
