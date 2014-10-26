@@ -25,7 +25,19 @@ public class MakeUserInstructionTests extends CommandTester {
 			
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
-		assertTrue(f == 1);		
+		assertTrue(f == 1);	
+		DrawableObject variable = objectQueue.poll();
+		assertTrue(variable.getParameters().get(WorkspaceVariableFactory.NAME).equals(":var"));
+		assertTrue(Double.parseDouble(variable.getParameters().get(WorkspaceVariableFactory.VALUE)) == 0.0);
+		
+		variable = objectQueue.poll();
+		assertTrue(variable.getParameters().get(WorkspaceVariableFactory.NAME).equals(":varb"));
+		assertTrue(Double.parseDouble(variable.getParameters().get(WorkspaceVariableFactory.VALUE)) == 0.0);
+		
+		variable = objectQueue.poll();
+		assertTrue(variable.getParameters().get(WorkspaceVariableFactory.NAME).equals(":varc"));
+		assertTrue(Double.parseDouble(variable.getParameters().get(WorkspaceVariableFactory.VALUE)) == 0.0);
+		
 		DrawableObject commandObj = objectQueue.poll();
 		assertTrue(commandObj.getParameters().get(UserDefinedCommandFactory.NAME).equals("command"));
 		assertTrue(commandObj.getParameters().get(UserDefinedCommandFactory.CONTENT).equals("forward 20"));

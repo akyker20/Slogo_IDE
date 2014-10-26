@@ -13,6 +13,8 @@ public class WorkspaceVariableFactory extends ObjectFactory {
     
     public static final String PARENT = ComponentBuilder.WORKSPACE_VARIABLES;
     public static final String TYPE = FactoryBuilder.WORKSPACE_VARIABLE_FACTORY;
+    public static final String NAME = "name";
+    public static final String VALUE = "value";
     
     private ObservableList<WorkspaceVariable> myVariablesList;
 

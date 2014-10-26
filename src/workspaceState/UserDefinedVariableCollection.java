@@ -31,6 +31,13 @@ public class UserDefinedVariableCollection {
 		}
 		return variableMap.get(name).getMyValue();
 	}
+	
+	public WorkspaceVariable fetchWorkspaceVariable(String name) throws RunTimeNullPointerException{
+		if (!variableMap.keySet().contains(name)) {
+			throw new RunTimeNullPointerException(name);
+		}
+		return variableMap.get(name);
+	}
 
 	public boolean variableExists(String name) {
 		return variableMap.containsKey(name);

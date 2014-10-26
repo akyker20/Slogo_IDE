@@ -19,11 +19,14 @@ public class RepeatTests extends CommandTester {
 		CommandParser parser = createCommand();
 		double f = parser.parse(commands, objectQueue);
 		assertTrue(f == 50);
-		
 		for(int i=1;i<11;i++){
+			DrawableObject variable = objectQueue.poll();
 			DrawableObject line = objectQueue.poll();
 			DrawableObject turtle = objectQueue.poll();
 			
+			assertTrue(variable.getParameters().get(WorkspaceVariableFactory.NAME).equals(":repcount"));
+			assertTrue(Double.parseDouble(variable.getParameters().get(WorkspaceVariableFactory.VALUE)) == (double) i);
+						
 			assertTrue(turtle.getParent().equals(TurtleFactory.PARENT));
 			assertTrue(turtle.getType().equals(TurtleFactory.TYPE));
 			assertTrue(turtle.getParameters().get(TurtleFactory.HEADING).equals("0.0"));

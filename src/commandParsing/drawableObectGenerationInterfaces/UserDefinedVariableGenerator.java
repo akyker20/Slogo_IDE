@@ -11,8 +11,8 @@ public interface UserDefinedVariableGenerator {
 		String parent = WorkspaceVariableFactory.PARENT;
 		String type = WorkspaceVariableFactory.TYPE;
 		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put("name", variable.getMyName());
-		parameters.put("value", "" + variable.getMyValue());
+		parameters.put(WorkspaceVariableFactory.NAME, variable.getMyName());
+		parameters.put(WorkspaceVariableFactory.VALUE, Double.toString(variable.getMyValue()));
 
 		return new DrawableObject(parent, type, parameters);
 	}
