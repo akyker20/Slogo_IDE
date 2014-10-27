@@ -29,7 +29,7 @@ public class SetShapePaletteTests extends CommandTester {
     @Test
     public void SetShapePaletteAfterSetShapePaletteTest () throws SLOGOException {
         resetTesterVariables();
-        setUpCommands("setshapepalette 10 somePath/image.png setssp 10 /blah/blah.png");
+        setUpCommands("setshapepalette 10 somePath/image.png setsp 10 /blah/blah.png");
 
         double f = 0;
 
