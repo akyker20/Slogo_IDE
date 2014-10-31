@@ -9,6 +9,9 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+//This entire file is part of my masterpiece.
+//Steve Kuznetsov
+
 /**
  * This parses anything that you input either one or two floats.
  * 

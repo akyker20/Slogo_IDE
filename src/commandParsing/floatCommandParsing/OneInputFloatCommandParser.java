@@ -6,6 +6,9 @@ import workspaceState.WorkspaceState;
 import commandParsing.exceptions.RunTimeDivideByZeroException;
 import drawableobject.DrawableObject;
 
+//This entire file is part of my masterpiece.
+//Steve Kuznetsov
+
 /**
  * This parses commands that require a single float input.
  * 

@@ -11,6 +11,9 @@ import commandParsing.exceptions.RunTimeDivideByZeroException;
 import commandParsing.floatCommandParsing.OneInputFloatCommandParser;
 import drawableobject.DrawableObject;
 
+//This entire file is part of my masterpiece.
+//Steve Kuznetsov
+
 /**
  * This is the generic move command used as a superclass for all of the actual move commands that are
  * implemented.
