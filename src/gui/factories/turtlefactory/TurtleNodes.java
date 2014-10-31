@@ -1,7 +1,9 @@
+// This entire file is part of my masterpiece.
+// Austin Kyker
+
 package gui.factories.turtlefactory;
 
 import gui.mainclasses.workspace.Workspace;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,9 +43,8 @@ public class TurtleNodes {
      *
      * @param params
      * @return
-     * @throws FileNotFoundException
      */
-    public Node[] addTurtleNode (Map<String, String> params) throws FileNotFoundException {
+    public Node[] addTurtleNode (Map<String, String> params) {
         TurtleNode newTurtleNode = new TurtleNode(params, myWorkspace);
         myTurtleNodes.add(newTurtleNode);
         return new ImageView[] { newTurtleNode };
@@ -51,15 +52,15 @@ public class TurtleNodes {
 
     /**
      * Removes all the turtle nodes from the list. This method is called when a clear screen
-     * drawable object arrives.
+     * DrawableObject arrives.
      */
     public void clearTurtleNodes () {
         myTurtleNodes.clear();
     }
 
     /**
-     * Returns the active nodes. This is used in the stage initializer class to set up the
-     * key listener that will allow the user to move the active turtles.
+     * Returns the active nodes. This is used to when a turtle is selected or deselected
+     * to tell the backend which turtles are now active.
      *
      * @return List of active turtle nodes.
      */
