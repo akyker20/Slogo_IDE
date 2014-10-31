@@ -45,7 +45,7 @@ public class TurtleScreenDrawer extends ComponentDrawer {
         myTurtleNodes = turtleNodes;
         setPrefWidth(GRID_WIDTH);
         setPrefHeight(GRID_HEIGHT + GRID_HEIGHT_DEVIATION);
-        getChildren().addAll(new Label(TextGenerator.get(TextGenerator.TURTLE_SCREEN)));
+        getChildren().addAll(new Label(textGen.get(TextGenerator.TURTLE_SCREEN)));
     }
 
     /**

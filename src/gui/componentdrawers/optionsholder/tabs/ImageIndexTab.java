@@ -15,7 +15,7 @@ import gui.nonbuttonfeatures.tableviews.imageindex.ImageIndexFeature;
 public class ImageIndexTab extends OptionsTab {
 
     public ImageIndexTab (ImageIndexFeature feature) {
-        super(feature, TextGenerator.get(TextGenerator.IMAGES));
+        super(feature, textGen.get(TextGenerator.IMAGES));
     }
 
 }

@@ -25,7 +25,7 @@ public class SignificantCommandsDrawer extends ComponentDrawer {
         mySignificantCommandsPane.setId(ComponentDrawer.TABPANE_LABEL);
         mySignificantCommandsPane.setPrefWidth(245);
         mySignificantCommandsPane.setLayoutY(20);
-        super.drawShape(new Node[] { new Label(TextGenerator.get(TextGenerator.COMMANDS)),
+        super.drawShape(new Node[] { new Label(textGen.get(TextGenerator.COMMANDS)),
                                      mySignificantCommandsPane });
     }
 

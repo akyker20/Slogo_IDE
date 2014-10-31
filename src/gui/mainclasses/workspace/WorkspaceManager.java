@@ -19,6 +19,7 @@ import XML.workspaceparams.WorkspaceScreenParameters;
 
 public class WorkspaceManager extends TabPane {
 
+    private static TextGenerator textGen = TextGenerator.getInstance();
     public static Workspace myActiveWorkspace;
     private static int workspaceID = 0;
 
@@ -50,7 +51,7 @@ public class WorkspaceManager extends TabPane {
     public void addWorkspace (WorkspaceScreenParameters screenParams,
                               WorkspaceDataHolder dataHolder) {
         Workspace newWorkspace = new Workspace(myControl, screenParams, dataHolder, workspaceID);
-        newWorkspace.setText(TextGenerator.get(TextGenerator.WORKSPACE_LABEL) + " " + workspaceID);
+        newWorkspace.setText(textGen.get(TextGenerator.WORKSPACE_LABEL) + " " + workspaceID);
 
         getTabs().add(newWorkspace);
         myActiveWorkspace = newWorkspace;

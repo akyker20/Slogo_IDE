@@ -36,6 +36,7 @@ import XML.writers.SavedWorkspaceXMLWriter;
 public class FileMenu extends Menu {
 
     protected static final String SAVED_WORKSPACE_FILES_DIR = "./WorkspaceFiles";
+    private static TextGenerator textGen = TextGenerator.getInstance();
     private static final String XML_FILE_EXTENSION_DESCRIPTION = "XML files (*.xml)";
     private static final String XML_FILE_EXTENSION = "*.xml";
 
@@ -45,9 +46,9 @@ public class FileMenu extends Menu {
 
         myWorkspaceManager = workspaceManager;
 
-        setText(TextGenerator.get(TextGenerator.FILE));
+        setText(textGen.get(TextGenerator.FILE));
 
-        MenuItem loadWorkspace = new MenuItem(TextGenerator.get(TextGenerator.LOAD_WORKSPACE));
+        MenuItem loadWorkspace = new MenuItem(textGen.get(TextGenerator.LOAD_WORKSPACE));
         loadWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent e) {
@@ -82,7 +83,7 @@ public class FileMenu extends Menu {
             }
         });
 
-        MenuItem saveWorkspace = new MenuItem(TextGenerator.get(TextGenerator.SAVE_WORKSPACE));
+        MenuItem saveWorkspace = new MenuItem(textGen.get(TextGenerator.SAVE_WORKSPACE));
         saveWorkspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent e) {
@@ -99,7 +100,7 @@ public class FileMenu extends Menu {
             }
         });
 
-        Menu newWorkspace = new Menu(TextGenerator.get(TextGenerator.NEW_WORKSPACE));
+        Menu newWorkspace = new Menu(textGen.get(TextGenerator.NEW_WORKSPACE));
         String[] languageOptions =
                 new String[] { TextGenerator.ENGLISH, TextGenerator.FRENCH, TextGenerator.CHINESE };
         for (String language : languageOptions) {
@@ -107,7 +108,7 @@ public class FileMenu extends Menu {
             languageMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle (ActionEvent e) {
-                    TextGenerator.setLanguage(language);
+                    textGen.setLanguage(language);
                     myWorkspaceManager.addWorkspace(new WorkspaceScreenParameters(),
                                                     new WorkspaceDataHolder());
                     myWorkspaceManager.getActiveWorkspace().parseCommandString("setlanguage /" +
@@ -133,7 +134,7 @@ public class FileMenu extends Menu {
      */
     private File createFileChooser (String defaultDir) {
         FileChooser myFileChooser = new FileChooser();
-        myFileChooser.setTitle(TextGenerator.get(TextGenerator.SELECT_XMLFILE));
+        myFileChooser.setTitle(textGen.get(TextGenerator.SELECT_XMLFILE));
         FileChooser.ExtensionFilter extentionFilter =
                 new FileChooser.ExtensionFilter(
                                                 XML_FILE_EXTENSION_DESCRIPTION, XML_FILE_EXTENSION);

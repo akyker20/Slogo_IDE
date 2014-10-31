@@ -31,12 +31,13 @@ public class TurtleImageFeature extends BorderPane {
     private static final int VBOX_ROW_COUNT = 10;
     private static final int VBOX_WIDTH = 105;
     private static final int VBOX_HEIGHT = 155;
+    private static TextGenerator textGen = TextGenerator.getInstance();
 
     public TurtleImageFeature (OptionsHolderDrawer parentDrawer,
                                List<ImageIndex> imageFilesList,
                                Workspace workspace) {
         myImageFilesList = (ObservableList<ImageIndex>) imageFilesList;
-        Label label = new Label(TextGenerator.get(TextGenerator.IMAGE_DROP_AREA));
+        Label label = new Label(textGen.get(TextGenerator.IMAGE_DROP_AREA));
         setTop(label);
         VBox vbox = new VBox(VBOX_ROW_COUNT);
         vbox.setStyle("-fx-border-color: lightgray");

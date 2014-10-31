@@ -21,6 +21,9 @@ import javafx.util.Callback;
  *
  */
 public class ImageIndexFeature extends TableView<ImageIndex> {
+    
+    private static TextGenerator textGen = TextGenerator.getInstance();
+    
     @SuppressWarnings("unchecked")
     public ImageIndexFeature (ObservableList<ImageIndex> data, OptionsHolderDrawer parentDrawer) {
 
@@ -33,11 +36,11 @@ public class ImageIndexFeature extends TableView<ImageIndex> {
         };
 
         TableColumn<ImageIndex, Integer> index =
-                new TableColumn<ImageIndex, Integer>(TextGenerator.get(TextGenerator.INDEX));
+                new TableColumn<ImageIndex, Integer>(textGen.get(TextGenerator.INDEX));
         index.setCellValueFactory(new PropertyValueFactory("myIndex"));
         index.prefWidthProperty().bind(widthProperty().divide(2));
         TableColumn<ImageIndex, File> imageCol =
-                new TableColumn<ImageIndex, File>(TextGenerator.get(TextGenerator.IMAGE));
+                new TableColumn<ImageIndex, File>(textGen.get(TextGenerator.IMAGE));
         imageCol.setCellValueFactory(new PropertyValueFactory("myImageFile"));
         imageCol.prefWidthProperty().bind(widthProperty().divide(2).subtract(2));
 

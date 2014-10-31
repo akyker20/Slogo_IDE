@@ -31,17 +31,18 @@ import javafx.stage.Stage;
 public class UserDefinedCommandsFeature extends TableView<DisplayedUserCommand> {
     
     private ObservableList<DisplayedUserCommand> myCommandsList;
+    private static TextGenerator textGen = TextGenerator.getInstance();
 
     public UserDefinedCommandsFeature (List<DisplayedUserCommand> userDefinedCommands) {
         myCommandsList = (ObservableList<DisplayedUserCommand>) userDefinedCommands;
 
         TableColumn<DisplayedUserCommand, String> commandName =
-                new TableColumn<DisplayedUserCommand, String>(TextGenerator.get(TextGenerator.NAME));
+                new TableColumn<DisplayedUserCommand, String>(textGen.get(TextGenerator.NAME));
         commandName.setCellValueFactory(new PropertyValueFactory("myName"));
         commandName.prefWidthProperty().bind(widthProperty().divide(3));
         TableColumn<DisplayedUserCommand, String> params =
                 new TableColumn<DisplayedUserCommand, String>(
-                        TextGenerator
+                        textGen
                         .get(TextGenerator.PARAMETERS));
         params.setCellValueFactory(new PropertyValueFactory("myParams"));
         params.prefWidthProperty().bind(widthProperty().multiply(2).divide(3).subtract(2));

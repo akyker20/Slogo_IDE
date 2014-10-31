@@ -13,9 +13,9 @@ import gui.nonbuttonfeatures.tableviews.colorindex.ColorIndexFeature;
  *
  */
 public class ColorIndexTab extends OptionsTab {
-
+    
     public ColorIndexTab (ColorIndexFeature feature) {
-        super(feature, TextGenerator.get(TextGenerator.COLORS));
+        super(feature, textGen.get(TextGenerator.COLORS));
 
     }
 

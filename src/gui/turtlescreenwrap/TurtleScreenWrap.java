@@ -76,7 +76,7 @@ public class TurtleScreenWrap {
         return list;
     }
 
-    public static List<Point2DPair> getFragments (Point2DPair pointPair, String exitEdge,
+    private static List<Point2DPair> getFragments (Point2DPair pointPair, String exitEdge,
                                                   float gradient, float maxDeltaX, float maxDeltaY) {
         Point2D destA = new Point2D();
         Point2D originB = new Point2D();
@@ -110,7 +110,7 @@ public class TurtleScreenWrap {
         return fragments;
     }
 
-    public static String getExitEdge (Point2DPair pointPair, float gradient,
+    private static String getExitEdge (Point2DPair pointPair, float gradient,
                                       float maxDeltaY, String xmovement, String ymovement) {
         // if exit through left/right edge, using maxDeltaY yields off-screen point
         // IMPORTANT: converting to int for truncation. Otherwise running decimals may result in
@@ -140,7 +140,7 @@ public class TurtleScreenWrap {
         }
     }
 
-    public static float getMaxDeltaY (Point2DPair pointPair, String ymovement) {
+    private static float getMaxDeltaY (Point2DPair pointPair, String ymovement) {
         if (ymovement.equals(YPOS_MOVE)) {
             return YMAX - pointPair.origin.y;
         }
@@ -148,7 +148,7 @@ public class TurtleScreenWrap {
         return 0;
     }
 
-    public static float getMaxDeltaX (Point2DPair pointPair, String xmovement) {
+    private static float getMaxDeltaX (Point2DPair pointPair, String xmovement) {
         if (xmovement.equals(XPOS_MOVE)) {
             return XMAX - pointPair.origin.x;
         }
@@ -156,7 +156,7 @@ public class TurtleScreenWrap {
         return 0;
     }
 
-    public static String getYmovement (Point2DPair pointPair) {
+    protected static String getYmovement (Point2DPair pointPair) {
         if (pointPair.dest.y > pointPair.origin.y) {
             return YPOS_MOVE;
         }
@@ -165,7 +165,7 @@ public class TurtleScreenWrap {
         return YZERO_MOVE;
     }
 
-    public static String getXmovement (Point2DPair pointPair) {
+    protected static String getXmovement (Point2DPair pointPair) {
         if (pointPair.dest.x > pointPair.origin.x) {
             return XPOS_MOVE;
         }
@@ -176,14 +176,11 @@ public class TurtleScreenWrap {
     }
 
     /**
-     * Method gets the gradient of the line joining the points in a pointPair
-     * Returns 0.0 if the line is vertical (infinite gradient)
-     *
+     * Method returns the gradient of the line connecting a Point2DPair
      * @param pointPair
-     * @param isVerticalLine
-     * @return
+     * @return gradient of the connecting line
      */
-    public static float getGradient (Point2DPair pointPair) {
+    private static float getGradient (Point2DPair pointPair) {
         return (pointPair.dest.y - pointPair.origin.y) /
                 (pointPair.dest.x - pointPair.origin.x);
     }

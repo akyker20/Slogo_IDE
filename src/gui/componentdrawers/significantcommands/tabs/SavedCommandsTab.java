@@ -15,11 +15,11 @@ import javafx.scene.control.Tab;
  *
  */
 public class SavedCommandsTab extends Tab {
-
+    private static TextGenerator textGen = TextGenerator.getInstance();
     private SavedCommandsFeature myFeature;
 
     public SavedCommandsTab (SavedCommandsFeature feature) {
-        setText(TextGenerator.get(TextGenerator.SAVED));
+        setText(textGen.get(TextGenerator.SAVED));
         setClosable(false);
         myFeature = feature;
         setContent(feature);

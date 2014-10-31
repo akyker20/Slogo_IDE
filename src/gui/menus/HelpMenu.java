@@ -26,21 +26,23 @@ public class HelpMenu extends Menu {
     public static final String EXTENDED_COMMANDS_URL =
             "http://www.cs.duke.edu/courses/compsci308/current/assign/03_slogo/commands2.php";
     
+    private static TextGenerator textGen = TextGenerator.getInstance();
+    
     public static final int HELP_PAGE_WIDTH = 800;
     public static final int HELP_PAGE_HEIGHT = 600;
 
     public HelpMenu () {
-        setText(TextGenerator.get(TextGenerator.HELP));
+        setText(textGen.get(TextGenerator.HELP));
 
         // use Lambda notation and make these open HTML help pages...
-        MenuItem gettingStarted = new MenuItem(TextGenerator.get(TextGenerator.GETTING_STARTED));
+        MenuItem gettingStarted = new MenuItem(textGen.get(TextGenerator.GETTING_STARTED));
         gettingStarted.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent e) {
                 System.out.println("Opening getting started page...");
             }
         });
-        MenuItem basicCommandHelp = new MenuItem(TextGenerator.get(TextGenerator.BASIC_COMMANDS));
+        MenuItem basicCommandHelp = new MenuItem(textGen.get(TextGenerator.BASIC_COMMANDS));
         basicCommandHelp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent e) {
@@ -49,7 +51,7 @@ public class HelpMenu extends Menu {
         });
 
         MenuItem complexCommandHelp =
-                new MenuItem(TextGenerator.get(TextGenerator.COMPLEX_COMMANDS));
+                new MenuItem(textGen.get(TextGenerator.COMPLEX_COMMANDS));
         complexCommandHelp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent e) {

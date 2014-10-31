@@ -1,5 +1,6 @@
 package gui.componentdrawers;
 
+import gui.mainclasses.TextGenerator;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
@@ -16,6 +17,7 @@ public abstract class ComponentDrawer extends Pane {
 
     private String myName;
     public static final String TABPANE_LABEL = "tabPane";
+    protected static TextGenerator textGen = TextGenerator.getInstance();
 
     public ComponentDrawer (String name) {
         myName = name;

@@ -13,10 +13,11 @@ import javafx.scene.control.Tab;
  */
 public class UserDefinedCommandsTab extends Tab {
 
+    private static TextGenerator textGen = TextGenerator.getInstance();
     private UserDefinedCommandsFeature myFeature;
 
     public UserDefinedCommandsTab (UserDefinedCommandsFeature feature) {
-        setText(TextGenerator.get(TextGenerator.USER_DEFINED));
+        setText(textGen.get(TextGenerator.USER_DEFINED));
         setClosable(false);
         myFeature = feature;
         setContent(feature);

@@ -19,10 +19,11 @@ import javafx.collections.FXCollections;
  */
 public class PenUpOrDownFeature extends PenChoiceBox {
     private static final String PEN = "pen";
+    private static TextGenerator textGen = TextGenerator.getInstance();
 
     public PenUpOrDownFeature (OptionsHolderDrawer parentDrawer, Workspace workspace) {
-        super(FXCollections.observableArrayList(TextGenerator.get(TextGenerator.DOWN),
-                                                TextGenerator.get(TextGenerator.UP)), parentDrawer);
+        super(FXCollections.observableArrayList(textGen.get(TextGenerator.DOWN),
+                                                textGen.get(TextGenerator.UP)), parentDrawer);
 
         valueProperty().addListener(new ChangeListener<String>() {
             @Override

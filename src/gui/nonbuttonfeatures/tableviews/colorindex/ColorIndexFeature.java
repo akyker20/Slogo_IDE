@@ -20,6 +20,8 @@ import javafx.util.Callback;
  *
  */
 public class ColorIndexFeature extends TableView<ColorIndex> {
+    private static TextGenerator textGen = TextGenerator.getInstance();
+    
     @SuppressWarnings("unchecked")
     public ColorIndexFeature (ObservableList<ColorIndex> data, OptionsHolderDrawer parentDrawer) {
 
@@ -32,11 +34,11 @@ public class ColorIndexFeature extends TableView<ColorIndex> {
         };
 
         TableColumn<ColorIndex, Integer> index =
-                new TableColumn<ColorIndex, Integer>(TextGenerator.get(TextGenerator.INDEX));
+                new TableColumn<ColorIndex, Integer>(textGen.get(TextGenerator.INDEX));
         index.setCellValueFactory(new PropertyValueFactory("myIndex"));
         index.prefWidthProperty().bind(widthProperty().divide(3));
         TableColumn<ColorIndex, Color> colorCol =
-                new TableColumn<ColorIndex, Color>(TextGenerator.get(TextGenerator.COLOR));
+                new TableColumn<ColorIndex, Color>(textGen.get(TextGenerator.COLOR));
         colorCol.setCellValueFactory(new PropertyValueFactory("myColor"));
         colorCol.prefWidthProperty().bind(widthProperty().multiply(2).divide(3).subtract(2));
 

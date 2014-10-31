@@ -15,7 +15,7 @@ public class WorkspaceVariablesDrawer extends ComponentDrawer {
     public WorkspaceVariablesDrawer (String name) {
         super(name);
         getStyleClass().add("workspaceVariableDrawer");
-        drawShape(new Label[] { new Label(TextGenerator.get(TextGenerator.WORKSPACE_VARIABLES)) });
+        drawShape(new Label[] { new Label(textGen.get(TextGenerator.WORKSPACE_VARIABLES)) });
     }
 
 }

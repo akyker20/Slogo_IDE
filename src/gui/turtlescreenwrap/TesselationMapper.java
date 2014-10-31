@@ -52,7 +52,7 @@ public class TesselationMapper {
      *
      * @return
      */
-    public static Point2D getDummyOrigin (Point2D point) {
+    private static Point2D getDummyOrigin (Point2D point) {
 
         float xsign = Math.signum(point.x);
         float ysign = Math.signum(point.y);

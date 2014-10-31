@@ -18,7 +18,7 @@ public class ErrorDrawer extends ComponentDrawer {
     public ErrorDrawer (String name) {
         super(name);
         setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        super.drawShape(new Label[] { new Label(TextGenerator.get(TextGenerator.ERRORS)) });
+        super.drawShape(new Label[] { new Label(textGen.get(TextGenerator.ERRORS)) });
     }
 
     /**

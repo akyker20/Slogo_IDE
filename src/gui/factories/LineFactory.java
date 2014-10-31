@@ -46,7 +46,7 @@ public class LineFactory extends ObjectFactory {
      * @param params
      * @return returns a list of Lines to be drawn 
      */
-    public List<Line> generateLines (Map<String, String> params) {
+    private List<Line> generateLines (Map<String, String> params) {
 
         Point2D origin = parseStringToPoints(params.get(ORIGIN));
         Point2D dest = parseStringToPoints(params.get(DESTINATION));

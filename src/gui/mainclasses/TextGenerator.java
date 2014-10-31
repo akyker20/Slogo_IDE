@@ -5,12 +5,15 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+//This entire file is part of my masterpiece.
+//Allan Kiplagat
+
 /**
- * Class generates the text to be displayed on the GUI using resource bundles
+ * Singleton class generates the text to be displayed on the GUI using resource bundles
  * @author allankiplagat
  *
  */
-public class TextGenerator {
+public class TextGenerator  {
 
     public static final String SLOGO = "slogo";
 
@@ -66,28 +69,63 @@ public class TextGenerator {
     public static final String FRENCH = "French";
     public static final String ITALIAN = "Italian";
 
-    private static Map<String, Locale> supportedLocales = new HashMap<String, Locale>();
+    private static TextGenerator myself;
+    private Map<String, Locale> supportedLocales;
+    private ResourceBundle myCurrentResourceBundle;
 
-    static {
-        supportedLocales.put(CHINESE, Locale.CHINESE);
-        supportedLocales.put(ENGLISH, Locale.ENGLISH);
-        supportedLocales.put(FRENCH, Locale.FRENCH);
-        supportedLocales.put(ITALIAN, Locale.ITALIAN);
+    private TextGenerator() {
+        supportedLocales = new HashMap<String, Locale>();
+        addSupportedLanguages();
+        myCurrentResourceBundle = getResourceBundle(ENGLISH);
     }
 
-    private static ResourceBundle myLanguagesBundle = getResourceBundle(ENGLISH);
+    public static TextGenerator getInstance() {
+        if (myself==null) {
+            myself = new TextGenerator();
+        } 
+        return myself;
+    }
 
-    private static ResourceBundle getResourceBundle (String language) {
+    private void addLocale(String language,Locale locale) {
+        supportedLocales.put(language, locale);
+    }
+
+    //in the future have this read from properties file too
+    private void addSupportedLanguages() {
+        addLocale(CHINESE, Locale.CHINESE);
+        addLocale(ENGLISH, Locale.ENGLISH);
+        addLocale(FRENCH, Locale.FRENCH);
+        addLocale(ITALIAN, Locale.ITALIAN);
+    }
+
+    private ResourceBundle getResourceBundle (String language) {
         return ResourceBundle.getBundle("resources.guiResources/LabelsBundle",
                                         supportedLocales.get(language));
     }
 
-    public static String get (String text) {
-        return myLanguagesBundle.getString(text);
+    /**
+     * Method gets text in the current language
+     * @param text
+     * @return translated text
+     */
+    public String get(String text) {
+        return myCurrentResourceBundle.getString(text);
     }
 
-    public static void setLanguage (String language) {
-        myLanguagesBundle = getResourceBundle(language);
+    /**
+     * Method sets the current TextGenerator language
+     * @param language
+     * @return true if language switch successful, false otherwise
+     */
+    public boolean setLanguage (String language) {
+        if (supportedLocales.containsKey(language)) {
+            myCurrentResourceBundle = getResourceBundle(language); 
+            return true;
+        }
+        return false;
+    }
 
+    public boolean languageSupported(String language) {
+        return supportedLocales.containsKey(language);
     }
 }

@@ -15,9 +15,10 @@ public class ButtonFeature extends Button {
 
     public static final int BUTTON_WIDTH = 120;
     public static final int BUTTON_HEIGHT = 40;
+    private TextGenerator textGen = TextGenerator.getInstance();
 
     public ButtonFeature (String text, OptionsHolderDrawer component) {
-        setText(TextGenerator.get(text));
+        setText(textGen.get(text));
         setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
         component.drawShape(new ButtonFeature[] { this });
     }

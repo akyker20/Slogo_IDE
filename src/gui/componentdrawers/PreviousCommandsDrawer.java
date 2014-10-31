@@ -17,7 +17,7 @@ public class PreviousCommandsDrawer extends ComponentDrawer {
         super(name);
         getStyleClass().add("previousCommands");
         setWidth(StageInitializer.SCREEN_WIDTH * TurtleScreenDrawer.GRID_WIDTH_RATIO);
-        drawShape(new Label[] { new Label(TextGenerator.get(TextGenerator.PREVIOUS_COMMANDS)) });
+        drawShape(new Label[] { new Label(textGen.get(TextGenerator.PREVIOUS_COMMANDS)) });
     }
 
 }

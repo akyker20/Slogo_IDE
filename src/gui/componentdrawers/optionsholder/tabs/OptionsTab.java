@@ -1,5 +1,6 @@
 package gui.componentdrawers.optionsholder.tabs;
 
+import gui.mainclasses.TextGenerator;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
@@ -16,6 +17,7 @@ import javafx.scene.layout.VBox;
  */
 public class OptionsTab extends Tab {
     public static final int PADDING = 5;
+    protected static TextGenerator textGen = TextGenerator.getInstance();
 
     /**
      * Default constructor will draw its features in the centers.

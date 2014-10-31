@@ -18,6 +18,7 @@ public class StageInitializer {
     public static final int SCREEN_WIDTH = 700;
     public static final int SCREEN_HEIGHT = 700;
     public static final String STYLESHEET_PACKAGE = "Stylesheets/";
+    private static TextGenerator textGen = TextGenerator.getInstance();
 
     public static BorderPane init (Stage stage) {
         BorderPane pane = new BorderPane();
@@ -25,7 +26,7 @@ public class StageInitializer {
         Scene scene = new Scene(pane, SCREEN_WIDTH, SCREEN_HEIGHT, Color.CORNSILK);
         scene.getStylesheets().add(STYLESHEET_PACKAGE + "style.css");
         stage.setScene(scene);
-        stage.setTitle(TextGenerator.get(TextGenerator.SLOGO));
+        stage.setTitle(textGen.get(TextGenerator.SLOGO));
         stage.setResizable(false);
         stage.show();
         return pane;

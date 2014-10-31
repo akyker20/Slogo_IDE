@@ -22,6 +22,7 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
     public static final int TABLE_HEIGHT = 168;
     public static final int LAYOUT_Y = 20;
     public static final String TABLE_ID = "table";
+    private static TextGenerator textGen = TextGenerator.getInstance();
     
     @SuppressWarnings("unchecked")
     public WorkspaceVariablesFeature (WorkspaceVariablesDrawer parentDrawer,
@@ -38,12 +39,12 @@ public class WorkspaceVariablesFeature extends TableView<WorkspaceVariable> {
 
         TableColumn<WorkspaceVariable, String> variableName =
                 new TableColumn<WorkspaceVariable, String>(
-                        TextGenerator
+                        textGen
                         .get(TextGenerator.VARIABLE));
         variableName.setCellValueFactory(new PropertyValueFactory("myName"));
         variableName.prefWidthProperty().bind(widthProperty().divide(2));
         TableColumn<WorkspaceVariable, Double> variableValue =
-                new TableColumn<WorkspaceVariable, Double>(TextGenerator.get(TextGenerator.VALUE));
+                new TableColumn<WorkspaceVariable, Double>(textGen.get(TextGenerator.VALUE));
         variableValue.setCellValueFactory(new PropertyValueFactory("myValue"));
         variableValue.prefWidthProperty().bind(widthProperty().divide(2).subtract(2));
         variableValue.setCellFactory(cellFactory);
