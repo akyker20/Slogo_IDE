@@ -1,0 +1,5 @@
+<map id="gui.nonbuttonfeatures.PreviousCommandsFeature.PreviousCommandsFeature" name="gui.nonbuttonfeatures.PreviousCommandsFeature.PreviousCommandsFeature">
+<area shape="rect" id="node2" href="$da/d9c/classgui_1_1nonbuttonfeatures_1_1_previous_commands_feature.html#af9ec386cbf1a9c16558f0b0cb67faeb5" title="gui.nonbuttonfeatures.Previous\lCommandsFeature.displayPreviousCommand\lInCommandLineOnDblClick" alt="" coords="331,5,645,61"/>
+<area shape="rect" id="node4" href="$d0/dda/classgui_1_1componentdrawers_1_1_component_drawer.html#a7866683582ed9aebe665c7998d549fbb" title="gui.componentdrawers.Component\lDrawer.drawShape" alt="" coords="365,85,611,126"/>
+<area shape="rect" id="node3" href="$d8/d70/classgui_1_1componentdrawers_1_1_command_line_drawer.html#a08074f05635bafab1fbf64d7aedf0b72" title="gui.componentdrawers.Command\lLineDrawer.setCommandLine" alt="" coords="694,13,933,54"/>
+</map>

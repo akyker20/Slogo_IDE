@@ -1,0 +1,4 @@
+<map id="gui.buttonfeatures.ClearWorkspaceButtonFeature.ClearWorkspaceButtonFeature" name="gui.buttonfeatures.ClearWorkspaceButtonFeature.ClearWorkspaceButtonFeature">
+<area shape="rect" id="node2" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a1efc21f37223b0b9898342065ae3f281" title="gui.mainclasses.workspace.\lWorkspace.clear" alt="" coords="273,11,471,53"/>
+<area shape="rect" id="node3" href="$d0/d23/classgui_1_1mainclasses_1_1workspace_1_1_workspace_data_holder.html#a3d12c830cc6fd61e9fa181df0dda0bb5" title="gui.mainclasses.workspace.\lWorkspaceDataHolder.clear" alt="" coords="521,11,719,53"/>
+</map>

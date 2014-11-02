@@ -1,0 +1,5 @@
+<map id="gui.nonbuttonfeatures.pen.PenColorPickerFeature.changePenColor" name="gui.nonbuttonfeatures.pen.PenColorPickerFeature.changePenColor">
+<area shape="rect" id="node2" href="$d7/dcb/classgui_1_1nonbuttonfeatures_1_1pen_1_1_pen_color_picker_feature.html#a64373e303cc9bd7a3937ddd0d0312adb" title="gui.nonbuttonfeatures.pen.\lPenColorPickerFeature.getRGBStr" alt="" coords="329,5,565,46"/>
+<area shape="rect" id="node3" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a1c6c6c0599097fbf5e9a660ec0ac3702" title="gui.mainclasses.workspace.\lWorkspace.parseCommandString" alt="" coords="329,70,564,111"/>
+<area shape="rect" id="node4" href="$da/d55/interface_control_1_1_slogo_graphics.html#a05813100446932183f367405e6c73d67" title="Control.SlogoGraphics.parse\lCommandString" alt="" coords="614,70,818,111"/>
+</map>

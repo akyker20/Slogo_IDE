@@ -1,0 +1,6 @@
+<map id="gui.componentdrawers.CommandLineDrawer.setCommandLine" name="gui.componentdrawers.CommandLineDrawer.setCommandLine">
+<area shape="rect" id="node2" href="$d0/d64/classgui_1_1nonbuttonfeatures_1_1_command_line_feature.html#a4dff445024bfeb311bd236e17ddbacb5" title="gui.nonbuttonfeatures.Command\lLineFeature.CommandLineFeature" alt="" coords="330,5,571,46"/>
+<area shape="rect" id="node3" href="$da/d9c/classgui_1_1nonbuttonfeatures_1_1_previous_commands_feature.html#af9ec386cbf1a9c16558f0b0cb67faeb5" title="gui.nonbuttonfeatures.Previous\lCommandsFeature.displayPreviousCommand\lInCommandLineOnDblClick" alt="" coords="294,69,607,125"/>
+<area shape="rect" id="node5" href="$d1/de9/classgui_1_1nonbuttonfeatures_1_1_saved_commands_feature.html#a1b81e5666d35837ff00a1800feef4deb" title="gui.nonbuttonfeatures.Saved\lCommandsFeature.SavedCommandsFeature" alt="" coords="295,149,606,190"/>
+<area shape="rect" id="node4" href="$da/d9c/classgui_1_1nonbuttonfeatures_1_1_previous_commands_feature.html#a731d7d09276efef22defca7ee1560200" title="gui.nonbuttonfeatures.Previous\lCommandsFeature.PreviousCommands\lFeature" alt="" coords="657,69,933,125"/>
+</map>

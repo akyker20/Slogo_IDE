@@ -1,0 +1,10 @@
+<map id="gui.mainclasses.workspace.WorkspaceManager.getActiveWorkspace" name="gui.mainclasses.workspace.WorkspaceManager.getActiveWorkspace">
+<area shape="rect" id="node2" href="$d1/dea/classgui_1_1menus_1_1_file_menu.html#a74457f2750f6a40c52c28de3c6842fd1" title="gui.menus.FileMenu.addTurtle\lToWorkspace" alt="" coords="352,5,563,46"/>
+<area shape="rect" id="node3" href="$d1/dea/classgui_1_1menus_1_1_file_menu.html#ae040d0be1f3ff61aae358d2d6894619e" title="gui.menus.FileMenu.FileMenu" alt="" coords="637,41,843,68"/>
+<area shape="rect" id="node4" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#a32ce7160aef646c8557283e20135d34c" title="gui.mainclasses.GUIController.draw\lDrawableObjects" alt="" coords="334,122,581,163"/>
+<area shape="rect" id="node6" href="$da/de1/class_control_1_1_slogo_control.html#a3c55ba4e1dadbf4fbcd647017109fa9a" title="Control.SlogoControl.parse\lCommandString" alt="" coords="896,151,1091,193"/>
+<area shape="rect" id="node8" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#af8e32f667f89b5d6c80f282c2947fe84" title="gui.mainclasses.GUIController.move\lActiveTurtlesInActiveWorkspace" alt="" coords="331,239,583,281"/>
+<area shape="rect" id="node5" href="$da/de1/class_control_1_1_slogo_control.html#ac59ba1076929dce517c40f9d492f56b2" title="Control.SlogoControl.draw\lDrawableObjects" alt="" coords="646,122,834,163"/>
+<area shape="rect" id="node7" href="$da/de1/class_control_1_1_slogo_control.html#a3c3830d88ed47944348f1f82c56d0d58" title="Control.SlogoControl.Slogo\lControl" alt="" coords="1139,151,1333,193"/>
+<area shape="rect" id="node9" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#aa8f2d03270ced2e768ccad9c0c925b3f" title="gui.mainclasses.GUIController.\lGUIController" alt="" coords="632,239,848,281"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="tests.commandTests.CommandTester.setUpTranslator" name="tests.commandTests.CommandTester.setUpTranslator">
+<area shape="rect" id="node2" href="$d3/de0/classtranslator_1_1_translator.html#a5bb5ff750024d44ef3ced7efc65cabfa" title="translator.Translator.create\lMappingsGivenLanguage" alt="" coords="281,103,474,145"/>
+<area shape="rect" id="node3" href="$d3/de0/classtranslator_1_1_translator.html#aa3489cc3e82cdd3045a9ae5f324c1364" title="translator.Translator.build\lDictionaryOfCommandsToEnglish" alt="" coords="523,5,755,46"/>
+<area shape="rect" id="node4" href="$d3/de0/classtranslator_1_1_translator.html#a493ea832263fd904551261076f06658d" title="translator.Translator.build\lMapOfCommandPaths" alt="" coords="547,70,730,111"/>
+<area shape="rect" id="node7" href="$d3/de0/classtranslator_1_1_translator.html#ad1d67540ff22bb2d33585767a78fcf60" title="translator.Translator.map\lLanguageToClassPath" alt="" coords="548,135,729,177"/>
+<area shape="rect" id="node8" href="$d3/de0/classtranslator_1_1_translator.html#aaf98e6084c26cd5714d7e2a19eee8167" title="translator.Translator.create\lReverseMapping" alt="" coords="542,201,735,242"/>
+<area shape="rect" id="node5" href="$d3/de0/classtranslator_1_1_translator.html#a1f98bdb6fe8a0b55cb19673a079dfdc7" title="translator.Translator.find\lCommandName" alt="" coords="803,38,978,79"/>
+<area shape="rect" id="node6" href="$d3/de0/classtranslator_1_1_translator.html#a0271c7134aab7c2eb5a2a718ea765ad2" title="translator.Translator.clip\lPathName" alt="" coords="804,103,977,145"/>
+</map>

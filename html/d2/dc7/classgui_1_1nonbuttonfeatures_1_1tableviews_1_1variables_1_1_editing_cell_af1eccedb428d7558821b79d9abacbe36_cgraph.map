@@ -1,0 +1,7 @@
+<map id="gui.nonbuttonfeatures.tableviews.variables.EditingCell.startEdit" name="gui.nonbuttonfeatures.tableviews.variables.EditingCell.startEdit">
+<area shape="rect" id="node2" href="$d2/dc7/classgui_1_1nonbuttonfeatures_1_1tableviews_1_1variables_1_1_editing_cell.html#ae385a984ae073026aa03561792416a78" title="gui.nonbuttonfeatures.tableviews.variables.\lEditingCell.createTextField" alt="" coords="352,70,651,111"/>
+<area shape="rect" id="node3" href="$d9/da1/classgui_1_1variableslist_1_1_workspace_variable.html#ae407fad5ec45549a9e1ef6343a909fe7" title="gui.variableslist.Workspace\lVariable.getMyName" alt="" coords="752,5,944,46"/>
+<area shape="rect" id="node4" href="$d2/dc7/classgui_1_1nonbuttonfeatures_1_1tableviews_1_1variables_1_1_editing_cell.html#a7cc5d33a62a6106ace514132717c0f66" title="gui.nonbuttonfeatures.tableviews.variables.\lEditingCell.getString" alt="" coords="699,70,997,111"/>
+<area shape="rect" id="node5" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a1c6c6c0599097fbf5e9a660ec0ac3702" title="gui.mainclasses.workspace.\lWorkspace.parseCommandString" alt="" coords="731,135,965,177"/>
+<area shape="rect" id="node6" href="$da/d55/interface_control_1_1_slogo_graphics.html#a05813100446932183f367405e6c73d67" title="Control.SlogoGraphics.parse\lCommandString" alt="" coords="1046,135,1250,177"/>
+</map>

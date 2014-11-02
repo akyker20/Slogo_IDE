@@ -1,0 +1,6 @@
+<map id="gui.componentdrawers.optionsholder.tabs.OptionsTab" name="gui.componentdrawers.optionsholder.tabs.OptionsTab">
+<area shape="rect" id="node3" href="$d2/d6c/classgui_1_1componentdrawers_1_1optionsholder_1_1tabs_1_1_color_index_tab.html" title="gui.componentdrawers.optionsholder.tabs.\lColorIndexTab" alt="" coords="441,5,735,46"/>
+<area shape="rect" id="node4" href="$d6/de0/classgui_1_1componentdrawers_1_1optionsholder_1_1tabs_1_1_general_options_tab.html" title="gui.componentdrawers.optionsholder.tabs.\lGeneralOptionsTab" alt="" coords="441,70,735,111"/>
+<area shape="rect" id="node5" href="$db/d0b/classgui_1_1componentdrawers_1_1optionsholder_1_1tabs_1_1_image_index_tab.html" title="gui.componentdrawers.optionsholder.tabs.\lImageIndexTab" alt="" coords="441,135,735,177"/>
+<area shape="rect" id="node6" href="$dd/d82/classgui_1_1componentdrawers_1_1optionsholder_1_1tabs_1_1_pen_options_tab.html" title="gui.componentdrawers.optionsholder.tabs.\lPenOptionsTab" alt="" coords="441,201,735,242"/>
+</map>

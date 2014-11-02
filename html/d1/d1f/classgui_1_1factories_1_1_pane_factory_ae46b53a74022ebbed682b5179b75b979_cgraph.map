@@ -1,0 +1,5 @@
+<map id="gui.factories.PaneFactory.generateObject" name="gui.factories.PaneFactory.generateObject">
+<area shape="rect" id="node2" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#ab5fc47200b00a26dff1c7389e062403a" title="gui.componentdrawers.Turtle\lScreenDrawer.changeScreenColor" alt="" coords="296,5,536,46"/>
+<area shape="rect" id="node3" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#a98a234f52d457418150bc5c660db1e08" title="gui.componentdrawers.Turtle\lScreenDrawer.resetScreen" alt="" coords="313,70,519,111"/>
+<area shape="rect" id="node4" href="$dd/d25/classgui_1_1factories_1_1turtlefactory_1_1_turtle_nodes.html#a50d6a66a8d02df8bf329830fdfe65bd7" title="gui.factories.turtlefactory.\lTurtleNodes.clearTurtleNodes" alt="" coords="585,70,791,111"/>
+</map>

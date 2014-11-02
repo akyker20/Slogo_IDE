@@ -1,0 +1,5 @@
+<map id="gui.mainclasses.workspace.Workspace.moveActiveTurtles" name="gui.mainclasses.workspace.Workspace.moveActiveTurtles">
+<area shape="rect" id="node2" href="$dd/d25/classgui_1_1factories_1_1turtlefactory_1_1_turtle_nodes.html#a95e5268536cc20234687d9c3f61f49be" title="gui.factories.turtlefactory.\lTurtleNodes.getActiveNodes" alt="" coords="265,5,468,46"/>
+<area shape="rect" id="node4" href="$da/d55/interface_control_1_1_slogo_graphics.html#a05813100446932183f367405e6c73d67" title="Control.SlogoGraphics.parse\lCommandString" alt="" coords="265,70,469,111"/>
+<area shape="rect" id="node3" href="$d1/d95/classgui_1_1factories_1_1turtlefactory_1_1_turtle_node.html#a3e07701226a7044520bc57956f81f0ea" title="gui.factories.turtlefactory.\lTurtleNode.isSelected" alt="" coords="517,5,701,46"/>
+</map>

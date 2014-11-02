@@ -1,0 +1,6 @@
+<map id="gui.nonbuttonfeatures.tableviews.UserDefinedCommandsFeature.UserDefinedCommandsFeature" name="gui.nonbuttonfeatures.tableviews.UserDefinedCommandsFeature.UserDefinedCommandsFeature">
+<area shape="rect" id="node2" href="$d0/d49/classgui_1_1mainclasses_1_1_text_generator.html#afef308a2abfb8f1503d2b276407833e6" title="gui.mainclasses.TextGenerator.get" alt="" coords="403,5,645,32"/>
+<area shape="rect" id="node3" href="$de/d51/classgui_1_1nonbuttonfeatures_1_1tableviews_1_1_user_defined_commands_feature.html#ab93818a1f86fa09c23c5f2c749869a31" title="gui.nonbuttonfeatures.tableviews.\lUserDefinedCommandsFeature.showCommand\lContent" alt="" coords="361,56,687,112"/>
+<area shape="rect" id="node4" href="$d2/df7/classgui_1_1factories_1_1userdefinedcommands_1_1_displayed_user_command.html#ab59ba023f49548e7b4064b225f149960" title="gui.factories.userdefinedcommands.\lDisplayedUserCommand.getMyName" alt="" coords="742,30,1005,71"/>
+<area shape="rect" id="node5" href="$d2/df7/classgui_1_1factories_1_1userdefinedcommands_1_1_displayed_user_command.html#a757d125067f0e2ff32089a1eae96849a" title="gui.factories.userdefinedcommands.\lDisplayedUserCommand.getMyContent" alt="" coords="736,95,1011,137"/>
+</map>

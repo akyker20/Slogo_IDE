@@ -1,0 +1,9 @@
+<map id="gui.componentdrawers.ComponentDrawer" name="gui.componentdrawers.ComponentDrawer">
+<area shape="rect" id="node3" href="$d8/d70/classgui_1_1componentdrawers_1_1_command_line_drawer.html" title="gui.componentdrawers.Command\lLineDrawer" alt="" coords="439,5,678,46"/>
+<area shape="rect" id="node4" href="$d8/d2e/classgui_1_1componentdrawers_1_1_error_drawer.html" title="gui.componentdrawers.Error\lDrawer" alt="" coords="457,70,660,111"/>
+<area shape="rect" id="node5" href="$d0/d17/classgui_1_1componentdrawers_1_1optionsholder_1_1_options_holder_drawer.html" title="gui.componentdrawers.optionsholder.\lOptionsHolderDrawer" alt="" coords="427,135,690,177"/>
+<area shape="rect" id="node6" href="$d9/dec/classgui_1_1componentdrawers_1_1_previous_commands_drawer.html" title="gui.componentdrawers.Previous\lCommandsDrawer" alt="" coords="445,201,672,242"/>
+<area shape="rect" id="node7" href="$db/d27/classgui_1_1componentdrawers_1_1significantcommands_1_1_significant_commands_drawer.html" title="gui.componentdrawers.significantcommands.\lSignificantCommandsDrawer" alt="" coords="403,266,715,307"/>
+<area shape="rect" id="node8" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html" title="gui.componentdrawers.Turtle\lScreenDrawer" alt="" coords="455,331,662,373"/>
+<area shape="rect" id="node9" href="$d8/d55/classgui_1_1componentdrawers_1_1_workspace_variables_drawer.html" title="gui.componentdrawers.Workspace\lVariablesDrawer" alt="" coords="439,397,679,438"/>
+</map>

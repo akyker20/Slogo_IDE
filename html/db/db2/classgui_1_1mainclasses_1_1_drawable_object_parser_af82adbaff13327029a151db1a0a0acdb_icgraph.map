@@ -1,0 +1,7 @@
+<map id="gui.mainclasses.DrawableObjectParser.parseDrawableObject" name="gui.mainclasses.DrawableObjectParser.parseDrawableObject">
+<area shape="rect" id="node2" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a3aa7429441a5bca58fe2c0b94f25645d" title="gui.mainclasses.workspace.\lWorkspace.parseDrawableObject" alt="" coords="297,5,527,46"/>
+<area shape="rect" id="node3" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#a32ce7160aef646c8557283e20135d34c" title="gui.mainclasses.GUIController.draw\lDrawableObjects" alt="" coords="577,5,823,46"/>
+<area shape="rect" id="node4" href="$da/de1/class_control_1_1_slogo_control.html#ac59ba1076929dce517c40f9d492f56b2" title="Control.SlogoControl.draw\lDrawableObjects" alt="" coords="873,5,1061,46"/>
+<area shape="rect" id="node5" href="$da/de1/class_control_1_1_slogo_control.html#a3c55ba4e1dadbf4fbcd647017109fa9a" title="Control.SlogoControl.parse\lCommandString" alt="" coords="1109,5,1304,46"/>
+<area shape="rect" id="node6" href="$da/de1/class_control_1_1_slogo_control.html#a3c3830d88ed47944348f1f82c56d0d58" title="Control.SlogoControl.Slogo\lControl" alt="" coords="1352,5,1547,46"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="gui.buttonfeatures.SaveCommandButtonFeature.saveCommand" name="gui.buttonfeatures.SaveCommandButtonFeature.saveCommand">
+<area shape="rect" id="node2" href="$d1/de9/classgui_1_1nonbuttonfeatures_1_1_saved_commands_feature.html#a8f35f127939243399954ff07406a069d" title="gui.nonbuttonfeatures.Saved\lCommandsFeature.addCommand" alt="" coords="297,5,535,46"/>
+<area shape="rect" id="node3" href="$d8/d70/classgui_1_1componentdrawers_1_1_command_line_drawer.html#a586cc30b8b8064d9203938b452aa7c94" title="gui.componentdrawers.Command\lLineDrawer.getCurrentCommand" alt="" coords="297,70,535,111"/>
+</map>

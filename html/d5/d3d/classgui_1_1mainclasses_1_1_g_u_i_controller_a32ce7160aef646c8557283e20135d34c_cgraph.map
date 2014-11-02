@@ -1,0 +1,9 @@
+<map id="gui.mainclasses.GUIController.drawDrawableObjects" name="gui.mainclasses.GUIController.drawDrawableObjects">
+<area shape="rect" id="node2" href="$d3/db0/classgui_1_1mainclasses_1_1workspace_1_1_workspace_manager.html#a4863a19ac83bbd4dea5582dcecf3553d" title="gui.mainclasses.workspace.\lWorkspaceManager.getActiveWorkspace" alt="" coords="301,5,579,46"/>
+<area shape="rect" id="node3" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a3aa7429441a5bca58fe2c0b94f25645d" title="gui.mainclasses.workspace.\lWorkspace.parseDrawableObject" alt="" coords="325,70,555,111"/>
+<area shape="rect" id="node4" href="$db/db2/classgui_1_1mainclasses_1_1_drawable_object_parser.html#af82adbaff13327029a151db1a0a0acdb" title="gui.mainclasses.Drawable\lObjectParser.parseDrawableObject" alt="" coords="627,70,869,111"/>
+<area shape="rect" id="node5" href="$d0/dda/classgui_1_1componentdrawers_1_1_component_drawer.html#a7866683582ed9aebe665c7998d549fbb" title="gui.componentdrawers.Component\lDrawer.drawShape" alt="" coords="926,5,1173,46"/>
+<area shape="rect" id="node6" href="$db/db2/classgui_1_1mainclasses_1_1_drawable_object_parser.html#adb6188c1155c494e00251c5e7d5f3e7a" title="gui.mainclasses.Drawable\lObjectParser.parseComponentDrawer" alt="" coords="918,70,1181,111"/>
+<area shape="rect" id="node7" href="$db/db2/classgui_1_1mainclasses_1_1_drawable_object_parser.html#ac93f66a3adf4230d9c365f8628083a3c" title="gui.mainclasses.Drawable\lObjectParser.parseNodeToDraw" alt="" coords="939,135,1160,177"/>
+<area shape="rect" id="node8" href="$d1/d60/classgui_1_1factories_1_1_object_factory.html#aae1042d4fe6455bf3dbeb6fea18df24a" title="gui.factories.ObjectFactory.generate\lObject" alt="" coords="1229,135,1480,177"/>
+</map>

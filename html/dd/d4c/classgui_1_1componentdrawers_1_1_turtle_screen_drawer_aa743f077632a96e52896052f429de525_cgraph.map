@@ -1,0 +1,6 @@
+<map id="gui.componentdrawers.TurtleScreenDrawer.TurtleScreenDrawer" name="gui.componentdrawers.TurtleScreenDrawer.TurtleScreenDrawer">
+<area shape="rect" id="node2" href="$d0/d49/classgui_1_1mainclasses_1_1_text_generator.html#afef308a2abfb8f1503d2b276407833e6" title="gui.mainclasses.TextGenerator.get" alt="" coords="293,5,536,32"/>
+<area shape="rect" id="node3" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#a83f12c302421ec33a85eacc4ede2c402" title="gui.componentdrawers.Turtle\lScreenDrawer.initializeGridPane" alt="" coords="303,57,526,98"/>
+<area shape="rect" id="node4" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#a7d6332d7c91df12e7d2019a338972973" title="gui.componentdrawers.Turtle\lScreenDrawer.makeRowLine" alt="" coords="585,23,791,65"/>
+<area shape="rect" id="node5" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#af0ffb1e9d615dd3a87f2679e694ebacc" title="gui.componentdrawers.Turtle\lScreenDrawer.makeColLine" alt="" coords="585,89,791,130"/>
+</map>

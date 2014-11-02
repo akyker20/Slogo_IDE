@@ -1,0 +1,7 @@
+<map id="gui.buttonfeatures.SaveCommandButtonFeature" name="gui.buttonfeatures.SaveCommandButtonFeature">
+<area shape="rect" id="node2" href="$d0/d42/classgui_1_1buttonfeatures_1_1_button_feature.html" title="gui.buttonfeatures.Button\lFeature" alt="" coords="1005,6,1192,47"/>
+<area shape="rect" id="node4" href="$da/d9c/classgui_1_1nonbuttonfeatures_1_1_previous_commands_feature.html" title="gui.nonbuttonfeatures.Previous\lCommandsFeature" alt="" coords="987,145,1210,186"/>
+<area shape="rect" id="node11" href="$d1/de9/classgui_1_1nonbuttonfeatures_1_1_saved_commands_feature.html" title="gui.nonbuttonfeatures.Saved\lCommandsFeature" alt="" coords="995,79,1203,121"/>
+<area shape="rect" id="node6" href="$d8/d70/classgui_1_1componentdrawers_1_1_command_line_drawer.html" title="gui.componentdrawers.Command\lLineDrawer" alt="" coords="523,213,762,254"/>
+<area shape="rect" id="node7" href="$d0/dda/classgui_1_1componentdrawers_1_1_component_drawer.html" title="gui.componentdrawers.Component\lDrawer" alt="" coords="110,177,357,218"/>
+</map>

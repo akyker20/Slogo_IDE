@@ -1,0 +1,9 @@
+<map id="gui.factories.turtlefactory.TurtleNode.isSelected" name="gui.factories.turtlefactory.TurtleNode.isSelected">
+<area shape="rect" id="node2" href="$dd/d25/classgui_1_1factories_1_1turtlefactory_1_1_turtle_nodes.html#a95e5268536cc20234687d9c3f61f49be" title="gui.factories.turtlefactory.\lTurtleNodes.getActiveNodes" alt="" coords="237,77,440,118"/>
+<area shape="rect" id="node7" href="$d1/d95/classgui_1_1factories_1_1turtlefactory_1_1_turtle_node.html#a8a90adc42503d132ce9c45b10844e32b" title="gui.factories.turtlefactory.\lTurtleNode.selectTurtle" alt="" coords="808,109,992,150"/>
+<area shape="rect" id="node3" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a01dff18cc9fa51688c0ba996b3ff9b6a" title="gui.mainclasses.workspace.\lWorkspace.moveActiveTurtles" alt="" coords="501,5,712,46"/>
+<area shape="rect" id="node6" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#afe27c5d2bffafe1e1092a0319331cc33" title="gui.mainclasses.workspace.\lWorkspace.notifyOfTurtleSelection\lChange" alt="" coords="489,69,725,125"/>
+<area shape="rect" id="node4" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#af8e32f667f89b5d6c80f282c2947fe84" title="gui.mainclasses.GUIController.move\lActiveTurtlesInActiveWorkspace" alt="" coords="774,5,1026,46"/>
+<area shape="rect" id="node5" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#aa8f2d03270ced2e768ccad9c0c925b3f" title="gui.mainclasses.GUIController.\lGUIController" alt="" coords="1075,5,1291,46"/>
+<area shape="rect" id="node8" href="$d1/d95/classgui_1_1factories_1_1turtlefactory_1_1_turtle_node.html#aeae66bb4bbd0ee69922deaf346872467" title="gui.factories.turtlefactory.\lTurtleNode.TurtleNode" alt="" coords="1091,109,1275,150"/>
+</map>

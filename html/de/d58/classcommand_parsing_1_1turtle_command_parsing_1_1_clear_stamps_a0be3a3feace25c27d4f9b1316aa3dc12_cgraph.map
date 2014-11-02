@@ -1,0 +1,6 @@
+<map id="commandParsing.turtleCommandParsing.ClearStamps.parse" name="commandParsing.turtleCommandParsing.ClearStamps.parse">
+<area shape="rect" id="node2" href="$df/d64/interfacecommand_parsing_1_1drawable_obect_generation_interfaces_1_1_turtle_generator.html#aff15a6ded04a3d45860669b8cab3638e" title="commandParsing.drawableObect\lGenerationInterfaces.TurtleGenerator.generate\lDrawableObjectRepresentingTurtleDeletion" alt="" coords="293,5,613,61"/>
+<area shape="rect" id="node4" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html#a02fe2eb9079781bdcbaf343c6d133edb" title="workspaceState.TurtleCollection.get\lStamps" alt="" coords="329,85,578,126"/>
+<area shape="rect" id="node5" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html#a907bd2adcd304bb05f592974ccbaeb75" title="workspaceState.TurtleCollection.remove\lAllStamps" alt="" coords="315,150,592,191"/>
+<area shape="rect" id="node3" href="$d1/d01/classworkspace_state_1_1_turtle.html#a2b5e77b78036091a65abb5f4959b5ef7" title="workspaceState.Turtle.getID" alt="" coords="661,20,861,47"/>
+</map>

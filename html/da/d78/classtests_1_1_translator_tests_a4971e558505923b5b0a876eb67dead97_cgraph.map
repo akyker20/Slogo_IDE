@@ -1,0 +1,5 @@
+<map id="tests.TranslatorTests.TranslatorRegExTest" name="tests.TranslatorTests.TranslatorRegExTest">
+<area shape="rect" id="node2" href="$d3/de0/classtranslator_1_1_translator.html#ad62364674b153e6fb5c67b328700d6e2" title="translator.Translator.matches\lCommandPattern" alt="" coords="272,5,480,46"/>
+<area shape="rect" id="node3" href="$d3/de0/classtranslator_1_1_translator.html#ae163dd69225da8754f9f090cb2b32bd4" title="translator.Translator.matches\lConstantPattern" alt="" coords="272,70,480,111"/>
+<area shape="rect" id="node4" href="$d3/de0/classtranslator_1_1_translator.html#aeb9508fb69ae1c82eec49d2b1d4ee77b" title="translator.Translator.matches\lVariablePattern" alt="" coords="272,135,480,177"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="commandParsing.floatCommandParsing.TwoInputFloatCommandParser" name="commandParsing.floatCommandParsing.TwoInputFloatCommandParser">
+<area shape="rect" id="node4" href="$d2/dd5/classcommand_parsing_1_1boolean_command_parsing_1_1_and.html" title="commandParsing.booleanCommand\lParsing.And" alt="" coords="914,5,1169,46"/>
+<area shape="rect" id="node5" href="$d7/d4f/classcommand_parsing_1_1boolean_command_parsing_1_1_equal.html" title="commandParsing.booleanCommand\lParsing.Equal" alt="" coords="914,70,1169,111"/>
+<area shape="rect" id="node6" href="$d9/dfe/classcommand_parsing_1_1boolean_command_parsing_1_1_greater_than.html" title="commandParsing.booleanCommand\lParsing.GreaterThan" alt="" coords="914,135,1169,177"/>
+<area shape="rect" id="node7" href="$d9/dbc/classcommand_parsing_1_1boolean_command_parsing_1_1_less_than.html" title="commandParsing.booleanCommand\lParsing.LessThan" alt="" coords="914,201,1169,242"/>
+<area shape="rect" id="node8" href="$dc/dfd/classcommand_parsing_1_1boolean_command_parsing_1_1_not_equal.html" title="commandParsing.booleanCommand\lParsing.NotEqual" alt="" coords="914,266,1169,307"/>
+<area shape="rect" id="node9" href="$d5/dbb/classcommand_parsing_1_1boolean_command_parsing_1_1_or.html" title="commandParsing.booleanCommand\lParsing.Or" alt="" coords="914,331,1169,373"/>
+<area shape="rect" id="node10" href="$d5/d42/classcommand_parsing_1_1math_command_parsing_1_1_difference.html" title="commandParsing.mathCommand\lParsing.Difference" alt="" coords="922,397,1161,438"/>
+<area shape="rect" id="node11" href="$d6/d5c/classcommand_parsing_1_1math_command_parsing_1_1_power.html" title="commandParsing.mathCommand\lParsing.Power" alt="" coords="922,462,1161,503"/>
+<area shape="rect" id="node12" href="$df/d1a/classcommand_parsing_1_1math_command_parsing_1_1_product.html" title="commandParsing.mathCommand\lParsing.Product" alt="" coords="922,527,1161,569"/>
+<area shape="rect" id="node13" href="$db/d56/classcommand_parsing_1_1math_command_parsing_1_1_quotient.html" title="commandParsing.mathCommand\lParsing.Quotient" alt="" coords="922,593,1161,634"/>
+<area shape="rect" id="node14" href="$d8/d03/classcommand_parsing_1_1math_command_parsing_1_1_remainder.html" title="commandParsing.mathCommand\lParsing.Remainder" alt="" coords="922,658,1161,699"/>
+<area shape="rect" id="node15" href="$dc/db9/classcommand_parsing_1_1math_command_parsing_1_1_sum.html" title="commandParsing.mathCommand\lParsing.Sum" alt="" coords="922,723,1161,765"/>
+<area shape="rect" id="node16" href="$da/d63/classcommand_parsing_1_1turtle_command_parsing_1_1turtle_attribute_setters_1_1_set_towards.html" title="commandParsing.turtleCommand\lParsing.turtleAttributeSetters.\lSetTowards" alt="" coords="922,788,1161,844"/>
+<area shape="rect" id="node17" href="$d9/dab/classcommand_parsing_1_1turtle_command_parsing_1_1turtle_movement_1_1_move_to_location.html" title="commandParsing.turtleCommand\lParsing.turtleMovement.MoveToLocation" alt="" coords="902,867,1181,909"/>
+<area shape="rect" id="node2" href="$d9/d8d/classcommand_parsing_1_1float_command_parsing_1_1_float_input_command_parser.html" title="commandParsing.floatCommand\lParsing.FloatInputCommandParser" alt="" coords="299,430,541,471"/>
+<area shape="rect" id="node3" href="$d7/d17/classcommand_parsing_1_1_command_parser.html" title="commandParsing.CommandParser" alt="" coords="6,437,250,464"/>
+<area shape="rect" id="node18" href="$d4/d74/classcommand_parsing_1_1turtle_command_parsing_1_1turtle_attribute_setters_1_1_set_position.html" title="commandParsing.turtleCommand\lParsing.turtleAttributeSetters.\lSetPosition" alt="" coords="1230,824,1469,880"/>
+<area shape="rect" id="node19" href="$dd/d8a/classcommand_parsing_1_1turtle_command_parsing_1_1turtle_movement_1_1_home.html" title="commandParsing.turtleCommand\lParsing.turtleMovement.Home" alt="" coords="1230,903,1469,945"/>
+<area shape="rect" id="node20" href="$dd/dc5/classcommand_parsing_1_1turtle_command_parsing_1_1_clear_screen.html" title="commandParsing.turtleCommand\lParsing.ClearScreen" alt="" coords="1518,903,1757,945"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="gui.nonbuttonfeatures.CommandLineFeature.CommandLineFeature" name="gui.nonbuttonfeatures.CommandLineFeature.CommandLineFeature">
+<area shape="rect" id="node2" href="$d0/d64/classgui_1_1nonbuttonfeatures_1_1_command_line_feature.html#a3f213a77a7e44c4e75c4346a4faaccd9" title="gui.nonbuttonfeatures.Command\lLineFeature.cleanCommand" alt="" coords="303,5,537,46"/>
+<area shape="rect" id="node3" href="$d0/dda/classgui_1_1componentdrawers_1_1_component_drawer.html#a7866683582ed9aebe665c7998d549fbb" title="gui.componentdrawers.Component\lDrawer.drawShape" alt="" coords="297,70,543,111"/>
+<area shape="rect" id="node4" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a1c6c6c0599097fbf5e9a660ec0ac3702" title="gui.mainclasses.workspace.\lWorkspace.parseCommandString" alt="" coords="303,135,537,177"/>
+<area shape="rect" id="node6" href="$d8/d70/classgui_1_1componentdrawers_1_1_command_line_drawer.html#a08074f05635bafab1fbf64d7aedf0b72" title="gui.componentdrawers.Command\lLineDrawer.setCommandLine" alt="" coords="301,201,539,242"/>
+<area shape="rect" id="node5" href="$da/d55/interface_control_1_1_slogo_graphics.html#a05813100446932183f367405e6c73d67" title="Control.SlogoGraphics.parse\lCommandString" alt="" coords="593,135,797,177"/>
+</map>

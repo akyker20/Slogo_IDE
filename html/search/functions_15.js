@@ -1,0 +1,14 @@
+var searchData=
+[
+  ['workspace',['Workspace',['../d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a2a722f3db714ab95c3784b2cc26837d4',1,'gui::mainclasses::workspace::Workspace']]],
+  ['workspacedataholder',['WorkspaceDataHolder',['../d0/d23/classgui_1_1mainclasses_1_1workspace_1_1_workspace_data_holder.html#ab78cf81a2a09ba2d17d22127627810eb',1,'gui.mainclasses.workspace.WorkspaceDataHolder.WorkspaceDataHolder()'],['../d0/d23/classgui_1_1mainclasses_1_1workspace_1_1_workspace_data_holder.html#abbf3f7e4fca8dfc86a8600983599adbe',1,'gui.mainclasses.workspace.WorkspaceDataHolder.WorkspaceDataHolder(ObservableList&lt; WorkspaceVariable &gt; myVariablesList, ObservableList&lt; String &gt; myPreviousCommandsList, ObservableList&lt; DisplayedUserCommand &gt; myUserDefinedCommandList, ObservableList&lt; String &gt; mySavedCommandsList, ObservableList&lt; ColorIndex &gt; myColorIndexList, ObservableList&lt; ImageIndex &gt; myImageIndexList)']]],
+  ['workspacemanager',['WorkspaceManager',['../d3/db0/classgui_1_1mainclasses_1_1workspace_1_1_workspace_manager.html#af1bf4f62bfb933aa3a845b283ddd9a76',1,'gui::mainclasses::workspace::WorkspaceManager']]],
+  ['workspacepencommands',['WorkspacePenCommands',['../d9/d08/class_x_m_l_1_1workspaceparams_1_1_workspace_pen_commands.html#a0da827bc3e2842a5b9acf847e9cc1e2b',1,'XML::workspaceparams::WorkspacePenCommands']]],
+  ['workspacescreenparameters',['WorkspaceScreenParameters',['../dd/d08/class_x_m_l_1_1workspaceparams_1_1_workspace_screen_parameters.html#a9e2c1f124c573f2d9186942646994934',1,'XML::workspaceparams::WorkspaceScreenParameters']]],
+  ['workspacestate',['WorkspaceState',['../d5/daa/classworkspace_state_1_1_workspace_state.html#aa63996cb9b12bb0b34cfd3fcd714e0ac',1,'workspaceState::WorkspaceState']]],
+  ['workspacevariable',['WorkspaceVariable',['../d9/da1/classgui_1_1variableslist_1_1_workspace_variable.html#a6b340034abea0ce515ecdab02aefa043',1,'gui::variableslist::WorkspaceVariable']]],
+  ['workspacevariablefactory',['WorkspaceVariableFactory',['../df/d97/classgui_1_1factories_1_1_workspace_variable_factory.html#a8a5aa6230e25d1ba20ca3ea63a54bc6f',1,'gui::factories::WorkspaceVariableFactory']]],
+  ['workspacevariablesdrawer',['WorkspaceVariablesDrawer',['../d8/d55/classgui_1_1componentdrawers_1_1_workspace_variables_drawer.html#a52f608c492cdddff7646a5050cadb21b',1,'gui::componentdrawers::WorkspaceVariablesDrawer']]],
+  ['workspacevariablesfeature',['WorkspaceVariablesFeature',['../dc/da5/classgui_1_1nonbuttonfeatures_1_1tableviews_1_1variables_1_1_workspace_variables_feature.html#aa3bb841cef0ae9fcd23cb920c122e226',1,'gui::nonbuttonfeatures::tableviews::variables::WorkspaceVariablesFeature']]],
+  ['writefile',['writeFile',['../d0/d4c/class_x_m_l_1_1writers_1_1_saved_workspace_x_m_l_writer.html#abfbdb3b98dac3e45eb83e5f6a1943165',1,'XML::writers::SavedWorkspaceXMLWriter']]]
+];

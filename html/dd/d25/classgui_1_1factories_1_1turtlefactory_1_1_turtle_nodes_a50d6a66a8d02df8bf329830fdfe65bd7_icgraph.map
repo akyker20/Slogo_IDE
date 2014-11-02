@@ -1,0 +1,4 @@
+<map id="gui.factories.turtlefactory.TurtleNodes.clearTurtleNodes" name="gui.factories.turtlefactory.TurtleNodes.clearTurtleNodes">
+<area shape="rect" id="node2" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#a98a234f52d457418150bc5c660db1e08" title="gui.componentdrawers.Turtle\lScreenDrawer.resetScreen" alt="" coords="262,5,469,46"/>
+<area shape="rect" id="node3" href="$d1/d1f/classgui_1_1factories_1_1_pane_factory.html#ae46b53a74022ebbed682b5179b75b979" title="gui.factories.PaneFactory.generate\lObject" alt="" coords="518,5,759,46"/>
+</map>

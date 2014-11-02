@@ -1,0 +1,5 @@
+<map id="gui.buttonfeatures.ButtonFeature" name="gui.buttonfeatures.ButtonFeature">
+<area shape="rect" id="node3" href="$d9/d24/classgui_1_1buttonfeatures_1_1_clear_workspace_button_feature.html" title="gui.buttonfeatures.Clear\lWorkspaceButtonFeature" alt="" coords="385,5,567,46"/>
+<area shape="rect" id="node4" href="$dd/d11/classgui_1_1buttonfeatures_1_1_save_command_button_feature.html" title="gui.buttonfeatures.SaveCommand\lButtonFeature" alt="" coords="355,70,597,111"/>
+<area shape="rect" id="node5" href="$da/da4/classgui_1_1buttonfeatures_1_1_toggle_grid_button_feature.html" title="gui.buttonfeatures.Toggle\lGridButtonFeature" alt="" coords="384,135,568,177"/>
+</map>

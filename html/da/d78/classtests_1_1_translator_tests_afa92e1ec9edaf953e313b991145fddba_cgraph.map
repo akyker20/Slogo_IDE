@@ -1,0 +1,7 @@
+<map id="tests.TranslatorTests.ChineseTranslationTest" name="tests.TranslatorTests.ChineseTranslationTest">
+<area shape="rect" id="node2" href="$d3/de0/classtranslator_1_1_translator.html#a0b8583b3ece2e55d0f02d7a076522863" title="translator.Translator.translate" alt="" coords="262,77,471,104"/>
+<area shape="rect" id="node3" href="$d3/de0/classtranslator_1_1_translator.html#ae5f7587427ac1df42b5764f127ce827c" title="translator.Translator.translate\lToList" alt="" coords="521,70,730,111"/>
+<area shape="rect" id="node4" href="$d3/de0/classtranslator_1_1_translator.html#ad62364674b153e6fb5c67b328700d6e2" title="translator.Translator.matches\lCommandPattern" alt="" coords="779,5,987,46"/>
+<area shape="rect" id="node5" href="$d3/de0/classtranslator_1_1_translator.html#ae163dd69225da8754f9f090cb2b32bd4" title="translator.Translator.matches\lConstantPattern" alt="" coords="779,70,987,111"/>
+<area shape="rect" id="node6" href="$d3/de0/classtranslator_1_1_translator.html#aeb9508fb69ae1c82eec49d2b1d4ee77b" title="translator.Translator.matches\lVariablePattern" alt="" coords="779,135,987,177"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="translator.Translator.mapLanguageToClassPath" name="translator.Translator.mapLanguageToClassPath">
+<area shape="rect" id="node2" href="$d3/de0/classtranslator_1_1_translator.html#a5bb5ff750024d44ef3ced7efc65cabfa" title="translator.Translator.create\lMappingsGivenLanguage" alt="" coords="235,57,429,98"/>
+<area shape="rect" id="node3" href="$d4/d39/classcommand_parsing_1_1_set_language.html#a8d6c8cee20a89ad65ab09e0f77e974e9" title="commandParsing.SetLanguage.parse" alt="" coords="478,5,741,32"/>
+<area shape="rect" id="node4" href="$df/d32/classtests_1_1command_tests_1_1_command_tester.html#a5bc41a0697edcc44372fff6a0a76b492" title="tests.commandTests.Command\lTester.setUpTranslator" alt="" coords="496,57,723,98"/>
+<area shape="rect" id="node5" href="$d3/de0/classtranslator_1_1_translator.html#a4b1631651bb2f9db102677a4b3323688" title="translator.Translator.Translator" alt="" coords="502,123,717,149"/>
+</map>

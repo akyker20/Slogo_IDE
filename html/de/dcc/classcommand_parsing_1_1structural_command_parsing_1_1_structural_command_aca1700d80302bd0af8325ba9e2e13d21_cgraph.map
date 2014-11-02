@@ -1,0 +1,6 @@
+<map id="commandParsing.structuralCommandParsing.StructuralCommand.ignoreUntilClosingBrace" name="commandParsing.structuralCommandParsing.StructuralCommand.ignoreUntilClosingBrace">
+<area shape="rect" id="node2" href="$de/dcc/classcommand_parsing_1_1structural_command_parsing_1_1_structural_command.html#a3f1054710afe4826d31938f0a74af315" title="commandParsing.structural\lCommandParsing.StructuralCommand.check\lForOpeningBrace" alt="" coords="379,5,690,61"/>
+<area shape="rect" id="node4" href="$de/dcc/classcommand_parsing_1_1structural_command_parsing_1_1_structural_command.html#a277f37ab3033f12c95cf3c79f4c13805" title="commandParsing.structural\lCommandParsing.StructuralCommand.findBrace" alt="" coords="368,85,701,126"/>
+<area shape="rect" id="node3" href="$d3/de0/classtranslator_1_1_translator.html#a87328fef942490ca02d2ebabaec35c47" title="translator.Translator.matches\lListStartPattern" alt="" coords="749,17,957,58"/>
+<area shape="rect" id="node5" href="$d3/de0/classtranslator_1_1_translator.html#abd79378932d164889d2d90c7783f1493" title="translator.Translator.matches\lListEndPattern" alt="" coords="749,85,957,126"/>
+</map>

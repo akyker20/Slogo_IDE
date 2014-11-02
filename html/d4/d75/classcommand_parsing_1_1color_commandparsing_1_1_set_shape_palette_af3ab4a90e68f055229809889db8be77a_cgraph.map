@@ -1,0 +1,9 @@
+<map id="commandParsing.colorCommandparsing.SetShapePalette.parse" name="commandParsing.colorCommandparsing.SetShapePalette.parse">
+<area shape="rect" id="node2" href="$d7/d17/classcommand_parsing_1_1_command_parser.html#a663a439263fd1c59baab79f31742f1d7" title="commandParsing.CommandParser.accumulate\lComponents" alt="" coords="341,78,664,119"/>
+<area shape="rect" id="node7" href="$d3/d10/interfacecommand_parsing_1_1drawable_obect_generation_interfaces_1_1_shape_palette_update_generator.html#a428e73580c13f7802e9fef9cef6194e7" title="commandParsing.drawableObect\lGenerationInterfaces.ShapePalette\lUpdateGenerator.generateDrawableObject\lRepresentingShapePaletteUpdate" alt="" coords="355,150,650,221"/>
+<area shape="rect" id="node3" href="$d7/d17/classcommand_parsing_1_1_command_parser.html#a9bf6e09b0ad06b6f217ad0ad040f8e93" title="commandParsing.CommandParser.create\lParser" alt="" coords="712,5,1000,46"/>
+<area shape="rect" id="node4" href="$d7/d17/classcommand_parsing_1_1_command_parser.html#ac5bad35b74ad1aac039e96f2e3a99e82" title="commandParsing.CommandParser.is\lStringParsableAsCommand" alt="" coords="727,70,985,111"/>
+<area shape="rect" id="node6" href="$d7/d17/classcommand_parsing_1_1_command_parser.html#ae5a2f506ca01f7fa355a64e4831fbae3" title="commandParsing.CommandParser.parse" alt="" coords="715,136,997,163"/>
+<area shape="rect" id="node5" href="$d3/de0/classtranslator_1_1_translator.html#ad62364674b153e6fb5c67b328700d6e2" title="translator.Translator.matches\lCommandPattern" alt="" coords="1048,70,1256,111"/>
+<area shape="rect" id="node8" href="$da/de7/classworkspace_state_1_1_shape.html#aace6051dd26034446492ecac6ff16099" title="workspaceState.Shape.getPath" alt="" coords="745,187,967,213"/>
+</map>

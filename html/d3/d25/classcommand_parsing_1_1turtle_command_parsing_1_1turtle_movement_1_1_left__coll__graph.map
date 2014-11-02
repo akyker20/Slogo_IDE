@@ -1,0 +1,15 @@
+<map id="commandParsing.turtleCommandParsing.turtleMovement.Left" name="commandParsing.turtleCommandParsing.turtleMovement.Left">
+<area shape="rect" id="node2" href="$dd/d66/classcommand_parsing_1_1turtle_command_parsing_1_1turtle_movement_1_1_rotate.html" title="commandParsing.turtleCommand\lParsing.turtleMovement.Rotate" alt="" coords="2238,193,2477,234"/>
+<area shape="rect" id="node3" href="$d3/d00/classcommand_parsing_1_1float_command_parsing_1_1_one_input_float_command_parser.html" title="commandParsing.floatCommand\lParsing.OneInputFloatCommandParser" alt="" coords="1918,151,2186,193"/>
+<area shape="rect" id="node4" href="$d9/d8d/classcommand_parsing_1_1float_command_parsing_1_1_float_input_command_parser.html" title="commandParsing.floatCommand\lParsing.FloatInputCommandParser" alt="" coords="1624,151,1867,193"/>
+<area shape="rect" id="node5" href="$d7/d17/classcommand_parsing_1_1_command_parser.html" title="commandParsing.CommandParser" alt="" coords="1329,159,1573,185"/>
+<area shape="rect" id="node7" href="$d5/daa/classworkspace_state_1_1_workspace_state.html" title="workspaceState.Workspace\lState" alt="" coords="926,187,1122,229"/>
+<area shape="rect" id="node8" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html" title="workspaceState.TurtleCollection" alt="" coords="565,39,789,65"/>
+<area shape="rect" id="node10" href="$d2/df5/classworkspace_state_1_1_palette.html" title="workspaceState.Palette\l\&lt; workspaceState.Shape \&gt;" alt="" coords="578,94,777,135"/>
+<area shape="rect" id="node11" href="$dd/d73/classworkspace_state_1_1_user_defined_variable_collection.html" title="workspaceState.UserDefined\lVariableCollection" alt="" coords="574,159,781,201"/>
+<area shape="rect" id="node13" href="$d9/da1/classgui_1_1variableslist_1_1_workspace_variable.html" title="gui.variableslist.Workspace\lVariable" alt="" coords="68,159,260,201"/>
+<area shape="rect" id="node14" href="$d2/d58/classworkspace_state_1_1_user_defined_command_collection.html" title="workspaceState.UserDefined\lCommandCollection" alt="" coords="574,225,781,266"/>
+<area shape="rect" id="node16" href="$d3/de0/classtranslator_1_1_translator.html" title="translator.Translator" alt="" coords="603,291,752,317"/>
+<area shape="rect" id="node18" href="$d2/df5/classworkspace_state_1_1_palette.html" title="workspaceState.Palette\l\&lt; Color \&gt;" alt="" coords="591,342,763,383"/>
+<area shape="rect" id="node19" href="$df/d64/interfacecommand_parsing_1_1drawable_obect_generation_interfaces_1_1_turtle_generator.html" title="commandParsing.drawableObect\lGenerationInterfaces.TurtleGenerator" alt="" coords="1923,217,2181,258"/>
+</map>

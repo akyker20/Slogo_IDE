@@ -1,0 +1,7 @@
+<map id="gui.nonbuttonfeatures.TurtleScreenFeature.TurtleScreenFeature" name="gui.nonbuttonfeatures.TurtleScreenFeature.TurtleScreenFeature">
+<area shape="rect" id="node2" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#ab5fc47200b00a26dff1c7389e062403a" title="gui.componentdrawers.Turtle\lScreenDrawer.changeScreenColor" alt="" coords="313,5,553,46"/>
+<area shape="rect" id="node3" href="$dd/d08/class_x_m_l_1_1workspaceparams_1_1_workspace_screen_parameters.html#a754928838a4deedd7a54b5d08f58a4ef" title="XML.workspaceparams.Workspace\lScreenParameters.extractParams" alt="" coords="313,70,553,111"/>
+<area shape="rect" id="node4" href="$dd/d08/class_x_m_l_1_1workspaceparams_1_1_workspace_screen_parameters.html#aef156b7e2b28d42961e3453526836396" title="XML.workspaceparams.Workspace\lScreenParameters.hasParam" alt="" coords="313,135,553,177"/>
+<area shape="rect" id="node5" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#af40fb9891c8d1c7b9241ce896d6b8c65" title="gui.componentdrawers.Turtle\lScreenDrawer.setTurtleScreenFeature" alt="" coords="302,201,565,242"/>
+<area shape="rect" id="node6" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html#a3192fcd19827a75a4b167ba38b793a26" title="gui.componentdrawers.Turtle\lScreenDrawer.toggleGrid" alt="" coords="330,266,537,307"/>
+</map>

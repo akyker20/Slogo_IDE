@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d1/d60/classgui_1_1factories_1_1_object_factory.html" title="gui.factories.ObjectFactory" alt="" coords="6,201,197,228"/>
+<area shape="rect" id="node2" href="$d2/d09/classgui_1_1factories_1_1_color_palette_entry_factory.html" title="gui.factories.ColorPalette\lEntryFactory" alt="" coords="283,5,464,46"/>
+<area shape="rect" id="node3" href="$df/d30/classgui_1_1factories_1_1_error_factory.html" title="gui.factories.ErrorFactory" alt="" coords="283,71,464,97"/>
+<area shape="rect" id="node4" href="$d9/db1/classgui_1_1factories_1_1_line_factory.html" title="gui.factories.LineFactory" alt="" coords="285,121,461,148"/>
+<area shape="rect" id="node5" href="$d1/d1f/classgui_1_1factories_1_1_pane_factory.html" title="gui.factories.PaneFactory" alt="" coords="283,172,464,199"/>
+<area shape="rect" id="node6" href="$d3/d7c/classgui_1_1factories_1_1_shape_palette_entry_factory.html" title="gui.factories.ShapePalette\lEntryFactory" alt="" coords="279,223,468,265"/>
+<area shape="rect" id="node7" href="$df/d5f/classgui_1_1factories_1_1turtlefactory_1_1_turtle_factory.html" title="gui.factories.turtlefactory.\lTurtleFactory" alt="" coords="281,289,465,330"/>
+<area shape="rect" id="node8" href="$da/d5b/classgui_1_1factories_1_1userdefinedcommands_1_1_user_defined_command_factory.html" title="gui.factories.userdefinedcommands.\lUserDefinedCommandFactory" alt="" coords="246,354,501,395"/>
+<area shape="rect" id="node9" href="$df/d97/classgui_1_1factories_1_1_workspace_variable_factory.html" title="gui.factories.WorkspaceVariable\lFactory" alt="" coords="262,419,485,461"/>
+</map>

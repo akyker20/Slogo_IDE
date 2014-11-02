@@ -1,0 +1,7 @@
+<map id="gui.mainclasses.workspace.WorkspaceManager.WorkspaceManager" name="gui.mainclasses.workspace.WorkspaceManager.WorkspaceManager">
+<area shape="rect" id="node2" href="$d3/db0/classgui_1_1mainclasses_1_1workspace_1_1_workspace_manager.html#a5886a46ecdbed6403279af669228d661" title="gui.mainclasses.workspace.\lWorkspaceManager.addWorkspace" alt="" coords="334,57,575,98"/>
+<area shape="rect" id="node6" href="$d3/db0/classgui_1_1mainclasses_1_1workspace_1_1_workspace_manager.html#a6af99303d078d669e4c843c1e7c2f439" title="gui.mainclasses.workspace.\lWorkspaceManager.initializeTabPane" alt="" coords="329,122,581,163"/>
+<area shape="rect" id="node3" href="$d0/d49/classgui_1_1mainclasses_1_1_text_generator.html#afef308a2abfb8f1503d2b276407833e6" title="gui.mainclasses.TextGenerator.get" alt="" coords="629,5,872,32"/>
+<area shape="rect" id="node4" href="$da/d55/interface_control_1_1_slogo_graphics.html#af3615631e22f23ebbed236a95b6207ff" title="Control.SlogoGraphics.create\lWorkspaceState" alt="" coords="646,57,855,98"/>
+<area shape="rect" id="node5" href="$da/d55/interface_control_1_1_slogo_graphics.html#a15527d6f44f87f4bd8063275ef06dfc2" title="Control.SlogoGraphics.set\lActiveWorkspaceState" alt="" coords="657,122,845,163"/>
+</map>

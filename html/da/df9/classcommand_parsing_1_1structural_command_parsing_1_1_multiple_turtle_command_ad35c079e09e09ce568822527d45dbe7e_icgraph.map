@@ -1,0 +1,4 @@
+<map id="commandParsing.structuralCommandParsing.MultipleTurtleCommand.determineTurtlesToActivate" name="commandParsing.structuralCommandParsing.MultipleTurtleCommand.determineTurtlesToActivate">
+<area shape="rect" id="node2" href="$d7/d50/classcommand_parsing_1_1structural_command_parsing_1_1_ask.html#aa19ad64684414b0ef6112ac7e75e992d" title="commandParsing.structural\lCommandParsing.Ask.parse" alt="" coords="413,5,616,46"/>
+<area shape="rect" id="node3" href="$db/da0/classcommand_parsing_1_1structural_command_parsing_1_1_tell.html#aaab258a057ef8d0fd8ff6980e59dc719" title="commandParsing.structural\lCommandParsing.Tell.parse" alt="" coords="415,70,614,111"/>
+</map>

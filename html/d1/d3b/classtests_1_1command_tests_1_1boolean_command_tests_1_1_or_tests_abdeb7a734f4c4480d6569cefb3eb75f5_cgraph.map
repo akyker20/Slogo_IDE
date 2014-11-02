@@ -1,0 +1,17 @@
+<map id="tests.commandTests.booleanCommandTests.OrTests.SyntaxErrorParseTest" name="tests.commandTests.booleanCommandTests.OrTests.SyntaxErrorParseTest">
+<area shape="rect" id="node2" href="$df/d32/classtests_1_1command_tests_1_1_command_tester.html#ae9efc87a629c2764dc172e9c5b631051" title="tests.commandTests.Command\lTester.createCommand" alt="" coords="332,5,559,46"/>
+<area shape="rect" id="node4" href="$d7/ddf/classcommand_parsing_1_1exceptions_1_1_s_l_o_g_o_exception.html#a1f818eeb2738ee107f09b09dc4557012" title="commandParsing.exceptions.\lSLOGOException.generateErrorMessage" alt="" coords="305,70,585,111"/>
+<area shape="rect" id="node5" href="$d2/df7/classdrawableobject_1_1_drawable_object.html#a64f395d23ac285545f1ecb7078125180" title="drawableobject.DrawableObject.get\lParameters" alt="" coords="322,135,569,177"/>
+<area shape="rect" id="node6" href="$d7/d17/classcommand_parsing_1_1_command_parser.html#ae5a2f506ca01f7fa355a64e4831fbae3" title="commandParsing.CommandParser.parse" alt="" coords="304,201,587,228"/>
+<area shape="rect" id="node7" href="$df/d32/classtests_1_1command_tests_1_1_command_tester.html#a0519b31ad820360c6e88e28d20124ed0" title="tests.commandTests.Command\lTester.resetTesterVariables" alt="" coords="332,253,559,294"/>
+<area shape="rect" id="node11" href="$df/d32/classtests_1_1command_tests_1_1_command_tester.html#a716744d45be04a7eb29653347471e925" title="tests.commandTests.Command\lTester.setUpCommands" alt="" coords="332,319,559,361"/>
+<area shape="rect" id="node3" href="$d7/d17/classcommand_parsing_1_1_command_parser.html#a9bf6e09b0ad06b6f217ad0ad040f8e93" title="commandParsing.CommandParser.create\lParser" alt="" coords="635,5,923,46"/>
+<area shape="rect" id="node8" href="$df/d32/classtests_1_1command_tests_1_1_command_tester.html#a4712733e925f2d3383baa35a46a99808" title="tests.commandTests.Command\lTester.setUpStateBeforeTesting" alt="" coords="665,245,892,286"/>
+<area shape="rect" id="node9" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html#af419bef3394c00e4313fd549fbcbd9a8" title="workspaceState.TurtleCollection.add\lTurtle" alt="" coords="971,242,1223,283"/>
+<area shape="rect" id="node10" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html#a2a83ac80ea6d84c1b032f2df8ac2fb0d" title="workspaceState.TurtleCollection.generate\lValidTurtleID" alt="" coords="1273,225,1559,266"/>
+<area shape="rect" id="node12" href="$d3/de0/classtranslator_1_1_translator.html#a0b8583b3ece2e55d0f02d7a076522863" title="translator.Translator.translate" alt="" coords="674,331,883,357"/>
+<area shape="rect" id="node13" href="$d3/de0/classtranslator_1_1_translator.html#ae5f7587427ac1df42b5764f127ce827c" title="translator.Translator.translate\lToList" alt="" coords="993,339,1202,381"/>
+<area shape="rect" id="node14" href="$d3/de0/classtranslator_1_1_translator.html#ad62364674b153e6fb5c67b328700d6e2" title="translator.Translator.matches\lCommandPattern" alt="" coords="1312,290,1520,331"/>
+<area shape="rect" id="node15" href="$d3/de0/classtranslator_1_1_translator.html#ae163dd69225da8754f9f090cb2b32bd4" title="translator.Translator.matches\lConstantPattern" alt="" coords="1312,355,1520,397"/>
+<area shape="rect" id="node16" href="$d3/de0/classtranslator_1_1_translator.html#aeb9508fb69ae1c82eec49d2b1d4ee77b" title="translator.Translator.matches\lVariablePattern" alt="" coords="1312,421,1520,462"/>
+</map>

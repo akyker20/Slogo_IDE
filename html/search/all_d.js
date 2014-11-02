@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['name',['NAME',['../da/d5b/classgui_1_1factories_1_1userdefinedcommands_1_1_user_defined_command_factory.html#a65f0d68b3c8d7f9241994bfc867b09cf',1,'gui.factories.userdefinedcommands.UserDefinedCommandFactory.NAME()'],['../df/d97/classgui_1_1factories_1_1_workspace_variable_factory.html#acbc3d4781dc0bcac038a3644beb0ca3d',1,'gui.factories.WorkspaceVariableFactory.NAME()'],['../d0/d49/classgui_1_1mainclasses_1_1_text_generator.html#a9dcb42dfe4d3abd3f9ed4b26dae8be94',1,'gui.mainclasses.TextGenerator.NAME()'],['../d9/dcd/class_x_m_l_1_1readers_1_1_saved_workspace_x_m_l_reader.html#a4f3088982b83ecb42a2595dcb4d4857a',1,'XML.readers.SavedWorkspaceXMLReader.NAME()'],['../d1/d88/classworkspace_state_1_1_user_defined_command_collection_1_1_command.html#ad306db7c15924f55a43c9255c8576acd',1,'workspaceState.UserDefinedCommandCollection.Command.name()'],['../dc/db8/class_x_m_l_1_1_x_m_l_parser.html#a30a29ee7ae2a96117492fbe374dff669',1,'XML.XMLParser.name()']]],
+  ['naturallog',['NaturalLog',['../d1/d8b/classcommand_parsing_1_1math_command_parsing_1_1_natural_log.html#ae4f5a0a143bb92031d1cf1c4903895d8',1,'commandParsing::mathCommandParsing::NaturalLog']]],
+  ['naturallog',['NaturalLog',['../d1/d8b/classcommand_parsing_1_1math_command_parsing_1_1_natural_log.html',1,'commandParsing::mathCommandParsing']]],
+  ['naturallog_2ejava',['NaturalLog.java',['../dc/d8a/_natural_log_8java.html',1,'']]],
+  ['new_5fturtle_5fcommand',['NEW_TURTLE_COMMAND',['../da/de1/class_control_1_1_slogo_control.html#ad11aaec42630919ac6ab07280fd3e6e9',1,'Control::SlogoControl']]],
+  ['new_5fworkspace',['NEW_WORKSPACE',['../d0/d49/classgui_1_1mainclasses_1_1_text_generator.html#a0d5c4d0df03f6b9eb4fbf6d3cabe2e0d',1,'gui::mainclasses::TextGenerator']]],
+  ['northvector',['northVector',['../da/d63/classcommand_parsing_1_1turtle_command_parsing_1_1turtle_attribute_setters_1_1_set_towards.html#aa5f8f50be31f23adb2ec929a0e372d17',1,'commandParsing::turtleCommandParsing::turtleAttributeSetters::SetTowards']]],
+  ['not',['Not',['../d8/d04/classcommand_parsing_1_1boolean_command_parsing_1_1_not.html',1,'commandParsing::booleanCommandParsing']]],
+  ['not',['Not',['../d8/d04/classcommand_parsing_1_1boolean_command_parsing_1_1_not.html#a6decdba2bab179a247499239fc6a0b48',1,'commandParsing::booleanCommandParsing::Not']]],
+  ['not_2ejava',['Not.java',['../d5/d55/_not_8java.html',1,'']]],
+  ['notequal',['NotEqual',['../dc/dfd/classcommand_parsing_1_1boolean_command_parsing_1_1_not_equal.html#a0772018980a3b734060c1e4f0062388d',1,'commandParsing::booleanCommandParsing::NotEqual']]],
+  ['notequal',['NotEqual',['../dc/dfd/classcommand_parsing_1_1boolean_command_parsing_1_1_not_equal.html',1,'commandParsing::booleanCommandParsing']]],
+  ['notequal_2ejava',['NotEqual.java',['../de/dca/_not_equal_8java.html',1,'']]],
+  ['notequaltests',['NotEqualTests',['../da/d7a/classtests_1_1command_tests_1_1boolean_command_tests_1_1_not_equal_tests.html',1,'tests::commandTests::booleanCommandTests']]],
+  ['notequaltests_2ejava',['NotEqualTests.java',['../d6/d41/_not_equal_tests_8java.html',1,'']]],
+  ['notifyofturtleselectionchange',['notifyOfTurtleSelectionChange',['../d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#afe27c5d2bffafe1e1092a0319331cc33',1,'gui::mainclasses::workspace::Workspace']]],
+  ['nottests',['NotTests',['../d1/d30/classtests_1_1command_tests_1_1boolean_command_tests_1_1_not_tests.html',1,'tests::commandTests::booleanCommandTests']]],
+  ['nottests_2ejava',['NotTests.java',['../d9/d67/_not_tests_8java.html',1,'']]],
+  ['nullcommandparser',['NullCommandParser',['../d9/d7d/classcommand_parsing_1_1_null_command_parser.html#a70784325bac7c8a27bb4cda56be5b69c',1,'commandParsing::NullCommandParser']]],
+  ['nullcommandparser',['NullCommandParser',['../d9/d7d/classcommand_parsing_1_1_null_command_parser.html',1,'commandParsing']]],
+  ['nullcommandparser_2ejava',['NullCommandParser.java',['../df/dc6/_null_command_parser_8java.html',1,'']]],
+  ['nullnode',['NullNode',['../d6/d8e/classgui_1_1factories_1_1turtlefactory_1_1_null_node.html',1,'gui::factories::turtlefactory']]],
+  ['nullnode_2ejava',['NullNode.java',['../d7/d15/_null_node_8java.html',1,'']]],
+  ['numberofarguments',['numberOfArguments',['../d1/d88/classworkspace_state_1_1_user_defined_command_collection_1_1_command.html#a7617b771f536a446d2e8d01e5b739d33',1,'workspaceState::UserDefinedCommandCollection::Command']]]
+];

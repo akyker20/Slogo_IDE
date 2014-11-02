@@ -1,0 +1,9 @@
+<map id="gui.mainclasses.workspace.Workspace" name="gui.mainclasses.workspace.Workspace">
+<area shape="rect" id="node14" href="$dd/d25/classgui_1_1factories_1_1turtlefactory_1_1_turtle_nodes.html" title="gui.factories.turtlefactory.\lTurtleNodes" alt="" coords="1539,230,1723,271"/>
+<area shape="rect" id="node3" href="$d0/d23/classgui_1_1mainclasses_1_1workspace_1_1_workspace_data_holder.html" title="gui.mainclasses.workspace.\lWorkspaceDataHolder" alt="" coords="706,166,905,207"/>
+<area shape="rect" id="node10" href="$dd/d4c/classgui_1_1componentdrawers_1_1_turtle_screen_drawer.html" title="gui.componentdrawers.Turtle\lScreenDrawer" alt="" coords="1907,146,2114,187"/>
+<area shape="rect" id="node11" href="$d0/dda/classgui_1_1componentdrawers_1_1_component_drawer.html" title="gui.componentdrawers.Component\lDrawer" alt="" coords="1507,47,1754,89"/>
+<area shape="rect" id="node13" href="$dd/d6a/classgui_1_1nonbuttonfeatures_1_1_turtle_screen_feature.html" title="gui.nonbuttonfeatures.Turtle\lScreenFeature" alt="" coords="1529,113,1732,154"/>
+<area shape="rect" id="node17" href="$d1/d60/classgui_1_1factories_1_1_object_factory.html" title="gui.factories.ObjectFactory" alt="" coords="710,297,901,324"/>
+<area shape="rect" id="node18" href="$da/d55/interface_control_1_1_slogo_graphics.html" title="Control.SlogoGraphics" alt="" coords="723,348,887,375"/>
+</map>

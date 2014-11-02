@@ -1,0 +1,4 @@
+<map id="commandParsing.turtleCommandParsing.ClearScreen.operateOnComponents" name="commandParsing.turtleCommandParsing.ClearScreen.operateOnComponents">
+<area shape="rect" id="node2" href="$d1/d65/interfacecommand_parsing_1_1drawable_obect_generation_interfaces_1_1_pane_generator.html#ac7ba246e2a65717c9e3ff72f19118eb3" title="commandParsing.drawableObect\lGenerationInterfaces.PaneGenerator.generate\lDrawableObjectRepresentingPaneReset" alt="" coords="357,5,675,61"/>
+<area shape="rect" id="node3" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html#a6c49b4d7d24c0ed82ea491185b023cf0" title="workspaceState.TurtleCollection.get\lActiveTurtles" alt="" coords="391,85,641,126"/>
+</map>

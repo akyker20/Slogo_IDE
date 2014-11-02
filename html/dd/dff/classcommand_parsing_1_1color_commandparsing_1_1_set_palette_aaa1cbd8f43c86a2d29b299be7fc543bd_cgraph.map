@@ -1,0 +1,4 @@
+<map id="commandParsing.colorCommandparsing.SetPalette.operateOnComponents" name="commandParsing.colorCommandparsing.SetPalette.operateOnComponents">
+<area shape="rect" id="node2" href="$d2/df5/classworkspace_state_1_1_palette.html#a25ed91713e1e00f327a6d0723b4a1d62" title="workspaceState.Palette.add\lToPalette" alt="" coords="389,5,589,46"/>
+<area shape="rect" id="node3" href="$dd/d4b/interfacecommand_parsing_1_1drawable_obect_generation_interfaces_1_1_color_palette_update_generator.html#a4318e2f2bd75125b5d99e77991b4d646" title="commandParsing.drawableObect\lGenerationInterfaces.ColorPalette\lUpdateGenerator.generateDrawableObject\lRepresentingColorPaletteUpdate" alt="" coords="342,70,637,141"/>
+</map>

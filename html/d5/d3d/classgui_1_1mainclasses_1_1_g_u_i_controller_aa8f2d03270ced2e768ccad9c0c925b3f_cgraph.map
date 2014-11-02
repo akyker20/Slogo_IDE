@@ -1,0 +1,11 @@
+<map id="gui.mainclasses.GUIController.GUIController" name="gui.mainclasses.GUIController.GUIController">
+<area shape="rect" id="node2" href="$d8/d0e/classgui_1_1menus_1_1_main_menu_initializer.html#a00ada82523be8b554312db7e281c1412" title="gui.menus.MainMenuInitializer.init" alt="" coords="278,5,514,32"/>
+<area shape="rect" id="node3" href="$d3/d5c/classgui_1_1mainclasses_1_1_stage_initializer.html#acfc5e18d03fb1e73167d49a7133ea3a5" title="gui.mainclasses.StageInitializer.init" alt="" coords="274,56,518,83"/>
+<area shape="rect" id="node5" href="$d5/d3d/classgui_1_1mainclasses_1_1_g_u_i_controller.html#af8e32f667f89b5d6c80f282c2947fe84" title="gui.mainclasses.GUIController.move\lActiveTurtlesInActiveWorkspace" alt="" coords="270,107,522,149"/>
+<area shape="rect" id="node4" href="$d0/d49/classgui_1_1mainclasses_1_1_text_generator.html#afef308a2abfb8f1503d2b276407833e6" title="gui.mainclasses.TextGenerator.get" alt="" coords="588,56,831,83"/>
+<area shape="rect" id="node6" href="$d3/db0/classgui_1_1mainclasses_1_1workspace_1_1_workspace_manager.html#a4863a19ac83bbd4dea5582dcecf3553d" title="gui.mainclasses.workspace.\lWorkspaceManager.getActiveWorkspace" alt="" coords="571,107,848,149"/>
+<area shape="rect" id="node7" href="$d8/df2/classgui_1_1mainclasses_1_1workspace_1_1_workspace.html#a01dff18cc9fa51688c0ba996b3ff9b6a" title="gui.mainclasses.workspace.\lWorkspace.moveActiveTurtles" alt="" coords="604,173,815,214"/>
+<area shape="rect" id="node8" href="$dd/d25/classgui_1_1factories_1_1turtlefactory_1_1_turtle_nodes.html#a95e5268536cc20234687d9c3f61f49be" title="gui.factories.turtlefactory.\lTurtleNodes.getActiveNodes" alt="" coords="897,139,1100,181"/>
+<area shape="rect" id="node10" href="$da/d55/interface_control_1_1_slogo_graphics.html#a05813100446932183f367405e6c73d67" title="Control.SlogoGraphics.parse\lCommandString" alt="" coords="897,205,1101,246"/>
+<area shape="rect" id="node9" href="$d1/d95/classgui_1_1factories_1_1turtlefactory_1_1_turtle_node.html#a3e07701226a7044520bc57956f81f0ea" title="gui.factories.turtlefactory.\lTurtleNode.isSelected" alt="" coords="1149,139,1333,181"/>
+</map>

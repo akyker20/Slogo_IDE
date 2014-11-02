@@ -1,0 +1,9 @@
+<map id="workspaceState.TurtleCollection.activateTurtle" name="workspaceState.TurtleCollection.activateTurtle">
+<area shape="rect" id="node2" href="$db/d1f/classworkspace_state_1_1_turtle_collection.html#a2f0af9ab12fe4f828daa4a1e0d9a28fc" title="workspaceState.TurtleCollection.add\lTurtle" alt="" coords="377,5,629,46"/>
+<area shape="rect" id="node3" href="$d7/d78/classcommand_parsing_1_1structural_command_parsing_1_1_ask_with.html#ab3835c2a34a1c16bc05317d1484c44a7" title="commandParsing.structural\lCommandParsing.AskWith.determine\lIfTurtleIsValidRecipient" alt="" coords="373,69,632,125"/>
+<area shape="rect" id="node5" href="$da/df9/classcommand_parsing_1_1structural_command_parsing_1_1_multiple_turtle_command.html#ac35b7854cdc1ab7dcdbc9809a6db903c" title="commandParsing.structural\lCommandParsing.MultipleTurtleCommand.make\lAndActivateGivenTurtles" alt="" coords="338,229,667,285"/>
+<area shape="rect" id="node8" href="$da/df9/classcommand_parsing_1_1structural_command_parsing_1_1_multiple_turtle_command.html#a3159da63370fb83e727078b8f8722a59" title="commandParsing.structural\lCommandParsing.MultipleTurtleCommand.restore\lActiveTurtles" alt="" coords="333,149,672,205"/>
+<area shape="rect" id="node4" href="$d7/d78/classcommand_parsing_1_1structural_command_parsing_1_1_ask_with.html#a934aa5eda34ccd0b9703e578753031fb" title="commandParsing.structural\lCommandParsing.AskWith.parse" alt="" coords="720,131,949,173"/>
+<area shape="rect" id="node6" href="$d7/d50/classcommand_parsing_1_1structural_command_parsing_1_1_ask.html#aa19ad64684414b0ef6112ac7e75e992d" title="commandParsing.structural\lCommandParsing.Ask.parse" alt="" coords="733,197,936,238"/>
+<area shape="rect" id="node7" href="$db/da0/classcommand_parsing_1_1structural_command_parsing_1_1_tell.html#aaab258a057ef8d0fd8ff6980e59dc719" title="commandParsing.structural\lCommandParsing.Tell.parse" alt="" coords="735,262,934,303"/>
+</map>
