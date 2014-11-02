@@ -19,6 +19,9 @@ import drawableobject.DrawableObject;
  *
  */
 
+//This entire file is part of my masterpiece.
+//Stanley Yuan
+
 public abstract class MultipleTurtleCommand extends StructuralCommand implements TurtleGenerator {
 
     List<Turtle> savedListOfTurtles = new ArrayList<Turtle>();

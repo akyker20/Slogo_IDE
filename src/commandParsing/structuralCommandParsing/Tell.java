@@ -6,6 +6,8 @@ import workspaceState.WorkspaceState;
 import commandParsing.exceptions.SLOGOException;
 import drawableobject.DrawableObject;
 
+//This entire file is part of my masterpiece.
+//Stanley Yuan
 
 public class Tell extends MultipleTurtleCommand {
 

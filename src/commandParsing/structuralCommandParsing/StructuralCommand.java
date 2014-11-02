@@ -21,6 +21,9 @@ import drawableobject.DrawableObject;
  *
  */
 
+//This entire file is part of my masterpiece.
+//Stanley Yuan
+
 public abstract class StructuralCommand extends CommandParser {
 
     public StructuralCommand (WorkspaceState someWorkspace) {
